@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+venv/
+perfil_ml/
+parsers/__pycache__/

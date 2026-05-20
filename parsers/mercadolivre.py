@@ -2,6 +2,86 @@ import random
 import time
 
 
+def obter_link_encurtado(page, url_original):
+
+    try:
+
+        # Clica no botão Compartilhar
+        botao = page.locator(
+            "button:has-text('Compartilhar'), button[aria-label*='ompartilhar']"
+        ).first
+
+        botao.wait_for(state="visible", timeout=8000)
+
+        botao.click()
+
+        time.sleep(random.uniform(1, 2))
+
+        # Aguarda o modal abrir
+        page.wait_for_selector(
+            "[data-andes-thumbnail='true']",
+            timeout=8000
+        )
+
+        # Clica no ícone de link (corrente) dentro do modal
+        icone_link = page.locator(
+            "[data-andes-thumbnail='true']"
+        ).first
+
+        icone_link.click()
+
+        time.sleep(random.uniform(1, 2))
+
+        # Tenta ler a URL encurtada do textarea identificado no modal
+        campo = page.locator(
+            "textarea[data-testid='text-field__label_link']"
+        ).first
+
+        try:
+
+            campo.wait_for(state="visible", timeout=5000)
+
+            link_encurtado = campo.input_value()
+
+            if link_encurtado:
+
+                # Fecha o modal se possível
+                page.keyboard.press("Escape")
+
+                return link_encurtado
+
+        except Exception:
+
+            pass
+
+        # Fallback: tenta ler do clipboard via JS
+        try:
+
+            link_encurtado = page.evaluate(
+                "navigator.clipboard.readText()"
+            )
+
+            if link_encurtado and (
+                "mercadolivre" in link_encurtado or "meli.la" in link_encurtado
+            ):
+
+                page.keyboard.press("Escape")
+
+                return link_encurtado
+
+        except Exception:
+
+            pass
+
+        page.keyboard.press("Escape")
+
+    except Exception as exc:
+
+        print(f"\nNão foi possível obter link encurtado: {exc}")
+
+    return url_original
+
+
 def mercado_livre(page, url):
 
     try:
@@ -130,7 +210,25 @@ def mercado_livre(page, url):
 
         except:
 
-            antes = "Sem preço anterior"
+            try:
+
+                reais_antigo = page.locator(
+
+                    "span.andes-money-amount__fraction[data-andes-money-amount-fraction='true']"
+
+                ).first.inner_text()
+
+                centavos_antigo = page.locator(
+
+                    "span.andes-money-amount__cents[data-andes-money-amount-cents='true']"
+
+                ).first.inner_text()
+
+                antes = f"R$ {reais_antigo},{centavos_antigo}"
+
+            except:
+
+                antes = "Sem preço anterior"
 
         # =========================
         # DESCONTO
@@ -148,9 +246,15 @@ def mercado_livre(page, url):
 
             desconto = "Sem desconto"
 
+        # =========================
+        # LINK ENCURTADO
+        # =========================
+
+        link_final = obter_link_encurtado(page, url)
+
         resultado = {
 
-            "link": url,
+            "link": link_final,
 
             "descricao": descricao,
 
