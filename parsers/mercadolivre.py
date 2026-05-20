@@ -2,11 +2,20 @@ import random
 import time
 
 
+def debug_pausa(rotulo):
+
+    print(f"\n[DEBUG] {rotulo}")
+
+    breakpoint()
+
+
 def obter_link_encurtado(page, url_original):
 
     try:
 
         # Clica no botão Compartilhar
+        debug_pausa("Antes de clicar em Compartilhar")
+
         botao = page.locator(
             "button:has-text('Compartilhar'), button[aria-label*='ompartilhar']"
         ).first
@@ -14,6 +23,8 @@ def obter_link_encurtado(page, url_original):
         botao.wait_for(state="visible", timeout=8000)
 
         botao.click()
+
+        debug_pausa("Depois de abrir o modal de compartilhar")
 
         time.sleep(random.uniform(1, 2))
 
@@ -28,7 +39,22 @@ def obter_link_encurtado(page, url_original):
             "[data-andes-thumbnail='true']"
         ).first
 
+        debug_pausa("Antes de clicar no icone de link no modal")
+
         icone_link.click()
+
+        debug_pausa("Depois de clicar no icone de link no modal")
+
+        time.sleep(random.uniform(1, 2))
+
+        # Aciona o botao "Copiar link" para gerar/copiar a URL curta.
+        botao_copiar = page.locator(
+            "button#copy_link, button.share-button"
+        ).first
+
+        botao_copiar.wait_for(state="visible", timeout=5000)
+
+        botao_copiar.click()
 
         time.sleep(random.uniform(1, 2))
 
@@ -41,9 +67,11 @@ def obter_link_encurtado(page, url_original):
 
             campo.wait_for(state="visible", timeout=5000)
 
-            link_encurtado = campo.input_value()
+            link_encurtado = campo.input_value().strip()
 
-            if link_encurtado:
+            debug_pausa("Depois de ler o textarea do link encurtado")
+
+            if link_encurtado and "meli.la" in link_encurtado:
 
                 # Fecha o modal se possível
                 page.keyboard.press("Escape")
@@ -59,11 +87,11 @@ def obter_link_encurtado(page, url_original):
 
             link_encurtado = page.evaluate(
                 "navigator.clipboard.readText()"
-            )
+            ).strip()
 
-            if link_encurtado and (
-                "mercadolivre" in link_encurtado or "meli.la" in link_encurtado
-            ):
+            debug_pausa("Depois de tentar ler o clipboard")
+
+            if link_encurtado and "meli.la" in link_encurtado:
 
                 page.keyboard.press("Escape")
 
@@ -251,6 +279,8 @@ def mercado_livre(page, url):
         # =========================
 
         link_final = obter_link_encurtado(page, url)
+
+        debug_pausa("Depois de validar e definir o link final")
 
         resultado = {
 
