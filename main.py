@@ -1,6 +1,6 @@
 from playwright.sync_api import sync_playwright
 
-from parsers.mercadolivre import mercado_livre
+from parsers.mercadolivre import coletar_produtos_com_desconto, obter_link_encurtado_por_descricao
 
 import os
 import random
@@ -11,19 +11,37 @@ from twilio.rest import Client
 
 URL_LISTAGEM = "https://www.mercadolivre.com.br/afiliados/hub"
 
-DESCONTO_MINIMO = 50
+DESCONTO_MINIMO = 40
 
 PRECO_MINIMO = None
 
 PRECO_MAXIMO = 300
 
-LIMITE_PRODUTOS = 3
+LIMITE_PRODUTOS = 10
 
-LIMITE_CANDIDATOS = 10
+LIMITE_CANDIDATOS = 50
 
 CATEGORIA_PADRAO = "Casa, Móveis e Decoração"
 
+WHATSAPP_DESTINO_FIXO = "whatsapp:+5519991133269"
+
+DEBUG_BREAKPOINTS = os.getenv("ENABLE_DEBUG_BREAKPOINTS", "0") == "1"
+DEBUG_BREAKPOINT_TARGET = os.getenv("DEBUG_BREAKPOINT_TARGET", "").strip()
+
 load_dotenv()
+
+
+def debug_pausa(rotulo):
+
+    if DEBUG_BREAKPOINTS:
+
+        print(f"\n[DEBUG] {rotulo}")
+
+        if not DEBUG_BREAKPOINT_TARGET or DEBUG_BREAKPOINT_TARGET == rotulo:
+
+            breakpoint()
+
+    return
 
 
 def ler_variavel_ambiente(nome):
@@ -51,6 +69,11 @@ def converter_preco(texto_preco):
     except ValueError:
 
         return None
+
+
+def normalizar_descricao(texto_descricao):
+
+    return " ".join((texto_descricao or "").split()).strip()
 
 
 def produto_esta_no_intervalo(produto, preco_minimo, preco_maximo):
@@ -95,6 +118,7 @@ def carregar_historico_precos(caminho_arquivo):
 
             link_atual = None
             preco_atual = None
+            descricao_atual = None
 
             for linha in arquivo:
 
@@ -110,6 +134,10 @@ def carregar_historico_precos(caminho_arquivo):
 
                     continue
 
+                if linha_limpa.lower().startswith("antes:"):
+
+                    continue
+
                 if linha_limpa.lower().startswith("depois:"):
 
                     preco_atual = converter_preco(
@@ -120,27 +148,35 @@ def carregar_historico_precos(caminho_arquivo):
 
                 if linha_limpa.startswith("-----------------------------"):
 
-                    if link_atual and preco_atual is not None:
+                    if descricao_atual and preco_atual is not None:
 
-                        preco_salvo = historico.get(link_atual)
+                        chave_descricao = normalizar_descricao(descricao_atual)
+                        preco_salvo = historico.get(chave_descricao)
 
                         if preco_salvo is None or preco_atual < preco_salvo:
 
-                            historico[link_atual] = preco_atual
+                            historico[chave_descricao] = preco_atual
 
                     link_atual = None
 
                     preco_atual = None
 
+                    descricao_atual = None
+
                     continue
 
-            if link_atual and preco_atual is not None:
+                if descricao_atual is None:
 
-                preco_salvo = historico.get(link_atual)
+                    descricao_atual = linha_limpa
+
+            if descricao_atual and preco_atual is not None:
+
+                chave_descricao = normalizar_descricao(descricao_atual)
+                preco_salvo = historico.get(chave_descricao)
 
                 if preco_salvo is None or preco_atual < preco_salvo:
 
-                    historico[link_atual] = preco_atual
+                    historico[chave_descricao] = preco_atual
 
     except FileNotFoundError:
 
@@ -151,14 +187,14 @@ def carregar_historico_precos(caminho_arquivo):
 
 def produto_deve_ser_enviado(produto, historico_precos):
 
-    link = produto.get("link")
+    descricao = normalizar_descricao(produto.get("descricao"))
     preco_novo = converter_preco(produto.get("depois"))
 
-    if not link or preco_novo is None:
+    if not descricao or preco_novo is None:
 
         return False
 
-    preco_antigo = historico_precos.get(link)
+    preco_antigo = historico_precos.get(descricao)
 
     if preco_antigo is None:
 
@@ -171,22 +207,22 @@ def atualizar_historico_precos(historico_precos, produtos):
 
     for produto in produtos:
 
-        link = produto.get("link")
+        descricao = normalizar_descricao(produto.get("descricao"))
         preco = converter_preco(produto.get("depois"))
 
-        if not link or preco is None:
+        if not descricao or preco is None:
 
             continue
 
-        preco_atual = historico_precos.get(link)
+        preco_atual = historico_precos.get(descricao)
 
         if preco_atual is None or preco < preco_atual:
 
-            historico_precos[link] = preco
+            historico_precos[descricao] = preco
 
         else:
 
-            historico_precos.setdefault(link, preco_atual)
+            historico_precos.setdefault(descricao, preco_atual)
 
     return historico_precos
 
@@ -279,21 +315,40 @@ def aplicar_filtro_categoria(page, categoria):
     )
 
 
+def validar_txt_e_historico(caminho_arquivo):
+
+    debug_pausa("Antes de ler o historico do TXT")
+
+    historico = carregar_historico_precos(caminho_arquivo)
+
+    debug_pausa("Depois de ler o historico do TXT")
+
+    return historico
+
+
 def usuario_esta_logado_mercado_livre(page):
 
     try:
 
-        if page.get_by_text("Entre", exact=True).count() > 0:
+        if page.locator("button[aria-label*='menu'], button:has-text('menu')").count() > 0:
+
+            return True
+
+        if page.get_by_role("link", name="Entre").first.is_visible():
 
             return False
 
-        if page.get_by_text("Cadastro", exact=True).count() > 0:
+        if page.get_by_role("link", name="Crie a sua conta").first.is_visible():
 
             return False
 
-        if page.locator("a[href*='login']").count() > 0:
+        if page.locator("a[href*='login']").first.is_visible():
 
             return False
+
+        if page.locator("button:has-text('Lucas, menu')").count() > 0:
+
+            return True
 
     except Exception:
 
@@ -330,6 +385,23 @@ def montar_mensagem_produto(produto):
     )
 
 
+def registrar_produto_ignorado(produto, motivo, detalhe=""):
+
+    print(
+        f"\n[PRODUTO IGNORADO] {produto.get('descricao', 'Descrição não encontrada')}"
+    )
+
+    print(
+        f"Motivo: {motivo}"
+    )
+
+    if detalhe:
+
+        print(
+            f"Detalhe: {detalhe}"
+        )
+
+
 def enviar_produtos_por_whatsapp(produtos):
 
     if not produtos:
@@ -343,7 +415,7 @@ def enviar_produtos_por_whatsapp(produtos):
     account_sid = ler_variavel_ambiente("TWILIO_ACCOUNT_SID")
     auth_token = ler_variavel_ambiente("TWILIO_AUTH_TOKEN")
     whatsapp_from = ler_variavel_ambiente("TWILIO_WHATSAPP_FROM")
-    whatsapp_to = ler_variavel_ambiente("TWILIO_WHATSAPP_TO")
+    whatsapp_to = WHATSAPP_DESTINO_FIXO
 
     variaveis_obrigatorias = {
         "TWILIO_ACCOUNT_SID": account_sid,
@@ -373,17 +445,40 @@ def enviar_produtos_por_whatsapp(produtos):
         auth_token
     )
 
+    print(
+        f"\n[DEBUG] Twilio Account SID: {account_sid[:4]}...{account_sid[-4:]}"
+    )
+
     for produto in produtos:
 
         mensagem = montar_mensagem_produto(produto)
+        # Teste sem imagem: o envio fica somente no texto da mensagem.
+        # imagem = (produto.get("imagem") or "").strip()
+        parametros_envio = {
+            "from_": whatsapp_from,
+            "to": whatsapp_to,
+            "body": mensagem,
+        }
+
+        # Comentado para testar se a mídia estava afetando o envio no Twilio.
+        # if imagem.startswith("http://") or imagem.startswith("https://"):
+        #
+        #     # O Twilio usa media_url para enviar a imagem junto com a mensagem.
+        #     parametros_envio["media_url"] = [imagem]
+
+        # print(
+        #     f"\n[DEBUG] media_url={'SIM' if 'media_url' in parametros_envio else 'NAO'}"
+        # )
+
+        # print(
+        #     f"[DEBUG] imagem={imagem if imagem else 'SEM IMAGEM'}"
+        # )
+
+        debug_pausa("Antes de enviar para a API do Twilio")
 
         try:
 
-            resposta = client.messages.create(
-                from_=whatsapp_from,
-                to=whatsapp_to,
-                body=mensagem
-            )
+            resposta = client.messages.create(**parametros_envio)
 
         except TwilioRestException as exc:
 
@@ -400,7 +495,7 @@ def enviar_produtos_por_whatsapp(produtos):
         )
 
         print(
-            f"SID Twilio: {resposta.sid}"
+            f"Message SID Twilio: {resposta.sid}"
         )
 
         time.sleep(
@@ -413,6 +508,8 @@ def coletar_links_com_desconto(page, url, desconto_minimo, limite):
     print(
         f"\nBuscando produtos em:\n{url}"
     )
+
+    debug_pausa("Antes de procurar os produtos no hub")
 
     time.sleep(
         random.uniform(3, 5)
@@ -498,7 +595,9 @@ def coletar_links_com_desconto(page, url, desconto_minimo, limite):
 
 lista_produtos = []
 
-historico_precos = carregar_historico_precos(
+produtos_para_enviar = []
+
+historico_precos = validar_txt_e_historico(
     "produtos.txt"
 )
 
@@ -542,105 +641,170 @@ with sync_playwright() as p:
         URL_LISTAGEM
     )
 
+    debug_pausa("Navegador aberto e hub carregado")
+
     aguardar_login_mercado_livre(
         page
     )
 
+    debug_pausa("Depois da validacao de login do Mercado Livre")
+
     categoria_alvo = CATEGORIA_PADRAO
+
+    debug_pausa("Antes de aplicar o filtro de categoria")
 
     aplicar_filtro_categoria(
         page,
         categoria_alvo
     )
 
-    links = coletar_links_com_desconto(
-        page,
-        URL_LISTAGEM,
-        DESCONTO_MINIMO,
-        LIMITE_CANDIDATOS
-    )
+    debug_pausa("Depois de aplicar o filtro de categoria")
 
-    if not links:
+    produtos_processados = set()
+    tentativas = 0
+    tentativas_max = 20
+
+    while len(produtos_para_enviar) < LIMITE_PRODUTOS and tentativas < tentativas_max:
+
+        tentativas += 1
 
         print(
-            "\nNenhum produto com desconto dentro do filtro foi encontrado."
+            f"\n[Tentativa {tentativas}/{tentativas_max}] Coletando mais produtos..."
         )
 
-    for link in links:
+        produtos = coletar_produtos_com_desconto(
+            page,
+            URL_LISTAGEM,
+            DESCONTO_MINIMO,
+            LIMITE_CANDIDATOS
+        )
 
-        if len(lista_produtos) >= LIMITE_PRODUTOS:
+        debug_pausa("Depois de coletar os produtos candidatos")
+
+        if not produtos:
+
+            print(
+                "\nNenhum novo produto com desconto dentro do filtro foi encontrado."
+            )
 
             break
 
-        print(
-            f"\n=============================="
-        )
+        novos_na_tentativa = 0
 
-        print(
-            f"LENDO PRODUTO:\n{link}"
-        )
+        for produto in produtos:
 
-        produto = mercado_livre(
-            page,
-            link
-        )
+            chave_produto = f"{normalizar_descricao(produto.get('descricao'))}|{(produto.get('depois') or '').strip()}"
 
-        if produto_esta_no_intervalo(
-            produto,
-            PRECO_MINIMO,
-            PRECO_MAXIMO
-        ):
+            if not chave_produto or chave_produto in produtos_processados:
 
-            lista_produtos.append(
-                produto
+                continue
+
+            produtos_processados.add(chave_produto)
+            novos_na_tentativa += 1
+
+            if len(produtos_para_enviar) >= LIMITE_PRODUTOS:
+
+                break
+
+            print(
+                f"\n=============================="
             )
 
             print(
-                f"Produto aceito por estar {formatar_faixa_preco(PRECO_MINIMO, PRECO_MAXIMO)}."
+                f"LENDO PRODUTO:\n{produto.get('descricao', 'Descrição não encontrada')}"
             )
 
-        else:
+            debug_pausa("Depois de validar os dados do card")
+
+            if produto_esta_no_intervalo(
+                produto,
+                PRECO_MINIMO,
+                PRECO_MAXIMO
+            ):
+
+                debug_pausa(
+                    "Produto encontrado com mais de 40% de desconto e ate R$ 300"
+                )
+
+                debug_pausa("Antes de comparar com o historico do TXT")
+
+                if not produto_deve_ser_enviado(
+                    produto,
+                    historico_precos
+                ):
+
+                    preco_novo = converter_preco(produto.get("depois"))
+                    preco_antigo = historico_precos.get(normalizar_descricao(produto.get("descricao")))
+
+                    registrar_produto_ignorado(
+                        produto,
+                        "Já existe no histórico com preço menor ou igual",
+                        f"Preço novo: {preco_novo:.2f} | preço no histórico: {preco_antigo:.2f}" if preco_novo is not None and preco_antigo is not None else "Não foi possível comparar os preços"
+                    )
+
+                    time.sleep(
+                        random.uniform(2, 4)
+                    )
+
+                    continue
+
+                produto["link"] = obter_link_encurtado_por_descricao(
+                    page,
+                    produto.get("descricao", ""),
+                    produto.get("link", "")
+                )
+
+                lista_produtos.append(
+                    produto
+                )
+
+                produtos_para_enviar.append(
+                    produto
+                )
+
+                print(
+                    f"Produto aceito por estar {formatar_faixa_preco(PRECO_MINIMO, PRECO_MAXIMO)} e ser elegivel no historico."
+                )
+
+            else:
+
+                registrar_produto_ignorado(
+                    produto,
+                    "Fora da faixa de preço",
+                    f"Preço atual: {produto.get('depois', 'indisponível')} | limite máximo: R$ {PRECO_MAXIMO:.2f}"
+                )
+
+            time.sleep(
+                random.uniform(5, 10)
+            )
+
+        if novos_na_tentativa == 0:
 
             print(
-                "Produto ignorado por estar fora da faixa de preco."
+                "\nNenhum novo produto inedito nesta tentativa. Encerrando busca para evitar loop."
             )
+
+            break
+
+        page.mouse.wheel(0, 3000)
 
         time.sleep(
-            random.uniform(5, 10)
+            random.uniform(2, 4)
         )
 
-    produtos_para_enviar = []
-
-    for produto in lista_produtos:
-
-        if produto_deve_ser_enviado(
-            produto,
-            historico_precos
-        ):
-
-            produtos_para_enviar.append(
-                produto
-            )
-
-            print(
-                f"\nProduto liberado para envio por ter menor preco que o historico:\n{produto['link']}"
-            )
-
-            continue
+    if len(produtos_para_enviar) < LIMITE_PRODUTOS:
 
         print(
-            f"\nProduto ignorado por ja existir no historico com preco menor ou igual:\n{produto['link']}"
+            f"\nForam encontrados {len(produtos_para_enviar)} produtos elegiveis para envio apos validacao de historico."
         )
 
-    print(
-        "\nDigite o número de WhatsApp no formato internacional, somente números. Ex.: 5511999999999"
-    )
-
-    telefone_whatsapp = input().strip()
+    debug_pausa("Antes de enviar os produtos aprovados para o Twilio")
 
     enviar_produtos_por_whatsapp(
         produtos_para_enviar
     )
+
+    debug_pausa("Antes de gravar as novas informacoes no TXT")
 
     atualizar_historico_precos(
         historico_precos,
@@ -651,6 +815,8 @@ with sync_playwright() as p:
         "produtos.txt",
         produtos_para_enviar
     )
+
+    debug_pausa("Depois de gravar as informacoes novas no TXT")
 
     context.close()
 
