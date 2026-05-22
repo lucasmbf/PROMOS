@@ -20,6 +20,10 @@ Automação em Python para coletar produtos do Mercado Livre, priorizar ofertas 
 - Geração de executável por categoria para uso no Agendador de Tarefas do Windows.
 - Suporte a parâmetros extras nos executáveis gerados.
 - Geração de arquivos de saída com resultados consolidados e resultados de ofertas relâmpago.
+- Interface com botão de alerta de preço e configuração de checagem agendada.
+- Alerta por URL (recomendável) com suporte a múltiplas URLs por configuração.
+- Opção de alerta por descrição e atributos do produto.
+- Intervalo de verificação em horas com mínimo de 1 hora para reduzir risco de bloqueio.
 
 ## Como executar
 
@@ -149,6 +153,30 @@ Mesmo com categoria fixa, voce ainda pode complementar no PowerShell:
 ```powershell
 .\venv\Scripts\python.exe -m pip install pyinstaller
 ```
+
+## Executavel com interface grafica
+
+Foi adicionado um executavel de interface em `gui_promos.py`, com dois quadros principais:
+
+- Procurar produto
+- Procurar ofertas relampago
+
+Para gerar o executavel da interface:
+
+```powershell
+.\gerar_executavel_interface.ps1
+```
+
+Saida esperada:
+
+- `dist-interface/promos_interface.exe`
+
+Na interface:
+
+- O quadro **Procurar produto** permite preencher descricao, fontes, categoria, faixa de preco e desconto minimo.
+- O icone `(i)` ao lado de descricao mostra detalhes da funcionalidade ao passar o mouse.
+- O quadro **Procurar ofertas relampago** permite usar modo padrao (`--relampago-padrao`) ou modo customizado (`--somente-relampago` com filtros).
+- Fontes Amazon, Shoppee e Tiktok Shop aparecem na UI, mas hoje o backend executa apenas Mercado Livre.
 
 ## Saídas geradas
 

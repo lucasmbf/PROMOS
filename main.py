@@ -4,7 +4,9 @@ from parsers.mercadolivre import (
     buscar_produto_por_descricao,
     coletar_produtos_com_desconto,
     obter_link_encurtado_por_descricao,
+    processar_produtos_hub_por_html,
     processar_ofertas_relampago,
+    salvar_resultado_hub,
     salvar_resultado_relampago,
 )
 
@@ -143,6 +145,15 @@ def parse_args():
         ),
     )
 
+    parser.add_argument(
+        "--produto-por-html",
+        action="store_true",
+        help=(
+            "Executa o fluxo de produto via HTML salvo do hub de afiliados, "
+            "aplicando os filtros passados por parâmetros."
+        ),
+    )
+
     return parser.parse_args()
 
 
@@ -151,6 +162,7 @@ ARGS = parse_args()
 MODO_SOMENTE_RELAMPAGO = ARGS.somente_relampago or os.getenv("RUN_ONLY_RELAMPAGO", "0") == "1"
 MODO_RELAMPAGO_PADRAO = ARGS.relampago_padrao
 MODO_BUSCA_DESCRICAO = bool((ARGS.descricao_produto or "").strip())
+MODO_PRODUTO_POR_HTML = ARGS.produto_por_html
 PRIORIZAR_MENOR_PRECO = ARGS.menor_preco or MODO_BUSCA_DESCRICAO
 LIMITE_PAGINAS_PESQUISA = max(1, ARGS.limite_paginas_pesquisa)
 
@@ -887,6 +899,51 @@ with sync_playwright() as p:
     )
 
     debug_pausa("Depois da validacao de login do Mercado Livre")
+
+    if MODO_PRODUTO_POR_HTML:
+
+        print("\nModo produto por HTML ativado. Fluxos antigos de hub/Twilio e relâmpago serão ignorados.")
+
+        ofertas_hub = processar_produtos_hub_por_html(
+            page,
+            URL_LISTAGEM,
+            desconto_minimo=DESCONTO_MINIMO,
+            categoria=(ARGS.categoria or "").strip() or None,
+            preco_minimo=PRECO_MINIMO,
+            preco_maximo=PRECO_MAXIMO,
+            descricao=(ARGS.descricao_produto or "").strip() or None,
+            limite_candidatos=LIMITE_CANDIDATOS,
+            historico_anuncios=historico_anuncios,
+        )
+
+        if ofertas_hub:
+
+            salvar_resultado_hub(ofertas_hub)
+
+            salvar_historico_anuncios_em_arquivo(
+                HISTORICO_ANUNCIOS_ARQUIVO,
+                ofertas_hub
+            )
+
+            for produto in ofertas_hub:
+
+                anuncio_id = normalizar_chave_historico(
+                    produto.get("id_anuncio")
+                )
+
+                if anuncio_id:
+
+                    historico_anuncios.add(anuncio_id)
+
+            print(f"\n{len(ofertas_hub)} oferta(s) do hub processada(s) e salva(s).")
+
+        else:
+
+            print("\nNenhuma oferta elegível do hub foi encontrada.")
+
+        context.close()
+
+        raise SystemExit(0)
 
     if MODO_BUSCA_DESCRICAO:
 

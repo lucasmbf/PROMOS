@@ -3,6 +3,7 @@ import re
 import random
 import time
 import json
+from pathlib import Path
 from math import ceil
 from urllib.parse import quote
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
@@ -113,6 +114,91 @@ def _montar_url_paginada(url_base, pagina):
     )
 
 
+def _montar_url_com_filtro(url_base, nome_filtro, valor_filtro):
+
+    partes = urlsplit(url_base)
+    parametros = dict(parse_qsl(partes.query, keep_blank_values=True))
+    parametros[nome_filtro] = str(valor_filtro)
+
+    return urlunsplit(
+        (
+            partes.scheme,
+            partes.netloc,
+            partes.path,
+            urlencode(parametros),
+            "",
+        )
+    )
+
+
+def _extrair_available_filters_do_html(html):
+
+    ctx = _extrair_ctx_rendering(html)
+    if not ctx:
+        return []
+
+    return (
+        ctx.get("appProps", {})
+        .get("pageProps", {})
+        .get("data", {})
+        .get("availableFilters", [])
+    )
+
+
+def _resolver_filtro_categoria_relampago(html, categoria):
+
+    categoria_filtro = _normalizar_filtro_categoria(categoria)
+    if not categoria_filtro:
+        return None
+
+    available_filters = _extrair_available_filters_do_html(html)
+
+    for filtro in available_filters:
+        if filtro.get("id") != "category":
+            continue
+
+        for valor in filtro.get("values", []):
+            nome = valor.get("name", "")
+            nome_normalizado = _normalizar_filtro_categoria(nome)
+
+            if nome_normalizado == categoria_filtro:
+                return valor
+
+    return None
+
+
+def _resolver_url_base_relampago(page, url_relampago, categoria):
+
+    categoria_filtro = _normalizar_filtro_categoria(categoria)
+    if not categoria_filtro:
+        return url_relampago
+
+    print(f"\nAbrindo ofertas relâmpago para localizar a categoria lateral: {categoria}")
+
+    page.goto(url_relampago, timeout=90000, wait_until="domcontentloaded")
+    time.sleep(random.uniform(5, 8))
+
+    filtro_categoria = _resolver_filtro_categoria_relampago(page.content(), categoria)
+
+    if not filtro_categoria or not filtro_categoria.get("id"):
+        print(
+            f"[AVISO] Categoria '{categoria}' não encontrada nos filtros laterais. Seguindo sem filtro prévio de categoria."
+        )
+        return url_relampago
+
+    url_filtrada = _montar_url_com_filtro(
+        url_relampago,
+        "category",
+        filtro_categoria.get("id"),
+    )
+
+    print(
+        f"Categoria lateral localizada: {filtro_categoria.get('name')} ({filtro_categoria.get('id')}). Navegando antes de iniciar a paginação."
+    )
+
+    return url_filtrada
+
+
 def _extrair_desconto_valor(texto_desconto, preco_anterior=None, preco_atual=None):
 
     if texto_desconto:
@@ -215,7 +301,6 @@ def _extrair_id_anuncio_de_texto(texto):
 
 
 def _extrair_ofertas_do_ctx(html, desconto_minimo=30):
-
     ctx = _extrair_ctx_rendering(html)
     if not ctx:
         return []
@@ -239,18 +324,19 @@ def _extrair_ofertas_do_ctx(html, desconto_minimo=30):
             continue
 
         titulo = metadata.get("title") or metadata.get("sanitized_title") or "Sem descrição"
-        for componente in componentes:
-            if componente.get("type") == "title":
-                titulo = componente.get("title", {}).get("text", titulo)
-                break
-
+        categoria = "Sem categoria"
         preco_anterior = None
         preco_atual = None
         texto_desconto = None
-        categoria = "Sem categoria"
 
         for componente in componentes:
+
             tipo = componente.get("type")
+
+            if tipo == "title":
+                titulo = componente.get("title", {}).get("text", titulo)
+                break
+
             if tipo == "price":
                 bloco_preco = componente.get("price", {})
                 preco_antigo = bloco_preco.get("previous_price", {})
@@ -1022,6 +1108,7 @@ def mercado_livre(page, url):
 # =============================================================================
 
 PASTA_OFERTAS_RELAMPAGO = "ofertas_relampago"
+PASTA_OFERTAS_HUB = "ofertas_hub"
 
 
 def salvar_html_ofertas_relampago(page, url):
@@ -1128,17 +1215,157 @@ def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=30):
         )
         categoria = categoria_el.get_text(strip=True) if categoria_el else "Sem categoria"
 
+        href = titulo_el.get("href", "") if titulo_el else ""
+        link_anuncio = _normalizar_url_resultado(href)
+        id_anuncio = _extrair_id_anuncio_de_texto(link_anuncio or descricao)
+
         ofertas.append({
+            "id_anuncio": id_anuncio,
             "categoria": categoria,
             "descricao": descricao,
             "antes": antes,
             "desconto": texto_desconto,
             "depois": depois,
+            "depois_valor": _converter_preco_em_float(depois),
+            "link_anuncio": link_anuncio,
         })
 
     print(f"{len(ofertas)} oferta(s) com {desconto_minimo}% ou mais de desconto extraída(s).")
 
     return ofertas
+
+
+def salvar_html_hub_afiliados(page, url_hub, pasta=PASTA_OFERTAS_HUB):
+    """Navega para o hub de afiliados, faz scroll inicial grande e salva o HTML."""
+
+    os.makedirs(pasta, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    caminho = os.path.join(pasta, f"html_hub_{timestamp}.txt")
+
+    print(f"\nNavegando para o hub de afiliados:\n{url_hub}")
+
+    page.goto(url_hub, timeout=90000, wait_until="domcontentloaded")
+    time.sleep(random.uniform(4, 6))
+
+    # Scroll inicial agressivo para expor mais cards do hub.
+    page.mouse.wheel(0, 10000)
+    time.sleep(random.uniform(2, 3))
+
+    for _ in range(4):
+        page.mouse.wheel(0, 2500)
+        time.sleep(random.uniform(1.2, 2))
+
+    html = page.content()
+
+    with open(caminho, "w", encoding="utf-8") as file:
+        file.write(html)
+
+    print(f"HTML do hub salvo em: {caminho}")
+
+    return caminho
+
+
+def processar_produtos_hub_por_html(
+    page,
+    url_hub,
+    desconto_minimo=30,
+    categoria=None,
+    preco_minimo=None,
+    preco_maximo=None,
+    descricao=None,
+    limite_candidatos=None,
+    historico_anuncios=None,
+):
+    """Fluxo de produto por HTML salvo do hub de afiliados.
+
+    1. Acessa o hub de afiliados.
+    2. Faz scroll (iniciando em 10000) e salva o HTML.
+    3. Extrai ofertas do HTML e aplica filtros da interface.
+    """
+
+    caminho_html = salvar_html_hub_afiliados(page, url_hub)
+    ofertas = extrair_ofertas_do_html(caminho_html, desconto_minimo)
+
+    if not ofertas:
+        print("\nNenhuma oferta encontrada no HTML do hub.")
+        return []
+
+    categoria_filtro = _normalizar_filtro_categoria(categoria) if categoria else ""
+    descricao_filtro = normalizar_descricao(descricao).casefold() if descricao else ""
+    historico_ids = set(
+        _normalizar_chave_historico(item) for item in (historico_anuncios or set()) if item
+    )
+
+    validas = []
+    chaves_vistas = set()
+
+    for oferta in ofertas:
+        id_anuncio = _normalizar_chave_historico(oferta.get("id_anuncio"))
+
+        if id_anuncio and id_anuncio in historico_ids:
+            continue
+
+        categoria_oferta = _normalizar_filtro_categoria(oferta.get("categoria"))
+        if categoria_filtro and categoria_filtro not in categoria_oferta and categoria_oferta not in categoria_filtro:
+            continue
+
+        descricao_oferta = normalizar_descricao(oferta.get("descricao"))
+        if descricao_filtro and descricao_filtro not in descricao_oferta.casefold():
+            continue
+
+        preco_atual = oferta.get("depois_valor")
+        if preco_atual is None:
+            continue
+
+        if preco_minimo is not None and preco_atual < preco_minimo:
+            continue
+
+        if preco_maximo is not None and preco_atual > preco_maximo:
+            continue
+
+        chave = id_anuncio or f"{descricao_oferta.casefold()}|{oferta.get('depois', '').strip()}"
+        if chave in chaves_vistas:
+            continue
+
+        chaves_vistas.add(chave)
+
+        oferta["link_original"] = oferta.get("link_anuncio") or ""
+        oferta["link"] = oferta.get("link_anuncio") or "Link não obtido"
+        validas.append(oferta)
+
+        if limite_candidatos is not None and len(validas) >= limite_candidatos:
+            break
+
+    print(f"{len(validas)} oferta(s) elegível(is) no hub após aplicar os filtros.")
+
+    return validas
+
+
+def salvar_resultado_hub(ofertas, pasta=PASTA_OFERTAS_HUB):
+    """Salva em texto formatado as ofertas obtidas do hub por HTML."""
+
+    if not ofertas:
+        return None
+
+    os.makedirs(pasta, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    caminho = os.path.join(pasta, f"resultado_hub_{timestamp}.txt")
+
+    with open(caminho, "w", encoding="utf-8") as file:
+        for oferta in ofertas:
+            file.write(f"Categoria: {oferta.get('categoria', '-') }\n")
+            file.write(f"Descrição: {oferta.get('descricao', '-') }\n")
+            file.write(f"Antes: {oferta.get('antes', '-') }\n")
+            file.write(f"Desconto: {oferta.get('desconto', '-') }\n")
+            file.write(f"Depois: {oferta.get('depois', '-') }\n")
+            file.write(f"Link: {oferta.get('link', '-') }\n")
+            file.write("\n-----------------------------\n\n")
+
+    print(f"\nResultado do hub salvo em: {caminho}")
+
+    return caminho
 
 
 def _localizar_card_na_pagina(page, descricao):
@@ -1479,7 +1706,13 @@ def processar_ofertas_relampago(
     categoria_filtro = _normalizar_filtro_categoria(categoria) if categoria else ""
     htmls_salvos = []
 
-    pagina_inicial_html = salvar_html_ofertas_relampago(page, url_relampago)
+    url_base_paginas = url_relampago
+
+    if categoria_filtro:
+        url_base_paginas = _resolver_url_base_relampago(page, url_relampago, categoria)
+
+    pagina_inicial_html = salvar_html_ofertas_relampago(page, url_base_paginas)
+
     paging = _extrair_paging_do_html(pagina_inicial_html) or {}
 
     limite = paging.get("limit", 48) or 48
@@ -1493,7 +1726,7 @@ def processar_ofertas_relampago(
     print(f"Paginação detectada: {total_paginas} página(s) com limite de {limite} item(ns) por página.")
 
     for pagina in range(1, total_paginas + 1):
-        url_pagina = _montar_url_paginada(url_relampago, pagina)
+        url_pagina = _montar_url_paginada(url_base_paginas, pagina)
         caminho_html = pagina_inicial_html if pagina == 1 else salvar_html_ofertas_relampago(page, url_pagina)
         htmls_salvos.append(caminho_html)
 
@@ -1572,13 +1805,24 @@ def salvar_resultado_relampago(ofertas, pasta=PASTA_OFERTAS_RELAMPAGO):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     caminho = os.path.join(pasta, f"resultado_{timestamp}.txt")
 
+    def _formatar_preco_txt(valor):
+
+        texto = str(valor or "-").strip()
+        if not texto:
+            return "-"
+
+        if texto != "-" and not texto.startswith("R$"):
+            texto = f"R$ {texto}"
+
+        return texto
+
     with open(caminho, "w", encoding="utf-8") as f:
         for oferta in ofertas:
             f.write(f"Categoria: {oferta.get('categoria', '-')}\n")
             f.write(f"Descrição: {oferta.get('descricao', '-')}\n")
-            f.write(f"Antes: {oferta.get('antes', '-')}\n")
-            f.write(f"Desconto: {oferta.get('desconto', '-')}\n")
-            f.write(f"Depois: {oferta.get('depois', '-')}\n")
+            f.write(f"Antes: ~{_formatar_preco_txt(oferta.get('antes', '-'))}~\n")
+            f.write(f"*Desconto: {oferta.get('desconto', '-')}*\n")
+            f.write(f"*Depois: {_formatar_preco_txt(oferta.get('depois', '-'))}*\n")
             f.write(f"Link: {oferta.get('link', '-')}\n")
             f.write("\n-----------------------------\n\n")
 
