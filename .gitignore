@@ -4,3 +4,6 @@ __pycache__/
 venv/
 perfil_ml/
 parsers/__pycache__/
+.build/
+dist-categorias/
+*.spec

@@ -4,6 +4,7 @@ import random
 import time
 import json
 from math import ceil
+from urllib.parse import quote
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -144,6 +145,56 @@ def _formatar_preco(valor):
 def _normalizar_filtro_categoria(texto_categoria):
 
     return normalizar_descricao(texto_categoria).casefold()
+
+
+def _normalizar_chave_historico(valor):
+
+    return " ".join((valor or "").split()).strip().lower()
+
+
+def _normalizar_url_resultado(href):
+
+    href = (href or "").strip()
+
+    if not href:
+        return ""
+
+    if href.startswith("http://") or href.startswith("https://"):
+        return href
+
+    if href.startswith("//"):
+        return f"https:{href}"
+
+    return f"https://www.mercadolivre.com.br{href}"
+
+
+def _montar_url_pesquisa_generica(descricao, pagina=1):
+
+    slug = re.sub(r"\s+", "-", (descricao or "").strip())
+    slug = quote(slug, safe="-")
+    base = f"https://lista.mercadolivre.com.br/{slug}"
+
+    if pagina <= 1:
+        return base
+
+    inicio = ((pagina - 1) * 50) + 1
+
+    return f"{base}_Desde_{inicio}"
+
+
+def _converter_preco_em_float(texto_preco):
+
+    texto_limpo = (texto_preco or "").strip()
+
+    if not texto_limpo.startswith("R$"):
+        return None
+
+    numero = texto_limpo.replace("R$", "").strip().replace(".", "").replace(",", ".")
+
+    try:
+        return float(numero)
+    except ValueError:
+        return None
 
 
 def _extrair_id_anuncio_de_texto(texto):
@@ -1218,6 +1269,147 @@ def _extrair_categoria_do_breadcrumb(page):
     return "Sem categoria"
 
 
+def _coletar_resultados_pesquisa_da_pagina(page):
+
+    return page.evaluate(
+        """() => {
+            const cards = Array.from(document.querySelectorAll('li.ui-search-layout__item, li.poly-card'));
+            const resultados = [];
+
+            for (const card of cards) {
+                const titleEl = card.querySelector('a.poly-component__title, a.ui-search-item__group__element--title, a[href*="/MLB-"]');
+                if (!titleEl) {
+                    continue;
+                }
+
+                const descricao = (titleEl.textContent || '').trim();
+                const href = (titleEl.getAttribute('href') || '').trim();
+
+                const fraction = card.querySelector('[data-andes-money-amount-fraction="true"]');
+                const cents = card.querySelector('[data-andes-money-amount-cents="true"]');
+
+                let precoTexto = '';
+                if (fraction) {
+                    const reais = (fraction.textContent || '').trim();
+                    const centavos = cents ? (cents.textContent || '').trim() : '';
+                    precoTexto = centavos ? `R$ ${reais},${centavos}` : `R$ ${reais}`;
+                }
+
+                resultados.push({
+                    descricao,
+                    href,
+                    precoTexto,
+                });
+            }
+
+            return resultados;
+        }"""
+    )
+
+
+def buscar_produto_por_descricao(
+    page,
+    descricao,
+    preco_minimo=None,
+    preco_maximo=None,
+    menor_preco=False,
+    limite_paginas=5,
+    historico_anuncios=None,
+):
+    """Busca por descrição na pesquisa genérica do Mercado Livre e retorna um
+    candidato válido com link de afiliado.
+
+    Quando menor_preco=True, escolhe o item com menor preço dentre os
+    resultados coletados.
+    """
+
+    descricao = normalizar_descricao(descricao)
+    if not descricao:
+        return None
+
+    historico_ids = set(
+        _normalizar_chave_historico(item) for item in (historico_anuncios or set()) if item
+    )
+
+    candidatos = []
+    ids_vistos = set()
+
+    for pagina in range(1, max(1, limite_paginas) + 1):
+
+        url = _montar_url_pesquisa_generica(descricao, pagina)
+
+        print(f"\n[Busca genérica] Página {pagina}: {url}")
+
+        page.goto(url, timeout=90000, wait_until="domcontentloaded")
+        time.sleep(random.uniform(3, 5))
+
+        resultados = _coletar_resultados_pesquisa_da_pagina(page)
+
+        if not resultados:
+            print("Sem resultados nessa página.")
+            continue
+
+        for resultado in resultados:
+
+            url_anuncio = _normalizar_url_resultado(resultado.get("href"))
+            id_anuncio = _normalizar_chave_historico(
+                _extrair_id_anuncio_de_texto(url_anuncio)
+            )
+
+            if not id_anuncio or id_anuncio in ids_vistos or id_anuncio in historico_ids:
+                continue
+
+            preco_valor = _converter_preco_em_float(resultado.get("precoTexto"))
+            if preco_valor is None:
+                continue
+
+            if preco_minimo is not None and preco_valor < preco_minimo:
+                continue
+
+            if preco_maximo is not None and preco_valor > preco_maximo:
+                continue
+
+            ids_vistos.add(id_anuncio)
+
+            candidatos.append(
+                {
+                    "id_anuncio": id_anuncio,
+                    "categoria": "Pesquisa genérica",
+                    "descricao": normalizar_descricao(resultado.get("descricao") or descricao),
+                    "antes": "Sem preço anterior",
+                    "desconto": "Sem desconto",
+                    "depois": _formatar_preco(preco_valor),
+                    "depois_valor": preco_valor,
+                    "link_anuncio": url_anuncio,
+                }
+            )
+
+    if not candidatos:
+        print("\nNenhum candidato válido encontrado para a busca por descrição.")
+        return None
+
+    if menor_preco:
+        candidatos.sort(key=lambda item: item.get("depois_valor", float("inf")))
+
+    escolhido = candidatos[0]
+
+    print(
+        f"\nCandidato escolhido: {escolhido.get('descricao')} | {escolhido.get('depois')}"
+    )
+
+    page.goto(escolhido.get("link_anuncio"), timeout=90000, wait_until="domcontentloaded")
+    time.sleep(random.uniform(3, 5))
+
+    categoria = _extrair_categoria_do_breadcrumb(page)
+    link_afiliado = _obter_link_via_botao_afiliados(page, escolhido.get("link_anuncio"))
+
+    escolhido["categoria"] = categoria or "Pesquisa genérica"
+    escolhido["link_original"] = escolhido.get("link_anuncio")
+    escolhido["link"] = link_afiliado or escolhido.get("link_anuncio")
+
+    return escolhido
+
+
 def obter_link_afiliado_relampago(page, oferta, url_relampago):
     """Reabre a página de ofertas relâmpago, localiza o card correspondente
     à oferta, abre o anúncio, extrai a categoria do breadcrumb e obtém o
@@ -1266,6 +1458,8 @@ def processar_ofertas_relampago(
     preco_minimo=None,
     preco_maximo=None,
     limite_candidatos=None,
+    historico_anuncios=None,
+    limite_validos=10,
 ):
     """Fluxo completo de ofertas relâmpago:
 
@@ -1278,7 +1472,12 @@ def processar_ofertas_relampago(
 
     ofertas_consolidadas = []
     descricoes_vistas = set()
-    categoria_filtro = _normalizar_filtro_categoria(categoria)
+    ids_vistos = set()
+    historico_ids = set(
+        _normalizar_chave_historico(item) for item in (historico_anuncios or set()) if item
+    )
+    categoria_filtro = _normalizar_filtro_categoria(categoria) if categoria else ""
+    htmls_salvos = []
 
     pagina_inicial_html = salvar_html_ofertas_relampago(page, url_relampago)
     paging = _extrair_paging_do_html(pagina_inicial_html) or {}
@@ -1293,9 +1492,16 @@ def processar_ofertas_relampago(
 
     print(f"Paginação detectada: {total_paginas} página(s) com limite de {limite} item(ns) por página.")
 
-    for pagina in range(total_paginas):
+    for pagina in range(1, total_paginas + 1):
         url_pagina = _montar_url_paginada(url_relampago, pagina)
-        caminho_html = pagina_inicial_html if pagina == 0 else salvar_html_ofertas_relampago(page, url_pagina)
+        caminho_html = pagina_inicial_html if pagina == 1 else salvar_html_ofertas_relampago(page, url_pagina)
+        htmls_salvos.append(caminho_html)
+
+    print(
+        f"{len(htmls_salvos)} HTML(s) salvos. Iniciando extração consolidada para selecionar até {limite_validos} inéditos."
+    )
+
+    for caminho_html in htmls_salvos:
 
         ofertas_pagina = extrair_ofertas_do_html(caminho_html, desconto_minimo)
 
@@ -1306,6 +1512,13 @@ def processar_ofertas_relampago(
         for oferta in ofertas_pagina:
             chave = normalizar_descricao(oferta.get("descricao"))
             if not chave or chave in descricoes_vistas:
+                continue
+
+            id_anuncio = _normalizar_chave_historico(oferta.get("id_anuncio"))
+            if not id_anuncio:
+                continue
+
+            if id_anuncio in ids_vistos or id_anuncio in historico_ids:
                 continue
 
             if categoria_filtro and _normalizar_filtro_categoria(oferta.get("categoria")) != categoria_filtro:
@@ -1322,11 +1535,17 @@ def processar_ofertas_relampago(
                 continue
 
             descricoes_vistas.add(chave)
+            ids_vistos.add(id_anuncio)
 
-            link, categoria = obter_link_afiliado_relampago(page, oferta, url_pagina)
-            oferta["link"] = link or "Link não obtido"
-            oferta["categoria"] = categoria
+            oferta["link"] = oferta.get("link_anuncio") or "Link não obtido"
+            oferta["link_original"] = oferta.get("link_anuncio") or ""
             ofertas_consolidadas.append(oferta)
+
+            if limite_validos is not None and len(ofertas_consolidadas) >= limite_validos:
+                print(
+                    f"Limite de candidatos válidos atingido no relâmpago: {limite_validos}."
+                )
+                return ofertas_consolidadas
 
             if limite_candidatos is not None and len(ofertas_consolidadas) >= limite_candidatos:
                 print(
@@ -1334,7 +1553,8 @@ def processar_ofertas_relampago(
                 )
                 return ofertas_consolidadas
 
-            time.sleep(random.uniform(3, 6))
+    if limite_validos is not None and len(ofertas_consolidadas) > limite_validos:
+        return ofertas_consolidadas[:limite_validos]
 
     if not ofertas_consolidadas:
         print("\nNenhuma oferta elegível encontrada.")

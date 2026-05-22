@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright
 
 from parsers.mercadolivre import (
+    buscar_produto_por_descricao,
     coletar_produtos_com_desconto,
     obter_link_encurtado_por_descricao,
     processar_ofertas_relampago,
@@ -34,6 +35,14 @@ PRECO_MAXIMO = 400
 LIMITE_PRODUTOS = 5
 
 LIMITE_CANDIDATOS = 50
+
+LIMITE_VALIDOS_RELAMPAGO_PADRAO = 10
+
+PRECO_MAXIMO_RELAMPAGO_PADRAO = 400
+
+DESCONTO_MINIMO_RELAMPAGO_PADRAO = 30
+
+LIMITE_PAGINAS_PESQUISA_PADRAO = 5
 
 CATEGORIA_PADRAO = "Acessórios para Veículos"
 
@@ -77,6 +86,28 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--menor-preco",
+        action="store_true",
+        help="Prioriza o produto com menor preço dentro dos resultados encontrados.",
+    )
+
+    parser.add_argument(
+        "--descricao-produto",
+        default=None,
+        help=(
+            "Ativa busca manual por descrição na pesquisa genérica do Mercado Livre "
+            "e retorna um candidato com link de afiliado."
+        ),
+    )
+
+    parser.add_argument(
+        "--limite-paginas-pesquisa",
+        type=int,
+        default=LIMITE_PAGINAS_PESQUISA_PADRAO,
+        help="Quantidade de páginas da pesquisa genérica para analisar na busca manual.",
+    )
+
+    parser.add_argument(
         "--limite-produtos",
         type=int,
         default=LIMITE_PRODUTOS,
@@ -103,12 +134,25 @@ def parse_args():
         help="Ignora o hub/Twilio e executa apenas o fluxo de ofertas relâmpago.",
     )
 
+    parser.add_argument(
+        "--relampago-padrao",
+        action="store_true",
+        help=(
+            "Executa somente ofertas relâmpago no modo padrão: todas as categorias, "
+            "preço máximo R$ 400, desconto mínimo 30% e até 10 anúncios inéditos."
+        ),
+    )
+
     return parser.parse_args()
 
 
 ARGS = parse_args()
 
 MODO_SOMENTE_RELAMPAGO = ARGS.somente_relampago or os.getenv("RUN_ONLY_RELAMPAGO", "0") == "1"
+MODO_RELAMPAGO_PADRAO = ARGS.relampago_padrao
+MODO_BUSCA_DESCRICAO = bool((ARGS.descricao_produto or "").strip())
+PRIORIZAR_MENOR_PRECO = ARGS.menor_preco or MODO_BUSCA_DESCRICAO
+LIMITE_PAGINAS_PESQUISA = max(1, ARGS.limite_paginas_pesquisa)
 
 if ARGS.categoria:
     CATEGORIA_PADRAO = ARGS.categoria.strip()
@@ -118,6 +162,15 @@ PRECO_MAXIMO = ARGS.preco_maximo
 LIMITE_PRODUTOS = ARGS.limite_produtos
 LIMITE_CANDIDATOS = ARGS.limite_candidatos
 DESCONTO_MINIMO = ARGS.desconto_minimo
+
+if MODO_RELAMPAGO_PADRAO:
+
+    MODO_SOMENTE_RELAMPAGO = True
+    CATEGORIA_PADRAO = ""
+    PRECO_MINIMO = None
+    PRECO_MAXIMO = PRECO_MAXIMO_RELAMPAGO_PADRAO
+    DESCONTO_MINIMO = DESCONTO_MINIMO_RELAMPAGO_PADRAO
+    LIMITE_CANDIDATOS = None
 
 
 def debug_pausa(rotulo):
@@ -835,6 +888,47 @@ with sync_playwright() as p:
 
     debug_pausa("Depois da validacao de login do Mercado Livre")
 
+    if MODO_BUSCA_DESCRICAO:
+
+        print("\nModo manual por descrição ativado. Hub/Twilio e fluxo relâmpago serão ignorados.")
+
+        produto_manual = buscar_produto_por_descricao(
+            page,
+            descricao=(ARGS.descricao_produto or ""),
+            preco_minimo=PRECO_MINIMO,
+            preco_maximo=PRECO_MAXIMO,
+            menor_preco=PRIORIZAR_MENOR_PRECO,
+            limite_paginas=LIMITE_PAGINAS_PESQUISA,
+            historico_anuncios=historico_anuncios,
+        )
+
+        if produto_manual:
+
+            salvar_resultado_relampago([produto_manual])
+
+            salvar_historico_anuncios_em_arquivo(
+                HISTORICO_ANUNCIOS_ARQUIVO,
+                [produto_manual]
+            )
+
+            anuncio_id = normalizar_chave_historico(
+                produto_manual.get("id_anuncio")
+            )
+
+            if anuncio_id:
+
+                historico_anuncios.add(anuncio_id)
+
+            print("\nBusca manual concluída com sucesso.")
+
+        else:
+
+            print("\nBusca manual não encontrou candidato válido.")
+
+        context.close()
+
+        raise SystemExit(0)
+
     if not MODO_SOMENTE_RELAMPAGO:
 
         categoria_alvo = CATEGORIA_PADRAO
@@ -1067,15 +1161,32 @@ with sync_playwright() as p:
         page,
         URL_OFERTAS_RELAMPAGO,
         desconto_minimo=DESCONTO_MINIMO,
-        categoria=CATEGORIA_PADRAO,
+        categoria=None if MODO_RELAMPAGO_PADRAO else CATEGORIA_PADRAO,
         preco_minimo=PRECO_MINIMO,
         preco_maximo=PRECO_MAXIMO,
         limite_candidatos=LIMITE_CANDIDATOS,
+        historico_anuncios=historico_anuncios,
+        limite_validos=LIMITE_VALIDOS_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else LIMITE_CANDIDATOS,
     )
 
     if ofertas_relampago:
 
         salvar_resultado_relampago(ofertas_relampago)
+
+        salvar_historico_anuncios_em_arquivo(
+            HISTORICO_ANUNCIOS_ARQUIVO,
+            ofertas_relampago
+        )
+
+        for produto in ofertas_relampago:
+
+            anuncio_id = normalizar_chave_historico(
+                produto.get("id_anuncio")
+            )
+
+            if anuncio_id:
+
+                historico_anuncios.add(anuncio_id)
 
         print(
             f"\n{len(ofertas_relampago)} oferta(s) relâmpago processada(s) e salvas."

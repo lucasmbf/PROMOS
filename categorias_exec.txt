@@ -1,0 +1,7 @@
+# Formato: slug|Categoria
+# slug: usado no nome do executavel (somente a-z, 0-9, _ e -)
+# Categoria: texto EXATO do filtro no Mercado Livre
+
+acessorios_veiculos|Acessórios para Veículos
+games|Games
+informatica|Informática
