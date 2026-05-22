@@ -1,6 +1,11 @@
 from playwright.sync_api import sync_playwright
 
-from parsers.mercadolivre import coletar_produtos_com_desconto, obter_link_encurtado_por_descricao
+from parsers.mercadolivre import (
+    coletar_produtos_com_desconto,
+    obter_link_encurtado_por_descricao,
+    processar_ofertas_relampago,
+    salvar_resultado_relampago,
+)
 
 import os
 import random
@@ -11,17 +16,23 @@ from twilio.rest import Client
 
 URL_LISTAGEM = "https://www.mercadolivre.com.br/afiliados/hub"
 
-DESCONTO_MINIMO = 40
+URL_OFERTAS_RELAMPAGO = (
+    "https://www.mercadolivre.com.br/ofertas"
+    "?promotion_type=lightning"
+    "#filter_applied=promotion_type&filter_position=3&origin=qcat"
+)
+
+DESCONTO_MINIMO = 30
 
 PRECO_MINIMO = None
 
 PRECO_MAXIMO = 300
 
-LIMITE_PRODUTOS = 10
+LIMITE_PRODUTOS = 5
 
 LIMITE_CANDIDATOS = 50
 
-CATEGORIA_PADRAO = "Casa, Móveis e Decoração"
+CATEGORIA_PADRAO = "Acessórios para Veículos"
 
 WHATSAPP_DESTINO_FIXO = "whatsapp:+5519991133269"
 
@@ -29,6 +40,8 @@ DEBUG_BREAKPOINTS = os.getenv("ENABLE_DEBUG_BREAKPOINTS", "0") == "1"
 DEBUG_BREAKPOINT_TARGET = os.getenv("DEBUG_BREAKPOINT_TARGET", "").strip()
 
 load_dotenv()
+
+MODO_SOMENTE_RELAMPAGO = os.getenv("RUN_ONLY_RELAMPAGO", "0") == "1"
 
 
 def debug_pausa(rotulo):
@@ -649,174 +662,221 @@ with sync_playwright() as p:
 
     debug_pausa("Depois da validacao de login do Mercado Livre")
 
-    categoria_alvo = CATEGORIA_PADRAO
+    if not MODO_SOMENTE_RELAMPAGO:
 
-    debug_pausa("Antes de aplicar o filtro de categoria")
+        categoria_alvo = CATEGORIA_PADRAO
 
-    aplicar_filtro_categoria(
-        page,
-        categoria_alvo
-    )
+        debug_pausa("Antes de aplicar o filtro de categoria")
 
-    debug_pausa("Depois de aplicar o filtro de categoria")
-
-    produtos_processados = set()
-    tentativas = 0
-    tentativas_max = 20
-
-    while len(produtos_para_enviar) < LIMITE_PRODUTOS and tentativas < tentativas_max:
-
-        tentativas += 1
-
-        print(
-            f"\n[Tentativa {tentativas}/{tentativas_max}] Coletando mais produtos..."
-        )
-
-        produtos = coletar_produtos_com_desconto(
+        aplicar_filtro_categoria(
             page,
-            URL_LISTAGEM,
-            DESCONTO_MINIMO,
-            LIMITE_CANDIDATOS
+            categoria_alvo
         )
 
-        debug_pausa("Depois de coletar os produtos candidatos")
+        debug_pausa("Depois de aplicar o filtro de categoria")
 
-        if not produtos:
+        produtos_processados = set()
+        tentativas = 0
+        tentativas_max = 20
+
+        while len(produtos_para_enviar) < LIMITE_PRODUTOS and tentativas < tentativas_max:
+
+            tentativas += 1
 
             print(
-                "\nNenhum novo produto com desconto dentro do filtro foi encontrado."
+                f"\n[Tentativa {tentativas}/{tentativas_max}] Coletando mais produtos..."
             )
 
-            break
+            produtos = coletar_produtos_com_desconto(
+                page,
+                URL_LISTAGEM,
+                DESCONTO_MINIMO,
+                LIMITE_CANDIDATOS
+            )
 
-        novos_na_tentativa = 0
+            debug_pausa("Depois de coletar os produtos candidatos")
 
-        for produto in produtos:
+            if not produtos:
 
-            chave_produto = f"{normalizar_descricao(produto.get('descricao'))}|{(produto.get('depois') or '').strip()}"
-
-            if not chave_produto or chave_produto in produtos_processados:
-
-                continue
-
-            produtos_processados.add(chave_produto)
-            novos_na_tentativa += 1
-
-            if len(produtos_para_enviar) >= LIMITE_PRODUTOS:
+                print(
+                    "\nNenhum novo produto com desconto dentro do filtro foi encontrado."
+                )
 
                 break
 
-            print(
-                f"\n=============================="
+            produtos = sorted(
+                produtos,
+                key=lambda produto: not produto.get("oferta_imperdivel", False)
+            )
+
+            ofertas_imperdiveis = sum(
+                1 for produto in produtos if produto.get("oferta_imperdivel", False)
             )
 
             print(
-                f"LENDO PRODUTO:\n{produto.get('descricao', 'Descrição não encontrada')}"
+                f"{ofertas_imperdiveis} produto(s) com marcador 'OFERTA IMPERDÍVEL' priorizados nesta tentativa."
             )
 
-            debug_pausa("Depois de validar os dados do card")
+            novos_na_tentativa = 0
 
-            if produto_esta_no_intervalo(
-                produto,
-                PRECO_MINIMO,
-                PRECO_MAXIMO
-            ):
+            for produto in produtos:
 
-                debug_pausa(
-                    "Produto encontrado com mais de 40% de desconto e ate R$ 300"
-                )
+                chave_produto = f"{normalizar_descricao(produto.get('descricao'))}|{(produto.get('depois') or '').strip()}"
 
-                debug_pausa("Antes de comparar com o historico do TXT")
-
-                if not produto_deve_ser_enviado(
-                    produto,
-                    historico_precos
-                ):
-
-                    preco_novo = converter_preco(produto.get("depois"))
-                    preco_antigo = historico_precos.get(normalizar_descricao(produto.get("descricao")))
-
-                    registrar_produto_ignorado(
-                        produto,
-                        "Já existe no histórico com preço menor ou igual",
-                        f"Preço novo: {preco_novo:.2f} | preço no histórico: {preco_antigo:.2f}" if preco_novo is not None and preco_antigo is not None else "Não foi possível comparar os preços"
-                    )
-
-                    time.sleep(
-                        random.uniform(2, 4)
-                    )
+                if not chave_produto or chave_produto in produtos_processados:
 
                     continue
 
-                produto["link"] = obter_link_encurtado_por_descricao(
-                    page,
-                    produto.get("descricao", ""),
-                    produto.get("link", "")
-                )
+                produtos_processados.add(chave_produto)
+                novos_na_tentativa += 1
 
-                lista_produtos.append(
-                    produto
-                )
+                if len(produtos_para_enviar) >= LIMITE_PRODUTOS:
 
-                produtos_para_enviar.append(
-                    produto
+                    break
+
+                print(
+                    f"\n=============================="
                 )
 
                 print(
-                    f"Produto aceito por estar {formatar_faixa_preco(PRECO_MINIMO, PRECO_MAXIMO)} e ser elegivel no historico."
+                    f"LENDO PRODUTO:\n{produto.get('descricao', 'Descrição não encontrada')}"
                 )
 
-            else:
+                debug_pausa("Depois de validar os dados do card")
 
-                registrar_produto_ignorado(
+                if produto_esta_no_intervalo(
                     produto,
-                    "Fora da faixa de preço",
-                    f"Preço atual: {produto.get('depois', 'indisponível')} | limite máximo: R$ {PRECO_MAXIMO:.2f}"
+                    PRECO_MINIMO,
+                    PRECO_MAXIMO
+                ):
+
+                    debug_pausa(
+                        "Produto encontrado com mais de 40% de desconto e ate R$ 300"
+                    )
+
+                    debug_pausa("Antes de comparar com o historico do TXT")
+
+                    if not produto_deve_ser_enviado(
+                        produto,
+                        historico_precos
+                    ):
+
+                        preco_novo = converter_preco(produto.get("depois"))
+                        preco_antigo = historico_precos.get(normalizar_descricao(produto.get("descricao")))
+
+                        registrar_produto_ignorado(
+                            produto,
+                            "Já existe no histórico com preço menor ou igual",
+                            f"Preço novo: {preco_novo:.2f} | preço no histórico: {preco_antigo:.2f}" if preco_novo is not None and preco_antigo is not None else "Não foi possível comparar os preços"
+                        )
+
+                        time.sleep(
+                            random.uniform(2, 4)
+                        )
+
+                        continue
+
+                    produto["link"] = obter_link_encurtado_por_descricao(
+                        page,
+                        produto.get("descricao", ""),
+                        produto.get("link", "")
+                    )
+
+                    lista_produtos.append(
+                        produto
+                    )
+
+                    produtos_para_enviar.append(
+                        produto
+                    )
+
+                    print(
+                        f"Produto aceito por estar {formatar_faixa_preco(PRECO_MINIMO, PRECO_MAXIMO)} e ser elegivel no historico."
+                    )
+
+                else:
+
+                    registrar_produto_ignorado(
+                        produto,
+                        "Fora da faixa de preço",
+                        f"Preço atual: {produto.get('depois', 'indisponível')} | limite máximo: R$ {PRECO_MAXIMO:.2f}"
+                    )
+
+                time.sleep(
+                    random.uniform(5, 10)
                 )
+
+            if novos_na_tentativa == 0:
+
+                print(
+                    "\nNenhum novo produto inedito nesta tentativa. Encerrando busca para evitar loop."
+                )
+
+                break
+
+            page.mouse.wheel(0, 3000)
 
             time.sleep(
-                random.uniform(5, 10)
+                random.uniform(2, 4)
             )
 
-        if novos_na_tentativa == 0:
+        if len(produtos_para_enviar) < LIMITE_PRODUTOS:
 
             print(
-                "\nNenhum novo produto inedito nesta tentativa. Encerrando busca para evitar loop."
+                f"\nForam encontrados {len(produtos_para_enviar)} produtos elegiveis para envio apos validacao de historico."
             )
 
-            break
+        debug_pausa("Antes de enviar os produtos aprovados para o Twilio")
 
-        page.mouse.wheel(0, 3000)
-
-        time.sleep(
-            random.uniform(2, 4)
+        enviar_produtos_por_whatsapp(
+            produtos_para_enviar
         )
 
-    if len(produtos_para_enviar) < LIMITE_PRODUTOS:
+        debug_pausa("Antes de gravar as novas informacoes no TXT")
+
+        atualizar_historico_precos(
+            historico_precos,
+            produtos_para_enviar
+        )
+
+        salvar_produtos_em_arquivo(
+            "produtos.txt",
+            produtos_para_enviar
+        )
+
+        debug_pausa("Depois de gravar as informacoes novas no TXT")
+
+    else:
+
+        print("\nModo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.")
+
+    # =========================================================================
+    # NOVO FLUXO: Ofertas Relâmpago
+    # =========================================================================
+
+    debug_pausa("Iniciando fluxo de ofertas relâmpago")
+
+    ofertas_relampago = processar_ofertas_relampago(
+        page,
+        URL_OFERTAS_RELAMPAGO,
+        desconto_minimo=DESCONTO_MINIMO
+    )
+
+    if ofertas_relampago:
+
+        salvar_resultado_relampago(ofertas_relampago)
 
         print(
-            f"\nForam encontrados {len(produtos_para_enviar)} produtos elegiveis para envio apos validacao de historico."
+            f"\n{len(ofertas_relampago)} oferta(s) relâmpago processada(s) e salvas."
         )
 
-    debug_pausa("Antes de enviar os produtos aprovados para o Twilio")
+    else:
 
-    enviar_produtos_por_whatsapp(
-        produtos_para_enviar
-    )
+        print(
+            "\nNenhuma oferta relâmpago elegível foi encontrada nesta execução."
+        )
 
-    debug_pausa("Antes de gravar as novas informacoes no TXT")
-
-    atualizar_historico_precos(
-        historico_precos,
-        produtos_para_enviar
-    )
-
-    salvar_produtos_em_arquivo(
-        "produtos.txt",
-        produtos_para_enviar
-    )
-
-    debug_pausa("Depois de gravar as informacoes novas no TXT")
+    debug_pausa("Fluxo de ofertas relâmpago concluído")
 
     context.close()
 
