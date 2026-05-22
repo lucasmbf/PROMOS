@@ -2,6 +2,9 @@ import os
 import re
 import random
 import time
+import json
+from math import ceil
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from datetime import datetime
 from bs4 import BeautifulSoup
 
@@ -26,6 +29,217 @@ def registrar_card_ignorado(descricao, motivo, detalhe=""):
         print(
             f"Detalhe: {detalhe}"
         )
+
+
+def normalizar_descricao(texto_descricao):
+
+    return " ".join((texto_descricao or "").split()).strip()
+
+
+def _montar_url_anuncio(metadata):
+
+    url = (metadata or {}).get("url", "").strip()
+    if not url:
+        return None
+
+    url_params = (metadata or {}).get("url_params", "").strip()
+    url_fragments = (metadata or {}).get("url_fragments", "").strip()
+
+    if url.startswith("http://") or url.startswith("https://"):
+        base = url
+    else:
+        base = f"https://{url.lstrip('/')}"
+
+    return f"{base}{url_params}{url_fragments}"
+
+
+def _extrair_ctx_rendering(html):
+
+    soup = BeautifulSoup(html, "html.parser")
+    script = soup.find("script", id="__NORDIC_RENDERING_CTX__")
+
+    if not script:
+        return None
+
+    texto = script.get_text("", strip=True)
+    prefixo = "_n.ctx.r="
+
+    if prefixo not in texto:
+        return None
+
+    trecho_json = texto.split(prefixo, 1)[1].strip()
+
+    if ";_n.ctx.r.assets" in trecho_json:
+        trecho_json = trecho_json.split(";_n.ctx.r.assets", 1)[0].strip()
+
+    if trecho_json.endswith(";"):
+        trecho_json = trecho_json[:-1]
+
+    try:
+        return json.loads(trecho_json)
+    except json.JSONDecodeError:
+        return None
+
+
+def _extrair_paging_do_html(html):
+
+    ctx = _extrair_ctx_rendering(html)
+    if not ctx:
+        return None
+
+    return (
+        ctx.get("appProps", {})
+        .get("pageProps", {})
+        .get("data", {})
+        .get("paging", {})
+    )
+
+
+def _montar_url_paginada(url_base, pagina):
+
+    partes = urlsplit(url_base)
+    parametros = dict(parse_qsl(partes.query, keep_blank_values=True))
+    parametros["page"] = str(pagina)
+
+    return urlunsplit(
+        (
+            partes.scheme,
+            partes.netloc,
+            partes.path,
+            urlencode(parametros),
+            "",
+        )
+    )
+
+
+def _extrair_desconto_valor(texto_desconto, preco_anterior=None, preco_atual=None):
+
+    if texto_desconto:
+
+        encontrado = re.search(r"(\d+)", texto_desconto)
+        if encontrado:
+            return int(encontrado.group(1))
+
+    if preco_anterior is None or preco_atual is None:
+        return None
+
+    if preco_anterior <= 0 or preco_atual < 0 or preco_atual > preco_anterior:
+        return None
+
+    return int(round(((preco_anterior - preco_atual) / preco_anterior) * 100))
+
+
+def _formatar_preco(valor):
+
+    if valor is None:
+        return "Preço não encontrado"
+
+    valor_formatado = f"{float(valor):.2f}".replace(".", ",")
+    if valor_formatado.endswith(",00"):
+        valor_formatado = valor_formatado[:-3]
+
+    return f"R$ {valor_formatado}"
+
+
+def _normalizar_filtro_categoria(texto_categoria):
+
+    return normalizar_descricao(texto_categoria).casefold()
+
+
+def _extrair_id_anuncio_de_texto(texto):
+
+    texto_limpo = (texto or "").strip()
+
+    if not texto_limpo:
+
+        return ""
+
+    encontrado = re.search(r"(MLB[A-Z]?[0-9]+|MLBU[0-9]+)", texto_limpo, re.IGNORECASE)
+
+    if encontrado:
+
+        return encontrado.group(1).upper()
+
+    return texto_limpo
+
+
+def _extrair_ofertas_do_ctx(html, desconto_minimo=30):
+
+    ctx = _extrair_ctx_rendering(html)
+    if not ctx:
+        return []
+
+    items = (
+        ctx.get("appProps", {})
+        .get("pageProps", {})
+        .get("data", {})
+        .get("items", [])
+    )
+
+    ofertas = []
+
+    for item in items:
+
+        card = item.get("card", {})
+        metadata = card.get("metadata", {})
+        componentes = card.get("components", [])
+
+        if not metadata:
+            continue
+
+        titulo = metadata.get("title") or metadata.get("sanitized_title") or "Sem descrição"
+        for componente in componentes:
+            if componente.get("type") == "title":
+                titulo = componente.get("title", {}).get("text", titulo)
+                break
+
+        preco_anterior = None
+        preco_atual = None
+        texto_desconto = None
+        categoria = "Sem categoria"
+
+        for componente in componentes:
+            tipo = componente.get("type")
+            if tipo == "price":
+                bloco_preco = componente.get("price", {})
+                preco_antigo = bloco_preco.get("previous_price", {})
+                preco_novo = bloco_preco.get("current_price", {})
+                preco_anterior = preco_antigo.get("value", preco_anterior)
+                preco_atual = preco_novo.get("value", preco_atual)
+                desconto_label = bloco_preco.get("discount_label", {})
+                texto_desconto = desconto_label.get("text", texto_desconto)
+            elif tipo == "brand" and categoria == "Sem categoria":
+                categoria = componente.get("brand", {}).get("text", categoria)
+            elif tipo == "variations_text" and categoria == "Sem categoria":
+                categoria = componente.get("variations_text", {}).get("text", categoria)
+
+        desconto_valor = _extrair_desconto_valor(texto_desconto, preco_anterior, preco_atual)
+
+        if desconto_valor is None or desconto_valor < desconto_minimo:
+            continue
+
+        link_anuncio = _montar_url_anuncio(metadata)
+        id_anuncio = _extrair_id_anuncio_de_texto(
+            metadata.get("id") or metadata.get("user_product_id") or metadata.get("product_id") or link_anuncio
+        )
+
+        ofertas.append(
+            {
+                "id_anuncio": id_anuncio,
+                "categoria": categoria,
+                "descricao": titulo,
+                "antes": _formatar_preco(preco_anterior),
+                "antes_valor": preco_anterior,
+                "desconto": f"{desconto_valor}% OFF",
+                "depois": _formatar_preco(preco_atual),
+                "depois_valor": preco_atual,
+                "link_anuncio": link_anuncio,
+            }
+        )
+
+    print(f"{len(ofertas)} oferta(s) com {desconto_minimo}% ou mais de desconto extraída(s) do JSON.")
+
+    return ofertas
 
 
 def extrair_dados_do_card(card):
@@ -161,6 +375,16 @@ def extrair_dados_do_card(card):
 
         link_original = ""
 
+    id_anuncio = ""
+
+    try:
+
+        id_anuncio = _extrair_id_anuncio_de_texto(link_original)
+
+    except Exception:
+
+        id_anuncio = ""
+
     # Teste sem imagem: nao capturamos o src do card neste momento.
     # try:
     #
@@ -182,6 +406,7 @@ def extrair_dados_do_card(card):
         "depois": depois,
         "desconto": desconto,
         "oferta_imperdivel": oferta_imperdivel,
+        "id_anuncio": id_anuncio,
         "link": link_original,
         # "imagem": imagem,
     }
@@ -756,7 +981,7 @@ def salvar_html_ofertas_relampago(page, url):
     os.makedirs(PASTA_OFERTAS_RELAMPAGO, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    caminho = os.path.join(PASTA_OFERTAS_RELAMPAGO, f"relampago_{timestamp}.txt")
+    caminho = os.path.join(PASTA_OFERTAS_RELAMPAGO, f"html_relampago_{timestamp}.txt")
 
     print(f"\nNavegando para ofertas relâmpago:\n{url}")
 
@@ -790,6 +1015,10 @@ def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=30):
 
     with open(caminho_arquivo, "r", encoding="utf-8") as f:
         html = f.read()
+
+    ofertas_ctx = _extrair_ofertas_do_ctx(html, desconto_minimo)
+    if ofertas_ctx:
+        return ofertas_ctx
 
     soup = BeautifulSoup(html, "html.parser")
     cards = soup.select("li.poly-card")
@@ -996,20 +1225,21 @@ def obter_link_afiliado_relampago(page, oferta, url_relampago):
     Retorna tupla (link, categoria)."""
 
     descricao = oferta.get("descricao", "")
+    link_anuncio = oferta.get("link_anuncio")
 
     print(f"\n--- Buscando link de afiliado para: {descricao[:70]}...")
 
-    page.goto(url_relampago, timeout=90000, wait_until="domcontentloaded")
-    time.sleep(random.uniform(4, 6))
+    if not link_anuncio:
 
-    link_anuncio = None
+        page.goto(url_relampago, timeout=90000, wait_until="domcontentloaded")
+        time.sleep(random.uniform(4, 6))
 
-    for _ in range(10):
-        link_anuncio = _localizar_card_na_pagina(page, descricao)
-        if link_anuncio:
-            break
-        page.mouse.wheel(0, 2500)
-        time.sleep(random.uniform(1, 2))
+        for _ in range(10):
+            link_anuncio = _localizar_card_na_pagina(page, descricao)
+            if link_anuncio:
+                break
+            page.mouse.wheel(0, 2500)
+            time.sleep(random.uniform(1, 2))
 
     if not link_anuncio:
         print("[AVISO] Card não localizado na página de ofertas relâmpago.")
@@ -1028,7 +1258,15 @@ def obter_link_afiliado_relampago(page, oferta, url_relampago):
     return link, categoria
 
 
-def processar_ofertas_relampago(page, url_relampago, desconto_minimo=30):
+def processar_ofertas_relampago(
+    page,
+    url_relampago,
+    desconto_minimo=30,
+    categoria=None,
+    preco_minimo=None,
+    preco_maximo=None,
+    limite_candidatos=None,
+):
     """Fluxo completo de ofertas relâmpago:
 
     1. Navega até a URL e salva o HTML completo em ofertas_relampago/.
@@ -1038,21 +1276,71 @@ def processar_ofertas_relampago(page, url_relampago, desconto_minimo=30):
     4. Retorna a lista de ofertas enriquecida com o campo 'link'.
     """
 
-    caminho_html = salvar_html_ofertas_relampago(page, url_relampago)
+    ofertas_consolidadas = []
+    descricoes_vistas = set()
+    categoria_filtro = _normalizar_filtro_categoria(categoria)
 
-    ofertas = extrair_ofertas_do_html(caminho_html, desconto_minimo)
+    pagina_inicial_html = salvar_html_ofertas_relampago(page, url_relampago)
+    paging = _extrair_paging_do_html(pagina_inicial_html) or {}
 
-    if not ofertas:
+    limite = paging.get("limit", 48) or 48
+    total = paging.get("total", 0) or 0
+
+    if total and limite:
+        total_paginas = max(1, ceil(total / limite))
+    else:
+        total_paginas = 1
+
+    print(f"Paginação detectada: {total_paginas} página(s) com limite de {limite} item(ns) por página.")
+
+    for pagina in range(total_paginas):
+        url_pagina = _montar_url_paginada(url_relampago, pagina)
+        caminho_html = pagina_inicial_html if pagina == 0 else salvar_html_ofertas_relampago(page, url_pagina)
+
+        ofertas_pagina = extrair_ofertas_do_html(caminho_html, desconto_minimo)
+
+        if not ofertas_pagina:
+            print(f"Sem ofertas elegíveis na página {pagina + 1}.")
+            continue
+
+        for oferta in ofertas_pagina:
+            chave = normalizar_descricao(oferta.get("descricao"))
+            if not chave or chave in descricoes_vistas:
+                continue
+
+            if categoria_filtro and _normalizar_filtro_categoria(oferta.get("categoria")) != categoria_filtro:
+                continue
+
+            preco_atual = oferta.get("depois_valor")
+            if preco_atual is None:
+                continue
+
+            if preco_minimo is not None and preco_atual < preco_minimo:
+                continue
+
+            if preco_maximo is not None and preco_atual > preco_maximo:
+                continue
+
+            descricoes_vistas.add(chave)
+
+            link, categoria = obter_link_afiliado_relampago(page, oferta, url_pagina)
+            oferta["link"] = link or "Link não obtido"
+            oferta["categoria"] = categoria
+            ofertas_consolidadas.append(oferta)
+
+            if limite_candidatos is not None and len(ofertas_consolidadas) >= limite_candidatos:
+                print(
+                    f"Limite de candidatos atingido no relâmpago: {limite_candidatos}."
+                )
+                return ofertas_consolidadas
+
+            time.sleep(random.uniform(3, 6))
+
+    if not ofertas_consolidadas:
         print("\nNenhuma oferta elegível encontrada.")
         return []
 
-    for oferta in ofertas:
-        link, categoria = obter_link_afiliado_relampago(page, oferta, url_relampago)
-        oferta["link"] = link or "Link não obtido"
-        oferta["categoria"] = categoria
-        time.sleep(random.uniform(3, 6))
-
-    return ofertas
+    return ofertas_consolidadas
 
 
 def salvar_resultado_relampago(ofertas, pasta=PASTA_OFERTAS_RELAMPAGO):

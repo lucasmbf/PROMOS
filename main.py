@@ -7,9 +7,12 @@ from parsers.mercadolivre import (
     salvar_resultado_relampago,
 )
 
+import argparse
+import ast
 import os
 import random
 import time
+from datetime import datetime
 from dotenv import load_dotenv
 from twilio.base.exceptions import TwilioRestException
 from twilio.rest import Client
@@ -26,13 +29,17 @@ DESCONTO_MINIMO = 30
 
 PRECO_MINIMO = None
 
-PRECO_MAXIMO = 300
+PRECO_MAXIMO = 400
 
 LIMITE_PRODUTOS = 5
 
 LIMITE_CANDIDATOS = 50
 
 CATEGORIA_PADRAO = "Acessórios para Veículos"
+
+HISTORICO_ANUNCIOS_ARQUIVO = "historico_anuncios.txt"
+
+ARQUIVO_PRODUTOS_PREFIXO = "ofertas_consolidadas"
 
 WHATSAPP_DESTINO_FIXO = "whatsapp:+5519991133269"
 
@@ -41,7 +48,76 @@ DEBUG_BREAKPOINT_TARGET = os.getenv("DEBUG_BREAKPOINT_TARGET", "").strip()
 
 load_dotenv()
 
-MODO_SOMENTE_RELAMPAGO = os.getenv("RUN_ONLY_RELAMPAGO", "0") == "1"
+
+
+def parse_args():
+
+    parser = argparse.ArgumentParser(
+        description="Executa a coleta de ofertas do Mercado Livre."
+    )
+
+    parser.add_argument(
+        "--categoria",
+        default=None,
+        help="Categoria do Mercado Livre a filtrar na coleta principal.",
+    )
+
+    parser.add_argument(
+        "--preco-maximo",
+        type=float,
+        default=PRECO_MAXIMO,
+        help="Preço máximo aceito para os produtos.",
+    )
+
+    parser.add_argument(
+        "--preco-minimo",
+        type=float,
+        default=PRECO_MINIMO,
+        help="Preço mínimo aceito para os produtos.",
+    )
+
+    parser.add_argument(
+        "--limite-produtos",
+        type=int,
+        default=LIMITE_PRODUTOS,
+        help="Quantidade máxima de produtos aceitos por execução.",
+    )
+
+    parser.add_argument(
+        "--limite-candidatos",
+        type=int,
+        default=LIMITE_CANDIDATOS,
+        help="Quantidade máxima de candidatos buscados por tentativa.",
+    )
+
+    parser.add_argument(
+        "--desconto-minimo",
+        type=int,
+        default=DESCONTO_MINIMO,
+        help="Desconto mínimo aceito na coleta principal e no fluxo relâmpago.",
+    )
+
+    parser.add_argument(
+        "--somente-relampago",
+        action="store_true",
+        help="Ignora o hub/Twilio e executa apenas o fluxo de ofertas relâmpago.",
+    )
+
+    return parser.parse_args()
+
+
+ARGS = parse_args()
+
+MODO_SOMENTE_RELAMPAGO = ARGS.somente_relampago or os.getenv("RUN_ONLY_RELAMPAGO", "0") == "1"
+
+if ARGS.categoria:
+    CATEGORIA_PADRAO = ARGS.categoria.strip()
+
+PRECO_MINIMO = ARGS.preco_minimo
+PRECO_MAXIMO = ARGS.preco_maximo
+LIMITE_PRODUTOS = ARGS.limite_produtos
+LIMITE_CANDIDATOS = ARGS.limite_candidatos
+DESCONTO_MINIMO = ARGS.desconto_minimo
 
 
 def debug_pausa(rotulo):
@@ -87,6 +163,11 @@ def converter_preco(texto_preco):
 def normalizar_descricao(texto_descricao):
 
     return " ".join((texto_descricao or "").split()).strip()
+
+
+def normalizar_chave_historico(valor):
+
+    return " ".join((valor or "").split()).strip().lower()
 
 
 def produto_esta_no_intervalo(produto, preco_minimo, preco_maximo):
@@ -198,6 +279,70 @@ def carregar_historico_precos(caminho_arquivo):
     return historico
 
 
+def carregar_historico_anuncios(caminho_arquivo):
+
+    historico = set()
+
+    try:
+
+        with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
+
+            for linha in arquivo:
+
+                linha_limpa = linha.strip()
+
+                if not linha_limpa:
+
+                    continue
+
+                try:
+
+                    anuncio = ast.literal_eval(linha_limpa)
+
+                except Exception:
+
+                    continue
+
+                if isinstance(anuncio, tuple) and anuncio:
+
+                    anuncio_id = normalizar_chave_historico(str(anuncio[0]))
+
+                    if anuncio_id:
+
+                        historico.add(anuncio_id)
+
+    except FileNotFoundError:
+
+        pass
+
+    return historico
+
+
+def produto_ja_foi_enviado(produto, historico_anuncios):
+
+    anuncio_id = normalizar_chave_historico(
+        produto.get("id_anuncio")
+    )
+
+    if not anuncio_id:
+
+        return False
+
+    return anuncio_id in historico_anuncios
+
+
+def montar_tupla_anuncio(produto):
+
+    return (
+        normalizar_chave_historico(produto.get("id_anuncio")),
+        normalizar_descricao(produto.get("descricao")),
+        (produto.get("antes") or "").strip(),
+        (produto.get("depois") or "").strip(),
+        (produto.get("desconto") or "").strip(),
+        (produto.get("link_original") or produto.get("link") or "").strip(),
+    )
+
+
 def produto_deve_ser_enviado(produto, historico_precos):
 
     descricao = normalizar_descricao(produto.get("descricao"))
@@ -287,6 +432,30 @@ def salvar_produtos_em_arquivo(caminho_arquivo, produtos):
 
                 "\n-----------------------------\n\n"
             )
+
+
+def montar_nome_arquivo_produtos():
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    return f"{ARQUIVO_PRODUTOS_PREFIXO}_{timestamp}.txt"
+
+
+def salvar_historico_anuncios_em_arquivo(caminho_arquivo, produtos):
+
+    if not produtos:
+
+        return
+
+    with open(
+        caminho_arquivo,
+        "a",
+        encoding="utf-8"
+    ) as arquivo:
+
+        for produto in produtos:
+
+            arquivo.write(f"{montar_tupla_anuncio(produto)!r}\n")
 
 
 def aplicar_filtro_categoria(page, categoria):
@@ -614,6 +783,10 @@ historico_precos = validar_txt_e_historico(
     "produtos.txt"
 )
 
+historico_anuncios = carregar_historico_anuncios(
+    HISTORICO_ANUNCIOS_ARQUIVO
+)
+
 
 with sync_playwright() as p:
 
@@ -776,11 +949,30 @@ with sync_playwright() as p:
 
                         continue
 
+                    produto["link_original"] = produto.get("link", "")
+
                     produto["link"] = obter_link_encurtado_por_descricao(
                         page,
                         produto.get("descricao", ""),
-                        produto.get("link", "")
+                        produto.get("link_original", "")
                     )
+
+                    if produto_ja_foi_enviado(
+                        produto,
+                        historico_anuncios
+                    ):
+
+                        registrar_produto_ignorado(
+                            produto,
+                            "Já existe no histórico de anúncios",
+                            f"ID do anúncio: {produto.get('id_anuncio', '')}"
+                        )
+
+                        time.sleep(
+                            random.uniform(2, 4)
+                        )
+
+                        continue
 
                     lista_produtos.append(
                         produto
@@ -840,9 +1032,24 @@ with sync_playwright() as p:
         )
 
         salvar_produtos_em_arquivo(
-            "produtos.txt",
+            montar_nome_arquivo_produtos(),
             produtos_para_enviar
         )
+
+        salvar_historico_anuncios_em_arquivo(
+            HISTORICO_ANUNCIOS_ARQUIVO,
+            produtos_para_enviar
+        )
+
+        for produto in produtos_para_enviar:
+
+            anuncio_id = normalizar_chave_historico(
+                produto.get("id_anuncio")
+            )
+
+            if anuncio_id:
+
+                historico_anuncios.add(anuncio_id)
 
         debug_pausa("Depois de gravar as informacoes novas no TXT")
 
@@ -859,7 +1066,11 @@ with sync_playwright() as p:
     ofertas_relampago = processar_ofertas_relampago(
         page,
         URL_OFERTAS_RELAMPAGO,
-        desconto_minimo=DESCONTO_MINIMO
+        desconto_minimo=DESCONTO_MINIMO,
+        categoria=CATEGORIA_PADRAO,
+        preco_minimo=PRECO_MINIMO,
+        preco_maximo=PRECO_MAXIMO,
+        limite_candidatos=LIMITE_CANDIDATOS,
     )
 
     if ofertas_relampago:
