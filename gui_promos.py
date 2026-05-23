@@ -1003,6 +1003,10 @@ def create_gui(categorias):
         launch_process(args, "Busca de produto por HTML do hub iniciada em nova janela.")
 
     def on_buscar_relampago():
+        if rel_padrao_var.get():
+            launch_process(["--relampago-padrao"], "Processo de ofertas relampago padrao iniciado em nova janela.")
+            return
+
         try:
             preco_min = parse_float(rel_preco_min_var.get(), "Preco minimo")
             preco_max = parse_float(rel_preco_max_var.get(), "Preco maximo")
@@ -1015,20 +1019,17 @@ def create_gui(categorias):
         categoria = rel_categoria_var.get().strip()
         args = []
 
-        if rel_padrao_var.get():
-            args.append("--relampago-padrao")
-        else:
-            args.append("--somente-relampago")
-            if categoria and categoria != "Todas categorias":
-                args.extend(["--categoria", categoria])
-            if preco_min is not None:
-                args.extend(["--preco-minimo", str(preco_min)])
-            if preco_max is not None:
-                args.extend(["--preco-maximo", str(preco_max)])
-            if desconto is not None:
-                args.extend(["--desconto-minimo", str(desconto)])
-            if limite is not None:
-                args.extend(["--limite-candidatos", str(limite)])
+        args.append("--somente-relampago")
+        if categoria and categoria != "Todas categorias":
+            args.extend(["--categoria", categoria])
+        if preco_min is not None:
+            args.extend(["--preco-minimo", str(preco_min)])
+        if preco_max is not None:
+            args.extend(["--preco-maximo", str(preco_max)])
+        if desconto is not None:
+            args.extend(["--desconto-minimo", str(desconto)])
+        if limite is not None:
+            args.extend(["--limite-candidatos", str(limite)])
 
         launch_process(args, "Processo de ofertas relampago iniciado em nova janela.")
 

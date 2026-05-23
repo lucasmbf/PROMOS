@@ -2139,6 +2139,23 @@ def _coletar_htmls_relampago(page, url_base_paginas, pasta=PASTA_RELAMPAGO_HTML,
     return entradas_html
 
 
+def _obter_total_paginas_relampago(caminho_html):
+
+    try:
+        html = Path(caminho_html).read_text(encoding="utf-8")
+    except Exception:
+        return 1
+
+    paging = _extrair_paging_do_html(html) or {}
+    limite = paging.get("limit", 48) or 48
+    total = paging.get("total", 0) or 0
+
+    if not total or not limite:
+        return 1
+
+    return max(1, ceil(total / limite))
+
+
 def _enriquecer_ofertas_relampago_com_links(page, url_base_paginas, ofertas):
 
     for oferta in ofertas:
@@ -2199,22 +2216,73 @@ def processar_ofertas_relampago(
         and limite_candidatos is None
     )
 
-    entradas_html = _coletar_htmls_relampago(
-        page,
-        url_base_paginas,
-        pasta=PASTA_RELAMPAGO_HTML,
-        coletar_todas_paginas=not modo_sem_parametros,
-    )
+    limite_alvo = limite_validos if limite_candidatos is None else min(limite_validos, limite_candidatos)
 
-    ofertas_consolidadas = _selecionar_ofertas_validas(
-        entradas_html,
-        desconto_minimo=desconto_minimo,
-        preco_minimo=preco_minimo,
-        preco_maximo=preco_maximo,
-        descricao=None,
-        limite_validos=limite_validos if limite_candidatos is None else min(limite_validos, limite_candidatos),
-        ids_descartados=ids_descartados,
-    )
+    if modo_sem_parametros:
+        entradas_html = _coletar_htmls_relampago(
+            page,
+            url_base_paginas,
+            pasta=PASTA_RELAMPAGO_HTML,
+            coletar_todas_paginas=False,
+        )
+
+        ofertas_consolidadas = _selecionar_ofertas_validas(
+            entradas_html,
+            desconto_minimo=desconto_minimo,
+            preco_minimo=preco_minimo,
+            preco_maximo=preco_maximo,
+            descricao=None,
+            limite_validos=limite_alvo,
+            ids_descartados=ids_descartados,
+        )
+
+        total_paginas = _obter_total_paginas_relampago(entradas_html[0]["path"])
+        pagina_atual = 1
+
+        while len(ofertas_consolidadas) < limite_alvo and pagina_atual < total_paginas:
+            pagina_atual += 1
+            print(
+                f"Primeira página não foi suficiente ({len(ofertas_consolidadas)}/{limite_alvo}). "
+                f"Coletando página {pagina_atual}/{total_paginas}."
+            )
+
+            url_pagina = _montar_url_paginada(url_base_paginas, pagina_atual)
+            caminho_html = salvar_html_ofertas_relampago(
+                page,
+                url_pagina,
+                indice=pagina_atual,
+                pasta=PASTA_RELAMPAGO_HTML,
+            )
+            entradas_html.append({"path": caminho_html, "url": url_pagina, "pagina": pagina_atual})
+
+            ofertas_consolidadas = _selecionar_ofertas_validas(
+                entradas_html,
+                desconto_minimo=desconto_minimo,
+                preco_minimo=preco_minimo,
+                preco_maximo=preco_maximo,
+                descricao=None,
+                limite_validos=limite_alvo,
+                ids_descartados=ids_descartados,
+            )
+
+        _salvar_html_consolidado(entradas_html, PASTA_RELAMPAGO_HTML, "html_relampago_consolidado")
+    else:
+        entradas_html = _coletar_htmls_relampago(
+            page,
+            url_base_paginas,
+            pasta=PASTA_RELAMPAGO_HTML,
+            coletar_todas_paginas=True,
+        )
+
+        ofertas_consolidadas = _selecionar_ofertas_validas(
+            entradas_html,
+            desconto_minimo=desconto_minimo,
+            preco_minimo=preco_minimo,
+            preco_maximo=preco_maximo,
+            descricao=None,
+            limite_validos=limite_alvo,
+            ids_descartados=ids_descartados,
+        )
 
     if not ofertas_consolidadas:
         _salvar_metadados_ofertas(

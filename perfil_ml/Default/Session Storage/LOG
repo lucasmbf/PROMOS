@@ -1,6 +1,5 @@
-2026/05/22-22:14:54.346 8cfc Reusing MANIFEST C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/MANIFEST-000001
-2026/05/22-22:14:54.347 8cfc Recovering log #57
-2026/05/22-22:14:54.349 8cfc Reusing old log C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/000057.log 
-2026/05/22-22:16:16.857 2c68 Level-0 table #62: started
-2026/05/22-22:16:16.861 2c68 Level-0 table #62: 21803 bytes OK
-2026/05/22-22:16:16.862 2c68 Delete type=0 #57
+2026/05/22-22:21:54.399 6248 Reusing MANIFEST C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/MANIFEST-000001
+2026/05/22-22:21:54.400 6248 Recovering log #61
+2026/05/22-22:21:54.402 6248 Reusing old log C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/000061.log 
+2026/05/22-22:24:15.475 6730 Level-0 table #65: started
+2026/05/22-22:24:15.478 6730 Level-0 table #65: 30329 bytes OK
