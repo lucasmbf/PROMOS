@@ -19,6 +19,7 @@ from bs4 import BeautifulSoup
 
 BASE_DIR = Path(__file__).resolve().parent
 ALERTS_CONFIG_FILE = BASE_DIR / "alertas_preco.json"
+HUB_SCHEDULES_CONFIG_FILE = BASE_DIR / "agendamentos_hub.json"
 LOGS_DIR = BASE_DIR / "logs_execucao"
 LOGIN_OK_SIGNAL_FILE = BASE_DIR / ".ml_login_ok.signal"
 AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
@@ -256,6 +257,22 @@ def save_alerts_config(config_path, alerts):
         json.dump(alerts, file, indent=2, ensure_ascii=False)
 
 
+def load_hub_schedules_config(config_path):
+    try:
+        with open(config_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            return data if isinstance(data, list) else []
+    except FileNotFoundError:
+        return []
+    except Exception:
+        return []
+
+
+def save_hub_schedules_config(config_path, schedules):
+    with open(config_path, "w", encoding="utf-8") as file:
+        json.dump(schedules, file, indent=2, ensure_ascii=False)
+
+
 def _parse_iso_datetime(value):
     if not value:
         return None
@@ -304,27 +321,78 @@ def build_worker_env():
 
 def build_styles(root):
     style = ttk.Style(root)
+    # Use a consistent theme so custom colors remain readable across systems.
     style.theme_use("clam")
 
-    bg = "#ececec"
-    panel = "#dedede"
-    accent = "#47c4c8"
-    input_bg = "#f6f6f6"
+    bg = "#e8edf0"
+    panel = "#ffffff"
+    accent = "#2fa6bf"
+    accent_active = "#1d8ea6"
+    input_bg = "#f8fbfd"
+    text_dark = "#3d4a53"
+    text_muted = "#6b7782"
+    border_soft = "#d5e0e7"
 
     root.configure(bg=bg)
 
     style.configure("Main.TFrame", background=bg)
-    style.configure("Card.TLabelframe", background=panel, bordercolor=accent, borderwidth=2, relief="solid")
+    style.configure("Hero.TFrame", background=accent)
+    style.configure("Card.TLabelframe", background=panel, bordercolor=border_soft, borderwidth=1, relief="flat")
     style.configure("Card.TLabelframe.Label", background=panel, foreground=accent, font=("Segoe UI Semibold", 11))
     style.configure("Header.TLabel", background=bg, foreground=accent, font=("Segoe UI", 22, "bold"))
-    style.configure("Hint.TLabel", background=bg, foreground="#5b5b5b", font=("Segoe UI", 10))
-    style.configure("Field.TLabel", background=panel, foreground="#474747", font=("Segoe UI", 10, "bold"))
+    style.configure("Hint.TLabel", background=bg, foreground=text_muted, font=("Segoe UI", 10))
+    style.configure("Field.TLabel", background=panel, foreground=text_dark, font=("Segoe UI", 10, "bold"))
+    style.configure("HeroTitle.TLabel", background=accent, foreground="#ffffff", font=("Segoe UI", 18, "bold"))
+    style.configure("HeroText.TLabel", background=accent, foreground="#eaf6fa", font=("Segoe UI", 10))
     style.configure("Info.TLabel", background=panel, foreground=accent, font=("Segoe UI", 10, "bold"))
-    style.configure("Action.TButton", background=accent, foreground="#ffffff", font=("Segoe UI", 10, "bold"), borderwidth=0, padding=(12, 8))
-    style.map("Action.TButton", background=[("active", "#35aeb2")])
-    style.configure("TEntry", fieldbackground=input_bg, background=input_bg, bordercolor=accent, lightcolor=accent, darkcolor=accent, borderwidth=1)
-    style.configure("TCombobox", fieldbackground=input_bg, background=input_bg, bordercolor=accent, lightcolor=accent, darkcolor=accent)
-    style.configure("TCheckbutton", background=panel, foreground="#3f3f3f", font=("Segoe UI", 10))
+    style.configure(
+        "Action.TButton",
+        background=accent,
+        foreground="#ffffff",
+        font=("Segoe UI", 10, "bold"),
+        borderwidth=0,
+        relief="flat",
+        padding=(16, 10),
+        focusthickness=0,
+    )
+    style.map(
+        "Action.TButton",
+        background=[("active", accent_active), ("pressed", accent_active), ("disabled", "#b8d9e1")],
+        foreground=[("disabled", "#f2f6f8"), ("!disabled", "#ffffff")],
+    )
+    style.configure(
+        "TEntry",
+        fieldbackground=input_bg,
+        background=input_bg,
+        bordercolor=border_soft,
+        lightcolor=border_soft,
+        darkcolor=border_soft,
+        borderwidth=1,
+        relief="flat",
+        padding=7,
+    )
+    style.configure(
+        "TCombobox",
+        fieldbackground=input_bg,
+        background=input_bg,
+        bordercolor=border_soft,
+        lightcolor=border_soft,
+        darkcolor=border_soft,
+        relief="flat",
+        padding=6,
+    )
+    style.configure("TCheckbutton", background=panel, foreground=text_dark, font=("Segoe UI", 10))
+    style.configure(
+        "Treeview",
+        background="#ffffff",
+        foreground="#26323a",
+        fieldbackground="#ffffff",
+        rowheight=24,
+        bordercolor=border_soft,
+        borderwidth=1,
+    )
+    style.map("Treeview", background=[("selected", "#d8eff5")], foreground=[("selected", "#1f2b33")])
+    style.configure("Treeview.Heading", background="#eef4f7", foreground="#2f3c45", relief="flat")
 
 
 def create_gui(categorias):
@@ -335,14 +403,31 @@ def create_gui(categorias):
 
     build_styles(root)
 
-    main_frame = ttk.Frame(root, style="Main.TFrame", padding=18)
+    main_frame = ttk.Frame(root, style="Main.TFrame", padding=20)
     main_frame.pack(fill="both", expand=True)
 
-    ttk.Label(main_frame, text="BEM VINDO!", style="Header.TLabel").pack(anchor="w")
+    hero = ttk.Frame(main_frame, style="Hero.TFrame", padding=(18, 14))
+    hero.pack(fill="x", pady=(0, 12))
+
+    hero_left = ttk.Frame(hero, style="Hero.TFrame")
+    hero_left.pack(side="left", fill="both", expand=True)
+
+    ttk.Label(hero_left, text="PROMOS", style="HeroTitle.TLabel").pack(anchor="w")
+    ttk.Label(
+        hero_left,
+        text="Automatize buscas no hub, relampago e programacoes com uma interface unica.",
+        style="HeroText.TLabel",
+    ).pack(anchor="w", pady=(4, 0))
+
+    hero_right = ttk.Frame(hero, style="Hero.TFrame")
+    hero_right.pack(side="right", padx=(20, 0))
+    ttk.Label(hero_right, text="Painel de Operacao", style="HeroText.TLabel").pack(anchor="e")
+    ttk.Label(hero_right, text="Mercado Livre", style="HeroTitle.TLabel").pack(anchor="e")
+
     ttk.Label(main_frame, text="Entre com os dados do processo no formulario.", style="Hint.TLabel").pack(anchor="w", pady=(0, 10))
 
     top = ttk.Frame(main_frame, style="Main.TFrame")
-    top.pack(fill="both", expand=True)
+    top.pack(fill="x", expand=False, pady=(0, 6))
 
     product_frame = ttk.LabelFrame(top, text="PROCURAR PRODUTO", style="Card.TLabelframe", padding=14)
     product_frame.pack(side="left", fill="both", expand=True, padx=(0, 8))
@@ -438,50 +523,56 @@ def create_gui(categorias):
         ttk.Checkbutton(source_frame, text=nome, variable=fontes_vars[nome], command=cmd).grid(row=0, column=idx, padx=(0, 10), sticky="w")
 
     row += 1
-    ttk.Label(product_frame, text="Categoria:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(12, 0))
+    ttk.Label(product_frame, text="Categoria:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(8, 0))
     categorias_combo = ttk.Combobox(product_frame, textvariable=categoria_var, values=["", *categorias], state="readonly")
-    categorias_combo.grid(row=row, column=1, columnspan=2, sticky="ew", pady=(12, 0))
+    categorias_combo.grid(row=row, column=1, columnspan=2, sticky="ew", pady=(8, 0))
 
     row += 1
-    ttk.Label(product_frame, text="Preco minimo:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(12, 0))
+    ttk.Label(product_frame, text="Preco minimo:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(8, 0))
     preco_min_entry = ttk.Entry(
         product_frame,
         textvariable=preco_min_var,
         validate="key",
         validatecommand=vcmd_decimal,
     )
-    preco_min_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(12, 0))
+    preco_min_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(8, 0))
 
     row += 1
-    ttk.Label(product_frame, text="Preco maximo:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(12, 0))
+    ttk.Label(product_frame, text="Preco maximo:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(8, 0))
     preco_max_entry = ttk.Entry(
         product_frame,
         textvariable=preco_max_var,
         validate="key",
         validatecommand=vcmd_decimal,
     )
-    preco_max_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(12, 0))
+    preco_max_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(8, 0))
 
     row += 1
-    ttk.Label(product_frame, text="Desconto minimo (%):", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(12, 0))
+    ttk.Label(product_frame, text="Desconto minimo (%):", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(8, 0))
     desconto_entry = ttk.Entry(
         product_frame,
         textvariable=desconto_var,
         validate="key",
         validatecommand=vcmd_inteiro,
     )
-    desconto_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(12, 0))
+    desconto_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(8, 0))
 
     row += 1
-    ttk.Checkbutton(product_frame, text="Priorizar menor preco", variable=menor_preco_var).grid(row=row, column=0, columnspan=3, sticky="w", pady=(12, 0))
+    ttk.Checkbutton(product_frame, text="Priorizar menor preco", variable=menor_preco_var).grid(row=row, column=0, columnspan=3, sticky="w", pady=(8, 0))
 
     row += 1
     buscar_produto_btn = ttk.Button(product_frame, text="BUSCAR PRODUTO", style="Action.TButton")
     buscar_produto_btn.grid(row=row, column=0, columnspan=3, sticky="w", pady=(16, 0))
 
     row += 1
-    alerta_preco_btn = ttk.Button(product_frame, text="ALERTA DE PRECO", style="Action.TButton")
-    alerta_preco_btn.grid(row=row, column=0, columnspan=3, sticky="w", pady=(10, 0))
+    ttk.Separator(product_frame, orient="horizontal").grid(row=row, column=0, columnspan=3, sticky="ew", pady=(14, 6))
+
+    row += 1
+    alerta_preco_btn = ttk.Button(product_frame, text="CONFIGURAR ALERTA DE PRECO", style="Action.TButton")
+    alerta_preco_btn.grid(row=row, column=0, sticky="w", pady=(8, 0))
+
+    campanha_produto_btn = ttk.Button(product_frame, text="CONFIGURAR CAMPANHA", style="Action.TButton")
+    campanha_produto_btn.grid(row=row, column=1, sticky="w", padx=(8, 0), pady=(8, 0))
 
     for col in (1,):
         product_frame.columnconfigure(col, weight=1)
@@ -493,44 +584,44 @@ def create_gui(categorias):
     rel_categoria_combo.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0))
 
     rel_row += 1
-    ttk.Label(relampago_frame, text="Preco minimo:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(12, 0))
+    ttk.Label(relampago_frame, text="Preco minimo:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(8, 0))
     rel_preco_min_entry = ttk.Entry(
         relampago_frame,
         textvariable=rel_preco_min_var,
         validate="key",
         validatecommand=vcmd_decimal,
     )
-    rel_preco_min_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+    rel_preco_min_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(8, 0))
 
     rel_row += 1
-    ttk.Label(relampago_frame, text="Preco maximo:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(12, 0))
+    ttk.Label(relampago_frame, text="Preco maximo:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(8, 0))
     rel_preco_max_entry = ttk.Entry(
         relampago_frame,
         textvariable=rel_preco_max_var,
         validate="key",
         validatecommand=vcmd_decimal,
     )
-    rel_preco_max_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+    rel_preco_max_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(8, 0))
 
     rel_row += 1
-    ttk.Label(relampago_frame, text="Desconto minimo (%):", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(12, 0))
+    ttk.Label(relampago_frame, text="Desconto minimo (%):", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(8, 0))
     rel_desconto_entry = ttk.Entry(
         relampago_frame,
         textvariable=rel_desconto_var,
         validate="key",
         validatecommand=vcmd_inteiro,
     )
-    rel_desconto_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+    rel_desconto_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(8, 0))
 
     rel_row += 1
-    ttk.Label(relampago_frame, text="Limite de candidatos:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(12, 0))
+    ttk.Label(relampago_frame, text="Limite de candidatos:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(8, 0))
     rel_limite_entry = ttk.Entry(
         relampago_frame,
         textvariable=rel_limite_var,
         validate="key",
         validatecommand=vcmd_inteiro,
     )
-    rel_limite_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+    rel_limite_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(8, 0))
 
     for decimal_var, decimal_entry in [
         (preco_min_var, preco_min_entry),
@@ -542,9 +633,9 @@ def create_gui(categorias):
 
     rel_row += 1
     rel_padrao_check = ttk.Checkbutton(relampago_frame, text="Usar modo relampago padrao", variable=rel_padrao_var)
-    rel_padrao_check.grid(row=rel_row, column=0, sticky="w", pady=(12, 0))
+    rel_padrao_check.grid(row=rel_row, column=0, sticky="w", pady=(8, 0))
     rel_padrao_info = ttk.Label(relampago_frame, text="(i)", style="Info.TLabel", cursor="hand2")
-    rel_padrao_info.grid(row=rel_row, column=1, sticky="w", padx=(8, 0), pady=(12, 0))
+    rel_padrao_info.grid(row=rel_row, column=1, sticky="w", padx=(8, 0), pady=(8, 0))
     Tooltip(rel_padrao_info, "O modo padrão busca 10 ofertas relâmpago sem especificar categoria, desconto, descrição ou faixa de preço")
 
     relampago_inputs = [
@@ -580,15 +671,870 @@ def create_gui(categorias):
     log_path_var = tk.StringVar(value="Log salvo em: -")
     ttk.Label(output_frame, textvariable=log_path_var, style="Hint.TLabel").pack(anchor="w", pady=(6, 0))
 
-    resumo_text = tk.Text(output_frame, height=12, wrap="word", background="#f6f6f6", foreground="#303030")
+    resumo_text = tk.Text(
+        output_frame,
+        height=8,
+        wrap="word",
+        background="#f6f6f6",
+        foreground="#303030",
+        borderwidth=0,
+        relief="flat",
+        highlightthickness=1,
+        highlightbackground="#d5e0e7",
+        highlightcolor="#2fa6bf",
+    )
     resumo_text.pack(fill="x", expand=False, pady=(8, 0))
     resumo_text.configure(state="disabled")
 
+    schedules_frame = ttk.LabelFrame(main_frame, text="PROGRAMACOES", style="Card.TLabelframe", padding=8)
+    schedules_frame.pack(fill="both", expand=True, pady=(10, 0))
+    output_frame.pack_forget()
+    output_frame.pack(fill="x", expand=False, pady=(12, 0))
+
+    schedules_actions = ttk.Frame(schedules_frame, style="Main.TFrame")
+    schedules_actions.pack(fill="x", pady=(0, 8))
+
+    alerta_config_btn = ttk.Button(schedules_actions, text="CONFIGURAR ALERTA DE PRECO", style="Action.TButton")
+    alerta_config_btn.pack(side="left")
+
+    campanha_config_btn = ttk.Button(schedules_actions, text="CONFIGURAR CAMPANHA", style="Action.TButton")
+    campanha_config_btn.pack(side="left", padx=(8, 0))
+
+    delete_selected_btn = ttk.Button(schedules_actions, text="EXCLUIR SELECIONADAS", style="Action.TButton")
+    delete_selected_btn.pack(side="left", padx=(8, 0))
+
+    selecionar_todas_var = tk.BooleanVar(value=False)
+    ttk.Checkbutton(schedules_actions, text="Selecionar todas", variable=selecionar_todas_var).pack(side="left", padx=(12, 0))
+
+    filtro_programacoes_var = tk.StringVar(value="")
+    ttk.Label(schedules_actions, text="Buscar (ID/Nome):", style="Hint.TLabel").pack(side="left", padx=(18, 6))
+    ttk.Entry(schedules_actions, textvariable=filtro_programacoes_var, width=28).pack(side="left")
+
+    grid_wrap = ttk.Frame(schedules_frame, style="Main.TFrame")
+    grid_wrap.pack(fill="both", expand=True)
+
+    hub_schedule_tree = ttk.Treeview(
+        grid_wrap,
+        columns=("sel", "editar", "excluir", "executar", "ativo", "id", "nome", "tipo", "inicio", "fim", "ultima", "proxima", "ciclo", "execucao"),
+        show="headings",
+        height=9,
+    )
+
+    hub_schedule_tree.heading("sel", text="Sel")
+    hub_schedule_tree.heading("editar", text="Editar")
+    hub_schedule_tree.heading("excluir", text="Excluir")
+    hub_schedule_tree.heading("executar", text="Executar")
+    hub_schedule_tree.heading("ativo", text="Ativo (toggle)")
+    hub_schedule_tree.heading("id", text="ID")
+    hub_schedule_tree.heading("nome", text="Nome")
+    hub_schedule_tree.heading("tipo", text="Tipo")
+    hub_schedule_tree.heading("inicio", text="Inicio")
+    hub_schedule_tree.heading("fim", text="Fim")
+    hub_schedule_tree.heading("ultima", text="Ultima")
+    hub_schedule_tree.heading("proxima", text="Proxima")
+    hub_schedule_tree.heading("ciclo", text="Ciclo")
+    hub_schedule_tree.heading("execucao", text="Execucao")
+
+    hub_schedule_tree.column("sel", width=44, anchor="center")
+    hub_schedule_tree.column("editar", width=72, anchor="center")
+    hub_schedule_tree.column("excluir", width=72, anchor="center")
+    hub_schedule_tree.column("executar", width=80, anchor="center")
+    hub_schedule_tree.column("ativo", width=88, anchor="center")
+    hub_schedule_tree.column("id", width=80, anchor="center")
+    hub_schedule_tree.column("nome", width=150, anchor="w")
+    hub_schedule_tree.column("tipo", width=120, anchor="w")
+    hub_schedule_tree.column("inicio", width=110, anchor="center")
+    hub_schedule_tree.column("fim", width=110, anchor="center")
+    hub_schedule_tree.column("ultima", width=120, anchor="w")
+    hub_schedule_tree.column("proxima", width=120, anchor="w")
+    hub_schedule_tree.column("ciclo", width=80, anchor="center")
+    hub_schedule_tree.column("execucao", width=170, anchor="w")
+
+    schedules_scroll = ttk.Scrollbar(grid_wrap, orient="vertical", command=hub_schedule_tree.yview)
+    hub_schedule_tree.configure(yscrollcommand=schedules_scroll.set)
+    hub_schedule_tree.pack(side="left", fill="both", expand=True)
+    schedules_scroll.pack(side="right", fill="y")
+
     alerts = load_alerts_config(ALERTS_CONFIG_FILE)
+    hub_schedules = load_hub_schedules_config(HUB_SCHEDULES_CONFIG_FILE)
     scheduler_state = {"running": False}
     worker_running = {"value": False}
     worker_log = {"path": None}
     worker_messages = queue.Queue()
+
+    def persist_hub_schedules():
+        save_hub_schedules_config(HUB_SCHEDULES_CONFIG_FILE, hub_schedules)
+
+    def _proximo_id_configuracao():
+        max_id = 0
+        for cfg in [*alerts, *hub_schedules]:
+            raw_id = str(cfg.get("id", "")).strip()
+            if raw_id.isdigit():
+                max_id = max(max_id, int(raw_id))
+        return f"{max_id + 1:06d}"
+
+    def _padronizar_formato_ids_configuracoes():
+        alterou = False
+
+        for cfg in [*alerts, *hub_schedules]:
+            atual = str(cfg.get("id", "")).strip()
+            if atual.isdigit() and len(atual) < 6:
+                cfg["id"] = atual.zfill(6)
+                alterou = True
+
+        if alterou:
+            save_alerts_config(ALERTS_CONFIG_FILE, alerts)
+            save_hub_schedules_config(HUB_SCHEDULES_CONFIG_FILE, hub_schedules)
+
+    def _parse_schedule_datetime_input(value, field_name, required=False, end_of_day=False):
+        texto = (value or "").strip()
+        if not texto:
+            if required:
+                raise ValueError(f"Campo '{field_name}' e obrigatorio.")
+            return None
+
+        try:
+            data = datetime.strptime(texto, "%d/%m/%Y")
+            if end_of_day:
+                return data.replace(hour=23, minute=59, second=59)
+            return data
+        except ValueError:
+            # Backward compatibility with previously saved/input formats.
+            for fmt in ("%Y-%m-%d %H:%M", "%Y-%m-%d"):
+                try:
+                    data = datetime.strptime(texto, fmt)
+                    if end_of_day:
+                        return data.replace(hour=23, minute=59, second=59)
+                    return data
+                except ValueError:
+                    continue
+            raise ValueError(f"Campo '{field_name}' deve estar em DD/MM/AAAA.")
+
+    def _formatar_data(valor_iso):
+        dt = _parse_iso_datetime(valor_iso)
+        if not dt:
+            return "-"
+        return dt.strftime("%d/%m/%Y")
+
+    def _formatar_data_hora(valor_iso):
+        dt = _parse_iso_datetime(valor_iso)
+        if not dt:
+            return "-"
+        return dt.strftime("%d/%m/%Y %H:%M")
+
+    programacoes_selecionadas = set()
+
+    def _programacao_key(tipo, item_id):
+        return f"{tipo}:{item_id}"
+
+    def _pill_ativo(is_active):
+        return "[ ON ]" if is_active else "[ OFF ]"
+
+    def _formatar_data_hora_curta(value_dt):
+        if not value_dt:
+            return "-"
+        return value_dt.strftime("%d/%m %H:%M")
+
+    def _proxima_execucao_alerta(alert, now=None):
+        now = now or datetime.now()
+        if not alert.get("active", True):
+            return "-"
+
+        last_check = _parse_iso_datetime(alert.get("last_check_at"))
+        intervalo_horas = max(1, int(alert.get("interval_hours", 1)))
+        if last_check is None:
+            return "Agora"
+
+        return _formatar_data_hora_curta(last_check + timedelta(hours=intervalo_horas))
+
+    def _proxima_execucao_campanha(schedule, now=None):
+        now = now or datetime.now()
+        if not schedule.get("active", True):
+            return "-"
+
+        inicio = _parse_iso_datetime(schedule.get("start_at"))
+        fim = _parse_iso_datetime(schedule.get("end_at"))
+        ultimo = _parse_iso_datetime(schedule.get("last_run_at"))
+        intervalo_horas = max(1, int(schedule.get("interval_hours", 1)))
+
+        if inicio and now < inicio:
+            return _formatar_data_hora_curta(inicio)
+
+        if ultimo is None:
+            return "Agora"
+
+        proxima = ultimo + timedelta(hours=intervalo_horas)
+        if fim and proxima > fim:
+            return "-"
+
+        return _formatar_data_hora_curta(proxima)
+
+    def _formatar_status_agendamento(schedule, now=None):
+        now = now or datetime.now()
+        if not schedule.get("active", True):
+            return "Inativo"
+
+        inicio = _parse_iso_datetime(schedule.get("start_at"))
+        fim = _parse_iso_datetime(schedule.get("end_at"))
+        ultimo = _parse_iso_datetime(schedule.get("last_run_at"))
+
+        if inicio and now < inicio:
+            return "Aguardando inicio"
+        if fim and now > fim:
+            return "Encerrado"
+        if ultimo:
+            return f"Ultima execucao: {ultimo.strftime('%d/%m %H:%M')}"
+
+        return "Pronto para executar"
+
+    def _formatar_status_alerta(alert, now=None):
+        now = now or datetime.now()
+        if not alert.get("active", True):
+            return "Inativo"
+
+        last_check = _parse_iso_datetime(alert.get("last_check_at"))
+        interval_hours = max(1, int(alert.get("interval_hours", 1)))
+
+        if last_check is None:
+            return "Pronto para executar"
+
+        proxima = last_check + timedelta(hours=interval_hours)
+        if now >= proxima:
+            return "Aguardando ciclo"
+
+        return f"Proxima: {proxima.strftime('%d/%m %H:%M')}"
+
+    def _coletar_programacoes():
+        itens = []
+
+        for alert in alerts:
+            aid = alert.get("id")
+            itens.append(
+                {
+                    "key": _programacao_key("alerta", aid),
+                    "id": str(aid),
+                    "nome": alert.get("name", "Alerta sem nome"),
+                    "tipo": "Alerta de preco",
+                    "ativo": _pill_ativo(bool(alert.get("active", True))),
+                    "inicio": "-",
+                    "fim": "-",
+                    "ultima": _formatar_data_hora(alert.get("last_check_at")),
+                    "proxima": _proxima_execucao_alerta(alert),
+                    "ciclo": f"{int(alert.get('interval_hours', 1))}h",
+                    "execucao": _formatar_status_alerta(alert),
+                }
+            )
+
+        for schedule in hub_schedules:
+            sid = schedule.get("id")
+            itens.append(
+                {
+                    "key": _programacao_key("campanha", sid),
+                    "id": str(sid),
+                    "nome": schedule.get("name", "Rotina sem nome"),
+                    "tipo": "Campanha",
+                    "ativo": _pill_ativo(bool(schedule.get("active", True))),
+                    "inicio": _formatar_data(schedule.get("start_at")),
+                    "fim": _formatar_data(schedule.get("end_at")),
+                    "ultima": _formatar_data_hora(schedule.get("last_run_at")),
+                    "proxima": _proxima_execucao_campanha(schedule),
+                    "ciclo": f"{int(schedule.get('interval_hours', 1))}h",
+                    "execucao": _formatar_status_agendamento(schedule),
+                }
+            )
+
+        return itens
+
+    def _filtrar_programacoes(itens):
+        termo = (filtro_programacoes_var.get() or "").strip().casefold()
+        if not termo:
+            return itens
+
+        filtrados = []
+        for item in itens:
+            alvo = f"{item.get('id', '')} {item.get('nome', '')}".casefold()
+            if termo in alvo:
+                filtrados.append(item)
+        return filtrados
+
+    def _refresh_hub_schedules_grid():
+        for item_id in hub_schedule_tree.get_children():
+            hub_schedule_tree.delete(item_id)
+
+        itens = _filtrar_programacoes(_coletar_programacoes())
+        if not itens:
+            hub_schedule_tree.insert(
+                "",
+                "end",
+                iid="empty-state",
+                values=("", "", "", "", "", "", "Nenhuma configuracao cadastrada", "", "", "", "", "", "", ""),
+            )
+            return
+
+        for item in itens:
+            marcado = "☑" if item["key"] in programacoes_selecionadas else "☐"
+
+            hub_schedule_tree.insert(
+                "",
+                "end",
+                iid=item["key"],
+                values=(
+                    marcado,
+                    "Editar",
+                    "Excluir",
+                    "Agora",
+                    item["ativo"],
+                    item["id"],
+                    item["nome"],
+                    item["tipo"],
+                    item["inicio"],
+                    item["fim"],
+                    item["ultima"],
+                    item["proxima"],
+                    item["ciclo"],
+                    item["execucao"],
+                ),
+            )
+
+    def _obter_programacao_por_key(key):
+        if not key or ":" not in key:
+            return None, None
+
+        tipo, raw_id = key.split(":", 1)
+        if tipo == "alerta":
+            for alert in alerts:
+                if str(alert.get("id")) == raw_id:
+                    return "alerta", alert
+        elif tipo == "campanha":
+            for schedule in hub_schedules:
+                if str(schedule.get("id")) == raw_id:
+                    return "campanha", schedule
+
+        return None, None
+
+    def _toggle_select_all_programacoes():
+        marcar_todas = bool(selecionar_todas_var.get())
+        programacoes_selecionadas.clear()
+        if marcar_todas:
+            for item in _coletar_programacoes():
+                programacoes_selecionadas.add(item["key"])
+        _refresh_hub_schedules_grid()
+
+    selecionar_todas_var.trace_add("write", lambda *_: _toggle_select_all_programacoes())
+    filtro_programacoes_var.trace_add("write", lambda *_: _refresh_hub_schedules_grid())
+
+    def _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto_min):
+        args = ["--produto-por-html"]
+
+        if categoria and categoria != "Todas categorias":
+            args.extend(["--categoria", categoria])
+
+        if descricao:
+            args.extend(["--descricao-produto", descricao])
+
+        if preco_min is not None:
+            args.extend(["--preco-minimo", str(preco_min)])
+
+        if preco_max is not None:
+            args.extend(["--preco-maximo", str(preco_max)])
+
+        if desconto_min is not None:
+            args.extend(["--desconto-minimo", str(desconto_min)])
+
+        return args
+
+    def _build_hub_args_from_schedule(schedule):
+        return _build_hub_args_from_values(
+            (schedule.get("categoria") or "").strip(),
+            (schedule.get("descricao") or "").strip(),
+            schedule.get("preco_minimo"),
+            schedule.get("preco_maximo"),
+            schedule.get("desconto_minimo"),
+        )
+
+    def open_hub_schedule_modal(schedule=None):
+        modal = tk.Toplevel(root)
+        modal.title("Configurar rotina programada do hub")
+        modal.geometry("760x560")
+        modal.minsize(700, 520)
+        modal.configure(bg="#ececec")
+        modal.transient(root)
+        modal.grab_set()
+
+        frame = ttk.Frame(modal, style="Main.TFrame", padding=14)
+        frame.pack(fill="both", expand=True)
+
+        ttk.Label(frame, text="Rotina Programada - Busca no Hub", style="Header.TLabel").grid(row=0, column=0, columnspan=2, sticky="w")
+
+        def _aplicar_mascara_data(var, lock):
+            if lock["value"]:
+                return
+
+            lock["value"] = True
+            try:
+                digitos = re.sub(r"\D", "", var.get() or "")[:8]
+                blocos = [
+                    digitos[0:2],
+                    digitos[2:4],
+                    digitos[4:8],
+                ]
+
+                texto = ""
+                if blocos[0]:
+                    texto += blocos[0]
+                if blocos[1]:
+                    texto += f"/{blocos[1]}"
+                if blocos[2]:
+                    texto += f"/{blocos[2]}"
+
+                if texto != var.get():
+                    var.set(texto)
+            finally:
+                lock["value"] = False
+
+        nome_var = tk.StringVar(value=(schedule.get("name", "") if schedule else ""))
+        inicio_var = tk.StringVar(value=(
+            _parse_iso_datetime(schedule.get("start_at")).strftime("%d/%m/%Y")
+            if schedule and _parse_iso_datetime(schedule.get("start_at"))
+            else ""
+        ))
+        fim_var = tk.StringVar(value=(
+            _parse_iso_datetime(schedule.get("end_at")).strftime("%d/%m/%Y")
+            if schedule and _parse_iso_datetime(schedule.get("end_at"))
+            else ""
+        ))
+        ciclo_var = tk.StringVar(value=str(int(schedule.get("interval_hours", 1))) if schedule else "1")
+        categoria_ag_var = tk.StringVar(value=(schedule.get("categoria") if schedule else "Todas categorias"))
+        descricao_ag_var = tk.StringVar(value=(schedule.get("descricao", "") if schedule else ""))
+        preco_min_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("preco_minimo") is None else str(schedule.get("preco_minimo"))))
+        preco_max_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("preco_maximo") is None else str(schedule.get("preco_maximo"))))
+        desconto_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("desconto_minimo") is None else str(schedule.get("desconto_minimo"))))
+        ativo_var = tk.BooleanVar(value=(bool(schedule.get("active", True)) if schedule else True))
+
+        inicio_lock = {"value": False}
+        fim_lock = {"value": False}
+        inicio_var.trace_add("write", lambda *_: _aplicar_mascara_data(inicio_var, inicio_lock))
+        fim_var.trace_add("write", lambda *_: _aplicar_mascara_data(fim_var, fim_lock))
+
+        ttk.Label(frame, text="Nome:", style="Field.TLabel").grid(row=1, column=0, sticky="w", pady=(14, 0))
+        ttk.Entry(frame, textvariable=nome_var).grid(row=1, column=1, sticky="ew", padx=(8, 0), pady=(14, 0))
+
+        ttk.Label(frame, text="Inicio:", style="Field.TLabel").grid(row=2, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=inicio_var).grid(row=2, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Fim:", style="Field.TLabel").grid(row=3, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=fim_var).grid(row=3, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Executar a cada (horas):", style="Field.TLabel").grid(row=4, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=ciclo_var, validate="key", validatecommand=vcmd_inteiro).grid(row=4, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Categoria:", style="Field.TLabel").grid(row=5, column=0, sticky="w", pady=(12, 0))
+        ttk.Combobox(frame, textvariable=categoria_ag_var, values=["Todas categorias", *categorias], state="readonly").grid(row=5, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Descricao (opcional):", style="Field.TLabel").grid(row=6, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=descricao_ag_var).grid(row=6, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Preco minimo (opcional):", style="Field.TLabel").grid(row=7, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=preco_min_ag_var).grid(row=7, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Preco maximo (opcional):", style="Field.TLabel").grid(row=8, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=preco_max_ag_var).grid(row=8, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Desconto minimo (%) opcional:", style="Field.TLabel").grid(row=9, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=desconto_ag_var).grid(row=9, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=10, column=0, columnspan=2, sticky="w", pady=(12, 0))
+
+        botoes = ttk.Frame(frame, style="Main.TFrame")
+        botoes.grid(row=11, column=0, columnspan=2, sticky="w", pady=(18, 0))
+
+        def salvar_rotina():
+            nome = (nome_var.get() or "").strip()
+
+            try:
+                if not nome:
+                    raise ValueError("Campo 'Nome' e obrigatorio.")
+
+                inicio_dt = _parse_schedule_datetime_input(inicio_var.get(), "Inicio", required=True)
+                fim_dt = _parse_schedule_datetime_input(fim_var.get(), "Fim", required=True, end_of_day=True)
+                ciclo_horas = parse_int(ciclo_var.get(), "Executar a cada (horas)")
+                if ciclo_horas is None or ciclo_horas < 1:
+                    raise ValueError("A rotina deve rodar no minimo a cada 1 hora.")
+
+                preco_min = parse_float(preco_min_ag_var.get(), "Preco minimo")
+                preco_max = parse_float(preco_max_ag_var.get(), "Preco maximo")
+                desconto_min = parse_int(desconto_ag_var.get(), "Desconto minimo")
+            except ValueError as exc:
+                messagebox.showerror("Validacao", str(exc), parent=modal)
+                return
+
+            if fim_dt and fim_dt <= inicio_dt:
+                messagebox.showerror("Validacao", "Fim deve ser maior que o inicio.", parent=modal)
+                return
+
+            categoria_valor = (categoria_ag_var.get() or "Todas categorias").strip() or "Todas categorias"
+            descricao_valor = (descricao_ag_var.get() or "").strip()
+
+            if schedule is None:
+                novo = {
+                    "id": _proximo_id_configuracao(),
+                    "name": nome,
+                    "active": bool(ativo_var.get()),
+                    "start_at": inicio_dt.isoformat(timespec="minutes"),
+                    "end_at": fim_dt.isoformat(timespec="minutes") if fim_dt else None,
+                    "interval_hours": int(ciclo_horas),
+                    "categoria": categoria_valor,
+                    "descricao": descricao_valor,
+                    "preco_minimo": preco_min,
+                    "preco_maximo": preco_max,
+                    "desconto_minimo": desconto_min,
+                    "last_run_at": None,
+                }
+                hub_schedules.append(novo)
+                status_var.set(f"Rotina '{nome}' criada.")
+            else:
+                schedule["name"] = nome
+                schedule["active"] = bool(ativo_var.get())
+                schedule["start_at"] = inicio_dt.isoformat(timespec="minutes")
+                schedule["end_at"] = fim_dt.isoformat(timespec="minutes") if fim_dt else None
+                schedule["interval_hours"] = int(ciclo_horas)
+                schedule["categoria"] = categoria_valor
+                schedule["descricao"] = descricao_valor
+                schedule["preco_minimo"] = preco_min
+                schedule["preco_maximo"] = preco_max
+                schedule["desconto_minimo"] = desconto_min
+                status_var.set(f"Rotina '{nome}' atualizada.")
+
+            persist_hub_schedules()
+            _refresh_hub_schedules_grid()
+            modal.destroy()
+
+        ttk.Button(botoes, text="Salvar", style="Action.TButton", command=salvar_rotina).pack(side="left")
+        ttk.Button(botoes, text="Cancelar", command=modal.destroy).pack(side="left", padx=(8, 0))
+
+        frame.columnconfigure(1, weight=1)
+
+    def open_alerta_preco_form(alert=None):
+        modal = tk.Toplevel(root)
+        modal.title("Configurar alerta de preco")
+        modal.geometry("760x560")
+        modal.minsize(700, 520)
+        modal.configure(bg="#ececec")
+        modal.transient(root)
+        modal.grab_set()
+
+        frame = ttk.Frame(modal, style="Main.TFrame", padding=14)
+        frame.pack(fill="both", expand=True)
+
+        ttk.Label(frame, text="Configurar Alerta de Preco", style="Header.TLabel").grid(row=0, column=0, columnspan=2, sticky="w")
+
+        modo_var = tk.StringVar(value=((alert.get("mode") if alert else "url") or "url"))
+        nome_var = tk.StringVar(value=(alert.get("name", "") if alert else ""))
+        preco_alvo_var = tk.StringVar(value=("" if not alert else str(alert.get("target_price", ""))))
+        intervalo_horas_var = tk.StringVar(value=(str(alert.get("interval_hours", 1)) if alert else "1"))
+        descricao_alerta_var = tk.StringVar(value=(alert.get("description", "") if alert else ""))
+        urls_iniciais = (alert.get("urls", []) if alert else []) or [""]
+
+        ttk.Label(frame, text="Nome:", style="Field.TLabel").grid(row=1, column=0, sticky="w", pady=(14, 0))
+        ttk.Entry(frame, textvariable=nome_var).grid(row=1, column=1, sticky="ew", padx=(8, 0), pady=(14, 0))
+
+        ttk.Label(frame, text="Modo:", style="Field.TLabel").grid(row=2, column=0, sticky="w", pady=(12, 0))
+        modo_frame = ttk.Frame(frame, style="Main.TFrame")
+        modo_frame.grid(row=2, column=1, sticky="w", padx=(8, 0), pady=(12, 0))
+        ttk.Radiobutton(modo_frame, text="URL", value="url", variable=modo_var).grid(row=0, column=0, sticky="w")
+        ttk.Radiobutton(modo_frame, text="Descricao", value="descricao", variable=modo_var).grid(row=0, column=1, sticky="w", padx=(12, 0))
+
+        ttk.Label(frame, text="Preco alvo (R$):", style="Field.TLabel").grid(row=3, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=preco_alvo_var).grid(row=3, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Ciclo (horas):", style="Field.TLabel").grid(row=4, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=intervalo_horas_var).grid(row=4, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        urls_wrap = ttk.Frame(frame, style="Main.TFrame")
+        urls_wrap.grid(row=5, column=0, columnspan=2, sticky="ew", pady=(12, 0))
+
+        urls_frame = ttk.Frame(urls_wrap, style="Main.TFrame")
+        urls_frame.grid(row=0, column=0, sticky="ew")
+
+        ttk.Label(frame, text="Descricao do produto:", style="Field.TLabel").grid(row=6, column=0, sticky="w", pady=(12, 0))
+        descricao_entry = ttk.Entry(frame, textvariable=descricao_alerta_var)
+        descricao_entry.grid(row=6, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        botoes = ttk.Frame(frame, style="Main.TFrame")
+        botoes.grid(row=7, column=0, columnspan=2, sticky="w", pady=(16, 0))
+
+        url_vars = []
+        url_rows = []
+
+        def _redraw_url_fields():
+            for row_widget in url_rows:
+                row_widget.destroy()
+            url_rows.clear()
+
+            for idx, var in enumerate(url_vars):
+                row_frame = ttk.Frame(urls_frame, style="Main.TFrame")
+                row_frame.grid(row=idx, column=0, sticky="ew", pady=(0, 6))
+                url_rows.append(row_frame)
+
+                if idx == 0:
+                    ttk.Label(row_frame, text="URLs:", style="Field.TLabel").grid(row=0, column=0, sticky="w")
+                else:
+                    ttk.Label(row_frame, text="", style="Field.TLabel").grid(row=0, column=0, sticky="w")
+
+                ttk.Entry(row_frame, textvariable=var).grid(row=0, column=1, sticky="ew", padx=(8, 0))
+
+                if idx == 0:
+                    add_url_btn = ttk.Button(row_frame, text="+", width=3, command=lambda: _add_url_field(""))
+                    add_url_btn.grid(row=0, column=2, sticky="w", padx=(6, 0))
+                    Tooltip(add_url_btn, "Adicionar novo campo de URL")
+
+                if len(url_vars) > 1:
+                    btn_remove = ttk.Button(
+                        row_frame,
+                        text="-",
+                        width=3,
+                        command=lambda i=idx: _remove_url_field(i),
+                    )
+                    btn_remove.grid(row=0, column=3, padx=(6, 0))
+
+                row_frame.columnconfigure(1, weight=1)
+
+        def _add_url_field(initial_value=""):
+            url_vars.append(tk.StringVar(value=initial_value))
+            _redraw_url_fields()
+
+        def _remove_url_field(index):
+            if len(url_vars) <= 1:
+                return
+            url_vars.pop(index)
+            _redraw_url_fields()
+
+        def _toggle_mode_fields(*_):
+            is_url = modo_var.get() == "url"
+            if is_url:
+                urls_wrap.grid()
+                descricao_entry.configure(state="disabled")
+            else:
+                urls_wrap.grid_remove()
+                descricao_entry.configure(state="normal")
+
+        for url in urls_iniciais:
+            _add_url_field(url)
+
+        modo_var.trace_add("write", _toggle_mode_fields)
+        _toggle_mode_fields()
+
+        def salvar_alerta_form():
+            nome = (nome_var.get() or "").strip() or "Alerta sem nome"
+            modo = (modo_var.get() or "url").strip().lower()
+
+            try:
+                preco_alvo = parse_float(preco_alvo_var.get(), "Preco alvo")
+                if preco_alvo is None or preco_alvo <= 0:
+                    raise ValueError("Campo 'Preco alvo' deve ser maior que zero.")
+
+                intervalo_horas = parse_int(intervalo_horas_var.get(), "Ciclo (horas)")
+                if intervalo_horas is None or intervalo_horas < 1:
+                    raise ValueError("A rotina deve ser no minimo a cada 1 hora.")
+            except ValueError as exc:
+                messagebox.showerror("Validacao", str(exc), parent=modal)
+                return
+
+            urls = [str(var.get()).strip() for var in url_vars if str(var.get()).strip()]
+            if modo == "url":
+                if not urls:
+                    messagebox.showerror("Validacao", "Informe ao menos uma URL.", parent=modal)
+                    return
+                invalidas = [url for url in urls if not url.startswith("http://") and not url.startswith("https://")]
+                if invalidas:
+                    messagebox.showerror("Validacao", "Todas as URLs devem comecar com http:// ou https://.", parent=modal)
+                    return
+
+            descricao = (descricao_alerta_var.get() or "").strip()
+            if modo == "descricao" and not descricao:
+                messagebox.showerror("Validacao", "No modo descricao, informe a descricao do produto.", parent=modal)
+                return
+
+            if alert is None:
+                alerts.append(
+                    {
+                        "id": _proximo_id_configuracao(),
+                        "name": nome,
+                        "mode": modo,
+                        "target_price": preco_alvo,
+                        "interval_hours": int(intervalo_horas),
+                        "urls": urls,
+                        "description": descricao,
+                        "active": True,
+                        "last_check_at": None,
+                        "last_notified_price": None,
+                    }
+                )
+                status_var.set(f"Alerta '{nome}' criado.")
+            else:
+                alert["name"] = nome
+                alert["mode"] = modo
+                alert["target_price"] = preco_alvo
+                alert["interval_hours"] = int(intervalo_horas)
+                alert["urls"] = urls
+                alert["description"] = descricao
+                status_var.set(f"Alerta '{nome}' atualizado.")
+
+            persist_alerts()
+            _refresh_hub_schedules_grid()
+            modal.destroy()
+
+        ttk.Button(botoes, text="Salvar", style="Action.TButton", command=salvar_alerta_form).pack(side="left")
+        ttk.Button(botoes, text="Cancelar", command=modal.destroy).pack(side="left", padx=(8, 0))
+
+        frame.columnconfigure(1, weight=1)
+
+    def _excluir_programacao_por_key(key):
+        tipo, item = _obter_programacao_por_key(key)
+        if tipo == "alerta" and item is not None:
+            alerts[:] = [a for a in alerts if str(a.get("id")) != str(item.get("id"))]
+            persist_alerts()
+            return True
+        if tipo == "campanha" and item is not None:
+            hub_schedules[:] = [s for s in hub_schedules if str(s.get("id")) != str(item.get("id"))]
+            persist_hub_schedules()
+            return True
+        return False
+
+    def on_excluir_programacoes_selecionadas():
+        if not programacoes_selecionadas:
+            messagebox.showwarning("Atencao", "Selecione ao menos uma configuracao para excluir.")
+            return
+
+        confirmar = messagebox.askyesno("Excluir configuracoes", "Deseja excluir as configuracoes selecionadas?")
+        if not confirmar:
+            return
+
+        for key in list(programacoes_selecionadas):
+            _excluir_programacao_por_key(key)
+
+        programacoes_selecionadas.clear()
+        selecionar_todas_var.set(False)
+        _refresh_hub_schedules_grid()
+        status_var.set("Configuracoes selecionadas excluidas.")
+
+    def _executar_programacao_agora(key):
+        tipo, item = _obter_programacao_por_key(key)
+        if item is None:
+            return
+
+        if tipo == "campanha":
+            agora = datetime.now()
+            item["last_run_at"] = agora.isoformat(timespec="seconds")
+            persist_hub_schedules()
+            _refresh_hub_schedules_grid()
+            args = _build_hub_args_from_schedule(item)
+            launch_process(args, f"Rotina executada manualmente: {item.get('name', 'Sem nome')}")
+            return
+
+        if tipo == "alerta":
+            if scheduler_state["running"]:
+                messagebox.showwarning("Em execucao", "Ja existe verificacao de alertas em andamento.")
+                return
+
+            scheduler_state["running"] = True
+
+            def worker():
+                result = _check_alert_once(item)
+                root.after(0, lambda: _apply_alert_results([result]))
+
+            threading.Thread(target=worker, daemon=True).start()
+            status_var.set(f"Alerta executado manualmente: {item.get('name', 'Sem nome')}")
+
+    def _on_programacoes_tree_click(event):
+        row_id = hub_schedule_tree.identify_row(event.y)
+        col_id = hub_schedule_tree.identify_column(event.x)
+        if not row_id:
+            return
+        if row_id == "empty-state":
+            return
+
+        if col_id == "#1":
+            if row_id in programacoes_selecionadas:
+                programacoes_selecionadas.remove(row_id)
+            else:
+                programacoes_selecionadas.add(row_id)
+            _refresh_hub_schedules_grid()
+            return
+
+        if col_id == "#5":
+            tipo, item = _obter_programacao_por_key(row_id)
+            if item is None:
+                return
+            item["active"] = not bool(item.get("active", True))
+            if tipo == "alerta":
+                persist_alerts()
+            elif tipo == "campanha":
+                persist_hub_schedules()
+            _refresh_hub_schedules_grid()
+            return
+
+        if col_id == "#2":
+            tipo, item = _obter_programacao_por_key(row_id)
+            if tipo == "alerta":
+                open_alerta_preco_form(item)
+            elif tipo == "campanha":
+                open_hub_schedule_modal(item)
+            return
+
+        if col_id == "#3":
+            tipo, item = _obter_programacao_por_key(row_id)
+            if item is None:
+                return
+            nome = item.get("name", "Sem nome")
+            if not messagebox.askyesno("Excluir configuracao", f"Deseja excluir '{nome}'?"):
+                return
+            _excluir_programacao_por_key(row_id)
+            programacoes_selecionadas.discard(row_id)
+            _refresh_hub_schedules_grid()
+
+        if col_id == "#4":
+            _executar_programacao_agora(row_id)
+            return
+
+    hub_schedule_tree.bind("<Button-1>", _on_programacoes_tree_click)
+
+    def _hub_schedule_due(schedule, now):
+        if not schedule.get("active", True):
+            return False
+
+        inicio = _parse_iso_datetime(schedule.get("start_at"))
+        fim = _parse_iso_datetime(schedule.get("end_at"))
+        if inicio and now < inicio:
+            return False
+        if fim and now > fim:
+            return False
+
+        intervalo_horas = max(1, int(schedule.get("interval_hours", 1)))
+        ultimo = _parse_iso_datetime(schedule.get("last_run_at"))
+        if ultimo is None:
+            return True
+
+        return (now - ultimo) >= timedelta(hours=intervalo_horas)
+
+    def run_hub_scheduler_tick():
+        if worker_running["value"]:
+            return
+
+        agora = datetime.now()
+        due_schedule = next((s for s in hub_schedules if _hub_schedule_due(s, agora)), None)
+        if due_schedule is None:
+            return
+
+        due_schedule["last_run_at"] = agora.isoformat(timespec="seconds")
+        persist_hub_schedules()
+        _refresh_hub_schedules_grid()
+
+        args = _build_hub_args_from_schedule(due_schedule)
+        launch_process(args, f"Rotina programada em execucao: {due_schedule.get('name', 'Sem nome')}")
+
+    _padronizar_formato_ids_configuracoes()
+    _refresh_hub_schedules_grid()
 
     def _mostrar_modal_continuar_login_ml():
         confirmado = {"value": False}
@@ -709,370 +1655,6 @@ def create_gui(categorias):
     def persist_alerts():
         save_alerts_config(ALERTS_CONFIG_FILE, alerts)
 
-    def open_alerta_preco_modal():
-        modal = tk.Toplevel(root)
-        modal.title("Configurar alerta de preco")
-        modal.geometry("980x760")
-        modal.minsize(900, 700)
-        modal.configure(bg="#ececec")
-        modal.transient(root)
-        modal.grab_set()
-
-        frame = ttk.Frame(modal, style="Main.TFrame", padding=14)
-        frame.pack(fill="both", expand=True)
-
-        ttk.Label(frame, text="Configurar Alerta de Preco", style="Header.TLabel").grid(row=0, column=0, columnspan=3, sticky="w")
-
-        modo_var = tk.StringVar(value="url")
-        nome_var = tk.StringVar()
-        preco_alvo_var = tk.StringVar()
-        intervalo_horas_var = tk.StringVar(value="1")
-        descricao_alerta_var = tk.StringVar()
-        ativo_var = tk.BooleanVar(value=True)
-        editing_alert_id = {"value": None}
-        selection_vars = {}
-        alert_rows = []
-        select_all_var = tk.BooleanVar(value=False)
-
-        save_button_text = tk.StringVar(value="Salvar alerta")
-        form_status_var = tk.StringVar(value="")
-
-        ttk.Label(frame, text="Nome do alerta:", style="Field.TLabel").grid(row=1, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=nome_var).grid(row=1, column=1, columnspan=2, sticky="ew", padx=(8, 0), pady=(12, 0))
-
-        ttk.Label(frame, text="Modo:", style="Field.TLabel").grid(row=2, column=0, sticky="w", pady=(12, 0))
-
-        modo_frame = ttk.Frame(frame, style="Main.TFrame")
-        modo_frame.grid(row=2, column=1, columnspan=2, sticky="w", padx=(8, 0), pady=(12, 0))
-
-        rb_url = ttk.Radiobutton(modo_frame, text="Por URL (Recomendável)", value="url", variable=modo_var)
-        rb_desc = ttk.Radiobutton(modo_frame, text="Por descrição do produto", value="descricao", variable=modo_var)
-        rb_url.grid(row=0, column=0, sticky="w")
-        rb_desc.grid(row=0, column=1, sticky="w", padx=(12, 0))
-
-        obs_url = ttk.Label(frame, text="Observação: Recomendável usar por URL para maior precisão.", style="Hint.TLabel")
-        obs_url.grid(row=3, column=0, columnspan=3, sticky="w", pady=(6, 0))
-
-        ttk.Label(frame, text="Preço alvo (R$):", style="Field.TLabel").grid(row=4, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=preco_alvo_var).grid(row=4, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
-
-        ttk.Label(frame, text="A cada X horas:", style="Field.TLabel").grid(row=5, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=intervalo_horas_var).grid(row=5, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
-        ttk.Label(frame, text="(mínimo 1 hora)", style="Hint.TLabel").grid(row=5, column=2, sticky="w", padx=(8, 0), pady=(12, 0))
-
-        urls_wrap = ttk.Frame(frame, style="Main.TFrame")
-        urls_wrap.grid(row=6, column=0, columnspan=3, sticky="ew", pady=(14, 0))
-
-        ttk.Label(urls_wrap, text="URLs do produto:", style="Field.TLabel").grid(row=0, column=0, sticky="w")
-        add_url_btn = ttk.Button(urls_wrap, text="+", width=3)
-        add_url_btn.grid(row=0, column=1, sticky="w", padx=(8, 0))
-        Tooltip(add_url_btn, "Clique para adicionar mais URLs")
-
-        urls_frame = ttk.Frame(urls_wrap, style="Main.TFrame")
-        urls_frame.grid(row=1, column=0, columnspan=3, sticky="ew", pady=(8, 0))
-
-        desc_wrap = ttk.Frame(frame, style="Main.TFrame")
-        desc_wrap.grid(row=7, column=0, columnspan=3, sticky="ew", pady=(14, 0))
-        ttk.Label(desc_wrap, text="Descrição do produto:", style="Field.TLabel").grid(row=0, column=0, sticky="w")
-        ttk.Entry(desc_wrap, textvariable=descricao_alerta_var).grid(row=0, column=1, sticky="ew", padx=(8, 0))
-
-        ttk.Checkbutton(frame, text="Ativo", variable=ativo_var).grid(row=8, column=0, sticky="w", pady=(16, 0))
-
-        ttk.Label(frame, textvariable=form_status_var, style="Hint.TLabel").grid(row=8, column=1, columnspan=2, sticky="w", pady=(16, 0), padx=(8, 0))
-
-        botoes_frame = ttk.Frame(frame, style="Main.TFrame")
-        botoes_frame.grid(row=9, column=0, columnspan=3, sticky="w", pady=(16, 0))
-
-        config_frame = ttk.LabelFrame(frame, text="CONFIGURACOES CRIADAS", style="Card.TLabelframe", padding=10)
-        config_frame.grid(row=10, column=0, columnspan=3, sticky="nsew", pady=(16, 0))
-
-        config_actions = ttk.Frame(config_frame, style="Main.TFrame")
-        config_actions.grid(row=0, column=0, sticky="ew", pady=(0, 8))
-        ttk.Checkbutton(
-            config_actions,
-            text="Selecionar tudo",
-            variable=select_all_var,
-            command=lambda: toggle_select_all(),
-        ).grid(row=0, column=0, sticky="w", padx=(0, 12))
-        ttk.Button(config_actions, text="Excluir selecionados", command=lambda: delete_selected_alerts()).grid(row=0, column=1, sticky="w")
-
-        grid_header = ttk.Frame(config_frame, style="Main.TFrame")
-        grid_header.grid(row=1, column=0, sticky="ew")
-
-        ttk.Label(grid_header, text="Sel", style="Field.TLabel").grid(row=0, column=0, sticky="w")
-        ttk.Label(grid_header, text="Nome", style="Field.TLabel").grid(row=0, column=1, sticky="w", padx=(8, 0))
-        ttk.Label(grid_header, text="Modo", style="Field.TLabel").grid(row=0, column=2, sticky="w", padx=(8, 0))
-        ttk.Label(grid_header, text="Preco alvo", style="Field.TLabel").grid(row=0, column=3, sticky="w", padx=(8, 0))
-        ttk.Label(grid_header, text="Intervalo", style="Field.TLabel").grid(row=0, column=4, sticky="w", padx=(8, 0))
-        ttk.Label(grid_header, text="Origem", style="Field.TLabel").grid(row=0, column=5, sticky="w", padx=(8, 0))
-        ttk.Label(grid_header, text="Acoes", style="Field.TLabel").grid(row=0, column=6, sticky="w", padx=(8, 0))
-
-        rows_container = ttk.Frame(config_frame, style="Main.TFrame")
-        rows_container.grid(row=2, column=0, sticky="nsew", pady=(6, 0))
-
-        lista_urls_vars = []
-        url_rows = []
-
-        def redraw_url_fields():
-            for row_widget in url_rows:
-                row_widget.destroy()
-            url_rows.clear()
-
-            for idx, var in enumerate(lista_urls_vars):
-                row_frame = ttk.Frame(urls_frame, style="Main.TFrame")
-                row_frame.grid(row=idx, column=0, sticky="ew", pady=(0, 6))
-                url_rows.append(row_frame)
-
-                ttk.Entry(row_frame, textvariable=var).grid(row=0, column=0, sticky="ew")
-                if len(lista_urls_vars) > 1:
-                    btn_remove = ttk.Button(
-                        row_frame,
-                        text="-",
-                        width=3,
-                        command=lambda i=idx: remove_url_field(i),
-                    )
-                    btn_remove.grid(row=0, column=1, padx=(6, 0))
-
-                row_frame.columnconfigure(0, weight=1)
-
-        def add_url_field(initial_value=""):
-            var = tk.StringVar(value=initial_value)
-            lista_urls_vars.append(var)
-            redraw_url_fields()
-
-        def remove_url_field(index):
-            if len(lista_urls_vars) <= 1:
-                return
-            lista_urls_vars.pop(index)
-            redraw_url_fields()
-
-        def toggle_mode_fields():
-            is_url = modo_var.get() == "url"
-
-            urls_wrap.grid() if is_url else urls_wrap.grid_remove()
-            desc_wrap.grid_remove() if is_url else desc_wrap.grid()
-
-        def reset_form():
-            editing_alert_id["value"] = None
-            save_button_text.set("Salvar alerta")
-            form_status_var.set("")
-
-            modo_var.set("url")
-            nome_var.set("")
-            preco_alvo_var.set("")
-            intervalo_horas_var.set("1")
-            descricao_alerta_var.set("")
-            ativo_var.set(True)
-
-            lista_urls_vars.clear()
-            add_url_field("")
-            toggle_mode_fields()
-
-        def apply_alert_to_form(alert):
-            editing_alert_id["value"] = alert.get("id")
-            save_button_text.set("Salvar alteracoes")
-            form_status_var.set("Modo edicao ativo")
-
-            modo = (alert.get("mode") or "url").strip().lower()
-            modo_var.set("descricao" if modo == "descricao" else "url")
-            nome_var.set(alert.get("name", ""))
-            preco_alvo_var.set(str(alert.get("target_price", "")))
-            intervalo_horas_var.set(str(alert.get("interval_hours", 1)))
-            descricao_alerta_var.set(alert.get("description", ""))
-            ativo_var.set(bool(alert.get("active", True)))
-
-            lista_urls_vars.clear()
-            urls = alert.get("urls", []) or [""]
-            for url in urls:
-                add_url_field(url)
-
-            toggle_mode_fields()
-
-        def format_origem(alert):
-            mode = (alert.get("mode") or "url").strip().lower()
-            if mode == "url":
-                urls = [u for u in alert.get("urls", []) if u]
-                if not urls:
-                    return "-"
-                if len(urls) == 1:
-                    return urls[0][:40] + ("..." if len(urls[0]) > 40 else "")
-                return f"{len(urls)} URLs"
-            descricao = (alert.get("description") or "").strip()
-            if not descricao:
-                return "-"
-            return descricao[:40] + ("..." if len(descricao) > 40 else "")
-
-        def update_select_all_state():
-            if not selection_vars:
-                select_all_var.set(False)
-                return
-
-            select_all_var.set(all(var.get() for var in selection_vars.values()))
-
-        def toggle_select_all():
-            mark_all = bool(select_all_var.get())
-            for var in selection_vars.values():
-                var.set(mark_all)
-
-        def delete_one(alert_id):
-            index = next((i for i, alert in enumerate(alerts) if alert.get("id") == alert_id), None)
-            if index is None:
-                return
-
-            alerts.pop(index)
-            persist_alerts()
-
-            if editing_alert_id["value"] == alert_id:
-                reset_form()
-
-            render_alert_rows()
-
-        def delete_selected_alerts():
-            selected_ids = [
-                alert_id for alert_id, var in selection_vars.items() if var.get()
-            ]
-
-            if not selected_ids:
-                messagebox.showwarning("Atencao", "Selecione ao menos uma configuracao para excluir.", parent=modal)
-                return
-
-            remaining = [alert for alert in alerts if alert.get("id") not in selected_ids]
-            alerts.clear()
-            alerts.extend(remaining)
-            persist_alerts()
-
-            if editing_alert_id["value"] in selected_ids:
-                reset_form()
-
-            render_alert_rows()
-
-        def render_alert_rows():
-            for row in alert_rows:
-                row.destroy()
-            alert_rows.clear()
-            selection_vars.clear()
-            select_all_var.set(False)
-
-            if not alerts:
-                empty_label = ttk.Label(rows_container, text="Nenhuma configuracao cadastrada.", style="Hint.TLabel")
-                empty_label.grid(row=0, column=0, sticky="w")
-                alert_rows.append(empty_label)
-                return
-
-            for idx, alert in enumerate(alerts):
-                row_frame = ttk.Frame(rows_container, style="Main.TFrame")
-                row_frame.grid(row=idx, column=0, sticky="ew", pady=(0, 4))
-                alert_rows.append(row_frame)
-
-                alert_id = alert.get("id")
-                selected_var = tk.BooleanVar(value=False)
-                selection_vars[alert_id] = selected_var
-
-                ttk.Checkbutton(
-                    row_frame,
-                    variable=selected_var,
-                    command=update_select_all_state,
-                ).grid(row=0, column=0, sticky="w")
-                ttk.Label(row_frame, text=alert.get("name", "-"), style="Hint.TLabel").grid(row=0, column=1, sticky="w", padx=(8, 0))
-                ttk.Label(row_frame, text=(alert.get("mode") or "url"), style="Hint.TLabel").grid(row=0, column=2, sticky="w", padx=(8, 0))
-                ttk.Label(row_frame, text=f"R$ {float(alert.get('target_price', 0)):.2f}", style="Hint.TLabel").grid(row=0, column=3, sticky="w", padx=(8, 0))
-                ttk.Label(row_frame, text=f"{int(alert.get('interval_hours', 1))}h", style="Hint.TLabel").grid(row=0, column=4, sticky="w", padx=(8, 0))
-                ttk.Label(row_frame, text=format_origem(alert), style="Hint.TLabel").grid(row=0, column=5, sticky="w", padx=(8, 0))
-
-                edit_btn = ttk.Button(row_frame, text="✎", width=3, command=lambda a=alert: apply_alert_to_form(a))
-                edit_btn.grid(row=0, column=6, sticky="w", padx=(8, 0))
-                Tooltip(edit_btn, "Editar configuracao")
-
-                delete_btn = ttk.Button(row_frame, text="🗑", width=3, command=lambda aid=alert_id: delete_one(aid))
-                delete_btn.grid(row=0, column=7, sticky="w", padx=(6, 0))
-                Tooltip(delete_btn, "Excluir configuracao")
-
-                row_frame.columnconfigure(5, weight=1)
-
-        def salvar_alerta():
-            nome = nome_var.get().strip() or "Alerta sem nome"
-
-            try:
-                preco_alvo = parse_float(preco_alvo_var.get(), "Preço alvo")
-                if preco_alvo is None or preco_alvo <= 0:
-                    raise ValueError("Campo 'Preço alvo' deve ser maior que zero.")
-
-                intervalo_horas = parse_int(intervalo_horas_var.get(), "A cada X horas")
-                if intervalo_horas is None or intervalo_horas < 1:
-                    raise ValueError("A rotina deve ser no mínimo a cada 1 hora.")
-            except ValueError as exc:
-                messagebox.showerror("Validação", str(exc), parent=modal)
-                return
-
-            modo = modo_var.get()
-            urls = [var.get().strip() for var in lista_urls_vars if var.get().strip()]
-
-            if modo == "url":
-                if not urls:
-                    messagebox.showerror("Validação", "Informe pelo menos uma URL para o alerta.", parent=modal)
-                    return
-
-                invalid_urls = [url for url in urls if not url.startswith("http://") and not url.startswith("https://")]
-                if invalid_urls:
-                    messagebox.showerror("Validação", "Todas as URLs devem começar com http:// ou https://.", parent=modal)
-                    return
-
-            descricao_alerta = descricao_alerta_var.get().strip()
-            if modo == "descricao" and not descricao_alerta:
-                messagebox.showerror("Validação", "No modo descrição, informe a descrição do produto.", parent=modal)
-                return
-
-            existing = next((alert for alert in alerts if alert.get("id") == editing_alert_id["value"]), None)
-
-            if existing is None:
-                alert = {
-                    "id": int(datetime.now().timestamp() * 1000),
-                    "name": nome,
-                    "mode": modo,
-                    "target_price": preco_alvo,
-                    "interval_hours": intervalo_horas,
-                    "urls": urls,
-                    "description": descricao_alerta,
-                    "active": bool(ativo_var.get()),
-                    "last_check_at": None,
-                    "last_notified_price": None,
-                }
-                alerts.append(alert)
-                status_var.set(f"Alerta '{nome}' salvo com sucesso.")
-            else:
-                existing["name"] = nome
-                existing["mode"] = modo
-                existing["target_price"] = preco_alvo
-                existing["interval_hours"] = intervalo_horas
-                existing["urls"] = urls
-                existing["description"] = descricao_alerta
-                existing["active"] = bool(ativo_var.get())
-                status_var.set(f"Alerta '{nome}' atualizado com sucesso.")
-
-            persist_alerts()
-            render_alert_rows()
-            reset_form()
-
-        add_url_btn.configure(command=lambda: add_url_field(""))
-        add_url_field("")
-
-        modo_var.trace_add("write", lambda *_: toggle_mode_fields())
-        toggle_mode_fields()
-        render_alert_rows()
-
-        ttk.Button(botoes_frame, textvariable=save_button_text, style="Action.TButton", command=salvar_alerta).grid(row=0, column=0, padx=(0, 8))
-        ttk.Button(botoes_frame, text="Limpar", command=reset_form).grid(row=0, column=1, padx=(0, 8))
-        ttk.Button(botoes_frame, text="Fechar", command=modal.destroy).grid(row=0, column=2)
-
-        frame.columnconfigure(1, weight=1)
-        frame.rowconfigure(10, weight=1)
-        urls_wrap.columnconfigure(2, weight=1)
-        urls_frame.columnconfigure(0, weight=1)
-        desc_wrap.columnconfigure(1, weight=1)
-        config_frame.columnconfigure(0, weight=1)
-        config_frame.rowconfigure(2, weight=1)
-        rows_container.columnconfigure(0, weight=1)
-
     def _alert_due(alert, now):
         if not alert.get("active", True):
             return False
@@ -1186,6 +1768,8 @@ def create_gui(categorias):
 
     def scheduler_loop():
         run_scheduler_tick()
+        run_hub_scheduler_tick()
+        _refresh_hub_schedules_grid()
         root.after(SCHEDULER_TICK_MS, scheduler_loop)
 
     root.after(SCHEDULER_TICK_MS, scheduler_loop)
@@ -1281,21 +1865,7 @@ def create_gui(categorias):
         descricao = descricao_var.get().strip()
         categoria = categoria_var.get().strip()
 
-        args = ["--produto-por-html"]
-        if categoria:
-            args.extend(["--categoria", categoria])
-
-        if descricao:
-            args.extend(["--descricao-produto", descricao])
-
-        if preco_min is not None:
-            args.extend(["--preco-minimo", str(preco_min)])
-
-        if preco_max is not None:
-            args.extend(["--preco-maximo", str(preco_max)])
-
-        if desconto is not None:
-            args.extend(["--desconto-minimo", str(desconto)])
+        args = _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto)
 
         launch_process(args, "Busca de produto por HTML do hub iniciada em nova janela.")
 
@@ -1365,7 +1935,11 @@ def create_gui(categorias):
 
     buscar_produto_btn.configure(command=on_buscar_produto)
     buscar_relampago_btn.configure(command=on_buscar_relampago)
-    alerta_preco_btn.configure(command=open_alerta_preco_modal)
+    alerta_preco_btn.configure(command=lambda: open_alerta_preco_form(None))
+    campanha_produto_btn.configure(command=lambda: open_hub_schedule_modal(None))
+    alerta_config_btn.configure(command=lambda: open_alerta_preco_form(None))
+    campanha_config_btn.configure(command=lambda: open_hub_schedule_modal(None))
+    delete_selected_btn.configure(command=on_excluir_programacoes_selecionadas)
 
     root.mainloop()
 
