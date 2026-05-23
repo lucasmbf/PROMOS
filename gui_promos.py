@@ -1,5 +1,9 @@
 import argparse
+import contextlib
+import importlib
 import json
+import os
+import queue
 import re
 import subprocess
 import sys
@@ -8,13 +12,14 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from urllib.parse import quote_plus
 import tkinter as tk
-from tkinter import messagebox, ttk
+from tkinter import filedialog, messagebox, ttk
 
 import requests
 from bs4 import BeautifulSoup
 
 BASE_DIR = Path(__file__).resolve().parent
 ALERTS_CONFIG_FILE = BASE_DIR / "alertas_preco.json"
+LOGS_DIR = BASE_DIR / "logs_execucao"
 SCHEDULER_TICK_MS = 60000
 HTTP_HEADERS = {
     "User-Agent": (
@@ -259,8 +264,15 @@ def _parse_iso_datetime(value):
 
 
 def run_main_mode(forward_args):
-    sys.argv = ["main.py", *forward_args]
-    import main  # noqa: F401
+    original_argv = list(sys.argv)
+    try:
+        sys.argv = ["main.py", *forward_args]
+        if "main" in sys.modules:
+            importlib.reload(sys.modules["main"])
+        else:
+            importlib.import_module("main")
+    finally:
+        sys.argv = original_argv
 
 
 def build_worker_command(args):
@@ -268,6 +280,17 @@ def build_worker_command(args):
         return [sys.executable, "--run-main", *args]
 
     return [sys.executable, str(BASE_DIR / "gui_promos.py"), "--run-main", *args]
+
+
+def build_worker_env():
+    env = os.environ.copy()
+
+    # Prevent onefile parent/child temp-dir conflicts when spawning the same exe.
+    if getattr(sys, "frozen", False):
+        env["PYINSTALLER_RESET_ENVIRONMENT"] = "1"
+        env.pop("_MEIPASS2", None)
+
+    return env
 
 
 def build_styles(root):
@@ -321,7 +344,7 @@ def create_gui(categorias):
     descricao_var = tk.StringVar()
     preco_min_var = tk.StringVar()
     preco_max_var = tk.StringVar()
-    desconto_var = tk.StringVar(value="30")
+    desconto_var = tk.StringVar()
     menor_preco_var = tk.BooleanVar(value=True)
     categoria_var = tk.StringVar(value="")
 
@@ -334,11 +357,46 @@ def create_gui(categorias):
     }
 
     rel_preco_min_var = tk.StringVar()
-    rel_preco_max_var = tk.StringVar(value="400")
-    rel_desconto_var = tk.StringVar(value="30")
-    rel_limite_var = tk.StringVar(value="10")
+    rel_preco_max_var = tk.StringVar()
+    rel_desconto_var = tk.StringVar()
+    rel_limite_var = tk.StringVar()
     rel_categoria_var = tk.StringVar(value="Todas categorias")
-    rel_padrao_var = tk.BooleanVar(value=True)
+    rel_padrao_var = tk.BooleanVar(value=False)
+
+    def _decimal_input_valido(texto):
+        texto = (texto or "").strip()
+        if not texto:
+            return True
+        return bool(re.fullmatch(r"\d+(?:[\.,]\d{0,2})?", texto))
+
+    def _inteiro_input_valido(texto):
+        texto = (texto or "").strip()
+        return not texto or texto.isdigit()
+
+    def _normalizar_varchar(var, limite=255):
+        texto = (var.get() or "")
+        texto_limpo = "".join(ch for ch in texto if ch >= " " or ch == "\t")
+        if len(texto_limpo) > limite:
+            texto_limpo = texto_limpo[:limite]
+        if texto_limpo != texto:
+            var.set(texto_limpo)
+
+    def _formatar_decimal_em_var(var):
+        texto = (var.get() or "").strip()
+        if not texto:
+            return
+
+        try:
+            valor = float(texto.replace(",", "."))
+        except ValueError:
+            return
+
+        var.set(f"{valor:.2f}".replace(".", ","))
+
+    vcmd_decimal = (root.register(_decimal_input_valido), "%P")
+    vcmd_inteiro = (root.register(_inteiro_input_valido), "%P")
+
+    descricao_var.trace_add("write", lambda *_: _normalizar_varchar(descricao_var))
 
     row = 0
     ttk.Label(product_frame, text="Descricao:", style="Field.TLabel").grid(row=row, column=0, sticky="w")
@@ -377,15 +435,33 @@ def create_gui(categorias):
 
     row += 1
     ttk.Label(product_frame, text="Preco minimo:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(12, 0))
-    ttk.Entry(product_frame, textvariable=preco_min_var).grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(12, 0))
+    preco_min_entry = ttk.Entry(
+        product_frame,
+        textvariable=preco_min_var,
+        validate="key",
+        validatecommand=vcmd_decimal,
+    )
+    preco_min_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(12, 0))
 
     row += 1
     ttk.Label(product_frame, text="Preco maximo:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(12, 0))
-    ttk.Entry(product_frame, textvariable=preco_max_var).grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(12, 0))
+    preco_max_entry = ttk.Entry(
+        product_frame,
+        textvariable=preco_max_var,
+        validate="key",
+        validatecommand=vcmd_decimal,
+    )
+    preco_max_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(12, 0))
 
     row += 1
     ttk.Label(product_frame, text="Desconto minimo (%):", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(12, 0))
-    ttk.Entry(product_frame, textvariable=desconto_var).grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(12, 0))
+    desconto_entry = ttk.Entry(
+        product_frame,
+        textvariable=desconto_var,
+        validate="key",
+        validatecommand=vcmd_inteiro,
+    )
+    desconto_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(12, 0))
 
     row += 1
     ttk.Checkbutton(product_frame, text="Priorizar menor preco", variable=menor_preco_var).grid(row=row, column=0, columnspan=3, sticky="w", pady=(12, 0))
@@ -409,23 +485,51 @@ def create_gui(categorias):
 
     rel_row += 1
     ttk.Label(relampago_frame, text="Preco minimo:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(12, 0))
-    rel_preco_min_entry = ttk.Entry(relampago_frame, textvariable=rel_preco_min_var)
+    rel_preco_min_entry = ttk.Entry(
+        relampago_frame,
+        textvariable=rel_preco_min_var,
+        validate="key",
+        validatecommand=vcmd_decimal,
+    )
     rel_preco_min_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
     rel_row += 1
     ttk.Label(relampago_frame, text="Preco maximo:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(12, 0))
-    rel_preco_max_entry = ttk.Entry(relampago_frame, textvariable=rel_preco_max_var)
+    rel_preco_max_entry = ttk.Entry(
+        relampago_frame,
+        textvariable=rel_preco_max_var,
+        validate="key",
+        validatecommand=vcmd_decimal,
+    )
     rel_preco_max_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
     rel_row += 1
     ttk.Label(relampago_frame, text="Desconto minimo (%):", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(12, 0))
-    rel_desconto_entry = ttk.Entry(relampago_frame, textvariable=rel_desconto_var)
+    rel_desconto_entry = ttk.Entry(
+        relampago_frame,
+        textvariable=rel_desconto_var,
+        validate="key",
+        validatecommand=vcmd_inteiro,
+    )
     rel_desconto_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
     rel_row += 1
     ttk.Label(relampago_frame, text="Limite de candidatos:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(12, 0))
-    rel_limite_entry = ttk.Entry(relampago_frame, textvariable=rel_limite_var)
+    rel_limite_entry = ttk.Entry(
+        relampago_frame,
+        textvariable=rel_limite_var,
+        validate="key",
+        validatecommand=vcmd_inteiro,
+    )
     rel_limite_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+    for decimal_var, decimal_entry in [
+        (preco_min_var, preco_min_entry),
+        (preco_max_var, preco_max_entry),
+        (rel_preco_min_var, rel_preco_min_entry),
+        (rel_preco_max_var, rel_preco_max_entry),
+    ]:
+        decimal_entry.bind("<FocusOut>", lambda _e, var=decimal_var: _formatar_decimal_em_var(var))
 
     rel_row += 1
     rel_padrao_check = ttk.Checkbutton(relampago_frame, text="Usar modo relampago padrao", variable=rel_padrao_var)
@@ -464,8 +568,80 @@ def create_gui(categorias):
     status_var = tk.StringVar(value="Pronto para executar.")
     ttk.Label(output_frame, textvariable=status_var, style="Hint.TLabel").pack(anchor="w")
 
+    log_path_var = tk.StringVar(value="Log salvo em: -")
+    ttk.Label(output_frame, textvariable=log_path_var, style="Hint.TLabel").pack(anchor="w", pady=(6, 0))
+
+    resumo_text = tk.Text(output_frame, height=12, wrap="word", background="#f6f6f6", foreground="#303030")
+    resumo_text.pack(fill="x", expand=False, pady=(8, 0))
+    resumo_text.configure(state="disabled")
+
     alerts = load_alerts_config(ALERTS_CONFIG_FILE)
     scheduler_state = {"running": False}
+    worker_running = {"value": False}
+    worker_log = {"path": None}
+    worker_messages = queue.Queue()
+
+    def _append_resumo(texto):
+        if not texto:
+            return
+
+        resumo_text.configure(state="normal")
+        resumo_text.insert("end", texto)
+        resumo_text.see("end")
+        resumo_text.configure(state="disabled")
+
+    def _limpar_resumo():
+        resumo_text.configure(state="normal")
+        resumo_text.delete("1.0", "end")
+        resumo_text.configure(state="disabled")
+
+    def _drain_worker_messages():
+        try:
+            while True:
+                _append_resumo(worker_messages.get_nowait())
+        except queue.Empty:
+            pass
+
+        root.after(200, _drain_worker_messages)
+
+    class _TeeWriter:
+        def __init__(self, output_queue, file_handle=None, mirror=None):
+            self._queue = output_queue
+            self._file_handle = file_handle
+            self._mirror = mirror
+
+        def write(self, texto):
+            if not texto:
+                return 0
+
+            self._queue.put(texto)
+
+            if self._file_handle:
+                self._file_handle.write(texto)
+
+            if self._mirror:
+                self._mirror.write(texto)
+
+            return len(texto)
+
+        def flush(self):
+            if self._file_handle:
+                self._file_handle.flush()
+            if self._mirror:
+                self._mirror.flush()
+
+    def _iniciar_log_execucao(forward_args):
+        LOGS_DIR.mkdir(parents=True, exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        caminho = LOGS_DIR / f"execucao_{timestamp}.log"
+
+        with open(caminho, "w", encoding="utf-8") as log_file:
+            log_file.write(f"=== Inicio da execucao: {datetime.now().isoformat(timespec='seconds')} ===\n")
+            log_file.write(f"Args: {' '.join(forward_args)}\n\n")
+
+        return caminho
+
+    root.after(200, _drain_worker_messages)
 
     def persist_alerts():
         save_alerts_config(ALERTS_CONFIG_FILE, alerts)
@@ -952,12 +1128,64 @@ def create_gui(categorias):
     root.after(SCHEDULER_TICK_MS, scheduler_loop)
 
     def launch_process(forward_args, status_text):
-        cmd = build_worker_command(forward_args)
+        if worker_running["value"]:
+            messagebox.showwarning("Em execucao", "Ja existe uma busca em andamento.")
+            return
+
+        worker_running["value"] = True
+        status_var.set(status_text)
+        _limpar_resumo()
+
         try:
-            subprocess.Popen(cmd, cwd=BASE_DIR)
-            status_var.set(status_text)
+            caminho_log = _iniciar_log_execucao(forward_args)
         except Exception as exc:
-            messagebox.showerror("Falha", f"Nao foi possivel iniciar o processo.\n\n{exc}")
+            worker_running["value"] = False
+            messagebox.showerror("Falha", f"Nao foi possivel criar o log de execucao.\n\n{exc}")
+            return
+
+        worker_log["path"] = caminho_log
+        log_path_var.set(f"Log salvo em: {caminho_log}")
+        _append_resumo(f"[{datetime.now().strftime('%H:%M:%S')}] {status_text}\n")
+        _append_resumo(f"[{datetime.now().strftime('%H:%M:%S')}] Log: {caminho_log}\n\n")
+
+        def _finish_worker(message=None):
+            worker_running["value"] = False
+            if message:
+                status_var.set(message)
+
+        def _worker():
+            erro = None
+            mensagem_final = "Processo finalizado."
+
+            try:
+                with open(caminho_log, "a", encoding="utf-8") as log_file:
+                    tee = _TeeWriter(worker_messages, file_handle=log_file, mirror=sys.__stdout__)
+                    with contextlib.redirect_stdout(tee), contextlib.redirect_stderr(tee):
+                        try:
+                            run_main_mode(forward_args)
+                        except SystemExit as exc:
+                            codigo = exc.code
+                            if codigo not in (None, 0):
+                                raise RuntimeError(f"Processo finalizado com codigo {codigo}.") from exc
+                        finally:
+                            print(f"\n=== Fim da execucao: {datetime.now().isoformat(timespec='seconds')} ===")
+            except Exception as exc:
+                erro = exc
+                mensagem_final = "Falha na execucao."
+
+            if erro is None:
+                root.after(0, lambda: _finish_worker(mensagem_final))
+                return
+
+            root.after(
+                0,
+                lambda: (
+                    messagebox.showerror("Falha", f"Erro durante a execucao:\n\n{erro}"),
+                    _finish_worker(mensagem_final),
+                ),
+            )
+
+        threading.Thread(target=_worker, daemon=True).start()
 
     def on_buscar_produto():
         selected = [name for name, var in fontes_vars.items() if var.get()]
@@ -1004,7 +1232,14 @@ def create_gui(categorias):
 
     def on_buscar_relampago():
         if rel_padrao_var.get():
-            launch_process(["--relampago-padrao"], "Processo de ofertas relampago padrao iniciado em nova janela.")
+            pasta_saida = filedialog.askdirectory(
+                title="Escolha onde salvar lista_anuncios.txt",
+                mustexist=True,
+            )
+            if not pasta_saida:
+                return
+
+            launch_process(["--relampago-padrao", "--pasta-saida", pasta_saida], "Processo de ofertas relampago padrao iniciado em nova janela.")
             return
 
         try:
@@ -1017,6 +1252,31 @@ def create_gui(categorias):
             return
 
         categoria = rel_categoria_var.get().strip()
+
+        possui_parametro = any(
+            [
+                bool(categoria and categoria != "Todas categorias"),
+                preco_min is not None,
+                preco_max is not None,
+                desconto is not None,
+                limite is not None,
+            ]
+        )
+
+        if not possui_parametro:
+            messagebox.showwarning(
+                "Atencao",
+                "Com o modo relampago padrao desmarcado, preencha ao menos um parametro para executar.",
+            )
+            return
+
+        pasta_saida = filedialog.askdirectory(
+            title="Escolha onde salvar lista_anuncios.txt",
+            mustexist=True,
+        )
+        if not pasta_saida:
+            return
+
         args = []
 
         args.append("--somente-relampago")
@@ -1031,6 +1291,7 @@ def create_gui(categorias):
         if limite is not None:
             args.extend(["--limite-candidatos", str(limite)])
 
+        args.extend(["--pasta-saida", pasta_saida])
         launch_process(args, "Processo de ofertas relampago iniciado em nova janela.")
 
     buscar_produto_btn.configure(command=on_buscar_produto)

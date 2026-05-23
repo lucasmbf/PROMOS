@@ -1290,6 +1290,34 @@ def _salvar_html_consolidado(entradas_html, pasta, prefixo):
     return caminho
 
 
+def _limpar_htmls_relampago_antigos(pasta, caminhos_manter):
+
+    pasta_path = Path(pasta)
+    if not pasta_path.exists():
+        return
+
+    caminhos_validos = {
+        str(Path(caminho).resolve())
+        for caminho in (caminhos_manter or [])
+        if caminho
+    }
+
+    removidos = 0
+    for arquivo in pasta_path.glob("html_relampago*.txt"):
+        caminho_resolvido = str(arquivo.resolve())
+        if caminho_resolvido in caminhos_validos:
+            continue
+
+        try:
+            arquivo.unlink()
+            removidos += 1
+        except Exception as exc:
+            print(f"[AVISO] Não foi possível remover HTML antigo '{arquivo}': {exc}")
+
+    if removidos:
+        print(f"Limpeza de HTML relâmpago: {removidos} arquivo(s) antigo(s) removido(s).")
+
+
 def salvar_html_ofertas_relampago(page, url, indice=None, pasta=PASTA_RELAMPAGO_HTML):
     """Navega até uma página de ofertas relâmpago, faz scroll e salva o HTML."""
 
@@ -1836,6 +1864,19 @@ def _obter_link_via_botao_afiliados(page, url_original):
             "nav[aria-label='Afiliados'] button[data-testid='generate_link_button']"
         ).first
 
+        if botao.count() == 0:
+            url_atual = (page.url or "").lower()
+            try:
+                pagina_tem_link_login = page.locator("a[href*='login']").count() > 0
+            except Exception:
+                pagina_tem_link_login = False
+
+            if "login" in url_atual or pagina_tem_link_login:
+                raise RuntimeError(
+                    "Sessao do Mercado Livre nao autenticada: botao de Afiliados indisponivel. "
+                    "Faça login e execute novamente."
+                )
+
         botao.wait_for(state="visible", timeout=10000)
         botao.click()
 
@@ -1888,6 +1929,9 @@ def _obter_link_via_botao_afiliados(page, url_original):
         page.keyboard.press("Escape")
 
     except Exception as exc:
+        if isinstance(exc, RuntimeError):
+            raise
+
         print(f"[ERRO] Falha ao clicar no botão Afiliados/Compartilhar: {exc}")
         try:
             page.keyboard.press("Escape")
@@ -2114,7 +2158,14 @@ def obter_link_afiliado_relampago(page, oferta, url_relampago):
     return link, categoria, link_anuncio
 
 
-def _coletar_htmls_relampago(page, url_base_paginas, pasta=PASTA_RELAMPAGO_HTML, coletar_todas_paginas=True):
+def _coletar_htmls_relampago(
+    page,
+    url_base_paginas,
+    pasta=PASTA_RELAMPAGO_HTML,
+    coletar_todas_paginas=True,
+    salvar_consolidado=True,
+    max_paginas_total=None,
+):
 
     entradas_html = []
     caminho_inicial = salvar_html_ofertas_relampago(page, url_base_paginas, indice=1, pasta=pasta)
@@ -2126,6 +2177,9 @@ def _coletar_htmls_relampago(page, url_base_paginas, pasta=PASTA_RELAMPAGO_HTML,
         total = paging.get("total", 0) or 0
         total_paginas = max(1, ceil(total / limite)) if total and limite else 1
 
+        if max_paginas_total is not None:
+            total_paginas = min(total_paginas, max(1, int(max_paginas_total)))
+
         print(f"Paginação detectada: {total_paginas} página(s) com limite de {limite} item(ns) por página.")
 
         for pagina in range(2, total_paginas + 1):
@@ -2135,8 +2189,11 @@ def _coletar_htmls_relampago(page, url_base_paginas, pasta=PASTA_RELAMPAGO_HTML,
     else:
         print("Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.")
 
-    _salvar_html_consolidado(entradas_html, pasta, "html_relampago_consolidado")
-    return entradas_html
+    caminho_consolidado = None
+    if salvar_consolidado:
+        caminho_consolidado = _salvar_html_consolidado(entradas_html, pasta, "html_relampago_consolidado")
+
+    return entradas_html, caminho_consolidado
 
 
 def _obter_total_paginas_relampago(caminho_html):
@@ -2183,6 +2240,8 @@ def processar_ofertas_relampago(
     historico_anuncios=None,
     ids_descartados=None,
     limite_validos=10,
+    forcar_modo_incremental=False,
+    max_paginas_incremental=None,
 ):
     """Fluxo completo de ofertas relâmpago:
 
@@ -2205,7 +2264,7 @@ def processar_ofertas_relampago(
     if ids_descartados is None and historico_anuncios:
         ids_descartados = historico_anuncios
 
-    modo_sem_parametros = (
+    modo_sem_parametros = bool(forcar_modo_incremental) or (
         not categoria_filtro
         and not _tem_filtros_ativos(
             desconto_minimo=desconto_minimo,
@@ -2216,14 +2275,23 @@ def processar_ofertas_relampago(
         and limite_candidatos is None
     )
 
+    caminho_html_consolidado = None
+
+    # Mantém somente HTMLs da execução atual, evitando acúmulo de arquivos antigos.
+    _limpar_htmls_relampago_antigos(PASTA_RELAMPAGO_HTML, caminhos_manter=[])
+
     limite_alvo = limite_validos if limite_candidatos is None else min(limite_validos, limite_candidatos)
 
     if modo_sem_parametros:
-        entradas_html = _coletar_htmls_relampago(
+        MAX_PAGINAS_RELAMPAGO_SEM_PARAMETROS = 2 if forcar_modo_incremental else 30
+        MAX_PAGINAS_SEM_PROGRESSO = 5
+
+        entradas_html, caminho_html_consolidado = _coletar_htmls_relampago(
             page,
             url_base_paginas,
             pasta=PASTA_RELAMPAGO_HTML,
             coletar_todas_paginas=False,
+            salvar_consolidado=False,
         )
 
         ofertas_consolidadas = _selecionar_ofertas_validas(
@@ -2237,13 +2305,21 @@ def processar_ofertas_relampago(
         )
 
         total_paginas = _obter_total_paginas_relampago(entradas_html[0]["path"])
+        limite_paginas_incremental = (
+            max(1, int(max_paginas_incremental))
+            if max_paginas_incremental is not None
+            else MAX_PAGINAS_RELAMPAGO_SEM_PARAMETROS
+        )
+        total_paginas_planejado = min(total_paginas, limite_paginas_incremental)
+        paginas_sem_progresso = 0
         pagina_atual = 1
 
-        while len(ofertas_consolidadas) < limite_alvo and pagina_atual < total_paginas:
+        while len(ofertas_consolidadas) < limite_alvo and pagina_atual < total_paginas_planejado:
             pagina_atual += 1
+            total_antes = len(ofertas_consolidadas)
             print(
                 f"Primeira página não foi suficiente ({len(ofertas_consolidadas)}/{limite_alvo}). "
-                f"Coletando página {pagina_atual}/{total_paginas}."
+                f"Coletando página {pagina_atual}/{total_paginas_planejado}."
             )
 
             url_pagina = _montar_url_paginada(url_base_paginas, pagina_atual)
@@ -2265,13 +2341,35 @@ def processar_ofertas_relampago(
                 ids_descartados=ids_descartados,
             )
 
-        _salvar_html_consolidado(entradas_html, PASTA_RELAMPAGO_HTML, "html_relampago_consolidado")
+            if len(ofertas_consolidadas) <= total_antes:
+                paginas_sem_progresso += 1
+            else:
+                paginas_sem_progresso = 0
+
+            if paginas_sem_progresso >= MAX_PAGINAS_SEM_PROGRESSO:
+                print(
+                    f"Parando paginação: {MAX_PAGINAS_SEM_PROGRESSO} página(s) seguidas sem novas ofertas válidas."
+                )
+                break
+
+        if total_paginas > total_paginas_planejado:
+            print(
+                f"Paginação limitada a {total_paginas_planejado} página(s) para evitar varredura excessiva "
+                f"(detecção original: {total_paginas} página(s))."
+            )
+
+        caminho_html_consolidado = _salvar_html_consolidado(
+            entradas_html,
+            PASTA_RELAMPAGO_HTML,
+            "html_relampago_consolidado",
+        )
     else:
-        entradas_html = _coletar_htmls_relampago(
+        entradas_html, caminho_html_consolidado = _coletar_htmls_relampago(
             page,
             url_base_paginas,
             pasta=PASTA_RELAMPAGO_HTML,
             coletar_todas_paginas=True,
+            max_paginas_total=25,
         )
 
         ofertas_consolidadas = _selecionar_ofertas_validas(
@@ -2283,6 +2381,11 @@ def processar_ofertas_relampago(
             limite_validos=limite_alvo,
             ids_descartados=ids_descartados,
         )
+
+    caminhos_html_execucao = [entrada.get("path") for entrada in entradas_html if entrada.get("path")]
+    if caminho_html_consolidado:
+        caminhos_html_execucao.append(caminho_html_consolidado)
+    _limpar_htmls_relampago_antigos(PASTA_RELAMPAGO_HTML, caminhos_html_execucao)
 
     if not ofertas_consolidadas:
         _salvar_metadados_ofertas(
@@ -2344,7 +2447,7 @@ def salvar_resultado_relampago(ofertas, pasta=None):
     os.makedirs(pasta, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    caminho = os.path.join(pasta, "historico_relampago.txt")
+    caminho = os.path.join(pasta, "lista_anuncios.txt")
 
     def _formatar_preco_txt(valor):
 

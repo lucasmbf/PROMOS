@@ -155,6 +155,12 @@ def parse_args():
         ),
     )
 
+    parser.add_argument(
+        "--pasta-saida",
+        default=None,
+        help="Diretório onde o arquivo lista_anuncios.txt será salvo (escolhido pelo usuário na interface).",
+    )
+
     return parser.parse_args()
 
 
@@ -650,6 +656,10 @@ def usuario_esta_logado_mercado_livre(page):
 
     try:
 
+        if "login" in (page.url or "").lower():
+
+            return False
+
         if page.locator("button[aria-label*='menu'], button:has-text('menu')").count() > 0:
 
             return True
@@ -688,10 +698,25 @@ def aguardar_login_mercado_livre(page):
         return
 
     print(
-        "\nMercado Livre nao esta autenticado. Faça login manualmente e depois pressione ENTER."
+        "\nMercado Livre nao esta autenticado. Faça login manualmente no navegador aberto."
     )
 
-    input()
+    timeout_segundos = 180
+    inicio_espera = time.time()
+
+    while (time.time() - inicio_espera) < timeout_segundos:
+
+        if usuario_esta_logado_mercado_livre(page):
+
+            print("\nLogin confirmado. Continuando execução.")
+            return
+
+        time.sleep(2)
+
+    raise RuntimeError(
+        "Sessao do Mercado Livre nao autenticada apos aguardar 180s. "
+        "Entre na conta e execute novamente."
+    )
 
 
 def montar_mensagem_produto(produto):
@@ -936,38 +961,29 @@ desconto_minimo_parametrizado = DESCONTO_MINIMO if ARG_DESCONTO_MINIMO_INFORMADO
 limite_candidatos_parametrizado = LIMITE_CANDIDATOS if ARG_LIMITE_CANDIDATOS_INFORMADO else None
 
 
+_FROZEN = getattr(sys, "frozen", False)
+
+_LAUNCH_KWARGS = dict(
+    user_data_dir="perfil_ml",
+    headless=False,
+    slow_mo=800,
+    locale="pt-BR",
+    timezone_id="America/Sao_Paulo",
+    viewport={"width": 1400, "height": 900},
+    args=[
+        "--disable-blink-features=AutomationControlled",
+        "--start-maximized",
+        "--disable-dev-shm-usage",
+        "--no-sandbox",
+    ],
+)
+
+if _FROZEN:
+    _LAUNCH_KWARGS["channel"] = "chrome"
+
 with sync_playwright() as p:
 
-    context = p.chromium.launch_persistent_context(
-
-        user_data_dir="perfil_ml",
-
-        headless=False,
-
-        slow_mo=800,
-
-        locale="pt-BR",
-
-        timezone_id="America/Sao_Paulo",
-
-        viewport={
-
-            "width": 1400,
-
-            "height": 900
-        },
-
-        args=[
-
-            "--disable-blink-features=AutomationControlled",
-
-            "--start-maximized",
-
-            "--disable-dev-shm-usage",
-
-            "--no-sandbox"
-        ]
-    )
+    context = p.chromium.launch_persistent_context(**_LAUNCH_KWARGS)
 
     page = context.new_page()
 
@@ -1304,8 +1320,7 @@ with sync_playwright() as p:
     debug_pausa("Iniciando fluxo de ofertas relâmpago")
 
     modo_relampago_sem_parametros = (
-        not MODO_RELAMPAGO_PADRAO
-        and categoria_parametrizada is None
+        categoria_parametrizada is None
         and preco_minimo_parametrizado is None
         and preco_maximo_parametrizado is None
         and desconto_minimo_parametrizado is None
@@ -1325,6 +1340,8 @@ with sync_playwright() as p:
         historico_anuncios=historico_anuncios,
         ids_descartados=historico_anuncios if modo_relampago_sem_parametros else None,
         limite_validos=limite_validos_extraidos,
+        forcar_modo_incremental=(MODO_RELAMPAGO_PADRAO or modo_relampago_sem_parametros),
+        max_paginas_incremental=2 if MODO_RELAMPAGO_PADRAO else None,
     )
 
     ofertas_relampago = filtrar_anuncios_ineditos_ou_com_reducao(
@@ -1337,7 +1354,7 @@ with sync_playwright() as p:
 
     if ofertas_relampago:
 
-        salvar_resultado_relampago(ofertas_relampago)
+        salvar_resultado_relampago(ofertas_relampago, pasta=ARGS.pasta_saida or None)
 
         salvar_historico_anuncios_em_arquivo(
             HISTORICO_ANUNCIOS_ARQUIVO,
