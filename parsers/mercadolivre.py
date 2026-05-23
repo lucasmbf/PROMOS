@@ -278,6 +278,27 @@ def _montar_url_pesquisa_generica(descricao, pagina=1):
     return f"{base}_Desde_{inicio}"
 
 
+def _montar_url_pesquisa_em_categoria(url_categoria_base, descricao, pagina=1):
+    """Monta URL de busca por descricao DENTRO de uma categoria do ML.
+
+    Formato: https://lista.mercadolivre.com.br/{slug_categoria}/{slug_descricao}
+    Funciona para URLs do tipo lista.mercadolivre.com.br ou www.mercadolivre.com.br.
+    """
+    partes = urlsplit(url_categoria_base)
+    slug_categoria = partes.path.strip("/")
+
+    slug_descricao = re.sub(r"\s+", "-", (descricao or "").strip())
+    slug_descricao = quote(slug_descricao, safe="-")
+
+    base = f"https://lista.mercadolivre.com.br/{slug_categoria}/{slug_descricao}"
+
+    if pagina <= 1:
+        return base
+
+    inicio = ((pagina - 1) * 50) + 1
+    return f"{base}_Desde_{inicio}"
+
+
 def _converter_preco_em_float(texto_preco):
 
     texto_limpo = (texto_preco or "").strip()
@@ -1861,6 +1882,21 @@ def _localizar_card_na_pagina(page, descricao):
     return None
 
 
+def _sessao_ml_ativa_por_marcador_header(page):
+    try:
+        marcador = page.locator(
+            "nav#nav-header-menu .nav-header-profile-evolution__user-initials"
+        ).first
+
+        if marcador.count() == 0:
+            return False
+
+        iniciais = (marcador.inner_text(timeout=1500) or "").strip().upper()
+        return iniciais == "LM"
+    except Exception:
+        return False
+
+
 def _obter_link_via_botao_afiliados(page, url_original):
     """Com a página do anúncio aberta, clica no botão 'Compartilhar' do nav
     Afiliados e tenta extrair o link encurtado gerado.
@@ -1877,6 +1913,10 @@ def _obter_link_via_botao_afiliados(page, url_original):
                 pagina_tem_link_login = page.locator("a[href*='login']").count() > 0
             except Exception:
                 pagina_tem_link_login = False
+
+            if _sessao_ml_ativa_por_marcador_header(page):
+                pagina_tem_link_login = False
+                print("[INFO] Marcador de sessão 'LM' detectado no header. Prosseguindo com a tentativa de afiliado.")
 
             if "login" in url_atual or pagina_tem_link_login:
                 raise RuntimeError(
@@ -2002,16 +2042,253 @@ def _coletar_resultados_pesquisa_da_pagina(page):
                     precoTexto = centavos ? `R$ ${reais},${centavos}` : `R$ ${reais}`;
                 }
 
+                const descontoEl = card.querySelector('.ui-search-price__discount, .andes-money-amount__discount');
+                const descontoTexto = descontoEl ? (descontoEl.textContent || '').trim() : '';
+
                 resultados.push({
                     descricao,
                     href,
                     precoTexto,
+                    descontoTexto,
                 });
             }
 
             return resultados;
         }"""
     )
+
+
+def _resolver_url_categoria_na_home(page, categoria):
+    categoria = normalizar_descricao(categoria)
+    if not categoria:
+        return ""
+
+    try:
+        page.goto("https://www.mercadolivre.com.br", timeout=90000, wait_until="domcontentloaded")
+        time.sleep(random.uniform(1.2, 2.0))
+
+        gatilho = page.locator(
+            "a.nav-menu-categories-link[data-js='nav-menu-categories-trigger']"
+        ).first
+
+        gatilho.wait_for(state="visible", timeout=10000)
+        gatilho.click()
+        time.sleep(random.uniform(0.8, 1.4))
+
+        href_categoria = page.evaluate(
+            """(categoriaAlvo) => {
+                const normalizar = (v) => (v || '').toLowerCase().trim().replace(/\s+/g, ' ');
+                const alvo = normalizar(categoriaAlvo);
+                if (!alvo) return '';
+
+                const links = Array.from(document.querySelectorAll('a[href]'));
+                const candidato = links.find((a) => {
+                    const texto = normalizar(a.textContent || '');
+                    const href = (a.getAttribute('href') || '').trim();
+                    if (!texto || !href) return false;
+                    const textoBate = texto.includes(alvo) || alvo.includes(texto);
+                    if (!textoBate) return false;
+                    return href.startsWith('http') || href.startsWith('/');
+                });
+
+                return candidato ? candidato.href : '';
+            }""",
+            categoria,
+        )
+
+        return (href_categoria or "").strip()
+    except Exception as exc:
+        print(f"[AVISO] Não foi possível resolver categoria pela home: {exc}")
+        return ""
+
+
+def processar_produtos_home_por_pesquisa(
+    page,
+    categoria=None,
+    descricao=None,
+    preco_minimo=None,
+    preco_maximo=None,
+    desconto_minimo=None,
+    limite_candidatos=None,
+    historico_anuncios=None,
+    limite_validos=10,
+    limite_paginas=5,
+):
+    """Coleta candidatos a partir da pesquisa pública do Mercado Livre,
+    aplica filtros e enriquece os aprovados com link de afiliado.
+    """
+
+    termo_base = normalizar_descricao(descricao or "")
+    categoria_base = normalizar_descricao(categoria or "")
+
+    if not termo_base:
+        raise ValueError(
+            "Descricao e obrigatoria para buscar produto. Informe ao menos uma palavra-chave."
+        )
+
+    # Resolve URL da categoria pela home quando categoria for informada
+    url_categoria_home = ""
+    if categoria_base:
+        url_categoria_home = _resolver_url_categoria_na_home(page, categoria_base)
+        if url_categoria_home:
+            print(f"Categoria resolvida pela home: {categoria_base} → {url_categoria_home}")
+        else:
+            print(f"[AVISO] Não foi possível resolver URL da categoria '{categoria_base}'. Buscando só por descrição.")
+
+    limite_paginas = max(1, int(limite_paginas or 1))
+    limite_validos = max(1, int(limite_validos or 1))
+    limite_candidatos_int = None if limite_candidatos is None else max(1, int(limite_candidatos))
+
+    historico_ids = set(
+        _normalizar_chave_historico(item) for item in (historico_anuncios or set()) if item
+    )
+
+    candidatos = []
+    ids_vistos = set()
+
+    for pagina in range(1, limite_paginas + 1):
+        if limite_candidatos_int is not None and len(candidatos) >= limite_candidatos_int:
+            break
+
+        if url_categoria_home:
+            # Descrição + categoria: busca o termo dentro da URL da categoria resolvida na home
+            url = _montar_url_pesquisa_em_categoria(url_categoria_home, termo_base, pagina)
+        else:
+            # Só descrição: busca genérica por descrição
+            url = _montar_url_pesquisa_generica(termo_base, pagina)
+
+        print(f"\n[Pesquisa inicial] Página {pagina}: {url}")
+
+        page.goto(url, timeout=90000, wait_until="domcontentloaded")
+        time.sleep(random.uniform(2.5, 4.5))
+
+        resultados = _coletar_resultados_pesquisa_da_pagina(page)
+        if not resultados:
+            continue
+
+        for resultado in resultados:
+            if limite_candidatos_int is not None and len(candidatos) >= limite_candidatos_int:
+                break
+
+            url_anuncio = _normalizar_url_resultado(resultado.get("href"))
+            id_anuncio = _normalizar_chave_historico(
+                _extrair_id_anuncio_de_texto(url_anuncio)
+            )
+
+            if not id_anuncio or id_anuncio in ids_vistos or id_anuncio in historico_ids:
+                continue
+
+            preco_valor = _converter_preco_em_float(resultado.get("precoTexto"))
+            if preco_valor is None:
+                continue
+
+            if preco_minimo is not None and preco_valor < preco_minimo:
+                continue
+
+            if preco_maximo is not None and preco_valor > preco_maximo:
+                continue
+
+            desconto_texto = normalizar_descricao(resultado.get("descontoTexto") or "")
+            desconto_int = None
+            encontrado = re.search(r"(\d+)", desconto_texto)
+            if encontrado:
+                desconto_int = int(encontrado.group(1))
+
+            if desconto_minimo is not None:
+                if desconto_int is None or desconto_int < int(desconto_minimo):
+                    continue
+
+            ids_vistos.add(id_anuncio)
+            candidatos.append(
+                {
+                    "id_anuncio": id_anuncio,
+                    "categoria": categoria_base or "Pesquisa genérica",
+                    "descricao": normalizar_descricao(resultado.get("descricao") or termo_base),
+                    "antes": "Sem preço anterior",
+                    "desconto": (f"{desconto_int}% OFF" if desconto_int is not None else "Sem desconto"),
+                    "depois": _formatar_preco(preco_valor),
+                    "depois_valor": preco_valor,
+                    "link_anuncio": url_anuncio,
+                    "pagina_origem_url": url,
+                    "pagina_origem_numero": pagina,
+                }
+            )
+
+    if not candidatos:
+        print("\nNenhum candidato válido encontrado na pesquisa inicial.")
+        return []
+
+    # Mantém comportamento anterior: prefere menor preço quando múltiplos candidatos passam.
+    candidatos.sort(key=lambda item: item.get("depois_valor", float("inf")))
+
+    categoria_filtro = _normalizar_filtro_categoria(categoria_base) if categoria_base else ""
+    aprovados = []
+    falhas_enriquecimento = 0
+    falhas_login_afiliados = 0
+
+    for candidato in candidatos:
+        href = _normalizar_url_resultado(candidato.get("link_anuncio") or "")
+        if not href:
+            continue
+
+        try:
+            link_afiliado, categoria_breadcrumb = _abrir_anuncio_em_nova_aba(page, href)
+        except RuntimeError as exc:
+            falhas_login_afiliados += 1
+            falhas_enriquecimento += 1
+            print(
+                f"[LOGIN_REQUIRED_AFILIADOS] Nao foi possivel gerar link de afiliado para "
+                f"{candidato.get('id_anuncio')} ({exc})."
+            )
+            continue
+        except Exception as exc:
+            falhas_enriquecimento += 1
+            print(
+                f"[AVISO] Falha ao enriquecer anúncio {candidato.get('id_anuncio')}: {exc}. "
+                "Anuncio ignorado por nao ter link de afiliado valido."
+            )
+            continue
+
+        if not link_afiliado or "meli.la" not in str(link_afiliado).lower():
+            falhas_enriquecimento += 1
+            print(
+                f"[LOGIN_REQUIRED_AFILIADOS] Link de afiliado nao gerado para {candidato.get('id_anuncio')}. "
+                "Anuncio ignorado. Faca login no Afiliados e execute novamente."
+            )
+            continue
+
+        if categoria_filtro:
+            categoria_encontrada_norm = _normalizar_filtro_categoria(categoria_breadcrumb)
+            if categoria_encontrada_norm and categoria_filtro not in categoria_encontrada_norm:
+                continue
+
+        candidato["categoria"] = categoria_breadcrumb or candidato.get("categoria") or "Pesquisa genérica"
+        candidato["link_original"] = href
+        candidato["link"] = link_afiliado
+
+        aprovados.append(candidato)
+
+        if len(aprovados) >= limite_validos:
+            break
+
+    if falhas_login_afiliados:
+        print(
+            f"[AVISO] {falhas_login_afiliados} candidato(s) exigiram login no Afiliados para gerar link com comissao."
+        )
+
+    if falhas_enriquecimento:
+        print(
+            f"[AVISO] Enriquecimento com afiliado falhou em {falhas_enriquecimento} candidato(s). "
+            "Anuncios sem link de afiliado valido foram ignorados."
+        )
+
+    if not aprovados and falhas_enriquecimento:
+        raise RuntimeError(
+            "Nao foi possivel gerar links de afiliado para os candidatos. "
+            "Faca login no Mercado Livre Afiliados e execute novamente."
+        )
+
+    return aprovados
 
 
 def buscar_produto_por_descricao(

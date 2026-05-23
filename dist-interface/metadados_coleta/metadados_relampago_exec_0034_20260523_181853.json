@@ -1,0 +1,57 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 34,
+  "gerado_em": "2026-05-23T18:18:53",
+  "total_ofertas": 2,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": null,
+    "desconto_minimo": 50,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 2,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB3817089255",
+      "descricao": "Creatina Monohidratada Em Pote 300g 100% Pura Dark Lab Sem Sabor",
+      "categoria": "Saúde > Suplementos Alimentares",
+      "antes": "R$ 78,90",
+      "depois": "R$ 37,90",
+      "desconto": "51% OFF",
+      "link": "https://meli.la/1i8DijL",
+      "link_original": "https://www.mercadolivre.com.br/creatina-monohidratada-em-pote-300g-100-pura-dark-lab/p/MLB19506691?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=aa1456c5-b059-4f5d-bd32-fa06e47fdef7&position=18&tracking_id=eced29b9-53e0-4409-ae0b-d7f8f9820d7e&wid=MLB3817089255&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/creatina-monohidratada-em-pote-300g-100-pura-dark-lab/p/MLB19506691?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=aa1456c5-b059-4f5d-bd32-fa06e47fdef7&position=18&tracking_id=eced29b9-53e0-4409-ae0b-d7f8f9820d7e&wid=MLB3817089255&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_181834_361693_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    },
+    {
+      "ordem": 2,
+      "id_anuncio": "MLB4290073347",
+      "descricao": "Toalha De Banho Feminina Microfibra Macia E Secagem Rápida",
+      "categoria": "Toalhas e Roupões > Toalhas de Banho",
+      "antes": "R$ 78,90",
+      "depois": "R$ 35,98",
+      "desconto": "54% OFF",
+      "link": "https://meli.la/12FcBjp",
+      "link_original": "https://produto.mercadolivre.com.br/MLB-4290073347-toalha-de-banho-feminina-microfibra-macia-e-secagem-rapida-_JM?searchVariation=192649188499#polycard_client=offers&deal_print_id=aa1456c5-b059-4f5d-bd32-fa06e47fdef7&position=45&tracking_id=eced29b9-53e0-4409-ae0b-d7f8f9820d7e",
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-4290073347-toalha-de-banho-feminina-microfibra-macia-e-secagem-rapida-_JM?searchVariation=192649188499#polycard_client=offers&deal_print_id=aa1456c5-b059-4f5d-bd32-fa06e47fdef7&position=45&tracking_id=eced29b9-53e0-4409-ae0b-d7f8f9820d7e",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_181834_361693_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

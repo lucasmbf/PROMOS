@@ -25,6 +25,93 @@ Automação em Python para coletar produtos do Mercado Livre, priorizar ofertas 
 - Opção de alerta por descrição e atributos do produto.
 - Intervalo de verificação em horas com mínimo de 1 hora para reduzir risco de bloqueio.
 
+## Especificação funcional
+
+### Índice da seção
+
+- [1. Escopo](#1-escopo)
+- [2. Fluxos funcionais](#2-fluxos-funcionais)
+- [3. Saídas e persistência](#3-saídas-e-persistência)
+- [4. Regras de negócio](#4-regras-de-negócio)
+- [5. Limitações atuais e planejado](#5-limitações-atuais-e-planejado)
+
+### 1. Escopo
+
+O sistema Promos automatiza coleta e seleção de ofertas do Mercado Livre com três formas principais de operação:
+
+- Execução sob demanda (CLI ou interface), para rodar imediatamente.
+- Campanhas agendadas, com configuração de ciclo em horas.
+- Alertas de preço, por URL ou por descrição de produto.
+
+O objetivo funcional é identificar candidatos válidos, aplicar filtros de preço e desconto, evitar repetição de anúncios e salvar resultados em arquivos de histórico e saídas por modalidade.
+
+### 2. Fluxos funcionais
+
+#### 2.1 Fluxo sob demanda
+
+1. Usuário executa o processo por linha de comando ou pela interface.
+2. O sistema coleta ofertas (hub ou relâmpago) conforme parâmetros.
+3. Aplica filtros de preço, desconto e limite de produtos/candidatos.
+4. Remove itens já enviados com base no histórico.
+5. Salva resultados consolidados e registra histórico.
+6. Persiste também a saída na modalidade OnDemand.
+
+#### 2.2 Fluxo de campanha agendada
+
+1. Usuário cria/edita configuração na área Programações da interface.
+2. Define ciclo (horas), filtros e quantidade de candidatos válidos.
+3. Ao salvar, pode opcionalmente executar na hora.
+4. O agendador interno monitora next_run_at e dispara quando devido.
+5. Cada execução grava saída na modalidade Campanha.
+
+#### 2.3 Fluxo de alerta de preço
+
+1. Usuário cria alerta por URL (múltiplas URLs) ou por descrição.
+2. Define preço-alvo e ciclo (horas).
+3. Ao salvar, pode opcionalmente executar na hora.
+4. O agendador interno monitora next_check_at e reexecuta no ciclo.
+5. No modo descrição, o sistema busca automaticamente o menor preço entre os anúncios encontrados na pesquisa.
+6. Quando encontra preço menor ou igual ao alvo, gera notificação e persistência da execução na modalidade Alerta.
+
+### 3. Saídas e persistência
+
+| Tipo | Caminho | Formato | Estratégia de escrita | Origem |
+| --- | --- | --- | --- | --- |
+| Histórico de anúncios enviados | historico_anuncios.txt | texto | append por item/processo | Fluxos gerais |
+| Consolidação geral de ofertas | ofertas_consolidadas_*.txt | texto | arquivo por execução | Fluxo sob demanda/hub |
+| HTML de relâmpago | ofertas_relampago/html_relampago_*.txt | texto (HTML bruto) | arquivo por página/coleta | Fluxo relâmpago |
+| Resultado relâmpago | ofertas_relampago/resultado_*.txt | texto | arquivo por execução | Fluxo relâmpago |
+| Saída por modalidade Alerta | saidas_execucoes/Alerta/lista_anuncios.txt | texto | append por execução | Alertas |
+| Saída por modalidade Campanha | saidas_execucoes/Campanha/lista_anuncios.txt | texto | append por execução | Programações |
+| Saída por modalidade OnDemand | saidas_execucoes/OnDemand/lista_anuncios.txt | texto | append por execução | Execuções manuais |
+
+Observações de persistência:
+
+- As pastas de modalidade são criadas automaticamente quando necessário.
+- Quando a modalidade não é informada explicitamente, o sistema usa OnDemand como fallback.
+
+### 4. Regras de negócio
+
+- Deduplicação por anúncio já processado via histórico.
+- Limite mínimo de 1 hora para ciclos de checagem/execução agendada.
+- Preço-alvo de alertas aceita apenas valor decimal válido.
+- Quantidade de candidatos válidos (campanhas/hub):
+	- Se não informada, assume valor padrão 10.
+	- Deve ser inteiro maior ou igual a 1.
+- Em alerta por descrição, o sistema considera automaticamente o menor preço disponível nos resultados da pesquisa.
+
+### 5. Limitações atuais e planejado
+
+Estado atual:
+
+- Backend operacional focado em Mercado Livre.
+- Fontes adicionais na interface ainda não executam coleta completa no backend.
+
+Planejado:
+
+- Expansão funcional de fontes adicionais na execução real.
+- Evoluções de rastreabilidade e monitoramento das execuções agendadas.
+
 ## Como executar
 
 Use o Python do ambiente virtual:

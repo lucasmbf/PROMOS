@@ -4,10 +4,9 @@ from parsers.mercadolivre import (
     buscar_produto_por_descricao,
     coletar_produtos_com_desconto,
     obter_link_encurtado_por_descricao,
-    processar_produtos_hub_por_html,
+    processar_produtos_home_por_pesquisa,
     processar_ofertas_relampago,
     salvar_saida_execucao_modalidade,
-    salvar_resultado_hub,
     salvar_resultado_relampago,
 )
 
@@ -157,7 +156,7 @@ def parse_args():
         "--produto-por-html",
         action="store_true",
         help=(
-            "Executa o fluxo de produto via HTML salvo do hub de afiliados, "
+            "Executa o fluxo de procurar produto pela pesquisa da home do Mercado Livre, "
             "aplicando os filtros passados por parâmetros."
         ),
     )
@@ -665,6 +664,22 @@ def validar_txt_e_historico(caminho_arquivo):
     return historico
 
 
+def sessao_ml_ativa_por_marcador_header(page):
+
+    try:
+        marcador = page.locator(
+            "nav#nav-header-menu .nav-header-profile-evolution__user-initials"
+        ).first
+
+        if marcador.count() == 0:
+            return False
+
+        iniciais = (marcador.inner_text(timeout=1500) or "").strip().upper()
+        return iniciais == "LM"
+    except Exception:
+        return False
+
+
 def usuario_esta_logado_mercado_livre(page):
 
     try:
@@ -672,6 +687,11 @@ def usuario_esta_logado_mercado_livre(page):
         url_atual = (page.url or "").lower()
         if "/login" in url_atual:
             return False
+
+        # Marcador explícito informado: se houver 'LM' no menu do usuário,
+        # considera sessão autenticada.
+        if sessao_ml_ativa_por_marcador_header(page):
+            return True
 
         # Seletores positivos comuns em sessão autenticada (podem variar conforme UI/AB tests).
         if page.locator(
@@ -1084,33 +1104,28 @@ with sync_playwright() as p:
 
     page = context.new_page()
 
-    page.goto(
-        URL_LISTAGEM
-    )
-
-    debug_pausa("Navegador aberto e hub carregado")
-
-    aguardar_login_mercado_livre(
-        page
-    )
-
-    debug_pausa("Depois da validacao de login do Mercado Livre")
-
     if MODO_PRODUTO_POR_HTML:
 
-        print("\nModo produto por HTML ativado. Fluxos antigos de hub/Twilio e relâmpago serão ignorados.")
+        print("[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA")
+        print("\nModo procurar produto ativado (pesquisa pela home do Mercado Livre).")
 
-        ofertas_hub = processar_produtos_hub_por_html(
+        page.goto(
+            "https://www.mercadolivre.com.br",
+            timeout=90000,
+            wait_until="domcontentloaded"
+        )
+
+        ofertas_hub = processar_produtos_home_por_pesquisa(
             page,
-            URL_LISTAGEM,
-            desconto_minimo=desconto_minimo_parametrizado,
             categoria=categoria_parametrizada,
+            descricao=(ARGS.descricao_produto or "").strip() or None,
             preco_minimo=preco_minimo_parametrizado,
             preco_maximo=preco_maximo_parametrizado,
-            descricao=(ARGS.descricao_produto or "").strip() or None,
+            desconto_minimo=desconto_minimo_parametrizado,
             limite_candidatos=limite_candidatos_parametrizado,
             historico_anuncios=historico_anuncios,
             limite_validos=10,
+            limite_paginas=LIMITE_PAGINAS_PESQUISA,
         )
 
         ofertas_hub = filtrar_anuncios_ineditos_ou_com_reducao(
@@ -1120,8 +1135,8 @@ with sync_playwright() as p:
 
         if ofertas_hub:
 
-            salvar_resultado_hub(ofertas_hub)
-            salvar_saida_execucao_modalidade(ofertas_hub, ARGS.modalidade_execucao)
+            salvar_resultado_relampago(ofertas_hub, pasta=ARGS.pasta_saida or None)
+            salvar_saida_execucao_modalidade(ofertas_hub, ARGS.modalidade_execucao or "ondemand")
 
             salvar_historico_anuncios_em_arquivo(
                 HISTORICO_ANUNCIOS_ARQUIVO,
@@ -1138,15 +1153,28 @@ with sync_playwright() as p:
 
                     historico_anuncios.add(anuncio_id)
 
-            print(f"\n{len(ofertas_hub)} oferta(s) do hub processada(s) e salva(s).")
+            print(f"\n{len(ofertas_hub)} oferta(s) processada(s) e salva(s).")
 
         else:
 
-            print("\nNenhuma oferta elegível do hub foi encontrada.")
+            print("\nNenhuma oferta elegível foi encontrada na pesquisa da home.")
 
         context.close()
 
         raise SystemExit(0)
+
+    print("[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO")
+    page.goto(
+        URL_LISTAGEM
+    )
+
+    debug_pausa("Navegador aberto e hub carregado")
+
+    aguardar_login_mercado_livre(
+        page
+    )
+
+    debug_pausa("Depois da validacao de login do Mercado Livre")
 
     if MODO_BUSCA_DESCRICAO:
 
@@ -1165,7 +1193,7 @@ with sync_playwright() as p:
         if produto_manual:
 
             salvar_resultado_relampago([produto_manual])
-            salvar_saida_execucao_modalidade([produto_manual], ARGS.modalidade_execucao)
+            salvar_saida_execucao_modalidade([produto_manual], ARGS.modalidade_execucao or "ondemand")
 
             salvar_historico_anuncios_em_arquivo(
                 HISTORICO_ANUNCIOS_ARQUIVO,
@@ -1454,7 +1482,7 @@ with sync_playwright() as p:
     if ofertas_relampago:
 
         salvar_resultado_relampago(ofertas_relampago, pasta=ARGS.pasta_saida or None)
-        salvar_saida_execucao_modalidade(ofertas_relampago, ARGS.modalidade_execucao)
+        salvar_saida_execucao_modalidade(ofertas_relampago, ARGS.modalidade_execucao or "ondemand")
 
         salvar_historico_anuncios_em_arquivo(
             HISTORICO_ANUNCIOS_ARQUIVO,

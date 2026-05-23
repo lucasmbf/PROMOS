@@ -10,7 +10,7 @@ import sys
 import threading
 from datetime import datetime, timedelta
 from pathlib import Path
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urljoin
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 
@@ -238,8 +238,131 @@ def _fetch_price_from_description(description):
     response = requests.get(search_url, headers=HTTP_HEADERS, timeout=25)
     response.raise_for_status()
 
-    price = _extract_price_from_html(response.text)
-    return price, search_url
+    soup = BeautifulSoup(response.text, "html.parser")
+    best_price = None
+    best_link = ""
+
+    cards = soup.select("li.ui-search-layout__item, li.poly-card")
+    for card in cards:
+        price = _extract_price_from_card(card)
+        if price is None:
+            continue
+
+        href_node = card.select_one("a.poly-component__title[href], a.ui-search-link[href], a[href]")
+        href = href_node.get("href", "").strip() if href_node is not None else ""
+        resolved_link = urljoin(response.url, href) if href else ""
+
+        if best_price is None or price < best_price:
+            best_price = price
+            best_link = resolved_link
+
+    if best_price is None:
+        fallback_price = _extract_price_from_html(response.text)
+        return fallback_price, (best_link or search_url)
+
+    return best_price, (best_link or search_url)
+
+
+def _build_affiliate_link(url_original):
+    if not url_original:
+        return ""
+
+    try:
+        from playwright.sync_api import sync_playwright
+        from parsers.mercadolivre import obter_link_encurtado
+    except Exception:
+        return ""
+
+    launch_kwargs = dict(
+        user_data_dir=str(BASE_DIR / "perfil_ml"),
+        headless=False,
+        slow_mo=600,
+        locale="pt-BR",
+        timezone_id="America/Sao_Paulo",
+        viewport={"width": 1400, "height": 900},
+        args=[
+            "--disable-blink-features=AutomationControlled",
+            "--start-maximized",
+            "--disable-dev-shm-usage",
+            "--no-sandbox",
+        ],
+    )
+
+    if getattr(sys, "frozen", False):
+        launch_kwargs["channel"] = "chrome"
+
+    try:
+        with sync_playwright() as p:
+            context = p.chromium.launch_persistent_context(**launch_kwargs)
+            page = context.new_page()
+            page.goto(url_original, timeout=90000, wait_until="domcontentloaded")
+            affiliate_link = obter_link_encurtado(page, url_original)
+            context.close()
+
+        if affiliate_link and "meli.la" in affiliate_link:
+            return affiliate_link
+    except Exception:
+        return ""
+
+    return ""
+
+
+def _normalize_text(value):
+    return re.sub(r"\s+", " ", (value or "").strip()).casefold()
+
+
+def _extract_price_from_card(card):
+    frac = card.select_one("[data-andes-money-amount-fraction='true']")
+    cents = card.select_one("[data-andes-money-amount-cents='true']")
+    if frac is not None:
+        text_price = frac.get_text(" ", strip=True)
+        if cents is not None:
+            text_price = f"{text_price},{cents.get_text(' ', strip=True)}"
+        parsed = _parse_brl_price(text_price)
+        if parsed is not None:
+            return parsed
+
+    return _extract_price_from_html(str(card))
+
+
+def _fetch_lowest_price_by_description_in_url(url, description):
+    response = requests.get(url, headers=HTTP_HEADERS, timeout=25)
+    response.raise_for_status()
+
+    target = _normalize_text(description)
+    if not target:
+        return None, url
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    cards = soup.select("li.ui-search-layout__item, li.poly-card, article")
+
+    best_price = None
+    best_link = ""
+
+    for card in cards:
+        title_node = card.select_one(
+            "a.poly-component__title, h2.ui-search-item__title, .poly-component__title-wrapper, [title]"
+        )
+        title_text = ""
+        if title_node is not None:
+            title_text = (title_node.get_text(" ", strip=True) or title_node.get("title") or "").strip()
+
+        if target and target not in _normalize_text(title_text):
+            continue
+
+        price = _extract_price_from_card(card)
+        if price is None:
+            continue
+
+        href_node = card.select_one("a.poly-component__title[href], a.ui-search-link[href], a[href]")
+        href = href_node.get("href", "").strip() if href_node is not None else ""
+        resolved_link = urljoin(response.url, href) if href else response.url
+
+        if best_price is None or price < best_price:
+            best_price = price
+            best_link = resolved_link
+
+    return best_price, (best_link or response.url)
 
 
 def load_alerts_config(config_path):
@@ -440,7 +563,7 @@ def create_gui(categorias):
     preco_min_var = tk.StringVar()
     preco_max_var = tk.StringVar()
     desconto_var = tk.StringVar()
-    menor_preco_var = tk.BooleanVar(value=True)
+    limite_candidatos_prod_var = tk.StringVar()
     categoria_var = tk.StringVar(value="")
 
     fontes_vars = {
@@ -505,6 +628,9 @@ def create_gui(categorias):
     ttk.Label(product_frame, text="MarketPlace:", style="Field.TLabel").grid(row=row, column=0, sticky="nw", pady=(6, 0))
     source_frame = ttk.Frame(product_frame, style="Card.TLabelframe")
     source_frame.grid(row=row, column=1, columnspan=2, sticky="w", pady=(6, 0))
+    marketplace_info = ttk.Label(source_frame, text="(i)", style="Info.TLabel", cursor="hand2")
+    marketplace_info.grid(row=0, column=0, padx=(0, 8), sticky="w")
+    Tooltip(marketplace_info, "Marcar todas ou diversas caixas pode afetar o tempo de processamento")
 
     def on_toggle_all():
         if fontes_vars["Todas"].get():
@@ -521,7 +647,7 @@ def create_gui(categorias):
 
     for idx, nome in enumerate(["Mercado Livre", "Amazon", "Shoppee", "Tiktok shop", "Todas"]):
         cmd = on_toggle_all if nome == "Todas" else on_toggle_source
-        ttk.Checkbutton(source_frame, text=nome, variable=fontes_vars[nome], command=cmd).grid(row=0, column=idx, padx=(0, 10), sticky="w")
+        ttk.Checkbutton(source_frame, text=nome, variable=fontes_vars[nome], command=cmd).grid(row=0, column=idx + 1, padx=(0, 10), sticky="w")
 
     row += 1
     ttk.Label(product_frame, text="Categoria:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(6, 0))
@@ -559,7 +685,14 @@ def create_gui(categorias):
     desconto_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(6, 0))
 
     row += 1
-    ttk.Checkbutton(product_frame, text="Priorizar menor preco", variable=menor_preco_var).grid(row=row, column=0, columnspan=3, sticky="w", pady=(6, 0))
+    ttk.Label(product_frame, text="Limite de candidatos:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(6, 0))
+    limite_candidatos_prod_entry = ttk.Entry(
+        product_frame,
+        textvariable=limite_candidatos_prod_var,
+        validate="key",
+        validatecommand=vcmd_inteiro,
+    )
+    limite_candidatos_prod_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(6, 0))
 
     row += 1
     buscar_produto_btn = ttk.Button(product_frame, text="BUSCAR PRODUTO", style="Action.TButton")
@@ -1069,7 +1202,7 @@ def create_gui(categorias):
     selecionar_todas_var.trace_add("write", lambda *_: _toggle_select_all_programacoes())
     filtro_programacoes_var.trace_add("write", lambda *_: _refresh_hub_schedules_grid())
 
-    def _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto_min):
+    def _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto_min, limite_candidatos=None):
         args = ["--produto-por-html"]
 
         if categoria and categoria != "Todas categorias":
@@ -1087,6 +1220,9 @@ def create_gui(categorias):
         if desconto_min is not None:
             args.extend(["--desconto-minimo", str(desconto_min)])
 
+        if limite_candidatos is not None:
+            args.extend(["--limite-candidatos", str(limite_candidatos)])
+
         return args
 
     def _build_hub_args_from_schedule(schedule):
@@ -1096,6 +1232,7 @@ def create_gui(categorias):
             schedule.get("preco_minimo"),
             schedule.get("preco_maximo"),
             schedule.get("desconto_minimo"),
+            schedule.get("limite_candidatos"),
         )
 
     def open_hub_schedule_modal(schedule=None):
@@ -1155,6 +1292,9 @@ def create_gui(categorias):
         preco_min_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("preco_minimo") is None else str(schedule.get("preco_minimo"))))
         preco_max_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("preco_maximo") is None else str(schedule.get("preco_maximo"))))
         desconto_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("desconto_minimo") is None else str(schedule.get("desconto_minimo"))))
+        limite_candidatos_ag_var = tk.StringVar(value=(
+            str(schedule.get("limite_candidatos") if schedule and schedule.get("limite_candidatos") is not None else 10)
+        ))
         ativo_var = tk.BooleanVar(value=(bool(schedule.get("active", True)) if schedule else True))
         executar_ao_salvar_var = tk.BooleanVar(value=False)
         emails_iniciais = (schedule.get("emails", []) if schedule else []) or [""]
@@ -1192,11 +1332,14 @@ def create_gui(categorias):
         ttk.Label(frame, text="Desconto minimo (%) opcional:", style="Field.TLabel").grid(row=9, column=0, sticky="w", pady=(12, 0))
         ttk.Entry(frame, textvariable=desconto_ag_var).grid(row=9, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=10, column=0, columnspan=2, sticky="w", pady=(12, 0))
-        ttk.Checkbutton(frame, text="Executar a primeira vez assim que salvar", variable=executar_ao_salvar_var).grid(row=11, column=0, columnspan=2, sticky="w", pady=(8, 0))
+        ttk.Label(frame, text="Qtd. candidatos validos:", style="Field.TLabel").grid(row=10, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=limite_candidatos_ag_var, validate="key", validatecommand=vcmd_inteiro).grid(row=10, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=11, column=0, columnspan=2, sticky="w", pady=(12, 0))
+        ttk.Checkbutton(frame, text="Executar a primeira vez assim que salvar", variable=executar_ao_salvar_var).grid(row=12, column=0, columnspan=2, sticky="w", pady=(8, 0))
 
         contatos_wrap = ttk.Frame(frame, style="Main.TFrame")
-        contatos_wrap.grid(row=12, column=0, columnspan=2, sticky="ew", pady=(10, 0))
+        contatos_wrap.grid(row=13, column=0, columnspan=2, sticky="ew", pady=(10, 0))
 
         emails_frame = ttk.Frame(contatos_wrap, style="Main.TFrame")
         emails_frame.grid(row=0, column=0, sticky="ew")
@@ -1282,7 +1425,7 @@ def create_gui(categorias):
             _add_telefone_field(telefone)
 
         botoes = ttk.Frame(frame, style="Main.TFrame")
-        botoes.grid(row=13, column=0, columnspan=2, sticky="w", pady=(18, 0))
+        botoes.grid(row=14, column=0, columnspan=2, sticky="w", pady=(18, 0))
 
         def salvar_rotina():
             nome = (nome_var.get() or "").strip()
@@ -1300,8 +1443,15 @@ def create_gui(categorias):
                 preco_min = parse_float(preco_min_ag_var.get(), "Preco minimo")
                 preco_max = parse_float(preco_max_ag_var.get(), "Preco maximo")
                 desconto_min = parse_int(desconto_ag_var.get(), "Desconto minimo")
+                limite_candidatos = parse_int(limite_candidatos_ag_var.get(), "Qtd. candidatos validos")
             except ValueError as exc:
                 messagebox.showerror("Validacao", str(exc), parent=modal)
+                return
+
+            if limite_candidatos is None:
+                limite_candidatos = 10
+            if limite_candidatos < 1:
+                messagebox.showerror("Validacao", "Qtd. candidatos validos deve ser no minimo 1.", parent=modal)
                 return
 
             if fim_dt and fim_dt <= inicio_dt:
@@ -1330,6 +1480,7 @@ def create_gui(categorias):
                     "preco_minimo": preco_min,
                     "preco_maximo": preco_max,
                     "desconto_minimo": desconto_min,
+                    "limite_candidatos": int(limite_candidatos),
                     "last_run_at": None,
                     "configured_at": agora.isoformat(timespec="seconds"),
                     "next_run_at": (agora + timedelta(hours=int(ciclo_horas))).isoformat(timespec="seconds"),
@@ -1350,6 +1501,7 @@ def create_gui(categorias):
                 schedule["preco_minimo"] = preco_min
                 schedule["preco_maximo"] = preco_max
                 schedule["desconto_minimo"] = desconto_min
+                schedule["limite_candidatos"] = int(limite_candidatos)
                 schedule["configured_at"] = agora.isoformat(timespec="seconds")
                 schedule["last_run_at"] = None
                 schedule["next_run_at"] = (agora + timedelta(hours=int(ciclo_horas))).isoformat(timespec="seconds")
@@ -1413,17 +1565,17 @@ def create_gui(categorias):
         ttk.Entry(frame, textvariable=intervalo_horas_var).grid(row=4, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
         urls_wrap = ttk.Frame(frame, style="Main.TFrame")
-        urls_wrap.grid(row=5, column=0, columnspan=2, sticky="ew", pady=(12, 0))
+        urls_wrap.grid(row=6, column=0, columnspan=2, sticky="ew", pady=(12, 0))
 
         urls_frame = ttk.Frame(urls_wrap, style="Main.TFrame")
         urls_frame.grid(row=0, column=0, sticky="ew")
 
-        ttk.Label(frame, text="Descricao do produto:", style="Field.TLabel").grid(row=6, column=0, sticky="w", pady=(12, 0))
+        ttk.Label(frame, text="Descricao do produto:", style="Field.TLabel").grid(row=7, column=0, sticky="w", pady=(12, 0))
         descricao_entry = ttk.Entry(frame, textvariable=descricao_alerta_var)
-        descricao_entry.grid(row=6, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        descricao_entry.grid(row=7, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
         contatos_wrap = ttk.Frame(frame, style="Main.TFrame")
-        contatos_wrap.grid(row=7, column=0, columnspan=2, sticky="ew", pady=(12, 0))
+        contatos_wrap.grid(row=8, column=0, columnspan=2, sticky="ew", pady=(12, 0))
 
         emails_frame = ttk.Frame(contatos_wrap, style="Main.TFrame")
         emails_frame.grid(row=0, column=0, sticky="ew")
@@ -1435,10 +1587,10 @@ def create_gui(categorias):
             frame,
             text="Executar a primeira vez assim que salvar",
             variable=executar_ao_salvar_var,
-        ).grid(row=8, column=0, columnspan=2, sticky="w", pady=(10, 0))
+        ).grid(row=9, column=0, columnspan=2, sticky="w", pady=(10, 0))
 
         botoes = ttk.Frame(frame, style="Main.TFrame")
-        botoes.grid(row=9, column=0, columnspan=2, sticky="w", pady=(16, 0))
+        botoes.grid(row=10, column=0, columnspan=2, sticky="w", pady=(16, 0))
 
         url_vars = []
         url_rows = []
@@ -1557,13 +1709,8 @@ def create_gui(categorias):
             _redraw_telefone_fields()
 
         def _toggle_mode_fields(*_):
-            is_url = modo_var.get() == "url"
-            if is_url:
-                urls_wrap.grid()
-                descricao_entry.configure(state="disabled")
-            else:
-                urls_wrap.grid_remove()
-                descricao_entry.configure(state="normal")
+            urls_wrap.grid()
+            descricao_entry.configure(state="normal")
 
         for url in urls_iniciais:
             _add_url_field(url)
@@ -1589,18 +1736,20 @@ def create_gui(categorias):
                 intervalo_horas = parse_int(intervalo_horas_var.get(), "Ciclo (horas)")
                 if intervalo_horas is None or intervalo_horas < 1:
                     raise ValueError("A rotina deve ser no minimo a cada 1 hora.")
+
             except ValueError as exc:
                 messagebox.showerror("Validacao", str(exc), parent=modal)
                 return
 
             urls = [str(var.get()).strip() for var in url_vars if str(var.get()).strip()]
+            invalidas = [url for url in urls if not url.startswith("http://") and not url.startswith("https://")]
+            if invalidas:
+                messagebox.showerror("Validacao", "Todas as URLs devem comecar com http:// ou https://.", parent=modal)
+                return
+
             if modo == "url":
                 if not urls:
                     messagebox.showerror("Validacao", "Informe ao menos uma URL.", parent=modal)
-                    return
-                invalidas = [url for url in urls if not url.startswith("http://") and not url.startswith("https://")]
-                if invalidas:
-                    messagebox.showerror("Validacao", "Todas as URLs devem comecar com http:// ou https://.", parent=modal)
                     return
 
             descricao = (descricao_alerta_var.get() or "").strip()
@@ -1968,14 +2117,23 @@ def create_gui(categorias):
 
     def _check_alert_once(alert):
         mode = (alert.get("mode") or "url").strip().lower()
+        description = (alert.get("description") or "").strip()
+        urls = [url for url in alert.get("urls", []) if url]
         target_price = float(alert.get("target_price", 0))
         lowest_price = None
         source = ""
         error_message = None
 
         try:
-            if mode == "url":
-                urls = [url for url in alert.get("urls", []) if url]
+            if urls and description:
+                for url in urls:
+                    price, src = _fetch_lowest_price_by_description_in_url(url, description)
+                    if price is None:
+                        continue
+                    if lowest_price is None or price < lowest_price:
+                        lowest_price = price
+                        source = src
+            elif mode == "url":
                 for url in urls:
                     price, src = _fetch_price_from_url(url)
                     if price is None:
@@ -1984,11 +2142,16 @@ def create_gui(categorias):
                         lowest_price = price
                         source = src
             else:
-                price, src = _fetch_price_from_description(
-                    alert.get("description", ""),
-                )
+                price, src = _fetch_price_from_description(description)
                 lowest_price = price
                 source = src
+
+            if lowest_price is not None:
+                affiliate_source = _build_affiliate_link(source)
+                if not affiliate_source:
+                    error_message = "Nao foi possivel gerar link de afiliado para o anuncio encontrado."
+                else:
+                    source = affiliate_source
         except Exception as exc:
             error_message = str(exc)
 
@@ -2187,17 +2350,36 @@ def create_gui(categorias):
             preco_min = parse_float(preco_min_var.get(), "Preco minimo")
             preco_max = parse_float(preco_max_var.get(), "Preco maximo")
             desconto = parse_int(desconto_var.get(), "Desconto minimo")
+            limite_candidatos = parse_int(limite_candidatos_prod_var.get(), "Limite de candidatos")
         except ValueError as exc:
             messagebox.showerror("Validacao", str(exc))
+            return
+
+        if limite_candidatos is not None and limite_candidatos < 1:
+            messagebox.showerror("Validacao", "Limite de candidatos deve ser no minimo 1.")
             return
 
         descricao = descricao_var.get().strip()
         categoria = categoria_var.get().strip()
 
-        args = _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto)
-        args.extend(["--modalidade-execucao", "ondemand"])
+        if not descricao:
+            messagebox.showwarning(
+                "Atencao",
+                "Descricao e obrigatoria. Informe ao menos uma palavra-chave do produto.",
+            )
+            return
 
-        launch_process(args, "Busca de produto por HTML do hub iniciada em nova janela.")
+        pasta_saida = filedialog.askdirectory(
+            title="Escolha onde salvar lista_anuncios.txt",
+            mustexist=True,
+        )
+        if not pasta_saida:
+            return
+
+        args = _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto, limite_candidatos)
+        args.extend(["--pasta-saida", pasta_saida, "--modalidade-execucao", "ondemand"])
+
+        launch_process(args, "Busca de produto on demand iniciada em nova janela.")
 
     def on_buscar_relampago():
         if rel_padrao_var.get():

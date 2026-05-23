@@ -1,0 +1,19 @@
+{
+  "fluxo": "afiliados",
+  "id_execucao": 4,
+  "gerado_em": "2026-05-23T18:43:09",
+  "total_ofertas": 0,
+  "contexto_execucao": {
+    "status": "sem_ofertas",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_afiliados\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_afiliados\\Historico de anuncios",
+    "categoria": null,
+    "desconto_minimo": null,
+    "preco_minimo": 3000.0,
+    "preco_maximo": 4300.0,
+    "descricao": "Console Nintendo Switch 2",
+    "limite_candidatos": null,
+    "limite_validos": 10
+  },
+  "ofertas": []
+}
