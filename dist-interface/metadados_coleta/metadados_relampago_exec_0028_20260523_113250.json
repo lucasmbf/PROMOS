@@ -1,0 +1,57 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 28,
+  "gerado_em": "2026-05-23T11:32:50",
+  "total_ofertas": 2,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": "Eletrodomésticos",
+    "desconto_minimo": null,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 2,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?category=MLB5726&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB5971248432",
+      "descricao": "Omeleteira Inox Elétrica 750w Gourmet 2 Divisões 220v Lenoxx",
+      "categoria": "Preparação de Alimentos > Omeleteiras",
+      "antes": "R$ 169,90",
+      "depois": "R$ 94,90",
+      "desconto": "44% OFF",
+      "link": "https://meli.la/1fpDMof",
+      "link_original": "https://www.mercadolivre.com.br/omeleteira-inox-eletrica-750w-gourmet-2-divisoes-220v-lenoxx/up/MLBU3632974802?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=5e83904d-97f4-4a21-89e7-601325890886&position=2&tracking_id=a05b8212-1a61-4255-a393-693fd4712b4f&wid=MLB5971248432&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/omeleteira-inox-eletrica-750w-gourmet-2-divisoes-220v-lenoxx/up/MLBU3632974802?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=5e83904d-97f4-4a21-89e7-601325890886&position=2&tracking_id=a05b8212-1a61-4255-a393-693fd4712b4f&wid=MLB5971248432&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?category=MLB5726&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_113230_097491_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    },
+    {
+      "ordem": 2,
+      "id_anuncio": "MLB5944737242",
+      "descricao": "Cafeteira Grand Coffee 30 Xícaras Pca037 750w Preta Lenoxx Cor Preto 220v",
+      "categoria": "Para a Cozinha > Cafeteiras",
+      "antes": "R$ 169,90",
+      "depois": "R$ 94,90",
+      "desconto": "44% OFF",
+      "link": "https://meli.la/2fAp8Wu",
+      "link_original": "https://www.mercadolivre.com.br/cafeteira-grand-coffee-30-xicaras-pca037-750w-preta-lenoxx-cor-preto/p/MLB22666693?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=5e83904d-97f4-4a21-89e7-601325890886&position=3&tracking_id=a05b8212-1a61-4255-a393-693fd4712b4f&wid=MLB5944737242&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-grand-coffee-30-xicaras-pca037-750w-preta-lenoxx-cor-preto/p/MLB22666693?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=5e83904d-97f4-4a21-89e7-601325890886&position=3&tracking_id=a05b8212-1a61-4255-a393-693fd4712b4f&wid=MLB5944737242&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?category=MLB5726&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_113230_097491_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

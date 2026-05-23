@@ -13,6 +13,7 @@ from parsers.mercadolivre import (
 import argparse
 import ast
 import os
+import pdb
 import random
 import sys
 import time
@@ -54,6 +55,11 @@ HISTORICO_ANUNCIOS_ARQUIVO = "historico_anuncios.txt"
 ARQUIVO_PRODUTOS_PREFIXO = "ofertas_consolidadas"
 
 WHATSAPP_DESTINO_FIXO = "whatsapp:+5519991133269"
+
+AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
+AUTH_MARKER_STILL_PENDING_ML = "[AUTH_STILL_PENDING_ML]"
+LOGIN_OK_SIGNAL_FILE = os.path.join(os.path.dirname(__file__), ".ml_login_ok.signal")
+MODO_INTERFACE = os.getenv("PROMOS_GUI_MODE", "0") == "1"
 
 DEBUG_BREAKPOINTS = os.getenv("ENABLE_DEBUG_BREAKPOINTS", "0") == "1"
 DEBUG_BREAKPOINT_TARGET = os.getenv("DEBUG_BREAKPOINT_TARGET", "").strip()
@@ -207,7 +213,7 @@ def debug_pausa(rotulo):
 
         if not DEBUG_BREAKPOINT_TARGET or DEBUG_BREAKPOINT_TARGET == rotulo:
 
-            breakpoint()
+            pdb.set_trace()
 
     return
 
@@ -656,35 +662,70 @@ def usuario_esta_logado_mercado_livre(page):
 
     try:
 
-        if "login" in (page.url or "").lower():
-
+        url_atual = (page.url or "").lower()
+        if "/login" in url_atual:
             return False
 
-        if page.locator("button[aria-label*='menu'], button:has-text('menu')").count() > 0:
-
+        # Seletores positivos comuns em sessão autenticada (podem variar conforme UI/AB tests).
+        if page.locator(
+            "button[aria-label*='menu'], a[aria-label*='menu'], button:has-text('menu'), a[href*='logout'], a[href*='my-account']"
+        ).count() > 0:
             return True
 
-        if page.get_by_role("link", name="Entre").first.is_visible():
-
-            return False
-
-        if page.get_by_role("link", name="Crie a sua conta").first.is_visible():
-
-            return False
-
-        if page.locator("a[href*='login']").first.is_visible():
-
-            return False
-
-        if page.locator("button:has-text('Lucas, menu')").count() > 0:
-
+        # Seletor nominal do perfil pode variar por conta/idioma.
+        if page.locator("button:has-text('menu')").count() > 0:
             return True
+
+        # Sinais explícitos de sessão deslogada.
+        if page.locator("a[href*='login'], a[href*='registration']").count() > 0:
+            return False
+
+        if page.get_by_role("link", name="Entre").count() > 0:
+            return False
+
+        if page.get_by_role("link", name="Crie a sua conta").count() > 0:
+            return False
 
     except Exception:
 
+        # Durante navegação/redirecionamento o estado pode oscilar; trata como "ainda não logado".
         return False
 
-    return True
+    return False
+
+
+def url_em_fluxo_autenticacao_ml(url):
+
+    url_atual = (url or "").lower()
+
+    marcadores = [
+        "/login",
+        "identity",
+        "authentication",
+        "challenges",
+        "chooser/callback",
+        "phone-validation",
+        "enter-code",
+        "otp",
+        "mfa",
+        "challenge",
+    ]
+
+    return any(marcador in url_atual for marcador in marcadores)
+
+
+def sessao_ml_ativa_via_requisicao(page):
+
+    try:
+        resposta = page.context.request.get(URL_LISTAGEM, timeout=5000)
+        url_final = (resposta.url or "").lower()
+
+        if any(parte in url_final for parte in ["/login", "identity", "authentication"]):
+            return False
+
+        return bool(resposta.ok)
+    except Exception:
+        return False
 
 
 def aguardar_login_mercado_livre(page):
@@ -701,7 +742,42 @@ def aguardar_login_mercado_livre(page):
         "\nMercado Livre nao esta autenticado. Faça login manualmente no navegador aberto."
     )
 
-    timeout_segundos = 180
+    if MODO_INTERFACE:
+
+        print(
+            f"{AUTH_MARKER_REQUIRED_ML} Mercado Livre não autenticado, realize o login e clique em 'Continuar'."
+        )
+
+        timeout_segundos = 900
+        inicio_espera = time.time()
+
+        while (time.time() - inicio_espera) < timeout_segundos:
+
+            if not os.path.exists(LOGIN_OK_SIGNAL_FILE):
+                time.sleep(1)
+                continue
+
+            try:
+                os.remove(LOGIN_OK_SIGNAL_FILE)
+            except Exception:
+                pass
+
+            print("\nConfirmacao recebida da interface. Validando sessao...")
+
+            if usuario_esta_logado_mercado_livre(page) or sessao_ml_ativa_via_requisicao(page):
+                print("\nLogin confirmado. Continuando execução.")
+                return
+
+            print(
+                f"{AUTH_MARKER_STILL_PENDING_ML} Login ainda nao confirmado. Continue no navegador e clique em 'Continuar' novamente."
+            )
+
+        raise RuntimeError(
+            "Sessao do Mercado Livre nao autenticada apos aguardar 900s. "
+            "Entre na conta e execute novamente."
+        )
+
+    timeout_segundos = 300
     inicio_espera = time.time()
 
     while (time.time() - inicio_espera) < timeout_segundos:
@@ -711,10 +787,24 @@ def aguardar_login_mercado_livre(page):
             print("\nLogin confirmado. Continuando execução.")
             return
 
+        # Não interfere no fluxo de login/MFA enquanto ele está em andamento.
+        if url_em_fluxo_autenticacao_ml(page.url):
+            if sessao_ml_ativa_via_requisicao(page):
+                print("\nLogin confirmado. Continuando execução.")
+                return
+
+            time.sleep(2)
+            continue
+
+        # Valida sessão em background sem interromper a tela atual (MFA/login).
+        if sessao_ml_ativa_via_requisicao(page):
+            print("\nLogin confirmado. Continuando execução.")
+            return
+
         time.sleep(2)
 
     raise RuntimeError(
-        "Sessao do Mercado Livre nao autenticada apos aguardar 180s. "
+        "Sessao do Mercado Livre nao autenticada apos aguardar 300s. "
         "Entre na conta e execute novamente."
     )
 

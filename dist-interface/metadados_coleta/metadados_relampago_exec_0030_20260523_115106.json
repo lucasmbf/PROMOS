@@ -1,0 +1,57 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 30,
+  "gerado_em": "2026-05-23T11:51:06",
+  "total_ofertas": 2,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": "Eletrodomésticos",
+    "desconto_minimo": null,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 2,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?category=MLB5726&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB4544611569",
+      "descricao": "Modelador De Cachos 3em1 Gokoco Gd034 6 Controle Temperatura",
+      "categoria": "Artefatos para Cabelo > Modeladores de Cachos",
+      "antes": "R$ 599",
+      "depois": "R$ 287,47",
+      "desconto": "52% OFF",
+      "link": "https://meli.la/1SHbctY",
+      "link_original": "https://produto.mercadolivre.com.br/MLB-4544611569-modelador-de-cachos-3em1-gokoco-gd034-6-controle-temperatura-_JM?searchVariation=198701895255#polycard_client=offers&deal_print_id=7a3926f4-7308-4b9a-bb52-e1c06fd72874&position=4&tracking_id=76318a16-a86b-4b48-8958-33da96d85850",
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-4544611569-modelador-de-cachos-3em1-gokoco-gd034-6-controle-temperatura-_JM?searchVariation=198701895255#polycard_client=offers&deal_print_id=7a3926f4-7308-4b9a-bb52-e1c06fd72874&position=4&tracking_id=76318a16-a86b-4b48-8958-33da96d85850",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?category=MLB5726&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_115046_842274_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    },
+    {
+      "ordem": 2,
+      "id_anuncio": "MLB5691456580",
+      "descricao": "Chaleira Elétrica Jarra Bule Aço Inox Garrafa 1,8l Jarro",
+      "categoria": "Para a Cozinha > Chaleiras Elétricas",
+      "antes": "R$ 134,98",
+      "depois": "R$ 73,90",
+      "desconto": "45% OFF",
+      "link": "https://meli.la/2Y8CoHy",
+      "link_original": "https://produto.mercadolivre.com.br/MLB-5691456580-chaleira-eletrica-jarra-bule-aco-inox-garrafa-18l-jarro-_JM?searchVariation=185356770834#polycard_client=offers&deal_print_id=7a3926f4-7308-4b9a-bb52-e1c06fd72874&position=5&tracking_id=76318a16-a86b-4b48-8958-33da96d85850",
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-5691456580-chaleira-eletrica-jarra-bule-aco-inox-garrafa-18l-jarro-_JM?searchVariation=185356770834#polycard_client=offers&deal_print_id=7a3926f4-7308-4b9a-bb52-e1c06fd72874&position=5&tracking_id=76318a16-a86b-4b48-8958-33da96d85850",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?category=MLB5726&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_115046_842274_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

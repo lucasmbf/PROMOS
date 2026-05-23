@@ -1,0 +1,57 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 32,
+  "gerado_em": "2026-05-23T12:02:45",
+  "total_ofertas": 2,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": "Eletrodomésticos",
+    "desconto_minimo": null,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 2,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?category=MLB5726&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB3980951883",
+      "descricao": "Chaleira Elétrica Vidro Inox Bule Jarro 220v Garrafa 1500w",
+      "categoria": "Para a Cozinha > Chaleiras Elétricas",
+      "antes": "R$ 196,55",
+      "depois": "R$ 112,03",
+      "desconto": "43% OFF",
+      "link": "https://meli.la/2YPk5qa",
+      "link_original": "https://produto.mercadolivre.com.br/MLB-3980951883-chaleira-eletrica-vidro-inox-bule-jarro-220v-garrafa-1500w-_JM?searchVariation=190197307477#polycard_client=offers&deal_print_id=fd905b47-4b3a-4c0e-8a33-179663170115&position=6&tracking_id=761153d4-eb20-49de-9ce1-39be53ef293f",
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-3980951883-chaleira-eletrica-vidro-inox-bule-jarro-220v-garrafa-1500w-_JM?searchVariation=190197307477#polycard_client=offers&deal_print_id=fd905b47-4b3a-4c0e-8a33-179663170115&position=6&tracking_id=761153d4-eb20-49de-9ce1-39be53ef293f",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?category=MLB5726&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_120224_274085_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    },
+    {
+      "ordem": 2,
+      "id_anuncio": "MLB5300972306",
+      "descricao": "Chaleira Elétrica Inox Garrafa Térmica Jarro Bule Café 220v",
+      "categoria": "Para a Cozinha > Chaleiras Elétricas",
+      "antes": "R$ 157,63",
+      "depois": "R$ 56,90",
+      "desconto": "63% OFF",
+      "link": "https://meli.la/2trgQRK",
+      "link_original": "https://produto.mercadolivre.com.br/MLB-5300972306-chaleira-eletrica-inox-garrafa-termica-jarro-bule-cafe-220v-_JM?searchVariation=183007938684#polycard_client=offers&deal_print_id=fd905b47-4b3a-4c0e-8a33-179663170115&position=7&tracking_id=761153d4-eb20-49de-9ce1-39be53ef293f",
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-5300972306-chaleira-eletrica-inox-garrafa-termica-jarro-bule-cafe-220v-_JM?searchVariation=183007938684#polycard_client=offers&deal_print_id=fd905b47-4b3a-4c0e-8a33-179663170115&position=7&tracking_id=761153d4-eb20-49de-9ce1-39be53ef293f",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?category=MLB5726&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_120224_274085_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

@@ -20,6 +20,9 @@ from bs4 import BeautifulSoup
 BASE_DIR = Path(__file__).resolve().parent
 ALERTS_CONFIG_FILE = BASE_DIR / "alertas_preco.json"
 LOGS_DIR = BASE_DIR / "logs_execucao"
+LOGIN_OK_SIGNAL_FILE = BASE_DIR / ".ml_login_ok.signal"
+AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
+AUTH_MARKER_STILL_PENDING_ML = "[AUTH_STILL_PENDING_ML]"
 SCHEDULER_TICK_MS = 60000
 HTTP_HEADERS = {
     "User-Agent": (
@@ -265,7 +268,9 @@ def _parse_iso_datetime(value):
 
 def run_main_mode(forward_args):
     original_argv = list(sys.argv)
+    previous_gui_mode = os.environ.get("PROMOS_GUI_MODE")
     try:
+        os.environ["PROMOS_GUI_MODE"] = "1"
         sys.argv = ["main.py", *forward_args]
         if "main" in sys.modules:
             importlib.reload(sys.modules["main"])
@@ -273,6 +278,10 @@ def run_main_mode(forward_args):
             importlib.import_module("main")
     finally:
         sys.argv = original_argv
+        if previous_gui_mode is None:
+            os.environ.pop("PROMOS_GUI_MODE", None)
+        else:
+            os.environ["PROMOS_GUI_MODE"] = previous_gui_mode
 
 
 def build_worker_command(args):
@@ -581,6 +590,59 @@ def create_gui(categorias):
     worker_log = {"path": None}
     worker_messages = queue.Queue()
 
+    def _mostrar_modal_continuar_login_ml():
+        confirmado = {"value": False}
+
+        modal = tk.Toplevel(root)
+        modal.title("Autenticacao necessaria")
+        modal.configure(bg="#ececec")
+        modal.transient(root)
+        modal.grab_set()
+        modal.resizable(False, False)
+
+        frame = ttk.Frame(modal, style="Main.TFrame", padding=16)
+        frame.pack(fill="both", expand=True)
+
+        ttk.Label(
+            frame,
+            text="Mercado Livre não autenticado, realize o login e clique em 'Continuar'",
+            style="Hint.TLabel",
+            wraplength=420,
+            justify="left",
+        ).pack(anchor="w")
+
+        def _confirmar():
+            confirmado["value"] = True
+            modal.destroy()
+
+        ttk.Button(frame, text="Continuar", style="Action.TButton", command=_confirmar).pack(anchor="e", pady=(14, 0))
+
+        modal.protocol("WM_DELETE_WINDOW", _confirmar)
+        modal.wait_visibility()
+        modal.focus_force()
+        modal.wait_window()
+
+        return confirmado["value"]
+
+    def _sinalizar_confirmacao_login_ml():
+        try:
+            LOGIN_OK_SIGNAL_FILE.write_text(datetime.now().isoformat(timespec="seconds"), encoding="utf-8")
+            status_var.set("Confirmacao enviada. Validando login do Mercado Livre...")
+        except Exception as exc:
+            messagebox.showerror("Falha", f"Nao foi possivel enviar confirmacao de login.\n\n{exc}")
+
+    def _tratar_marcadores_autenticacao(texto):
+        if AUTH_MARKER_REQUIRED_ML not in texto and AUTH_MARKER_STILL_PENDING_ML not in texto:
+            return
+
+        if AUTH_MARKER_STILL_PENDING_ML in texto:
+            status_var.set("Login ainda nao confirmado. Finalize o login e clique em 'Continuar' novamente.")
+        else:
+            status_var.set("Aguardando login no Mercado Livre...")
+
+        if _mostrar_modal_continuar_login_ml():
+            _sinalizar_confirmacao_login_ml()
+
     def _append_resumo(texto):
         if not texto:
             return
@@ -589,6 +651,7 @@ def create_gui(categorias):
         resumo_text.insert("end", texto)
         resumo_text.see("end")
         resumo_text.configure(state="disabled")
+        _tratar_marcadores_autenticacao(texto)
 
     def _limpar_resumo():
         resumo_text.configure(state="normal")
@@ -1131,6 +1194,12 @@ def create_gui(categorias):
         if worker_running["value"]:
             messagebox.showwarning("Em execucao", "Ja existe uma busca em andamento.")
             return
+
+        if LOGIN_OK_SIGNAL_FILE.exists():
+            try:
+                LOGIN_OK_SIGNAL_FILE.unlink()
+            except Exception:
+                pass
 
         worker_running["value"] = True
         status_var.set(status_text)
