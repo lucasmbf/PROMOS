@@ -1,3 +1,19 @@
-2026/05/22-19:21:36.173 5de0 Reusing MANIFEST C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/MANIFEST-000001
-2026/05/22-19:21:36.174 5de0 Recovering log #25
-2026/05/22-19:21:36.177 5de0 Reusing old log C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/000025.log 
+2026/05/22-21:14:33.904 573c Reusing MANIFEST C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/MANIFEST-000001
+2026/05/22-21:14:33.904 573c Recovering log #32
+2026/05/22-21:14:33.904 573c Level-0 table #35: started
+2026/05/22-21:14:33.908 573c Level-0 table #35: 49462 bytes OK
+2026/05/22-21:14:33.908 573c Recovering log #34
+2026/05/22-21:14:33.910 573c Reusing old log C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/000034.log 
+2026/05/22-21:14:33.911 573c Delete type=0 #32
+2026/05/22-21:20:45.779 56fc Level-0 table #37: started
+2026/05/22-21:20:45.801 56fc Level-0 table #37: 39238 bytes OK
+2026/05/22-21:20:45.803 56fc Delete type=0 #34
+2026/05/22-21:20:45.803 56fc Compacting 4@0 + 1@1 files
+2026/05/22-21:20:45.807 56fc Generated table #38@0: 134 keys, 14314 bytes
+2026/05/22-21:20:45.807 56fc Compacted 4@0 + 1@1 files => 14314 bytes
+2026/05/22-21:20:45.807 56fc compacted to: files[ 0 1 0 0 0 0 0 ]
+2026/05/22-21:20:45.808 56fc Delete type=2 #27
+2026/05/22-21:20:45.808 56fc Delete type=2 #29
+2026/05/22-21:20:45.808 56fc Delete type=2 #33
+2026/05/22-21:20:45.808 56fc Delete type=2 #35
+2026/05/22-21:20:45.808 56fc Delete type=2 #37

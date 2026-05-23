@@ -219,8 +219,8 @@ def _fetch_price_from_url(url):
     return price, url
 
 
-def _fetch_price_from_description(description, attributes):
-    terms = " ".join(part for part in [description, attributes] if part).strip()
+def _fetch_price_from_description(description):
+    terms = " ".join(part for part in [description] if part).strip()
     if not terms:
         return None, ""
 
@@ -489,7 +489,6 @@ def create_gui(categorias):
         preco_alvo_var = tk.StringVar()
         intervalo_horas_var = tk.StringVar(value="1")
         descricao_alerta_var = tk.StringVar()
-        atributos_var = tk.StringVar()
         ativo_var = tk.BooleanVar(value=True)
         editing_alert_id = {"value": None}
         selection_vars = {}
@@ -508,7 +507,7 @@ def create_gui(categorias):
         modo_frame.grid(row=2, column=1, columnspan=2, sticky="w", padx=(8, 0), pady=(12, 0))
 
         rb_url = ttk.Radiobutton(modo_frame, text="Por URL (Recomendável)", value="url", variable=modo_var)
-        rb_desc = ttk.Radiobutton(modo_frame, text="Por descrição e atributos do produto", value="descricao", variable=modo_var)
+        rb_desc = ttk.Radiobutton(modo_frame, text="Por descrição do produto", value="descricao", variable=modo_var)
         rb_url.grid(row=0, column=0, sticky="w")
         rb_desc.grid(row=0, column=1, sticky="w", padx=(12, 0))
 
@@ -537,8 +536,6 @@ def create_gui(categorias):
         desc_wrap.grid(row=7, column=0, columnspan=3, sticky="ew", pady=(14, 0))
         ttk.Label(desc_wrap, text="Descrição do produto:", style="Field.TLabel").grid(row=0, column=0, sticky="w")
         ttk.Entry(desc_wrap, textvariable=descricao_alerta_var).grid(row=0, column=1, sticky="ew", padx=(8, 0))
-        ttk.Label(desc_wrap, text="Atributos:", style="Field.TLabel").grid(row=1, column=0, sticky="w", pady=(10, 0))
-        ttk.Entry(desc_wrap, textvariable=atributos_var).grid(row=1, column=1, sticky="ew", padx=(8, 0), pady=(10, 0))
 
         ttk.Checkbutton(frame, text="Ativo", variable=ativo_var).grid(row=8, column=0, sticky="w", pady=(16, 0))
 
@@ -626,7 +623,6 @@ def create_gui(categorias):
             preco_alvo_var.set("")
             intervalo_horas_var.set("1")
             descricao_alerta_var.set("")
-            atributos_var.set("")
             ativo_var.set(True)
 
             lista_urls_vars.clear()
@@ -644,7 +640,6 @@ def create_gui(categorias):
             preco_alvo_var.set(str(alert.get("target_price", "")))
             intervalo_horas_var.set(str(alert.get("interval_hours", 1)))
             descricao_alerta_var.set(alert.get("description", ""))
-            atributos_var.set(alert.get("attributes", ""))
             ativo_var.set(bool(alert.get("active", True)))
 
             lista_urls_vars.clear()
@@ -784,8 +779,6 @@ def create_gui(categorias):
                     return
 
             descricao_alerta = descricao_alerta_var.get().strip()
-            atributos = atributos_var.get().strip()
-
             if modo == "descricao" and not descricao_alerta:
                 messagebox.showerror("Validação", "No modo descrição, informe a descrição do produto.", parent=modal)
                 return
@@ -801,7 +794,6 @@ def create_gui(categorias):
                     "interval_hours": intervalo_horas,
                     "urls": urls,
                     "description": descricao_alerta,
-                    "attributes": atributos,
                     "active": bool(ativo_var.get()),
                     "last_check_at": None,
                     "last_notified_price": None,
@@ -815,7 +807,6 @@ def create_gui(categorias):
                 existing["interval_hours"] = intervalo_horas
                 existing["urls"] = urls
                 existing["description"] = descricao_alerta
-                existing["attributes"] = atributos
                 existing["active"] = bool(ativo_var.get())
                 status_var.set(f"Alerta '{nome}' atualizado com sucesso.")
 
@@ -875,7 +866,6 @@ def create_gui(categorias):
             else:
                 price, src = _fetch_price_from_description(
                     alert.get("description", ""),
-                    alert.get("attributes", ""),
                 )
                 lowest_price = price
                 source = src

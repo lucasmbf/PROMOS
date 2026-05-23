@@ -1,3 +1,6 @@
-2026/05/22-19:21:36.144 5de0 Reusing MANIFEST C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Local Storage\leveldb/MANIFEST-000001
-2026/05/22-19:21:36.148 5de0 Recovering log #6
-2026/05/22-19:21:36.149 5de0 Reusing old log C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Local Storage\leveldb/000006.log 
+2026/05/22-21:14:33.845 573c Reusing MANIFEST C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/22-21:14:33.848 573c Recovering log #6
+2026/05/22-21:14:33.849 573c Reusing old log C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Local Storage\leveldb/000006.log 
+2026/05/22-21:18:11.858 573c Level-0 table #10: started
+2026/05/22-21:18:11.862 573c Level-0 table #10: 16908 bytes OK
+2026/05/22-21:18:11.865 573c Delete type=0 #6

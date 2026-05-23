@@ -3,6 +3,7 @@ import re
 import random
 import time
 import json
+import sys
 from pathlib import Path
 from math import ceil
 from urllib.parse import quote
@@ -39,7 +40,6 @@ def normalizar_descricao(texto_descricao):
 
 
 def _montar_url_anuncio(metadata):
-
     url = (metadata or {}).get("url", "").strip()
     if not url:
         return None
@@ -68,6 +68,8 @@ def _extrair_ctx_rendering(html):
 
     if prefixo not in texto:
         return None
+
+
 
     trecho_json = texto.split(prefixo, 1)[1].strip()
 
@@ -177,6 +179,14 @@ def _resolver_url_base_relampago(page, url_relampago, categoria):
 
     page.goto(url_relampago, timeout=90000, wait_until="domcontentloaded")
     time.sleep(random.uniform(5, 8))
+
+    try:
+        page.locator("ol.list-filter__values-list span.list-filter__list-element").filter(has_text=normalizar_descricao(categoria)).first.click(timeout=8000)
+        time.sleep(random.uniform(3, 5))
+        print(f"Categoria lateral clicada diretamente na página: {categoria}")
+        return page.url
+    except Exception:
+        pass
 
     filtro_categoria = _resolver_filtro_categoria_relampago(page.content(), categoria)
 
@@ -335,7 +345,7 @@ def _extrair_ofertas_do_ctx(html, desconto_minimo=30):
 
             if tipo == "title":
                 titulo = componente.get("title", {}).get("text", titulo)
-                break
+                continue
 
             if tipo == "price":
                 bloco_preco = componente.get("price", {})
@@ -1107,43 +1117,143 @@ def mercado_livre(page, url):
 # OFERTAS RELÂMPAGO — nova abordagem via HTML salvo
 # =============================================================================
 
-PASTA_OFERTAS_RELAMPAGO = "ofertas_relampago"
-PASTA_OFERTAS_HUB = "ofertas_hub"
+def _obter_diretorio_saida():
+
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
+
+    return Path.cwd()
 
 
-def salvar_html_ofertas_relampago(page, url):
-    """Navega até a URL de ofertas relâmpago, aguarda carregamento,
-    faz scroll para expor mais cards e salva o HTML completo em arquivo texto.
-    Retorna o caminho do arquivo salvo."""
+BASE_SAIDA = _obter_diretorio_saida()
+PASTA_OFERTAS_RELAMPAGO = str(BASE_SAIDA / "ofertas_relampago")
+PASTA_OFERTAS_HUB = str(BASE_SAIDA / "ofertas_afiliados")
+PASTA_METADADOS_COLETA = str(BASE_SAIDA / "metadados_coleta")
+TOTAL_SNAPSHOTS_HUB = 10
 
-    os.makedirs(PASTA_OFERTAS_RELAMPAGO, exist_ok=True)
+os.makedirs(PASTA_OFERTAS_RELAMPAGO, exist_ok=True)
+os.makedirs(PASTA_OFERTAS_HUB, exist_ok=True)
+os.makedirs(PASTA_METADADOS_COLETA, exist_ok=True)
+
+
+def _formatar_preco_txt(valor):
+
+    texto = str(valor or "-").strip()
+    if not texto:
+        return "-"
+
+    if texto != "-" and not texto.startswith("R$"):
+        texto = f"R$ {texto}"
+
+    return texto
+
+
+def _salvar_metadados_ofertas(ofertas, prefixo_arquivo, pasta=PASTA_METADADOS_COLETA):
+
+    if not ofertas:
+        return None
+
+    os.makedirs(pasta, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    caminho = os.path.join(PASTA_OFERTAS_RELAMPAGO, f"html_relampago_{timestamp}.txt")
+    caminho = os.path.join(pasta, f"{prefixo_arquivo}_{timestamp}.json")
+
+    campos_base = [
+        "id_anuncio",
+        "descricao",
+        "categoria",
+        "antes",
+        "depois",
+        "desconto",
+        "link",
+        "link_original",
+        "link_anuncio",
+    ]
+
+    campos_origem = [
+        "pagina_origem_url",
+        "pagina_origem_numero",
+        "arquivo_origem_html",
+        "snapshot_origem_indice",
+        "scrolls_estimados",
+        "posicao_html",
+    ]
+
+    metadados = []
+    for indice, oferta in enumerate(ofertas, start=1):
+        item = {"ordem": indice}
+
+        for campo in campos_base + campos_origem:
+            item[campo] = oferta.get(campo)
+
+        metadados.append(item)
+
+    payload = {
+        "gerado_em": datetime.now().isoformat(timespec="seconds"),
+        "total_ofertas": len(metadados),
+        "ofertas": metadados,
+    }
+
+    with open(caminho, "w", encoding="utf-8") as arquivo:
+        json.dump(payload, arquivo, ensure_ascii=False, indent=2)
+
+    print(f"Metadados salvos em: {caminho}")
+    return caminho
+
+
+def _salvar_html_atual(page, pasta, prefixo, indice=None):
+
+    os.makedirs(pasta, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    sufixo = f"_{indice:02d}" if indice is not None else ""
+    caminho = os.path.join(pasta, f"{prefixo}_{timestamp}{sufixo}.txt")
+
+    with open(caminho, "w", encoding="utf-8") as arquivo:
+        arquivo.write(page.content())
+
+    print(f"HTML salvo em: {caminho}")
+    return caminho
+
+
+def _salvar_html_consolidado(entradas_html, pasta, prefixo):
+
+    if not entradas_html:
+        return None
+
+    os.makedirs(pasta, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    caminho = os.path.join(pasta, f"{prefixo}_{timestamp}.txt")
+
+    with open(caminho, "w", encoding="utf-8") as arquivo:
+        for indice, entrada in enumerate(entradas_html, start=1):
+            arquivo.write(f"\n===== INICIO HTML {indice} | URL: {entrada.get('url', '-')} =====\n")
+            arquivo.write(Path(entrada["path"]).read_text(encoding="utf-8"))
+            arquivo.write(f"\n===== FIM HTML {indice} =====\n")
+
+    print(f"HTML consolidado salvo em: {caminho}")
+    return caminho
+
+
+def salvar_html_ofertas_relampago(page, url, indice=None, pasta=PASTA_OFERTAS_RELAMPAGO):
+    """Navega até uma página de ofertas relâmpago, faz scroll e salva o HTML."""
 
     print(f"\nNavegando para ofertas relâmpago:\n{url}")
 
     page.goto(url, timeout=90000, wait_until="domcontentloaded")
-
-    time.sleep(random.uniform(5, 8))
+    time.sleep(random.uniform(4, 6))
 
     for _ in range(6):
         page.mouse.wheel(0, 2000)
-        time.sleep(random.uniform(1.5, 2.5))
+        time.sleep(random.uniform(1.2, 2.0))
 
-    html = page.content()
-
-    with open(caminho, "w", encoding="utf-8") as f:
-        f.write(html)
-
-    print(f"HTML salvo em: {caminho}")
-
-    return caminho
+    return _salvar_html_atual(page, pasta, "html_relampago", indice=indice)
 
 
-def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=30):
+def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=None):
     """Lê o HTML salvo em caminho_arquivo, localiza os poly-cards e retorna
-    a lista de ofertas com desconto >= desconto_minimo.
+    a lista de ofertas compatíveis com o desconto mínimo, quando informado.
 
     Cada oferta é um dicionário com as chaves:
         categoria, descricao, antes, desconto, depois
@@ -1154,7 +1264,7 @@ def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=30):
     with open(caminho_arquivo, "r", encoding="utf-8") as f:
         html = f.read()
 
-    ofertas_ctx = _extrair_ofertas_do_ctx(html, desconto_minimo)
+    ofertas_ctx = _extrair_ofertas_do_ctx(html, desconto_minimo or 0)
     if ofertas_ctx:
         return ofertas_ctx
 
@@ -1165,7 +1275,7 @@ def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=30):
 
     ofertas = []
 
-    for card in cards:
+    for posicao_html, card in enumerate(cards, start=1):
 
         # --- Desconto ---
         desconto_el = card.select_one("[data-andes-money-amount-discount='true']")
@@ -1178,7 +1288,7 @@ def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=30):
             continue
 
         desconto_val = int(encontrado.group(1))
-        if desconto_val < desconto_minimo:
+        if desconto_minimo is not None and desconto_val < desconto_minimo:
             continue
 
         # --- Descrição ---
@@ -1228,42 +1338,159 @@ def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=30):
             "depois": depois,
             "depois_valor": _converter_preco_em_float(depois),
             "link_anuncio": link_anuncio,
+            "posicao_html": posicao_html,
         })
 
-    print(f"{len(ofertas)} oferta(s) com {desconto_minimo}% ou mais de desconto extraída(s).")
+    print(f"{len(ofertas)} oferta(s) extraída(s) do HTML.")
 
     return ofertas
 
 
-def salvar_html_hub_afiliados(page, url_hub, pasta=PASTA_OFERTAS_HUB):
-    """Navega para o hub de afiliados, faz scroll inicial grande e salva o HTML."""
+def _tem_filtros_ativos(desconto_minimo=None, preco_minimo=None, preco_maximo=None, descricao=None):
 
-    os.makedirs(pasta, exist_ok=True)
+    return any(
+        [
+            desconto_minimo is not None,
+            preco_minimo is not None,
+            preco_maximo is not None,
+            bool(normalizar_descricao(descricao or "")),
+        ]
+    )
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    caminho = os.path.join(pasta, f"html_hub_{timestamp}.txt")
+
+def _aplicar_filtro_categoria_hub(page, categoria):
+
+    categoria_limpa = normalizar_descricao(categoria)
+    if not categoria_limpa:
+        return page.url
+
+    try:
+        page.locator("span.tag-icon__text").filter(has_text="Filtrar").first.click(timeout=8000)
+        time.sleep(random.uniform(1, 2))
+        page.locator("div.andes-accordion-header-container__title").filter(has_text="Categorias").first.click(timeout=5000)
+        time.sleep(random.uniform(1, 2))
+        page.locator("label.andes-radio__label").filter(has_text=categoria_limpa).first.click(timeout=5000)
+        time.sleep(random.uniform(1, 2))
+        page.get_by_role("button", name="Aplicar").click(timeout=5000)
+        time.sleep(random.uniform(3, 5))
+    except Exception as exc:
+        print(f"[AVISO] Não foi possível aplicar o filtro de categoria no hub: {exc}")
+
+    return page.url
+
+
+def _coletar_htmls_hub_afiliados(
+    page,
+    url_hub,
+    categoria=None,
+    pasta=PASTA_OFERTAS_HUB,
+    total_snapshots=TOTAL_SNAPSHOTS_HUB,
+    usar_scroll=True,
+):
 
     print(f"\nNavegando para o hub de afiliados:\n{url_hub}")
 
     page.goto(url_hub, timeout=90000, wait_until="domcontentloaded")
     time.sleep(random.uniform(4, 6))
 
-    # Scroll inicial agressivo para expor mais cards do hub.
-    page.mouse.wheel(0, 10000)
-    time.sleep(random.uniform(2, 3))
+    url_base = _aplicar_filtro_categoria_hub(page, categoria) if categoria else page.url
+    entradas_html = []
 
-    for _ in range(4):
-        page.mouse.wheel(0, 2500)
-        time.sleep(random.uniform(1.2, 2))
+    total_snapshots = max(1, int(total_snapshots or 1))
 
-    html = page.content()
+    for indice in range(total_snapshots):
+        caminho_html = _salvar_html_atual(page, pasta, "html_afiliados", indice=indice + 1)
+        entradas_html.append({
+            "path": caminho_html,
+            "url": page.url or url_base,
+            "indice": indice + 1,
+        })
 
-    with open(caminho, "w", encoding="utf-8") as file:
-        file.write(html)
+        if usar_scroll and indice < total_snapshots - 1:
+            page.mouse.wheel(0, 2500)
+            time.sleep(random.uniform(1.2, 2.0))
 
-    print(f"HTML do hub salvo em: {caminho}")
+    _salvar_html_consolidado(entradas_html, pasta, "html_afiliados_consolidado")
+    return entradas_html, url_base
 
-    return caminho
+
+def _selecionar_ofertas_validas(
+    entradas_html,
+    desconto_minimo=None,
+    preco_minimo=None,
+    preco_maximo=None,
+    descricao=None,
+    limite_validos=10,
+):
+
+    descricao_filtro = normalizar_descricao(descricao).casefold() if descricao else ""
+    usar_filtros = _tem_filtros_ativos(
+        desconto_minimo=desconto_minimo,
+        preco_minimo=preco_minimo,
+        preco_maximo=preco_maximo,
+        descricao=descricao,
+    )
+
+    selecionadas = []
+    ids_vistos = set()
+    descricoes_vistas = set()
+
+    for entrada in entradas_html:
+        ofertas = extrair_ofertas_do_html(
+            entrada["path"],
+            desconto_minimo=desconto_minimo if usar_filtros else None,
+        )
+
+        if not ofertas:
+            continue
+
+        for oferta in ofertas:
+            descricao_oferta = normalizar_descricao(oferta.get("descricao"))
+            chave_descricao = descricao_oferta.casefold()
+            id_anuncio = _normalizar_chave_historico(oferta.get("id_anuncio"))
+
+            if not descricao_oferta or not id_anuncio:
+                continue
+
+            if id_anuncio in ids_vistos or chave_descricao in descricoes_vistas:
+                continue
+
+            preco_atual = oferta.get("depois_valor")
+            if preco_atual is None:
+                continue
+
+            if descricao_filtro and descricao_filtro not in chave_descricao:
+                continue
+
+            if preco_minimo is not None and preco_atual < preco_minimo:
+                continue
+
+            if preco_maximo is not None and preco_atual > preco_maximo:
+                continue
+
+            ids_vistos.add(id_anuncio)
+            descricoes_vistas.add(chave_descricao)
+
+            oferta["pagina_origem_url"] = entrada.get("url")
+            oferta["arquivo_origem_html"] = entrada.get("path")
+            oferta["pagina_origem_numero"] = entrada.get("pagina")
+            oferta["snapshot_origem_indice"] = entrada.get("indice")
+
+            indice_origem = entrada.get("indice")
+            if indice_origem is not None:
+                try:
+                    oferta["scrolls_estimados"] = max(0, int(indice_origem) - 1)
+                except (TypeError, ValueError):
+                    pass
+
+            oferta["link_original"] = oferta.get("link_anuncio") or ""
+            oferta["link"] = oferta.get("link_anuncio") or "Link não obtido"
+            selecionadas.append(oferta)
+
+            if limite_validos is not None and len(selecionadas) >= limite_validos:
+                return selecionadas
+
+    return selecionadas
 
 
 def processar_produtos_hub_por_html(
@@ -1276,74 +1503,56 @@ def processar_produtos_hub_por_html(
     descricao=None,
     limite_candidatos=None,
     historico_anuncios=None,
+    limite_validos=10,
 ):
-    """Fluxo de produto por HTML salvo do hub de afiliados.
+    """Fluxo do hub/afiliados em duas etapas: snapshots HTML e enriquecimento por ID."""
 
-    1. Acessa o hub de afiliados.
-    2. Faz scroll (iniciando em 10000) e salva o HTML.
-    3. Extrai ofertas do HTML e aplica filtros da interface.
-    """
-
-    caminho_html = salvar_html_hub_afiliados(page, url_hub)
-    ofertas = extrair_ofertas_do_html(caminho_html, desconto_minimo)
-
-    if not ofertas:
-        print("\nNenhuma oferta encontrada no HTML do hub.")
-        return []
-
-    categoria_filtro = _normalizar_filtro_categoria(categoria) if categoria else ""
-    descricao_filtro = normalizar_descricao(descricao).casefold() if descricao else ""
-    historico_ids = set(
-        _normalizar_chave_historico(item) for item in (historico_anuncios or set()) if item
+    modo_sem_parametros = (
+        not _tem_filtros_ativos(
+            desconto_minimo=desconto_minimo,
+            preco_minimo=preco_minimo,
+            preco_maximo=preco_maximo,
+            descricao=descricao,
+        )
+        and not normalizar_descricao(categoria or "")
+        and limite_candidatos is None
     )
 
-    validas = []
-    chaves_vistas = set()
+    total_snapshots = 1 if modo_sem_parametros else TOTAL_SNAPSHOTS_HUB
+    usar_scroll_snapshots = not modo_sem_parametros
 
-    for oferta in ofertas:
-        id_anuncio = _normalizar_chave_historico(oferta.get("id_anuncio"))
+    entradas_html, url_base = _coletar_htmls_hub_afiliados(
+        page,
+        url_hub,
+        categoria=categoria,
+        total_snapshots=total_snapshots,
+        usar_scroll=usar_scroll_snapshots,
+    )
 
-        if id_anuncio and id_anuncio in historico_ids:
-            continue
+    candidatos = _selecionar_ofertas_validas(
+        entradas_html,
+        desconto_minimo=desconto_minimo,
+        preco_minimo=preco_minimo,
+        preco_maximo=preco_maximo,
+        descricao=descricao,
+        limite_validos=limite_validos if limite_candidatos is None else min(limite_validos, limite_candidatos),
+    )
 
-        categoria_oferta = _normalizar_filtro_categoria(oferta.get("categoria"))
-        if categoria_filtro and categoria_filtro not in categoria_oferta and categoria_oferta not in categoria_filtro:
-            continue
+    if not candidatos:
+        print("\nNenhuma oferta encontrada no HTML do hub/afiliados.")
+        return []
 
-        descricao_oferta = normalizar_descricao(oferta.get("descricao"))
-        if descricao_filtro and descricao_filtro not in descricao_oferta.casefold():
-            continue
-
-        preco_atual = oferta.get("depois_valor")
-        if preco_atual is None:
-            continue
-
-        if preco_minimo is not None and preco_atual < preco_minimo:
-            continue
-
-        if preco_maximo is not None and preco_atual > preco_maximo:
-            continue
-
-        chave = id_anuncio or f"{descricao_oferta.casefold()}|{oferta.get('depois', '').strip()}"
-        if chave in chaves_vistas:
-            continue
-
-        chaves_vistas.add(chave)
-
-        oferta["link_original"] = oferta.get("link_anuncio") or ""
-        oferta["link"] = oferta.get("link_anuncio") or "Link não obtido"
-        validas.append(oferta)
-
-        if limite_candidatos is not None and len(validas) >= limite_candidatos:
-            break
-
-    print(f"{len(validas)} oferta(s) elegível(is) no hub após aplicar os filtros.")
-
-    return validas
+    return _enriquecer_ofertas_hub_com_links(
+        page,
+        url_base,
+        categoria,
+        candidatos,
+        permitir_scroll=not modo_sem_parametros,
+    )
 
 
 def salvar_resultado_hub(ofertas, pasta=PASTA_OFERTAS_HUB):
-    """Salva em texto formatado as ofertas obtidas do hub por HTML."""
+    """Salva em texto formatado as ofertas obtidas do hub/afiliados."""
 
     if not ofertas:
         return None
@@ -1351,21 +1560,129 @@ def salvar_resultado_hub(ofertas, pasta=PASTA_OFERTAS_HUB):
     os.makedirs(pasta, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    caminho = os.path.join(pasta, f"resultado_hub_{timestamp}.txt")
+    caminho = os.path.join(pasta, f"resultado_afiliados_{timestamp}.txt")
 
     with open(caminho, "w", encoding="utf-8") as file:
         for oferta in ofertas:
             file.write(f"Categoria: {oferta.get('categoria', '-') }\n")
             file.write(f"Descrição: {oferta.get('descricao', '-') }\n")
-            file.write(f"Antes: {oferta.get('antes', '-') }\n")
-            file.write(f"Desconto: {oferta.get('desconto', '-') }\n")
-            file.write(f"Depois: {oferta.get('depois', '-') }\n")
+            file.write(f"Antes: ~{_formatar_preco_txt(oferta.get('antes', '-'))}~\n")
+            file.write(f"*Desconto: {oferta.get('desconto', '-')}*\n")
+            file.write(f"*Depois: {_formatar_preco_txt(oferta.get('depois', '-'))}*\n")
             file.write(f"Link: {oferta.get('link', '-') }\n")
             file.write("\n-----------------------------\n\n")
 
-    print(f"\nResultado do hub salvo em: {caminho}")
+    print(f"\nResultado de afiliados salvo em: {caminho}")
+
+    _salvar_metadados_ofertas(ofertas, "metadados_afiliados")
 
     return caminho
+
+
+def _coletar_links_visiveis_por_id(page):
+
+    cards = page.locator("li.poly-card")
+    total = cards.count()
+    links = {}
+
+    for indice in range(total):
+        card = cards.nth(indice)
+
+        try:
+            href = card.locator("a.poly-component__title[href]").first.get_attribute("href", timeout=1000)
+        except Exception:
+            continue
+
+        href_normalizado = _normalizar_url_resultado(href or "")
+        id_anuncio = _normalizar_chave_historico(_extrair_id_anuncio_de_texto(href_normalizado))
+
+        if id_anuncio and href_normalizado:
+            links[id_anuncio] = href_normalizado
+
+    return links
+
+
+def _abrir_anuncio_em_nova_aba(page, url_anuncio):
+
+    detalhe_page = page.context.new_page()
+
+    try:
+        detalhe_page.goto(url_anuncio, timeout=90000, wait_until="domcontentloaded")
+        time.sleep(random.uniform(3, 5))
+
+        categoria = _extrair_categoria_do_breadcrumb(detalhe_page)
+        link = _obter_link_via_botao_afiliados(detalhe_page, url_anuncio)
+        return link, categoria
+    finally:
+        detalhe_page.close()
+
+
+def _enriquecer_ofertas_hub_com_links(page, url_base, categoria, ofertas, permitir_scroll=True):
+
+    pendentes = {}
+
+    for oferta in ofertas:
+        href_direto = _normalizar_url_resultado(
+            oferta.get("link_anuncio") or oferta.get("link_original") or ""
+        )
+
+        if href_direto:
+            link_afiliado, categoria_breadcrumb = _abrir_anuncio_em_nova_aba(page, href_direto)
+            oferta["link_original"] = href_direto
+            oferta["link"] = link_afiliado or href_direto
+            if categoria_breadcrumb and categoria_breadcrumb != "Sem categoria":
+                oferta["categoria"] = categoria_breadcrumb
+            continue
+
+        id_anuncio = _normalizar_chave_historico(oferta.get("id_anuncio"))
+        if id_anuncio:
+            pendentes[id_anuncio] = oferta
+
+    if not pendentes:
+        return ofertas
+
+    page.goto(url_base, timeout=90000, wait_until="domcontentloaded")
+    time.sleep(random.uniform(4, 6))
+
+    if categoria:
+        url_base = _aplicar_filtro_categoria_hub(page, categoria)
+
+    max_varreduras = TOTAL_SNAPSHOTS_HUB + 2 if permitir_scroll else 1
+
+    for _ in range(max_varreduras):
+        links_visiveis = _coletar_links_visiveis_por_id(page)
+
+        for id_anuncio in list(pendentes.keys()):
+            href = links_visiveis.get(id_anuncio)
+            if not href:
+                continue
+
+            oferta = pendentes.pop(id_anuncio)
+            link_afiliado, categoria_breadcrumb = _abrir_anuncio_em_nova_aba(page, href)
+            oferta["link_original"] = href
+            oferta["link"] = link_afiliado or href
+            if categoria_breadcrumb and categoria_breadcrumb != "Sem categoria":
+                oferta["categoria"] = categoria_breadcrumb
+
+        if not pendentes:
+            break
+
+        if permitir_scroll:
+            page.mouse.wheel(0, 2500)
+            time.sleep(random.uniform(1.2, 2.0))
+
+    for id_anuncio, oferta in pendentes.items():
+        href = oferta.get("link_anuncio") or oferta.get("link_original")
+        if not href:
+            continue
+
+        link_afiliado, categoria_breadcrumb = _abrir_anuncio_em_nova_aba(page, href)
+        oferta["link_original"] = href
+        oferta["link"] = link_afiliado or href
+        if categoria_breadcrumb and categoria_breadcrumb != "Sem categoria":
+            oferta["categoria"] = categoria_breadcrumb
+
+    return ofertas
 
 
 def _localizar_card_na_pagina(page, descricao):
@@ -1644,37 +1961,86 @@ def obter_link_afiliado_relampago(page, oferta, url_relampago):
     Retorna tupla (link, categoria)."""
 
     descricao = oferta.get("descricao", "")
-    link_anuncio = oferta.get("link_anuncio")
+    id_anuncio = _normalizar_chave_historico(oferta.get("id_anuncio"))
+    link_anuncio = _normalizar_url_resultado(oferta.get("link_anuncio") or "")
+    url_lista = oferta.get("pagina_origem_url") or url_relampago
+
+    # Caminho rápido: quando o href do anúncio já veio do HTML salvo,
+    # abre direto o anúncio sem percorrer novamente toda a listagem.
+    if link_anuncio:
+        print("Usando link direto extraído do HTML para obter link de afiliado.")
+        link, categoria = _abrir_anuncio_em_nova_aba(page, link_anuncio)
+        return link, categoria, link_anuncio
 
     print(f"\n--- Buscando link de afiliado para: {descricao[:70]}...")
 
-    if not link_anuncio:
+    page.goto(url_lista, timeout=90000, wait_until="domcontentloaded")
+    time.sleep(random.uniform(4, 6))
 
-        page.goto(url_relampago, timeout=90000, wait_until="domcontentloaded")
-        time.sleep(random.uniform(4, 6))
+    for _ in range(10):
+        links_visiveis = _coletar_links_visiveis_por_id(page)
+        if id_anuncio and id_anuncio in links_visiveis:
+            link_anuncio = links_visiveis[id_anuncio]
+            break
 
-        for _ in range(10):
+        if not link_anuncio:
             link_anuncio = _localizar_card_na_pagina(page, descricao)
             if link_anuncio:
                 break
-            page.mouse.wheel(0, 2500)
-            time.sleep(random.uniform(1, 2))
+
+        page.mouse.wheel(0, 2500)
+        time.sleep(random.uniform(1, 2))
 
     if not link_anuncio:
         print("[AVISO] Card não localizado na página de ofertas relâmpago.")
-        return None, "Sem categoria"
+        return None, "Sem categoria", ""
 
     print(f"Abrindo anúncio: {link_anuncio[:80]}...")
 
-    page.goto(link_anuncio, timeout=90000, wait_until="domcontentloaded")
-    time.sleep(random.uniform(3, 5))
+    link, categoria = _abrir_anuncio_em_nova_aba(page, link_anuncio)
 
-    categoria = _extrair_categoria_do_breadcrumb(page)
-    print(f"Categoria extraída do breadcrumb: {categoria}")
+    return link, categoria, link_anuncio
 
-    link = _obter_link_via_botao_afiliados(page, link_anuncio)
 
-    return link, categoria
+def _coletar_htmls_relampago(page, url_base_paginas, pasta=PASTA_OFERTAS_RELAMPAGO, coletar_todas_paginas=True):
+
+    entradas_html = []
+    caminho_inicial = salvar_html_ofertas_relampago(page, url_base_paginas, indice=1, pasta=pasta)
+    entradas_html.append({"path": caminho_inicial, "url": url_base_paginas, "pagina": 1})
+
+    if coletar_todas_paginas:
+        paging = _extrair_paging_do_html(Path(caminho_inicial).read_text(encoding="utf-8")) or {}
+        limite = paging.get("limit", 48) or 48
+        total = paging.get("total", 0) or 0
+        total_paginas = max(1, ceil(total / limite)) if total and limite else 1
+
+        print(f"Paginação detectada: {total_paginas} página(s) com limite de {limite} item(ns) por página.")
+
+        for pagina in range(2, total_paginas + 1):
+            url_pagina = _montar_url_paginada(url_base_paginas, pagina)
+            caminho_html = salvar_html_ofertas_relampago(page, url_pagina, indice=pagina, pasta=pasta)
+            entradas_html.append({"path": caminho_html, "url": url_pagina, "pagina": pagina})
+    else:
+        print("Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.")
+
+    _salvar_html_consolidado(entradas_html, pasta, "html_relampago_consolidado")
+    return entradas_html
+
+
+def _enriquecer_ofertas_relampago_com_links(page, url_base_paginas, ofertas):
+
+    for oferta in ofertas:
+        link_afiliado, categoria_breadcrumb, link_original = obter_link_afiliado_relampago(
+            page,
+            oferta,
+            url_base_paginas,
+        )
+        oferta["link_original"] = link_original or oferta.get("link_anuncio") or ""
+        oferta["link"] = link_afiliado or oferta["link_original"] or "Link não obtido"
+        if categoria_breadcrumb and categoria_breadcrumb != "Sem categoria":
+            oferta["categoria"] = categoria_breadcrumb
+
+    return ofertas
 
 
 def processar_ofertas_relampago(
@@ -1697,103 +2063,44 @@ def processar_ofertas_relampago(
     4. Retorna a lista de ofertas enriquecida com o campo 'link'.
     """
 
-    ofertas_consolidadas = []
-    descricoes_vistas = set()
-    ids_vistos = set()
-    historico_ids = set(
-        _normalizar_chave_historico(item) for item in (historico_anuncios or set()) if item
-    )
     categoria_filtro = _normalizar_filtro_categoria(categoria) if categoria else ""
-    htmls_salvos = []
 
     url_base_paginas = url_relampago
 
     if categoria_filtro:
         url_base_paginas = _resolver_url_base_relampago(page, url_relampago, categoria)
 
-    pagina_inicial_html = salvar_html_ofertas_relampago(page, url_base_paginas)
-
-    paging = _extrair_paging_do_html(pagina_inicial_html) or {}
-
-    limite = paging.get("limit", 48) or 48
-    total = paging.get("total", 0) or 0
-
-    if total and limite:
-        total_paginas = max(1, ceil(total / limite))
-    else:
-        total_paginas = 1
-
-    print(f"Paginação detectada: {total_paginas} página(s) com limite de {limite} item(ns) por página.")
-
-    for pagina in range(1, total_paginas + 1):
-        url_pagina = _montar_url_paginada(url_base_paginas, pagina)
-        caminho_html = pagina_inicial_html if pagina == 1 else salvar_html_ofertas_relampago(page, url_pagina)
-        htmls_salvos.append(caminho_html)
-
-    print(
-        f"{len(htmls_salvos)} HTML(s) salvos. Iniciando extração consolidada para selecionar até {limite_validos} inéditos."
+    modo_sem_parametros = (
+        not categoria_filtro
+        and not _tem_filtros_ativos(
+            desconto_minimo=desconto_minimo,
+            preco_minimo=preco_minimo,
+            preco_maximo=preco_maximo,
+            descricao=None,
+        )
+        and limite_candidatos is None
     )
 
-    for caminho_html in htmls_salvos:
+    entradas_html = _coletar_htmls_relampago(
+        page,
+        url_base_paginas,
+        coletar_todas_paginas=not modo_sem_parametros,
+    )
 
-        ofertas_pagina = extrair_ofertas_do_html(caminho_html, desconto_minimo)
-
-        if not ofertas_pagina:
-            print(f"Sem ofertas elegíveis na página {pagina + 1}.")
-            continue
-
-        for oferta in ofertas_pagina:
-            chave = normalizar_descricao(oferta.get("descricao"))
-            if not chave or chave in descricoes_vistas:
-                continue
-
-            id_anuncio = _normalizar_chave_historico(oferta.get("id_anuncio"))
-            if not id_anuncio:
-                continue
-
-            if id_anuncio in ids_vistos or id_anuncio in historico_ids:
-                continue
-
-            if categoria_filtro and _normalizar_filtro_categoria(oferta.get("categoria")) != categoria_filtro:
-                continue
-
-            preco_atual = oferta.get("depois_valor")
-            if preco_atual is None:
-                continue
-
-            if preco_minimo is not None and preco_atual < preco_minimo:
-                continue
-
-            if preco_maximo is not None and preco_atual > preco_maximo:
-                continue
-
-            descricoes_vistas.add(chave)
-            ids_vistos.add(id_anuncio)
-
-            oferta["link"] = oferta.get("link_anuncio") or "Link não obtido"
-            oferta["link_original"] = oferta.get("link_anuncio") or ""
-            ofertas_consolidadas.append(oferta)
-
-            if limite_validos is not None and len(ofertas_consolidadas) >= limite_validos:
-                print(
-                    f"Limite de candidatos válidos atingido no relâmpago: {limite_validos}."
-                )
-                return ofertas_consolidadas
-
-            if limite_candidatos is not None and len(ofertas_consolidadas) >= limite_candidatos:
-                print(
-                    f"Limite de candidatos atingido no relâmpago: {limite_candidatos}."
-                )
-                return ofertas_consolidadas
-
-    if limite_validos is not None and len(ofertas_consolidadas) > limite_validos:
-        return ofertas_consolidadas[:limite_validos]
+    ofertas_consolidadas = _selecionar_ofertas_validas(
+        entradas_html,
+        desconto_minimo=desconto_minimo,
+        preco_minimo=preco_minimo,
+        preco_maximo=preco_maximo,
+        descricao=None,
+        limite_validos=limite_validos if limite_candidatos is None else min(limite_validos, limite_candidatos),
+    )
 
     if not ofertas_consolidadas:
         print("\nNenhuma oferta elegível encontrada.")
         return []
 
-    return ofertas_consolidadas
+    return _enriquecer_ofertas_relampago_com_links(page, url_base_paginas, ofertas_consolidadas)
 
 
 def salvar_resultado_relampago(ofertas, pasta=PASTA_OFERTAS_RELAMPAGO):
@@ -1827,5 +2134,7 @@ def salvar_resultado_relampago(ofertas, pasta=PASTA_OFERTAS_RELAMPAGO):
             f.write("\n-----------------------------\n\n")
 
     print(f"\nResultado salvo em: {caminho}")
+
+    _salvar_metadados_ofertas(ofertas, "metadados_relampago")
 
     return caminho

@@ -14,6 +14,7 @@ import argparse
 import ast
 import os
 import random
+import sys
 import time
 from datetime import datetime
 from dotenv import load_dotenv
@@ -158,6 +159,13 @@ def parse_args():
 
 
 ARGS = parse_args()
+
+RAW_ARGS = sys.argv[1:]
+ARG_CATEGORIA_INFORMADA = "--categoria" in RAW_ARGS
+ARG_PRECO_MAXIMO_INFORMADO = "--preco-maximo" in RAW_ARGS
+ARG_PRECO_MINIMO_INFORMADO = "--preco-minimo" in RAW_ARGS
+ARG_DESCONTO_MINIMO_INFORMADO = "--desconto-minimo" in RAW_ARGS
+ARG_LIMITE_CANDIDATOS_INFORMADO = "--limite-candidatos" in RAW_ARGS
 
 MODO_SOMENTE_RELAMPAGO = ARGS.somente_relampago or os.getenv("RUN_ONLY_RELAMPAGO", "0") == "1"
 MODO_RELAMPAGO_PADRAO = ARGS.relampago_padrao
@@ -381,6 +389,71 @@ def carregar_historico_anuncios(caminho_arquivo):
         pass
 
     return historico
+
+
+def carregar_historico_precos_por_anuncio(caminho_arquivo):
+
+    historico = {}
+
+    try:
+
+        with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
+
+            for linha in arquivo:
+
+                linha_limpa = linha.strip()
+                if not linha_limpa:
+                    continue
+
+                try:
+                    anuncio = ast.literal_eval(linha_limpa)
+                except Exception:
+                    continue
+
+                if not isinstance(anuncio, tuple) or len(anuncio) < 4:
+                    continue
+
+                anuncio_id = normalizar_chave_historico(str(anuncio[0]))
+                preco_atual = converter_preco(str(anuncio[3]))
+
+                if not anuncio_id or preco_atual is None:
+                    continue
+
+                preco_salvo = historico.get(anuncio_id)
+                if preco_salvo is None or preco_atual < preco_salvo:
+                    historico[anuncio_id] = preco_atual
+
+    except FileNotFoundError:
+
+        pass
+
+    return historico
+
+
+def filtrar_anuncios_ineditos_ou_com_reducao(produtos, historico_precos_por_anuncio):
+
+    aprovados = []
+
+    for produto in produtos:
+
+        anuncio_id = normalizar_chave_historico(produto.get("id_anuncio"))
+        preco_atual = converter_preco(produto.get("depois"))
+
+        if not anuncio_id or preco_atual is None:
+            continue
+
+        preco_historico = historico_precos_por_anuncio.get(anuncio_id)
+
+        if preco_historico is not None and preco_atual >= preco_historico:
+            print(
+                f"[IGNORADO] Anúncio {anuncio_id} já foi usado antes com preço melhor ou igual. Atual: {preco_atual:.2f} | histórico: {preco_historico:.2f}"
+            )
+            continue
+
+        historico_precos_por_anuncio[anuncio_id] = preco_atual
+        aprovados.append(produto)
+
+    return aprovados
 
 
 def produto_ja_foi_enviado(produto, historico_anuncios):
@@ -852,6 +925,16 @@ historico_anuncios = carregar_historico_anuncios(
     HISTORICO_ANUNCIOS_ARQUIVO
 )
 
+historico_precos_por_anuncio = carregar_historico_precos_por_anuncio(
+    HISTORICO_ANUNCIOS_ARQUIVO
+)
+
+categoria_parametrizada = (ARGS.categoria or "").strip() if ARG_CATEGORIA_INFORMADA else None
+preco_minimo_parametrizado = PRECO_MINIMO if ARG_PRECO_MINIMO_INFORMADO else None
+preco_maximo_parametrizado = PRECO_MAXIMO if ARG_PRECO_MAXIMO_INFORMADO else None
+desconto_minimo_parametrizado = DESCONTO_MINIMO if ARG_DESCONTO_MINIMO_INFORMADO else None
+limite_candidatos_parametrizado = LIMITE_CANDIDATOS if ARG_LIMITE_CANDIDATOS_INFORMADO else None
+
 
 with sync_playwright() as p:
 
@@ -907,13 +990,19 @@ with sync_playwright() as p:
         ofertas_hub = processar_produtos_hub_por_html(
             page,
             URL_LISTAGEM,
-            desconto_minimo=DESCONTO_MINIMO,
-            categoria=(ARGS.categoria or "").strip() or None,
-            preco_minimo=PRECO_MINIMO,
-            preco_maximo=PRECO_MAXIMO,
+            desconto_minimo=desconto_minimo_parametrizado,
+            categoria=categoria_parametrizada,
+            preco_minimo=preco_minimo_parametrizado,
+            preco_maximo=preco_maximo_parametrizado,
             descricao=(ARGS.descricao_produto or "").strip() or None,
-            limite_candidatos=LIMITE_CANDIDATOS,
+            limite_candidatos=limite_candidatos_parametrizado,
             historico_anuncios=historico_anuncios,
+            limite_validos=10,
+        )
+
+        ofertas_hub = filtrar_anuncios_ineditos_ou_com_reducao(
+            ofertas_hub,
+            historico_precos_por_anuncio,
         )
 
         if ofertas_hub:
@@ -1214,17 +1303,40 @@ with sync_playwright() as p:
 
     debug_pausa("Iniciando fluxo de ofertas relâmpago")
 
+    modo_relampago_sem_parametros = (
+        not MODO_RELAMPAGO_PADRAO
+        and categoria_parametrizada is None
+        and preco_minimo_parametrizado is None
+        and preco_maximo_parametrizado is None
+        and desconto_minimo_parametrizado is None
+        and limite_candidatos_parametrizado is None
+    )
+
+    limite_validos_extraidos = LIMITE_VALIDOS_RELAMPAGO_PADRAO
+    if modo_relampago_sem_parametros:
+        # Usa um buffer maior de candidatos para compensar anúncios já vistos
+        # no histórico e ainda preencher os inéditos finais.
+        limite_validos_extraidos = max(LIMITE_VALIDOS_RELAMPAGO_PADRAO * 5, 30)
+
     ofertas_relampago = processar_ofertas_relampago(
         page,
         URL_OFERTAS_RELAMPAGO,
-        desconto_minimo=DESCONTO_MINIMO,
-        categoria=None if MODO_RELAMPAGO_PADRAO else CATEGORIA_PADRAO,
-        preco_minimo=PRECO_MINIMO,
-        preco_maximo=PRECO_MAXIMO,
-        limite_candidatos=LIMITE_CANDIDATOS,
+        desconto_minimo=DESCONTO_MINIMO_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else desconto_minimo_parametrizado,
+        categoria=None if MODO_RELAMPAGO_PADRAO else categoria_parametrizada,
+        preco_minimo=None if MODO_RELAMPAGO_PADRAO else preco_minimo_parametrizado,
+        preco_maximo=PRECO_MAXIMO_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else preco_maximo_parametrizado,
+        limite_candidatos=limite_candidatos_parametrizado,
         historico_anuncios=historico_anuncios,
-        limite_validos=LIMITE_VALIDOS_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else LIMITE_CANDIDATOS,
+        limite_validos=limite_validos_extraidos,
     )
+
+    ofertas_relampago = filtrar_anuncios_ineditos_ou_com_reducao(
+        ofertas_relampago,
+        historico_precos_por_anuncio,
+    )
+
+    if len(ofertas_relampago) > LIMITE_VALIDOS_RELAMPAGO_PADRAO:
+        ofertas_relampago = ofertas_relampago[:LIMITE_VALIDOS_RELAMPAGO_PADRAO]
 
     if ofertas_relampago:
 
