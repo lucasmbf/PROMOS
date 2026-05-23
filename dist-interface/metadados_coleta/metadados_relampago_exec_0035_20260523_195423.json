@@ -1,0 +1,19 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 35,
+  "gerado_em": "2026-05-23T19:54:23",
+  "total_ofertas": 0,
+  "contexto_execucao": {
+    "status": "sem_ofertas",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": null,
+    "desconto_minimo": 80,
+    "preco_minimo": 100.0,
+    "preco_maximo": 300.0,
+    "limite_candidatos": 3,
+    "limite_validos": 10,
+    "modo_sem_parametros": false
+  },
+  "ofertas": []
+}
