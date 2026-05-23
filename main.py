@@ -1313,10 +1313,6 @@ with sync_playwright() as p:
     )
 
     limite_validos_extraidos = LIMITE_VALIDOS_RELAMPAGO_PADRAO
-    if modo_relampago_sem_parametros:
-        # Usa um buffer maior de candidatos para compensar anúncios já vistos
-        # no histórico e ainda preencher os inéditos finais.
-        limite_validos_extraidos = max(LIMITE_VALIDOS_RELAMPAGO_PADRAO * 5, 30)
 
     ofertas_relampago = processar_ofertas_relampago(
         page,
@@ -1327,6 +1323,7 @@ with sync_playwright() as p:
         preco_maximo=PRECO_MAXIMO_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else preco_maximo_parametrizado,
         limite_candidatos=limite_candidatos_parametrizado,
         historico_anuncios=historico_anuncios,
+        ids_descartados=historico_anuncios if modo_relampago_sem_parametros else None,
         limite_validos=limite_validos_extraidos,
     )
 
