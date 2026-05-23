@@ -1128,11 +1128,20 @@ def _obter_diretorio_saida():
 BASE_SAIDA = _obter_diretorio_saida()
 PASTA_OFERTAS_RELAMPAGO = str(BASE_SAIDA / "ofertas_relampago")
 PASTA_OFERTAS_HUB = str(BASE_SAIDA / "ofertas_afiliados")
+PASTA_RELAMPAGO_HTML = str(Path(PASTA_OFERTAS_RELAMPAGO) / "htmls")
+PASTA_RELAMPAGO_RESULTADOS = str(Path(PASTA_OFERTAS_RELAMPAGO) / "resultados")
+PASTA_AFILIADOS_HTML = str(Path(PASTA_OFERTAS_HUB) / "htmls")
+PASTA_AFILIADOS_RESULTADOS = str(Path(PASTA_OFERTAS_HUB) / "resultados")
 PASTA_METADADOS_COLETA = str(BASE_SAIDA / "metadados_coleta")
+ARQUIVO_CONTROLE_EXECUCOES = str(Path(PASTA_METADADOS_COLETA) / "controle_execucoes.json")
 TOTAL_SNAPSHOTS_HUB = 10
 
 os.makedirs(PASTA_OFERTAS_RELAMPAGO, exist_ok=True)
 os.makedirs(PASTA_OFERTAS_HUB, exist_ok=True)
+os.makedirs(PASTA_RELAMPAGO_HTML, exist_ok=True)
+os.makedirs(PASTA_RELAMPAGO_RESULTADOS, exist_ok=True)
+os.makedirs(PASTA_AFILIADOS_HTML, exist_ok=True)
+os.makedirs(PASTA_AFILIADOS_RESULTADOS, exist_ok=True)
 os.makedirs(PASTA_METADADOS_COLETA, exist_ok=True)
 
 
@@ -1148,15 +1157,77 @@ def _formatar_preco_txt(valor):
     return texto
 
 
-def _salvar_metadados_ofertas(ofertas, prefixo_arquivo, pasta=PASTA_METADADOS_COLETA):
+def _nome_execucao(id_execucao):
 
-    if not ofertas:
-        return None
+    try:
+        return f"exec_{int(id_execucao):04d}"
+    except (TypeError, ValueError):
+        return "exec_0000"
+
+
+def _obter_pastas_execucao_fluxo(pasta_fluxo, id_execucao):
+
+    pasta_execucao = Path(pasta_fluxo) / _nome_execucao(id_execucao)
+    pasta_htmls = pasta_execucao / "htmls"
+    pasta_resultados = pasta_execucao / "resultados"
+
+    os.makedirs(pasta_htmls, exist_ok=True)
+    os.makedirs(pasta_resultados, exist_ok=True)
+
+    return str(pasta_execucao), str(pasta_htmls), str(pasta_resultados)
+
+
+def _proxima_execucao_fluxo(fluxo, arquivo_controle=ARQUIVO_CONTROLE_EXECUCOES):
+
+    os.makedirs(Path(arquivo_controle).parent, exist_ok=True)
+
+    controle = {
+        "gerado_em": datetime.now().isoformat(timespec="seconds"),
+        "fluxos": {},
+    }
+
+    if Path(arquivo_controle).exists():
+        try:
+            controle_lido = json.loads(Path(arquivo_controle).read_text(encoding="utf-8"))
+            if isinstance(controle_lido, dict):
+                controle.update(controle_lido)
+        except Exception:
+            pass
+
+    fluxos = controle.get("fluxos") if isinstance(controle.get("fluxos"), dict) else {}
+    atual = fluxos.get(fluxo) if isinstance(fluxos.get(fluxo), int) else 0
+    proximo = atual + 1
+    fluxos[fluxo] = proximo
+
+    controle["fluxos"] = fluxos
+    controle["atualizado_em"] = datetime.now().isoformat(timespec="seconds")
+
+    with open(arquivo_controle, "w", encoding="utf-8") as arquivo:
+        json.dump(controle, arquivo, ensure_ascii=False, indent=2)
+
+    return proximo
+
+
+def _salvar_metadados_ofertas(
+    ofertas,
+    fluxo,
+    pasta=PASTA_METADADOS_COLETA,
+    id_execucao=None,
+    contexto_execucao=None,
+):
+
+    ofertas = ofertas or []
+
+    if not fluxo:
+        raise ValueError("Fluxo de metadados deve ser informado.")
 
     os.makedirs(pasta, exist_ok=True)
 
+    if id_execucao is None:
+        id_execucao = _proxima_execucao_fluxo(fluxo)
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    caminho = os.path.join(pasta, f"{prefixo_arquivo}_{timestamp}.json")
+    caminho = os.path.join(pasta, f"metadados_{fluxo}_exec_{id_execucao:04d}_{timestamp}.json")
 
     campos_base = [
         "id_anuncio",
@@ -1189,8 +1260,11 @@ def _salvar_metadados_ofertas(ofertas, prefixo_arquivo, pasta=PASTA_METADADOS_CO
         metadados.append(item)
 
     payload = {
+        "fluxo": fluxo,
+        "id_execucao": id_execucao,
         "gerado_em": datetime.now().isoformat(timespec="seconds"),
         "total_ofertas": len(metadados),
+        "contexto_execucao": contexto_execucao or {},
         "ofertas": metadados,
     }
 
@@ -1236,7 +1310,7 @@ def _salvar_html_consolidado(entradas_html, pasta, prefixo):
     return caminho
 
 
-def salvar_html_ofertas_relampago(page, url, indice=None, pasta=PASTA_OFERTAS_RELAMPAGO):
+def salvar_html_ofertas_relampago(page, url, indice=None, pasta=PASTA_RELAMPAGO_HTML):
     """Navega até uma página de ofertas relâmpago, faz scroll e salva o HTML."""
 
     print(f"\nNavegando para ofertas relâmpago:\n{url}")
@@ -1383,7 +1457,7 @@ def _coletar_htmls_hub_afiliados(
     page,
     url_hub,
     categoria=None,
-    pasta=PASTA_OFERTAS_HUB,
+    pasta=PASTA_AFILIADOS_HTML,
     total_snapshots=TOTAL_SNAPSHOTS_HUB,
     usar_scroll=True,
 ):
@@ -1507,6 +1581,12 @@ def processar_produtos_hub_por_html(
 ):
     """Fluxo do hub/afiliados em duas etapas: snapshots HTML e enriquecimento por ID."""
 
+    id_execucao = _proxima_execucao_fluxo("afiliados")
+    pasta_execucao, pasta_execucao_html, pasta_execucao_resultados = _obter_pastas_execucao_fluxo(
+        PASTA_OFERTAS_HUB,
+        id_execucao,
+    )
+
     modo_sem_parametros = (
         not _tem_filtros_ativos(
             desconto_minimo=desconto_minimo,
@@ -1525,6 +1605,7 @@ def processar_produtos_hub_por_html(
         page,
         url_hub,
         categoria=categoria,
+        pasta=pasta_execucao_html,
         total_snapshots=total_snapshots,
         usar_scroll=usar_scroll_snapshots,
     )
@@ -1539,10 +1620,26 @@ def processar_produtos_hub_por_html(
     )
 
     if not candidatos:
+        _salvar_metadados_ofertas(
+            [],
+            "afiliados",
+            id_execucao=id_execucao,
+            contexto_execucao={
+                "status": "sem_ofertas",
+                "pasta_execucao": pasta_execucao,
+                "categoria": categoria,
+                "desconto_minimo": desconto_minimo,
+                "preco_minimo": preco_minimo,
+                "preco_maximo": preco_maximo,
+                "descricao": descricao,
+                "limite_candidatos": limite_candidatos,
+                "limite_validos": limite_validos,
+            },
+        )
         print("\nNenhuma oferta encontrada no HTML do hub/afiliados.")
         return []
 
-    return _enriquecer_ofertas_hub_com_links(
+    ofertas_enriquecidas = _enriquecer_ofertas_hub_com_links(
         page,
         url_base,
         categoria,
@@ -1550,12 +1647,39 @@ def processar_produtos_hub_por_html(
         permitir_scroll=not modo_sem_parametros,
     )
 
+    for oferta in ofertas_enriquecidas:
+        oferta["id_execucao_fluxo"] = id_execucao
+        oferta["pasta_resultado_execucao"] = pasta_execucao_resultados
 
-def salvar_resultado_hub(ofertas, pasta=PASTA_OFERTAS_HUB):
+    _salvar_metadados_ofertas(
+        ofertas_enriquecidas,
+        "afiliados",
+        id_execucao=id_execucao,
+        contexto_execucao={
+            "status": "ok",
+            "pasta_execucao": pasta_execucao,
+            "categoria": categoria,
+            "desconto_minimo": desconto_minimo,
+            "preco_minimo": preco_minimo,
+            "preco_maximo": preco_maximo,
+            "descricao": descricao,
+            "limite_candidatos": limite_candidatos,
+            "limite_validos": limite_validos,
+            "modo_sem_parametros": modo_sem_parametros,
+        },
+    )
+
+    return ofertas_enriquecidas
+
+
+def salvar_resultado_hub(ofertas, pasta=None):
     """Salva em texto formatado as ofertas obtidas do hub/afiliados."""
 
     if not ofertas:
         return None
+
+    if not pasta:
+        pasta = ofertas[0].get("pasta_resultado_execucao") or PASTA_AFILIADOS_RESULTADOS
 
     os.makedirs(pasta, exist_ok=True)
 
@@ -1573,8 +1697,6 @@ def salvar_resultado_hub(ofertas, pasta=PASTA_OFERTAS_HUB):
             file.write("\n-----------------------------\n\n")
 
     print(f"\nResultado de afiliados salvo em: {caminho}")
-
-    _salvar_metadados_ofertas(ofertas, "metadados_afiliados")
 
     return caminho
 
@@ -2002,7 +2124,7 @@ def obter_link_afiliado_relampago(page, oferta, url_relampago):
     return link, categoria, link_anuncio
 
 
-def _coletar_htmls_relampago(page, url_base_paginas, pasta=PASTA_OFERTAS_RELAMPAGO, coletar_todas_paginas=True):
+def _coletar_htmls_relampago(page, url_base_paginas, pasta=PASTA_RELAMPAGO_HTML, coletar_todas_paginas=True):
 
     entradas_html = []
     caminho_inicial = salvar_html_ofertas_relampago(page, url_base_paginas, indice=1, pasta=pasta)
@@ -2063,6 +2185,12 @@ def processar_ofertas_relampago(
     4. Retorna a lista de ofertas enriquecida com o campo 'link'.
     """
 
+    id_execucao = _proxima_execucao_fluxo("relampago")
+    pasta_execucao, pasta_execucao_html, pasta_execucao_resultados = _obter_pastas_execucao_fluxo(
+        PASTA_OFERTAS_RELAMPAGO,
+        id_execucao,
+    )
+
     categoria_filtro = _normalizar_filtro_categoria(categoria) if categoria else ""
 
     url_base_paginas = url_relampago
@@ -2084,6 +2212,7 @@ def processar_ofertas_relampago(
     entradas_html = _coletar_htmls_relampago(
         page,
         url_base_paginas,
+        pasta=pasta_execucao_html,
         coletar_todas_paginas=not modo_sem_parametros,
     )
 
@@ -2097,17 +2226,62 @@ def processar_ofertas_relampago(
     )
 
     if not ofertas_consolidadas:
+        _salvar_metadados_ofertas(
+            [],
+            "relampago",
+            id_execucao=id_execucao,
+            contexto_execucao={
+                "status": "sem_ofertas",
+                "pasta_execucao": pasta_execucao,
+                "categoria": categoria,
+                "desconto_minimo": desconto_minimo,
+                "preco_minimo": preco_minimo,
+                "preco_maximo": preco_maximo,
+                "limite_candidatos": limite_candidatos,
+                "limite_validos": limite_validos,
+                "modo_sem_parametros": modo_sem_parametros,
+            },
+        )
         print("\nNenhuma oferta elegível encontrada.")
         return []
 
-    return _enriquecer_ofertas_relampago_com_links(page, url_base_paginas, ofertas_consolidadas)
+    ofertas_enriquecidas = _enriquecer_ofertas_relampago_com_links(page, url_base_paginas, ofertas_consolidadas)
+
+    for oferta in ofertas_enriquecidas:
+        oferta["id_execucao_fluxo"] = id_execucao
+        oferta["pasta_resultado_execucao"] = pasta_execucao_resultados
+
+    _salvar_metadados_ofertas(
+        ofertas_enriquecidas,
+        "relampago",
+        id_execucao=id_execucao,
+        contexto_execucao={
+            "status": "ok",
+            "pasta_execucao": pasta_execucao,
+            "categoria": categoria,
+            "desconto_minimo": desconto_minimo,
+            "preco_minimo": preco_minimo,
+            "preco_maximo": preco_maximo,
+            "limite_candidatos": limite_candidatos,
+            "limite_validos": limite_validos,
+            "modo_sem_parametros": modo_sem_parametros,
+            "url_base_paginas": url_base_paginas,
+        },
+    )
+
+    return ofertas_enriquecidas
 
 
-def salvar_resultado_relampago(ofertas, pasta=PASTA_OFERTAS_RELAMPAGO):
+def salvar_resultado_relampago(ofertas, pasta=None):
     """Salva em texto formatado as ofertas relâmpago com seus links de afiliado."""
 
     if not ofertas:
         return
+
+    if not pasta:
+        pasta = ofertas[0].get("pasta_resultado_execucao") or PASTA_RELAMPAGO_RESULTADOS
+
+    os.makedirs(pasta, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     caminho = os.path.join(pasta, f"resultado_{timestamp}.txt")
@@ -2134,7 +2308,5 @@ def salvar_resultado_relampago(ofertas, pasta=PASTA_OFERTAS_RELAMPAGO):
             f.write("\n-----------------------------\n\n")
 
     print(f"\nResultado salvo em: {caminho}")
-
-    _salvar_metadados_ofertas(ofertas, "metadados_relampago")
 
     return caminho
