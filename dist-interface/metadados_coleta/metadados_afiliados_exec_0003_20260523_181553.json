@@ -1,0 +1,19 @@
+{
+  "fluxo": "afiliados",
+  "id_execucao": 3,
+  "gerado_em": "2026-05-23T18:15:53",
+  "total_ofertas": 0,
+  "contexto_execucao": {
+    "status": "sem_ofertas",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_afiliados\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_afiliados\\Historico de anuncios",
+    "categoria": null,
+    "desconto_minimo": 50,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "descricao": "Cafeteira",
+    "limite_candidatos": null,
+    "limite_validos": 10
+  },
+  "ofertas": []
+}

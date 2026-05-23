@@ -6,6 +6,7 @@ from parsers.mercadolivre import (
     obter_link_encurtado_por_descricao,
     processar_produtos_hub_por_html,
     processar_ofertas_relampago,
+    salvar_saida_execucao_modalidade,
     salvar_resultado_hub,
     salvar_resultado_relampago,
 )
@@ -165,6 +166,12 @@ def parse_args():
         "--pasta-saida",
         default=None,
         help="Diretório onde o arquivo lista_anuncios.txt será salvo (escolhido pelo usuário na interface).",
+    )
+    parser.add_argument(
+        "--modalidade-execucao",
+        choices=["alerta", "campanha", "ondemand"],
+        default=None,
+        help="Origem da execucao para gravacao consolidada por modalidade.",
     )
 
     return parser.parse_args()
@@ -1114,6 +1121,7 @@ with sync_playwright() as p:
         if ofertas_hub:
 
             salvar_resultado_hub(ofertas_hub)
+            salvar_saida_execucao_modalidade(ofertas_hub, ARGS.modalidade_execucao)
 
             salvar_historico_anuncios_em_arquivo(
                 HISTORICO_ANUNCIOS_ARQUIVO,
@@ -1157,6 +1165,7 @@ with sync_playwright() as p:
         if produto_manual:
 
             salvar_resultado_relampago([produto_manual])
+            salvar_saida_execucao_modalidade([produto_manual], ARGS.modalidade_execucao)
 
             salvar_historico_anuncios_em_arquivo(
                 HISTORICO_ANUNCIOS_ARQUIVO,
@@ -1445,6 +1454,7 @@ with sync_playwright() as p:
     if ofertas_relampago:
 
         salvar_resultado_relampago(ofertas_relampago, pasta=ARGS.pasta_saida or None)
+        salvar_saida_execucao_modalidade(ofertas_relampago, ARGS.modalidade_execucao)
 
         salvar_historico_anuncios_em_arquivo(
             HISTORICO_ANUNCIOS_ARQUIVO,

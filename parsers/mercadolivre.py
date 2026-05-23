@@ -1132,6 +1132,10 @@ PASTA_RELAMPAGO_HTML = str(Path(PASTA_OFERTAS_RELAMPAGO) / "html")
 PASTA_RELAMPAGO_HISTORICO = str(Path(PASTA_OFERTAS_RELAMPAGO) / "Historico de anuncios")
 PASTA_AFILIADOS_HTML = str(Path(PASTA_OFERTAS_HUB) / "html")
 PASTA_AFILIADOS_HISTORICO = str(Path(PASTA_OFERTAS_HUB) / "Historico de anuncios")
+PASTA_SAIDAS_EXECUCOES = str(BASE_SAIDA / "saidas_execucoes")
+PASTA_SAIDA_ALERTA = str(Path(PASTA_SAIDAS_EXECUCOES) / "Alerta")
+PASTA_SAIDA_CAMPANHA = str(Path(PASTA_SAIDAS_EXECUCOES) / "Campanha")
+PASTA_SAIDA_ONDEMAND = str(Path(PASTA_SAIDAS_EXECUCOES) / "OnDemand")
 PASTA_METADADOS_COLETA = str(BASE_SAIDA / "metadados_coleta")
 ARQUIVO_CONTROLE_EXECUCOES = str(Path(PASTA_METADADOS_COLETA) / "controle_execucoes.json")
 TOTAL_SNAPSHOTS_HUB = 10
@@ -1142,6 +1146,9 @@ os.makedirs(PASTA_RELAMPAGO_HTML, exist_ok=True)
 os.makedirs(PASTA_RELAMPAGO_HISTORICO, exist_ok=True)
 os.makedirs(PASTA_AFILIADOS_HTML, exist_ok=True)
 os.makedirs(PASTA_AFILIADOS_HISTORICO, exist_ok=True)
+os.makedirs(PASTA_SAIDA_ALERTA, exist_ok=True)
+os.makedirs(PASTA_SAIDA_CAMPANHA, exist_ok=True)
+os.makedirs(PASTA_SAIDA_ONDEMAND, exist_ok=True)
 os.makedirs(PASTA_METADADOS_COLETA, exist_ok=True)
 
 
@@ -2535,4 +2542,50 @@ def salvar_resultado_relampago(ofertas, pasta=None):
 
     print(f"\nHistórico relâmpago atualizado em: {caminho}")
 
+    return caminho
+
+
+def salvar_saida_execucao_modalidade(ofertas, modalidade, nome_arquivo="lista_anuncios.txt"):
+    """Salva saidas consolidadas por modalidade com append por execucao.
+
+    Modalidades aceitas:
+      - alerta
+      - campanha
+      - ondemand
+    """
+
+    if not ofertas:
+        return None
+
+    modalidade_key = str(modalidade or "").strip().lower()
+    mapa_pastas = {
+        "alerta": PASTA_SAIDA_ALERTA,
+        "campanha": PASTA_SAIDA_CAMPANHA,
+        "ondemand": PASTA_SAIDA_ONDEMAND,
+    }
+
+    pasta = mapa_pastas.get(modalidade_key)
+    if not pasta:
+        return None
+
+    os.makedirs(pasta, exist_ok=True)
+
+    caminho = os.path.join(pasta, nome_arquivo)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    with open(caminho, "a", encoding="utf-8") as f:
+        f.write(f"===== EXECUCAO {timestamp} | TOTAL {len(ofertas)} =====\n\n")
+        for oferta in ofertas:
+            categoria = oferta.get("categoria", "-")
+            descricao = oferta.get("descricao", "-")
+
+            f.write(f"*{categoria}*\n\n")
+            f.write(f"{descricao}\n\n\n")
+            f.write(f"Antes: ~{_formatar_preco_txt(oferta.get('antes', '-'))}~\n")
+            f.write(f"*Desconto: {oferta.get('desconto', '-')}*\n")
+            f.write(f"*Depois: {_formatar_preco_txt(oferta.get('depois', '-'))}*\n")
+            f.write(f"{oferta.get('link', '-')}\n")
+            f.write("\n-----------------------------\n\n")
+
+    print(f"\nSaida consolidada por modalidade atualizada em: {caminho}")
     return caminho
