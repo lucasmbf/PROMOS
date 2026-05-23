@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 21,
+  "gerado_em": "2026-05-23T09:29:29",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": "Informática",
+    "desconto_minimo": 70,
+    "preco_minimo": 50.0,
+    "preco_maximo": 400.0,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?category=MLB1648&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB5323177356",
+      "descricao": "Jisulife Ventilador Portátil De Mão Mini Usb Recarregável",
+      "categoria": "Acessórios para Notebook > Ventiladores Portáteis",
+      "antes": "R$ 299",
+      "depois": "R$ 89",
+      "desconto": "70% OFF",
+      "link": "https://meli.la/2jgvZ2s",
+      "link_original": "https://produto.mercadolivre.com.br/MLB-5323177356-jisulife-ventilador-portatil-de-mo-mini-usb-recarregavel-_JM?searchVariation=187265126071#polycard_client=offers&deal_print_id=2e822a41-2447-48a5-be0c-2f14fb81d887&tracking_id=3ff41003-5b27-403d-86ca-6346fdee0dc5",
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-5323177356-jisulife-ventilador-portatil-de-mo-mini-usb-recarregavel-_JM?searchVariation=187265126071#polycard_client=offers&deal_print_id=2e822a41-2447-48a5-be0c-2f14fb81d887&tracking_id=3ff41003-5b27-403d-86ca-6346fdee0dc5",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?category=MLB1648&promotion_type=lightning&page=2",
+      "pagina_origem_numero": 2,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_092919_140627_02.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

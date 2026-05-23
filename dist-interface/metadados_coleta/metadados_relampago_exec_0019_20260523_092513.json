@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 19,
+  "gerado_em": "2026-05-23T09:25:13",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": null,
+    "desconto_minimo": 60,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB4328800327",
+      "descricao": "Smartwatch Bettdow Fb055 1.85  Esportivo Ia Música Gps 3atm",
+      "categoria": "Smartwatches e Acessórios > Smartwatches",
+      "antes": "R$ 999",
+      "depois": "R$ 369,55",
+      "desconto": "63% OFF",
+      "link": "https://meli.la/1EaABBm",
+      "link_original": "https://produto.mercadolivre.com.br/MLB-4328800327-smartwatch-bettdow-fb055-185-esportivo-ia-musica-gps-3atm-_JM?searchVariation=187474374260#polycard_client=offers&deal_print_id=2c4836e3-dc4c-4898-9902-76e24970d950&tracking_id=f0ea31c6-3f75-4098-9e7b-62df619ceb02",
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-4328800327-smartwatch-bettdow-fb055-185-esportivo-ia-musica-gps-3atm-_JM?searchVariation=187474374260#polycard_client=offers&deal_print_id=2c4836e3-dc4c-4898-9902-76e24970d950&tracking_id=f0ea31c6-3f75-4098-9e7b-62df619ceb02",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning&page=2",
+      "pagina_origem_numero": 2,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_092504_511069_02.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

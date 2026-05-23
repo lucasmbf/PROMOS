@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 18,
+  "gerado_em": "2026-05-23T09:20:16",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": null,
+    "desconto_minimo": 60,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB6624593666",
+      "descricao": "Fone De Ouvido Bluetooth Sem Fio Bateria De Longa Duração Pro 4 Branco Conecta Rápido Fast Plug",
+      "categoria": "Fones e Kits Viva Voz > Iphone 4",
+      "antes": "R$ 55",
+      "depois": "R$ 21,95",
+      "desconto": "60% OFF",
+      "link": "https://meli.la/12mys2J",
+      "link_original": "https://www.mercadolivre.com.br/fone-de-ouvido-bluetooth-sem-fio-bateria-de-longa-duraco-pro-4-branco-conecta-rapido-fast-plug/p/MLB25263382?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=efe3b6b9-4a0e-433a-933e-495026895799&tracking_id=b50f3376-0c78-467f-9ba8-512a96517cd7&wid=MLB6624593666&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/fone-de-ouvido-bluetooth-sem-fio-bateria-de-longa-duraco-pro-4-branco-conecta-rapido-fast-plug/p/MLB25263382?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=efe3b6b9-4a0e-433a-933e-495026895799&tracking_id=b50f3376-0c78-467f-9ba8-512a96517cd7&wid=MLB6624593666&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning&page=2",
+      "pagina_origem_numero": 2,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_091943_721738_02.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

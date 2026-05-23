@@ -2364,12 +2364,15 @@ def processar_ofertas_relampago(
             "html_relampago_consolidado",
         )
     else:
+        MAX_PAGINAS_RELAMPAGO_PARAMETRIZADO = 25
+        MAX_PAGINAS_SEM_PROGRESSO_PARAMETRIZADO = 3
+
         entradas_html, caminho_html_consolidado = _coletar_htmls_relampago(
             page,
             url_base_paginas,
             pasta=PASTA_RELAMPAGO_HTML,
-            coletar_todas_paginas=True,
-            max_paginas_total=25,
+            coletar_todas_paginas=False,
+            salvar_consolidado=False,
         )
 
         ofertas_consolidadas = _selecionar_ofertas_validas(
@@ -2380,6 +2383,62 @@ def processar_ofertas_relampago(
             descricao=None,
             limite_validos=limite_alvo,
             ids_descartados=ids_descartados,
+        )
+
+        total_paginas = _obter_total_paginas_relampago(entradas_html[0]["path"])
+        total_paginas_planejado = min(total_paginas, MAX_PAGINAS_RELAMPAGO_PARAMETRIZADO)
+        paginas_sem_progresso = 0
+        pagina_atual = 1
+
+        while len(ofertas_consolidadas) < limite_alvo and pagina_atual < total_paginas_planejado:
+            pagina_atual += 1
+            total_antes = len(ofertas_consolidadas)
+            print(
+                f"Página atual trouxe {len(ofertas_consolidadas)}/{limite_alvo} oferta(s) válida(s). "
+                f"Coletando página {pagina_atual}/{total_paginas_planejado}."
+            )
+
+            url_pagina = _montar_url_paginada(url_base_paginas, pagina_atual)
+            caminho_html = salvar_html_ofertas_relampago(
+                page,
+                url_pagina,
+                indice=pagina_atual,
+                pasta=PASTA_RELAMPAGO_HTML,
+            )
+            entradas_html.append({"path": caminho_html, "url": url_pagina, "pagina": pagina_atual})
+
+            ofertas_consolidadas = _selecionar_ofertas_validas(
+                entradas_html,
+                desconto_minimo=desconto_minimo,
+                preco_minimo=preco_minimo,
+                preco_maximo=preco_maximo,
+                descricao=None,
+                limite_validos=limite_alvo,
+                ids_descartados=ids_descartados,
+            )
+
+            if len(ofertas_consolidadas) <= total_antes:
+                paginas_sem_progresso += 1
+            else:
+                paginas_sem_progresso = 0
+
+            if paginas_sem_progresso >= MAX_PAGINAS_SEM_PROGRESSO_PARAMETRIZADO:
+                print(
+                    "Parando paginação parametrizada: "
+                    f"{MAX_PAGINAS_SEM_PROGRESSO_PARAMETRIZADO} página(s) seguidas sem novas ofertas válidas."
+                )
+                break
+
+        if total_paginas > total_paginas_planejado:
+            print(
+                f"Paginação parametrizada limitada a {total_paginas_planejado} página(s) "
+                f"(detecção original: {total_paginas} página(s))."
+            )
+
+        caminho_html_consolidado = _salvar_html_consolidado(
+            entradas_html,
+            PASTA_RELAMPAGO_HTML,
+            "html_relampago_consolidado",
         )
 
     caminhos_html_execucao = [entrada.get("path") for entrada in entradas_html if entrada.get("path")]
@@ -2463,12 +2522,15 @@ def salvar_resultado_relampago(ofertas, pasta=None):
     with open(caminho, "a", encoding="utf-8") as f:
         f.write(f"===== EXECUCAO {timestamp} | TOTAL {len(ofertas)} =====\n\n")
         for oferta in ofertas:
-            f.write(f"Categoria: {oferta.get('categoria', '-')}\n")
-            f.write(f"Descrição: {oferta.get('descricao', '-')}\n")
+            categoria = oferta.get("categoria", "-")
+            descricao = oferta.get("descricao", "-")
+
+            f.write(f"*{categoria}*\n\n")
+            f.write(f"{descricao}\n\n\n")
             f.write(f"Antes: ~{_formatar_preco_txt(oferta.get('antes', '-'))}~\n")
             f.write(f"*Desconto: {oferta.get('desconto', '-')}*\n")
             f.write(f"*Depois: {_formatar_preco_txt(oferta.get('depois', '-'))}*\n")
-            f.write(f"Link: {oferta.get('link', '-')}\n")
+            f.write(f"{oferta.get('link', '-')}\n")
             f.write("\n-----------------------------\n\n")
 
     print(f"\nHistórico relâmpago atualizado em: {caminho}")
