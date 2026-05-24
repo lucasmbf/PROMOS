@@ -13,7 +13,6 @@ from bs4 import BeautifulSoup
 
 
 def debug_pausa(rotulo):
-
     return
 
 
@@ -68,8 +67,6 @@ def _extrair_ctx_rendering(html):
 
     if prefixo not in texto:
         return None
-
-
 
     trecho_json = texto.split(prefixo, 1)[1].strip()
 
@@ -772,8 +769,7 @@ def coletar_produtos_com_desconto(page, url, desconto_minimo, limite):
 def obter_link_encurtado(page, url_original):
 
     try:
-
-        # Clica no botão Compartilhar
+        # Clica no botao Compartilhar
         debug_pausa("Antes de clicar em Compartilhar")
 
         botao = page.locator(
@@ -794,7 +790,7 @@ def obter_link_encurtado(page, url_original):
             timeout=8000
         )
 
-        # Clica no ícone de link (corrente) dentro do modal
+        # Clica no icone de link (corrente) dentro do modal
         icone_link = page.locator(
             "[data-andes-thumbnail='true']"
         ).first
@@ -818,7 +814,7 @@ def obter_link_encurtado(page, url_original):
 
         time.sleep(random.uniform(1, 2))
 
-        # Tenta ler a URL encurtada do botão/campo identificado no modal.
+        # Tenta ler a URL encurtada do botao/campo identificado no modal.
         botao_link = page.locator(
             "button[data-testid='copy-button__label_link']"
         ).first
@@ -854,9 +850,9 @@ def obter_link_encurtado(page, url_original):
 
             if link_encurtado and "meli.la" in link_encurtado:
 
-                print(f"\n✓ Link encurtado validado: {link_encurtado}")
+                print(f"\n[OK] Link encurtado validado: {link_encurtado}")
 
-                # Fecha o modal se possível
+                # Fecha o modal se possivel
                 page.keyboard.press("Escape")
 
                 return link_encurtado
@@ -880,7 +876,7 @@ def obter_link_encurtado(page, url_original):
 
             if link_encurtado and "meli.la" in link_encurtado:
 
-                print(f"\n✓ Link encurtado do clipboard validado: {link_encurtado}")
+                print(f"\n[OK] Link encurtado do clipboard validado: {link_encurtado}")
 
                 page.keyboard.press("Escape")
 
@@ -892,7 +888,7 @@ def obter_link_encurtado(page, url_original):
 
             pass
 
-        print(f"\n⚠ Nenhum link encurtado encontrado. Usando URL original.")
+        print(f"\n[WARN] Nenhum link encurtado encontrado. Usando URL original.")
 
         page.keyboard.press("Escape")
 

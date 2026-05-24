@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 38,
+  "gerado_em": "2026-05-23T20:02:44",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": "Games",
+    "desconto_minimo": 60,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 3,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?category=MLB1144&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB4305388825",
+      "descricao": "Fone De Ouvido Bluetooth 5.4 Para iPhone AirPods Android Branco",
+      "categoria": "Acessórios para PC Gaming > Fones",
+      "antes": "R$ 199",
+      "depois": "R$ 59,99",
+      "desconto": "69% OFF",
+      "link": "https://meli.la/13a8m5E",
+      "link_original": "https://www.mercadolivre.com.br/fone-de-ouvido-bluetooth-54-para-iphone-airpods-android/up/MLBU3557396953?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=72d80309-fde6-4abb-b064-04d2ad5066b3&position=18&tracking_id=aaa676e5-6f9a-4573-9653-8d12fe559ed2&wid=MLB4305388825&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/fone-de-ouvido-bluetooth-54-para-iphone-airpods-android/up/MLBU3557396953?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=72d80309-fde6-4abb-b064-04d2ad5066b3&position=18&tracking_id=aaa676e5-6f9a-4573-9653-8d12fe559ed2&wid=MLB4305388825&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?category=MLB1144&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260523_200232_821501_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

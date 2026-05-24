@@ -76,6 +76,11 @@ try {
         "--collect-all", "playwright",
         "--hidden-import", "main",
         "--hidden-import", "parsers.mercadolivre",
+        "--hidden-import", "googleapiclient.discovery",
+        "--hidden-import", "google.oauth2.service_account",
+        "--hidden-import", "google.oauth2.credentials",
+        "--hidden-import", "google_auth_oauthlib.flow",
+        "--hidden-import", "google.auth.transport.requests",
         ".\\gui_promos.py"
     )
 

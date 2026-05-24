@@ -1,0 +1,78 @@
+=== Inicio do log de sincronizacao de planilha: 2026-05-24T01:06:31 ===
+[2026-05-24 01:06:31] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 01:06:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:06:31] Worker iniciado. worksheet='Gerar alerta de preço (respostas)' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-24 01:06:31] Falha por dependencias ausentes do Google.
+[2026-05-24 01:06:31] Dependencias Google nao instaladas para integrar planilha. Instale: google-api-python-client google-auth google-auth-oauthlib
+[2026-05-24 01:06:31] Finalizacao da sincronizacao. falhou=True importados=0.
+[2026-05-24 01:16:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:16:18] Worker iniciado. worksheet='Gerar alerta de preço (respostas)' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-24 01:17:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:17:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:18:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:18:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:19:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:19:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:19:49] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 01:19:49] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:19:49] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:20:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:20:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:21:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:21:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:22:05] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 01:22:05] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:22:05] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:22:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:22:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:23:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:23:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:24:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:24:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:25:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:25:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:26:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:26:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:27:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:27:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:28:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:28:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:29:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:29:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:30:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:30:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:31:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:31:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:32:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:32:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:33:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:33:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:34:18] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:34:18] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:36:58] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 01:36:58] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:36:58] Worker iniciado. worksheet='Gerar alerta de preço (respostas)' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-24 01:36:58] Aguardando autorizacao do Google no navegador para sincronizar a planilha.
+[2026-05-24 01:37:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:37:31] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:38:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:38:31] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:39:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:39:31] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:40:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:40:31] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:41:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:41:31] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:42:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:42:31] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:43:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:43:31] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:44:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:44:31] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-05-24 01:46:14] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 01:46:14] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:46:14] Worker iniciado. worksheet='Gerar alerta de preço (respostas)' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-24 01:46:14] Aguardando autorizacao do Google no navegador para sincronizar a planilha.
+[2026-05-24 01:46:34] Falha na importacao da planilha: <HttpError 400 when requesting https://sheets.googleapis.com/v4/spreadsheets/11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg/values/Gerar%20alerta%20de%20pre%C3%A7o%20%28respostas%29%21A2%3AR?alt=json returned "Unable to parse range: Gerar alerta de preço (respostas)!A2:R". Details: "Unable to parse range: Gerar alerta de preço (respostas)!A2:R">
+[2026-05-24 01:46:34] Falha na importacao da planilha: <HttpError 400 when requesting https://sheets.googleapis.com/v4/spreadsheets/11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg/values/Gerar%20alerta%20de%20pre%C3%A7o%20%28respostas%29%21A2%3AR?alt=json returned "Unable to parse range: Gerar alerta de preço (respostas)!A2:R". Details: "Unable to parse range: Gerar alerta de preço (respostas)!A2:R">
+[2026-05-24 01:46:34] Finalizacao da sincronizacao. falhou=True importados=0.

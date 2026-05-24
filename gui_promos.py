@@ -1,16 +1,20 @@
 import argparse
 import contextlib
+import hashlib
 import importlib
 import json
 import os
 import queue
 import re
+import smtplib
 import subprocess
 import sys
 import threading
+import webbrowser
 from datetime import datetime, timedelta
 from pathlib import Path
-from urllib.parse import quote_plus, urljoin
+from email.mime.text import MIMEText
+from urllib.parse import quote, quote_plus, unquote, urljoin, urlparse
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 
@@ -18,14 +22,39 @@ import requests
 from bs4 import BeautifulSoup
 from parsers.mercadolivre import salvar_saida_execucao_modalidade
 
-BASE_DIR = Path(__file__).resolve().parent
+try:
+    from dotenv import load_dotenv
+except Exception:
+    load_dotenv = None
+
+try:
+    from twilio.base.exceptions import TwilioRestException
+    from twilio.rest import Client as TwilioClient
+except Exception:
+    TwilioRestException = Exception
+    TwilioClient = None
+
+
+def _resolve_base_dir():
+    if getattr(sys, "frozen", False):
+        return Path(sys.executable).resolve().parent
+    return Path(__file__).resolve().parent
+
+
+BASE_DIR = _resolve_base_dir()
 ALERTS_CONFIG_FILE = BASE_DIR / "alertas_preco.json"
 HUB_SCHEDULES_CONFIG_FILE = BASE_DIR / "agendamentos_hub.json"
+SHEETS_ALERTS_CONFIG_FILE = BASE_DIR / "integracao_planilha_alertas.json"
 LOGS_DIR = BASE_DIR / "logs_execucao"
+ALERT_LOGS_DIR = LOGS_DIR / "alertas"
+SHEETS_SYNC_LOGS_DIR = LOGS_DIR / "planilha"
 LOGIN_OK_SIGNAL_FILE = BASE_DIR / ".ml_login_ok.signal"
 AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
 AUTH_MARKER_STILL_PENDING_ML = "[AUTH_STILL_PENDING_ML]"
 SCHEDULER_TICK_MS = 60000
+ALERTS_IMPORT_INTERVAL_MINUTES = 10
+ALERT_INTERVAL_HOURS_FIXED = 1
+ALERT_ACTIVE_DAYS_DEFAULT = 30
 HTTP_HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -33,6 +62,200 @@ HTTP_HEADERS = {
         "Chrome/124.0.0.0 Safari/537.36"
     )
 }
+
+if load_dotenv is not None:
+    load_dotenv()
+
+
+def _ler_variavel_ambiente(nome):
+    return os.getenv(nome, "").strip().strip('"').strip("'")
+
+
+def _maybe_breakpoint(tag):
+    flag = os.getenv("PROMOS_BREAKPOINTS", "").strip().lower()
+    if flag in {"1", "true", "yes", "on"}:
+        print(f"[DEBUG BREAKPOINT] {tag}")
+        breakpoint()
+
+
+def _split_destinos(valor):
+    texto = (valor or "").strip()
+    if not texto:
+        return []
+    return [p.strip() for p in re.split(r"[;,]", texto) if p.strip()]
+
+
+def _single_destino(valor):
+    destinos = _split_destinos(valor)
+    if not destinos:
+        return "", []
+    return destinos[0], [destinos[0]]
+
+
+def _normalizar_telefone_whatsapp(numero):
+    bruto = (numero or "").strip()
+    if not bruto:
+        return ""
+
+    # Aceita numero puro, com +, com espacos, ou ja no formato whatsapp:.
+    digitos = re.sub(r"\D", "", bruto)
+    if not digitos:
+        return ""
+
+    # Twilio WhatsApp exige E.164 com codigo do pais.
+    if not digitos.startswith("55"):
+        digitos = f"55{digitos}"
+
+    return f"whatsapp:+{digitos}"
+
+
+def _mascarar_destino_whatsapp(destino):
+    digitos = re.sub(r"\D", "", destino or "")
+    if not digitos:
+        return "invalido"
+
+    if len(digitos) <= 4:
+        return f"***{digitos}"
+
+    return f"***{digitos[-4:]}"
+
+
+def _str_to_bool(value):
+    texto = ("" if value is None else str(value)).strip().casefold()
+    return texto in {"1", "true", "verdadeiro", "sim", "yes", "y"}
+
+
+def _formatar_preco_brl(valor):
+    return f"R$ {float(valor):.2f}"
+
+
+def _load_sheets_alerts_config(config_path):
+    default_cfg = {
+        "enabled": False,
+        "auth_mode": "oauth_user",
+        "spreadsheet_id": "",
+        "spreadsheet_url": "",
+        "worksheet_name": "Respostas ao formulário 1",
+        "oauth_client_file": "credentials/google-oauth-client-secret.json",
+        "oauth_token_file": "credentials/google-oauth-token.json",
+        "service_account_file": "credentials/google-service-account.json",
+    }
+
+    try:
+        with open(config_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            if isinstance(data, dict):
+                default_cfg.update(data)
+    except FileNotFoundError:
+        pass
+    except Exception:
+        pass
+
+    return default_cfg
+
+
+def _save_sheets_alerts_config(config_path, config):
+    with open(config_path, "w", encoding="utf-8") as file:
+        json.dump(config, file, indent=2, ensure_ascii=False)
+
+
+def _spreadsheet_id_from_url(url):
+    texto = (url or "").strip()
+    if not texto:
+        return ""
+
+    match = re.search(r"/spreadsheets/d/([a-zA-Z0-9-_]+)", texto)
+    if not match:
+        return ""
+
+    return match.group(1)
+
+
+def _resolve_config_file_path(path_value):
+    path_str = (path_value or "").strip()
+    if not path_str:
+        return None
+
+    path_obj = Path(path_str)
+    if not path_obj.is_absolute():
+        path_obj = BASE_DIR / path_obj
+
+    return path_obj
+
+
+def _load_google_sheets_client(sheets_config, progress_callback=None):
+    discovery_module = importlib.import_module("googleapiclient.discovery")
+
+    scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+    auth_mode = (sheets_config.get("auth_mode") or "oauth_user").strip().lower()
+
+    if auth_mode == "service_account":
+        credentials_module = importlib.import_module("google.oauth2.service_account")
+        service_account_path = _resolve_config_file_path(sheets_config.get("service_account_file"))
+        if service_account_path is None or not service_account_path.exists():
+            raise FileNotFoundError(
+                f"Arquivo de service account nao encontrado: {service_account_path or '[vazio]'}"
+            )
+
+        credentials = credentials_module.Credentials.from_service_account_file(
+            str(service_account_path), scopes=scopes
+        )
+    else:
+        credentials_module = importlib.import_module("google.oauth2.credentials")
+        requests_module = importlib.import_module("google.auth.transport.requests")
+        oauth_flow_module = importlib.import_module("google_auth_oauthlib.flow")
+
+        oauth_client_path = _resolve_config_file_path(sheets_config.get("oauth_client_file"))
+        oauth_token_path = _resolve_config_file_path(sheets_config.get("oauth_token_file"))
+
+        if oauth_client_path is None or not oauth_client_path.exists():
+            raise FileNotFoundError(
+                f"Arquivo OAuth client secret nao encontrado: {oauth_client_path or '[vazio]'}"
+            )
+
+        if oauth_token_path is None:
+            raise FileNotFoundError("Caminho do arquivo de token OAuth nao configurado.")
+
+        credentials = None
+        if oauth_token_path.exists():
+            credentials = credentials_module.Credentials.from_authorized_user_file(
+                str(oauth_token_path), scopes
+            )
+
+        if not credentials or not credentials.valid:
+            if credentials and credentials.expired and credentials.refresh_token:
+                if progress_callback:
+                    progress_callback("Atualizando token OAuth da planilha.")
+                credentials.refresh(requests_module.Request())
+            else:
+                flow = oauth_flow_module.InstalledAppFlow.from_client_secrets_file(
+                    str(oauth_client_path), scopes
+                )
+                try:
+                    if progress_callback:
+                        progress_callback("Aguardando autorizacao do Google no navegador para sincronizar a planilha.")
+                    credentials = flow.run_local_server(port=0, open_browser=True)
+                except Exception as exc:
+                    auth_url, _ = flow.authorization_url(
+                        access_type="offline",
+                        include_granted_scopes="true",
+                        prompt="consent",
+                    )
+                    raise RuntimeError(
+                        "Nao foi possivel abrir o navegador automaticamente para OAuth. "
+                        f"Abra manualmente esta URL e autorize: {auth_url}"
+                    ) from exc
+
+            oauth_token_path.parent.mkdir(parents=True, exist_ok=True)
+            oauth_token_path.write_text(credentials.to_json(), encoding="utf-8")
+
+    return discovery_module.build("sheets", "v4", credentials=credentials, cache_discovery=False)
+
+
+def _sheet_a1_range(worksheet_name, cell_range):
+    nome = str(worksheet_name or "").strip()
+    nome_escapado = nome.replace("'", "''")
+    return f"'{nome_escapado}'!{cell_range}"
 
 DEFAULT_CATEGORIES = [
     "Acessórios para Veículos",
@@ -161,15 +384,17 @@ def _parse_brl_price(text):
     if not raw:
         return None
 
-    match = re.search(r"(\d{1,3}(?:\.\d{3})*(?:,\d{2})|\d+[\.,]\d{2}|\d+)", raw)
+    match = re.search(r"(\d{1,3}(?:\.\d{3})+(?:,\d{2})?|\d+[\.,]\d{2}|\d+)", raw)
     if not match:
         return None
 
     number = match.group(1)
-    if "." in number and "," in number:
+    if "," in number and "." in number:
         number = number.replace(".", "").replace(",", ".")
     elif "," in number:
         number = number.replace(",", ".")
+    elif re.fullmatch(r"\d{1,3}(?:\.\d{3})+", number):
+        number = number.replace(".", "")
 
     try:
         return float(number)
@@ -177,9 +402,33 @@ def _parse_brl_price(text):
         return None
 
 
-def _extract_price_from_html(html):
-    soup = BeautifulSoup(html, "html.parser")
+def _detect_marketplace_from_url(url):
+    host = (urlparse(url or "").netloc or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
 
+    if "mercadolivre.com" in host or "mercadolibre.com" in host:
+        return "mercadolivre"
+
+    return "generic"
+
+
+def _extract_price_from_soup_mercadolivre(soup):
+    selectors = [
+        "span.andes-money-amount__fraction[data-andes-money-amount-fraction='true']",
+        "span.andes-money-amount__fraction",
+    ]
+
+    for selector in selectors:
+        for element in soup.select(selector):
+            price = _parse_brl_price(element.get_text(" ", strip=True))
+            if price is not None:
+                return price
+
+    return None
+
+
+def _extract_price_from_soup_generic(soup):
     meta_candidates = [
         "meta[property='product:price:amount']",
         "meta[itemprop='price']",
@@ -195,8 +444,6 @@ def _extract_price_from_html(html):
     text_candidates = [
         "[itemprop='price']",
         "[data-testid='price-part']",
-        "[data-andes-money-amount-fraction='true']",
-        ".andes-money-amount__fraction",
         ".a-price .a-offscreen",
         ".priceToPay .a-offscreen",
     ]
@@ -221,12 +468,113 @@ def _extract_price_from_html(html):
     return None
 
 
-def _fetch_price_from_url(url):
-    response = requests.get(url, headers=HTTP_HEADERS, timeout=25)
+def _extract_price_from_html(html, marketplace="generic"):
+    soup = BeautifulSoup(html, "html.parser")
+
+    if marketplace == "mercadolivre":
+        price = _extract_price_from_soup_mercadolivre(soup)
+        if price is not None:
+            return price
+
+    return _extract_price_from_soup_generic(soup)
+
+
+def _is_ml_challenge_html(html):
+    if not html:
+        return False
+
+    lowered = html.lower()
+    markers = [
+        "_bmstate",
+        "verifychallenge",
+        "continue-button",
+        "_bm_skipml",
+    ]
+    return any(marker in lowered for marker in markers)
+
+
+def _prepare_ml_challenge_cookies(session):
+    bmstate_raw = session.cookies.get("_bmstate")
+    if not bmstate_raw:
+        return False
+
+    try:
+        parts = unquote(bmstate_raw).split(";")
+        seed = parts[0].strip()
+        difficulty = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 0
+    except Exception:
+        return False
+
+    if not seed or difficulty < 0 or difficulty > 6:
+        return False
+
+    prefix = "0" * difficulty
+    nonce = 0
+    limit = 2_000_000
+    while nonce < limit:
+        digest = hashlib.sha256(f"{seed}{nonce}".encode("utf-8")).hexdigest()
+        if digest.startswith(prefix):
+            break
+        nonce += 1
+
+    if nonce >= limit:
+        return False
+
+    cookie_value = quote(f"{seed};{nonce}")
+    for domain in ["mercadolivre.com.br", ".mercadolivre.com.br"]:
+        session.cookies.set("_bmc", cookie_value, domain=domain, path="/")
+        session.cookies.set("_bm_skipml", "true", domain=domain, path="/")
+
+    return True
+
+
+def _fetch_with_marketplace_handling(url):
+    session = requests.Session()
+    response = session.get(url, headers=HTTP_HEADERS, timeout=25)
     response.raise_for_status()
 
-    price = _extract_price_from_html(response.text)
+    marketplace = _detect_marketplace_from_url(response.url or url)
+    if marketplace != "mercadolivre":
+        return response, marketplace
+
+    if _is_ml_challenge_html(response.text) and _prepare_ml_challenge_cookies(session):
+        retry = session.get(response.url or url, headers=HTTP_HEADERS, timeout=25)
+        retry.raise_for_status()
+        return retry, marketplace
+
+    return response, marketplace
+
+
+def _extract_title_from_html(html):
+    soup = BeautifulSoup(html, "html.parser")
+
+    for selector in ["h1.ui-pdp-title", ".ui-pdp-title", "meta[property='og:title']", "title"]:
+        node = soup.select_one(selector)
+        if not node:
+            continue
+
+        if node.name == "meta":
+            title = (node.get("content") or "").strip()
+        else:
+            title = node.get_text(" ", strip=True)
+
+        if title:
+            return title
+
+    return ""
+
+
+def _fetch_price_from_url(url):
+    response, marketplace = _fetch_with_marketplace_handling(url)
+    price = _extract_price_from_html(response.text, marketplace=marketplace)
     return price, url
+
+
+def _fetch_price_and_title_from_url(url):
+    response, marketplace = _fetch_with_marketplace_handling(url)
+    price = _extract_price_from_html(response.text, marketplace=marketplace)
+    title = _extract_title_from_html(response.text)
+    return price, response.url, title
 
 
 def _fetch_price_from_description(description):
@@ -269,7 +617,6 @@ def _build_affiliate_link(url_original):
 
     try:
         from playwright.sync_api import sync_playwright
-        from parsers.mercadolivre import obter_link_encurtado
     except Exception:
         return ""
 
@@ -296,7 +643,46 @@ def _build_affiliate_link(url_original):
             context = p.chromium.launch_persistent_context(**launch_kwargs)
             page = context.new_page()
             page.goto(url_original, timeout=90000, wait_until="domcontentloaded")
-            affiliate_link = obter_link_encurtado(page, url_original)
+
+            faixa_afiliados = page.locator("nav[aria-label='Afiliados'].stripe").first
+            faixa_afiliados.wait_for(state="visible", timeout=12000)
+
+            botao_compartilhar = faixa_afiliados.locator(
+                "button[data-testid='generate_link_button']:has(span.andes-button__text:has-text('Compartilhar'))"
+            ).first
+            botao_compartilhar.wait_for(state="visible", timeout=12000)
+            botao_compartilhar.click()
+
+            popover = page.locator("div[data-testid='popper'].link-generator").first
+            popover.wait_for(state="visible", timeout=12000)
+
+            campo_link = popover.locator("textarea[data-testid='text-field__label_link']").first
+            campo_link.wait_for(state="visible", timeout=12000)
+
+            affiliate_link = ""
+            for _ in range(6):
+                affiliate_link = campo_link.input_value().strip()
+                if affiliate_link and "meli.la" in affiliate_link:
+                    break
+                affiliate_link = ""
+                page.wait_for_timeout(600)
+
+            if not affiliate_link:
+                botao_copiar = popover.locator("button[data-testid='copy-button__label_link']").first
+                botao_copiar.wait_for(state="visible", timeout=8000)
+                botao_copiar.click()
+                page.wait_for_timeout(800)
+                affiliate_link = campo_link.input_value().strip()
+
+            if (not affiliate_link or "meli.la" not in affiliate_link):
+                try:
+                    clip = page.evaluate("navigator.clipboard.readText()")
+                    if isinstance(clip, str) and "meli.la" in clip:
+                        affiliate_link = clip.strip()
+                except Exception:
+                    pass
+
+            page.keyboard.press("Escape")
             context.close()
 
         if affiliate_link and "meli.la" in affiliate_link:
@@ -798,16 +1184,34 @@ def create_gui(categorias):
     relampago_frame.columnconfigure(1, weight=1)
 
     output_frame = ttk.LabelFrame(main_frame, text="PAINEL DE EXECUCAO", style="Card.TLabelframe", padding=10)
-    output_frame.pack(fill="x", expand=False, pady=(12, 0))
+    output_frame.pack(fill="both", expand=True, pady=(12, 0))
     status_var = tk.StringVar(value="Pronto para executar.")
-    ttk.Label(output_frame, textvariable=status_var, style="Hint.TLabel").pack(anchor="w")
+    status_label = ttk.Label(output_frame, textvariable=status_var, style="Hint.TLabel", justify="left")
+    status_label.pack(anchor="w", fill="x")
 
     log_path_var = tk.StringVar(value="Log salvo em: -")
-    ttk.Label(output_frame, textvariable=log_path_var, style="Hint.TLabel").pack(anchor="w", pady=(6, 0))
+    log_path_label = ttk.Label(output_frame, textvariable=log_path_var, style="Hint.TLabel", justify="left")
+    log_path_label.pack(anchor="w", fill="x", pady=(6, 0))
+
+    oauth_url_var = tk.StringVar(value="")
+    oauth_status_var = tk.StringVar(value="OAuth URL: nao gerada")
+    oauth_url_wrap = ttk.Frame(output_frame, style="Main.TFrame")
+    oauth_url_wrap.pack(fill="x", expand=False, pady=(4, 0))
+    ttk.Label(oauth_url_wrap, text="URL OAuth:", style="Hint.TLabel").pack(side="left")
+    oauth_url_entry = ttk.Entry(oauth_url_wrap, textvariable=oauth_url_var, state="readonly")
+    oauth_url_entry.pack(side="left", fill="x", expand=True, padx=(6, 6))
+    open_oauth_url_btn = ttk.Button(oauth_url_wrap, text="Abrir URL")
+    open_oauth_url_btn.pack(side="right", padx=(0, 6))
+    copy_oauth_url_btn = ttk.Button(oauth_url_wrap, text="Copiar URL")
+    copy_oauth_url_btn.pack(side="right")
+    ttk.Label(output_frame, textvariable=oauth_status_var, style="Hint.TLabel", justify="left").pack(anchor="w", fill="x", pady=(2, 0))
+
+    resumo_wrap = ttk.Frame(output_frame, style="Main.TFrame")
+    resumo_wrap.pack(fill="both", expand=True, pady=(8, 0))
 
     resumo_text = tk.Text(
-        output_frame,
-        height=8,
+        resumo_wrap,
+        height=10,
         wrap="word",
         background="#f6f6f6",
         foreground="#303030",
@@ -816,14 +1220,27 @@ def create_gui(categorias):
         highlightthickness=1,
         highlightbackground="#d5e0e7",
         highlightcolor="#2fa6bf",
+        insertwidth=0,
     )
-    resumo_text.pack(fill="x", expand=False, pady=(8, 0))
-    resumo_text.configure(state="disabled")
+    resumo_scroll = ttk.Scrollbar(resumo_wrap, orient="vertical", command=resumo_text.yview)
+    resumo_text.configure(yscrollcommand=resumo_scroll.set)
+
+    resumo_text.pack(side="left", fill="both", expand=True)
+    resumo_scroll.pack(side="right", fill="y")
+    resumo_text.configure(state="normal")
+
+    def _ajustar_wrap_painel(_event=None):
+        largura = max(220, output_frame.winfo_width() - 28)
+        status_label.configure(wraplength=largura)
+        log_path_label.configure(wraplength=largura)
+
+    output_frame.bind("<Configure>", _ajustar_wrap_painel)
+    _ajustar_wrap_painel()
 
     schedules_frame = ttk.LabelFrame(main_frame, text="PROGRAMACOES", style="Card.TLabelframe", padding=8)
     schedules_frame.pack(fill="both", expand=True, pady=(8, 0))
     output_frame.pack_forget()
-    output_frame.pack(fill="x", expand=False, pady=(12, 0))
+    output_frame.pack(fill="both", expand=True, pady=(12, 0))
 
     schedules_actions = ttk.Frame(schedules_frame, style="Main.TFrame")
     schedules_actions.pack(fill="x", pady=(0, 6))
@@ -833,6 +1250,9 @@ def create_gui(categorias):
 
     campanha_config_btn = ttk.Button(schedules_actions, text="CONFIGURAR CAMPANHA", style="Action.TButton")
     campanha_config_btn.pack(side="left", padx=(8, 0))
+
+    sync_sheet_now_btn = ttk.Button(schedules_actions, text="SINCRONIZAR PLANILHA AGORA", style="Action.TButton")
+    sync_sheet_now_btn.pack(side="left", padx=(8, 0))
 
     selecionar_todas_var = tk.BooleanVar(value=False)
     ttk.Checkbutton(schedules_actions, text="Selecionar todas", variable=selecionar_todas_var).pack(side="left", padx=(12, 0))
@@ -886,13 +1306,142 @@ def create_gui(categorias):
 
     alerts = load_alerts_config(ALERTS_CONFIG_FILE)
     hub_schedules = load_hub_schedules_config(HUB_SCHEDULES_CONFIG_FILE)
-    scheduler_state = {"running": False}
+    sheets_alerts_config = _load_sheets_alerts_config(SHEETS_ALERTS_CONFIG_FILE)
+    scheduler_state = {"running": False, "running_id": None, "pending_ids": set()}
+    alert_execution_queue = queue.Queue()
+    sheets_sync_state = {"running": False, "next_run_at": datetime.now()}
     worker_running = {"value": False}
     worker_log = {"path": None}
+    alert_log = {"path": None}
+    sheet_sync_log = {"path": None}
     worker_messages = queue.Queue()
+    alerts_lock = threading.Lock()
 
     def persist_hub_schedules():
         save_hub_schedules_config(HUB_SCHEDULES_CONFIG_FILE, hub_schedules)
+
+    def persist_alerts():
+        save_alerts_config(ALERTS_CONFIG_FILE, alerts)
+
+    def _iniciar_log_alertas():
+        ALERT_LOGS_DIR.mkdir(parents=True, exist_ok=True)
+        data_ref = datetime.now().strftime("%Y%m%d")
+        caminho = ALERT_LOGS_DIR / f"alertas_{data_ref}.log"
+
+        if not caminho.exists():
+            with open(caminho, "w", encoding="utf-8") as log_file:
+                log_file.write(f"=== Inicio do log de alertas: {datetime.now().isoformat(timespec='seconds')} ===\n")
+
+        alert_log["path"] = caminho
+        return caminho
+
+    def _iniciar_log_sincronizacao_planilha():
+        SHEETS_SYNC_LOGS_DIR.mkdir(parents=True, exist_ok=True)
+        data_ref = datetime.now().strftime("%Y%m%d")
+        caminho = SHEETS_SYNC_LOGS_DIR / f"sincronizacao_planilha_{data_ref}.log"
+
+        if not caminho.exists():
+            with open(caminho, "w", encoding="utf-8") as log_file:
+                log_file.write(
+                    f"=== Inicio do log de sincronizacao de planilha: {datetime.now().isoformat(timespec='seconds')} ===\n"
+                )
+
+        sheet_sync_log["path"] = caminho
+        return caminho
+
+    def _escrever_log_alerta(mensagem):
+        try:
+            caminho = alert_log.get("path") or _iniciar_log_alertas()
+            with open(caminho, "a", encoding="utf-8") as log_file:
+                log_file.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {mensagem}\n")
+            log_path_var.set(f"Log salvo em: {caminho}")
+        except Exception:
+            pass
+
+    def _escrever_log_sincronizacao_planilha(mensagem):
+        try:
+            caminho = sheet_sync_log.get("path") or _iniciar_log_sincronizacao_planilha()
+            with open(caminho, "a", encoding="utf-8") as log_file:
+                log_file.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {mensagem}\n")
+            log_path_var.set(f"Log salvo em: {caminho}")
+        except Exception:
+            pass
+
+    def _enqueue_alert_execution(alert, source="scheduler"):
+        if alert is None:
+            return False
+
+        if not bool(alert.get("active", True)):
+            return False
+
+        alert_id = str(alert.get("id", "")).strip()
+        if not alert_id:
+            return False
+
+        if alert_id in scheduler_state["pending_ids"] or scheduler_state.get("running_id") == alert_id:
+            _escrever_log_alerta(
+                f"Alerta {alert_id} ignorado no enfileiramento ({source}): ja em execucao/fila."
+            )
+            return False
+
+        scheduler_state["pending_ids"].add(alert_id)
+        alert_execution_queue.put(alert_id)
+
+        if source == "manual":
+            status_var.set(f"Alerta enfileirado para execucao: {alert.get('name', 'Sem nome')}")
+
+        _escrever_log_alerta(
+            f"Alerta {alert_id} enfileirado ({source}) - nome: {alert.get('name', 'Sem nome')}."
+        )
+
+        return True
+
+    def _run_next_alert_from_queue():
+        if scheduler_state["running"]:
+            return
+
+        next_alert_id = None
+        while not alert_execution_queue.empty():
+            candidato_id = alert_execution_queue.get_nowait()
+            _, alert_obj = _obter_programacao_por_key(_programacao_key("alerta", candidato_id))
+            if alert_obj is not None and bool(alert_obj.get("active", True)):
+                next_alert_id = candidato_id
+                break
+
+            scheduler_state["pending_ids"].discard(candidato_id)
+
+        if not next_alert_id:
+            return
+
+        scheduler_state["running"] = True
+        scheduler_state["running_id"] = next_alert_id
+        _escrever_log_alerta(f"Iniciando execucao do alerta {next_alert_id}.")
+
+        def worker(alert_ref):
+            result = _check_alert_once(alert_ref)
+            root.after(0, lambda: _finalize_alert_queue_execution(next_alert_id, [result]))
+
+        _, alert_item = _obter_programacao_por_key(_programacao_key("alerta", next_alert_id))
+        if alert_item is None:
+            _escrever_log_alerta(
+                f"Alerta {next_alert_id} removido/inativo antes da execucao."
+            )
+            _finalize_alert_queue_execution(next_alert_id, [])
+            return
+
+        threading.Thread(target=worker, args=(alert_item,), daemon=True).start()
+
+    def _finalize_alert_queue_execution(alert_id, results):
+        if results:
+            _apply_alert_results(results, queue_finalize=False)
+
+        _escrever_log_alerta(f"Finalizada execucao do alerta {alert_id}.")
+
+        scheduler_state["pending_ids"].discard(str(alert_id))
+        scheduler_state["running"] = False
+        scheduler_state["running_id"] = None
+
+        root.after(50, _run_next_alert_from_queue)
 
     def _proximo_id_configuracao():
         max_id = 0
@@ -914,6 +1463,82 @@ def create_gui(categorias):
         if alterou:
             save_alerts_config(ALERTS_CONFIG_FILE, alerts)
             save_hub_schedules_config(HUB_SCHEDULES_CONFIG_FILE, hub_schedules)
+
+    def _target_price_from_alert(alert):
+        if alert.get("precoDesejado") is not None:
+            return float(alert.get("precoDesejado"))
+        return float(alert.get("target_price", 0) or 0)
+
+    def _urls_from_alert(alert):
+        urls = [str(url).strip() for url in (alert.get("urls") or []) if str(url).strip()]
+        if urls:
+            return urls
+
+        links = []
+        for idx in range(1, 6):
+            link = str(alert.get(f"link{idx}", "")).strip()
+            if link:
+                links.append(link)
+        return links
+
+    def _normalizar_alertas_schema():
+        alterou = False
+
+        for alert in alerts:
+            descricao = (alert.get("descricao") or alert.get("description") or "").strip()
+            nome_atual = (alert.get("name") or "").strip()
+            nome = nome_atual or descricao or "Alerta sem nome"
+
+            urls = _urls_from_alert(alert)
+            emails = alert.get("emails")
+            if not isinstance(emails, list):
+                emails = _split_destinos(alert.get("email", ""))
+            emails = [str(e).strip() for e in emails if str(e).strip()][:1]
+
+            phones = alert.get("phones")
+            if not isinstance(phones, list):
+                phones = _split_destinos(alert.get("telefone", ""))
+            phones = [str(p).strip() for p in phones if str(p).strip()][:1]
+
+            target_price = _target_price_from_alert(alert)
+            configured_at = alert.get("configured_at") or alert.get("dt_criacao") or datetime.now().isoformat(timespec="seconds")
+            end_at = alert.get("end_at")
+            if not end_at:
+                configured_dt = _parse_iso_datetime(configured_at) or datetime.now()
+                end_at = (configured_dt + timedelta(days=ALERT_ACTIVE_DAYS_DEFAULT)).isoformat(timespec="seconds")
+
+            novo_alerta = {
+                **alert,
+                "name": nome,
+                "mode": "url",
+                "description": descricao,
+                "descricao": descricao,
+                "target_price": target_price,
+                "precoDesejado": target_price,
+                "emails": emails,
+                "email": (emails[0] if emails else ""),
+                "phones": phones,
+                "telefone": (phones[0] if phones else ""),
+                "urls": urls,
+                "interval_hours": ALERT_INTERVAL_HOURS_FIXED,
+                "active": bool(alert.get("active", True)),
+                "configured_at": configured_at,
+                "end_at": end_at,
+                "agendado": bool(alert.get("agendado", True)),
+                "dt_criacao": alert.get("dt_criacao") or configured_at,
+                "last_notified_at": alert.get("last_notified_at"),
+            }
+
+            for idx in range(1, 6):
+                novo_alerta[f"link{idx}"] = urls[idx - 1] if idx - 1 < len(urls) else ""
+
+            if novo_alerta != alert:
+                alert.clear()
+                alert.update(novo_alerta)
+                alterou = True
+
+        if alterou:
+            persist_alerts()
 
     def _parse_schedule_datetime_input(value, field_name, required=False, end_of_day=False):
         texto = (value or "").strip()
@@ -967,6 +1592,10 @@ def create_gui(categorias):
     def _proxima_execucao_alerta(alert, now=None):
         now = now or datetime.now()
         if not alert.get("active", True):
+            return "-"
+
+        fim = _parse_iso_datetime(alert.get("end_at"))
+        if fim and now > fim:
             return "-"
 
         next_check = _parse_iso_datetime(alert.get("next_check_at"))
@@ -1033,6 +1662,10 @@ def create_gui(categorias):
         if not alert.get("active", True):
             return "Inativo"
 
+        fim = _parse_iso_datetime(alert.get("end_at"))
+        if fim and now > fim:
+            return "Encerrado"
+
         last_check = _parse_iso_datetime(alert.get("last_check_at"))
         interval_hours = max(1, int(alert.get("interval_hours", 1)))
 
@@ -1057,8 +1690,8 @@ def create_gui(categorias):
                     "nome": alert.get("name", "Alerta sem nome"),
                     "tipo": "Alerta de preco",
                     "ativo": _pill_ativo(bool(alert.get("active", True))),
-                    "inicio": "-",
-                    "fim": "-",
+                    "inicio": _formatar_data(alert.get("configured_at")),
+                    "fim": _formatar_data(alert.get("end_at")),
                     "ultima": _formatar_data_hora(alert.get("last_check_at")),
                     "proxima": _proxima_execucao_alerta(alert),
                     "ciclo": f"{int(alert.get('interval_hours', 1))}h",
@@ -1141,7 +1774,11 @@ def create_gui(categorias):
         agora = datetime.now()
 
         for alert in alerts:
-            intervalo_horas = max(1, int(alert.get("interval_hours", 1)))
+            intervalo_horas = ALERT_INTERVAL_HOURS_FIXED
+            if int(alert.get("interval_hours", ALERT_INTERVAL_HOURS_FIXED)) != ALERT_INTERVAL_HOURS_FIXED:
+                alert["interval_hours"] = ALERT_INTERVAL_HOURS_FIXED
+                alterou_alertas = True
+
             next_check = _parse_iso_datetime(alert.get("next_check_at"))
             if next_check is not None:
                 continue
@@ -1171,9 +1808,250 @@ def create_gui(categorias):
             alterou_rotinas = True
 
         if alterou_alertas:
-            save_alerts_config(ALERTS_CONFIG_FILE, alerts)
+            persist_alerts()
         if alterou_rotinas:
             save_hub_schedules_config(HUB_SCHEDULES_CONFIG_FILE, hub_schedules)
+
+    def _sheet_get_cell(row_values, index):
+        if index < len(row_values):
+            return str(row_values[index]).strip()
+        return ""
+
+    def _sheet_row_to_alert(row_values, row_number):
+        carimbo = _sheet_get_cell(row_values, 0)
+        email = _sheet_get_cell(row_values, 1)
+        descricao = _sheet_get_cell(row_values, 3)
+        preco_desejado_raw = _sheet_get_cell(row_values, 4)
+        link1 = _sheet_get_cell(row_values, 5)
+        telefone = _sheet_get_cell(row_values, 6)
+        link2 = _sheet_get_cell(row_values, 8)
+        link3 = _sheet_get_cell(row_values, 10)
+        link4 = _sheet_get_cell(row_values, 12)
+        link5 = _sheet_get_cell(row_values, 14)
+
+        if not descricao:
+            raise ValueError("Descricao do produto nao informada (coluna D).")
+
+        preco_desejado = parse_float(preco_desejado_raw, "Preco desejado")
+        if preco_desejado is None or preco_desejado <= 0:
+            raise ValueError("Preco desejado invalido (coluna E).")
+
+        links = [l for l in [link1, link2, link3, link4, link5] if l]
+        if not links:
+            raise ValueError("Informe ao menos um link entre as colunas F/I/K/M/O.")
+
+        if not email and not telefone:
+            raise ValueError("Informe email (coluna B) e/ou telefone (coluna G).")
+
+        email_unico, emails = _single_destino(email)
+        telefone_unico, phones = _single_destino(telefone)
+
+        if email and len(_split_destinos(email)) > 1:
+            raise ValueError("A coluna B deve conter apenas 1 e-mail.")
+
+        if telefone and len(_split_destinos(telefone)) > 1:
+            raise ValueError("A coluna G deve conter apenas 1 telefone.")
+
+        agora = datetime.now().isoformat(timespec="seconds")
+        alert_id = _proximo_id_configuracao()
+        alert = {
+            "id": alert_id,
+            "source": "planilha",
+            "sheet_row_number": row_number,
+            "name": descricao,
+            "description": descricao,
+            "descricao": descricao,
+            "mode": "url",
+            "target_price": float(preco_desejado),
+            "precoDesejado": float(preco_desejado),
+            "email": email_unico,
+            "emails": emails,
+            "telefone": telefone_unico,
+            "phones": phones,
+            "link1": link1,
+            "link2": link2,
+            "link3": link3,
+            "link4": link4,
+            "link5": link5,
+            "urls": links,
+            "agendado": True,
+            "dt_criacao": agora,
+            "carimbo_data_hora": carimbo,
+            "active": True,
+            "interval_hours": ALERT_INTERVAL_HOURS_FIXED,
+            "last_check_at": None,
+            "next_check_at": (datetime.now() + timedelta(hours=ALERT_INTERVAL_HOURS_FIXED)).isoformat(timespec="seconds"),
+            "configured_at": agora,
+            "end_at": (datetime.now() + timedelta(days=ALERT_ACTIVE_DAYS_DEFAULT)).isoformat(timespec="seconds"),
+            "last_notified_price": None,
+            "last_notified_at": None,
+        }
+        return alert
+
+    def _sheet_mark_row_imported(client, spreadsheet_id, worksheet_name, row_number, dt_criacao):
+        range_write = _sheet_a1_range(worksheet_name, f"Q{row_number}:R{row_number}")
+        values = [["true", dt_criacao]]
+        (
+            client.spreadsheets()
+            .values()
+            .update(
+                spreadsheetId=spreadsheet_id,
+                range=range_write,
+                valueInputOption="USER_ENTERED",
+                body={"values": values},
+            )
+            .execute()
+        )
+
+    def _import_alerts_from_sheet_once():
+        _maybe_breakpoint("_import_alerts_from_sheet_once.entry")
+        _escrever_log_sincronizacao_planilha("Inicio da rotina de sincronizacao da planilha.")
+
+        if sheets_sync_state["running"]:
+            _escrever_log_sincronizacao_planilha("Sincronizacao ignorada: ja existe execucao em andamento.")
+            _append_resumo(
+                f"[{datetime.now().strftime('%H:%M:%S')}] Sincronizacao da planilha ja esta em andamento.\n"
+            )
+            return
+
+        if not sheets_alerts_config.get("enabled", False):
+            _escrever_log_sincronizacao_planilha("Sincronizacao ignorada: integracao desativada.")
+            return
+
+        spreadsheet_id = (sheets_alerts_config.get("spreadsheet_id") or "").strip()
+        if not spreadsheet_id:
+            spreadsheet_id = _spreadsheet_id_from_url(sheets_alerts_config.get("spreadsheet_url"))
+        worksheet_name = (sheets_alerts_config.get("worksheet_name") or "Respostas ao formulário 1").strip()
+        auth_mode = (sheets_alerts_config.get("auth_mode") or "oauth_user").strip().lower()
+
+        if not spreadsheet_id:
+            _escrever_log_sincronizacao_planilha("Sincronizacao ignorada: spreadsheet_id ausente.")
+            return
+
+        if auth_mode == "service_account":
+            service_account_path = _resolve_config_file_path(sheets_alerts_config.get("service_account_file"))
+            if service_account_path is None or not service_account_path.exists():
+                _escrever_log_sincronizacao_planilha(
+                    f"Sincronizacao ignorada: service account ausente ({service_account_path or '[vazio]'})."
+                )
+                _append_resumo(
+                    f"[{datetime.now().strftime('%H:%M:%S')}] Integracao da planilha ignorada: arquivo de service account nao encontrado ({service_account_path or '[vazio]'}).\n"
+                )
+                return
+        else:
+            oauth_client_path = _resolve_config_file_path(sheets_alerts_config.get("oauth_client_file"))
+            if oauth_client_path is None or not oauth_client_path.exists():
+                _escrever_log_sincronizacao_planilha(
+                    f"Sincronizacao ignorada: oauth client ausente ({oauth_client_path or '[vazio]'})."
+                )
+                _append_resumo(
+                    f"[{datetime.now().strftime('%H:%M:%S')}] Integracao da planilha ignorada: arquivo OAuth client secret nao encontrado ({oauth_client_path or '[vazio]'}).\n"
+                )
+                return
+
+        sheets_sync_state["running"] = True
+
+        def worker():
+            mensagens = []
+            importados = 0
+            falhou = False
+
+            def _registrar_progresso_sync(mensagem):
+                _escrever_log_sincronizacao_planilha(mensagem)
+                root.after(0, lambda: status_var.set(mensagem))
+                root.after(0, lambda: _append_resumo(f"[{datetime.now().strftime('%H:%M:%S')}] {mensagem}\n"))
+
+            try:
+                _escrever_log_sincronizacao_planilha(
+                    f"Worker iniciado. worksheet='{worksheet_name}' auth_mode='{auth_mode}' spreadsheet_id='{spreadsheet_id}'."
+                )
+                client = _load_google_sheets_client(sheets_alerts_config, progress_callback=_registrar_progresso_sync)
+                range_read = _sheet_a1_range(worksheet_name, "A2:R")
+                response = (
+                    client.spreadsheets()
+                    .values()
+                    .get(spreadsheetId=spreadsheet_id, range=range_read)
+                    .execute()
+                )
+                values = response.get("values", [])
+                _escrever_log_sincronizacao_planilha(f"Leitura da planilha concluida. Linhas recebidas: {len(values)}.")
+
+                for idx, row_values in enumerate(values, start=2):
+                    agendado_valor = _sheet_get_cell(row_values, 16)
+                    if _str_to_bool(agendado_valor):
+                        continue
+
+                    with alerts_lock:
+                        ja_importado = any(
+                            str(a.get("source", "")).strip().lower() == "planilha"
+                            and str(a.get("sheet_row_number", "")).strip().isdigit()
+                            and int(str(a.get("sheet_row_number", "")).strip()) == idx
+                            for a in alerts
+                        )
+
+                    if ja_importado:
+                        continue
+
+                    try:
+                        alert = _sheet_row_to_alert(row_values, idx)
+                    except Exception as exc:
+                        _escrever_log_sincronizacao_planilha(f"Linha {idx} invalida: {exc}.")
+                        mensagens.append(f"Linha {idx}: erro de validacao ({exc}).")
+                        continue
+
+                    with alerts_lock:
+                        alerts.append(alert)
+                        persist_alerts()
+
+                    _sheet_mark_row_imported(client, spreadsheet_id, worksheet_name, idx, alert["dt_criacao"])
+                    importados += 1
+                    _escrever_log_sincronizacao_planilha(
+                        f"Linha {idx} importada com sucesso. Alerta ID {alert.get('id', '-')}"
+                    )
+
+                if importados:
+                    _escrever_log_sincronizacao_planilha(f"Importacao concluida com {importados} alerta(s).")
+                    mensagens.append(f"{importados} alerta(s) importado(s) da planilha.")
+            except ImportError:
+                falhou = True
+                _escrever_log_sincronizacao_planilha("Falha por dependencias ausentes do Google.")
+                mensagens.append(
+                    "Dependencias Google nao instaladas para integrar planilha. Instale: google-api-python-client google-auth google-auth-oauthlib"
+                )
+            except Exception as exc:
+                falhou = True
+                _escrever_log_sincronizacao_planilha(f"Falha na importacao da planilha: {exc}")
+                mensagens.append(f"Falha na importacao da planilha: {exc}")
+            finally:
+                def finalize():
+                    sheets_sync_state["running"] = False
+                    sheets_sync_state["next_run_at"] = datetime.now() + timedelta(minutes=ALERTS_IMPORT_INTERVAL_MINUTES)
+
+                    if falhou:
+                        status_var.set("Falha na sincronizacao manual da planilha.")
+                    elif importados:
+                        status_var.set(f"Sincronizacao concluida: {importados} alerta(s) importado(s).")
+                    else:
+                        status_var.set("Sincronizacao concluida: nenhuma nova linha para importar.")
+
+                    if not mensagens and importados == 0:
+                        mensagens.append("Nenhuma nova linha elegivel para importar da planilha.")
+                        _escrever_log_sincronizacao_planilha("Nenhuma nova linha elegivel para importacao.")
+
+                    if mensagens:
+                        for mensagem in mensagens:
+                            _escrever_log_sincronizacao_planilha(mensagem)
+                            _append_resumo(f"[{datetime.now().strftime('%H:%M:%S')}] {mensagem}\n")
+                    if importados:
+                        _refresh_hub_schedules_grid()
+
+                    _escrever_log_sincronizacao_planilha(
+                        f"Finalizacao da sincronizacao. falhou={falhou} importados={importados}."
+                    )
+
+                root.after(0, finalize)
+
+        threading.Thread(target=worker, daemon=True).start()
 
     def _obter_programacao_por_key(key):
         if not key or ":" not in key:
@@ -1523,8 +2401,8 @@ def create_gui(categorias):
     def open_alerta_preco_form(alert=None):
         modal = tk.Toplevel(root)
         modal.title("Configurar alerta de preco")
-        modal.geometry("760x700")
-        modal.minsize(700, 620)
+        modal.geometry("760x640")
+        modal.minsize(700, 560)
         modal.configure(bg="#ececec")
         modal.transient(root)
         modal.grab_set()
@@ -1534,26 +2412,29 @@ def create_gui(categorias):
 
         ttk.Label(frame, text="Configurar Alerta de Preco", style="Header.TLabel").grid(row=0, column=0, columnspan=2, sticky="w")
 
-        modo_var = tk.StringVar(value=((alert.get("mode") if alert else "url") or "url"))
-        nome_var = tk.StringVar(value=(alert.get("name", "") if alert else ""))
-        preco_alvo_var = tk.StringVar(value=("" if not alert else str(alert.get("target_price", ""))))
-        intervalo_horas_var = tk.StringVar(value=(str(alert.get("interval_hours", 1)) if alert else "1"))
-        descricao_alerta_var = tk.StringVar(value=(alert.get("description", "") if alert else ""))
-        urls_iniciais = (alert.get("urls", []) if alert else []) or [""]
-        emails_iniciais = (alert.get("emails", []) if alert else []) or [""]
-        telefones_iniciais = (alert.get("phones", []) if alert else []) or [""]
-        executar_ao_salvar_var = tk.BooleanVar(value=False)
+        descricao_padrao = ""
+        if alert:
+            descricao_padrao = (alert.get("description") or alert.get("descricao") or "").strip()
 
-        ttk.Label(frame, text="Nome:", style="Field.TLabel").grid(row=1, column=0, sticky="w", pady=(14, 0))
-        ttk.Entry(frame, textvariable=nome_var).grid(row=1, column=1, sticky="ew", padx=(8, 0), pady=(14, 0))
+        nome_var = tk.StringVar(value=((alert.get("name", "") if alert else "") or descricao_padrao))
+        descricao_alerta_var = tk.StringVar(value=descricao_padrao)
+        preco_alvo_var = tk.StringVar(value=("" if not alert else str(_target_price_from_alert(alert))))
+        email_var = tk.StringVar(value=("" if not alert else str(alert.get("email") or "; ".join(alert.get("emails", [])))))
+        telefone_var = tk.StringVar(value=("" if not alert else str(alert.get("telefone") or "; ".join(alert.get("phones", [])))))
 
-        ttk.Label(frame, text="Modo:", style="Field.TLabel").grid(row=2, column=0, sticky="w", pady=(12, 0))
-        modo_frame = ttk.Frame(frame, style="Main.TFrame")
-        modo_frame.grid(row=2, column=1, sticky="w", padx=(8, 0), pady=(12, 0))
-        ttk.Radiobutton(modo_frame, text="URL", value="url", variable=modo_var).grid(row=0, column=0, sticky="w")
-        ttk.Radiobutton(modo_frame, text="Descricao", value="descricao", variable=modo_var).grid(row=0, column=1, sticky="w", padx=(12, 0))
+        urls_alerta = _urls_from_alert(alert or {})
+        while len(urls_alerta) < 5:
+            urls_alerta.append("")
 
-        ttk.Label(frame, text="Preco alvo (R$):", style="Field.TLabel").grid(row=3, column=0, sticky="w", pady=(12, 0))
+        link_vars = [tk.StringVar(value=urls_alerta[idx]) for idx in range(5)]
+
+        ttk.Label(frame, text="Descricao do produto:", style="Field.TLabel").grid(row=1, column=0, sticky="w", pady=(14, 0))
+        ttk.Entry(frame, textvariable=descricao_alerta_var).grid(row=1, column=1, sticky="ew", padx=(8, 0), pady=(14, 0))
+
+        ttk.Label(frame, text="Nome (opcional):", style="Field.TLabel").grid(row=2, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=nome_var).grid(row=2, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Preco desejado (R$):", style="Field.TLabel").grid(row=3, column=0, sticky="w", pady=(12, 0))
         ttk.Entry(
             frame,
             textvariable=preco_alvo_var,
@@ -1561,240 +2442,119 @@ def create_gui(categorias):
             validatecommand=vcmd_decimal,
         ).grid(row=3, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Ciclo (horas):", style="Field.TLabel").grid(row=4, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=intervalo_horas_var).grid(row=4, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="E-mail(s):", style="Field.TLabel").grid(row=4, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=email_var).grid(row=4, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        urls_wrap = ttk.Frame(frame, style="Main.TFrame")
-        urls_wrap.grid(row=6, column=0, columnspan=2, sticky="ew", pady=(12, 0))
+        ttk.Label(frame, text="Telefone(s):", style="Field.TLabel").grid(row=5, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=telefone_var).grid(row=5, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        urls_frame = ttk.Frame(urls_wrap, style="Main.TFrame")
-        urls_frame.grid(row=0, column=0, sticky="ew")
+        for idx, link_var in enumerate(link_vars, start=1):
+            ttk.Label(frame, text=f"Link {idx}:", style="Field.TLabel").grid(row=5 + idx, column=0, sticky="w", pady=(12, 0))
+            ttk.Entry(frame, textvariable=link_var).grid(row=5 + idx, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Descricao do produto:", style="Field.TLabel").grid(row=7, column=0, sticky="w", pady=(12, 0))
-        descricao_entry = ttk.Entry(frame, textvariable=descricao_alerta_var)
-        descricao_entry.grid(row=7, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
-
-        contatos_wrap = ttk.Frame(frame, style="Main.TFrame")
-        contatos_wrap.grid(row=8, column=0, columnspan=2, sticky="ew", pady=(12, 0))
-
-        emails_frame = ttk.Frame(contatos_wrap, style="Main.TFrame")
-        emails_frame.grid(row=0, column=0, sticky="ew")
-
-        telefones_frame = ttk.Frame(contatos_wrap, style="Main.TFrame")
-        telefones_frame.grid(row=1, column=0, sticky="ew", pady=(6, 0))
-
-        ttk.Checkbutton(
-            frame,
-            text="Executar a primeira vez assim que salvar",
-            variable=executar_ao_salvar_var,
-        ).grid(row=9, column=0, columnspan=2, sticky="w", pady=(10, 0))
+        ttk.Label(frame, text="Observacao: ciclo fixo de 1 hora e verificacao sempre por URL.", style="Hint.TLabel").grid(
+            row=11,
+            column=0,
+            columnspan=2,
+            sticky="w",
+            pady=(12, 0),
+        )
 
         botoes = ttk.Frame(frame, style="Main.TFrame")
-        botoes.grid(row=10, column=0, columnspan=2, sticky="w", pady=(16, 0))
-
-        url_vars = []
-        url_rows = []
-        email_vars = []
-        email_rows = []
-        telefone_vars = []
-        telefone_rows = []
-
-        def _redraw_contato_fields(container, values_vars, rows_widgets, label_text, add_callback, remove_callback, tip_text):
-            for row_widget in rows_widgets:
-                row_widget.destroy()
-            rows_widgets.clear()
-
-            for idx, var in enumerate(values_vars):
-                row_frame = ttk.Frame(container, style="Main.TFrame")
-                row_frame.grid(row=idx, column=0, sticky="ew", pady=(0, 6))
-                rows_widgets.append(row_frame)
-
-                ttk.Label(row_frame, text=(label_text if idx == 0 else ""), style="Field.TLabel").grid(row=0, column=0, sticky="w")
-                ttk.Entry(row_frame, textvariable=var).grid(row=0, column=1, sticky="ew", padx=(8, 0))
-
-                if idx == 0:
-                    add_btn = ttk.Button(row_frame, text="+", width=3, command=add_callback)
-                    add_btn.grid(row=0, column=2, sticky="w", padx=(6, 0))
-                    Tooltip(add_btn, tip_text)
-
-                if len(values_vars) > 1:
-                    rem_btn = ttk.Button(row_frame, text="-", width=3, command=lambda i=idx: remove_callback(i))
-                    rem_btn.grid(row=0, column=3, sticky="w", padx=(6, 0))
-
-                row_frame.columnconfigure(1, weight=1)
-
-        def _redraw_url_fields():
-            for row_widget in url_rows:
-                row_widget.destroy()
-            url_rows.clear()
-
-            for idx, var in enumerate(url_vars):
-                row_frame = ttk.Frame(urls_frame, style="Main.TFrame")
-                row_frame.grid(row=idx, column=0, sticky="ew", pady=(0, 6))
-                url_rows.append(row_frame)
-
-                if idx == 0:
-                    ttk.Label(row_frame, text="URLs:", style="Field.TLabel").grid(row=0, column=0, sticky="w")
-                else:
-                    ttk.Label(row_frame, text="", style="Field.TLabel").grid(row=0, column=0, sticky="w")
-
-                ttk.Entry(row_frame, textvariable=var).grid(row=0, column=1, sticky="ew", padx=(8, 0))
-
-                if idx == 0:
-                    add_url_btn = ttk.Button(row_frame, text="+", width=3, command=lambda: _add_url_field(""))
-                    add_url_btn.grid(row=0, column=2, sticky="w", padx=(6, 0))
-                    Tooltip(add_url_btn, "Adicionar novo campo de URL")
-
-                if len(url_vars) > 1:
-                    btn_remove = ttk.Button(
-                        row_frame,
-                        text="-",
-                        width=3,
-                        command=lambda i=idx: _remove_url_field(i),
-                    )
-                    btn_remove.grid(row=0, column=3, padx=(6, 0))
-
-                row_frame.columnconfigure(1, weight=1)
-
-        def _add_url_field(initial_value=""):
-            url_vars.append(tk.StringVar(value=initial_value))
-            _redraw_url_fields()
-
-        def _remove_url_field(index):
-            if len(url_vars) <= 1:
-                return
-            url_vars.pop(index)
-            _redraw_url_fields()
-
-        def _redraw_email_fields():
-            _redraw_contato_fields(
-                emails_frame,
-                email_vars,
-                email_rows,
-                "E-mails:",
-                lambda: _add_email_field(""),
-                _remove_email_field,
-                "Adicionar novo campo de e-mail",
-            )
-
-        def _redraw_telefone_fields():
-            _redraw_contato_fields(
-                telefones_frame,
-                telefone_vars,
-                telefone_rows,
-                "Telefones:",
-                lambda: _add_telefone_field(""),
-                _remove_telefone_field,
-                "Adicionar novo campo de telefone",
-            )
-
-        def _add_email_field(initial_value=""):
-            email_vars.append(tk.StringVar(value=initial_value))
-            _redraw_email_fields()
-
-        def _remove_email_field(index):
-            if len(email_vars) <= 1:
-                return
-            email_vars.pop(index)
-            _redraw_email_fields()
-
-        def _add_telefone_field(initial_value=""):
-            telefone_vars.append(tk.StringVar(value=initial_value))
-            _redraw_telefone_fields()
-
-        def _remove_telefone_field(index):
-            if len(telefone_vars) <= 1:
-                return
-            telefone_vars.pop(index)
-            _redraw_telefone_fields()
-
-        def _toggle_mode_fields(*_):
-            urls_wrap.grid()
-            descricao_entry.configure(state="normal")
-
-        for url in urls_iniciais:
-            _add_url_field(url)
-
-        for email in emails_iniciais:
-            _add_email_field(email)
-
-        for telefone in telefones_iniciais:
-            _add_telefone_field(telefone)
-
-        modo_var.trace_add("write", _toggle_mode_fields)
-        _toggle_mode_fields()
+        botoes.grid(row=12, column=0, columnspan=2, sticky="w", pady=(16, 0))
 
         def salvar_alerta_form():
-            nome = (nome_var.get() or "").strip() or "Alerta sem nome"
-            modo = (modo_var.get() or "url").strip().lower()
+            descricao = (descricao_alerta_var.get() or "").strip()
+            nome = (nome_var.get() or "").strip() or descricao or "Alerta sem nome"
 
             try:
                 preco_alvo = parse_float(preco_alvo_var.get(), "Preco alvo")
                 if preco_alvo is None or preco_alvo <= 0:
                     raise ValueError("Campo 'Preco alvo' deve ser maior que zero.")
 
-                intervalo_horas = parse_int(intervalo_horas_var.get(), "Ciclo (horas)")
-                if intervalo_horas is None or intervalo_horas < 1:
-                    raise ValueError("A rotina deve ser no minimo a cada 1 hora.")
-
             except ValueError as exc:
                 messagebox.showerror("Validacao", str(exc), parent=modal)
                 return
 
-            urls = [str(var.get()).strip() for var in url_vars if str(var.get()).strip()]
+            urls = [str(var.get()).strip() for var in link_vars if str(var.get()).strip()]
             invalidas = [url for url in urls if not url.startswith("http://") and not url.startswith("https://")]
             if invalidas:
                 messagebox.showerror("Validacao", "Todas as URLs devem comecar com http:// ou https://.", parent=modal)
                 return
 
-            if modo == "url":
-                if not urls:
-                    messagebox.showerror("Validacao", "Informe ao menos uma URL.", parent=modal)
-                    return
-
-            descricao = (descricao_alerta_var.get() or "").strip()
-            if modo == "descricao" and not descricao:
-                messagebox.showerror("Validacao", "No modo descricao, informe a descricao do produto.", parent=modal)
+            if not urls:
+                messagebox.showerror("Validacao", "Informe ao menos uma URL.", parent=modal)
                 return
 
-            emails = [str(var.get()).strip() for var in email_vars if str(var.get()).strip()]
-            telefones = [str(var.get()).strip() for var in telefone_vars if str(var.get()).strip()]
+            if not descricao:
+                messagebox.showerror("Validacao", "A descricao do produto e obrigatoria para validacao do link.", parent=modal)
+                return
+
+            email_unico, emails = _single_destino(email_var.get())
+            telefone_unico, telefones = _single_destino(telefone_var.get())
+
+            if len(_split_destinos(email_var.get())) > 1:
+                messagebox.showerror("Validacao", "Informe apenas 1 e-mail por alerta.", parent=modal)
+                return
+
+            if len(_split_destinos(telefone_var.get())) > 1:
+                messagebox.showerror("Validacao", "Informe apenas 1 telefone por alerta.", parent=modal)
+                return
+
+            if not emails and not telefones:
+                messagebox.showerror("Validacao", "Informe ao menos um destino: e-mail e/ou telefone.", parent=modal)
+                return
 
             agora = datetime.now()
-            executar_agora = bool(executar_ao_salvar_var.get())
+            link_map = {f"link{idx}": (urls[idx - 1] if idx - 1 < len(urls) else "") for idx in range(1, 6)}
 
             if alert is None:
                 novo_alerta = {
                     "id": _proximo_id_configuracao(),
                     "name": nome,
-                    "mode": modo,
+                    "mode": "url",
                     "target_price": preco_alvo,
-                    "interval_hours": int(intervalo_horas),
+                    "precoDesejado": preco_alvo,
+                    "interval_hours": ALERT_INTERVAL_HOURS_FIXED,
                     "urls": urls,
+                    **link_map,
+                    "email": email_unico,
                     "emails": emails,
+                    "telefone": telefone_unico,
                     "phones": telefones,
                     "description": descricao,
+                    "descricao": descricao,
                     "active": True,
+                    "agendado": True,
                     "last_check_at": None,
-                    "next_check_at": (agora + timedelta(hours=int(intervalo_horas))).isoformat(timespec="seconds"),
+                    "next_check_at": (agora + timedelta(hours=ALERT_INTERVAL_HOURS_FIXED)).isoformat(timespec="seconds"),
                     "configured_at": agora.isoformat(timespec="seconds"),
+                    "end_at": (agora + timedelta(days=ALERT_ACTIVE_DAYS_DEFAULT)).isoformat(timespec="seconds"),
+                    "dt_criacao": agora.isoformat(timespec="seconds"),
                     "last_notified_price": None,
+                    "last_notified_at": None,
                 }
                 alerts.append(novo_alerta)
                 status_var.set(f"Alerta '{nome}' criado.")
                 alert_ref = novo_alerta
             else:
                 alert["name"] = nome
-                alert["mode"] = modo
+                alert["mode"] = "url"
                 alert["target_price"] = preco_alvo
-                alert["interval_hours"] = int(intervalo_horas)
+                alert["precoDesejado"] = preco_alvo
+                alert["interval_hours"] = ALERT_INTERVAL_HOURS_FIXED
                 alert["urls"] = urls
+                alert.update(link_map)
+                alert["email"] = email_unico
                 alert["emails"] = emails
+                alert["telefone"] = telefone_unico
                 alert["phones"] = telefones
                 alert["description"] = descricao
+                alert["descricao"] = descricao
                 alert["configured_at"] = agora.isoformat(timespec="seconds")
+                alert["end_at"] = (agora + timedelta(days=ALERT_ACTIVE_DAYS_DEFAULT)).isoformat(timespec="seconds")
                 alert["last_check_at"] = None
-                alert["next_check_at"] = (agora + timedelta(hours=int(intervalo_horas))).isoformat(timespec="seconds")
+                alert["next_check_at"] = (agora + timedelta(hours=ALERT_INTERVAL_HOURS_FIXED)).isoformat(timespec="seconds")
                 status_var.set(f"Alerta '{nome}' atualizado.")
                 alert_ref = alert
 
@@ -1802,7 +2562,7 @@ def create_gui(categorias):
             _refresh_hub_schedules_grid()
             modal.destroy()
 
-            if executar_agora and alert_ref.get("active", True):
+            if alert is None and alert_ref.get("active", True):
                 _executar_programacao_agora(_programacao_key("alerta", alert_ref.get("id")))
 
         ttk.Button(botoes, text="Salvar", style="Action.TButton", command=salvar_alerta_form).pack(side="left")
@@ -1857,18 +2617,10 @@ def create_gui(categorias):
             return
 
         if tipo == "alerta":
-            if scheduler_state["running"]:
-                messagebox.showwarning("Em execucao", "Ja existe verificacao de alertas em andamento.")
-                return
-
-            scheduler_state["running"] = True
-
-            def worker():
-                result = _check_alert_once(item)
-                root.after(0, lambda: _apply_alert_results([result]))
-
-            threading.Thread(target=worker, daemon=True).start()
-            status_var.set(f"Alerta executado manualmente: {item.get('name', 'Sem nome')}")
+            if _enqueue_alert_execution(item, source="manual"):
+                _run_next_alert_from_queue()
+            else:
+                status_var.set(f"Alerta ja esta em execucao/fila: {item.get('name', 'Sem nome')}")
 
     def _on_programacoes_tree_click(event):
         row_id = hub_schedule_tree.identify_row(event.y)
@@ -1976,9 +2728,12 @@ def create_gui(categorias):
         args.extend(["--modalidade-execucao", "campanha"])
         launch_process(args, f"Rotina programada em execucao: {due_schedule.get('name', 'Sem nome')}")
 
+    _save_sheets_alerts_config(SHEETS_ALERTS_CONFIG_FILE, sheets_alerts_config)
     _padronizar_formato_ids_configuracoes()
+    _normalizar_alertas_schema()
     _normalizar_proximas_execucoes()
     _refresh_hub_schedules_grid()
+    _iniciar_log_alertas()
 
     def _mostrar_modal_continuar_login_ml():
         confirmado = {"value": False}
@@ -2037,16 +2792,56 @@ def create_gui(categorias):
         if not texto:
             return
 
-        resumo_text.configure(state="normal")
         resumo_text.insert("end", texto)
         resumo_text.see("end")
-        resumo_text.configure(state="disabled")
         _tratar_marcadores_autenticacao(texto)
 
+        match_url = re.search(r"https?://\S+", texto)
+        if match_url:
+            url_extraida = match_url.group(0).rstrip(".)],")
+            if "accounts.google.com" in url_extraida or "oauth2" in url_extraida:
+                oauth_url_var.set(url_extraida)
+                _refresh_oauth_url_ui()
+
     def _limpar_resumo():
-        resumo_text.configure(state="normal")
         resumo_text.delete("1.0", "end")
-        resumo_text.configure(state="disabled")
+
+    def _refresh_oauth_url_ui():
+        has_url = bool((oauth_url_var.get() or "").strip())
+        oauth_status_var.set("OAuth URL: gerada" if has_url else "OAuth URL: nao gerada")
+        open_oauth_url_btn.configure(state=("normal" if has_url else "disabled"))
+        copy_oauth_url_btn.configure(state=("normal" if has_url else "disabled"))
+
+    def _abrir_oauth_url():
+        url = (oauth_url_var.get() or "").strip()
+        if not url:
+            status_var.set("Nenhuma URL OAuth disponivel no momento.")
+            return
+
+        if not re.match(r"^https?://", url, flags=re.IGNORECASE):
+            url = f"https://{url}"
+
+        try:
+            abriu = webbrowser.open_new_tab(url)
+            if not abriu:
+                raise RuntimeError("Nao foi possivel abrir o navegador padrao.")
+            status_var.set("URL OAuth aberta no navegador.")
+        except Exception as exc:
+            status_var.set("Falha ao abrir URL OAuth automaticamente.")
+            messagebox.showwarning("OAuth", f"Nao foi possivel abrir a URL automaticamente.\n\n{exc}")
+
+    def _copiar_oauth_url():
+        url = (oauth_url_var.get() or "").strip()
+        if not url:
+            messagebox.showinfo("OAuth", "Nenhuma URL OAuth disponivel para copiar.")
+            return
+        root.clipboard_clear()
+        root.clipboard_append(url)
+        status_var.set("URL OAuth copiada para a area de transferencia.")
+
+    open_oauth_url_btn.configure(command=_abrir_oauth_url)
+    copy_oauth_url_btn.configure(command=_copiar_oauth_url)
+    _refresh_oauth_url_ui()
 
     def _drain_worker_messages():
         try:
@@ -2096,11 +2891,17 @@ def create_gui(categorias):
 
     root.after(200, _drain_worker_messages)
 
-    def persist_alerts():
-        save_alerts_config(ALERTS_CONFIG_FILE, alerts)
-
     def _alert_due(alert, now):
         if not alert.get("active", True):
+            return False
+
+        fim = _parse_iso_datetime(alert.get("end_at"))
+        if fim and now > fim:
+            alert["active"] = False
+            _escrever_log_alerta(
+                f"Alerta {alert.get('id', '-')} encerrado automaticamente apos {ALERT_ACTIVE_DAYS_DEFAULT} dias."
+            )
+            persist_alerts()
             return False
 
         next_check = _parse_iso_datetime(alert.get("next_check_at"))
@@ -2116,35 +2917,58 @@ def create_gui(categorias):
         return now - last_check >= timedelta(hours=interval_hours)
 
     def _check_alert_once(alert):
-        mode = (alert.get("mode") or "url").strip().lower()
-        description = (alert.get("description") or "").strip()
-        urls = [url for url in alert.get("urls", []) if url]
-        target_price = float(alert.get("target_price", 0))
+        description = (alert.get("description") or alert.get("descricao") or "").strip()
+        urls = _urls_from_alert(alert)
+        target_price = _target_price_from_alert(alert)
+        alert_id = str(alert.get("id", "-")).strip() or "-"
         lowest_price = None
         source = ""
+        title_found = ""
         error_message = None
+        descricao_invalida = 0
+        links_invalidos = 0
+        falhas_extracao = 0
+        urls_processadas = 0
+        target_normalized = _normalize_text(description)
 
         try:
-            if urls and description:
-                for url in urls:
-                    price, src = _fetch_lowest_price_by_description_in_url(url, description)
-                    if price is None:
+            for url in urls:
+                url_limpa = (url or "").strip()
+                if not (url_limpa.startswith("http://") or url_limpa.startswith("https://")):
+                    links_invalidos += 1
+                    continue
+
+                urls_processadas += 1
+
+                try:
+                    price, src, title = _fetch_price_and_title_from_url(url_limpa)
+                except Exception:
+                    falhas_extracao += 1
+                    continue
+
+                if target_normalized:
+                    title_normalized = _normalize_text(title)
+                    if target_normalized not in title_normalized:
+                        descricao_invalida += 1
                         continue
-                    if lowest_price is None or price < lowest_price:
-                        lowest_price = price
-                        source = src
-            elif mode == "url":
-                for url in urls:
-                    price, src = _fetch_price_from_url(url)
-                    if price is None:
-                        continue
-                    if lowest_price is None or price < lowest_price:
-                        lowest_price = price
-                        source = src
-            else:
-                price, src = _fetch_price_from_description(description)
-                lowest_price = price
-                source = src
+
+                if price is None:
+                    continue
+
+                if lowest_price is None or price < lowest_price:
+                    lowest_price = price
+                    source = src
+                    title_found = title
+
+            if lowest_price is None:
+                if urls and links_invalidos == len(urls):
+                    error_message = "Link invalido."
+                elif urls_processadas > 0 and descricao_invalida >= urls_processadas:
+                    error_message = "Descricao nao bateu com o titulo."
+                elif falhas_extracao > 0 or urls_processadas > 0:
+                    error_message = "Falha ao extrair preco."
+                elif urls:
+                    error_message = "Falha ao extrair preco."
 
             if lowest_price is not None:
                 affiliate_source = _build_affiliate_link(source)
@@ -2156,47 +2980,173 @@ def create_gui(categorias):
             error_message = str(exc)
 
         agora = datetime.now()
-        interval_hours = max(1, int(alert.get("interval_hours", 1)))
+        interval_hours = ALERT_INTERVAL_HOURS_FIXED
+        alert["interval_hours"] = ALERT_INTERVAL_HOURS_FIXED
         alert["last_check_at"] = agora.isoformat(timespec="seconds")
         alert["next_check_at"] = (agora + timedelta(hours=interval_hours)).isoformat(timespec="seconds")
 
         if error_message:
+            _escrever_log_alerta(f"Alerta {alert_id} erro na checagem: {error_message}")
             return {
                 "alert": alert,
                 "triggered": False,
                 "price": None,
                 "source": source,
+                "title": title_found,
                 "error": error_message,
+                "diagnostics": {
+                    "links_invalidos": links_invalidos,
+                    "descricao_invalida": descricao_invalida,
+                    "falhas_extracao": falhas_extracao,
+                    "urls_processadas": urls_processadas,
+                },
             }
 
         triggered = lowest_price is not None and lowest_price <= target_price
+        _escrever_log_alerta(
+            f"Alerta {alert_id} checado: triggered={triggered} preco={lowest_price} alvo={target_price}"
+        )
         return {
             "alert": alert,
             "triggered": triggered,
             "price": lowest_price,
             "source": source,
+            "title": title_found,
             "error": None,
+            "diagnostics": {
+                "links_invalidos": links_invalidos,
+                "descricao_invalida": descricao_invalida,
+                "falhas_extracao": falhas_extracao,
+                "urls_processadas": urls_processadas,
+            },
         }
 
-    def _apply_alert_results(results):
+    def _enviar_alerta_email(destinos, assunto, corpo):
+        if not destinos:
+            return False, "sem destinos"
+
+        smtp_host = _ler_variavel_ambiente("SMTP_HOST")
+        smtp_port = int(_ler_variavel_ambiente("SMTP_PORT") or "587")
+        smtp_user = _ler_variavel_ambiente("SMTP_USER")
+        smtp_pass = _ler_variavel_ambiente("SMTP_PASS")
+        smtp_from = _ler_variavel_ambiente("SMTP_FROM") or smtp_user
+        smtp_use_tls = _ler_variavel_ambiente("SMTP_USE_TLS") not in {"0", "false", "False"}
+
+        if not smtp_host or not smtp_from:
+            return False, "SMTP nao configurado"
+
+        msg = MIMEText(corpo, "plain", "utf-8")
+        msg["Subject"] = assunto
+        msg["From"] = smtp_from
+        msg["To"] = ", ".join(destinos)
+
+        with smtplib.SMTP(smtp_host, smtp_port, timeout=20) as server:
+            if smtp_use_tls:
+                server.starttls()
+            if smtp_user and smtp_pass:
+                server.login(smtp_user, smtp_pass)
+            server.sendmail(smtp_from, destinos, msg.as_string())
+
+        return True, "ok"
+
+    def _enviar_alerta_whatsapp(destinos, mensagem):
+        if not destinos:
+            return False, "sem destinos"
+
+        if TwilioClient is None:
+            return False, "twilio nao instalado"
+
+        account_sid = _ler_variavel_ambiente("TWILIO_ACCOUNT_SID")
+        auth_token = _ler_variavel_ambiente("TWILIO_AUTH_TOKEN")
+        whatsapp_from = _ler_variavel_ambiente("TWILIO_WHATSAPP_FROM")
+        if not account_sid or not auth_token or not whatsapp_from:
+            return False, "Twilio nao configurado"
+
+        client = TwilioClient(account_sid, auth_token)
+        enviados = 0
+        destinos_utilizados = []
+        sids_enviados = []
+        erros_envio = []
+
+        for numero in destinos:
+            to = _normalizar_telefone_whatsapp(numero)
+            if not to:
+                continue
+
+            destinos_utilizados.append(_mascarar_destino_whatsapp(to))
+
+            try:
+                resposta = client.messages.create(from_=whatsapp_from, to=to, body=mensagem)
+                enviados += 1
+                sid = str(getattr(resposta, "sid", "")).strip()
+                if sid:
+                    sids_enviados.append(sid)
+            except TwilioRestException as exc:
+                codigo = getattr(exc, "code", "-")
+                status = getattr(exc, "status", "-")
+                detalhe = str(getattr(exc, "msg", exc) or exc).strip()
+                erros_envio.append(f"{_mascarar_destino_whatsapp(to)}(code={codigo},status={status},msg={detalhe[:80]})")
+                continue
+
+        if not destinos_utilizados:
+            return False, "nenhum numero valido"
+
+        resumo_destinos = ",".join(destinos_utilizados)
+        if enviados:
+            resumo_sids = ",".join(sids_enviados[:3]) if sids_enviados else "sem-sid"
+            if erros_envio:
+                return True, f"{enviados} envio(s) destinos={resumo_destinos} sid={resumo_sids} erros_parciais={'; '.join(erros_envio)}"
+            return True, f"{enviados} envio(s) destinos={resumo_destinos} sid={resumo_sids}"
+
+        if erros_envio:
+            return False, f"nenhum envio destinos={resumo_destinos} erros={'; '.join(erros_envio)}"
+        return False, f"nenhum envio destinos={resumo_destinos}"
+
+    def _apply_alert_results(results, queue_finalize=True):
         triggered_count = 0
         ofertas_alerta_saida = []
+        resumo_motivos = {
+            "link_invalido": 0,
+            "descricao_divergente": 0,
+            "falha_extracao_preco": 0,
+        }
 
         for result in results:
             alert = result["alert"]
             if result["error"]:
                 status_var.set(f"Falha ao verificar alerta '{alert.get('name', 'Sem nome')}'.")
+                _append_resumo(
+                    f"[{datetime.now().strftime('%H:%M:%S')}] Alerta '{alert.get('name', 'Sem nome')}' sem preco valido: {result['error']}\n"
+                )
+                _escrever_log_alerta(
+                    f"Alerta {alert.get('id', '-')} falhou: {result['error']}"
+                )
+
+                erro = (result.get("error") or "").casefold()
+                if "link invalido" in erro:
+                    resumo_motivos["link_invalido"] += 1
+                elif "descricao nao bateu com o titulo" in erro:
+                    resumo_motivos["descricao_divergente"] += 1
+                elif "falha ao extrair preco" in erro:
+                    resumo_motivos["falha_extracao_preco"] += 1
                 continue
 
             if not result["triggered"]:
+                _escrever_log_alerta(
+                    f"Alerta {alert.get('id', '-')} sem disparo nesta execucao."
+                )
                 continue
 
             price = result["price"]
-            last_notified = alert.get("last_notified_price")
-            if last_notified is not None and abs(float(last_notified) - float(price)) < 0.001:
+            last_notified_at = _parse_iso_datetime(alert.get("last_notified_at"))
+            if last_notified_at is not None and last_notified_at.date() == datetime.now().date():
+                _escrever_log_alerta(
+                    f"Alerta {alert.get('id', '-')} sem novo envio (limite diario ja atingido em {last_notified_at.strftime('%d/%m %H:%M')})."
+                )
                 continue
 
             alert["last_notified_price"] = price
+            alert["last_notified_at"] = datetime.now().isoformat(timespec="seconds")
             triggered_count += 1
 
             destinos = []
@@ -2215,56 +3165,116 @@ def create_gui(categorias):
             oferta_alerta = {
                 "categoria": "Alerta > Preco",
                 "descricao": alert.get("name", "Alerta"),
-                "antes": f"R$ {float(alert.get('target_price', 0)):.2f}",
+                "antes": f"R$ {_target_price_from_alert(alert):.2f}",
                 "desconto": "-",
                 "depois": f"R$ {float(price):.2f}",
                 "link": result.get("source") or "-",
             }
             ofertas_alerta_saida.append(oferta_alerta)
 
+            assunto = f"Alerta de preço: {alert.get('name', 'Alerta')}"
+            corpo = (
+                f"{alert.get('name', 'Alerta')} disparou!\n\n"
+                f"Descricao validada: {alert.get('description') or alert.get('descricao') or '-'}\n"
+                f"Preco encontrado: {_formatar_preco_brl(price)}\n"
+                f"Preco desejado: {_formatar_preco_brl(_target_price_from_alert(alert))}\n"
+                f"Origem: {result.get('source') or '-'}"
+            )
+            mensagem_whatsapp = (
+                "ALERTA DE OFERTA\n\n"
+                f"O produto {alert.get('description') or alert.get('descricao') or '-'} "
+                f"foi anunciado com valor abaixo de {_formatar_preco_brl(_target_price_from_alert(alert))}\n\n"
+                f"Acesse o link para visualizar: {result.get('source') or '-'}"
+            )
+
+            email_ok, email_msg = _enviar_alerta_email(emails_cfg, assunto, corpo)
+            whatsapp_ok, whatsapp_msg = _enviar_alerta_whatsapp(phones_cfg, mensagem_whatsapp)
+
+            _append_resumo(
+                f"[{datetime.now().strftime('%H:%M:%S')}] Notificacao alerta {alert.get('id', '-')}: "
+                f"email={email_msg}; whatsapp={whatsapp_msg}.\n"
+            )
+            _escrever_log_alerta(
+                f"Notificacao alerta {alert.get('id', '-')}: email={email_msg}; whatsapp={whatsapp_msg}."
+            )
+
             messagebox.showinfo(
                 "Alerta de preço",
                 (
                     f"{alert.get('name', 'Alerta')} disparou!\n\n"
                     f"Preço encontrado: R$ {price:.2f}\n"
-                    f"Preço alvo: R$ {float(alert.get('target_price', 0)):.2f}\n"
-                    f"Origem: {result.get('source') or '-'}"
+                    f"Preço alvo: R$ {_target_price_from_alert(alert):.2f}\n"
+                    f"Origem: {result.get('source') or '-'}\n"
+                    f"Email: {'OK' if email_ok else 'pendente/falhou'} | WhatsApp: {'OK' if whatsapp_ok else 'pendente/falhou'}"
                 ),
             )
 
         if triggered_count:
             status_var.set(f"{triggered_count} alerta(s) disparado(s).")
+            _escrever_log_alerta(f"Execucao finalizada com {triggered_count} alerta(s) disparado(s).")
+        else:
+            _escrever_log_alerta("Execucao finalizada sem disparos.")
+
+        total_motivos = sum(resumo_motivos.values())
+        if total_motivos:
+            mensagem_motivos = (
+                "Resumo de falhas: "
+                f"links invalidos={resumo_motivos['link_invalido']}; "
+                f"descricao divergente={resumo_motivos['descricao_divergente']}; "
+                f"falha extracao preco={resumo_motivos['falha_extracao_preco']}."
+            )
+            _append_resumo(f"[{datetime.now().strftime('%H:%M:%S')}] {mensagem_motivos}\n")
+            _escrever_log_alerta(mensagem_motivos)
 
         if ofertas_alerta_saida:
             salvar_saida_execucao_modalidade(ofertas_alerta_saida, "alerta")
 
         persist_alerts()
-        scheduler_state["running"] = False
+        if queue_finalize:
+            scheduler_state["running"] = False
 
     def run_scheduler_tick():
-        if scheduler_state["running"]:
-            return
-
         now = datetime.now()
-        due_alerts = [alert for alert in alerts if _alert_due(alert, now)]
+        with alerts_lock:
+            due_alerts = [alert for alert in alerts if _alert_due(alert, now)]
         if not due_alerts:
             return
 
-        scheduler_state["running"] = True
+        enfileirados = 0
+        for alert in due_alerts:
+            if _enqueue_alert_execution(alert, source="scheduler"):
+                enfileirados += 1
 
-        def worker():
-            results = [_check_alert_once(alert) for alert in due_alerts]
-            root.after(0, lambda: _apply_alert_results(results))
-
-        threading.Thread(target=worker, daemon=True).start()
+        if enfileirados:
+            _run_next_alert_from_queue()
 
     def scheduler_loop():
+        if datetime.now() >= sheets_sync_state["next_run_at"]:
+            _import_alerts_from_sheet_once()
         run_scheduler_tick()
         run_hub_scheduler_tick()
         _refresh_hub_schedules_grid()
         root.after(SCHEDULER_TICK_MS, scheduler_loop)
 
     root.after(SCHEDULER_TICK_MS, scheduler_loop)
+
+    def on_sync_sheet_now():
+        _maybe_breakpoint("on_sync_sheet_now.entry")
+
+        if not sheets_alerts_config.get("enabled", False):
+            _escrever_log_sincronizacao_planilha("Sincronizacao manual bloqueada: integracao desativada.")
+            messagebox.showwarning(
+                "Integracao desativada",
+                "Ative a integracao da planilha no arquivo integracao_planilha_alertas.json para sincronizar.",
+            )
+            return
+
+        caminho_log_planilha = _iniciar_log_sincronizacao_planilha()
+        log_path_var.set(f"Log salvo em: {caminho_log_planilha}")
+        status_var.set("Sincronizacao manual da planilha iniciada...")
+        _append_resumo(f"[{datetime.now().strftime('%H:%M:%S')}] Sincronizacao manual solicitada.\n")
+        _escrever_log_sincronizacao_planilha("Sincronizacao manual solicitada pelo usuario.")
+        _import_alerts_from_sheet_once()
 
     def launch_process(forward_args, status_text):
         if worker_running["value"]:
@@ -2454,6 +3464,7 @@ def create_gui(categorias):
     campanha_produto_btn.configure(command=lambda: open_hub_schedule_modal(None))
     alerta_config_btn.configure(command=lambda: open_alerta_preco_form(None))
     campanha_config_btn.configure(command=lambda: open_hub_schedule_modal(None))
+    sync_sheet_now_btn.configure(command=on_sync_sheet_now)
     delete_selected_btn.configure(command=on_excluir_programacoes_selecionadas)
 
     root.mainloop()
