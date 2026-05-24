@@ -10,6 +10,7 @@ import smtplib
 import subprocess
 import sys
 import threading
+import unicodedata
 import webbrowser
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -135,7 +136,7 @@ def _load_sheets_alerts_config(config_path):
         "auth_mode": "oauth_user",
         "spreadsheet_id": "",
         "spreadsheet_url": "",
-        "worksheet_name": "Respostas ao formulário 1",
+        "worksheet_name": "RespostasForm",
         "oauth_client_file": "credentials/google-oauth-client-secret.json",
         "oauth_token_file": "credentials/google-oauth-token.json",
         "service_account_file": "credentials/google-service-account.json",
@@ -257,6 +258,56 @@ def _sheet_a1_range(worksheet_name, cell_range):
     nome_escapado = nome.replace("'", "''")
     return f"'{nome_escapado}'!{cell_range}"
 
+
+def _sheet_nome_normalizado(nome):
+    texto = str(nome or "").strip().strip("'").strip('"')
+    texto = unicodedata.normalize("NFKD", texto)
+    texto = "".join(ch for ch in texto if not unicodedata.combining(ch))
+    texto = re.sub(r"\s+", " ", texto)
+    return texto.casefold().strip()
+
+
+def _sheet_resolver_nome_aba(client, spreadsheet_id, worksheet_name):
+    desejado = str(worksheet_name or "").strip().strip("'").strip('"')
+    if not desejado:
+        raise ValueError("Nome da aba (worksheet_name) nao informado.")
+
+    metadata = (
+        client.spreadsheets()
+        .get(spreadsheetId=spreadsheet_id, fields="sheets(properties(title))")
+        .execute()
+    )
+    titulos = [
+        str((sheet.get("properties") or {}).get("title") or "").strip()
+        for sheet in metadata.get("sheets", [])
+    ]
+    titulos = [t for t in titulos if t]
+
+    if not titulos:
+        raise RuntimeError("Nao foi possivel listar as abas da planilha.")
+
+    # 1) Match exato
+    for titulo in titulos:
+        if titulo == desejado:
+            return titulo
+
+    # 2) Match case-insensitive
+    desejado_cf = desejado.casefold()
+    for titulo in titulos:
+        if titulo.casefold() == desejado_cf:
+            return titulo
+
+    # 3) Match normalizado (acentos/espacos)
+    desejado_norm = _sheet_nome_normalizado(desejado)
+    for titulo in titulos:
+        if _sheet_nome_normalizado(titulo) == desejado_norm:
+            return titulo
+
+    raise RuntimeError(
+        "Nao foi possivel localizar a aba configurada. "
+        f"worksheet_name='{desejado}'. Abas disponiveis: {', '.join(titulos)}"
+    )
+
 DEFAULT_CATEGORIES = [
     "Acessórios para Veículos",
     "Agro",
@@ -326,12 +377,52 @@ class Tooltip:
 
 
 def parse_float(value, field_name):
-    text = (value or "").strip().replace(",", ".")
+    text = ("" if value is None else str(value)).strip()
     if not text:
         return None
 
+    # Aceita formatos como: 52,0 | 52.0 | 1.234,56 | 1,234.56 | R$ 52,00
+    cleaned = re.sub(r"[^0-9,\.\-]", "", text)
+    if cleaned in {"", "-", ".", ","}:
+        raise ValueError(f"Campo '{field_name}' deve ser numerico.")
+
+    negative = cleaned.startswith("-")
+    cleaned = cleaned.replace("-", "")
+
+    has_comma = "," in cleaned
+    has_dot = "." in cleaned
+
+    if has_comma and has_dot:
+        # Usa o separador mais a direita como decimal e remove o outro como milhar.
+        if cleaned.rfind(",") > cleaned.rfind("."):
+            normalized = cleaned.replace(".", "").replace(",", ".")
+        else:
+            normalized = cleaned.replace(",", "")
+    elif has_comma:
+        if cleaned.count(",") > 1:
+            head, tail = cleaned.rsplit(",", 1)
+            normalized = head.replace(",", "") + "." + tail
+        else:
+            normalized = cleaned.replace(",", ".")
+    elif has_dot:
+        if cleaned.count(".") > 1:
+            head, tail = cleaned.rsplit(".", 1)
+            normalized = head.replace(".", "") + "." + tail
+        else:
+            # Heuristica BR: 1.234 geralmente representa milhar, nao decimal.
+            inteiro, decimal = cleaned.split(".", 1)
+            if len(decimal) == 3 and len(inteiro) >= 1:
+                normalized = inteiro + decimal
+            else:
+                normalized = cleaned
+    else:
+        normalized = cleaned
+
+    if negative:
+        normalized = f"-{normalized}"
+
     try:
-        return float(text)
+        return float(normalized)
     except ValueError as exc:
         raise ValueError(f"Campo '{field_name}' deve ser numerico.") from exc
 
@@ -414,16 +505,58 @@ def _detect_marketplace_from_url(url):
 
 
 def _extract_price_from_soup_mercadolivre(soup):
-    selectors = [
-        "span.andes-money-amount__fraction[data-andes-money-amount-fraction='true']",
-        "span.andes-money-amount__fraction",
-    ]
+    def _classes_of(tag):
+        return [str(c).strip() for c in (tag.get("class") or []) if str(c).strip()]
 
-    for selector in selectors:
-        for element in soup.select(selector):
-            price = _parse_brl_price(element.get_text(" ", strip=True))
+    def _has_price_old_markers(tag):
+        classes = _classes_of(tag)
+        joined = " ".join(classes).casefold()
+        return (
+            "previous" in joined
+            or "original-value" in joined
+            or "price-old" in joined
+            or "ui-pdp-price__part--original-value" in classes
+            or "andes-money-amount--previous" in classes
+        )
+
+    def _extract_value_from_money_amount(money_tag):
+        if money_tag is None:
+            return None
+
+        fraction = money_tag.select_one("span.andes-money-amount__fraction")
+        cents = money_tag.select_one("span.andes-money-amount__cents")
+        fraction_text = fraction.get_text("", strip=True) if fraction else ""
+        cents_text = cents.get_text("", strip=True) if cents else ""
+
+        raw = (fraction_text or "").strip()
+        if cents_text:
+            raw = f"{raw},{cents_text.strip()}"
+
+        return _parse_brl_price(raw)
+
+    # 1) Prioriza o bloco de preco atual (second-line), ignorando preco antigo/riscado.
+    preferred_money_selectors = [
+        ".ui-pdp-price__second-line .andes-money-amount",
+        "[data-testid='price-part']:not(.ui-pdp-price__part--original-value) .andes-money-amount",
+        ".ui-pdp-price .andes-money-amount",
+    ]
+    for selector in preferred_money_selectors:
+        for money in soup.select(selector):
+            if any(_has_price_old_markers(parent) for parent in [money] + list(money.parents)):
+                continue
+
+            price = _extract_value_from_money_amount(money)
             if price is not None:
                 return price
+
+    # 2) Fallback: varre frações, mas ainda descartando blocos de preco antigo.
+    for element in soup.select("span.andes-money-amount__fraction"):
+        if any(_has_price_old_markers(parent) for parent in [element] + list(element.parents)):
+            continue
+
+        price = _parse_brl_price(element.get_text(" ", strip=True))
+        if price is not None:
+            return price
 
     return None
 
@@ -1921,7 +2054,7 @@ def create_gui(categorias):
         spreadsheet_id = (sheets_alerts_config.get("spreadsheet_id") or "").strip()
         if not spreadsheet_id:
             spreadsheet_id = _spreadsheet_id_from_url(sheets_alerts_config.get("spreadsheet_url"))
-        worksheet_name = (sheets_alerts_config.get("worksheet_name") or "Respostas ao formulário 1").strip()
+        worksheet_name = (sheets_alerts_config.get("worksheet_name") or "RespostasForm").strip()
         auth_mode = (sheets_alerts_config.get("auth_mode") or "oauth_user").strip().lower()
 
         if not spreadsheet_id:
@@ -1955,6 +2088,7 @@ def create_gui(categorias):
             mensagens = []
             importados = 0
             falhou = False
+            worksheet_name_resolvido = worksheet_name
 
             def _registrar_progresso_sync(mensagem):
                 _escrever_log_sincronizacao_planilha(mensagem)
@@ -1966,7 +2100,13 @@ def create_gui(categorias):
                     f"Worker iniciado. worksheet='{worksheet_name}' auth_mode='{auth_mode}' spreadsheet_id='{spreadsheet_id}'."
                 )
                 client = _load_google_sheets_client(sheets_alerts_config, progress_callback=_registrar_progresso_sync)
-                range_read = _sheet_a1_range(worksheet_name, "A2:R")
+                worksheet_name_resolvido = _sheet_resolver_nome_aba(client, spreadsheet_id, worksheet_name)
+                if worksheet_name_resolvido != worksheet_name:
+                    _escrever_log_sincronizacao_planilha(
+                        f"Aba resolvida automaticamente: configurada='{worksheet_name}' usada='{worksheet_name_resolvido}'."
+                    )
+
+                range_read = _sheet_a1_range(worksheet_name_resolvido, "A2:R")
                 response = (
                     client.spreadsheets()
                     .values()
@@ -2003,7 +2143,13 @@ def create_gui(categorias):
                         alerts.append(alert)
                         persist_alerts()
 
-                    _sheet_mark_row_imported(client, spreadsheet_id, worksheet_name, idx, alert["dt_criacao"])
+                    _sheet_mark_row_imported(
+                        client,
+                        spreadsheet_id,
+                        worksheet_name_resolvido,
+                        idx,
+                        alert["dt_criacao"],
+                    )
                     importados += 1
                     _escrever_log_sincronizacao_planilha(
                         f"Linha {idx} importada com sucesso. Alerta ID {alert.get('id', '-')}"

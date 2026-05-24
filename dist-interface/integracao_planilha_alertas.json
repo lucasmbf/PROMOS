@@ -1,9 +1,9 @@
 {
   "enabled": true,
   "auth_mode": "oauth_user",
-  "spreadsheet_id": "",
+  "spreadsheet_id": "11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg",
   "spreadsheet_url": "https://docs.google.com/spreadsheets/d/11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg/edit?resourcekey=&gid=1352732337#gid=1352732337",
-  "worksheet_name": "Gerar alerta de preço (respostas)",
+  "worksheet_name": "RespostasForm",
   "oauth_client_file": "credentials/google-oauth-client-secret.json",
   "oauth_token_file": "credentials/google-oauth-token.json",
   "service_account_file": "credentials/google-service-account.json"
