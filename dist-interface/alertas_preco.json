@@ -24,15 +24,15 @@
     ],
     "description": "nintendo switch 2",
     "descricao": "nintendo switch 2",
-    "active": true,
+    "active": false,
     "agendado": true,
-    "last_check_at": "2026-05-24T01:07:10",
-    "next_check_at": "2026-05-24T02:07:10",
+    "last_check_at": "2026-05-24T02:08:07",
+    "next_check_at": "2026-05-24T03:08:07",
     "configured_at": "2026-05-23T23:38:05",
     "dt_criacao": "2026-05-23T23:38:05",
     "last_notified_price": 5100.0,
     "end_at": "2026-06-22T23:38:05",
-    "last_notified_at": null
+    "last_notified_at": "2026-05-24T02:08:07"
   },
   {
     "id": "000002",
@@ -57,15 +57,15 @@
     "phones": [],
     "description": "Switch 2",
     "descricao": "Switch 2",
-    "active": true,
+    "active": false,
     "agendado": true,
-    "last_check_at": "2026-05-24T00:47:16",
-    "next_check_at": "2026-05-24T01:47:16",
+    "last_check_at": "2026-05-24T01:50:09",
+    "next_check_at": "2026-05-24T02:50:09",
     "configured_at": "2026-05-24T00:04:46",
     "dt_criacao": "2026-05-24T00:04:46",
-    "last_notified_price": null,
+    "last_notified_price": 5100.0,
     "end_at": "2026-06-23T00:04:46",
-    "last_notified_at": null
+    "last_notified_at": "2026-05-24T01:50:09"
   },
   {
     "id": "000003",
@@ -90,15 +90,15 @@
     ],
     "description": "switch 2",
     "descricao": "switch 2",
-    "active": true,
+    "active": false,
     "agendado": true,
-    "last_check_at": "2026-05-24T00:58:57",
-    "next_check_at": "2026-05-24T01:58:57",
+    "last_check_at": "2026-05-24T01:59:37",
+    "next_check_at": "2026-05-24T02:59:37",
     "configured_at": "2026-05-24T00:26:09",
     "dt_criacao": "2026-05-24T00:26:09",
     "last_notified_price": 5100.0,
     "end_at": "2026-06-23T00:26:09",
-    "last_notified_at": null
+    "last_notified_at": "2026-05-24T01:59:37"
   },
   {
     "id": "000004",
@@ -125,7 +125,7 @@
     ],
     "description": "Caneca De Café Cerâmica Com Padrão De Pênis",
     "descricao": "Caneca De Café Cerâmica Com Padrão De Pênis",
-    "active": true,
+    "active": false,
     "agendado": true,
     "last_check_at": "2026-05-24T01:24:43",
     "next_check_at": "2026-05-24T02:24:43",
@@ -158,7 +158,7 @@
     ],
     "description": "Caneca De Café Cerâmica Com Padrão De Pênis 11",
     "descricao": "Caneca De Café Cerâmica Com Padrão De Pênis 11",
-    "active": true,
+    "active": false,
     "agendado": true,
     "last_check_at": "2026-05-24T01:28:15",
     "next_check_at": "2026-05-24T02:28:15",
@@ -200,5 +200,197 @@
     "last_notified_price": null,
     "end_at": "2026-06-23T01:32:31",
     "last_notified_at": null
+  },
+  {
+    "id": "000007",
+    "source": "planilha",
+    "sheet_row_number": 6,
+    "name": "Suplemento Em Pó New Millen C4 Beta Pump C4 Beta Pump",
+    "description": "Suplemento Em Pó New Millen C4 Beta Pump C4 Beta Pump",
+    "descricao": "Suplemento Em Pó New Millen C4 Beta Pump C4 Beta Pump",
+    "mode": "url",
+    "target_price": 52.0,
+    "precoDesejado": 52.0,
+    "email": "lucasmbfosneca@gmail.com",
+    "emails": [
+      "lucasmbfosneca@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://www.mercadolivre.com.br/suplemento-em-po-new-millen-c4-beta-pump-c4-beta-pump-cafeina-c4-beta-pump-sabor-mac-verde-em-pote-de-225ml/p/MLB36692636?product_trigger_id=MLB15122306&picker=true&quantity=1",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/suplemento-em-po-new-millen-c4-beta-pump-c4-beta-pump-cafeina-c4-beta-pump-sabor-mac-verde-em-pote-de-225ml/p/MLB36692636?product_trigger_id=MLB15122306&picker=true&quantity=1"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-24T02:04:04",
+    "carimbo_data_hora": "24/05/2026 01:57:53",
+    "active": false,
+    "interval_hours": 1,
+    "last_check_at": "2026-05-24T02:04:48",
+    "next_check_at": "2026-05-24T03:04:48",
+    "configured_at": "2026-05-24T02:04:04",
+    "end_at": "2026-06-23T02:04:04",
+    "last_notified_price": null,
+    "last_notified_at": null
+  },
+  {
+    "id": "000008",
+    "source": "planilha",
+    "sheet_row_number": 7,
+    "name": "Teclado Mecânico Gamer Redragon Draconic",
+    "description": "Teclado Mecânico Gamer Redragon Draconic",
+    "descricao": "Teclado Mecânico Gamer Redragon Draconic",
+    "mode": "url",
+    "target_price": 390.0,
+    "precoDesejado": 390.0,
+    "email": "lucasmbfonseca@gmail.com",
+    "emails": [
+      "lucasmbfonseca@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://www.mercadolivre.com.br/teclado-mecanico-gamer-redragon-draconic-rgb-abnt-2/up/MLBU3262002141?pdp_filters=discount%3A25-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=95a4e5e9-fbc3-4d84-ad37-eef460b20ab8&wid=MLB4110111151&sid=search",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/teclado-mecanico-gamer-redragon-draconic-rgb-abnt-2/up/MLBU3262002141?pdp_filters=discount%3A25-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=95a4e5e9-fbc3-4d84-ad37-eef460b20ab8&wid=MLB4110111151&sid=search"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-24T02:12:21",
+    "carimbo_data_hora": "24/05/2026 02:09:21",
+    "active": false,
+    "interval_hours": 1,
+    "last_check_at": "2026-05-24T02:13:27",
+    "next_check_at": "2026-05-24T03:13:27",
+    "configured_at": "2026-05-24T02:12:21",
+    "end_at": "2026-06-23T02:12:21",
+    "last_notified_price": null,
+    "last_notified_at": null
+  },
+  {
+    "id": "000009",
+    "source": "planilha",
+    "sheet_row_number": 4,
+    "name": "Nintendo Switch 2",
+    "description": "Nintendo Switch 2",
+    "descricao": "Nintendo Switch 2",
+    "mode": "url",
+    "target_price": 400.0,
+    "precoDesejado": 400.0,
+    "email": "lucasmbfonseca@gmail.com",
+    "emails": [
+      "lucasmbfonseca@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://produto.mercadolivre.com.br/MLB-6769902744-cafeteira-prensa-francesa-cremeira-cha-cafe-erva-praticidade-_JM?searchVariation=201917490661#polycard_client=search-desktop&be_origin=backend&searchVariation=201917490661&search_layout=grid&position=2&type=item&tracking_id=e1eceb25-73f5-44fe-8486-7fef61a1f733\nhttps://www.mercadolivre.com.br/console-nintendo-switch-2-standard-edition-led-256gb-preto/p/MLB50326639?pdp_filters=item_id%3AMLB6713089834&from=gshop&matt_tool=91562990&matt_word=&matt_source=google&matt_campaign_id=22090193891&matt_ad_group_id=191545542882&matt_match_type=&matt_network=g&matt_device=c&matt_creative=787871501933&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735098660&matt_product_id=MLB50326639-product&matt_product_partition_id=2452780900542&matt_target_id=aud-1967669456294:pla-2452780900542&cq_src=google_ads&cq_cmp=22090193891&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22090193891&gbraid=0AAAAAD93qcB5ecLqFcuK2dZ8jluN6-PV9&gclid=Cj0KCQjwoMXQBhDcARIsAH-eEtsnc2PVB-swZVh1slOHHJ3owknsMY66WcmBYJuAhZITC17PyuXcB20aAp-pEALw_wcB",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://produto.mercadolivre.com.br/MLB-6769902744-cafeteira-prensa-francesa-cremeira-cha-cafe-erva-praticidade-_JM?searchVariation=201917490661#polycard_client=search-desktop&be_origin=backend&searchVariation=201917490661&search_layout=grid&position=2&type=item&tracking_id=e1eceb25-73f5-44fe-8486-7fef61a1f733\nhttps://www.mercadolivre.com.br/console-nintendo-switch-2-standard-edition-led-256gb-preto/p/MLB50326639?pdp_filters=item_id%3AMLB6713089834&from=gshop&matt_tool=91562990&matt_word=&matt_source=google&matt_campaign_id=22090193891&matt_ad_group_id=191545542882&matt_match_type=&matt_network=g&matt_device=c&matt_creative=787871501933&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735098660&matt_product_id=MLB50326639-product&matt_product_partition_id=2452780900542&matt_target_id=aud-1967669456294:pla-2452780900542&cq_src=google_ads&cq_cmp=22090193891&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22090193891&gbraid=0AAAAAD93qcB5ecLqFcuK2dZ8jluN6-PV9&gclid=Cj0KCQjwoMXQBhDcARIsAH-eEtsnc2PVB-swZVh1slOHHJ3owknsMY66WcmBYJuAhZITC17PyuXcB20aAp-pEALw_wcB"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-24T02:15:23",
+    "carimbo_data_hora": "23/05/2026 21:27:54",
+    "active": false,
+    "interval_hours": 1,
+    "last_check_at": null,
+    "next_check_at": "2026-05-24T03:15:23",
+    "configured_at": "2026-05-24T02:15:23",
+    "end_at": "2026-06-23T02:15:23",
+    "last_notified_price": null,
+    "last_notified_at": null
+  },
+  {
+    "id": "000010",
+    "source": "planilha",
+    "sheet_row_number": 5,
+    "name": "qualquer coisa",
+    "description": "qualquer coisa",
+    "descricao": "qualquer coisa",
+    "mode": "url",
+    "target_price": 2000.0,
+    "precoDesejado": 2000.0,
+    "email": "lucs.fonseca@gmail.com",
+    "emails": [
+      "lucs.fonseca@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://www.mercadolivre.com.br/console-nintendo-switch-2-standard-edition-led-256gb-preto/p/MLB50326639?pdp_filters=item_id%3AMLB6713089834&from=gshop&matt_tool=91562990&matt_word=&matt_source=google&matt_campaign_id=22090193891&matt_ad_group_id=191545542882&matt_match_type=&matt_network=g&matt_device=c&matt_creative=787871501933&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735098660&matt_product_id=MLB50326639-product&matt_product_partition_id=2452780900542&matt_target_id=aud-1967669456294:pla-2452780900542&cq_src=google_ads&cq_cmp=22090193891&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22090193891&gbraid=0AAAAAD93qcB5ecLqFcuK2dZ8jluN6-PV9&gclid=Cj0KCQjwoMXQBhDcARIsAH-eEtsnc2PVB-swZVh1slOHHJ3owknsMY66WcmBYJuAhZITC17PyuXcB20aAp-pEALw_wcB",
+    "link2": "https://produto.mercadolivre.com.br/MLB-6769902744-cafeteira-prensa-francesa-cremeira-cha-cafe-erva-praticidade-_JM?searchVariation=201917490661#polycard_client=search-desktop&be_origin=backend&searchVariation=201917490661&search_layout=grid&position=2&type=item&tracking_id=e1eceb25-73f5-44fe-8486-7fef61a1f733",
+    "link3": "https://www.mercadolivre.com.br/console-nintendo-switch-2-standard-edition-led-256gb-preto/p/MLB50326639?pdp_filters=item_id%3AMLB6713089834&from=gshop&matt_tool=91562990&matt_word=&matt_source=google&matt_campaign_id=22090193891&matt_ad_group_id=191545542882&matt_match_type=&matt_network=g&matt_device=c&matt_creative=787871501933&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735098660&matt_product_id=MLB50326639-product&matt_product_partition_id=2452780900542&matt_target_id=aud-1967669456294:pla-2452780900542&cq_src=google_ads&cq_cmp=22090193891&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22090193891&gbraid=0AAAAAD93qcB5ecLqFcuK2dZ8jluN6-PV9&gclid=Cj0KCQjwoMXQBhDcARIsAH-eEtsnc2PVB-swZVh1slOHHJ3owknsMY66WcmBYJuAhZITC17PyuXcB20aAp-pEALw_wcB",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/console-nintendo-switch-2-standard-edition-led-256gb-preto/p/MLB50326639?pdp_filters=item_id%3AMLB6713089834&from=gshop&matt_tool=91562990&matt_word=&matt_source=google&matt_campaign_id=22090193891&matt_ad_group_id=191545542882&matt_match_type=&matt_network=g&matt_device=c&matt_creative=787871501933&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735098660&matt_product_id=MLB50326639-product&matt_product_partition_id=2452780900542&matt_target_id=aud-1967669456294:pla-2452780900542&cq_src=google_ads&cq_cmp=22090193891&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22090193891&gbraid=0AAAAAD93qcB5ecLqFcuK2dZ8jluN6-PV9&gclid=Cj0KCQjwoMXQBhDcARIsAH-eEtsnc2PVB-swZVh1slOHHJ3owknsMY66WcmBYJuAhZITC17PyuXcB20aAp-pEALw_wcB",
+      "https://produto.mercadolivre.com.br/MLB-6769902744-cafeteira-prensa-francesa-cremeira-cha-cafe-erva-praticidade-_JM?searchVariation=201917490661#polycard_client=search-desktop&be_origin=backend&searchVariation=201917490661&search_layout=grid&position=2&type=item&tracking_id=e1eceb25-73f5-44fe-8486-7fef61a1f733",
+      "https://www.mercadolivre.com.br/console-nintendo-switch-2-standard-edition-led-256gb-preto/p/MLB50326639?pdp_filters=item_id%3AMLB6713089834&from=gshop&matt_tool=91562990&matt_word=&matt_source=google&matt_campaign_id=22090193891&matt_ad_group_id=191545542882&matt_match_type=&matt_network=g&matt_device=c&matt_creative=787871501933&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735098660&matt_product_id=MLB50326639-product&matt_product_partition_id=2452780900542&matt_target_id=aud-1967669456294:pla-2452780900542&cq_src=google_ads&cq_cmp=22090193891&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22090193891&gbraid=0AAAAAD93qcB5ecLqFcuK2dZ8jluN6-PV9&gclid=Cj0KCQjwoMXQBhDcARIsAH-eEtsnc2PVB-swZVh1slOHHJ3owknsMY66WcmBYJuAhZITC17PyuXcB20aAp-pEALw_wcB"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-24T02:15:23",
+    "carimbo_data_hora": "23/05/2026 21:47:34",
+    "active": false,
+    "interval_hours": 1,
+    "last_check_at": null,
+    "next_check_at": "2026-05-24T03:15:23",
+    "configured_at": "2026-05-24T02:15:23",
+    "end_at": "2026-06-23T02:15:23",
+    "last_notified_price": null,
+    "last_notified_at": null
+  },
+  {
+    "id": "000011",
+    "source": "planilha",
+    "sheet_row_number": 8,
+    "name": "Teclado Mecânico Gamer Redragon Draconic",
+    "description": "Teclado Mecânico Gamer Redragon Draconic",
+    "descricao": "Teclado Mecânico Gamer Redragon Draconic",
+    "mode": "url",
+    "target_price": 390.0,
+    "precoDesejado": 390.0,
+    "email": "lucasmbfonseca@gmail.com",
+    "emails": [
+      "lucasmbfonseca@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://www.mercadolivre.com.br/teclado-mecanico-gamer-redragon-draconic-rgb-abnt-2/up/MLBU3262002141?pdp_filters=discount%3A25-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=95a4e5e9-fbc3-4d84-ad37-eef460b20ab8&wid=MLB4110111151&sid=search",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/teclado-mecanico-gamer-redragon-draconic-rgb-abnt-2/up/MLBU3262002141?pdp_filters=discount%3A25-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=95a4e5e9-fbc3-4d84-ad37-eef460b20ab8&wid=MLB4110111151&sid=search"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-24T02:15:23",
+    "carimbo_data_hora": "24/05/2026 02:11:51",
+    "active": false,
+    "interval_hours": 1,
+    "last_check_at": "2026-05-24T02:15:56",
+    "next_check_at": "2026-05-24T03:15:56",
+    "configured_at": "2026-05-24T02:15:23",
+    "end_at": "2026-06-23T02:15:23",
+    "last_notified_price": 389.83,
+    "last_notified_at": "2026-05-24T02:15:56"
   }
 ]

@@ -82,3 +82,261 @@
 [2026-05-24 01:49:06] Falha na importacao da planilha: <HttpError 400 when requesting https://sheets.googleapis.com/v4/spreadsheets/11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg/values/%27Gerar%20alerta%20de%20pre%C3%A7o%20%28respostas%29%27%21A2%3AR?alt=json returned "Unable to parse range: 'Gerar alerta de preço (respostas)'!A2:R". Details: "Unable to parse range: 'Gerar alerta de preço (respostas)'!A2:R">
 [2026-05-24 01:49:06] Falha na importacao da planilha: <HttpError 400 when requesting https://sheets.googleapis.com/v4/spreadsheets/11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg/values/%27Gerar%20alerta%20de%20pre%C3%A7o%20%28respostas%29%27%21A2%3AR?alt=json returned "Unable to parse range: 'Gerar alerta de preço (respostas)'!A2:R". Details: "Unable to parse range: 'Gerar alerta de preço (respostas)'!A2:R">
 [2026-05-24 01:49:06] Finalizacao da sincronizacao. falhou=True importados=0.
+[2026-05-24 01:55:36] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 01:55:36] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 01:55:36] Worker iniciado. worksheet='Gerar alerta de preço (respostas)' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-24 01:55:37] Falha na importacao da planilha: Nao foi possivel localizar a aba configurada. worksheet_name='Gerar alerta de preço (respostas)'. Abas disponiveis: Respostas ao formulário 1
+[2026-05-24 01:55:37] Falha na importacao da planilha: Nao foi possivel localizar a aba configurada. worksheet_name='Gerar alerta de preço (respostas)'. Abas disponiveis: Respostas ao formulário 1
+[2026-05-24 01:55:37] Finalizacao da sincronizacao. falhou=True importados=0.
+[2026-05-24 02:01:05] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 02:01:05] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 02:01:05] Worker iniciado. worksheet='Gerar alerta de preço (respostas)' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-24 02:01:06] Falha na importacao da planilha: Nao foi possivel localizar a aba configurada. worksheet_name='Gerar alerta de preço (respostas)'. Abas disponiveis: RespostasForm
+[2026-05-24 02:01:06] Falha na importacao da planilha: Nao foi possivel localizar a aba configurada. worksheet_name='Gerar alerta de preço (respostas)'. Abas disponiveis: RespostasForm
+[2026-05-24 02:01:06] Finalizacao da sincronizacao. falhou=True importados=0.
+[2026-05-24 02:04:03] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 02:04:03] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 02:04:03] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-24 02:04:04] Leitura da planilha concluida. Linhas recebidas: 105.
+[2026-05-24 02:04:04] Linha 2 invalida: Campo 'Preco desejado' deve ser numerico..
+[2026-05-24 02:04:04] Linha 3 invalida: Campo 'Preco desejado' deve ser numerico..
+[2026-05-24 02:04:04] Linha 4 invalida: Campo 'Preco desejado' deve ser numerico..
+[2026-05-24 02:04:04] Linha 5 invalida: Campo 'Preco desejado' deve ser numerico..
+[2026-05-24 02:04:04] Linha 6 importada com sucesso. Alerta ID 000007
+[2026-05-24 02:04:04] Linha 7 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 8 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 9 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 10 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 11 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 12 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 13 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 14 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 15 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 16 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 17 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 18 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 19 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 20 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 21 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 22 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 23 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 24 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 25 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 26 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 27 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 28 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 29 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 30 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 31 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 32 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 33 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 34 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 35 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 36 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 37 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 38 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 39 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 40 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 41 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 42 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 43 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 44 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 45 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 46 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 47 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 48 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 49 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 50 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 51 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 52 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 53 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 54 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 55 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 56 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 57 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 58 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 59 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 60 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 61 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 62 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 63 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 64 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 65 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 66 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 67 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 68 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 69 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 70 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 71 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 72 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 73 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 74 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 75 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 76 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 77 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 78 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 79 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 80 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 81 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 82 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 83 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 84 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 85 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 86 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 87 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 88 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 89 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 90 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 91 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 92 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 93 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 94 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 95 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 96 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 97 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 98 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 99 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 100 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 101 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 102 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 103 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 104 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 105 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Linha 106 invalida: Descricao do produto nao informada (coluna D)..
+[2026-05-24 02:04:04] Importacao concluida com 1 alerta(s).
+[2026-05-24 02:04:04] Linha 2: erro de validacao (Campo 'Preco desejado' deve ser numerico.).
+[2026-05-24 02:04:04] Linha 3: erro de validacao (Campo 'Preco desejado' deve ser numerico.).
+[2026-05-24 02:04:04] Linha 4: erro de validacao (Campo 'Preco desejado' deve ser numerico.).
+[2026-05-24 02:04:04] Linha 5: erro de validacao (Campo 'Preco desejado' deve ser numerico.).
+[2026-05-24 02:04:04] Linha 7: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:04] Linha 8: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:04] Linha 9: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:04] Linha 10: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:04] Linha 11: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:04] Linha 12: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:04] Linha 13: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:04] Linha 14: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:04] Linha 15: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:04] Linha 16: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 17: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 18: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 19: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 20: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 21: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 22: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 23: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 24: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 25: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 26: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 27: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 28: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 29: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 30: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 31: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 32: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 33: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 34: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 35: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 36: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 37: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 38: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 39: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 40: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 41: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 42: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 43: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 44: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 45: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 46: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 47: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 48: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 49: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 50: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 51: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 52: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 53: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 54: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 55: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 56: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 57: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 58: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 59: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 60: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 61: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 62: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 63: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 64: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 65: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 66: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 67: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 68: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 69: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 70: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 71: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 72: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 73: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 74: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 75: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 76: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 77: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 78: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 79: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 80: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 81: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 82: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 83: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 84: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 85: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 86: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 87: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 88: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 89: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 90: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 91: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 92: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 93: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 94: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 95: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 96: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 97: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 98: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 99: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 100: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 101: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 102: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 103: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 104: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 105: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] Linha 106: erro de validacao (Descricao do produto nao informada (coluna D).).
+[2026-05-24 02:04:05] 1 alerta(s) importado(s) da planilha.
+[2026-05-24 02:04:05] Finalizacao da sincronizacao. falhou=False importados=1.
+[2026-05-24 02:12:20] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 02:12:20] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 02:12:20] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-24 02:12:21] Leitura da planilha concluida. Linhas recebidas: 6.
+[2026-05-24 02:12:21] Linha 2 invalida: Campo 'Preco desejado' deve ser numerico..
+[2026-05-24 02:12:21] Linha 3 invalida: Campo 'Preco desejado' deve ser numerico..
+[2026-05-24 02:12:21] Linha 4 invalida: Campo 'Preco desejado' deve ser numerico..
+[2026-05-24 02:12:21] Linha 5 invalida: Campo 'Preco desejado' deve ser numerico..
+[2026-05-24 02:12:21] Linha 7 importada com sucesso. Alerta ID 000008
+[2026-05-24 02:12:21] Importacao concluida com 1 alerta(s).
+[2026-05-24 02:12:21] Linha 2: erro de validacao (Campo 'Preco desejado' deve ser numerico.).
+[2026-05-24 02:12:21] Linha 3: erro de validacao (Campo 'Preco desejado' deve ser numerico.).
+[2026-05-24 02:12:21] Linha 4: erro de validacao (Campo 'Preco desejado' deve ser numerico.).
+[2026-05-24 02:12:21] Linha 5: erro de validacao (Campo 'Preco desejado' deve ser numerico.).
+[2026-05-24 02:12:21] 1 alerta(s) importado(s) da planilha.
+[2026-05-24 02:12:21] Finalizacao da sincronizacao. falhou=False importados=1.
+[2026-05-24 02:15:22] Sincronizacao manual solicitada pelo usuario.
+[2026-05-24 02:15:22] Inicio da rotina de sincronizacao da planilha.
+[2026-05-24 02:15:22] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-24 02:15:23] Leitura da planilha concluida. Linhas recebidas: 7.
+[2026-05-24 02:15:23] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-05-24 02:15:23] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-05-24 02:15:23] Linha 4 importada com sucesso. Alerta ID 000009
+[2026-05-24 02:15:23] Linha 5 importada com sucesso. Alerta ID 000010
+[2026-05-24 02:15:23] Linha 8 importada com sucesso. Alerta ID 000011
+[2026-05-24 02:15:23] Importacao concluida com 3 alerta(s).
+[2026-05-24 02:15:23] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-05-24 02:15:23] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-05-24 02:15:23] 3 alerta(s) importado(s) da planilha.
+[2026-05-24 02:15:23] Finalizacao da sincronizacao. falhou=False importados=3.

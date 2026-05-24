@@ -99,3 +99,39 @@
 [2026-05-24 01:31:38] Alerta 000006 sem disparo nesta execucao.
 [2026-05-24 01:31:38] Execucao finalizada sem disparos.
 [2026-05-24 01:31:38] Finalizada execucao do alerta 000006.
+[2026-05-24 01:50:02] Alerta 000002 enfileirado (scheduler) - nome: teste.
+[2026-05-24 01:50:02] Iniciando execucao do alerta 000002.
+[2026-05-24 01:50:09] Alerta 000002 checado: triggered=True preco=5100.0 alvo=6000.0
+[2026-05-24 01:50:09] Notificacao alerta 000002: email=SMTP nao configurado; whatsapp=sem destinos.
+[2026-05-24 01:50:15] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 01:50:15] Finalizada execucao do alerta 000002.
+[2026-05-24 01:59:30] Alerta 000003 enfileirado (scheduler) - nome: switch 2.
+[2026-05-24 01:59:30] Iniciando execucao do alerta 000003.
+[2026-05-24 01:59:37] Alerta 000003 checado: triggered=True preco=5100.0 alvo=7000.0
+[2026-05-24 01:59:37] Notificacao alerta 000003: email=sem destinos; whatsapp=1 envio(s) destinos=***3269 sid=SM5835f966d3d6e4f3579b9dc226478f5c.
+[2026-05-24 02:01:03] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 02:01:03] Finalizada execucao do alerta 000003.
+[2026-05-24 02:04:40] Alerta 000007 enfileirado (manual) - nome: Suplemento Em Pó New Millen C4 Beta Pump C4 Beta Pump.
+[2026-05-24 02:04:40] Iniciando execucao do alerta 000007.
+[2026-05-24 02:04:48] Alerta 000007 checado: triggered=False preco=78.0 alvo=52.0
+[2026-05-24 02:04:48] Alerta 000007 sem disparo nesta execucao.
+[2026-05-24 02:04:48] Execucao finalizada sem disparos.
+[2026-05-24 02:04:48] Finalizada execucao do alerta 000007.
+[2026-05-24 02:08:00] Alerta 000001 enfileirado (scheduler) - nome: Switch.
+[2026-05-24 02:08:00] Iniciando execucao do alerta 000001.
+[2026-05-24 02:08:07] Alerta 000001 checado: triggered=True preco=5100.0 alvo=5200.0
+[2026-05-24 02:08:08] Notificacao alerta 000001: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM41de7681f2ee2fba333317a8c557f3f9.
+[2026-05-24 02:08:11] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 02:08:11] Finalizada execucao do alerta 000001.
+[2026-05-24 02:13:21] Alerta 000008 enfileirado (manual) - nome: Teclado Mecânico Gamer Redragon Draconic.
+[2026-05-24 02:13:21] Iniciando execucao do alerta 000008.
+[2026-05-24 02:13:27] Alerta 000008 checado: triggered=False preco=556.0 alvo=390.0
+[2026-05-24 02:13:27] Alerta 000008 sem disparo nesta execucao.
+[2026-05-24 02:13:27] Execucao finalizada sem disparos.
+[2026-05-24 02:13:27] Finalizada execucao do alerta 000008.
+[2026-05-24 02:15:49] Alerta 000011 enfileirado (manual) - nome: Teclado Mecânico Gamer Redragon Draconic.
+[2026-05-24 02:15:49] Iniciando execucao do alerta 000011.
+[2026-05-24 02:15:56] Alerta 000011 checado: triggered=True preco=389.83 alvo=390.0
+[2026-05-24 02:15:57] Notificacao alerta 000011: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SMade028fa9710dd2908ae57ebc468829d.
+[2026-05-24 02:15:59] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 02:15:59] Finalizada execucao do alerta 000011.

@@ -54,3 +54,59 @@ https://meli.la/2SizuJw
 
 -----------------------------
 
+===== EXECUCAO 20260524_015015 | TOTAL 1 =====
+
+*Alerta > Preco*
+
+teste
+
+
+Antes: ~R$ 6000.00~
+*Desconto: -*
+*Depois: R$ 5100.00*
+https://meli.la/2mPHWmb
+
+-----------------------------
+
+===== EXECUCAO 20260524_020103 | TOTAL 1 =====
+
+*Alerta > Preco*
+
+switch 2
+
+
+Antes: ~R$ 7000.00~
+*Desconto: -*
+*Depois: R$ 5100.00*
+https://meli.la/2mPHWmb
+
+-----------------------------
+
+===== EXECUCAO 20260524_020811 | TOTAL 1 =====
+
+*Alerta > Preco*
+
+Switch
+
+
+Antes: ~R$ 5200.00~
+*Desconto: -*
+*Depois: R$ 5100.00*
+https://meli.la/2mPHWmb
+
+-----------------------------
+
+===== EXECUCAO 20260524_021559 | TOTAL 1 =====
+
+*Alerta > Preco*
+
+Teclado Mecânico Gamer Redragon Draconic
+
+
+Antes: ~R$ 390.00~
+*Desconto: -*
+*Depois: R$ 389.83*
+https://meli.la/1Z8DNBo
+
+-----------------------------
+
