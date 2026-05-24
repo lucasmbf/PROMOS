@@ -21,9 +21,10 @@ Automação em Python para coletar produtos do Mercado Livre, priorizar ofertas 
 - Suporte a parâmetros extras nos executáveis gerados.
 - Geração de arquivos de saída com resultados consolidados e resultados de ofertas relâmpago.
 - Interface com botão de alerta de preço e configuração de checagem agendada.
-- Alerta por URL (recomendável) com suporte a múltiplas URLs por configuração.
-- Opção de alerta por descrição e atributos do produto.
-- Intervalo de verificação em horas com mínimo de 1 hora para reduzir risco de bloqueio.
+- Alerta sempre por URL com suporte a até 5 links por configuração.
+- Descrição do produto usada como validação do link informado.
+- Ciclo de alerta fixo em 1 hora.
+- Importação opcional de alertas a partir de planilha Google (polling a cada 10 minutos).
 
 ## Especificação funcional
 
@@ -66,12 +67,11 @@ O objetivo funcional é identificar candidatos válidos, aplicar filtros de pre�
 
 #### 2.3 Fluxo de alerta de preço
 
-1. Usuário cria alerta por URL (múltiplas URLs) ou por descrição.
-2. Define preço-alvo e ciclo (horas).
-3. Ao salvar, pode opcionalmente executar na hora.
-4. O agendador interno monitora next_check_at e reexecuta no ciclo.
-5. No modo descrição, o sistema busca automaticamente o menor preço entre os anúncios encontrados na pesquisa.
-6. Quando encontra preço menor ou igual ao alvo, gera notificação e persistência da execução na modalidade Alerta.
+1. Usuário cria alerta por URL informando descrição, preço desejado e contatos.
+2. O primeiro processamento é executado automaticamente ao criar o alerta.
+3. O agendador interno monitora next_check_at e reexecuta no ciclo fixo de 1 hora.
+4. A descrição serve como validação do produto do anúncio carregado pelo link.
+5. Quando encontra preço menor ou igual ao desejado, gera notificação e persistência da execução na modalidade Alerta.
 
 ### 3. Saídas e persistência
 
@@ -95,10 +95,14 @@ Observações de persistência:
 - Deduplicação por anúncio já processado via histórico.
 - Limite mínimo de 1 hora para ciclos de checagem/execução agendada.
 - Preço-alvo de alertas aceita apenas valor decimal válido.
+- Alerta de preço é sempre baseado em URL válida do produto.
+- Cada alerta aceita no máximo 5 links e apenas 1 e-mail e 1 telefone WhatsApp.
+- Telefone de WhatsApp é normalizado com prefixo 55.
+- O envio de notificação de um mesmo alerta é limitado a 1 vez por dia enquanto o preço permanecer abaixo do alvo.
+- Alertas têm validade padrão de 30 dias e são desativados automaticamente após o vencimento.
 - Quantidade de candidatos válidos (campanhas/hub):
 	- Se não informada, assume valor padrão 10.
 	- Deve ser inteiro maior ou igual a 1.
-- Em alerta por descrição, o sistema considera automaticamente o menor preço disponível nos resultados da pesquisa.
 
 ### 5. Limitações atuais e planejado
 
@@ -258,12 +262,55 @@ Saida esperada:
 
 - `dist-interface/promos_interface.exe`
 
+## Importação de alertas via planilha
+
+O arquivo `integracao_planilha_alertas.json` controla a integração com Google Sheets:
+
+```json
+{
+	"enabled": false,
+	"auth_mode": "oauth_user",
+	"spreadsheet_url": "",
+	"spreadsheet_id": "",
+	"worksheet_name": "Respostas ao formulário 1",
+	"oauth_client_file": "credentials/google-oauth-client-secret.json",
+	"oauth_token_file": "credentials/google-oauth-token.json",
+	"service_account_file": "credentials/google-service-account.json"
+}
+```
+
+- Se `enabled=true`, a interface tenta importar novas linhas a cada 10 minutos.
+- Com `auth_mode=oauth_user`, na primeira execução abre login no navegador e salva token local.
+- Novas linhas são identificadas por `Q (agendado) = false`.
+- Após importar com sucesso, o sistema grava `Q=true` e `R=dt_criacao`.
+- O range A1 é montado com nome da aba entre aspas simples para suportar espaços, parênteses e acentos.
+- Mapeamento utilizado:
+	- `A`: carimbo de data/hora (informativo)
+	- `B`: e-mail
+	- `D`: descrição
+	- `E`: preço desejado
+	- `F`: link 1
+	- `G`: telefone
+	- `I`: link 2
+	- `K`: link 3
+	- `M`: link 4
+	- `O`: link 5
+	- `Q`: agendado
+	- `R`: dt_criacao
+
 Na interface:
 
 - O quadro **Procurar produto** permite preencher descricao, fontes, categoria, faixa de preco e desconto minimo.
 - O icone `(i)` ao lado de descricao mostra detalhes da funcionalidade ao passar o mouse.
 - O quadro **Procurar ofertas relampago** permite usar modo padrao (`--relampago-padrao`) ou modo customizado (`--somente-relampago` com filtros).
 - Fontes Amazon, Shoppee e Tiktok Shop aparecem na UI, mas hoje o backend executa apenas Mercado Livre.
+
+## Logs operacionais
+
+Para facilitar diagnóstico das rotinas de alerta e integração com planilha, a interface grava logs em `dist-interface/logs_execucao`:
+
+- `alertas/alertas_AAAAMMDD.log`: ciclo de checagem, validações, erros de extração, geração de link e notificações.
+- `planilha/sincronizacao_planilha_AAAAMMDD.log`: início/fim da sincronização, autenticação, leitura da planilha, marcação de linhas e erros.
 
 ## Saídas geradas
 
