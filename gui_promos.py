@@ -1,4 +1,5 @@
 import argparse
+import calendar
 import contextlib
 import hashlib
 import importlib
@@ -56,6 +57,9 @@ SCHEDULER_TICK_MS = 60000
 ALERTS_IMPORT_INTERVAL_MINUTES = 10
 ALERT_INTERVAL_HOURS_FIXED = 1
 ALERT_ACTIVE_DAYS_DEFAULT = 30
+ALERT_EXECUTION_DAYS_AFTER_FIRST_TRIGGER = 7
+TWILIO_TRIAL_FORCE_ACTIVE_CONFIGS = True
+TWILIO_TRIAL_DESTINO_PADRAO = "19991133269"
 HTTP_HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -351,6 +355,10 @@ class Tooltip:
         if self.tipwindow is not None:
             return
 
+        texto = self.text() if callable(self.text) else self.text
+        if not texto:
+            texto = "Sem informacoes disponiveis."
+
         x = self.widget.winfo_rootx() + 18
         y = self.widget.winfo_rooty() + 18
         self.tipwindow = tw = tk.Toplevel(self.widget)
@@ -358,7 +366,7 @@ class Tooltip:
         tw.wm_geometry(f"+{x}+{y}")
         label = tk.Label(
             tw,
-            text=self.text,
+            text=texto,
             justify=tk.LEFT,
             background="#fffff0",
             relief=tk.SOLID,
@@ -1395,6 +1403,9 @@ def create_gui(categorias):
     filtro_programacoes_var = tk.StringVar(value="")
     ttk.Label(schedules_actions, text="Buscar (ID/Nome):", style="Hint.TLabel").pack(side="left", padx=(18, 6))
     ttk.Entry(schedules_actions, textvariable=filtro_programacoes_var, width=28).pack(side="left")
+    diagnostico_info_icon = ttk.Label(schedules_actions, text="(i)", style="Info.TLabel", cursor="hand2")
+    diagnostico_info_icon.pack(side="left", padx=(8, 0))
+    Tooltip(diagnostico_info_icon, lambda: _resumo_hover_diagnostico_execucao())
 
     grid_wrap = ttk.Frame(schedules_frame, style="Main.TFrame")
     grid_wrap.pack(fill="both", expand=True)
@@ -1431,6 +1442,8 @@ def create_gui(categorias):
     hub_schedule_tree.column("ciclo", width=80, anchor="center")
     hub_schedule_tree.column("execucao", width=170, anchor="w")
     hub_schedule_tree.column("acoes", width=200, anchor="center")
+    hub_schedule_tree.tag_configure("cfg_ativa", background="#e8f7e9")
+    hub_schedule_tree.tag_configure("cfg_inativa", background="#fdeaea")
 
     schedules_scroll = ttk.Scrollbar(grid_wrap, orient="vertical", command=hub_schedule_tree.yview)
     hub_schedule_tree.configure(yscrollcommand=schedules_scroll.set)
@@ -1499,6 +1512,113 @@ def create_gui(categorias):
             log_path_var.set(f"Log salvo em: {caminho}")
         except Exception:
             pass
+
+    def _numero_destino_trial():
+        return (_ler_variavel_ambiente("TWILIO_TRIAL_DESTINO") or TWILIO_TRIAL_DESTINO_PADRAO).strip()
+
+    def _aplicar_destino_whatsapp_trial_em_cfg(cfg):
+        numero_forcado = _numero_destino_trial()
+        if not numero_forcado:
+            return False
+
+        phones_atual = [str(p).strip() for p in (cfg.get("phones") or []) if str(p).strip()]
+        tel_atual = str(cfg.get("telefone") or "").strip()
+
+        if phones_atual == [numero_forcado] and tel_atual == numero_forcado:
+            return False
+
+        cfg["phones"] = [numero_forcado]
+        cfg["telefone"] = numero_forcado
+        return True
+
+    def _forcar_whatsapp_trial_nas_configs_ativas():
+        if not TWILIO_TRIAL_FORCE_ACTIVE_CONFIGS:
+            return
+
+        alterou_alertas = False
+        alterou_campanhas = False
+
+        for alert in alerts:
+            if bool(alert.get("active", True)) and _aplicar_destino_whatsapp_trial_em_cfg(alert):
+                alterou_alertas = True
+
+        for schedule in hub_schedules:
+            if bool(schedule.get("active", True)) and _aplicar_destino_whatsapp_trial_em_cfg(schedule):
+                alterou_campanhas = True
+
+        if alterou_alertas:
+            persist_alerts()
+        if alterou_campanhas:
+            persist_hub_schedules()
+
+        if alterou_alertas or alterou_campanhas:
+            _escrever_log_alerta(
+                f"Override trial aplicado para configs ativas. Destino WhatsApp forçado: {_numero_destino_trial()}."
+            )
+
+    def _ler_ultimas_linhas(caminho, max_linhas=120):
+        try:
+            if not caminho or not Path(caminho).exists():
+                return []
+            with open(caminho, "r", encoding="utf-8") as file:
+                linhas = file.readlines()
+            return [l.strip() for l in linhas[-max_linhas:] if l.strip()]
+        except Exception:
+            return []
+
+    def _detectar_ultimo_log_execucao():
+        try:
+            candidatos = sorted(LOGS_DIR.glob("execucao_*.log"), key=lambda p: p.stat().st_mtime, reverse=True)
+            if candidatos:
+                return candidatos[0]
+        except Exception:
+            return None
+        return None
+
+    def _resumo_hover_diagnostico_execucao():
+        caminho_alerta = alert_log.get("path") or _iniciar_log_alertas()
+        caminho_execucao = worker_log.get("path") or _detectar_ultimo_log_execucao()
+
+        linhas_alerta = _ler_ultimas_linhas(caminho_alerta, max_linhas=160)
+        linhas_exec = _ler_ultimas_linhas(caminho_execucao, max_linhas=120)
+
+        sem_disparo = sum(1 for l in linhas_alerta if "sem disparo nesta execucao" in l.casefold())
+        sem_execucao = sum(
+            1
+            for l in linhas_alerta
+            if (
+                "nao executada" in l.casefold()
+                or "campanha invalida" in l.casefold()
+                or "desativado" in l.casefold()
+                or "encerrado automaticamente" in l.casefold()
+            )
+        )
+        falhas = sum(
+            1
+            for l in linhas_alerta
+            if (
+                "erro na checagem" in l.casefold()
+                or "falhou" in l.casefold()
+                or "falha ao extrair preco" in l.casefold()
+            )
+        )
+
+        ultima_relevante = "-"
+        for linha in reversed(linhas_alerta + linhas_exec):
+            lcase = linha.casefold()
+            if any(chave in lcase for chave in ["falha", "erro", "sem disparo", "nao executada", "invalida", "encerrado"]):
+                ultima_relevante = linha
+                break
+
+        return (
+            "Diagnostico de execucao (logs):\n"
+            f"- Sem disparo: {sem_disparo}\n"
+            f"- Nao executou: {sem_execucao}\n"
+            f"- Falhou: {falhas}\n"
+            f"- Ultimo motivo: {ultima_relevante}\n"
+            f"- Log alerta: {caminho_alerta}\n"
+            f"- Log execucao: {caminho_execucao or '-'}"
+        )
 
     def _enqueue_alert_execution(alert, source="scheduler"):
         if alert is None:
@@ -1660,6 +1780,7 @@ def create_gui(categorias):
                 "agendado": bool(alert.get("agendado", True)),
                 "dt_criacao": alert.get("dt_criacao") or configured_at,
                 "last_notified_at": alert.get("last_notified_at"),
+                "first_triggered_at": alert.get("first_triggered_at"),
             }
 
             for idx in range(1, 6):
@@ -1696,6 +1817,82 @@ def create_gui(categorias):
                 except ValueError:
                     continue
             raise ValueError(f"Campo '{field_name}' deve estar em DD/MM/AAAA.")
+
+    def _abrir_seletor_data(parent, data_var, titulo="Selecionar data"):
+        atual = _parse_schedule_datetime_input(data_var.get(), "Data", required=False)
+        base = atual or datetime.now()
+
+        popup = tk.Toplevel(parent)
+        popup.title(titulo)
+        popup.configure(bg="#ececec")
+        popup.transient(parent)
+        popup.grab_set()
+        popup.resizable(False, False)
+
+        frame = ttk.Frame(popup, style="Main.TFrame", padding=10)
+        frame.pack(fill="both", expand=True)
+
+        mes_ano_var = tk.StringVar()
+        dias_frame = ttk.Frame(frame, style="Main.TFrame")
+        dias_frame.pack(fill="both", expand=True, pady=(8, 0))
+
+        state = {"year": base.year, "month": base.month}
+
+        def _mes_anterior():
+            if state["month"] == 1:
+                state["month"] = 12
+                state["year"] -= 1
+            else:
+                state["month"] -= 1
+            _renderizar_calendario()
+
+        def _mes_proximo():
+            if state["month"] == 12:
+                state["month"] = 1
+                state["year"] += 1
+            else:
+                state["month"] += 1
+            _renderizar_calendario()
+
+        def _selecionar_dia(dia):
+            escolhido = datetime(state["year"], state["month"], dia)
+            data_var.set(escolhido.strftime("%d/%m/%Y"))
+            popup.destroy()
+
+        top = ttk.Frame(frame, style="Main.TFrame")
+        top.pack(fill="x")
+        ttk.Button(top, text="<", width=3, command=_mes_anterior).pack(side="left")
+        ttk.Label(top, textvariable=mes_ano_var, style="Field.TLabel").pack(side="left", padx=8)
+        ttk.Button(top, text=">", width=3, command=_mes_proximo).pack(side="left")
+
+        def _renderizar_calendario():
+            for child in dias_frame.winfo_children():
+                child.destroy()
+
+            nomes_dias = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"]
+            for idx, nome in enumerate(nomes_dias):
+                ttk.Label(dias_frame, text=nome, style="Hint.TLabel").grid(row=0, column=idx, padx=2, pady=(0, 4))
+
+            mes_ano_var.set(f"{calendar.month_name[state['month']]} {state['year']}")
+            first_weekday, qtd_dias = calendar.monthrange(state["year"], state["month"])
+
+            linha = 1
+            coluna = first_weekday
+            for dia in range(1, qtd_dias + 1):
+                ttk.Button(
+                    dias_frame,
+                    text=str(dia),
+                    width=4,
+                    command=lambda d=dia: _selecionar_dia(d),
+                ).grid(row=linha, column=coluna, padx=2, pady=2)
+                coluna += 1
+                if coluna > 6:
+                    coluna = 0
+                    linha += 1
+
+        _renderizar_calendario()
+        popup.wait_visibility()
+        popup.focus_force()
 
     def _formatar_data(valor_iso):
         dt = _parse_iso_datetime(valor_iso)
@@ -1880,11 +2077,15 @@ def create_gui(categorias):
 
         for item in itens:
             marcado = "☑" if item["key"] in programacoes_selecionadas else "☐"
+            _, cfg = _obter_programacao_por_key(item["key"])
+            ativo_cfg = bool((cfg or {}).get("active", True))
+            tag_linha = "cfg_ativa" if ativo_cfg else "cfg_inativa"
 
             hub_schedule_tree.insert(
                 "",
                 "end",
                 iid=item["key"],
+                tags=(tag_linha,),
                 values=(
                     marcado,
                     item["ativo"],
@@ -2018,6 +2219,7 @@ def create_gui(categorias):
             "end_at": (datetime.now() + timedelta(days=ALERT_ACTIVE_DAYS_DEFAULT)).isoformat(timespec="seconds"),
             "last_notified_price": None,
             "last_notified_at": None,
+            "first_triggered_at": None,
         }
         return alert
 
@@ -2262,8 +2464,8 @@ def create_gui(categorias):
     def open_hub_schedule_modal(schedule=None):
         modal = tk.Toplevel(root)
         modal.title("Configurar rotina programada do hub")
-        modal.geometry("760x680")
-        modal.minsize(700, 620)
+        modal.geometry("760x700")
+        modal.minsize(700, 640)
         modal.configure(bg="#ececec")
         modal.transient(root)
         modal.grab_set()
@@ -2321,8 +2523,20 @@ def create_gui(categorias):
         ))
         ativo_var = tk.BooleanVar(value=(bool(schedule.get("active", True)) if schedule else True))
         executar_ao_salvar_var = tk.BooleanVar(value=False)
-        emails_iniciais = (schedule.get("emails", []) if schedule else []) or [""]
-        telefones_iniciais = (schedule.get("phones", []) if schedule else []) or [""]
+        email_ag_var = tk.StringVar(
+            value=(
+                (schedule.get("email") or "; ".join(schedule.get("emails", [])))
+                if schedule
+                else ""
+            )
+        )
+        telefone_ag_var = tk.StringVar(
+            value=(
+                (schedule.get("telefone") or "; ".join(schedule.get("phones", [])))
+                if schedule
+                else ""
+            )
+        )
 
         inicio_lock = {"value": False}
         fim_lock = {"value": False}
@@ -2333,10 +2547,24 @@ def create_gui(categorias):
         ttk.Entry(frame, textvariable=nome_var).grid(row=1, column=1, sticky="ew", padx=(8, 0), pady=(14, 0))
 
         ttk.Label(frame, text="Inicio:", style="Field.TLabel").grid(row=2, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=inicio_var).grid(row=2, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        inicio_row = ttk.Frame(frame, style="Main.TFrame")
+        inicio_row.grid(row=2, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Entry(inicio_row, textvariable=inicio_var).pack(side="left", fill="x", expand=True)
+        ttk.Button(
+            inicio_row,
+            text="Calendario",
+            command=lambda: _abrir_seletor_data(modal, inicio_var, "Selecionar inicio"),
+        ).pack(side="left", padx=(8, 0))
 
         ttk.Label(frame, text="Fim:", style="Field.TLabel").grid(row=3, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=fim_var).grid(row=3, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        fim_row = ttk.Frame(frame, style="Main.TFrame")
+        fim_row.grid(row=3, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Entry(fim_row, textvariable=fim_var).pack(side="left", fill="x", expand=True)
+        ttk.Button(
+            fim_row,
+            text="Calendario",
+            command=lambda: _abrir_seletor_data(modal, fim_var, "Selecionar fim"),
+        ).pack(side="left", padx=(8, 0))
 
         ttk.Label(frame, text="Executar a cada (horas):", style="Field.TLabel").grid(row=4, column=0, sticky="w", pady=(12, 0))
         ttk.Entry(frame, textvariable=ciclo_var, validate="key", validatecommand=vcmd_inteiro).grid(row=4, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
@@ -2362,94 +2590,14 @@ def create_gui(categorias):
         ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=11, column=0, columnspan=2, sticky="w", pady=(12, 0))
         ttk.Checkbutton(frame, text="Executar a primeira vez assim que salvar", variable=executar_ao_salvar_var).grid(row=12, column=0, columnspan=2, sticky="w", pady=(8, 0))
 
-        contatos_wrap = ttk.Frame(frame, style="Main.TFrame")
-        contatos_wrap.grid(row=13, column=0, columnspan=2, sticky="ew", pady=(10, 0))
+        ttk.Label(frame, text="E-mail:", style="Field.TLabel").grid(row=13, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=email_ag_var).grid(row=13, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        emails_frame = ttk.Frame(contatos_wrap, style="Main.TFrame")
-        emails_frame.grid(row=0, column=0, sticky="ew")
-
-        telefones_frame = ttk.Frame(contatos_wrap, style="Main.TFrame")
-        telefones_frame.grid(row=1, column=0, sticky="ew", pady=(6, 0))
-
-        email_vars = []
-        email_rows = []
-        telefone_vars = []
-        telefone_rows = []
-
-        def _redraw_contato_fields(container, values_vars, rows_widgets, label_text, add_callback, remove_callback, tip_text):
-            for row_widget in rows_widgets:
-                row_widget.destroy()
-            rows_widgets.clear()
-
-            for idx, var in enumerate(values_vars):
-                row_frame = ttk.Frame(container, style="Main.TFrame")
-                row_frame.grid(row=idx, column=0, sticky="ew", pady=(0, 6))
-                rows_widgets.append(row_frame)
-
-                ttk.Label(row_frame, text=(label_text if idx == 0 else ""), style="Field.TLabel").grid(row=0, column=0, sticky="w")
-                ttk.Entry(row_frame, textvariable=var).grid(row=0, column=1, sticky="ew", padx=(8, 0))
-
-                if idx == 0:
-                    add_btn = ttk.Button(row_frame, text="+", width=3, command=add_callback)
-                    add_btn.grid(row=0, column=2, sticky="w", padx=(6, 0))
-                    Tooltip(add_btn, tip_text)
-
-                if len(values_vars) > 1:
-                    rem_btn = ttk.Button(row_frame, text="-", width=3, command=lambda i=idx: remove_callback(i))
-                    rem_btn.grid(row=0, column=3, sticky="w", padx=(6, 0))
-
-                row_frame.columnconfigure(1, weight=1)
-
-        def _redraw_email_fields():
-            _redraw_contato_fields(
-                emails_frame,
-                email_vars,
-                email_rows,
-                "E-mails:",
-                lambda: _add_email_field(""),
-                _remove_email_field,
-                "Adicionar novo campo de e-mail",
-            )
-
-        def _redraw_telefone_fields():
-            _redraw_contato_fields(
-                telefones_frame,
-                telefone_vars,
-                telefone_rows,
-                "Telefones:",
-                lambda: _add_telefone_field(""),
-                _remove_telefone_field,
-                "Adicionar novo campo de telefone",
-            )
-
-        def _add_email_field(initial_value=""):
-            email_vars.append(tk.StringVar(value=initial_value))
-            _redraw_email_fields()
-
-        def _remove_email_field(index):
-            if len(email_vars) <= 1:
-                return
-            email_vars.pop(index)
-            _redraw_email_fields()
-
-        def _add_telefone_field(initial_value=""):
-            telefone_vars.append(tk.StringVar(value=initial_value))
-            _redraw_telefone_fields()
-
-        def _remove_telefone_field(index):
-            if len(telefone_vars) <= 1:
-                return
-            telefone_vars.pop(index)
-            _redraw_telefone_fields()
-
-        for email in emails_iniciais:
-            _add_email_field(email)
-
-        for telefone in telefones_iniciais:
-            _add_telefone_field(telefone)
+        ttk.Label(frame, text="Telefone:", style="Field.TLabel").grid(row=14, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=telefone_ag_var).grid(row=14, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
         botoes = ttk.Frame(frame, style="Main.TFrame")
-        botoes.grid(row=14, column=0, columnspan=2, sticky="w", pady=(18, 0))
+        botoes.grid(row=15, column=0, columnspan=2, sticky="w", pady=(18, 0))
 
         def salvar_rotina():
             nome = (nome_var.get() or "").strip()
@@ -2478,16 +2626,29 @@ def create_gui(categorias):
                 messagebox.showerror("Validacao", "Qtd. candidatos validos deve ser no minimo 1.", parent=modal)
                 return
 
-            if fim_dt and fim_dt <= inicio_dt:
-                messagebox.showerror("Validacao", "Fim deve ser maior que o inicio.", parent=modal)
+            if fim_dt and fim_dt.date() < inicio_dt.date():
+                messagebox.showerror("Validacao", "A data de fim nao pode ser menor que a data de inicio.", parent=modal)
                 return
 
             categoria_valor = (categoria_ag_var.get() or "Todas categorias").strip() or "Todas categorias"
             descricao_valor = (descricao_ag_var.get() or "").strip()
-            emails = [str(var.get()).strip() for var in email_vars if str(var.get()).strip()]
-            telefones = [str(var.get()).strip() for var in telefone_vars if str(var.get()).strip()]
+            email_unico, emails = _single_destino(email_ag_var.get())
+            telefone_unico, telefones = _single_destino(telefone_ag_var.get())
             agora = datetime.now()
             executar_agora = bool(executar_ao_salvar_var.get())
+
+            if len(_split_destinos(email_ag_var.get())) > 1:
+                messagebox.showerror("Validacao", "Informe apenas 1 e-mail na rotina.", parent=modal)
+                return
+
+            if len(_split_destinos(telefone_ag_var.get())) > 1:
+                messagebox.showerror("Validacao", "Informe apenas 1 telefone na rotina.", parent=modal)
+                return
+
+            if bool(ativo_var.get()) and TWILIO_TRIAL_FORCE_ACTIVE_CONFIGS:
+                numero_forcado = _numero_destino_trial()
+                telefone_unico = numero_forcado
+                telefones = [numero_forcado]
 
             if schedule is None:
                 novo = {
@@ -2499,7 +2660,9 @@ def create_gui(categorias):
                     "interval_hours": int(ciclo_horas),
                     "categoria": categoria_valor,
                     "descricao": descricao_valor,
+                    "email": email_unico,
                     "emails": emails,
+                    "telefone": telefone_unico,
                     "phones": telefones,
                     "preco_minimo": preco_min,
                     "preco_maximo": preco_max,
@@ -2520,7 +2683,9 @@ def create_gui(categorias):
                 schedule["interval_hours"] = int(ciclo_horas)
                 schedule["categoria"] = categoria_valor
                 schedule["descricao"] = descricao_valor
+                schedule["email"] = email_unico
                 schedule["emails"] = emails
+                schedule["telefone"] = telefone_unico
                 schedule["phones"] = telefones
                 schedule["preco_minimo"] = preco_min
                 schedule["preco_maximo"] = preco_max
@@ -2653,6 +2818,12 @@ def create_gui(categorias):
 
             agora = datetime.now()
             link_map = {f"link{idx}": (urls[idx - 1] if idx - 1 < len(urls) else "") for idx in range(1, 6)}
+            ativo_alerta = bool(alert.get("active", True)) if alert else True
+
+            if ativo_alerta and TWILIO_TRIAL_FORCE_ACTIVE_CONFIGS:
+                numero_forcado = _numero_destino_trial()
+                telefone_unico = numero_forcado
+                telefones = [numero_forcado]
 
             if alert is None:
                 novo_alerta = {
@@ -2679,6 +2850,7 @@ def create_gui(categorias):
                     "dt_criacao": agora.isoformat(timespec="seconds"),
                     "last_notified_price": None,
                     "last_notified_at": None,
+                    "first_triggered_at": None,
                 }
                 alerts.append(novo_alerta)
                 status_var.set(f"Alerta '{nome}' criado.")
@@ -2701,6 +2873,9 @@ def create_gui(categorias):
                 alert["end_at"] = (agora + timedelta(days=ALERT_ACTIVE_DAYS_DEFAULT)).isoformat(timespec="seconds")
                 alert["last_check_at"] = None
                 alert["next_check_at"] = (agora + timedelta(hours=ALERT_INTERVAL_HOURS_FIXED)).isoformat(timespec="seconds")
+                alert["first_triggered_at"] = None
+                alert["last_notified_at"] = None
+                alert["last_notified_price"] = None
                 status_var.set(f"Alerta '{nome}' atualizado.")
                 alert_ref = alert
 
@@ -2790,8 +2965,15 @@ def create_gui(categorias):
                 return
             item["active"] = not bool(item.get("active", True))
             if tipo == "alerta":
+                item["first_triggered_at"] = None
+                item["last_notified_at"] = None
+                item["last_notified_price"] = None
+                if bool(item.get("active", True)) and TWILIO_TRIAL_FORCE_ACTIVE_CONFIGS:
+                    _aplicar_destino_whatsapp_trial_em_cfg(item)
                 persist_alerts()
             elif tipo == "campanha":
+                if bool(item.get("active", True)) and TWILIO_TRIAL_FORCE_ACTIVE_CONFIGS:
+                    _aplicar_destino_whatsapp_trial_em_cfg(item)
                 persist_hub_schedules()
             _refresh_hub_schedules_grid()
             return
@@ -2867,6 +3049,7 @@ def create_gui(categorias):
 
         due_schedule["last_run_at"] = agora.isoformat(timespec="seconds")
         due_schedule["next_run_at"] = (agora + timedelta(hours=max(1, int(due_schedule.get("interval_hours", 1))))).isoformat(timespec="seconds")
+
         persist_hub_schedules()
         _refresh_hub_schedules_grid()
 
@@ -2877,6 +3060,7 @@ def create_gui(categorias):
     _save_sheets_alerts_config(SHEETS_ALERTS_CONFIG_FILE, sheets_alerts_config)
     _padronizar_formato_ids_configuracoes()
     _normalizar_alertas_schema()
+    _forcar_whatsapp_trial_nas_configs_ativas()
     _normalizar_proximas_execucoes()
     _refresh_hub_schedules_grid()
     _iniciar_log_alertas()
@@ -3040,6 +3224,17 @@ def create_gui(categorias):
     def _alert_due(alert, now):
         if not alert.get("active", True):
             return False
+
+        first_triggered_at = _parse_iso_datetime(alert.get("first_triggered_at"))
+        if first_triggered_at is not None:
+            prazo_execucao = first_triggered_at + timedelta(days=ALERT_EXECUTION_DAYS_AFTER_FIRST_TRIGGER)
+            if now > prazo_execucao:
+                alert["active"] = False
+                _escrever_log_alerta(
+                    f"Alerta {alert.get('id', '-')} desativado: janela de execucao de {ALERT_EXECUTION_DAYS_AFTER_FIRST_TRIGGER} dias apos primeiro disparo foi encerrada."
+                )
+                persist_alerts()
+                return False
 
         fim = _parse_iso_datetime(alert.get("end_at"))
         if fim and now > fim:
@@ -3285,11 +3480,29 @@ def create_gui(categorias):
 
             price = result["price"]
             last_notified_at = _parse_iso_datetime(alert.get("last_notified_at"))
+            last_notified_price = None
+            try:
+                if alert.get("last_notified_price") is not None:
+                    last_notified_price = float(alert.get("last_notified_price"))
+            except Exception:
+                last_notified_price = None
+
             if last_notified_at is not None and last_notified_at.date() == datetime.now().date():
+                # Reenvia no mesmo dia somente se o preco caiu ainda mais.
+                if last_notified_price is None or price >= last_notified_price:
+                    _escrever_log_alerta(
+                        f"Alerta {alert.get('id', '-')} sem novo envio (mesmo dia e sem queda adicional de preco)."
+                    )
+                    continue
                 _escrever_log_alerta(
-                    f"Alerta {alert.get('id', '-')} sem novo envio (limite diario ja atingido em {last_notified_at.strftime('%d/%m %H:%M')})."
+                    f"Alerta {alert.get('id', '-')} com reenvio no mesmo dia por nova queda de preco ({last_notified_price:.2f} -> {price:.2f})."
                 )
-                continue
+
+            if not alert.get("first_triggered_at"):
+                alert["first_triggered_at"] = datetime.now().isoformat(timespec="seconds")
+                _escrever_log_alerta(
+                    f"Alerta {alert.get('id', '-')} marcou primeiro disparo em {alert['first_triggered_at']}."
+                )
 
             alert["last_notified_price"] = price
             alert["last_notified_at"] = datetime.now().isoformat(timespec="seconds")
