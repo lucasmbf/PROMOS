@@ -1,0 +1,25 @@
+[
+  {
+    "id": "000015",
+    "name": "Produtos de Tênis",
+    "active": false,
+    "start_at": "2026-05-25T00:00",
+    "end_at": "2026-06-27T23:59",
+    "interval_hours": 23,
+    "categoria": "Esportes e Fitness",
+    "descricao": "Raqueteira",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": 200.0,
+    "preco_maximo": 500.0,
+    "desconto_minimo": 20,
+    "limite_candidatos": 10,
+    "last_run_at": "2026-05-25T22:49:35",
+    "configured_at": "2026-05-24T22:01:45",
+    "next_run_at": "2026-05-26T21:49:35"
+  }
+]

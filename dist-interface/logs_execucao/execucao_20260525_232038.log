@@ -1,0 +1,34 @@
+=== Inicio da execucao: 2026-05-25T23:20:38 ===
+Args: --produto-por-html --descricao-produto bola de tenis --preco-minimo 30.0 --preco-maximo 150.0 --desconto-minimo 15 --limite-candidatos 20 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/bola-de-tenis
+
+[Pesquisa inicial] Página 2: https://lista.mercadolivre.com.br/bola-de-tenis_Desde_51
+
+[Pesquisa inicial] Página 3: https://lista.mercadolivre.com.br/bola-de-tenis_Desde_101
+
+[Pesquisa inicial] Página 4: https://lista.mercadolivre.com.br/bola-de-tenis_Desde_151
+
+[Pesquisa inicial] Página 5: https://lista.mercadolivre.com.br/bola-de-tenis_Desde_201
+✓ Link de afiliado: https://meli.la/2FUAxHo
+✓ Link de afiliado: https://meli.la/2FUAxHo
+✓ Link de afiliado: https://meli.la/2dWs92k
+✓ Link de afiliado: https://meli.la/2dWs92k
+✓ Link de afiliado: https://meli.la/2By1fWx
+✓ Link de afiliado: https://meli.la/2vbLzWe
+✓ Link de afiliado: https://meli.la/13kusEU
+✓ Link de afiliado: https://meli.la/2hbrWLf
+✓ Link de afiliado: https://meli.la/1awUbT4
+✓ Link de afiliado: https://meli.la/1o3wMCo
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-05-25T23:22:56 ===

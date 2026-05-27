@@ -1,0 +1,142 @@
+=== Inicio do log de alertas: 2026-05-27T19:26:16 ===
+[2026-05-27 19:27:16] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-27 19:27:16] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-27 19:27:16] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-27 19:27:16] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-27 19:27:16] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-27 19:27:16] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-27 19:27:16] Alerta 000016 enfileirado (scheduler) - nome: Desitin roxa.
+[2026-05-27 19:27:16] Alerta 000017 enfileirado (scheduler) - nome: Poste de aço modular de jardim.
+[2026-05-27 19:27:16] Alerta 000018 enfileirado (scheduler) - nome: Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt.
+[2026-05-27 19:27:16] Alerta 000019 enfileirado (scheduler) - nome: Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458.
+[2026-05-27 19:27:16] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-05-27 19:27:16] Iniciando execucao do alerta 000006.
+[2026-05-27 19:27:22] Alerta 000006 checado: triggered=False preco=2449.9 alvo=2100.0
+[2026-05-27 19:27:22] Alerta 000006 sem disparo nesta execucao.
+[2026-05-27 19:27:22] Execucao finalizada sem disparos.
+[2026-05-27 19:27:22] Finalizada execucao do alerta 000006.
+[2026-05-27 19:27:22] Iniciando execucao do alerta 000010.
+[2026-05-27 19:27:28] Alerta 000010 checado: triggered=False preco=143.89 alvo=135.0
+[2026-05-27 19:27:28] Alerta 000010 sem disparo nesta execucao.
+[2026-05-27 19:27:28] Execucao finalizada sem disparos.
+[2026-05-27 19:27:28] Finalizada execucao do alerta 000010.
+[2026-05-27 19:27:28] Iniciando execucao do alerta 000011.
+[2026-05-27 19:27:33] Alerta 000011 checado: triggered=False preco=24.22 alvo=22.0
+[2026-05-27 19:27:33] Alerta 000011 sem disparo nesta execucao.
+[2026-05-27 19:27:33] Execucao finalizada sem disparos.
+[2026-05-27 19:27:33] Finalizada execucao do alerta 000011.
+[2026-05-27 19:27:33] Iniciando execucao do alerta 000012.
+[2026-05-27 19:27:39] Alerta 000012 checado: triggered=False preco=25.0 alvo=23.0
+[2026-05-27 19:27:39] Alerta 000012 sem disparo nesta execucao.
+[2026-05-27 19:27:39] Execucao finalizada sem disparos.
+[2026-05-27 19:27:39] Finalizada execucao do alerta 000012.
+[2026-05-27 19:27:39] Iniciando execucao do alerta 000013.
+[2026-05-27 19:27:45] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-27 19:27:45] Alerta 000013 sem disparo nesta execucao.
+[2026-05-27 19:27:45] Execucao finalizada sem disparos.
+[2026-05-27 19:27:45] Finalizada execucao do alerta 000013.
+[2026-05-27 19:27:45] Iniciando execucao do alerta 000014.
+[2026-05-27 19:27:52] Alerta 000014 checado: triggered=False preco=781.51 alvo=700.0
+[2026-05-27 19:27:52] Alerta 000014 sem disparo nesta execucao.
+[2026-05-27 19:27:52] Execucao finalizada sem disparos.
+[2026-05-27 19:27:52] Finalizada execucao do alerta 000014.
+[2026-05-27 19:27:53] Iniciando execucao do alerta 000016.
+[2026-05-27 19:28:08] Alerta 000016 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-27 19:28:08] Alerta 000016 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-27 19:28:08] Execucao finalizada sem disparos.
+[2026-05-27 19:28:08] Finalizada execucao do alerta 000016.
+[2026-05-27 19:28:09] Iniciando execucao do alerta 000017.
+[2026-05-27 19:28:16] Alerta 000017 checado: triggered=False preco=1071.15 alvo=1000.0
+[2026-05-27 19:28:16] Alerta 000017 sem disparo nesta execucao.
+[2026-05-27 19:28:16] Execucao finalizada sem disparos.
+[2026-05-27 19:28:16] Finalizada execucao do alerta 000017.
+[2026-05-27 19:28:16] Iniciando execucao do alerta 000018.
+[2026-05-27 19:28:16] Alerta 000018 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-27 19:28:16] Alerta 000019 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-27 19:28:16] Alerta 000020 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-27 19:28:24] Alerta 000018 checado: triggered=False preco=187.2 alvo=185.0
+[2026-05-27 19:28:24] Alerta 000018 sem disparo nesta execucao.
+[2026-05-27 19:28:24] Execucao finalizada sem disparos.
+[2026-05-27 19:28:24] Finalizada execucao do alerta 000018.
+[2026-05-27 19:28:24] Iniciando execucao do alerta 000019.
+[2026-05-27 19:28:30] Alerta 000019 checado: triggered=True preco=599.0 alvo=700.0
+[2026-05-27 19:28:30] Notificacao alerta 000019: email=sem destinos; whatsapp=1 envio(s) destinos=***3269 sid=SMd0249581d029b7287dbff5b943c855a5.
+[2026-05-27 19:28:39] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-27 19:28:39] Finalizada execucao do alerta 000019.
+[2026-05-27 19:28:39] Iniciando execucao do alerta 000020.
+[2026-05-27 19:28:45] Alerta 000020 checado: triggered=True preco=250.11 alvo=300.0
+[2026-05-27 19:28:45] Notificacao alerta 000020: email=sem destinos; whatsapp=1 envio(s) destinos=***3269 sid=SMedb48d2421f05dff3f1bcc68fdf3d519.
+[2026-05-27 19:28:49] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-27 19:28:49] Finalizada execucao do alerta 000020.
+[2026-05-27 19:30:25] Alerta 000013 enfileirado (manual) - nome: Fralda.
+[2026-05-27 19:30:25] Iniciando execucao do alerta 000013.
+[2026-05-27 19:30:30] Alerta 000019 enfileirado (manual) - nome: Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458.
+[2026-05-27 19:30:31] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-27 19:30:31] Alerta 000013 sem disparo nesta execucao.
+[2026-05-27 19:30:31] Execucao finalizada sem disparos.
+[2026-05-27 19:30:31] Finalizada execucao do alerta 000013.
+[2026-05-27 19:30:31] Iniciando execucao do alerta 000019.
+[2026-05-27 19:30:33] Alerta 000020 enfileirado (manual) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-05-27 19:30:38] Alerta 000019 checado: triggered=True preco=599.0 alvo=700.0
+[2026-05-27 19:30:38] Alerta 000019 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-27 19:30:38] Execucao finalizada sem disparos.
+[2026-05-27 19:30:38] Finalizada execucao do alerta 000019.
+[2026-05-27 19:30:38] Iniciando execucao do alerta 000020.
+[2026-05-27 19:30:43] Alerta 000020 checado: triggered=True preco=250.11 alvo=300.0
+[2026-05-27 19:30:43] Alerta 000020 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-27 19:30:43] Execucao finalizada sem disparos.
+[2026-05-27 19:30:43] Finalizada execucao do alerta 000020.
+[2026-05-27 20:28:17] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-27 20:28:17] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-27 20:28:17] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-27 20:28:17] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-27 20:28:17] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-27 20:28:17] Alerta 000016 enfileirado (scheduler) - nome: Desitin roxa.
+[2026-05-27 20:28:17] Alerta 000017 enfileirado (scheduler) - nome: Poste de aço modular de jardim.
+[2026-05-27 20:28:17] Iniciando execucao do alerta 000006.
+[2026-05-27 20:28:22] Alerta 000006 checado: triggered=False preco=2449.9 alvo=2100.0
+[2026-05-27 20:28:22] Alerta 000006 sem disparo nesta execucao.
+[2026-05-27 20:28:22] Execucao finalizada sem disparos.
+[2026-05-27 20:28:22] Finalizada execucao do alerta 000006.
+[2026-05-27 20:28:22] Iniciando execucao do alerta 000010.
+[2026-05-27 20:28:28] Alerta 000010 checado: triggered=False preco=143.89 alvo=135.0
+[2026-05-27 20:28:28] Alerta 000010 sem disparo nesta execucao.
+[2026-05-27 20:28:28] Execucao finalizada sem disparos.
+[2026-05-27 20:28:28] Finalizada execucao do alerta 000010.
+[2026-05-27 20:28:28] Iniciando execucao do alerta 000011.
+[2026-05-27 20:28:33] Alerta 000011 checado: triggered=False preco=24.22 alvo=22.0
+[2026-05-27 20:28:33] Alerta 000011 sem disparo nesta execucao.
+[2026-05-27 20:28:33] Execucao finalizada sem disparos.
+[2026-05-27 20:28:33] Finalizada execucao do alerta 000011.
+[2026-05-27 20:28:33] Iniciando execucao do alerta 000012.
+[2026-05-27 20:28:40] Alerta 000012 checado: triggered=False preco=25.0 alvo=23.0
+[2026-05-27 20:28:40] Alerta 000012 sem disparo nesta execucao.
+[2026-05-27 20:28:40] Execucao finalizada sem disparos.
+[2026-05-27 20:28:40] Finalizada execucao do alerta 000012.
+[2026-05-27 20:28:40] Iniciando execucao do alerta 000014.
+[2026-05-27 20:28:46] Alerta 000014 checado: triggered=False preco=781.51 alvo=700.0
+[2026-05-27 20:28:46] Alerta 000014 sem disparo nesta execucao.
+[2026-05-27 20:28:46] Execucao finalizada sem disparos.
+[2026-05-27 20:28:46] Finalizada execucao do alerta 000014.
+[2026-05-27 20:28:46] Iniciando execucao do alerta 000016.
+[2026-05-27 20:29:02] Alerta 000016 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-27 20:29:02] Alerta 000016 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-27 20:29:02] Execucao finalizada sem disparos.
+[2026-05-27 20:29:02] Finalizada execucao do alerta 000016.
+[2026-05-27 20:29:02] Iniciando execucao do alerta 000017.
+[2026-05-27 20:29:09] Alerta 000017 checado: triggered=False preco=1071.15 alvo=1000.0
+[2026-05-27 20:29:09] Alerta 000017 sem disparo nesta execucao.
+[2026-05-27 20:29:09] Execucao finalizada sem disparos.
+[2026-05-27 20:29:09] Finalizada execucao do alerta 000017.
+[2026-05-27 20:29:17] Alerta 000018 enfileirado (scheduler) - nome: Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt.
+[2026-05-27 20:29:17] Iniciando execucao do alerta 000018.
+[2026-05-27 20:29:24] Alerta 000018 checado: triggered=False preco=187.2 alvo=185.0
+[2026-05-27 20:29:24] Alerta 000018 sem disparo nesta execucao.
+[2026-05-27 20:29:24] Execucao finalizada sem disparos.
+[2026-05-27 20:29:24] Finalizada execucao do alerta 000018.
+[2026-05-27 20:33:43] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-27 20:33:43] Iniciando execucao do alerta 000013.
+[2026-05-27 20:33:50] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-27 20:33:50] Alerta 000013 sem disparo nesta execucao.
+[2026-05-27 20:33:50] Execucao finalizada sem disparos.
+[2026-05-27 20:33:50] Finalizada execucao do alerta 000013.

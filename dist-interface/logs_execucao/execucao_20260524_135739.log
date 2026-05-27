@@ -1,0 +1,77 @@
+=== Inicio da execucao: 2026-05-24T13:57:39 ===
+Args: --somente-relampago --categoria Bebês --preco-minimo 69.0 --preco-maximo 85.0 --limite-candidatos 15 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+
+Abrindo ofertas relâmpago para localizar a categoria lateral: Bebês
+Categoria lateral clicada diretamente na página: Bebês
+Limpeza de HTML relâmpago: 7 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?category=MLB1384&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_135818_435526_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_135818_435526_01.txt
+48 oferta(s) com 0% ou mais de desconto extraída(s) do JSON.
+Página atual trouxe 4/10 oferta(s) válida(s). Coletando página 2/5.
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?category=MLB1384&promotion_type=lightning&page=2
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_135840_164747_02.txt
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_135818_435526_01.txt
+48 oferta(s) com 0% ou mais de desconto extraída(s) do JSON.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_135840_164747_02.txt
+48 oferta(s) com 0% ou mais de desconto extraída(s) do JSON.
+Página atual trouxe 8/10 oferta(s) válida(s). Coletando página 3/5.
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?category=MLB1384&promotion_type=lightning&page=3
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_135900_593228_03.txt
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_135818_435526_01.txt
+48 oferta(s) com 0% ou mais de desconto extraída(s) do JSON.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_135840_164747_02.txt
+48 oferta(s) com 0% ou mais de desconto extraída(s) do JSON.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_135900_593228_03.txt
+48 oferta(s) com 0% ou mais de desconto extraída(s) do JSON.
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_consolidado_20260524_135900.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/26F6m4n
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1LnUAkq
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2KehgoW
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1jELGpA
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2SLepxW
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1RVrwit
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1EcXk6q
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/11edjtP
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2S4q2sL
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/13pWRe5
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\metadados_coleta\metadados_relampago_exec_0044_20260524_140042.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-05-24T14:00:43 ===

@@ -1,0 +1,32 @@
+=== Inicio da execucao: 2026-05-26T20:49:50 ===
+Args: --produto-por-html --descricao-produto Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w --preco-minimo 160.0 --preco-maximo 180.0 --limite-candidatos 10 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/Kit-Trilho-Eletrificado-2%2C5m-%2B-5-Spot-Led-10w
+
+[Pesquisa inicial] Página 2: https://lista.mercadolivre.com.br/Kit-Trilho-Eletrificado-2%2C5m-%2B-5-Spot-Led-10w_Desde_51
+
+[Pesquisa inicial] Página 3: https://lista.mercadolivre.com.br/Kit-Trilho-Eletrificado-2%2C5m-%2B-5-Spot-Led-10w_Desde_101
+
+[Pesquisa inicial] Página 4: https://lista.mercadolivre.com.br/Kit-Trilho-Eletrificado-2%2C5m-%2B-5-Spot-Led-10w_Desde_151
+✓ Link de afiliado: https://meli.la/2MQ99oZ
+✓ Link de afiliado: https://meli.la/2pjX1cC
+✓ Link de afiliado: https://meli.la/2NMD4wA
+✓ Link de afiliado: https://meli.la/1gRAE4g
+✓ Link de afiliado: https://meli.la/16dvVse
+✓ Link de afiliado: https://meli.la/26RhU4q
+✓ Link de afiliado: https://meli.la/1ehyDJU
+✓ Link de afiliado: https://meli.la/1LWj7EE
+✓ Link de afiliado: https://meli.la/167UWyw
+✓ Link de afiliado: https://meli.la/33ecUE1
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-05-26T20:51:55 ===

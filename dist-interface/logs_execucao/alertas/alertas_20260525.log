@@ -1,0 +1,113 @@
+=== Inicio do log de alertas: 2026-05-25T22:48:35 ===
+[2026-05-25 22:49:35] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-25 22:49:35] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-25 22:49:35] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-25 22:49:35] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-25 22:49:35] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-25 22:49:35] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-25 22:49:35] Alerta 000016 enfileirado (scheduler) - nome: Desitin roxa.
+[2026-05-25 22:49:35] Iniciando execucao do alerta 000006.
+[2026-05-25 22:49:37] Alerta 000006 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:37] Alerta 000006 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:37] Execucao finalizada sem disparos.
+[2026-05-25 22:49:37] Finalizada execucao do alerta 000006.
+[2026-05-25 22:49:37] Iniciando execucao do alerta 000010.
+[2026-05-25 22:49:39] Alerta 000010 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:39] Alerta 000010 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:39] Execucao finalizada sem disparos.
+[2026-05-25 22:49:39] Finalizada execucao do alerta 000010.
+[2026-05-25 22:49:39] Iniciando execucao do alerta 000011.
+[2026-05-25 22:49:42] Alerta 000011 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:42] Alerta 000011 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:42] Execucao finalizada sem disparos.
+[2026-05-25 22:49:42] Finalizada execucao do alerta 000011.
+[2026-05-25 22:49:42] Iniciando execucao do alerta 000012.
+[2026-05-25 22:49:44] Alerta 000012 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:44] Alerta 000012 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:44] Execucao finalizada sem disparos.
+[2026-05-25 22:49:44] Finalizada execucao do alerta 000012.
+[2026-05-25 22:49:44] Iniciando execucao do alerta 000013.
+[2026-05-25 22:49:47] Alerta 000013 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:47] Alerta 000013 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:47] Execucao finalizada sem disparos.
+[2026-05-25 22:49:47] Finalizada execucao do alerta 000013.
+[2026-05-25 22:49:47] Iniciando execucao do alerta 000014.
+[2026-05-25 22:49:50] Alerta 000014 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:50] Alerta 000014 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:50] Execucao finalizada sem disparos.
+[2026-05-25 22:49:50] Finalizada execucao do alerta 000014.
+[2026-05-25 22:49:50] Iniciando execucao do alerta 000016.
+[2026-05-25 22:49:52] Alerta 000016 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:52] Alerta 000016 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-25 22:49:52] Execucao finalizada sem disparos.
+[2026-05-25 22:49:52] Finalizada execucao do alerta 000016.
+[2026-05-25 22:50:38] Alerta 000017 enfileirado (manual) - nome: Poste de aço modular de jardim.
+[2026-05-25 22:50:38] Iniciando execucao do alerta 000017.
+[2026-05-25 22:50:40] Alerta 000017 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-25 22:50:40] Alerta 000017 falhou: Descricao nao bateu com o titulo.
+[2026-05-25 22:50:40] Execucao finalizada sem disparos.
+[2026-05-25 22:50:40] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-25 22:50:40] Finalizada execucao do alerta 000017.
+[2026-05-25 22:51:46] Alerta 000017 enfileirado (manual) - nome: Poste de aço modular de jardim.
+[2026-05-25 22:51:46] Iniciando execucao do alerta 000017.
+[2026-05-25 22:51:48] Alerta 000017 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-25 22:51:48] Alerta 000017 falhou: Descricao nao bateu com o titulo.
+[2026-05-25 22:51:48] Execucao finalizada sem disparos.
+[2026-05-25 22:51:48] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-25 22:51:48] Finalizada execucao do alerta 000017.
+[2026-05-25 22:52:14] Alerta 000017 enfileirado (manual) - nome: Poste de aço modular de jardim.
+[2026-05-25 22:52:14] Iniciando execucao do alerta 000017.
+[2026-05-25 22:52:16] Alerta 000017 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-25 22:52:16] Alerta 000017 falhou: Descricao nao bateu com o titulo.
+[2026-05-25 22:52:16] Execucao finalizada sem disparos.
+[2026-05-25 22:52:16] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-25 22:52:16] Finalizada execucao do alerta 000017.
+[2026-05-25 22:53:33] Alerta 000017 enfileirado (manual) - nome: Poste de aço modular de jardim.
+[2026-05-25 22:53:33] Iniciando execucao do alerta 000017.
+[2026-05-25 22:53:40] Alerta 000017 checado: triggered=False preco=1071.15 alvo=1000.0
+[2026-05-25 22:53:40] Alerta 000017 sem disparo nesta execucao.
+[2026-05-25 22:53:40] Execucao finalizada sem disparos.
+[2026-05-25 22:53:40] Finalizada execucao do alerta 000017.
+[2026-05-25 23:15:19] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-25 23:15:19] Iniciando execucao do alerta 000006.
+[2026-05-25 23:15:26] Alerta 000006 checado: triggered=False preco=2499.9 alvo=2100.0
+[2026-05-25 23:15:26] Alerta 000006 sem disparo nesta execucao.
+[2026-05-25 23:15:26] Execucao finalizada sem disparos.
+[2026-05-25 23:15:26] Finalizada execucao do alerta 000006.
+[2026-05-25 23:50:36] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-25 23:50:36] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-25 23:50:36] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-25 23:50:36] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-25 23:50:36] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-25 23:50:36] Alerta 000016 enfileirado (scheduler) - nome: Desitin roxa.
+[2026-05-25 23:50:36] Iniciando execucao do alerta 000010.
+[2026-05-25 23:50:42] Alerta 000010 checado: triggered=False preco=143.89 alvo=135.0
+[2026-05-25 23:50:42] Alerta 000010 sem disparo nesta execucao.
+[2026-05-25 23:50:42] Execucao finalizada sem disparos.
+[2026-05-25 23:50:42] Finalizada execucao do alerta 000010.
+[2026-05-25 23:50:42] Iniciando execucao do alerta 000011.
+[2026-05-25 23:50:48] Alerta 000011 checado: triggered=False preco=24.22 alvo=22.0
+[2026-05-25 23:50:48] Alerta 000011 sem disparo nesta execucao.
+[2026-05-25 23:50:48] Execucao finalizada sem disparos.
+[2026-05-25 23:50:48] Finalizada execucao do alerta 000011.
+[2026-05-25 23:50:48] Iniciando execucao do alerta 000012.
+[2026-05-25 23:50:54] Alerta 000012 checado: triggered=False preco=25.0 alvo=23.0
+[2026-05-25 23:50:54] Alerta 000012 sem disparo nesta execucao.
+[2026-05-25 23:50:54] Execucao finalizada sem disparos.
+[2026-05-25 23:50:54] Finalizada execucao do alerta 000012.
+[2026-05-25 23:50:54] Iniciando execucao do alerta 000013.
+[2026-05-25 23:51:01] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-25 23:51:01] Alerta 000013 sem disparo nesta execucao.
+[2026-05-25 23:51:01] Execucao finalizada sem disparos.
+[2026-05-25 23:51:01] Finalizada execucao do alerta 000013.
+[2026-05-25 23:51:01] Iniciando execucao do alerta 000014.
+[2026-05-25 23:51:07] Alerta 000014 checado: triggered=True preco=781.51 alvo=782.0
+[2026-05-25 23:51:08] Notificacao alerta 000014: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM04d212c854f038c3d292500e4f09c856.
+[2026-05-25 23:51:15] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-25 23:51:15] Finalizada execucao do alerta 000014.
+[2026-05-25 23:51:15] Iniciando execucao do alerta 000016.
+[2026-05-25 23:51:20] Alerta 000016 checado: triggered=True preco=59.0 alvo=175.0
+[2026-05-25 23:51:20] Alerta 000016 marcou primeiro disparo em 2026-05-25T23:51:20.
+[2026-05-25 23:51:21] Notificacao alerta 000016: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM05e8c7fdcbfaa86d23d4d0f1ace94280.
+[2026-05-25 23:51:29] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-25 23:51:29] Finalizada execucao do alerta 000016.

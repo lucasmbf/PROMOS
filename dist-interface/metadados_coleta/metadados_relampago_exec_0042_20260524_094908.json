@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 42,
+  "gerado_em": "2026-05-24T09:49:08",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": null,
+    "desconto_minimo": 22,
+    "preco_minimo": 110.0,
+    "preco_maximo": 112.0,
+    "limite_candidatos": 6,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB6433764780",
+      "descricao": "Tênis Feminino Nyx Olympikus Cinza Lisa 39",
+      "categoria": "Calçados > Tênis",
+      "antes": "R$ 189,99",
+      "depois": "R$ 110,69",
+      "desconto": "41% OFF",
+      "link": "https://meli.la/17oprxy",
+      "link_original": "https://www.mercadolivre.com.br/tenis-feminino-nyx-olympikus/up/MLBU3297028304?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=5f93e4be-f68e-4cd0-99c4-a8f9930da6f5&tracking_id=7a9c6326-9071-4865-84cf-93e2bef7fa86&wid=MLB6433764780&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/tenis-feminino-nyx-olympikus/up/MLBU3297028304?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=5f93e4be-f68e-4cd0-99c4-a8f9930da6f5&tracking_id=7a9c6326-9071-4865-84cf-93e2bef7fa86&wid=MLB6433764780&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning&page=4",
+      "pagina_origem_numero": 4,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260524_094748_962193_04.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

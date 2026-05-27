@@ -1,0 +1,79 @@
+=== Inicio da execucao: 2026-05-24T16:41:44 ===
+Args: --somente-relampago --categoria Alimentos e Bebidas --preco-minimo 20.0 --preco-maximo 85.0 --desconto-minimo 50 --limite-candidatos 10 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+
+Abrindo ofertas relâmpago para localizar a categoria lateral: Alimentos e Bebidas
+Categoria lateral clicada diretamente na página: Alimentos e Bebidas
+Limpeza de HTML relâmpago: 4 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?category=MLB1403&promotion_type=lightning#filter_applied=category&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_164226_011844_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_164226_011844_01.txt
+5 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5416368214 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4263902245 marcado como anuncio_inedito=false no histórico.
+Página atual trouxe 3/10 oferta(s) válida(s). Coletando página 2/3.
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?category=MLB1403&promotion_type=lightning&page=2
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_164248_088284_02.txt
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_164226_011844_01.txt
+5 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5416368214 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4263902245 marcado como anuncio_inedito=false no histórico.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_164248_088284_02.txt
+6 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+Página atual trouxe 7/10 oferta(s) válida(s). Coletando página 3/3.
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?category=MLB1403&promotion_type=lightning&page=3
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_164308_584199_03.txt
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_164226_011844_01.txt
+5 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5416368214 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4263902245 marcado como anuncio_inedito=false no histórico.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_164248_088284_02.txt
+6 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_20260524_164308_584199_03.txt
+0 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+0 card(s) encontrado(s) no HTML.
+0 oferta(s) extraída(s) do HTML.
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\ofertas_relampago\html\html_relampago_consolidado_20260524_164308.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2snsNBE
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2ANo9QX
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1yjnSQr
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/12JvqjK
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2aAG1V8
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1wJV23f
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1RANs3w
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\metadados_coleta\metadados_relampago_exec_0045_20260524_164420.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+7 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-05-24T16:44:20 ===

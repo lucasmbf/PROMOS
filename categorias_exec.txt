@@ -1,6 +1,22 @@
 # Formato: slug|Categoria
 # slug: usado no nome do executavel (somente a-z, 0-9, _ e -)
 # Categoria: texto EXATO do filtro no Mercado Livre
+#
+#
+# Formato recomendado para preenchimento:
+# slug|Categoria|ID_categoria|slug_url
+# Exemplo:
+# acessorios_banhos|Acessórios para banhos|MLB1616|casa-moveis-decoracao/banheiros/acessorios-banheiros
+#
+# Para montar o link:
+# https://lista.mercadolivre.com.br/[slug_url]/#CATEGORY_ID=[ID_categoria]
+#
+# Exemplos reais:
+# acessorios_banhos|Acessórios para banhos|MLB1616|casa-moveis-decoracao/banheiros/acessorios-banheiros
+# moveis_sala|Móveis para Sala|MLB1787|casa-moveis-decoracao/moveis/moveis-sala
+# celulares|Celulares e Smartphones|MLB1055|celulares-telefonia/celulares-smartphones
+# informatica|Informática|MLB1648|informatica-acessorios
+#
 
 acessorios_veiculos|Acessórios para Veículos
 games|Games

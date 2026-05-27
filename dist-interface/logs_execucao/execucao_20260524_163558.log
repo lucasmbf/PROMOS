@@ -1,0 +1,24 @@
+=== Inicio da execucao: 2026-05-24T16:35:58 ===
+Args: --produto-por-html --categoria Alimentos e Bebidas --descricao-produto Capsula --preco-minimo 30.0 --preco-maximo 70.0 --desconto-minimo 40 --limite-candidatos 5 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+Categoria resolvida pela home: Alimentos e Bebidas → https://www.mercadolivre.com.br/c/alimentos-e-bebidas#c_id=/home/categories/element&c_category_id=MLB1403&c_uid=d5fb6741-633d-4745-9371-47162240964d
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/c/alimentos-e-bebidas/Capsula
+
+[Pesquisa inicial] Página 2: https://lista.mercadolivre.com.br/c/alimentos-e-bebidas/Capsula_Desde_51
+
+[Pesquisa inicial] Página 3: https://lista.mercadolivre.com.br/c/alimentos-e-bebidas/Capsula_Desde_101
+
+[Pesquisa inicial] Página 4: https://lista.mercadolivre.com.br/c/alimentos-e-bebidas/Capsula_Desde_151
+
+[Pesquisa inicial] Página 5: https://lista.mercadolivre.com.br/c/alimentos-e-bebidas/Capsula_Desde_201
+✓ Link de afiliado: https://meli.la/2PzAQ1a
+✓ Link de afiliado: https://meli.la/1RNb8Ug
+✓ Link de afiliado: https://meli.la/1tPvJbJ
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-05-24T16:37:11 ===

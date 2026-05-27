@@ -1,111 +1,5 @@
 [
   {
-    "id": "000001",
-    "name": "Switch",
-    "mode": "url",
-    "target_price": 5200.0,
-    "precoDesejado": 5200.0,
-    "interval_hours": 1,
-    "urls": [
-      "https://www.mercadolivre.com.br/console-nintendo-switch-2-mario-kart-world-bundle-preto/p/MLB65522892?pdp_filters=item_id%3AMLB4640945655"
-    ],
-    "link1": "https://www.mercadolivre.com.br/console-nintendo-switch-2-mario-kart-world-bundle-preto/p/MLB65522892?pdp_filters=item_id%3AMLB4640945655",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "email": "lucasmbfonseca@gmail.com",
-    "emails": [
-      "lucasmbfonseca@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "description": "nintendo switch 2",
-    "descricao": "nintendo switch 2",
-    "active": true,
-    "agendado": true,
-    "last_check_at": "2026-05-24T09:14:28",
-    "next_check_at": "2026-05-24T10:14:28",
-    "configured_at": "2026-05-23T23:38:05",
-    "dt_criacao": "2026-05-23T23:38:05",
-    "last_notified_price": 5100.0,
-    "end_at": "2026-06-22T23:38:05",
-    "last_notified_at": "2026-05-24T02:08:07",
-    "first_triggered_at": null
-  },
-  {
-    "id": "000002",
-    "name": "teste",
-    "mode": "url",
-    "target_price": 6000.0,
-    "precoDesejado": 6000.0,
-    "interval_hours": 1,
-    "urls": [
-      "https://www.mercadolivre.com.br/console-nintendo-switch-2-mario-kart-world-bundle-preto/p/MLB65522892?pdp_filters=item_id%3AMLB4640945655"
-    ],
-    "link1": "https://www.mercadolivre.com.br/console-nintendo-switch-2-mario-kart-world-bundle-preto/p/MLB65522892?pdp_filters=item_id%3AMLB4640945655",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "email": "lucasmbfonseca@gmail.com",
-    "emails": [
-      "lucasmbfonseca@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "description": "Switch 2",
-    "descricao": "Switch 2",
-    "active": true,
-    "agendado": true,
-    "last_check_at": "2026-05-24T08:56:28",
-    "next_check_at": "2026-05-24T09:56:28",
-    "configured_at": "2026-05-24T00:04:46",
-    "dt_criacao": "2026-05-24T00:04:46",
-    "last_notified_price": 5100.0,
-    "end_at": "2026-06-23T00:04:46",
-    "last_notified_at": "2026-05-24T01:50:09",
-    "first_triggered_at": null
-  },
-  {
-    "id": "000003",
-    "name": "switch 2",
-    "mode": "url",
-    "target_price": 7000.0,
-    "precoDesejado": 7000.0,
-    "interval_hours": 1,
-    "urls": [
-      "https://www.mercadolivre.com.br/console-nintendo-switch-2-mario-kart-world-bundle-preto/p/MLB65522892?pdp_filters=item_id%3AMLB4640945655"
-    ],
-    "link1": "https://www.mercadolivre.com.br/console-nintendo-switch-2-mario-kart-world-bundle-preto/p/MLB65522892?pdp_filters=item_id%3AMLB4640945655",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "email": "",
-    "emails": [],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "description": "switch 2",
-    "descricao": "switch 2",
-    "active": true,
-    "agendado": true,
-    "last_check_at": "2026-05-24T09:06:28",
-    "next_check_at": "2026-05-24T10:06:28",
-    "configured_at": "2026-05-24T00:26:09",
-    "dt_criacao": "2026-05-24T00:26:09",
-    "last_notified_price": 5100.0,
-    "end_at": "2026-06-23T00:26:09",
-    "last_notified_at": "2026-05-24T01:59:37",
-    "first_triggered_at": null
-  },
-  {
     "id": "000004",
     "name": "Caneca De Café Cerâmica Com Padrão De Pênis",
     "mode": "url",
@@ -200,8 +94,8 @@
     "descricao": "Cafeteira Elétrica Philips Walita Série 1200",
     "active": true,
     "agendado": true,
-    "last_check_at": "2026-05-24T08:39:23",
-    "next_check_at": "2026-05-24T09:39:23",
+    "last_check_at": "2026-05-27T20:28:22",
+    "next_check_at": "2026-05-27T21:28:22",
     "configured_at": "2026-05-24T01:32:31",
     "dt_criacao": "2026-05-24T01:31:05",
     "last_notified_price": null,
@@ -283,6 +177,376 @@
     "next_check_at": "2026-05-24T03:15:23",
     "configured_at": "2026-05-24T02:15:23",
     "end_at": "2026-06-23T02:15:23",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
+  },
+  {
+    "id": "000010",
+    "source": "planilha",
+    "sheet_row_number": 9,
+    "name": "Kit irrigação solar automática",
+    "description": "Kit irrigação solar automática",
+    "descricao": "Kit irrigação solar automática",
+    "mode": "url",
+    "target_price": 135.0,
+    "precoDesejado": 135.0,
+    "email": "lucasmbfonseca@gmail.com",
+    "emails": [
+      "lucasmbfonseca@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://www.mercadolivre.com.br/kit-irrigacao-solar-automatica-gotejamento-jardim-e-horta/up/MLBU3776311490?pdp_filters=item_id%3AMLB6221576096&matt_event_ts=1779627502242&matt_d2id=8f869339-b71f-468f-8ed1-e390e5af8718&matt_tracing_id=9c9c56c1-3e90-48df-a8bf-047e47164854#reco_backend=item_decorator&wid=MLB6221576096&reco_client=home_affiliate-profile&reco_item_pos=0&source=affiliate-profile&reco_backend_type=function&reco_id=dd5cf6f3-6b40-40a3-8edb-34fe60d42908&tracking_id=75a5ca7b-7ac3-4ba2-9f7b-3a051cb677dd&sid=recos&c_id=/home/card-featured/element&c_uid=b682e608-2875-4b19-a09a-fee366d4ceda",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/kit-irrigacao-solar-automatica-gotejamento-jardim-e-horta/up/MLBU3776311490?pdp_filters=item_id%3AMLB6221576096&matt_event_ts=1779627502242&matt_d2id=8f869339-b71f-468f-8ed1-e390e5af8718&matt_tracing_id=9c9c56c1-3e90-48df-a8bf-047e47164854#reco_backend=item_decorator&wid=MLB6221576096&reco_client=home_affiliate-profile&reco_item_pos=0&source=affiliate-profile&reco_backend_type=function&reco_id=dd5cf6f3-6b40-40a3-8edb-34fe60d42908&tracking_id=75a5ca7b-7ac3-4ba2-9f7b-3a051cb677dd&sid=recos&c_id=/home/card-featured/element&c_uid=b682e608-2875-4b19-a09a-fee366d4ceda"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-24T10:14:02",
+    "carimbo_data_hora": "24/05/2026 10:11:01",
+    "active": true,
+    "interval_hours": 1,
+    "last_check_at": "2026-05-27T20:28:28",
+    "next_check_at": "2026-05-27T21:28:28",
+    "configured_at": "2026-05-24T10:32:15",
+    "end_at": "2026-06-23T10:32:15",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
+  },
+  {
+    "id": "000011",
+    "name": "Resistência chuveiro 220",
+    "mode": "url",
+    "target_price": 22.0,
+    "precoDesejado": 22.0,
+    "interval_hours": 1,
+    "urls": [
+      "https://www.mercadolivre.com.br/resistencia-para-lorenzetti-advancede-e-top-jet-eletronica-2/up/MLBU3244658650?pdp_filters=pickup_state%3ATUxCUFNBT085N2E4#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=2&type=product&tracking_id=aae3ed03-10ec-4f7f-9127-942c7521360f&wid=MLB4096545621&sid=search"
+    ],
+    "link1": "https://www.mercadolivre.com.br/resistencia-para-lorenzetti-advancede-e-top-jet-eletronica-2/up/MLBU3244658650?pdp_filters=pickup_state%3ATUxCUFNBT085N2E4#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=2&type=product&tracking_id=aae3ed03-10ec-4f7f-9127-942c7521360f&wid=MLB4096545621&sid=search",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "description": "Resistência Para Lorenzetti Advanced",
+    "descricao": "Resistência Para Lorenzetti Advanced",
+    "active": true,
+    "agendado": true,
+    "last_check_at": "2026-05-27T20:28:33",
+    "next_check_at": "2026-05-27T21:28:33",
+    "configured_at": "2026-05-24T10:46:06",
+    "end_at": "2026-06-23T10:46:06",
+    "dt_criacao": "2026-05-24T10:43:14",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
+  },
+  {
+    "id": "000012",
+    "name": "Resistencia chuveiro 127",
+    "mode": "url",
+    "target_price": 23.0,
+    "precoDesejado": 23.0,
+    "interval_hours": 1,
+    "urls": [
+      "https://www.mercadolivre.com.br/resistencia-lorenzetti-advanced-eletronica-127v-5500w-oferta/up/MLBU3104880052#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=1c5e5ac6-606e-409a-ac13-5984724bf4ba&wid=MLB4017669997&sid=search"
+    ],
+    "link1": "https://www.mercadolivre.com.br/resistencia-lorenzetti-advanced-eletronica-127v-5500w-oferta/up/MLBU3104880052#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=1c5e5ac6-606e-409a-ac13-5984724bf4ba&wid=MLB4017669997&sid=search",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "description": "Resistencia Lorenzetti Advanced Eletrônica",
+    "descricao": "Resistencia Lorenzetti Advanced Eletrônica",
+    "active": true,
+    "agendado": true,
+    "last_check_at": "2026-05-27T20:28:40",
+    "next_check_at": "2026-05-27T21:28:40",
+    "configured_at": "2026-05-24T10:44:31",
+    "end_at": "2026-06-23T10:44:31",
+    "dt_criacao": "2026-05-24T10:44:31",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
+  },
+  {
+    "id": "000013",
+    "source": "planilha",
+    "sheet_row_number": 11,
+    "name": "Fralda",
+    "description": "Fralda",
+    "descricao": "Fralda",
+    "mode": "url",
+    "target_price": 70.0,
+    "precoDesejado": 70.0,
+    "email": "anaflaviablanco@gmail.com",
+    "emails": [
+      "anaflaviablanco@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://www.mercadolivre.com.br/p/MLB31641226?offer_type=BEST_PRICE&pdp_filters=item_id:MLB3588145449&matt_tool=38524122#origin=share&sid=share&wid=MLB3588145449&action=copy",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/p/MLB31641226?offer_type=BEST_PRICE&pdp_filters=item_id:MLB3588145449&matt_tool=38524122#origin=share&sid=share&wid=MLB3588145449&action=copy"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-24T11:19:18",
+    "carimbo_data_hora": "24/05/2026 11:16:09",
+    "active": true,
+    "interval_hours": 1,
+    "last_check_at": "2026-05-27T20:33:50",
+    "next_check_at": "2026-05-27T21:33:50",
+    "configured_at": "2026-05-24T16:40:58",
+    "end_at": "2026-06-23T16:40:58",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
+  },
+  {
+    "id": "000014",
+    "source": "planilha",
+    "sheet_row_number": 12,
+    "name": "Tênis Asics Gel-challenger 15 Clay Masculino",
+    "description": "Tênis Asics Gel-challenger 15 Clay Masculino",
+    "descricao": "Tênis Asics Gel-challenger 15 Clay Masculino",
+    "mode": "url",
+    "target_price": 700.0,
+    "precoDesejado": 700.0,
+    "email": "lucasmbfonseca@gmail.com",
+    "emails": [
+      "lucasmbfonseca@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://produto.mercadolivre.com.br/MLB-6233849072-tnis-asics-gel-challenger-15-clay-masculino-branco-oferta-_JM?searchVariation=196853686483&pdp_filters=discount%3A30-100#polycard_client=search-desktop&be_origin=backend&searchVariation=196853686483&search_layout=grid&position=34&type=item&tracking_id=64740d89-04a8-41ae-8548-1869f715d577",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://produto.mercadolivre.com.br/MLB-6233849072-tnis-asics-gel-challenger-15-clay-masculino-branco-oferta-_JM?searchVariation=196853686483&pdp_filters=discount%3A30-100#polycard_client=search-desktop&be_origin=backend&searchVariation=196853686483&search_layout=grid&position=34&type=item&tracking_id=64740d89-04a8-41ae-8548-1869f715d577"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-24T21:53:09",
+    "carimbo_data_hora": "24/05/2026 21:50:14",
+    "active": true,
+    "interval_hours": 1,
+    "last_check_at": "2026-05-27T20:28:46",
+    "next_check_at": "2026-05-27T21:28:46",
+    "configured_at": "2026-05-25T23:53:06",
+    "end_at": "2026-06-24T23:53:06",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
+  },
+  {
+    "id": "000016",
+    "source": "planilha",
+    "sheet_row_number": 13,
+    "name": "Desitin roxa",
+    "description": "Desitin roxa",
+    "descricao": "Desitin roxa",
+    "mode": "url",
+    "target_price": 175.0,
+    "precoDesejado": 175.0,
+    "email": "guimedon@gmail.com",
+    "emails": [
+      "guimedon@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://www.mercadolivre.com.br/p/MLB61373766?offer_type=BEST_INSTALLMENTS&pdp_filters=item_id:MLB4282203159&matt_tool=38524122#origin=share&sid=share&wid=MLB4282203159&action=copy",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/p/MLB61373766?offer_type=BEST_INSTALLMENTS&pdp_filters=item_id:MLB4282203159&matt_tool=38524122#origin=share&sid=share&wid=MLB4282203159&action=copy"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-24T22:09:19",
+    "carimbo_data_hora": "24/05/2026 22:05:53",
+    "active": true,
+    "interval_hours": 1,
+    "last_check_at": "2026-05-27T20:29:02",
+    "next_check_at": "2026-05-27T21:29:02",
+    "configured_at": "2026-05-24T22:34:22",
+    "end_at": "2026-06-23T22:34:22",
+    "last_notified_price": 59.0,
+    "last_notified_at": "2026-05-25T23:51:20",
+    "first_triggered_at": "2026-05-25T23:51:20"
+  },
+  {
+    "id": "000017",
+    "source": "planilha",
+    "sheet_row_number": 14,
+    "name": "Poste de aço modular de jardim",
+    "description": "Kit 4 Poste De Jardim 2,20 Metros Extensível Modular Aço",
+    "descricao": "Kit 4 Poste De Jardim 2,20 Metros Extensível Modular Aço",
+    "mode": "url",
+    "target_price": 1000.0,
+    "precoDesejado": 1000.0,
+    "email": "guimedon@gmail.com",
+    "emails": [
+      "guimedon@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://produto.mercadolivre.com.br/MLB-4129427335?matt_tool=38524122#origin=share&sid=share&action=copy",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://produto.mercadolivre.com.br/MLB-4129427335?matt_tool=38524122#origin=share&sid=share&action=copy"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-25T22:49:29",
+    "carimbo_data_hora": "25/05/2026 16:13:20",
+    "active": true,
+    "interval_hours": 1,
+    "last_check_at": "2026-05-27T20:29:09",
+    "next_check_at": "2026-05-27T21:29:09",
+    "configured_at": "2026-05-25T22:53:30",
+    "end_at": "2026-06-24T22:53:30",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
+  },
+  {
+    "id": "000018",
+    "source": "planilha",
+    "sheet_row_number": 15,
+    "name": "Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt",
+    "description": "Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt",
+    "descricao": "Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt",
+    "mode": "url",
+    "target_price": 185.0,
+    "precoDesejado": 185.0,
+    "email": "guimedon@gmail.com",
+    "emails": [
+      "guimedon@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://produto.mercadolivre.com.br/MLB-4196502916?matt_tool=38524122#origin=share&sid=share&action=copy",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://produto.mercadolivre.com.br/MLB-4196502916?matt_tool=38524122#origin=share&sid=share&action=copy"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-26T20:38:28",
+    "carimbo_data_hora": "26/05/2026 20:21:09",
+    "active": true,
+    "interval_hours": 1,
+    "last_check_at": "2026-05-27T20:29:24",
+    "next_check_at": "2026-05-27T21:29:24",
+    "configured_at": "2026-05-26T20:40:35",
+    "end_at": "2026-06-25T20:40:35",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
+  },
+  {
+    "id": "000019",
+    "name": "Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458",
+    "mode": "url",
+    "target_price": 599.0,
+    "precoDesejado": 599.0,
+    "interval_hours": 1,
+    "urls": [
+      "https://www.mercadolivre.com.br/cadeirinha-infantil-para-carro-litet-mass-0-36kg-preta-e-cinza-bb458/p/MLB24455909?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=faae2439-46b8-4ffc-8a40-7c81bbd3e6c1&position=2&tracking_id=03b7fe27-2064-4d11-ba7e-253842d7eb17&wid=MLB3379223661&sid=offers"
+    ],
+    "link1": "https://www.mercadolivre.com.br/cadeirinha-infantil-para-carro-litet-mass-0-36kg-preta-e-cinza-bb458/p/MLB24455909?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=faae2439-46b8-4ffc-8a40-7c81bbd3e6c1&position=2&tracking_id=03b7fe27-2064-4d11-ba7e-253842d7eb17&wid=MLB3379223661&sid=offers",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "description": "Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458",
+    "descricao": "Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458",
+    "active": true,
+    "agendado": true,
+    "last_check_at": null,
+    "next_check_at": "2026-05-27T20:35:22",
+    "configured_at": "2026-05-27T19:35:22",
+    "end_at": "2026-06-26T19:35:22",
+    "dt_criacao": "2026-05-26T21:39:01",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
+  },
+  {
+    "id": "000020",
+    "name": "Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas",
+    "mode": "url",
+    "target_price": 250.0,
+    "precoDesejado": 250.0,
+    "interval_hours": 1,
+    "urls": [
+      "https://www.mercadolivre.com.br/kit-wella-invigo-nutri-enrich-sh-cond-e-valvulas/p/MLB48515682?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=20caf94f-17a3-4c2d-b041-a19a1fa5d321&position=13&tracking_id=1388ce2e-5cf5-45be-a3cd-0423a3b9127c&wid=MLB4035378189&sid=offers"
+    ],
+    "link1": "https://www.mercadolivre.com.br/kit-wella-invigo-nutri-enrich-sh-cond-e-valvulas/p/MLB48515682?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=20caf94f-17a3-4c2d-b041-a19a1fa5d321&position=13&tracking_id=1388ce2e-5cf5-45be-a3cd-0423a3b9127c&wid=MLB4035378189&sid=offers",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "description": "Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas",
+    "descricao": "Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas",
+    "active": true,
+    "agendado": true,
+    "last_check_at": null,
+    "next_check_at": "2026-05-27T20:35:11",
+    "configured_at": "2026-05-27T19:35:11",
+    "end_at": "2026-06-26T19:35:11",
+    "dt_criacao": "2026-05-26T21:40:37",
     "last_notified_price": null,
     "last_notified_at": null,
     "first_triggered_at": null

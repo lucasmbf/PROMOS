@@ -304,3 +304,746 @@
 [2026-05-24 09:14:28] Execucao finalizada sem disparos.
 [2026-05-24 09:14:28] Finalizada execucao do alerta 000001.
 [2026-05-24 09:26:15] Override trial aplicado para configs ativas. Destino WhatsApp forçado: 19991133269.
+[2026-05-24 09:40:16] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-24 09:40:16] Iniciando execucao do alerta 000006.
+[2026-05-24 09:40:21] Alerta 000006 checado: triggered=False preco=2299.9 alvo=2100.0
+[2026-05-24 09:40:21] Alerta 000006 sem disparo nesta execucao.
+[2026-05-24 09:40:21] Execucao finalizada sem disparos.
+[2026-05-24 09:40:21] Finalizada execucao do alerta 000006.
+[2026-05-24 09:57:16] Alerta 000002 enfileirado (scheduler) - nome: teste.
+[2026-05-24 09:57:16] Iniciando execucao do alerta 000002.
+[2026-05-24 09:57:22] Alerta 000002 checado: triggered=True preco=5100.0 alvo=6000.0
+[2026-05-24 09:57:22] Alerta 000002 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 09:57:22] Execucao finalizada sem disparos.
+[2026-05-24 09:57:22] Finalizada execucao do alerta 000002.
+[2026-05-24 10:07:16] Alerta 000003 enfileirado (scheduler) - nome: switch 2.
+[2026-05-24 10:07:16] Iniciando execucao do alerta 000003.
+[2026-05-24 10:07:22] Alerta 000003 checado: triggered=True preco=5100.0 alvo=7000.0
+[2026-05-24 10:07:22] Alerta 000003 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 10:07:22] Execucao finalizada sem disparos.
+[2026-05-24 10:07:22] Finalizada execucao do alerta 000003.
+[2026-05-24 10:15:16] Alerta 000001 enfileirado (scheduler) - nome: Switch.
+[2026-05-24 10:15:16] Iniciando execucao do alerta 000001.
+[2026-05-24 10:15:22] Alerta 000001 checado: triggered=True preco=4648.0 alvo=5200.0
+[2026-05-24 10:15:22] Alerta 000001 com reenvio no mesmo dia por nova queda de preco (5100.00 -> 4648.00).
+[2026-05-24 10:15:22] Alerta 000001 marcou primeiro disparo em 2026-05-24T10:15:22.
+[2026-05-24 10:15:36] Notificacao alerta 000001: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM5603b5bd0647946a0bf53870c8833c5e.
+[2026-05-24 10:15:50] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 10:15:50] Finalizada execucao do alerta 000001.
+[2026-05-24 10:17:35] Alerta 000010 enfileirado (manual) - nome: Kit irrigação solar automática.
+[2026-05-24 10:17:35] Iniciando execucao do alerta 000010.
+[2026-05-24 10:17:41] Alerta 000010 checado: triggered=True preco=143.89 alvo=144.0
+[2026-05-24 10:17:41] Alerta 000010 marcou primeiro disparo em 2026-05-24T10:17:41.
+[2026-05-24 10:17:42] Notificacao alerta 000010: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM1bb8dc92f9cf3fb88710a5e90a00270c.
+[2026-05-24 10:17:44] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 10:17:44] Finalizada execucao do alerta 000010.
+[2026-05-24 10:32:18] Alerta 000010 enfileirado (manual) - nome: Kit irrigação solar automática.
+[2026-05-24 10:32:18] Iniciando execucao do alerta 000010.
+[2026-05-24 10:32:23] Alerta 000010 checado: triggered=False preco=143.89 alvo=135.0
+[2026-05-24 10:32:23] Alerta 000010 sem disparo nesta execucao.
+[2026-05-24 10:32:23] Execucao finalizada sem disparos.
+[2026-05-24 10:32:23] Finalizada execucao do alerta 000010.
+[2026-05-24 10:41:16] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-24 10:41:16] Iniciando execucao do alerta 000006.
+[2026-05-24 10:41:22] Alerta 000006 checado: triggered=False preco=2299.9 alvo=2100.0
+[2026-05-24 10:41:22] Alerta 000006 sem disparo nesta execucao.
+[2026-05-24 10:41:22] Execucao finalizada sem disparos.
+[2026-05-24 10:41:22] Finalizada execucao do alerta 000006.
+[2026-05-24 10:43:14] Alerta 000011 enfileirado (manual) - nome: Resistência chuveiro 220.
+[2026-05-24 10:43:14] Iniciando execucao do alerta 000011.
+[2026-05-24 10:43:16] Alerta 000011 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-24 10:43:16] Alerta 000011 falhou: Descricao nao bateu com o titulo.
+[2026-05-24 10:43:16] Execucao finalizada sem disparos.
+[2026-05-24 10:43:16] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-24 10:43:16] Finalizada execucao do alerta 000011.
+[2026-05-24 10:44:31] Alerta 000012 enfileirado (manual) - nome: Resistencia chuveiro 127.
+[2026-05-24 10:44:31] Iniciando execucao do alerta 000012.
+[2026-05-24 10:44:37] Alerta 000012 checado: triggered=False preco=25.0 alvo=23.0
+[2026-05-24 10:44:37] Alerta 000012 sem disparo nesta execucao.
+[2026-05-24 10:44:37] Execucao finalizada sem disparos.
+[2026-05-24 10:44:37] Finalizada execucao do alerta 000012.
+[2026-05-24 10:58:16] Alerta 000002 enfileirado (scheduler) - nome: teste.
+[2026-05-24 10:58:16] Iniciando execucao do alerta 000002.
+[2026-05-24 10:58:22] Alerta 000002 checado: triggered=True preco=4648.0 alvo=6000.0
+[2026-05-24 10:58:22] Alerta 000002 com reenvio no mesmo dia por nova queda de preco (5100.00 -> 4648.00).
+[2026-05-24 10:58:22] Alerta 000002 marcou primeiro disparo em 2026-05-24T10:58:22.
+[2026-05-24 10:58:22] Notificacao alerta 000002: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM9e2bef17853ddc4838e3d90a57b84025.
+[2026-05-24 11:08:16] Alerta 000003 enfileirado (scheduler) - nome: switch 2.
+[2026-05-24 11:09:16] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:10:16] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:11:16] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:12:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:13:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:14:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:15:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:16:17] Alerta 000001 enfileirado (scheduler) - nome: Switch.
+[2026-05-24 11:16:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:17:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:17:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:18:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:18:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:19:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:19:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:20:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:20:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:21:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:21:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:22:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:22:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:23:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:23:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:24:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:24:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:25:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:25:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:26:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:26:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:27:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:27:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:28:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:28:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:29:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:29:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:30:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:30:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:31:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:31:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:32:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:32:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:33:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:33:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:33:17] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-24 11:34:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:34:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:34:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:35:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:35:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:35:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:36:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:36:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:36:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:37:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:37:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:37:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:38:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:38:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:38:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:39:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:39:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:39:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:40:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:40:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:40:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:41:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:41:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:41:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:42:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:42:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:42:17] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-24 11:42:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:43:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:43:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:43:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:43:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:44:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:44:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:44:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:44:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:45:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:45:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:45:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:45:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:45:17] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-24 11:46:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:46:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:46:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:46:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:46:17] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-24 11:46:17] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:47:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:47:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:47:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:47:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:47:17] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:47:17] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:48:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:48:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:48:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:48:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:48:17] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:48:17] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:49:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:49:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:49:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:49:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:49:17] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:49:17] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:50:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:50:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:50:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:50:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:50:17] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:50:17] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:51:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:51:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:51:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:51:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:51:17] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:51:17] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:52:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:52:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:52:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:52:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:52:17] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:52:17] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:53:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:53:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:53:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:53:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:53:17] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:53:17] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:54:17] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:54:17] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:54:17] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:54:17] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:54:17] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 11:54:17] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 13:55:12] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 13:55:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 13:55:12] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 13:55:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 13:55:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 13:55:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 13:55:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 13:55:12] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-24 13:55:32] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 13:55:32] Finalizada execucao do alerta 000002.
+[2026-05-24 13:55:32] Iniciando execucao do alerta 000003.
+[2026-05-24 13:55:32] Alerta 000003 erro na checagem: Falha ao extrair preco.
+[2026-05-24 13:55:32] Alerta 000003 falhou: Falha ao extrair preco.
+[2026-05-24 13:55:32] Execucao finalizada sem disparos.
+[2026-05-24 13:55:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 13:55:32] Finalizada execucao do alerta 000003.
+[2026-05-24 13:55:32] Iniciando execucao do alerta 000001.
+[2026-05-24 13:55:32] Alerta 000001 erro na checagem: Falha ao extrair preco.
+[2026-05-24 13:55:32] Alerta 000001 falhou: Falha ao extrair preco.
+[2026-05-24 13:55:32] Execucao finalizada sem disparos.
+[2026-05-24 13:55:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 13:55:32] Finalizada execucao do alerta 000001.
+[2026-05-24 13:55:32] Iniciando execucao do alerta 000010.
+[2026-05-24 13:55:32] Alerta 000010 erro na checagem: Falha ao extrair preco.
+[2026-05-24 13:55:32] Alerta 000010 falhou: Falha ao extrair preco.
+[2026-05-24 13:55:32] Execucao finalizada sem disparos.
+[2026-05-24 13:55:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 13:55:32] Finalizada execucao do alerta 000010.
+[2026-05-24 13:55:32] Iniciando execucao do alerta 000006.
+[2026-05-24 13:55:32] Alerta 000006 erro na checagem: Falha ao extrair preco.
+[2026-05-24 13:55:32] Alerta 000006 falhou: Falha ao extrair preco.
+[2026-05-24 13:55:32] Execucao finalizada sem disparos.
+[2026-05-24 13:55:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 13:55:32] Finalizada execucao do alerta 000006.
+[2026-05-24 13:55:32] Iniciando execucao do alerta 000012.
+[2026-05-24 13:55:32] Alerta 000012 erro na checagem: Falha ao extrair preco.
+[2026-05-24 13:55:32] Alerta 000012 falhou: Falha ao extrair preco.
+[2026-05-24 13:55:32] Execucao finalizada sem disparos.
+[2026-05-24 13:55:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 13:55:32] Finalizada execucao do alerta 000012.
+[2026-05-24 13:55:32] Iniciando execucao do alerta 000011.
+[2026-05-24 13:55:32] Alerta 000011 erro na checagem: Falha ao extrair preco.
+[2026-05-24 13:55:32] Alerta 000011 falhou: Falha ao extrair preco.
+[2026-05-24 13:55:32] Execucao finalizada sem disparos.
+[2026-05-24 13:55:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 13:55:32] Finalizada execucao do alerta 000011.
+[2026-05-24 13:55:32] Iniciando execucao do alerta 000013.
+[2026-05-24 13:55:32] Alerta 000013 erro na checagem: Falha ao extrair preco.
+[2026-05-24 13:55:32] Alerta 000013 falhou: Falha ao extrair preco.
+[2026-05-24 13:55:32] Execucao finalizada sem disparos.
+[2026-05-24 13:55:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 13:55:32] Finalizada execucao do alerta 000013.
+[2026-05-24 13:55:37] Alerta 000011 enfileirado (manual) - nome: Resistência chuveiro 220.
+[2026-05-24 13:55:37] Iniciando execucao do alerta 000011.
+[2026-05-24 13:55:43] Alerta 000013 enfileirado (manual) - nome: Fralda.
+[2026-05-24 13:55:45] Alerta 000011 checado: triggered=False preco=24.22 alvo=22.0
+[2026-05-24 13:55:45] Alerta 000011 sem disparo nesta execucao.
+[2026-05-24 13:55:45] Execucao finalizada sem disparos.
+[2026-05-24 13:55:45] Finalizada execucao do alerta 000011.
+[2026-05-24 13:55:45] Iniciando execucao do alerta 000013.
+[2026-05-24 13:55:52] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-24 13:55:52] Alerta 000013 sem disparo nesta execucao.
+[2026-05-24 13:55:52] Execucao finalizada sem disparos.
+[2026-05-24 13:55:52] Finalizada execucao do alerta 000013.
+[2026-05-24 13:56:12] Alerta 000002 enfileirado (scheduler) - nome: teste.
+[2026-05-24 13:56:12] Iniciando execucao do alerta 000002.
+[2026-05-24 13:56:18] Alerta 000002 checado: triggered=True preco=4648.0 alvo=6000.0
+[2026-05-24 13:56:18] Alerta 000002 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 13:56:18] Execucao finalizada sem disparos.
+[2026-05-24 13:56:18] Finalizada execucao do alerta 000002.
+[2026-05-24 14:56:12] Alerta 000001 enfileirado (scheduler) - nome: Switch.
+[2026-05-24 14:56:12] Alerta 000003 enfileirado (scheduler) - nome: switch 2.
+[2026-05-24 14:56:12] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-24 14:56:12] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-24 14:56:12] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-24 14:56:12] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-24 14:56:12] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-24 14:56:12] Iniciando execucao do alerta 000001.
+[2026-05-24 14:56:18] Alerta 000001 checado: triggered=True preco=4648.0 alvo=5200.0
+[2026-05-24 14:56:18] Alerta 000001 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 14:56:18] Execucao finalizada sem disparos.
+[2026-05-24 14:56:18] Finalizada execucao do alerta 000001.
+[2026-05-24 14:56:18] Iniciando execucao do alerta 000003.
+[2026-05-24 14:56:25] Alerta 000003 checado: triggered=True preco=4648.0 alvo=7000.0
+[2026-05-24 14:56:25] Alerta 000003 com reenvio no mesmo dia por nova queda de preco (5100.00 -> 4648.00).
+[2026-05-24 14:56:25] Alerta 000003 marcou primeiro disparo em 2026-05-24T14:56:25.
+[2026-05-24 14:56:25] Notificacao alerta 000003: email=sem destinos; whatsapp=1 envio(s) destinos=***3269 sid=SM8b04c0dfe22e68f63141110976e8b514.
+[2026-05-24 14:57:12] Alerta 000002 enfileirado (scheduler) - nome: teste.
+[2026-05-24 14:57:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:57:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:57:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:57:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:57:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:58:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:58:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:58:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:58:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:58:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:58:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:59:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:59:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:59:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:59:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:59:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 14:59:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:00:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:00:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:00:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:00:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:00:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:00:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:01:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:01:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:01:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:01:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:01:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:01:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:02:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:02:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:02:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:02:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:02:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:02:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:03:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:03:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:03:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:03:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:03:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:03:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:04:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:04:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:04:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:04:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:04:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:04:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:05:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:05:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:05:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:05:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:05:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:05:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:06:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:06:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:06:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:06:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:06:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:06:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:07:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:07:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:07:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:07:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:07:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:07:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:08:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:08:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:08:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:08:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:08:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:08:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:09:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:09:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:09:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:09:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:09:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:09:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:10:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:10:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:10:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:10:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:10:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:10:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:11:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:11:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:11:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:11:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:11:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:11:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:12:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:12:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:12:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:12:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:12:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:12:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:13:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:13:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:13:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:13:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:13:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:13:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:14:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:14:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:14:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:14:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:14:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:14:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:15:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:15:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:15:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:15:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:15:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:15:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:16:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:16:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:16:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:16:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:16:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:16:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:17:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:17:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:17:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:17:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:17:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:17:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:18:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:18:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:18:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:18:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:18:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:18:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:19:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:19:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:19:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:19:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:19:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:19:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:20:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:20:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:20:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:20:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:20:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:20:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:21:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:21:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:21:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:21:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:21:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:21:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:22:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:22:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:22:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:22:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:22:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:22:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:23:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:23:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:23:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:23:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:23:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:23:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:24:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:24:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:24:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:24:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:24:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:24:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:25:12] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:25:12] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:25:12] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:25:12] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:25:12] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:25:12] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:26:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:26:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:26:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:26:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:26:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:26:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:27:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:27:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:27:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:27:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:27:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:27:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:28:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:28:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:28:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:28:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:28:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:28:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:29:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:29:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:29:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:29:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:29:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:29:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:30:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:30:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:30:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:30:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:30:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:30:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:31:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:31:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:31:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:31:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:31:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:31:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:32:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:32:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:32:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:32:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:32:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:32:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:33:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:33:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:33:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:33:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:33:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:33:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:34:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:34:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:34:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:34:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:34:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:34:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:35:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:35:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:35:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:35:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:35:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:35:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:36:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:36:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:36:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:36:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:36:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:36:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:37:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:37:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:37:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:37:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:37:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:37:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:38:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:38:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:38:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:38:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:38:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:38:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:39:13] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:39:13] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:39:13] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:39:13] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:39:13] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 15:39:13] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 16:32:57] Alerta 000001 enfileirado (scheduler) - nome: Switch.
+[2026-05-24 16:32:57] Alerta 000002 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 16:32:57] Alerta 000003 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 16:32:57] Alerta 000006 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 16:32:57] Alerta 000010 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 16:32:57] Alerta 000011 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 16:32:57] Alerta 000012 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 16:32:57] Alerta 000013 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 16:33:10] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 16:33:10] Finalizada execucao do alerta 000003.
+[2026-05-24 16:33:10] Iniciando execucao do alerta 000006.
+[2026-05-24 16:33:22] Alerta 000006 checado: triggered=False preco=2299.9 alvo=2100.0
+[2026-05-24 16:33:22] Alerta 000006 sem disparo nesta execucao.
+[2026-05-24 16:33:22] Execucao finalizada sem disparos.
+[2026-05-24 16:33:22] Finalizada execucao do alerta 000006.
+[2026-05-24 16:33:22] Iniciando execucao do alerta 000010.
+[2026-05-24 16:33:28] Alerta 000010 checado: triggered=False preco=143.89 alvo=135.0
+[2026-05-24 16:33:28] Alerta 000010 sem disparo nesta execucao.
+[2026-05-24 16:33:28] Execucao finalizada sem disparos.
+[2026-05-24 16:33:28] Finalizada execucao do alerta 000010.
+[2026-05-24 16:33:28] Iniciando execucao do alerta 000011.
+[2026-05-24 16:33:34] Alerta 000011 checado: triggered=False preco=24.22 alvo=22.0
+[2026-05-24 16:33:34] Alerta 000011 sem disparo nesta execucao.
+[2026-05-24 16:33:34] Execucao finalizada sem disparos.
+[2026-05-24 16:33:34] Finalizada execucao do alerta 000011.
+[2026-05-24 16:33:34] Iniciando execucao do alerta 000012.
+[2026-05-24 16:33:40] Alerta 000012 checado: triggered=False preco=25.0 alvo=23.0
+[2026-05-24 16:33:40] Alerta 000012 sem disparo nesta execucao.
+[2026-05-24 16:33:40] Execucao finalizada sem disparos.
+[2026-05-24 16:33:40] Finalizada execucao do alerta 000012.
+[2026-05-24 16:33:40] Iniciando execucao do alerta 000013.
+[2026-05-24 16:33:47] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-24 16:33:47] Alerta 000013 sem disparo nesta execucao.
+[2026-05-24 16:33:47] Execucao finalizada sem disparos.
+[2026-05-24 16:33:47] Finalizada execucao do alerta 000013.
+[2026-05-24 16:33:47] Iniciando execucao do alerta 000002.
+[2026-05-24 16:33:53] Alerta 000002 checado: triggered=True preco=4648.0 alvo=6000.0
+[2026-05-24 16:33:53] Alerta 000002 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 16:33:53] Execucao finalizada sem disparos.
+[2026-05-24 16:33:53] Finalizada execucao do alerta 000002.
+[2026-05-24 16:33:53] Iniciando execucao do alerta 000001.
+[2026-05-24 16:33:57] Alerta 000001 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-05-24 16:33:57] Alerta 000003 enfileirado (scheduler) - nome: switch 2.
+[2026-05-24 16:33:59] Alerta 000001 checado: triggered=True preco=4648.0 alvo=5200.0
+[2026-05-24 16:33:59] Alerta 000001 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 16:33:59] Execucao finalizada sem disparos.
+[2026-05-24 16:33:59] Finalizada execucao do alerta 000001.
+[2026-05-24 16:33:59] Iniciando execucao do alerta 000003.
+[2026-05-24 16:34:05] Alerta 000003 checado: triggered=True preco=4648.0 alvo=7000.0
+[2026-05-24 16:34:05] Alerta 000003 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 16:34:05] Execucao finalizada sem disparos.
+[2026-05-24 16:34:05] Finalizada execucao do alerta 000003.
+[2026-05-24 16:41:13] Alerta 000013 enfileirado (manual) - nome: Fralda.
+[2026-05-24 16:41:13] Iniciando execucao do alerta 000013.
+[2026-05-24 16:41:19] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-24 16:41:19] Alerta 000013 sem disparo nesta execucao.
+[2026-05-24 16:41:19] Execucao finalizada sem disparos.
+[2026-05-24 16:41:19] Finalizada execucao do alerta 000013.
+[2026-05-24 17:33:58] Alerta 000002 enfileirado (scheduler) - nome: teste.
+[2026-05-24 17:33:58] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-24 17:33:58] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-24 17:33:58] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-24 17:33:58] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-24 17:33:58] Iniciando execucao do alerta 000002.
+[2026-05-24 17:34:04] Alerta 000002 checado: triggered=True preco=4648.0 alvo=6000.0
+[2026-05-24 17:34:04] Alerta 000002 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 17:34:04] Execucao finalizada sem disparos.
+[2026-05-24 17:34:04] Finalizada execucao do alerta 000002.
+[2026-05-24 17:34:05] Iniciando execucao do alerta 000006.
+[2026-05-24 17:34:10] Alerta 000006 checado: triggered=False preco=2299.9 alvo=2100.0
+[2026-05-24 17:34:10] Alerta 000006 sem disparo nesta execucao.
+[2026-05-24 17:34:10] Execucao finalizada sem disparos.
+[2026-05-24 17:34:10] Finalizada execucao do alerta 000006.
+[2026-05-24 17:34:10] Iniciando execucao do alerta 000010.
+[2026-05-24 17:34:16] Alerta 000010 checado: triggered=False preco=143.89 alvo=135.0
+[2026-05-24 17:34:16] Alerta 000010 sem disparo nesta execucao.
+[2026-05-24 17:34:16] Execucao finalizada sem disparos.
+[2026-05-24 17:34:16] Finalizada execucao do alerta 000010.
+[2026-05-24 17:34:16] Iniciando execucao do alerta 000011.
+[2026-05-24 17:34:22] Alerta 000011 checado: triggered=False preco=24.22 alvo=22.0
+[2026-05-24 17:34:22] Alerta 000011 sem disparo nesta execucao.
+[2026-05-24 17:34:22] Execucao finalizada sem disparos.
+[2026-05-24 17:34:22] Finalizada execucao do alerta 000011.
+[2026-05-24 17:34:22] Iniciando execucao do alerta 000012.
+[2026-05-24 17:34:27] Alerta 000012 checado: triggered=False preco=25.0 alvo=23.0
+[2026-05-24 17:34:27] Alerta 000012 sem disparo nesta execucao.
+[2026-05-24 17:34:27] Execucao finalizada sem disparos.
+[2026-05-24 17:34:27] Finalizada execucao do alerta 000012.
+[2026-05-24 17:34:58] Alerta 000001 enfileirado (scheduler) - nome: Switch.
+[2026-05-24 17:34:58] Alerta 000003 enfileirado (scheduler) - nome: switch 2.
+[2026-05-24 17:34:58] Iniciando execucao do alerta 000001.
+[2026-05-24 17:35:04] Alerta 000001 checado: triggered=True preco=4648.0 alvo=5200.0
+[2026-05-24 17:35:04] Alerta 000001 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 17:35:04] Execucao finalizada sem disparos.
+[2026-05-24 17:35:04] Finalizada execucao do alerta 000001.
+[2026-05-24 17:35:04] Iniciando execucao do alerta 000003.
+[2026-05-24 17:35:10] Alerta 000003 checado: triggered=True preco=4648.0 alvo=7000.0
+[2026-05-24 17:35:10] Alerta 000003 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-05-24 17:35:10] Execucao finalizada sem disparos.
+[2026-05-24 17:35:10] Finalizada execucao do alerta 000003.
+[2026-05-24 17:41:58] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-24 17:41:58] Iniciando execucao do alerta 000013.
+[2026-05-24 17:42:04] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-24 17:42:04] Alerta 000013 sem disparo nesta execucao.
+[2026-05-24 17:42:04] Execucao finalizada sem disparos.
+[2026-05-24 17:42:04] Finalizada execucao do alerta 000013.
+[2026-05-24 21:49:10] Alerta 000001 enfileirado (scheduler) - nome: Switch.
+[2026-05-24 21:49:10] Alerta 000002 enfileirado (scheduler) - nome: teste.
+[2026-05-24 21:49:10] Alerta 000003 enfileirado (scheduler) - nome: switch 2.
+[2026-05-24 21:49:10] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-24 21:49:10] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-24 21:49:10] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-24 21:49:10] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-24 21:49:10] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-24 21:49:10] Iniciando execucao do alerta 000001.
+[2026-05-24 21:49:11] Alerta 000001 erro na checagem: Falha ao extrair preco.
+[2026-05-24 21:49:11] Alerta 000001 falhou: Falha ao extrair preco.
+[2026-05-24 21:49:11] Execucao finalizada sem disparos.
+[2026-05-24 21:49:11] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 21:49:11] Finalizada execucao do alerta 000001.
+[2026-05-24 21:49:11] Iniciando execucao do alerta 000002.
+[2026-05-24 21:49:11] Alerta 000002 erro na checagem: Falha ao extrair preco.
+[2026-05-24 21:49:11] Alerta 000002 falhou: Falha ao extrair preco.
+[2026-05-24 21:49:11] Execucao finalizada sem disparos.
+[2026-05-24 21:49:11] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 21:49:11] Finalizada execucao do alerta 000002.
+[2026-05-24 21:49:11] Iniciando execucao do alerta 000003.
+[2026-05-24 21:49:11] Alerta 000003 erro na checagem: Falha ao extrair preco.
+[2026-05-24 21:49:11] Alerta 000003 falhou: Falha ao extrair preco.
+[2026-05-24 21:49:11] Execucao finalizada sem disparos.
+[2026-05-24 21:49:12] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 21:49:12] Finalizada execucao do alerta 000003.
+[2026-05-24 21:49:12] Iniciando execucao do alerta 000006.
+[2026-05-24 21:49:12] Alerta 000006 erro na checagem: Falha ao extrair preco.
+[2026-05-24 21:49:12] Alerta 000006 falhou: Falha ao extrair preco.
+[2026-05-24 21:49:12] Execucao finalizada sem disparos.
+[2026-05-24 21:49:12] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 21:49:12] Finalizada execucao do alerta 000006.
+[2026-05-24 21:49:12] Iniciando execucao do alerta 000010.
+[2026-05-24 21:49:12] Alerta 000010 erro na checagem: Falha ao extrair preco.
+[2026-05-24 21:49:12] Alerta 000010 falhou: Falha ao extrair preco.
+[2026-05-24 21:49:12] Execucao finalizada sem disparos.
+[2026-05-24 21:49:12] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 21:49:12] Finalizada execucao do alerta 000010.
+[2026-05-24 21:49:12] Iniciando execucao do alerta 000011.
+[2026-05-24 21:49:12] Alerta 000011 erro na checagem: Falha ao extrair preco.
+[2026-05-24 21:49:12] Alerta 000011 falhou: Falha ao extrair preco.
+[2026-05-24 21:49:12] Execucao finalizada sem disparos.
+[2026-05-24 21:49:12] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 21:49:12] Finalizada execucao do alerta 000011.
+[2026-05-24 21:49:12] Iniciando execucao do alerta 000012.
+[2026-05-24 21:49:12] Alerta 000012 erro na checagem: Falha ao extrair preco.
+[2026-05-24 21:49:12] Alerta 000012 falhou: Falha ao extrair preco.
+[2026-05-24 21:49:12] Execucao finalizada sem disparos.
+[2026-05-24 21:49:13] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 21:49:13] Finalizada execucao do alerta 000012.
+[2026-05-24 21:49:13] Iniciando execucao do alerta 000013.
+[2026-05-24 21:49:13] Alerta 000013 erro na checagem: Falha ao extrair preco.
+[2026-05-24 21:49:13] Alerta 000013 falhou: Falha ao extrair preco.
+[2026-05-24 21:49:13] Execucao finalizada sem disparos.
+[2026-05-24 21:49:13] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-24 21:49:13] Finalizada execucao do alerta 000013.
+[2026-05-24 21:49:41] Alerta 000013 enfileirado (manual) - nome: Fralda.
+[2026-05-24 21:49:41] Iniciando execucao do alerta 000013.
+[2026-05-24 21:49:47] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-24 21:49:47] Alerta 000013 sem disparo nesta execucao.
+[2026-05-24 21:49:47] Execucao finalizada sem disparos.
+[2026-05-24 21:49:47] Finalizada execucao do alerta 000013.
+[2026-05-24 21:53:13] Alerta 000014 enfileirado (manual) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-24 21:53:13] Iniciando execucao do alerta 000014.
+[2026-05-24 21:53:15] Alerta 000014 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-24 21:53:15] Alerta 000014 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-05-24 21:53:15] Execucao finalizada sem disparos.
+[2026-05-24 21:53:15] Finalizada execucao do alerta 000014.
+[2026-05-24 21:55:19] Alerta 000014 enfileirado (manual) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-24 21:55:19] Iniciando execucao do alerta 000014.
+[2026-05-24 21:55:26] Alerta 000014 checado: triggered=True preco=781.51 alvo=782.0
+[2026-05-24 21:55:26] Alerta 000014 marcou primeiro disparo em 2026-05-24T21:55:26.
+[2026-05-24 21:55:26] Notificacao alerta 000014: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM15d0b4152ae5068e7110537597381c35.
+[2026-05-24 21:55:30] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 21:55:30] Finalizada execucao do alerta 000014.
+[2026-05-24 22:33:12] Alerta 000016 enfileirado (manual) - nome: Desitin roxa.
+[2026-05-24 22:33:12] Iniciando execucao do alerta 000016.
+[2026-05-24 22:33:19] Alerta 000016 checado: triggered=True preco=179.9 alvo=189.0
+[2026-05-24 22:33:19] Alerta 000016 marcou primeiro disparo em 2026-05-24T22:33:19.
+[2026-05-24 22:33:19] Notificacao alerta 000016: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM9be22c87e335d4630a88c9453ff64e7f.
+[2026-05-24 22:33:25] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-24 22:33:25] Finalizada execucao do alerta 000016.
+[2026-05-24 22:34:29] Alerta 000016 enfileirado (manual) - nome: Desitin roxa.
+[2026-05-24 22:34:29] Iniciando execucao do alerta 000016.
+[2026-05-24 22:34:36] Alerta 000016 checado: triggered=False preco=179.9 alvo=175.0
+[2026-05-24 22:34:36] Alerta 000016 sem disparo nesta execucao.
+[2026-05-24 22:34:36] Execucao finalizada sem disparos.
+[2026-05-24 22:34:36] Finalizada execucao do alerta 000016.

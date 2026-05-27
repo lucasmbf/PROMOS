@@ -1,0 +1,19 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 48,
+  "gerado_em": "2026-05-25T22:56:03",
+  "total_ofertas": 0,
+  "contexto_execucao": {
+    "status": "sem_ofertas",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": "Esportes e Fitness",
+    "desconto_minimo": 50,
+    "preco_minimo": 200.0,
+    "preco_maximo": null,
+    "limite_candidatos": 20,
+    "limite_validos": 10,
+    "modo_sem_parametros": false
+  },
+  "ofertas": []
+}

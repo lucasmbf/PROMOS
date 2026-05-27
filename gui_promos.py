@@ -1442,8 +1442,8 @@ def create_gui(categorias):
     hub_schedule_tree.column("ciclo", width=80, anchor="center")
     hub_schedule_tree.column("execucao", width=170, anchor="w")
     hub_schedule_tree.column("acoes", width=200, anchor="center")
-    hub_schedule_tree.tag_configure("cfg_ativa", background="#e8f7e9")
-    hub_schedule_tree.tag_configure("cfg_inativa", background="#fdeaea")
+    hub_schedule_tree.tag_configure("cfg_ativa", background="#33cc3d")
+    hub_schedule_tree.tag_configure("cfg_inativa", background="#e3ee4f")
 
     schedules_scroll = ttk.Scrollbar(grid_wrap, orient="vertical", command=hub_schedule_tree.yview)
     hub_schedule_tree.configure(yscrollcommand=schedules_scroll.set)
