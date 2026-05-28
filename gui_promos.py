@@ -2344,6 +2344,12 @@ def create_gui(categorias):
                     with alerts_lock:
                         alerts.append(alert)
                         persist_alerts()
+                        # Executa a configuração recém-importada
+                        key = f"alerta:{alert.get('id')}"
+                        try:
+                            _executar_programacao_agora(key)
+                        except Exception as e:
+                            _escrever_log_sincronizacao_planilha(f"Falha ao executar alerta importado (ID {alert.get('id', '-')}) automaticamente: {e}")
 
                     _sheet_mark_row_imported(
                         client,

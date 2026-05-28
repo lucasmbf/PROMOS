@@ -140,3 +140,30 @@
 [2026-05-27 20:33:50] Alerta 000013 sem disparo nesta execucao.
 [2026-05-27 20:33:50] Execucao finalizada sem disparos.
 [2026-05-27 20:33:50] Finalizada execucao do alerta 000013.
+[2026-05-27 20:52:46] Alerta 000019 enfileirado (scheduler) - nome: Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458.
+[2026-05-27 20:52:46] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-05-27 20:52:46] Iniciando execucao do alerta 000019.
+[2026-05-27 20:52:53] Alerta 000019 checado: triggered=True preco=599.0 alvo=599.0
+[2026-05-27 20:52:53] Alerta 000019 marcou primeiro disparo em 2026-05-27T20:52:53.
+[2026-05-27 20:52:53] Notificacao alerta 000019: email=sem destinos; whatsapp=1 envio(s) destinos=***3269 sid=SM76c93b44cc6364c0adb8f2b3f41e5d00.
+[2026-05-27 20:52:57] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-27 20:52:57] Finalizada execucao do alerta 000019.
+[2026-05-27 20:52:57] Iniciando execucao do alerta 000020.
+[2026-05-27 20:53:03] Alerta 000020 checado: triggered=False preco=250.11 alvo=250.0
+[2026-05-27 20:53:03] Alerta 000020 sem disparo nesta execucao.
+[2026-05-27 20:53:03] Execucao finalizada sem disparos.
+[2026-05-27 20:53:03] Finalizada execucao do alerta 000020.
+[2026-05-27 21:08:56] Alerta 000021 enfileirado (manual) - nome: Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®.
+[2026-05-27 21:08:56] Iniciando execucao do alerta 000021.
+[2026-05-27 21:09:03] Alerta 000021 checado: triggered=True preco=709.0 alvo=710.0
+[2026-05-27 21:09:03] Alerta 000021 marcou primeiro disparo em 2026-05-27T21:09:03.
+[2026-05-27 21:09:03] Notificacao alerta 000021: email=sem destinos; whatsapp=1 envio(s) destinos=***3269 sid=SMe4ddb2bb53c1dda38bd611c9b8cd0bfa.
+[2026-05-27 21:09:06] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-27 21:09:06] Finalizada execucao do alerta 000021.
+[2026-05-27 21:13:30] Alerta 000022 enfileirado (manual) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-05-27 21:13:30] Iniciando execucao do alerta 000022.
+[2026-05-27 21:13:38] Alerta 000022 checado: triggered=True preco=379.0 alvo=380.0
+[2026-05-27 21:13:38] Alerta 000022 marcou primeiro disparo em 2026-05-27T21:13:38.
+[2026-05-27 21:13:39] Notificacao alerta 000022: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM4aac555fd8109dd958a58bbe20a1d542.
+[2026-05-27 21:13:53] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-27 21:13:53] Finalizada execucao do alerta 000022.

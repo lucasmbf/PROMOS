@@ -2802,6 +2802,7 @@ def salvar_resultado_relampago(ofertas, pasta=None):
     with open(caminho, "a", encoding="utf-8") as f:
         f.write(f"===== EXECUCAO {timestamp} | TOTAL {len(ofertas)} =====\n\n")
         for oferta in ofertas:
+            f.write("⚡️ *OFERTA RELÂMPAGO*⚡️ \n\n\n")
             categoria = oferta.get("categoria", "-")
             descricao = oferta.get("descricao", "-")
 
