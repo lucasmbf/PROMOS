@@ -55,7 +55,7 @@ AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
 AUTH_MARKER_STILL_PENDING_ML = "[AUTH_STILL_PENDING_ML]"
 SCHEDULER_TICK_MS = 60000
 ALERTS_IMPORT_INTERVAL_MINUTES = 10
-ALERT_INTERVAL_HOURS_FIXED = 1
+ALERT_INTERVAL_HOURS_FIXED = 3
 ALERT_ACTIVE_DAYS_DEFAULT = 30
 ALERT_EXECUTION_DAYS_AFTER_FIRST_TRIGGER = 7
 TWILIO_TRIAL_FORCE_ACTIVE_CONFIGS = True
@@ -1997,7 +1997,7 @@ def create_gui(categorias):
             return "Encerrado"
 
         last_check = _parse_iso_datetime(alert.get("last_check_at"))
-        interval_hours = max(1, int(alert.get("interval_hours", 1)))
+        interval_hours = max(1, int(alert.get("interval_hours", 3)))
 
         if last_check is None:
             return "Pronto para executar"
@@ -3563,16 +3563,29 @@ def create_gui(categorias):
                 f"Notificacao alerta {alert.get('id', '-')}: email={email_msg}; whatsapp={whatsapp_msg}."
             )
 
-            messagebox.showinfo(
-                "Alerta de preço",
-                (
-                    f"{alert.get('name', 'Alerta')} disparou!\n\n"
-                    f"Preço encontrado: R$ {price:.2f}\n"
-                    f"Preço alvo: R$ {_target_price_from_alert(alert):.2f}\n"
-                    f"Origem: {result.get('source') or '-'}\n"
-                    f"Email: {'OK' if email_ok else 'pendente/falhou'} | WhatsApp: {'OK' if whatsapp_ok else 'pendente/falhou'}"
-                ),
+            # Pop-up customizado que fecha sozinho após 10s ou ao clicar em OK
+            popup = tk.Toplevel(root)
+            popup.title("Alerta de preço")
+            popup.configure(bg="#ececec")
+            popup.transient(root)
+            popup.resizable(False, False)
+            popup.geometry("400x220")
+            frame = ttk.Frame(popup, style="Main.TFrame", padding=18)
+            frame.pack(fill="both", expand=True)
+            msg = (
+                f"{alert.get('name', 'Alerta')} disparou!\n\n"
+                f"Preço encontrado: R$ {price:.2f}\n"
+                f"Preço alvo: R$ {_target_price_from_alert(alert):.2f}\n"
+                f"Origem: {result.get('source') or '-'}\n"
+                f"Email: {'OK' if email_ok else 'pendente/falhou'} | WhatsApp: {'OK' if whatsapp_ok else 'pendente/falhou'}"
             )
+            label = ttk.Label(frame, text=msg, style="Field.TLabel", justify="left", wraplength=360)
+            label.pack(anchor="w", pady=(0, 18))
+            btn = ttk.Button(frame, text="OK", command=popup.destroy)
+            btn.pack(anchor="e")
+            popup.after(10000, popup.destroy)
+            popup.wait_visibility()
+            popup.focus_force()
 
         if triggered_count:
             status_var.set(f"{triggered_count} alerta(s) disparado(s).")

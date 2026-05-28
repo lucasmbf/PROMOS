@@ -12,18 +12,16 @@
 - Criar uma busca genérica no Google. Extrair os marcadores de filtro do Google da aba shopping para conseguir o anúncio mais barato de cada marketplace e fazer uma varredura rápida on demand.
 - Configurar alerta de preço para olhar no Google como alternativa caso nenhum dos links informados na configuração tenha redução de preço
 - A configuração de campanha deve aceitar links, até 5
-- Oferta de preço não precisa rodar tantas vezes, é melhor rodar a cada 3 horas apenas para economizar processamento e não tomar espaço na fila
+
 
 # Bugs and Fixes
 
 - Informativo com resumo de falhas de execução do GRID deve ser linha a linha
-- A linha deve ser destacada em amarelo quando houver falha de execução apenas, disparo não realizado por não se encaixar nos critérios não é falha
+- A linha deve ser destacada em vermelho quando houver falha de execução apenas, disparo não realizado por não se encaixar nos critérios não é falha
 - O modo relâmpago on demand deve permitir uma descrição. Quando houver descrição, ela deve ser inserida na busca antes de extrair e percorrer o HTML da página. A prioridade é Categoria, depois descrição e só depois procura preço e desconto.
 - O modo busca padrão on demand também deve permitir uma descrição. Quando houver descrição, ela deve ser inserida na busca antes de extrair e percorrer o HTML da página. A prioridade é Categoria, depois descrição e só depois procura preço e desconto.
 - Refinar o alerta de preço: Depois de extrair o preço atual do link, realizar uma busca no site pela descrição da configuração. Recuperar todos os produtos encontrados em que a faixa de preço variar 20%. A ideia é que além de pesquisar o link específico, busque por novos anúncios que possam ter sido criados e eventualmente estejam mais baratos
-- As configurações importadas da planilha estão precisando ser executadas manualmente no painel quando criadas. Deve obedecer o mesmo comportamento das demais, assim que for criada, deve realizar uma primeira execução e depois entrar no schedule das próximas
 - A descrição da configuração em alerta de preço não precisa ser exata, isso está afetando a busca
-- Quando um anúncio é disparado o pop up na tela interrompe a execução das outras consultas até que seja clicado OK no pop-up. Manter o pop-up e implementar para todas as outras consultas, mas sem aguardar o clique. Aparece e some em 10 segundos.
 - Modo On Demand de busca normal não está pegando o preço no lugar certo. Ele encontra o preço correto na lista de anúncios e salva o HTML, mas dentro do link do anúncio, o valor lido é o antigo. Por isso não é gerado saída pra ele.
 - As configurações salvas da planilha ainda não estão sendo convertidas para meu número de telefone, apesar de ser um paliativo, é importante para que receba aviso dos alertas
  
