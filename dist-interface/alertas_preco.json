@@ -24,14 +24,17 @@
     "descricao": "Cafeteira Espresso Série 1200 Philips Walita Ep1220 1400W Cor Preta",
     "active": true,
     "agendado": true,
-    "last_check_at": "2026-05-31T22:05:22",
-    "next_check_at": "2026-06-01T01:05:22",
+    "last_check_at": "2026-05-31T22:24:12",
+    "next_check_at": "2026-06-01T01:24:12",
     "configured_at": "2026-05-30T20:21:54",
     "dt_criacao": "2026-05-24T01:31:05",
     "last_notified_price": null,
     "end_at": "2026-06-29T20:21:54",
     "last_notified_at": null,
-    "first_triggered_at": null
+    "first_triggered_at": null,
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-05-31T22:24:12"
   },
   {
     "id": "000008",
@@ -103,13 +106,16 @@
     "carimbo_data_hora": "24/05/2026 10:11:01",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-05-31T22:04:58",
-    "next_check_at": "2026-06-01T01:04:58",
+    "last_check_at": "2026-05-31T22:24:29",
+    "next_check_at": "2026-06-01T01:24:29",
     "configured_at": "2026-05-24T10:32:15",
     "end_at": "2026-06-23T10:32:15",
     "last_notified_price": null,
     "last_notified_at": null,
-    "first_triggered_at": null
+    "first_triggered_at": null,
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-05-31T22:24:29"
   },
   {
     "id": "000013",
@@ -142,13 +148,16 @@
     "carimbo_data_hora": "24/05/2026 11:16:09",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-05-31T22:05:32",
-    "next_check_at": "2026-06-01T01:05:32",
+    "last_check_at": "2026-05-31T22:24:35",
+    "next_check_at": "2026-06-01T01:24:35",
     "configured_at": "2026-05-24T16:40:58",
     "end_at": "2026-06-23T16:40:58",
     "last_notified_price": null,
     "last_notified_at": null,
-    "first_triggered_at": null
+    "first_triggered_at": null,
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-05-31T22:24:35"
   },
   {
     "id": "000014",
@@ -181,125 +190,16 @@
     "carimbo_data_hora": "24/05/2026 21:50:14",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-05-31T22:05:51",
-    "next_check_at": "2026-06-01T01:05:51",
+    "last_check_at": "2026-05-31T22:24:49",
+    "next_check_at": "2026-06-01T01:24:49",
     "configured_at": "2026-05-25T23:53:06",
     "end_at": "2026-06-24T23:53:06",
     "last_notified_price": null,
     "last_notified_at": null,
-    "first_triggered_at": null
-  },
-  {
-    "id": "000017",
-    "source": "planilha",
-    "sheet_row_number": 14,
-    "name": "Poste de aço modular de jardim",
-    "description": "Kit 4 Poste De Jardim 2,20 Metros Extensível Modular Aço",
-    "descricao": "Kit 4 Poste De Jardim 2,20 Metros Extensível Modular Aço",
-    "mode": "url",
-    "target_price": 1000.0,
-    "precoDesejado": 1000.0,
-    "email": "guimedon@gmail.com",
-    "emails": [
-      "guimedon@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://produto.mercadolivre.com.br/MLB-4129427335?matt_tool=38524122#origin=share&sid=share&action=copy",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://produto.mercadolivre.com.br/MLB-4129427335?matt_tool=38524122#origin=share&sid=share&action=copy"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-05-25T22:49:29",
-    "carimbo_data_hora": "25/05/2026 16:13:20",
-    "active": true,
-    "interval_hours": 3,
-    "last_check_at": "2026-05-31T21:51:35",
-    "next_check_at": "2026-06-01T00:51:35",
-    "configured_at": "2026-05-25T22:53:30",
-    "end_at": "2026-06-24T22:53:30",
-    "last_notified_price": null,
-    "last_notified_at": null,
-    "first_triggered_at": null
-  },
-  {
-    "id": "000018",
-    "source": "planilha",
-    "sheet_row_number": 15,
-    "name": "Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt",
-    "description": "Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt",
-    "descricao": "Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt",
-    "mode": "url",
-    "target_price": 185.0,
-    "precoDesejado": 185.0,
-    "email": "guimedon@gmail.com",
-    "emails": [
-      "guimedon@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://produto.mercadolivre.com.br/MLB-4196502916?matt_tool=38524122#origin=share&sid=share&action=copy",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://produto.mercadolivre.com.br/MLB-4196502916?matt_tool=38524122#origin=share&sid=share&action=copy"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-05-26T20:38:28",
-    "carimbo_data_hora": "26/05/2026 20:21:09",
-    "active": true,
-    "interval_hours": 3,
-    "last_check_at": "2026-05-31T21:51:43",
-    "next_check_at": "2026-06-01T00:51:43",
-    "configured_at": "2026-05-26T20:40:35",
-    "end_at": "2026-06-25T20:40:35",
-    "last_notified_price": null,
-    "last_notified_at": null,
-    "first_triggered_at": null
-  },
-  {
-    "id": "000019",
-    "name": "Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458",
-    "mode": "url",
-    "target_price": 560.0,
-    "precoDesejado": 560.0,
-    "interval_hours": 3,
-    "urls": [
-      "https://www.mercadolivre.com.br/cadeirinha-infantil-para-carro-litet-mass-0-36kg-preta-e-cinza-bb458/p/MLB24455909?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=faae2439-46b8-4ffc-8a40-7c81bbd3e6c1&position=2&tracking_id=03b7fe27-2064-4d11-ba7e-253842d7eb17&wid=MLB3379223661&sid=offers"
-    ],
-    "link1": "https://www.mercadolivre.com.br/cadeirinha-infantil-para-carro-litet-mass-0-36kg-preta-e-cinza-bb458/p/MLB24455909?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=faae2439-46b8-4ffc-8a40-7c81bbd3e6c1&position=2&tracking_id=03b7fe27-2064-4d11-ba7e-253842d7eb17&wid=MLB3379223661&sid=offers",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "email": "",
-    "emails": [],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "description": "Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458",
-    "descricao": "Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458",
-    "active": true,
-    "agendado": true,
-    "last_check_at": "2026-05-31T21:51:44",
-    "next_check_at": "2026-06-01T00:51:44",
-    "configured_at": "2026-05-27T20:53:06",
-    "end_at": "2026-06-26T20:53:06",
-    "dt_criacao": "2026-05-26T21:39:01",
-    "last_notified_price": null,
-    "last_notified_at": null,
-    "first_triggered_at": null
+    "first_triggered_at": null,
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-05-31T22:24:49"
   },
   {
     "id": "000020",
@@ -326,14 +226,17 @@
     "descricao": "Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas",
     "active": true,
     "agendado": true,
-    "last_check_at": "2026-05-31T21:51:44",
-    "next_check_at": "2026-06-01T00:51:44",
+    "last_check_at": "2026-05-31T22:25:29",
+    "next_check_at": "2026-06-01T01:25:29",
     "configured_at": "2026-05-27T19:35:11",
     "end_at": "2026-06-26T19:35:11",
     "dt_criacao": "2026-05-26T21:40:37",
-    "last_notified_price": null,
-    "last_notified_at": null,
-    "first_triggered_at": null
+    "last_notified_price": 149.0,
+    "last_notified_at": "2026-05-31T22:25:29",
+    "first_triggered_at": "2026-05-31T22:25:29",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Disparo enviado.",
+    "last_execution_at": "2026-05-31T22:25:29"
   },
   {
     "id": "000021",
@@ -360,14 +263,17 @@
     "descricao": "Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®",
     "active": true,
     "agendado": true,
-    "last_check_at": "2026-05-31T21:51:45",
-    "next_check_at": "2026-06-01T00:51:45",
+    "last_check_at": "2026-05-31T22:25:42",
+    "next_check_at": "2026-06-01T01:25:42",
     "configured_at": "2026-05-27T21:08:56",
     "end_at": "2026-06-26T21:08:56",
     "dt_criacao": "2026-05-27T21:08:56",
     "last_notified_price": 709.0,
     "last_notified_at": "2026-05-27T21:09:03",
-    "first_triggered_at": "2026-05-27T21:09:03"
+    "first_triggered_at": "2026-05-27T21:09:03",
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-05-31T22:25:42"
   },
   {
     "id": "000022",
@@ -400,208 +306,16 @@
     "carimbo_data_hora": "27/05/2026 21:10:15",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-05-31T21:51:46",
-    "next_check_at": "2026-06-01T00:51:46",
+    "last_check_at": "2026-05-31T22:25:52",
+    "next_check_at": "2026-06-01T01:25:52",
     "configured_at": "2026-05-27T21:13:30",
     "end_at": "2026-06-26T21:13:30",
     "last_notified_price": 379.0,
     "last_notified_at": "2026-05-27T21:13:38",
-    "first_triggered_at": "2026-05-27T21:13:38"
-  },
-  {
-    "id": "000023",
-    "source": "planilha",
-    "sheet_row_number": 17,
-    "name": "Par Munhequeira Wilson Tênis Squash Basquete Beach Tennis",
-    "description": "Par Munhequeira Wilson Tênis Squash Basquete Beach Tennis",
-    "descricao": "Par Munhequeira Wilson Tênis Squash Basquete Beach Tennis",
-    "mode": "url",
-    "target_price": 50.0,
-    "precoDesejado": 50.0,
-    "email": "lucasmbfonseca@gmail.com",
-    "emails": [
-      "lucasmbfonseca@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://produto.mercadolivre.com.br/MLB-3365496502-par-munhequeira-wilson-tnis-squash-basquete-beach-tennis-_JM?searchVariation=177381840245&pdp_filters=discount%3A30-100%7Cshipping_cost%3Afree%7Cprice%3A30-*#polycard_client=search-desktop&searchVariation=177381840245&float_highlight=last_units&be_origin=backend&search_layout=grid&position=12&type=item&tracking_id=46d76113-7876-4812-9cfb-d9c600cd9a25",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://produto.mercadolivre.com.br/MLB-3365496502-par-munhequeira-wilson-tnis-squash-basquete-beach-tennis-_JM?searchVariation=177381840245&pdp_filters=discount%3A30-100%7Cshipping_cost%3Afree%7Cprice%3A30-*#polycard_client=search-desktop&searchVariation=177381840245&float_highlight=last_units&be_origin=backend&search_layout=grid&position=12&type=item&tracking_id=46d76113-7876-4812-9cfb-d9c600cd9a25"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-05-27T21:25:12",
-    "carimbo_data_hora": "27/05/2026 21:22:07",
-    "active": true,
-    "interval_hours": 3,
-    "last_check_at": "2026-05-31T21:51:47",
-    "next_check_at": "2026-06-01T00:51:47",
-    "configured_at": "2026-05-27T21:25:12",
-    "end_at": "2026-06-26T21:25:12",
-    "last_notified_price": 46.85,
-    "last_notified_at": "2026-05-27T21:25:19",
-    "first_triggered_at": "2026-05-27T21:25:19"
-  },
-  {
-    "id": "000024",
-    "source": "planilha",
-    "sheet_row_number": 18,
-    "name": "Suporte Articulado Para Monitor 13 a 32 Pistão a Gás Ajustável Zinnia Nimbo 110 Branco",
-    "description": "Suporte Articulado Para Monitor 13 a 32 Pistão a Gás Ajustável Zinnia Nimbo 110 Branco",
-    "descricao": "Suporte Articulado Para Monitor 13 a 32 Pistão a Gás Ajustável Zinnia Nimbo 110 Branco",
-    "mode": "url",
-    "target_price": 92.0,
-    "precoDesejado": 92.0,
-    "email": "lucasmbfonseca@gmail.com",
-    "emails": [
-      "lucasmbfonseca@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://www.mercadolivre.com.br/suporte-articulado-para-monitor-13-a-32-pisto-a-gas-ajustavel-zinnia-nimbo-110-branco/p/MLB50243717?pdp_filters=discount%3A70-100%7Cdeal%3AMLB1388791-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=2&type=product&tracking_id=cff4d914-2902-40f3-aeb6-804ded557f78&wid=MLB4070664175&sid=search",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://www.mercadolivre.com.br/suporte-articulado-para-monitor-13-a-32-pisto-a-gas-ajustavel-zinnia-nimbo-110-branco/p/MLB50243717?pdp_filters=discount%3A70-100%7Cdeal%3AMLB1388791-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=2&type=product&tracking_id=cff4d914-2902-40f3-aeb6-804ded557f78&wid=MLB4070664175&sid=search"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-05-27T21:36:03",
-    "carimbo_data_hora": "27/05/2026 21:25:38",
-    "active": true,
-    "interval_hours": 3,
-    "last_check_at": "2026-05-31T21:51:48",
-    "next_check_at": "2026-06-01T00:51:48",
-    "configured_at": "2026-05-27T21:36:03",
-    "end_at": "2026-06-26T21:36:03",
-    "last_notified_price": 91.77,
-    "last_notified_at": "2026-05-27T21:36:09",
-    "first_triggered_at": "2026-05-27T21:36:09"
-  },
-  {
-    "id": "000025",
-    "source": "planilha",
-    "sheet_row_number": 19,
-    "name": "Suporte Articulado Para 2 Monitores 13 a 32 Pistão a Gás Zinnia Nimbo 210 Branco",
-    "description": "Suporte Articulado Para 2 Monitores 13 a 32 Pistão a Gás Zinnia Nimbo 210 Branco",
-    "descricao": "Suporte Articulado Para 2 Monitores 13 a 32 Pistão a Gás Zinnia Nimbo 210 Branco",
-    "mode": "url",
-    "target_price": 179.0,
-    "precoDesejado": 179.0,
-    "email": "lucasmbfonseca@gmail.com",
-    "emails": [
-      "lucasmbfonseca@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://www.mercadolivre.com.br/suporte-articulado-para-2-monitores-13-a-32-pisto-a-gas-zinnia-nimbo-210-branco/p/MLB50619170?pdp_filters=deal%3AMLB1388791-1%7Cdiscount%3A50-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=14&type=product&tracking_id=de97e872-438e-4e56-9348-8b2ed5f77e6c&wid=MLB5423759988&sid=search",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://www.mercadolivre.com.br/suporte-articulado-para-2-monitores-13-a-32-pisto-a-gas-zinnia-nimbo-210-branco/p/MLB50619170?pdp_filters=deal%3AMLB1388791-1%7Cdiscount%3A50-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=14&type=product&tracking_id=de97e872-438e-4e56-9348-8b2ed5f77e6c&wid=MLB5423759988&sid=search"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-05-27T21:36:03",
-    "carimbo_data_hora": "27/05/2026 21:29:59",
-    "active": true,
-    "interval_hours": 3,
-    "last_check_at": "2026-05-31T21:51:48",
-    "next_check_at": "2026-06-01T00:51:48",
-    "configured_at": "2026-05-27T21:36:03",
-    "end_at": "2026-06-26T21:36:03",
-    "last_notified_price": 178.38,
-    "last_notified_at": "2026-05-27T21:36:16",
-    "first_triggered_at": "2026-05-27T21:36:16"
-  },
-  {
-    "id": "000026",
-    "source": "planilha",
-    "sheet_row_number": 20,
-    "name": "Amazon Fire Tv Stick 2024 8gb Controle Alexa Preto",
-    "description": "Amazon Fire Tv Stick 2024 8gb Controle Alexa Preto",
-    "descricao": "Amazon Fire Tv Stick 2024 8gb Controle Alexa Preto",
-    "mode": "url",
-    "target_price": 220.0,
-    "precoDesejado": 220.0,
-    "email": "lucasmbfonseca@gmail.com",
-    "emails": [
-      "lucasmbfonseca@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://www.mercadolivre.com.br/amazon-fire-tv-stick-2024-8gb-controle-alexa-preto/up/MLBU3862859146#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=4&type=product&tracking_id=43185b9d-ce8a-4083-95b2-79bc1c99e98e&wid=MLB6494684540&sid=search",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://www.mercadolivre.com.br/amazon-fire-tv-stick-2024-8gb-controle-alexa-preto/up/MLBU3862859146#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=4&type=product&tracking_id=43185b9d-ce8a-4083-95b2-79bc1c99e98e&wid=MLB6494684540&sid=search"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-05-27T21:36:03",
-    "carimbo_data_hora": "27/05/2026 21:30:30",
-    "active": true,
-    "interval_hours": 3,
-    "last_check_at": "2026-05-31T21:51:49",
-    "next_check_at": "2026-06-01T00:51:49",
-    "configured_at": "2026-05-27T21:36:03",
-    "end_at": "2026-06-26T21:36:03",
-    "last_notified_price": 219.0,
-    "last_notified_at": "2026-05-27T21:36:23",
-    "first_triggered_at": "2026-05-27T21:36:23"
-  },
-  {
-    "id": "000027",
-    "source": "planilha",
-    "sheet_row_number": 21,
-    "name": "Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air",
-    "description": "Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air",
-    "descricao": "Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air",
-    "mode": "url",
-    "target_price": 190.0,
-    "precoDesejado": 190.0,
-    "email": "lucasmbfonseca@gmail.com",
-    "emails": [
-      "lucasmbfonseca@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://www.mercadolivre.com.br/hub-usb-c-8-em-1-newness-hdmi-4k-rj45-usb-30-leitor-sd-macbook-air/p/MLB37699325?pdp_filters=discount%3A20-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=44&type=product&tracking_id=8befad8c-cf79-4153-adba-a4ba30f48e1d&wid=MLB6434044192&sid=search",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://www.mercadolivre.com.br/hub-usb-c-8-em-1-newness-hdmi-4k-rj45-usb-30-leitor-sd-macbook-air/p/MLB37699325?pdp_filters=discount%3A20-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=44&type=product&tracking_id=8befad8c-cf79-4153-adba-a4ba30f48e1d&wid=MLB6434044192&sid=search"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-05-27T21:36:21",
-    "carimbo_data_hora": "27/05/2026 21:33:23",
-    "active": true,
-    "interval_hours": 3,
-    "last_check_at": "2026-05-31T21:51:50",
-    "next_check_at": "2026-06-01T00:51:50",
-    "configured_at": "2026-05-30T12:00:47",
-    "end_at": "2026-06-29T12:00:47",
-    "last_notified_price": null,
-    "last_notified_at": null,
-    "first_triggered_at": null
+    "first_triggered_at": "2026-05-27T21:13:38",
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-05-31T22:25:52"
   },
   {
     "id": "000028",
@@ -636,13 +350,16 @@
     "carimbo_data_hora": "30/05/2026 21:26:30",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-05-31T21:51:52",
-    "next_check_at": "2026-06-01T00:51:52",
+    "last_check_at": "2026-05-31T22:27:30",
+    "next_check_at": "2026-06-01T01:27:30",
     "configured_at": "2026-05-30T21:30:14",
     "end_at": "2026-06-29T21:30:14",
     "last_notified_price": null,
     "last_notified_at": null,
-    "first_triggered_at": null
+    "first_triggered_at": null,
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-05-31T22:27:30"
   },
   {
     "id": "000029",
@@ -675,12 +392,15 @@
     "carimbo_data_hora": "31/05/2026 22:16:04",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-05-31T22:19:20",
-    "next_check_at": "2026-06-01T01:19:20",
+    "last_check_at": "2026-05-31T22:27:42",
+    "next_check_at": "2026-06-01T01:27:42",
     "configured_at": "2026-05-31T22:19:07",
     "end_at": "2026-06-30T22:19:07",
     "last_notified_price": null,
     "last_notified_at": null,
-    "first_triggered_at": null
+    "first_triggered_at": null,
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-05-31T22:27:42"
   }
 ]

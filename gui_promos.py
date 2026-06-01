@@ -1656,6 +1656,7 @@ def create_gui(categorias):
     hub_schedule_tree.column("acoes", width=200, anchor="center")
     hub_schedule_tree.tag_configure("cfg_ativa", background="#33cc3d")
     hub_schedule_tree.tag_configure("cfg_inativa", background="#e3ee4f")
+    hub_schedule_tree.tag_configure("cfg_falha", background="#ffd7d7", foreground="#7a1010")
 
     schedules_scroll = ttk.Scrollbar(grid_wrap, orient="vertical", command=hub_schedule_tree.yview)
     hub_schedule_tree.configure(yscrollcommand=schedules_scroll.set)
@@ -1822,15 +1823,43 @@ def create_gui(categorias):
                 ultima_relevante = linha
                 break
 
+        falhas_linha = []
+        sem_disparo_linha = 0
+        for item in _coletar_programacoes():
+            cfg = item.get("cfg") or {}
+            status_exec = str(cfg.get("last_execution_status") or "").strip().lower()
+            mensagem_exec = str(cfg.get("last_execution_message") or "").strip()
+
+            if status_exec == "falha":
+                falhas_linha.append(
+                    f"- {item.get('tipo')} {item.get('id')}: {item.get('nome')} -> {mensagem_exec or 'Falha na execucao.'}"
+                )
+            elif status_exec == "sem_disparo":
+                sem_disparo_linha += 1
+
+        falhas_linha_texto = "\n".join(falhas_linha) if falhas_linha else "- Nenhuma falha registrada por linha no GRID."
+
         return (
             "Diagnostico de execucao (logs):\n"
             f"- Sem disparo: {sem_disparo}\n"
             f"- Nao executou: {sem_execucao}\n"
             f"- Falhou: {falhas}\n"
+            f"- Sem disparo por criterio (GRID): {sem_disparo_linha}\n"
+            "\nFalhas por linha do GRID:\n"
+            f"{falhas_linha_texto}\n"
+            "\n"
             f"- Ultimo motivo: {ultima_relevante}\n"
             f"- Log alerta: {caminho_alerta}\n"
             f"- Log execucao: {caminho_execucao or '-'}"
         )
+
+    def _registrar_resultado_execucao(cfg, status, mensagem=""):
+        if not isinstance(cfg, dict):
+            return
+
+        cfg["last_execution_status"] = (status or "").strip().lower() or "desconhecido"
+        cfg["last_execution_message"] = (mensagem or "").strip()
+        cfg["last_execution_at"] = datetime.now().isoformat(timespec="seconds")
 
     def _enqueue_alert_execution(alert, source="scheduler"):
         if alert is None:
@@ -2183,6 +2212,14 @@ def create_gui(categorias):
 
     def _formatar_status_agendamento(schedule, now=None):
         now = now or datetime.now()
+
+        status_exec = str(schedule.get("last_execution_status") or "").strip().lower()
+        msg_exec = str(schedule.get("last_execution_message") or "").strip()
+        if status_exec == "falha":
+            return f"Falha: {msg_exec or 'erro de execucao'}"
+        if status_exec == "sucesso":
+            return f"Ultima execucao: {(_parse_iso_datetime(schedule.get('last_execution_at')) or now).strftime('%d/%m %H:%M')}"
+
         if not schedule.get("active", True):
             return "Inativo"
 
@@ -2201,6 +2238,16 @@ def create_gui(categorias):
 
     def _formatar_status_alerta(alert, now=None):
         now = now or datetime.now()
+
+        status_exec = str(alert.get("last_execution_status") or "").strip().lower()
+        msg_exec = str(alert.get("last_execution_message") or "").strip()
+        if status_exec == "falha":
+            return f"Falha: {msg_exec or 'erro de execucao'}"
+        if status_exec == "sem_disparo":
+            return "Sem disparo (criterios)"
+        if status_exec == "sucesso":
+            return "Disparo realizado"
+
         if not alert.get("active", True):
             return "Inativo"
 
@@ -2238,6 +2285,7 @@ def create_gui(categorias):
                     "proxima": _proxima_execucao_alerta(alert),
                     "ciclo": f"{int(alert.get('interval_hours', 1))}h",
                     "execucao": _formatar_status_alerta(alert),
+                    "cfg": alert,
                 }
             )
 
@@ -2256,6 +2304,7 @@ def create_gui(categorias):
                     "proxima": _proxima_execucao_campanha(schedule),
                     "ciclo": f"{int(schedule.get('interval_hours', 1))}h",
                     "execucao": _formatar_status_agendamento(schedule),
+                    "cfg": schedule,
                 }
             )
 
@@ -2291,7 +2340,11 @@ def create_gui(categorias):
             marcado = "☑" if item["key"] in programacoes_selecionadas else "☐"
             _, cfg = _obter_programacao_por_key(item["key"])
             ativo_cfg = bool((cfg or {}).get("active", True))
-            tag_linha = "cfg_ativa" if ativo_cfg else "cfg_inativa"
+            status_exec = str((cfg or {}).get("last_execution_status") or "").strip().lower()
+            if status_exec == "falha":
+                tag_linha = "cfg_falha"
+            else:
+                tag_linha = "cfg_ativa" if ativo_cfg else "cfg_inativa"
 
             hub_schedule_tree.insert(
                 "",
@@ -2310,7 +2363,7 @@ def create_gui(categorias):
                     item["proxima"],
                     item["ciclo"],
                     item["execucao"],
-                    "Editar | Excluir | Executar",
+                    "(i) | Editar | Excluir | Executar",
                 ),
             )
 
@@ -3155,7 +3208,7 @@ def create_gui(categorias):
             _refresh_hub_schedules_grid()
             args = _build_hub_args_from_schedule(item)
             args.extend(["--modalidade-execucao", "campanha"])
-            launch_process(args, f"Rotina executada manualmente: {item.get('name', 'Sem nome')}")
+            launch_process(args, f"Rotina executada manualmente: {item.get('name', 'Sem nome')}", execution_key=key)
             return
 
         if tipo == "alerta":
@@ -3163,6 +3216,49 @@ def create_gui(categorias):
                 _run_next_alert_from_queue()
             else:
                 status_var.set(f"Alerta ja esta em execucao/fila: {item.get('name', 'Sem nome')}")
+
+    def _resumo_execucao_por_linha(key):
+        tipo, item = _obter_programacao_por_key(key)
+        if item is None:
+            return "Linha nao encontrada."
+
+        status_exec = str(item.get("last_execution_status") or "").strip().lower() or "sem_execucao"
+        msg_exec = str(item.get("last_execution_message") or "").strip() or "-"
+        when_exec = _formatar_data_hora(item.get("last_execution_at"))
+
+        if status_exec == "falha":
+            status_humano = "Falha"
+        elif status_exec == "sem_disparo":
+            status_humano = "Sem disparo por criterio"
+        elif status_exec == "sucesso":
+            status_humano = "Sucesso"
+        else:
+            status_humano = "Sem execucao registrada"
+
+        if tipo == "alerta":
+            return (
+                "Resumo de execucao da linha\n\n"
+                f"ID: {item.get('id', '-')}\n"
+                f"Tipo: Alerta de preco\n"
+                f"Nome: {item.get('name', 'Alerta sem nome')}\n"
+                f"Status: {status_humano}\n"
+                f"Mensagem: {msg_exec}\n"
+                f"Ultima execucao registrada: {when_exec}\n"
+                f"Ultima checagem: {_formatar_data_hora(item.get('last_check_at'))}\n"
+                f"Proxima checagem: {_proxima_execucao_alerta(item)}"
+            )
+
+        return (
+            "Resumo de execucao da linha\n\n"
+            f"ID: {item.get('id', '-')}\n"
+            f"Tipo: Campanha\n"
+            f"Nome: {item.get('name', 'Rotina sem nome')}\n"
+            f"Status: {status_humano}\n"
+            f"Mensagem: {msg_exec}\n"
+            f"Ultima execucao registrada: {when_exec}\n"
+            f"Ultima rodada da rotina: {_formatar_data_hora(item.get('last_run_at'))}\n"
+            f"Proxima execucao: {_proxima_execucao_campanha(item)}"
+        )
 
     def _on_programacoes_tree_click(event):
         row_id = hub_schedule_tree.identify_row(event.y)
@@ -3206,9 +3302,14 @@ def create_gui(categorias):
 
             col_x, _col_y, col_w, _col_h = bbox
             clique_relativo = max(0, min(col_w - 1, event.x - col_x))
-            fatia = col_w / 3
+            fatia = col_w / 4
 
             if clique_relativo < fatia:
+                resumo = _resumo_execucao_por_linha(row_id)
+                messagebox.showinfo("Resumo da linha", resumo)
+                return
+
+            if clique_relativo < (2 * fatia):
                 if len(programacoes_selecionadas) > 1:
                     messagebox.showwarning("Edicao bloqueada", "Nao e possivel editar com mais de uma configuracao selecionada.")
                     return
@@ -3220,7 +3321,7 @@ def create_gui(categorias):
                     open_hub_schedule_modal(item)
                 return
 
-            if clique_relativo < (2 * fatia):
+            if clique_relativo < (3 * fatia):
                 tipo, item = _obter_programacao_por_key(row_id)
                 if item is None:
                     return
@@ -3276,7 +3377,11 @@ def create_gui(categorias):
 
         args = _build_hub_args_from_schedule(due_schedule)
         args.extend(["--modalidade-execucao", "campanha"])
-        launch_process(args, f"Rotina programada em execucao: {due_schedule.get('name', 'Sem nome')}")
+        launch_process(
+            args,
+            f"Rotina programada em execucao: {due_schedule.get('name', 'Sem nome')}",
+            execution_key=_programacao_key("campanha", due_schedule.get("id")),
+        )
 
     _save_sheets_alerts_config(SHEETS_ALERTS_CONFIG_FILE, sheets_alerts_config)
     _padronizar_formato_ids_configuracoes()
@@ -3690,6 +3795,7 @@ def create_gui(categorias):
         for result in results:
             alert = result["alert"]
             if result["error"]:
+                _registrar_resultado_execucao(alert, "falha", result["error"])
                 status_var.set(f"Falha ao verificar alerta '{alert.get('name', 'Sem nome')}'.")
                 _append_resumo(
                     f"[{datetime.now().strftime('%H:%M:%S')}] Alerta '{alert.get('name', 'Sem nome')}' sem preco valido: {result['error']}\n"
@@ -3708,6 +3814,7 @@ def create_gui(categorias):
                 continue
 
             if not result["triggered"]:
+                _registrar_resultado_execucao(alert, "sem_disparo", "Nao se encaixou nos criterios de disparo.")
                 _escrever_log_alerta(
                     f"Alerta {alert.get('id', '-')} sem disparo nesta execucao."
                 )
@@ -3741,6 +3848,7 @@ def create_gui(categorias):
 
             alert["last_notified_price"] = price
             alert["last_notified_at"] = datetime.now().isoformat(timespec="seconds")
+            _registrar_resultado_execucao(alert, "sucesso", "Disparo enviado.")
             triggered_count += 1
 
             destinos = []
@@ -3883,7 +3991,7 @@ def create_gui(categorias):
         _escrever_log_sincronizacao_planilha("Sincronizacao manual solicitada pelo usuario.")
         _import_alerts_from_sheet_once()
 
-    def launch_process(forward_args, status_text):
+    def launch_process(forward_args, status_text, execution_key=None):
         if worker_running["value"]:
             messagebox.showwarning("Em execucao", "Ja existe uma busca em andamento.")
             return
@@ -3914,6 +4022,7 @@ def create_gui(categorias):
             worker_running["value"] = False
             if message:
                 status_var.set(message)
+            _refresh_hub_schedules_grid()
 
         def _worker():
             erro = None
@@ -3936,8 +4045,25 @@ def create_gui(categorias):
                 mensagem_final = "Falha na execucao."
 
             if erro is None:
+                if execution_key:
+                    tipo_exec, cfg_exec = _obter_programacao_por_key(execution_key)
+                    if cfg_exec is not None:
+                        _registrar_resultado_execucao(cfg_exec, "sucesso", "Execucao concluida sem falhas.")
+                        if tipo_exec == "campanha":
+                            persist_hub_schedules()
+                        elif tipo_exec == "alerta":
+                            persist_alerts()
                 root.after(0, lambda: _finish_worker(mensagem_final))
                 return
+
+            if execution_key:
+                tipo_exec, cfg_exec = _obter_programacao_por_key(execution_key)
+                if cfg_exec is not None:
+                    _registrar_resultado_execucao(cfg_exec, "falha", str(erro))
+                    if tipo_exec == "campanha":
+                        persist_hub_schedules()
+                    elif tipo_exec == "alerta":
+                        persist_alerts()
 
             root.after(
                 0,
