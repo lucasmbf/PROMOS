@@ -184,6 +184,7 @@ ARG_PRECO_MAXIMO_INFORMADO = "--preco-maximo" in RAW_ARGS
 ARG_PRECO_MINIMO_INFORMADO = "--preco-minimo" in RAW_ARGS
 ARG_DESCONTO_MINIMO_INFORMADO = "--desconto-minimo" in RAW_ARGS
 ARG_LIMITE_CANDIDATOS_INFORMADO = "--limite-candidatos" in RAW_ARGS
+ARG_DESCRICAO_PRODUTO_INFORMADA = "--descricao-produto" in RAW_ARGS
 
 MODO_SOMENTE_RELAMPAGO = ARGS.somente_relampago or os.getenv("RUN_ONLY_RELAMPAGO", "0") == "1"
 MODO_RELAMPAGO_PADRAO = ARGS.relampago_padrao
@@ -1072,6 +1073,7 @@ historico_precos_por_anuncio = carregar_historico_precos_por_anuncio(
 )
 
 categoria_parametrizada = (ARGS.categoria or "").strip() if ARG_CATEGORIA_INFORMADA else None
+descricao_parametrizada = (ARGS.descricao_produto or "").strip() if ARG_DESCRICAO_PRODUTO_INFORMADA else None
 preco_minimo_parametrizado = PRECO_MINIMO if ARG_PRECO_MINIMO_INFORMADO else None
 preco_maximo_parametrizado = PRECO_MAXIMO if ARG_PRECO_MAXIMO_INFORMADO else None
 desconto_minimo_parametrizado = DESCONTO_MINIMO if ARG_DESCONTO_MINIMO_INFORMADO else None
@@ -1176,7 +1178,7 @@ with sync_playwright() as p:
 
     debug_pausa("Depois da validacao de login do Mercado Livre")
 
-    if MODO_BUSCA_DESCRICAO:
+    if MODO_BUSCA_DESCRICAO and not MODO_SOMENTE_RELAMPAGO:
 
         print("\nModo manual por descrição ativado. Hub/Twilio e fluxo relâmpago serão ignorados.")
 
@@ -1448,6 +1450,7 @@ with sync_playwright() as p:
 
     modo_relampago_sem_parametros = (
         categoria_parametrizada is None
+        and descricao_parametrizada is None
         and preco_minimo_parametrizado is None
         and preco_maximo_parametrizado is None
         and desconto_minimo_parametrizado is None
@@ -1461,6 +1464,7 @@ with sync_playwright() as p:
         URL_OFERTAS_RELAMPAGO,
         desconto_minimo=DESCONTO_MINIMO_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else desconto_minimo_parametrizado,
         categoria=None if MODO_RELAMPAGO_PADRAO else categoria_parametrizada,
+        descricao=None if MODO_RELAMPAGO_PADRAO else descricao_parametrizada,
         preco_minimo=None if MODO_RELAMPAGO_PADRAO else preco_minimo_parametrizado,
         preco_maximo=PRECO_MAXIMO_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else preco_maximo_parametrizado,
         limite_candidatos=limite_candidatos_parametrizado,

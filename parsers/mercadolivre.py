@@ -2514,6 +2514,7 @@ def processar_ofertas_relampago(
     url_relampago,
     desconto_minimo=30,
     categoria=None,
+    descricao=None,
     preco_minimo=None,
     preco_maximo=None,
     limite_candidatos=None,
@@ -2535,11 +2536,18 @@ def processar_ofertas_relampago(
     id_execucao = _proxima_execucao_fluxo("relampago")
 
     categoria_filtro = _normalizar_filtro_categoria(categoria) if categoria else ""
+    descricao_filtro = normalizar_descricao(descricao)
 
     url_base_paginas = url_relampago
 
+    # Prioridade: 1) Categoria (na própria página de ofertas),
+    # 2) Descrição (filtro textual sobre as ofertas extraídas),
+    # 3) Preço e desconto.
     if categoria_filtro:
         url_base_paginas = _resolver_url_base_relampago(page, url_relampago, categoria)
+
+    if descricao_filtro:
+        print(f"Filtro de descricao ativo no relampago: '{descricao_filtro}'")
 
     if ids_descartados is None and historico_anuncios:
         ids_descartados = historico_anuncios
@@ -2550,7 +2558,7 @@ def processar_ofertas_relampago(
             desconto_minimo=desconto_minimo,
             preco_minimo=preco_minimo,
             preco_maximo=preco_maximo,
-            descricao=None,
+            descricao=descricao_filtro,
         )
         and limite_candidatos is None
     )
@@ -2579,7 +2587,7 @@ def processar_ofertas_relampago(
             desconto_minimo=desconto_minimo,
             preco_minimo=preco_minimo,
             preco_maximo=preco_maximo,
-            descricao=None,
+            descricao=descricao_filtro,
             limite_validos=limite_alvo,
             ids_descartados=ids_descartados,
         )
@@ -2616,7 +2624,7 @@ def processar_ofertas_relampago(
                 desconto_minimo=desconto_minimo,
                 preco_minimo=preco_minimo,
                 preco_maximo=preco_maximo,
-                descricao=None,
+                descricao=descricao_filtro,
                 limite_validos=limite_alvo,
                 ids_descartados=ids_descartados,
             )
@@ -2660,7 +2668,7 @@ def processar_ofertas_relampago(
             desconto_minimo=desconto_minimo,
             preco_minimo=preco_minimo,
             preco_maximo=preco_maximo,
-            descricao=None,
+            descricao=descricao_filtro,
             limite_validos=limite_alvo,
             ids_descartados=ids_descartados,
         )
@@ -2692,7 +2700,7 @@ def processar_ofertas_relampago(
                 desconto_minimo=desconto_minimo,
                 preco_minimo=preco_minimo,
                 preco_maximo=preco_maximo,
-                descricao=None,
+                descricao=descricao_filtro,
                 limite_validos=limite_alvo,
                 ids_descartados=ids_descartados,
             )
@@ -2736,6 +2744,7 @@ def processar_ofertas_relampago(
                 "pasta_html": PASTA_RELAMPAGO_HTML,
                 "pasta_historico": PASTA_RELAMPAGO_HISTORICO,
                 "categoria": categoria,
+                "descricao": descricao_filtro,
                 "desconto_minimo": desconto_minimo,
                 "preco_minimo": preco_minimo,
                 "preco_maximo": preco_maximo,
@@ -2761,6 +2770,7 @@ def processar_ofertas_relampago(
             "pasta_html": PASTA_RELAMPAGO_HTML,
             "pasta_historico": PASTA_RELAMPAGO_HISTORICO,
             "categoria": categoria,
+            "descricao": descricao_filtro,
             "desconto_minimo": desconto_minimo,
             "preco_minimo": preco_minimo,
             "preco_maximo": preco_maximo,

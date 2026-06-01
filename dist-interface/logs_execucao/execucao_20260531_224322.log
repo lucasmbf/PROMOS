@@ -1,0 +1,16 @@
+=== Inicio da execucao: 2026-05-31T22:43:22 ===
+Args: --somente-relampago --descricao-produto mochila --desconto-minimo 50 --limite-candidatos 3 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo manual por descrição ativado. Hub/Twilio e fluxo relâmpago serão ignorados.
+
+[Busca genérica] Página 1: https://lista.mercadolivre.com.br/mochila
+
+[Busca genérica] Página 2: https://lista.mercadolivre.com.br/mochila_Desde_51
+
+[Busca genérica] Página 3: https://lista.mercadolivre.com.br/mochila_Desde_101
+
+=== Fim da execucao: 2026-05-31T22:43:46 ===

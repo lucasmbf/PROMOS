@@ -1318,6 +1318,7 @@ def create_gui(categorias):
     rel_desconto_var = tk.StringVar()
     rel_limite_var = tk.StringVar()
     rel_categoria_var = tk.StringVar(value="Todas categorias")
+    rel_descricao_var = tk.StringVar()
     rel_padrao_var = tk.BooleanVar(value=False)
 
     def _decimal_input_valido(texto):
@@ -1457,6 +1458,11 @@ def create_gui(categorias):
     rel_categoria_combo.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0))
 
     rel_row += 1
+    ttk.Label(relampago_frame, text="Descricao (opcional):", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(6, 0))
+    rel_descricao_entry = ttk.Entry(relampago_frame, textvariable=rel_descricao_var)
+    rel_descricao_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
+
+    rel_row += 1
     ttk.Label(relampago_frame, text="Preco minimo:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(6, 0))
     rel_preco_min_entry = ttk.Entry(
         relampago_frame,
@@ -1513,6 +1519,7 @@ def create_gui(categorias):
 
     relampago_inputs = [
         rel_categoria_combo,
+        rel_descricao_entry,
         rel_preco_min_entry,
         rel_preco_max_entry,
         rel_desconto_entry,
@@ -4149,10 +4156,12 @@ def create_gui(categorias):
             return
 
         categoria = rel_categoria_var.get().strip()
+        descricao = (rel_descricao_var.get() or "").strip()
 
         possui_parametro = any(
             [
                 bool(categoria and categoria != "Todas categorias"),
+            bool(descricao),
                 preco_min is not None,
                 preco_max is not None,
                 desconto is not None,
@@ -4179,6 +4188,8 @@ def create_gui(categorias):
         args.append("--somente-relampago")
         if categoria and categoria != "Todas categorias":
             args.extend(["--categoria", categoria])
+        if descricao:
+            args.extend(["--descricao-produto", descricao])
         if preco_min is not None:
             args.extend(["--preco-minimo", str(preco_min)])
         if preco_max is not None:

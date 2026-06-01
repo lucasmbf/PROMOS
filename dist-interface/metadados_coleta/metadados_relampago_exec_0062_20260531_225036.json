@@ -1,0 +1,58 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 62,
+  "gerado_em": "2026-05-31T22:50:36",
+  "total_ofertas": 2,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": null,
+    "descricao": "Bandeira",
+    "desconto_minimo": null,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": null,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB4179692215",
+      "descricao": "Bandeira Do Brasil Grande Gigante 3x2 Metros Em Cetim",
+      "categoria": "Antiguidades e Coleções > Bandeiras",
+      "antes": "R$ 212,47",
+      "depois": "R$ 145,86",
+      "desconto": "31% OFF",
+      "link": "https://meli.la/2yPB5Rn",
+      "link_original": "https://www.mercadolivre.com.br/bandeira-do-brasil-grande-gigante-3x2-metros-em-cetim/up/MLBU3390069862?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=7a8044fc-9d4b-44eb-8a39-0a7cd509acb7&tracking_id=42ba068a-9778-43f7-9820-69ce9851adc6&wid=MLB4179692215&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/bandeira-do-brasil-grande-gigante-3x2-metros-em-cetim/up/MLBU3390069862?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=7a8044fc-9d4b-44eb-8a39-0a7cd509acb7&tracking_id=42ba068a-9778-43f7-9820-69ce9851adc6&wid=MLB4179692215&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning&page=2",
+      "pagina_origem_numero": 2,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260531_224803_211549_02.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    },
+    {
+      "ordem": 2,
+      "id_anuncio": "MLB3502869781",
+      "descricao": "Bandeira Do Brasil Dupla Face Grande Costurada 2,00x1,45 Brasil",
+      "categoria": "Bandeiras > Bandeira Brasil",
+      "antes": "R$ 206,40",
+      "depois": "R$ 161,47",
+      "desconto": "21% OFF",
+      "link": "https://meli.la/1C8LUeg",
+      "link_original": "https://www.mercadolivre.com.br/bandeira-do-brasil-dupla-face-grande-costurada-200x145/up/MLBU2267541579?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=336f895c-b1f4-43ac-9b8d-3ab3e013d524&tracking_id=dc525b27-0ff2-4529-aa6c-3d4e0953f722&wid=MLB3502869781&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/bandeira-do-brasil-dupla-face-grande-costurada-200x145/up/MLBU2267541579?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=336f895c-b1f4-43ac-9b8d-3ab3e013d524&tracking_id=dc525b27-0ff2-4529-aa6c-3d4e0953f722&wid=MLB3502869781&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning&page=5",
+      "pagina_origem_numero": 5,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260531_224910_054868_05.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}
