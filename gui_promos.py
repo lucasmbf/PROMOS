@@ -4112,10 +4112,11 @@ def create_gui(categorias):
         descricao = descricao_var.get().strip()
         categoria = categoria_var.get().strip()
 
-        if not descricao:
+        possui_categoria = bool(categoria and categoria != "Todas categorias")
+        if not descricao and not possui_categoria:
             messagebox.showwarning(
                 "Atencao",
-                "Descricao e obrigatoria. Informe ao menos uma palavra-chave do produto.",
+                "Informe ao menos Categoria e/ou Descricao para buscar o produto.",
             )
             return
 

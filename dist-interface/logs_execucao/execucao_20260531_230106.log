@@ -1,0 +1,18 @@
+=== Inicio da execucao: 2026-05-31T23:01:06 ===
+Args: --produto-por-html --categoria Bebês --descricao-produto Carrinho --limite-candidatos 1 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+Categoria resolvida pela home: Bebês → https://www.mercadolivre.com.br/c/bebes#menu=categories
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/c/bebes/Carrinho
+✓ Link de afiliado: https://meli.la/1hgmLAU
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+1 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-05-31T23:01:33 ===

@@ -1,0 +1,40 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 63,
+  "gerado_em": "2026-05-31T23:02:45",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\Historico de anuncios",
+    "categoria": null,
+    "descricao": "tenis",
+    "desconto_minimo": null,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB3493517270",
+      "descricao": "Tenis Feminino Original Leve Confortável Olimp Nice Academia",
+      "categoria": "Calçados > Tênis",
+      "antes": "R$ 199,99",
+      "depois": "R$ 87,16",
+      "desconto": "56% OFF",
+      "link": "https://meli.la/2kWKDya",
+      "link_original": "https://produto.mercadolivre.com.br/MLB-3493517270-tenis-feminino-original-leve-confortavel-olimp-nice-academia-_JM?searchVariation=177469816052#polycard_client=offers&deal_print_id=06cd6656-37a0-4900-bc84-12c8a54b0628&tracking_id=890955b4-5f2d-409f-ab4e-348a82cb14ea",
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-3493517270-tenis-feminino-original-leve-confortavel-olimp-nice-academia-_JM?searchVariation=177469816052#polycard_client=offers&deal_print_id=06cd6656-37a0-4900-bc84-12c8a54b0628&tracking_id=890955b4-5f2d-409f-ab4e-348a82cb14ea",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning&page=2",
+      "pagina_origem_numero": 2,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\dist-interface\\ofertas_relampago\\html\\html_relampago_20260531_230234_675917_02.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

@@ -2117,9 +2117,9 @@ def processar_produtos_home_por_pesquisa(
     termo_base = normalizar_descricao(descricao or "")
     categoria_base = normalizar_descricao(categoria or "")
 
-    if not termo_base:
+    if not termo_base and not categoria_base:
         raise ValueError(
-            "Descricao e obrigatoria para buscar produto. Informe ao menos uma palavra-chave."
+            "Informe ao menos Categoria e/ou Descricao para buscar produto."
         )
 
     # Resolve URL da categoria pela home quando categoria for informada
@@ -2146,11 +2146,14 @@ def processar_produtos_home_por_pesquisa(
         if limite_candidatos_int is not None and len(candidatos) >= limite_candidatos_int:
             break
 
-        if url_categoria_home:
-            # Descrição + categoria: busca o termo dentro da URL da categoria resolvida na home
+        if url_categoria_home and termo_base:
+            # Prioridade 1+2: categoria e depois descricao dentro da categoria.
             url = _montar_url_pesquisa_em_categoria(url_categoria_home, termo_base, pagina)
+        elif url_categoria_home:
+            # Prioridade 1: apenas categoria.
+            url = url_categoria_home if pagina == 1 else _montar_url_paginada(url_categoria_home, pagina)
         else:
-            # Só descrição: busca genérica por descrição
+            # Prioridade 2: sem categoria, usa busca por descricao.
             url = _montar_url_pesquisa_generica(termo_base, pagina)
 
         print(f"\n[Pesquisa inicial] Página {pagina}: {url}")
@@ -2784,7 +2787,7 @@ def processar_ofertas_relampago(
     return ofertas_enriquecidas
 
 
-def salvar_resultado_relampago(ofertas, pasta=None):
+def salvar_resultado_relampago(ofertas, pasta=None, incluir_banner_relampago=True):
     """Registra as ofertas relâmpago em um único arquivo histórico."""
 
     if not ofertas:
@@ -2812,7 +2815,8 @@ def salvar_resultado_relampago(ofertas, pasta=None):
     with open(caminho, "a", encoding="utf-8") as f:
         f.write(f"===== EXECUCAO {timestamp} | TOTAL {len(ofertas)} =====\n\n")
         for oferta in ofertas:
-            f.write("⚡️ *OFERTA RELÂMPAGO*⚡️ \n\n\n")
+            if incluir_banner_relampago:
+                f.write("⚡️ *OFERTA RELÂMPAGO*⚡️ \n\n\n")
             categoria = oferta.get("categoria", "-")
             descricao = oferta.get("descricao", "-")
 

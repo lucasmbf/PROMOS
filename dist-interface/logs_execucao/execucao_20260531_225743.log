@@ -1,0 +1,21 @@
+=== Inicio da execucao: 2026-05-31T22:57:43 ===
+Args: --produto-por-html --descricao-produto Nintendo Switch 2 --preco-minimo 3000.0 --preco-maximo 4000.0 --limite-candidatos 5 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/Nintendo-Switch-2
+✓ Link de afiliado: https://meli.la/2Qv1pyu
+✓ Link de afiliado: https://meli.la/1Y7Euhv
+✓ Link de afiliado: https://meli.la/2LMwNNn
+✓ Link de afiliado: https://meli.la/15hm6Hr
+✓ Link de afiliado: https://meli.la/1993JAQ
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-05-31T22:58:39 ===

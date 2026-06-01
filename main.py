@@ -1137,7 +1137,11 @@ with sync_playwright() as p:
 
         if ofertas_hub:
 
-            salvar_resultado_relampago(ofertas_hub, pasta=ARGS.pasta_saida or None)
+            salvar_resultado_relampago(
+                ofertas_hub,
+                pasta=ARGS.pasta_saida or None,
+                incluir_banner_relampago=False,
+            )
             salvar_saida_execucao_modalidade(ofertas_hub, ARGS.modalidade_execucao or "ondemand")
 
             salvar_historico_anuncios_em_arquivo(
@@ -1194,7 +1198,10 @@ with sync_playwright() as p:
 
         if produto_manual:
 
-            salvar_resultado_relampago([produto_manual])
+            salvar_resultado_relampago(
+                [produto_manual],
+                incluir_banner_relampago=False,
+            )
             salvar_saida_execucao_modalidade([produto_manual], ARGS.modalidade_execucao or "ondemand")
 
             salvar_historico_anuncios_em_arquivo(
