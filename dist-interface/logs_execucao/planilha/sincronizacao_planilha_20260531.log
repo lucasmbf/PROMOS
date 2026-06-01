@@ -1,0 +1,45 @@
+=== Inicio do log de sincronizacao de planilha: 2026-05-31T21:51:20 ===
+[2026-05-31 21:51:20] Inicio da rotina de sincronizacao da planilha.
+[2026-05-31 21:51:20] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-31 21:51:20] Atualizando token OAuth da planilha.
+[2026-05-31 21:51:21] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 21:51:21] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 21:51:21] Finalizacao da sincronizacao. falhou=True importados=0.
+[2026-05-31 21:57:02] Inicio da rotina de sincronizacao da planilha.
+[2026-05-31 21:57:02] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-31 21:57:02] Atualizando token OAuth da planilha.
+[2026-05-31 21:57:03] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 21:57:03] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 21:57:03] Finalizacao da sincronizacao. falhou=True importados=0.
+[2026-05-31 22:05:39] Inicio da rotina de sincronizacao da planilha.
+[2026-05-31 22:05:39] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-31 22:05:39] Atualizando token OAuth da planilha.
+[2026-05-31 22:05:40] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 22:05:40] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 22:05:40] Finalizacao da sincronizacao. falhou=True importados=0.
+[2026-05-31 22:05:52] Sincronizacao manual solicitada pelo usuario.
+[2026-05-31 22:05:52] Inicio da rotina de sincronizacao da planilha.
+[2026-05-31 22:05:52] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-31 22:05:52] Atualizando token OAuth da planilha.
+[2026-05-31 22:05:53] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 22:05:53] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 22:05:53] Finalizacao da sincronizacao. falhou=True importados=0.
+[2026-05-31 22:06:31] Sincronizacao manual solicitada pelo usuario.
+[2026-05-31 22:06:31] Inicio da rotina de sincronizacao da planilha.
+[2026-05-31 22:06:31] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-31 22:06:31] Atualizando token OAuth da planilha.
+[2026-05-31 22:06:31] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 22:06:31] Falha na importacao da planilha: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+[2026-05-31 22:06:31] Finalizacao da sincronizacao. falhou=True importados=0.
+[2026-05-31 22:08:49] Sincronizacao manual solicitada pelo usuario.
+[2026-05-31 22:08:49] Inicio da rotina de sincronizacao da planilha.
+[2026-05-31 22:08:49] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-31 22:08:49] Atualizando token OAuth da planilha.
+[2026-05-31 22:08:49] Token OAuth expirado/revogado. Solicitando nova autorizacao no navegador.
+[2026-05-31 22:08:49] Aguardando autorizacao do Google no navegador para sincronizar a planilha.
+[2026-05-31 22:09:07] Leitura da planilha concluida. Linhas recebidas: 23.
+[2026-05-31 22:09:07] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-05-31 22:09:07] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-05-31 22:09:07] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-05-31 22:09:07] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-05-31 22:09:07] Finalizacao da sincronizacao. falhou=False importados=0.

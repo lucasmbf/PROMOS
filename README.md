@@ -124,6 +124,20 @@ Use o Python do ambiente virtual:
 .\venv\Scripts\python.exe main.py
 ```
 
+
+
+Ative o ambiente virtual:
+
+```powershell
+.\venv\Scripts\Activate.ps1
+```
+		Gere o executável:
+		```powershell
+		.\gerar_executavel_interface.ps1
+
+
+
+```
 Para filtrar por categoria, passe o parâmetro `--categoria` com o nome exato exibido no Mercado Livre:
 
 ```powershell

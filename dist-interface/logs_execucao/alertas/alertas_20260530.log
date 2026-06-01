@@ -1,0 +1,616 @@
+=== Inicio do log de alertas: 2026-05-30T11:52:40 ===
+[2026-05-30 11:53:30] Alerta 000028 enfileirado (manual) - nome: retjretj.
+[2026-05-30 11:53:30] Iniciando execucao do alerta 000028.
+[2026-05-30 11:53:31] Alerta 000028 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:31] Alerta 000028 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:31] Execucao finalizada sem disparos.
+[2026-05-30 11:53:31] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:53:31] Finalizada execucao do alerta 000028.
+[2026-05-30 11:53:40] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-30 11:53:40] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-30 11:53:40] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-30 11:53:40] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-30 11:53:40] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-30 11:53:40] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-30 11:53:40] Alerta 000016 enfileirado (scheduler) - nome: Desitin roxa.
+[2026-05-30 11:53:40] Alerta 000017 enfileirado (scheduler) - nome: Poste de aço modular de jardim.
+[2026-05-30 11:53:40] Alerta 000018 enfileirado (scheduler) - nome: Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt.
+[2026-05-30 11:53:40] Alerta 000019 enfileirado (scheduler) - nome: Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458.
+[2026-05-30 11:53:40] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-05-30 11:53:40] Alerta 000021 enfileirado (scheduler) - nome: Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®.
+[2026-05-30 11:53:40] Alerta 000022 enfileirado (scheduler) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-05-30 11:53:40] Alerta 000023 enfileirado (scheduler) - nome: Par Munhequeira Wilson Tênis Squash Basquete Beach Tennis.
+[2026-05-30 11:53:40] Alerta 000024 enfileirado (scheduler) - nome: Suporte Articulado Para Monitor 13 a 32 Pistão a Gás Ajustável Zinnia Nimbo 110 Branco.
+[2026-05-30 11:53:40] Alerta 000025 enfileirado (scheduler) - nome: Suporte Articulado Para 2 Monitores 13 a 32 Pistão a Gás Zinnia Nimbo 210 Branco.
+[2026-05-30 11:53:40] Alerta 000026 enfileirado (scheduler) - nome: Amazon Fire Tv Stick 2024 8gb Controle Alexa Preto.
+[2026-05-30 11:53:40] Alerta 000027 enfileirado (scheduler) - nome: Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air.
+[2026-05-30 11:53:40] Iniciando execucao do alerta 000006.
+[2026-05-30 11:53:40] Alerta 000006 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:40] Alerta 000006 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:40] Execucao finalizada sem disparos.
+[2026-05-30 11:53:40] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:53:40] Finalizada execucao do alerta 000006.
+[2026-05-30 11:53:41] Iniciando execucao do alerta 000010.
+[2026-05-30 11:53:41] Alerta 000010 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:41] Alerta 000010 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:41] Execucao finalizada sem disparos.
+[2026-05-30 11:53:41] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:53:41] Finalizada execucao do alerta 000010.
+[2026-05-30 11:53:41] Iniciando execucao do alerta 000011.
+[2026-05-30 11:53:42] Alerta 000011 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:42] Alerta 000011 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:42] Execucao finalizada sem disparos.
+[2026-05-30 11:53:42] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:53:42] Finalizada execucao do alerta 000011.
+[2026-05-30 11:53:42] Iniciando execucao do alerta 000012.
+[2026-05-30 11:53:43] Alerta 000012 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:43] Alerta 000012 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:43] Execucao finalizada sem disparos.
+[2026-05-30 11:53:43] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:53:43] Finalizada execucao do alerta 000012.
+[2026-05-30 11:53:43] Iniciando execucao do alerta 000013.
+[2026-05-30 11:53:50] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-30 11:53:50] Alerta 000013 sem disparo nesta execucao.
+[2026-05-30 11:53:50] Execucao finalizada sem disparos.
+[2026-05-30 11:53:50] Finalizada execucao do alerta 000013.
+[2026-05-30 11:53:50] Iniciando execucao do alerta 000014.
+[2026-05-30 11:53:51] Alerta 000014 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:51] Alerta 000014 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:53:51] Execucao finalizada sem disparos.
+[2026-05-30 11:53:51] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:53:51] Finalizada execucao do alerta 000014.
+[2026-05-30 11:53:51] Iniciando execucao do alerta 000016.
+[2026-05-30 11:53:57] Alerta 000016 checado: triggered=True preco=101.0 alvo=175.0
+[2026-05-30 11:53:58] Notificacao alerta 000016: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SMa8130b4e98e0ce9acc563d4392ea6a47.
+[2026-05-30 11:53:58] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-05-30 11:53:58] Finalizada execucao do alerta 000016.
+[2026-05-30 11:53:58] Iniciando execucao do alerta 000017.
+[2026-05-30 11:54:05] Alerta 000017 checado: triggered=False preco=1071.15 alvo=1000.0
+[2026-05-30 11:54:05] Alerta 000017 sem disparo nesta execucao.
+[2026-05-30 11:54:05] Execucao finalizada sem disparos.
+[2026-05-30 11:54:05] Finalizada execucao do alerta 000017.
+[2026-05-30 11:54:06] Iniciando execucao do alerta 000018.
+[2026-05-30 11:54:12] Alerta 000018 checado: triggered=False preco=187.2 alvo=185.0
+[2026-05-30 11:54:12] Alerta 000018 sem disparo nesta execucao.
+[2026-05-30 11:54:12] Execucao finalizada sem disparos.
+[2026-05-30 11:54:12] Finalizada execucao do alerta 000018.
+[2026-05-30 11:54:12] Iniciando execucao do alerta 000019.
+[2026-05-30 11:54:13] Alerta 000019 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:13] Alerta 000019 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:13] Execucao finalizada sem disparos.
+[2026-05-30 11:54:13] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:54:13] Finalizada execucao do alerta 000019.
+[2026-05-30 11:54:13] Iniciando execucao do alerta 000020.
+[2026-05-30 11:54:14] Alerta 000020 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:14] Alerta 000020 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:14] Execucao finalizada sem disparos.
+[2026-05-30 11:54:14] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:54:14] Finalizada execucao do alerta 000020.
+[2026-05-30 11:54:14] Iniciando execucao do alerta 000021.
+[2026-05-30 11:54:15] Alerta 000021 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:15] Alerta 000021 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:15] Execucao finalizada sem disparos.
+[2026-05-30 11:54:15] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:54:15] Finalizada execucao do alerta 000021.
+[2026-05-30 11:54:15] Iniciando execucao do alerta 000022.
+[2026-05-30 11:54:16] Alerta 000022 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:16] Alerta 000022 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:16] Execucao finalizada sem disparos.
+[2026-05-30 11:54:16] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:54:16] Finalizada execucao do alerta 000022.
+[2026-05-30 11:54:16] Iniciando execucao do alerta 000023.
+[2026-05-30 11:54:17] Alerta 000023 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:17] Alerta 000023 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:17] Execucao finalizada sem disparos.
+[2026-05-30 11:54:17] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:54:17] Finalizada execucao do alerta 000023.
+[2026-05-30 11:54:17] Iniciando execucao do alerta 000024.
+[2026-05-30 11:54:18] Alerta 000024 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:18] Alerta 000024 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:18] Execucao finalizada sem disparos.
+[2026-05-30 11:54:18] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:54:18] Finalizada execucao do alerta 000024.
+[2026-05-30 11:54:18] Iniciando execucao do alerta 000025.
+[2026-05-30 11:54:19] Alerta 000025 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:19] Alerta 000025 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:19] Execucao finalizada sem disparos.
+[2026-05-30 11:54:19] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:54:19] Finalizada execucao do alerta 000025.
+[2026-05-30 11:54:19] Iniciando execucao do alerta 000026.
+[2026-05-30 11:54:19] Alerta 000026 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:19] Alerta 000026 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:19] Execucao finalizada sem disparos.
+[2026-05-30 11:54:19] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:54:19] Finalizada execucao do alerta 000026.
+[2026-05-30 11:54:19] Iniciando execucao do alerta 000027.
+[2026-05-30 11:54:20] Alerta 000027 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:20] Alerta 000027 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:54:20] Execucao finalizada sem disparos.
+[2026-05-30 11:54:20] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:54:20] Finalizada execucao do alerta 000027.
+[2026-05-30 11:55:07] Alerta 000027 enfileirado (manual) - nome: Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air.
+[2026-05-30 11:55:07] Iniciando execucao do alerta 000027.
+[2026-05-30 11:55:07] Alerta 000027 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:55:07] Alerta 000027 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:55:07] Execucao finalizada sem disparos.
+[2026-05-30 11:55:07] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:55:07] Finalizada execucao do alerta 000027.
+[2026-05-30 11:59:44] Alerta 000027 enfileirado (manual) - nome: Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air.
+[2026-05-30 11:59:44] Iniciando execucao do alerta 000027.
+[2026-05-30 11:59:45] Alerta 000027 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 11:59:45] Alerta 000027 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 11:59:45] Execucao finalizada sem disparos.
+[2026-05-30 11:59:45] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 11:59:45] Finalizada execucao do alerta 000027.
+[2026-05-30 12:00:20] Alerta 000027 enfileirado (manual) - nome: Hub USB-C 8 em 1.
+[2026-05-30 12:00:20] Iniciando execucao do alerta 000027.
+[2026-05-30 12:00:21] Alerta 000027 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:00:21] Alerta 000027 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:00:21] Execucao finalizada sem disparos.
+[2026-05-30 12:00:21] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:00:21] Finalizada execucao do alerta 000027.
+[2026-05-30 12:00:50] Alerta 000027 enfileirado (manual) - nome: Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air.
+[2026-05-30 12:00:50] Iniciando execucao do alerta 000027.
+[2026-05-30 12:00:51] Alerta 000027 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:00:51] Alerta 000027 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:00:51] Execucao finalizada sem disparos.
+[2026-05-30 12:00:51] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:00:51] Finalizada execucao do alerta 000027.
+[2026-05-30 12:11:10] Alerta 000027 enfileirado (manual) - nome: Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air.
+[2026-05-30 12:11:10] Iniciando execucao do alerta 000027.
+[2026-05-30 12:11:11] Alerta 000027 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:11:11] Alerta 000027 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:11:11] Execucao finalizada sem disparos.
+[2026-05-30 12:11:11] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:11:11] Finalizada execucao do alerta 000027.
+[2026-05-30 12:11:23] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-30 12:11:23] Iniciando execucao do alerta 000006.
+[2026-05-30 12:11:24] Alerta 000006 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:11:24] Alerta 000006 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:11:24] Execucao finalizada sem disparos.
+[2026-05-30 12:11:24] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:11:24] Finalizada execucao do alerta 000006.
+[2026-05-30 12:11:28] Alerta 000010 enfileirado (manual) - nome: Kit irrigação solar automática.
+[2026-05-30 12:11:28] Iniciando execucao do alerta 000010.
+[2026-05-30 12:11:28] Alerta 000010 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:11:28] Alerta 000010 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:11:28] Execucao finalizada sem disparos.
+[2026-05-30 12:11:28] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:11:28] Finalizada execucao do alerta 000010.
+[2026-05-30 12:11:30] Alerta 000011 enfileirado (manual) - nome: Resistência chuveiro 220.
+[2026-05-30 12:11:30] Iniciando execucao do alerta 000011.
+[2026-05-30 12:11:30] Alerta 000011 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:11:30] Alerta 000011 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:11:30] Execucao finalizada sem disparos.
+[2026-05-30 12:11:30] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:11:30] Finalizada execucao do alerta 000011.
+[2026-05-30 12:13:40] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-30 12:13:40] Iniciando execucao do alerta 000006.
+[2026-05-30 12:13:41] Alerta 000006 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:13:41] Alerta 000006 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:13:41] Execucao finalizada sem disparos.
+[2026-05-30 12:13:41] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:13:41] Finalizada execucao do alerta 000006.
+[2026-05-30 12:14:03] Alerta 000010 enfileirado (manual) - nome: Kit irrigação solar automática.
+[2026-05-30 12:14:03] Iniciando execucao do alerta 000010.
+[2026-05-30 12:14:04] Alerta 000010 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:14:04] Alerta 000010 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:14:04] Execucao finalizada sem disparos.
+[2026-05-30 12:14:04] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:14:04] Finalizada execucao do alerta 000010.
+[2026-05-30 12:14:05] Alerta 000011 enfileirado (manual) - nome: Resistência chuveiro 220.
+[2026-05-30 12:14:05] Iniciando execucao do alerta 000011.
+[2026-05-30 12:14:06] Alerta 000011 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:14:06] Alerta 000011 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:14:06] Execucao finalizada sem disparos.
+[2026-05-30 12:14:06] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:14:06] Finalizada execucao do alerta 000011.
+[2026-05-30 12:14:06] Alerta 000012 enfileirado (manual) - nome: Resistencia chuveiro 127.
+[2026-05-30 12:14:06] Iniciando execucao do alerta 000012.
+[2026-05-30 12:14:07] Alerta 000012 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:14:07] Alerta 000012 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:14:07] Execucao finalizada sem disparos.
+[2026-05-30 12:14:07] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:14:07] Finalizada execucao do alerta 000012.
+[2026-05-30 12:14:28] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-30 12:14:28] Iniciando execucao do alerta 000006.
+[2026-05-30 12:14:28] Alerta 000006 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 12:14:28] Alerta 000006 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 12:14:28] Execucao finalizada sem disparos.
+[2026-05-30 12:14:28] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 12:14:28] Finalizada execucao do alerta 000006.
+[2026-05-30 16:19:30] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-30 16:19:30] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-30 16:19:30] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-30 16:19:30] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-30 16:19:30] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-30 16:19:30] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-30 16:19:30] Alerta 000017 enfileirado (scheduler) - nome: Poste de aço modular de jardim.
+[2026-05-30 16:19:30] Alerta 000018 enfileirado (scheduler) - nome: Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt.
+[2026-05-30 16:19:30] Alerta 000019 enfileirado (scheduler) - nome: Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458.
+[2026-05-30 16:19:30] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-05-30 16:19:30] Alerta 000021 enfileirado (scheduler) - nome: Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®.
+[2026-05-30 16:19:30] Alerta 000022 enfileirado (scheduler) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-05-30 16:19:30] Alerta 000023 enfileirado (scheduler) - nome: Par Munhequeira Wilson Tênis Squash Basquete Beach Tennis.
+[2026-05-30 16:19:30] Alerta 000024 enfileirado (scheduler) - nome: Suporte Articulado Para Monitor 13 a 32 Pistão a Gás Ajustável Zinnia Nimbo 110 Branco.
+[2026-05-30 16:19:30] Alerta 000025 enfileirado (scheduler) - nome: Suporte Articulado Para 2 Monitores 13 a 32 Pistão a Gás Zinnia Nimbo 210 Branco.
+[2026-05-30 16:19:30] Alerta 000026 enfileirado (scheduler) - nome: Amazon Fire Tv Stick 2024 8gb Controle Alexa Preto.
+[2026-05-30 16:19:30] Alerta 000027 enfileirado (scheduler) - nome: Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air.
+[2026-05-30 16:19:30] Iniciando execucao do alerta 000006.
+[2026-05-30 16:19:31] Alerta 000006 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:31] Alerta 000006 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:31] Execucao finalizada sem disparos.
+[2026-05-30 16:19:31] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:31] Finalizada execucao do alerta 000006.
+[2026-05-30 16:19:31] Iniciando execucao do alerta 000010.
+[2026-05-30 16:19:31] Alerta 000010 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:32] Alerta 000010 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:32] Execucao finalizada sem disparos.
+[2026-05-30 16:19:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:32] Finalizada execucao do alerta 000010.
+[2026-05-30 16:19:32] Iniciando execucao do alerta 000011.
+[2026-05-30 16:19:32] Alerta 000011 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:32] Alerta 000011 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:32] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000011.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000012.
+[2026-05-30 16:19:33] Alerta 000012 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000012 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000012.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000013.
+[2026-05-30 16:19:33] Alerta 000013 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000013 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000013.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000014.
+[2026-05-30 16:19:33] Alerta 000014 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000014 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000014.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000017.
+[2026-05-30 16:19:33] Alerta 000017 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000017 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000017.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000018.
+[2026-05-30 16:19:33] Alerta 000018 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000018 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000018.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000019.
+[2026-05-30 16:19:33] Alerta 000019 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000019 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000019.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000020.
+[2026-05-30 16:19:33] Alerta 000020 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000020 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000020.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000021.
+[2026-05-30 16:19:33] Alerta 000021 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000021 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000021.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000022.
+[2026-05-30 16:19:33] Alerta 000022 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000022 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000022.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000023.
+[2026-05-30 16:19:33] Alerta 000023 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000023 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000023.
+[2026-05-30 16:19:33] Iniciando execucao do alerta 000024.
+[2026-05-30 16:19:33] Alerta 000024 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:33] Alerta 000024 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:33] Execucao finalizada sem disparos.
+[2026-05-30 16:19:33] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:33] Finalizada execucao do alerta 000024.
+[2026-05-30 16:19:34] Iniciando execucao do alerta 000025.
+[2026-05-30 16:19:34] Alerta 000025 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:34] Alerta 000025 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:34] Execucao finalizada sem disparos.
+[2026-05-30 16:19:34] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:34] Finalizada execucao do alerta 000025.
+[2026-05-30 16:19:34] Iniciando execucao do alerta 000026.
+[2026-05-30 16:19:34] Alerta 000026 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:34] Alerta 000026 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:34] Execucao finalizada sem disparos.
+[2026-05-30 16:19:34] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:34] Finalizada execucao do alerta 000026.
+[2026-05-30 16:19:34] Iniciando execucao do alerta 000027.
+[2026-05-30 16:19:34] Alerta 000027 erro na checagem: Falha ao extrair preco.
+[2026-05-30 16:19:34] Alerta 000027 falhou: Falha ao extrair preco.
+[2026-05-30 16:19:34] Execucao finalizada sem disparos.
+[2026-05-30 16:19:34] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 16:19:34] Finalizada execucao do alerta 000027.
+[2026-05-30 16:27:06] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-30 16:27:06] Iniciando execucao do alerta 000006.
+[2026-05-30 16:27:07] Alerta 000006 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 16:27:07] Alerta 000006 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 16:27:07] Execucao finalizada sem disparos.
+[2026-05-30 16:27:07] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 16:27:07] Finalizada execucao do alerta 000006.
+[2026-05-30 16:27:31] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica Philips Walita Série 1200 1400w 127v.
+[2026-05-30 16:27:31] Iniciando execucao do alerta 000006.
+[2026-05-30 16:27:32] Alerta 000006 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 16:27:32] Alerta 000006 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 16:27:32] Execucao finalizada sem disparos.
+[2026-05-30 16:27:32] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 16:27:32] Finalizada execucao do alerta 000006.
+[2026-05-30 20:20:07] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica Philips Walita Série 1200 1400w 127v.
+[2026-05-30 20:20:07] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-05-30 20:20:07] Alerta 000011 enfileirado (scheduler) - nome: Resistência chuveiro 220.
+[2026-05-30 20:20:07] Alerta 000012 enfileirado (scheduler) - nome: Resistencia chuveiro 127.
+[2026-05-30 20:20:07] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-05-30 20:20:07] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-30 20:20:07] Alerta 000017 enfileirado (scheduler) - nome: Poste de aço modular de jardim.
+[2026-05-30 20:20:07] Alerta 000018 enfileirado (scheduler) - nome: Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt.
+[2026-05-30 20:20:07] Alerta 000019 enfileirado (scheduler) - nome: Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458.
+[2026-05-30 20:20:07] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-05-30 20:20:07] Alerta 000021 enfileirado (scheduler) - nome: Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®.
+[2026-05-30 20:20:07] Alerta 000022 enfileirado (scheduler) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-05-30 20:20:07] Alerta 000023 enfileirado (scheduler) - nome: Par Munhequeira Wilson Tênis Squash Basquete Beach Tennis.
+[2026-05-30 20:20:07] Alerta 000024 enfileirado (scheduler) - nome: Suporte Articulado Para Monitor 13 a 32 Pistão a Gás Ajustável Zinnia Nimbo 110 Branco.
+[2026-05-30 20:20:07] Alerta 000025 enfileirado (scheduler) - nome: Suporte Articulado Para 2 Monitores 13 a 32 Pistão a Gás Zinnia Nimbo 210 Branco.
+[2026-05-30 20:20:07] Alerta 000026 enfileirado (scheduler) - nome: Amazon Fire Tv Stick 2024 8gb Controle Alexa Preto.
+[2026-05-30 20:20:07] Alerta 000027 enfileirado (scheduler) - nome: Hub USB-C 8 em 1 Newness HDMI 4K RJ45 USB 3.0 Leitor SD MacBook Air.
+[2026-05-30 20:20:07] Iniciando execucao do alerta 000006.
+[2026-05-30 20:20:08] Alerta 000006 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:08] Alerta 000006 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:08] Execucao finalizada sem disparos.
+[2026-05-30 20:20:08] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:08] Finalizada execucao do alerta 000006.
+[2026-05-30 20:20:08] Iniciando execucao do alerta 000010.
+[2026-05-30 20:20:08] Alerta 000010 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:08] Alerta 000010 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:08] Execucao finalizada sem disparos.
+[2026-05-30 20:20:08] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:08] Finalizada execucao do alerta 000010.
+[2026-05-30 20:20:08] Iniciando execucao do alerta 000011.
+[2026-05-30 20:20:08] Alerta 000011 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:08] Alerta 000011 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:08] Execucao finalizada sem disparos.
+[2026-05-30 20:20:08] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:08] Finalizada execucao do alerta 000011.
+[2026-05-30 20:20:08] Iniciando execucao do alerta 000012.
+[2026-05-30 20:20:08] Alerta 000012 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:08] Alerta 000012 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:08] Execucao finalizada sem disparos.
+[2026-05-30 20:20:08] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:08] Finalizada execucao do alerta 000012.
+[2026-05-30 20:20:08] Iniciando execucao do alerta 000013.
+[2026-05-30 20:20:08] Alerta 000013 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:08] Alerta 000013 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:08] Execucao finalizada sem disparos.
+[2026-05-30 20:20:08] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:08] Finalizada execucao do alerta 000013.
+[2026-05-30 20:20:08] Iniciando execucao do alerta 000014.
+[2026-05-30 20:20:08] Alerta 000014 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:08] Alerta 000014 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:08] Execucao finalizada sem disparos.
+[2026-05-30 20:20:08] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:08] Finalizada execucao do alerta 000014.
+[2026-05-30 20:20:08] Iniciando execucao do alerta 000017.
+[2026-05-30 20:20:08] Alerta 000017 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:08] Alerta 000017 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:08] Execucao finalizada sem disparos.
+[2026-05-30 20:20:08] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:08] Finalizada execucao do alerta 000017.
+[2026-05-30 20:20:09] Iniciando execucao do alerta 000018.
+[2026-05-30 20:20:09] Alerta 000018 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:09] Alerta 000018 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:09] Execucao finalizada sem disparos.
+[2026-05-30 20:20:09] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:09] Finalizada execucao do alerta 000018.
+[2026-05-30 20:20:09] Iniciando execucao do alerta 000019.
+[2026-05-30 20:20:09] Alerta 000019 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:09] Alerta 000019 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:09] Execucao finalizada sem disparos.
+[2026-05-30 20:20:09] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:09] Finalizada execucao do alerta 000019.
+[2026-05-30 20:20:09] Iniciando execucao do alerta 000020.
+[2026-05-30 20:20:09] Alerta 000020 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:09] Alerta 000020 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:09] Execucao finalizada sem disparos.
+[2026-05-30 20:20:09] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:09] Finalizada execucao do alerta 000020.
+[2026-05-30 20:20:09] Iniciando execucao do alerta 000021.
+[2026-05-30 20:20:09] Alerta 000021 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:09] Alerta 000021 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:09] Execucao finalizada sem disparos.
+[2026-05-30 20:20:09] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:09] Finalizada execucao do alerta 000021.
+[2026-05-30 20:20:09] Iniciando execucao do alerta 000022.
+[2026-05-30 20:20:09] Alerta 000022 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:09] Alerta 000022 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:09] Execucao finalizada sem disparos.
+[2026-05-30 20:20:09] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:09] Finalizada execucao do alerta 000022.
+[2026-05-30 20:20:10] Iniciando execucao do alerta 000023.
+[2026-05-30 20:20:10] Alerta 000023 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:10] Alerta 000023 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:10] Execucao finalizada sem disparos.
+[2026-05-30 20:20:10] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:10] Finalizada execucao do alerta 000023.
+[2026-05-30 20:20:10] Iniciando execucao do alerta 000024.
+[2026-05-30 20:20:10] Alerta 000024 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:10] Alerta 000024 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:10] Execucao finalizada sem disparos.
+[2026-05-30 20:20:10] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:10] Finalizada execucao do alerta 000024.
+[2026-05-30 20:20:10] Iniciando execucao do alerta 000025.
+[2026-05-30 20:20:10] Alerta 000025 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:10] Alerta 000025 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:10] Execucao finalizada sem disparos.
+[2026-05-30 20:20:10] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:10] Finalizada execucao do alerta 000025.
+[2026-05-30 20:20:10] Iniciando execucao do alerta 000026.
+[2026-05-30 20:20:10] Alerta 000026 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:10] Alerta 000026 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:10] Execucao finalizada sem disparos.
+[2026-05-30 20:20:10] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:10] Finalizada execucao do alerta 000026.
+[2026-05-30 20:20:10] Iniciando execucao do alerta 000027.
+[2026-05-30 20:20:10] Alerta 000027 erro na checagem: Falha ao extrair preco.
+[2026-05-30 20:20:10] Alerta 000027 falhou: Falha ao extrair preco.
+[2026-05-30 20:20:10] Execucao finalizada sem disparos.
+[2026-05-30 20:20:10] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-05-30 20:20:10] Finalizada execucao do alerta 000027.
+[2026-05-30 20:20:33] Alerta 000013 enfileirado (manual) - nome: Fralda.
+[2026-05-30 20:20:33] Iniciando execucao do alerta 000013.
+[2026-05-30 20:20:39] Alerta 000013 checado: triggered=False preco=89.77 alvo=70.0
+[2026-05-30 20:20:39] Alerta 000013 sem disparo nesta execucao.
+[2026-05-30 20:20:39] Execucao finalizada sem disparos.
+[2026-05-30 20:20:39] Finalizada execucao do alerta 000013.
+[2026-05-30 20:20:57] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-30 20:20:57] Iniciando execucao do alerta 000006.
+[2026-05-30 20:20:57] Alerta 000006 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:20:57] Alerta 000006 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:20:57] Execucao finalizada sem disparos.
+[2026-05-30 20:20:57] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:20:57] Finalizada execucao do alerta 000006.
+[2026-05-30 20:21:11] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica Philips Walita Série 1200.
+[2026-05-30 20:21:11] Iniciando execucao do alerta 000006.
+[2026-05-30 20:21:12] Alerta 000006 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:12] Alerta 000006 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:12] Execucao finalizada sem disparos.
+[2026-05-30 20:21:12] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:21:12] Finalizada execucao do alerta 000006.
+[2026-05-30 20:21:15] Alerta 000010 enfileirado (manual) - nome: Kit irrigação solar automática.
+[2026-05-30 20:21:15] Iniciando execucao do alerta 000010.
+[2026-05-30 20:21:16] Alerta 000010 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:16] Alerta 000010 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:16] Execucao finalizada sem disparos.
+[2026-05-30 20:21:16] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:21:16] Finalizada execucao do alerta 000010.
+[2026-05-30 20:21:18] Alerta 000011 enfileirado (manual) - nome: Resistência chuveiro 220.
+[2026-05-30 20:21:18] Iniciando execucao do alerta 000011.
+[2026-05-30 20:21:19] Alerta 000011 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:19] Alerta 000011 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:19] Execucao finalizada sem disparos.
+[2026-05-30 20:21:19] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:21:19] Finalizada execucao do alerta 000011.
+[2026-05-30 20:21:28] Alerta 000014 enfileirado (manual) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-05-30 20:21:28] Iniciando execucao do alerta 000014.
+[2026-05-30 20:21:28] Alerta 000014 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:28] Alerta 000014 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:28] Execucao finalizada sem disparos.
+[2026-05-30 20:21:28] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:21:28] Finalizada execucao do alerta 000014.
+[2026-05-30 20:21:30] Alerta 000017 enfileirado (manual) - nome: Poste de aço modular de jardim.
+[2026-05-30 20:21:30] Iniciando execucao do alerta 000017.
+[2026-05-30 20:21:37] Alerta 000017 checado: triggered=False preco=1071.15 alvo=1000.0
+[2026-05-30 20:21:37] Alerta 000017 sem disparo nesta execucao.
+[2026-05-30 20:21:37] Execucao finalizada sem disparos.
+[2026-05-30 20:21:37] Finalizada execucao do alerta 000017.
+[2026-05-30 20:21:57] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica.
+[2026-05-30 20:21:57] Iniciando execucao do alerta 000006.
+[2026-05-30 20:21:58] Alerta 000006 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:58] Alerta 000006 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:21:58] Execucao finalizada sem disparos.
+[2026-05-30 20:21:58] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:21:58] Finalizada execucao do alerta 000006.
+[2026-05-30 20:22:01] Alerta 000026 enfileirado (manual) - nome: Amazon Fire Tv Stick 2024 8gb Controle Alexa Preto.
+[2026-05-30 20:22:01] Iniciando execucao do alerta 000026.
+[2026-05-30 20:22:02] Alerta 000026 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:02] Alerta 000026 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:02] Execucao finalizada sem disparos.
+[2026-05-30 20:22:02] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:22:02] Finalizada execucao do alerta 000026.
+[2026-05-30 20:22:04] Alerta 000025 enfileirado (manual) - nome: Suporte Articulado Para 2 Monitores 13 a 32 Pistão a Gás Zinnia Nimbo 210 Branco.
+[2026-05-30 20:22:04] Iniciando execucao do alerta 000025.
+[2026-05-30 20:22:04] Alerta 000025 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:04] Alerta 000025 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:04] Execucao finalizada sem disparos.
+[2026-05-30 20:22:04] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:22:04] Finalizada execucao do alerta 000025.
+[2026-05-30 20:22:08] Alerta 000024 enfileirado (manual) - nome: Suporte Articulado Para Monitor 13 a 32 Pistão a Gás Ajustável Zinnia Nimbo 110 Branco.
+[2026-05-30 20:22:08] Iniciando execucao do alerta 000024.
+[2026-05-30 20:22:09] Alerta 000024 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:09] Alerta 000024 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:09] Execucao finalizada sem disparos.
+[2026-05-30 20:22:09] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:22:09] Finalizada execucao do alerta 000024.
+[2026-05-30 20:22:11] Alerta 000023 enfileirado (manual) - nome: Par Munhequeira Wilson Tênis Squash Basquete Beach Tennis.
+[2026-05-30 20:22:11] Iniciando execucao do alerta 000023.
+[2026-05-30 20:22:12] Alerta 000023 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:12] Alerta 000023 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:12] Execucao finalizada sem disparos.
+[2026-05-30 20:22:12] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:22:12] Finalizada execucao do alerta 000023.
+[2026-05-30 20:22:15] Alerta 000022 enfileirado (manual) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-05-30 20:22:15] Iniciando execucao do alerta 000022.
+[2026-05-30 20:22:16] Alerta 000022 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:16] Alerta 000022 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:16] Execucao finalizada sem disparos.
+[2026-05-30 20:22:16] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:22:16] Finalizada execucao do alerta 000022.
+[2026-05-30 20:22:18] Alerta 000021 enfileirado (manual) - nome: Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®.
+[2026-05-30 20:22:18] Iniciando execucao do alerta 000021.
+[2026-05-30 20:22:19] Alerta 000021 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:19] Alerta 000021 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:19] Execucao finalizada sem disparos.
+[2026-05-30 20:22:19] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:22:19] Finalizada execucao do alerta 000021.
+[2026-05-30 20:22:22] Alerta 000020 enfileirado (manual) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-05-30 20:22:22] Iniciando execucao do alerta 000020.
+[2026-05-30 20:22:22] Alerta 000020 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:22] Alerta 000020 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:22] Execucao finalizada sem disparos.
+[2026-05-30 20:22:22] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:22:22] Finalizada execucao do alerta 000020.
+[2026-05-30 20:22:25] Alerta 000019 enfileirado (manual) - nome: Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458.
+[2026-05-30 20:22:25] Iniciando execucao do alerta 000019.
+[2026-05-30 20:22:25] Alerta 000019 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:25] Alerta 000019 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:22:25] Execucao finalizada sem disparos.
+[2026-05-30 20:22:25] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:22:25] Finalizada execucao do alerta 000019.
+[2026-05-30 20:22:28] Alerta 000018 enfileirado (manual) - nome: Kit Trilho Eletrificado 2,5m + 5 Spot Led 10w Bivolt.
+[2026-05-30 20:22:28] Iniciando execucao do alerta 000018.
+[2026-05-30 20:22:36] Alerta 000018 checado: triggered=False preco=187.2 alvo=185.0
+[2026-05-30 20:22:36] Alerta 000018 sem disparo nesta execucao.
+[2026-05-30 20:22:36] Execucao finalizada sem disparos.
+[2026-05-30 20:22:36] Finalizada execucao do alerta 000018.
+[2026-05-30 20:22:39] Alerta 000017 enfileirado (manual) - nome: Poste de aço modular de jardim.
+[2026-05-30 20:22:39] Iniciando execucao do alerta 000017.
+[2026-05-30 20:22:46] Alerta 000017 checado: triggered=False preco=1071.15 alvo=1000.0
+[2026-05-30 20:22:46] Alerta 000017 sem disparo nesta execucao.
+[2026-05-30 20:22:46] Execucao finalizada sem disparos.
+[2026-05-30 20:22:46] Finalizada execucao do alerta 000017.
+[2026-05-30 20:23:02] Alerta 000008 enfileirado (manual) - nome: Teclado Mecânico Gamer Redragon Draconic.
+[2026-05-30 20:23:02] Iniciando execucao do alerta 000008.
+[2026-05-30 20:23:03] Alerta 000008 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 20:23:03] Alerta 000008 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 20:23:03] Execucao finalizada sem disparos.
+[2026-05-30 20:23:03] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 20:23:03] Finalizada execucao do alerta 000008.
+[2026-05-30 21:30:14] Alerta 000028 enfileirado (manual) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-05-30 21:30:14] Iniciando execucao do alerta 000028.
+[2026-05-30 21:30:16] Alerta 000028 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 21:30:16] Alerta 000028 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 21:30:16] Execucao finalizada sem disparos.
+[2026-05-30 21:30:16] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 21:30:16] Finalizada execucao do alerta 000028.
+[2026-05-30 21:30:30] Alerta 000028 enfileirado (manual) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-05-30 21:30:30] Iniciando execucao do alerta 000028.
+[2026-05-30 21:30:32] Alerta 000028 erro na checagem: Descricao nao bateu com o titulo.
+[2026-05-30 21:30:32] Alerta 000028 falhou: Descricao nao bateu com o titulo.
+[2026-05-30 21:30:32] Execucao finalizada sem disparos.
+[2026-05-30 21:30:32] Resumo de falhas: links invalidos=0; descricao divergente=1; falha extracao preco=0.
+[2026-05-30 21:30:32] Finalizada execucao do alerta 000028.

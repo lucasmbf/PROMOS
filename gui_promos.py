@@ -13,6 +13,7 @@ import sys
 import threading
 import unicodedata
 import webbrowser
+from difflib import SequenceMatcher
 from datetime import datetime, timedelta
 from pathlib import Path
 from email.mime.text import MIMEText
@@ -210,6 +211,25 @@ def _load_google_sheets_client(sheets_config, progress_callback=None):
         requests_module = importlib.import_module("google.auth.transport.requests")
         oauth_flow_module = importlib.import_module("google_auth_oauthlib.flow")
 
+        def _obter_novas_credenciais_via_oauth():
+            flow = oauth_flow_module.InstalledAppFlow.from_client_secrets_file(
+                str(oauth_client_path), scopes
+            )
+            try:
+                if progress_callback:
+                    progress_callback("Aguardando autorizacao do Google no navegador para sincronizar a planilha.")
+                return flow.run_local_server(port=0, open_browser=True)
+            except Exception as exc:
+                auth_url, _ = flow.authorization_url(
+                    access_type="offline",
+                    include_granted_scopes="true",
+                    prompt="consent",
+                )
+                raise RuntimeError(
+                    "Nao foi possivel abrir o navegador automaticamente para OAuth. "
+                    f"Abra manualmente esta URL e autorize: {auth_url}"
+                ) from exc
+
         oauth_client_path = _resolve_config_file_path(sheets_config.get("oauth_client_file"))
         oauth_token_path = _resolve_config_file_path(sheets_config.get("oauth_token_file"))
 
@@ -231,25 +251,25 @@ def _load_google_sheets_client(sheets_config, progress_callback=None):
             if credentials and credentials.expired and credentials.refresh_token:
                 if progress_callback:
                     progress_callback("Atualizando token OAuth da planilha.")
-                credentials.refresh(requests_module.Request())
-            else:
-                flow = oauth_flow_module.InstalledAppFlow.from_client_secrets_file(
-                    str(oauth_client_path), scopes
-                )
                 try:
-                    if progress_callback:
-                        progress_callback("Aguardando autorizacao do Google no navegador para sincronizar a planilha.")
-                    credentials = flow.run_local_server(port=0, open_browser=True)
+                    credentials.refresh(requests_module.Request())
                 except Exception as exc:
-                    auth_url, _ = flow.authorization_url(
-                        access_type="offline",
-                        include_granted_scopes="true",
-                        prompt="consent",
-                    )
-                    raise RuntimeError(
-                        "Nao foi possivel abrir o navegador automaticamente para OAuth. "
-                        f"Abra manualmente esta URL e autorize: {auth_url}"
-                    ) from exc
+                    erro_refresh = str(exc).casefold()
+                    if "invalid_grant" in erro_refresh or "expired or revoked" in erro_refresh:
+                        if progress_callback:
+                            progress_callback(
+                                "Token OAuth expirado/revogado. Solicitando nova autorizacao no navegador."
+                            )
+
+                        with contextlib.suppress(Exception):
+                            if oauth_token_path.exists():
+                                oauth_token_path.unlink()
+
+                        credentials = _obter_novas_credenciais_via_oauth()
+                    else:
+                        raise
+            else:
+                credentials = _obter_novas_credenciais_via_oauth()
 
             oauth_token_path.parent.mkdir(parents=True, exist_ok=True)
             oauth_token_path.write_text(credentials.to_json(), encoding="utf-8")
@@ -686,6 +706,126 @@ def _fetch_with_marketplace_handling(url):
     return response, marketplace
 
 
+def _is_ml_verification_response(response_url, html_text, title_text=""):
+    url_text = (response_url or "").lower()
+    title_norm = _normalize_text_for_match(title_text)
+
+    if "account-verification" in url_text or "/gz/account-verification" in url_text:
+        return True
+
+    if title_norm in {"mercado libre", "mercado livre"}:
+        return True
+
+    return _is_ml_challenge_html(html_text)
+
+
+def _fetch_price_and_title_from_url_via_browser(url):
+    try:
+        from playwright.sync_api import sync_playwright
+    except Exception:
+        return None, url, ""
+
+    perfis = []
+    candidatos = [
+        BASE_DIR / "perfil_ml",
+        BASE_DIR / "dist-interface" / "perfil_ml",
+        Path.cwd() / "perfil_ml",
+        Path.cwd() / "dist-interface" / "perfil_ml",
+    ]
+
+    for candidato in candidatos:
+        caminho = str(candidato)
+        if caminho not in perfis and candidato.exists():
+            perfis.append(caminho)
+
+    if not perfis:
+        perfis.append(str(BASE_DIR / "perfil_ml"))
+
+    for perfil_dir in perfis:
+        for modo_headless in (True, False):
+            launch_kwargs = dict(
+                user_data_dir=perfil_dir,
+                headless=modo_headless,
+                slow_mo=0,
+                locale="pt-BR",
+                timezone_id="America/Sao_Paulo",
+                viewport={"width": 1366, "height": 768},
+                args=[
+                    "--disable-blink-features=AutomationControlled",
+                    "--disable-dev-shm-usage",
+                    "--no-sandbox",
+                ],
+            )
+
+            if getattr(sys, "frozen", False):
+                launch_kwargs["channel"] = "chrome"
+
+            try:
+                with sync_playwright() as p:
+                    context = p.chromium.launch_persistent_context(**launch_kwargs)
+                    page = context.new_page()
+
+                    page.goto(url, timeout=90000, wait_until="domcontentloaded")
+                    page.wait_for_timeout(1400)
+
+                    html = page.content()
+                    resolved_url = page.url or url
+                    marketplace = _detect_marketplace_from_url(resolved_url)
+                    title = _extract_title_from_html(html)
+                    price = _extract_price_from_html(html, marketplace=marketplace)
+
+                    context.close()
+
+                    if price is not None:
+                        return price, resolved_url, title
+
+                    if title:
+                        return None, resolved_url, title
+            except Exception:
+                continue
+
+    return None, url, ""
+
+
+def _extract_ml_item_id_from_url(url):
+    texto = (url or "").upper()
+    if not texto:
+        return ""
+
+    # Links de anúncio geralmente trazem MLB1234567890 no path ou query (wid/item_id).
+    encontrado = re.search(r"\b(MLB\d{6,})\b", texto)
+    if encontrado:
+        return encontrado.group(1)
+
+    return ""
+
+
+def _fetch_price_and_title_from_ml_public_api(url):
+    item_id = _extract_ml_item_id_from_url(url)
+    if not item_id:
+        return None, url, ""
+
+    endpoint = f"https://api.mercadolibre.com/items/{item_id}"
+
+    try:
+        response = requests.get(endpoint, headers=HTTP_HEADERS, timeout=25)
+        response.raise_for_status()
+        payload = response.json() if response.content else {}
+    except Exception:
+        return None, url, ""
+
+    preco = payload.get("price")
+    titulo = (payload.get("title") or "").strip()
+    permalink = (payload.get("permalink") or "").strip() or url
+
+    try:
+        preco_float = float(preco) if preco is not None else None
+    except (TypeError, ValueError):
+        preco_float = None
+
+    return preco_float, permalink, titulo
+
+
 def _extract_title_from_html(html):
     soup = BeautifulSoup(html, "html.parser")
 
@@ -715,6 +855,20 @@ def _fetch_price_and_title_from_url(url):
     response, marketplace = _fetch_with_marketplace_handling(url)
     price = _extract_price_from_html(response.text, marketplace=marketplace)
     title = _extract_title_from_html(response.text)
+
+    if marketplace == "mercadolivre" and _is_ml_verification_response(response.url, response.text, title):
+        browser_price, browser_url, browser_title = _fetch_price_and_title_from_url_via_browser(url)
+
+        if browser_price is not None:
+            return browser_price, browser_url, browser_title or title
+
+        api_price, api_url, api_title = _fetch_price_and_title_from_ml_public_api(url)
+        if api_price is not None:
+            return api_price, api_url, api_title or browser_title or title
+
+        if browser_title or api_title:
+            return price, (browser_url or api_url or response.url), (browser_title or api_title)
+
     return price, response.url, title
 
 
@@ -838,6 +992,64 @@ def _normalize_text(value):
     return re.sub(r"\s+", " ", (value or "").strip()).casefold()
 
 
+def _normalize_text_for_match(value):
+    texto = unicodedata.normalize("NFKD", str(value or ""))
+    texto = "".join(ch for ch in texto if not unicodedata.combining(ch))
+    texto = re.sub(r"[^a-zA-Z0-9]+", " ", texto)
+    return re.sub(r"\s+", " ", texto).strip().casefold()
+
+
+def _split_match_tokens(value):
+    texto = _normalize_text_for_match(value)
+    if not texto:
+        return []
+
+    tokens = []
+    for token in texto.split(" "):
+        if not token:
+            continue
+
+        # Mantem tokens numericos curtos (ex.: 64, 128) e palavras com 3+ chars.
+        if token.isdigit() or len(token) >= 3:
+            tokens.append(token)
+
+    return tokens
+
+
+def _description_matches_title(description, title):
+    descricao_norm = _normalize_text_for_match(description)
+    titulo_norm = _normalize_text_for_match(title)
+
+    if not descricao_norm:
+        return True
+
+    if not titulo_norm:
+        return False
+
+    if descricao_norm in titulo_norm:
+        return True
+
+    tokens_desc = _split_match_tokens(descricao_norm)
+    if not tokens_desc:
+        return True
+
+    acertos = 0
+    for token in tokens_desc:
+        if token in titulo_norm:
+            acertos += 1
+
+    proporcao_tokens = acertos / len(tokens_desc)
+
+    if len(tokens_desc) <= 2 and acertos >= 1:
+        return True
+
+    if proporcao_tokens >= 0.55:
+        return True
+
+    similaridade = SequenceMatcher(None, descricao_norm, titulo_norm).ratio()
+    return similaridade >= 0.72
+
+
 def _extract_price_from_card(card):
     frac = card.select_one("[data-andes-money-amount-fraction='true']")
     cents = card.select_one("[data-andes-money-amount-cents='true']")
@@ -874,7 +1086,7 @@ def _fetch_lowest_price_by_description_in_url(url, description):
         if title_node is not None:
             title_text = (title_node.get_text(" ", strip=True) or title_node.get("title") or "").strip()
 
-        if target and target not in _normalize_text(title_text):
+        if target and not _description_matches_title(target, title_text):
             continue
 
         price = _extract_price_from_card(card)
@@ -3276,7 +3488,7 @@ def create_gui(categorias):
         links_invalidos = 0
         falhas_extracao = 0
         urls_processadas = 0
-        target_normalized = _normalize_text(description)
+        target_normalized = _normalize_text_for_match(description)
 
         try:
             for url in urls:
@@ -3293,19 +3505,33 @@ def create_gui(categorias):
                     falhas_extracao += 1
                     continue
 
+                # Sem preço válido, não há base para validar aderência por descrição.
+                if price is None:
+                    falhas_extracao += 1
+                    continue
+
                 if target_normalized:
-                    title_normalized = _normalize_text(title)
-                    if target_normalized not in title_normalized:
+                    if not _description_matches_title(target_normalized, title):
                         descricao_invalida += 1
                         continue
-
-                if price is None:
-                    continue
 
                 if lowest_price is None or price < lowest_price:
                     lowest_price = price
                     source = src
                     title_found = title
+
+            if lowest_price is None and description:
+                try:
+                    preco_por_descricao, origem_por_descricao = _fetch_price_from_description(description)
+                    if preco_por_descricao is not None:
+                        lowest_price = preco_por_descricao
+                        source = origem_por_descricao or source
+                        title_found = description
+                        _escrever_log_alerta(
+                            f"Alerta {alert_id}: preco obtido via fallback por descricao."
+                        )
+                except Exception:
+                    pass
 
             if lowest_price is None:
                 if urls and links_invalidos == len(urls):
