@@ -643,5 +643,44 @@
     "last_notified_price": null,
     "last_notified_at": null,
     "first_triggered_at": null
+  },
+  {
+    "id": "000029",
+    "source": "planilha",
+    "sheet_row_number": 25,
+    "name": "Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto",
+    "description": "Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto",
+    "descricao": "Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto",
+    "mode": "url",
+    "target_price": 8000.0,
+    "precoDesejado": 8000.0,
+    "email": "lucasmbfonseca@gmail.com",
+    "emails": [
+      "lucasmbfonseca@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://www.mercadolivre.com.br/apple-iphone-16-pro-max-512-gb-titnio-deserto/p/MLB40287855?pdp_filters=discount%3A15-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&float_highlight=last_unit&tracking_id=ba2a1a81-f7d9-4f41-8541-fce1c25d0077&wid=MLB4128643417&sid=search",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/apple-iphone-16-pro-max-512-gb-titnio-deserto/p/MLB40287855?pdp_filters=discount%3A15-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&float_highlight=last_unit&tracking_id=ba2a1a81-f7d9-4f41-8541-fce1c25d0077&wid=MLB4128643417&sid=search"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-05-31T22:19:07",
+    "carimbo_data_hora": "31/05/2026 22:16:04",
+    "active": true,
+    "interval_hours": 3,
+    "last_check_at": "2026-05-31T22:19:20",
+    "next_check_at": "2026-06-01T01:19:20",
+    "configured_at": "2026-05-31T22:19:07",
+    "end_at": "2026-06-30T22:19:07",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null
   }
 ]

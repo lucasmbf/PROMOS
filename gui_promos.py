@@ -2553,6 +2553,9 @@ def create_gui(categorias):
                         mensagens.append(f"Linha {idx}: erro de validacao ({exc}).")
                         continue
 
+                    if TWILIO_TRIAL_FORCE_ACTIVE_CONFIGS and bool(alert.get("active", True)):
+                        _aplicar_destino_whatsapp_trial_em_cfg(alert)
+
                     with alerts_lock:
                         alerts.append(alert)
                         persist_alerts()

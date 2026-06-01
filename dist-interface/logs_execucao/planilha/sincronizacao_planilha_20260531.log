@@ -43,3 +43,15 @@
 [2026-05-31 22:09:07] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
 [2026-05-31 22:09:07] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
 [2026-05-31 22:09:07] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-05-31 22:19:06] Sincronizacao manual solicitada pelo usuario.
+[2026-05-31 22:19:06] Inicio da rotina de sincronizacao da planilha.
+[2026-05-31 22:19:06] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-05-31 22:19:07] Leitura da planilha concluida. Linhas recebidas: 24.
+[2026-05-31 22:19:07] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-05-31 22:19:07] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-05-31 22:19:08] Linha 25 importada com sucesso. Alerta ID 000029
+[2026-05-31 22:19:08] Importacao concluida com 1 alerta(s).
+[2026-05-31 22:19:08] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-05-31 22:19:08] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-05-31 22:19:08] 1 alerta(s) importado(s) da planilha.
+[2026-05-31 22:19:08] Finalizacao da sincronizacao. falhou=False importados=1.

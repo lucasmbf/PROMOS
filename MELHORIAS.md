@@ -21,7 +21,6 @@
 - O modo relâmpago on demand deve permitir uma descrição. Quando houver descrição, ela deve ser inserida na busca antes de extrair e percorrer o HTML da página. A prioridade é Categoria, depois descrição e só depois procura preço e desconto.
 - O modo busca padrão on demand também deve permitir uma descrição. Quando houver descrição, ela deve ser inserida na busca antes de extrair e percorrer o HTML da página. A prioridade é Categoria, depois descrição e só depois procura preço e desconto.
 - Refinar o alerta de preço: Depois de extrair o preço atual do link, realizar uma busca no site pela descrição da configuração. Recuperar todos os produtos encontrados em que a faixa de preço variar 20%. A ideia é que além de pesquisar o link específico, busque por novos anúncios que possam ter sido criados e eventualmente estejam mais baratos
-- A descrição da configuração em alerta de preço não precisa ser exata, isso está afetando a busca
 - Modo On Demand de busca normal não está pegando o preço no lugar certo. Ele encontra o preço correto na lista de anúncios e salva o HTML, mas dentro do link do anúncio, o valor lido é o antigo. Por isso não é gerado saída pra ele.
 - As configurações salvas da planilha ainda não estão sendo convertidas para meu número de telefone, apesar de ser um paliativo, é importante para que receba aviso dos alertas
  

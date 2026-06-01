@@ -152,3 +152,9 @@
 [2026-05-31 22:05:51] Alerta 000014 sem disparo nesta execucao.
 [2026-05-31 22:05:51] Execucao finalizada sem disparos.
 [2026-05-31 22:05:51] Finalizada execucao do alerta 000014.
+[2026-05-31 22:19:07] Alerta 000029 enfileirado (manual) - nome: Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto.
+[2026-05-31 22:19:07] Iniciando execucao do alerta 000029.
+[2026-05-31 22:19:20] Alerta 000029 checado: triggered=False preco=9910.15 alvo=8000.0
+[2026-05-31 22:19:20] Alerta 000029 sem disparo nesta execucao.
+[2026-05-31 22:19:20] Execucao finalizada sem disparos.
+[2026-05-31 22:19:20] Finalizada execucao do alerta 000029.
