@@ -1,0 +1,17 @@
+=== Inicio da execucao: 2026-05-31T23:45:08 ===
+Args: --produto-por-html --categoria Som Automotivo --limite-candidatos 3 --categoria-id MLB3381 --subcategoria-id MLB3381 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+[AVISO] Nao foi possivel resolver URL para categoria ID 'MLB3381'. Aplicando fallback por nome/descricao.
+Categoria resolvida pela home: Som Automotivo → https://lista.mercadolivre.com.br/acessorios-veiculos/som-automotivo/#menu=categories
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/acessorios-veiculos/som-automotivo/#menu=categories
+✓ Link de afiliado: https://meli.la/2hrmTMX
+✓ Link de afiliado: https://meli.la/1YR4Tu3
+✓ Link de afiliado: https://meli.la/1s9vJP2
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-05-31T23:45:57 ===

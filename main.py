@@ -81,6 +81,18 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--categoria-id",
+        default=None,
+        help="ID da categoria principal do Mercado Livre (ex.: MLB1055).",
+    )
+
+    parser.add_argument(
+        "--subcategoria-id",
+        default=None,
+        help="ID da subcategoria do Mercado Livre (ex.: MLB1743).",
+    )
+
+    parser.add_argument(
         "--preco-maximo",
         type=float,
         default=PRECO_MAXIMO,
@@ -180,6 +192,8 @@ ARGS = parse_args()
 
 RAW_ARGS = sys.argv[1:]
 ARG_CATEGORIA_INFORMADA = "--categoria" in RAW_ARGS
+ARG_CATEGORIA_ID_INFORMADA = "--categoria-id" in RAW_ARGS
+ARG_SUBCATEGORIA_ID_INFORMADA = "--subcategoria-id" in RAW_ARGS
 ARG_PRECO_MAXIMO_INFORMADO = "--preco-maximo" in RAW_ARGS
 ARG_PRECO_MINIMO_INFORMADO = "--preco-minimo" in RAW_ARGS
 ARG_DESCONTO_MINIMO_INFORMADO = "--desconto-minimo" in RAW_ARGS
@@ -1073,6 +1087,8 @@ historico_precos_por_anuncio = carregar_historico_precos_por_anuncio(
 )
 
 categoria_parametrizada = (ARGS.categoria or "").strip() if ARG_CATEGORIA_INFORMADA else None
+categoria_id_parametrizada = (ARGS.categoria_id or "").strip().upper() if ARG_CATEGORIA_ID_INFORMADA else None
+subcategoria_id_parametrizada = (ARGS.subcategoria_id or "").strip().upper() if ARG_SUBCATEGORIA_ID_INFORMADA else None
 descricao_parametrizada = (ARGS.descricao_produto or "").strip() if ARG_DESCRICAO_PRODUTO_INFORMADA else None
 preco_minimo_parametrizado = PRECO_MINIMO if ARG_PRECO_MINIMO_INFORMADO else None
 preco_maximo_parametrizado = PRECO_MAXIMO if ARG_PRECO_MAXIMO_INFORMADO else None
@@ -1120,6 +1136,8 @@ with sync_playwright() as p:
         ofertas_hub = processar_produtos_home_por_pesquisa(
             page,
             categoria=categoria_parametrizada,
+            categoria_id=categoria_id_parametrizada,
+            subcategoria_id=subcategoria_id_parametrizada,
             descricao=(ARGS.descricao_produto or "").strip() or None,
             preco_minimo=preco_minimo_parametrizado,
             preco_maximo=preco_maximo_parametrizado,
@@ -1456,8 +1474,7 @@ with sync_playwright() as p:
     debug_pausa("Iniciando fluxo de ofertas relâmpago")
 
     modo_relampago_sem_parametros = (
-        categoria_parametrizada is None
-        and descricao_parametrizada is None
+        descricao_parametrizada is None
         and preco_minimo_parametrizado is None
         and preco_maximo_parametrizado is None
         and desconto_minimo_parametrizado is None
@@ -1470,7 +1487,6 @@ with sync_playwright() as p:
         page,
         URL_OFERTAS_RELAMPAGO,
         desconto_minimo=DESCONTO_MINIMO_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else desconto_minimo_parametrizado,
-        categoria=None if MODO_RELAMPAGO_PADRAO else categoria_parametrizada,
         descricao=None if MODO_RELAMPAGO_PADRAO else descricao_parametrizada,
         preco_minimo=None if MODO_RELAMPAGO_PADRAO else preco_minimo_parametrizado,
         preco_maximo=PRECO_MAXIMO_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else preco_maximo_parametrizado,

@@ -1,0 +1,16 @@
+=== Inicio da execucao: 2026-05-31T23:47:05 ===
+Args: --produto-por-html --categoria Cozinha --limite-candidatos 3 --categoria-id MLB1618 --subcategoria-id MLB1618 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+[AVISO] Nao foi possivel resolver URL para categoria ID 'MLB1618'. Aplicando fallback por nome/descricao.
+[AVISO] Não foi possível resolver URL da categoria 'Cozinha'. Buscando só por descrição.
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/
+
+[Pesquisa inicial] Página 2: https://lista.mercadolivre.com.br/_Desde_51
+
+[Pesquisa inicial] Página 3: https://lista.mercadolivre.com.br/_Desde_101
+
+=== Fim da execucao: 2026-05-31T23:47:30 ===

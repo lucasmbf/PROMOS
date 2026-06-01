@@ -362,6 +362,199 @@ DEFAULT_CATEGORIES = [
     "Saúde",
 ]
 
+ML_CATEGORIES_ALL_URL = "https://api.mercadolibre.com/sites/MLB/categories/all"
+ML_CATEGORY_DETAIL_URL_TEMPLATE = "https://api.mercadolibre.com/categories/{category_id}"
+ML_CATEGORIES_CACHE_FILE = BASE_DIR / "ml_categories_cache.json"
+
+
+def _slugify_categoria_nome(texto):
+    normalizado = unicodedata.normalize("NFKD", str(texto or ""))
+    ascii_only = normalizado.encode("ascii", "ignore").decode("ascii")
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", ascii_only.lower()).strip("-")
+    return slug
+
+
+def _chave_nome_categoria(texto):
+    return " ".join(str(texto or "").split()).strip().casefold()
+
+
+def _normalizar_raizes_categoria(roots, categorias_fallback):
+    normalizadas = []
+    vistos = set()
+
+    for item in roots or []:
+        if not isinstance(item, dict):
+            continue
+        nome = str(item.get("name") or "").strip()
+        if not nome:
+            continue
+        cid = str(item.get("id") or "").strip().upper()
+        chave = nome.casefold()
+        if chave in vistos:
+            continue
+        vistos.add(chave)
+        normalizadas.append({"id": cid, "name": nome, "slug": _slugify_categoria_nome(nome)})
+
+    if normalizadas:
+        return sorted(normalizadas, key=lambda c: c.get("name", "").casefold())
+
+    for nome in categorias_fallback or []:
+        nome_limpo = str(nome or "").strip()
+        if not nome_limpo:
+            continue
+        chave = nome_limpo.casefold()
+        if chave in vistos:
+            continue
+        vistos.add(chave)
+        normalizadas.append({"id": "", "name": nome_limpo, "slug": _slugify_categoria_nome(nome_limpo)})
+
+    return sorted(normalizadas, key=lambda c: c.get("name", "").casefold())
+
+
+def _ml_get_json(url, timeout=15):
+    resposta = requests.get(url, headers=HTTP_HEADERS, timeout=timeout)
+    resposta.raise_for_status()
+    return resposta.json()
+
+
+def _salvar_cache_categorias_ml(payload):
+    try:
+        with open(ML_CATEGORIES_CACHE_FILE, "w", encoding="utf-8") as file:
+            json.dump(payload, file, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+
+
+def _carregar_cache_categorias_ml():
+    try:
+        with open(ML_CATEGORIES_CACHE_FILE, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            if isinstance(data, dict):
+                return data
+    except Exception:
+        pass
+
+    return {"roots": [], "children": {}}
+
+
+def _load_ml_categories_catalog(categorias_fallback):
+    cache = _carregar_cache_categorias_ml()
+    cache_children = cache.get("children") if isinstance(cache.get("children"), dict) else {}
+
+    roots = []
+    try:
+        raw_roots = _ml_get_json(ML_CATEGORIES_ALL_URL)
+        raw_items = []
+        if isinstance(raw_roots, list):
+            raw_items = raw_roots
+        elif isinstance(raw_roots, dict):
+            raw_items = list(raw_roots.values())
+
+        children_map = {}
+        all_has_path = bool(raw_items) and all(isinstance(item, dict) and isinstance(item.get("path_from_root"), list) for item in raw_items)
+
+        if all_has_path:
+            for item in raw_items:
+                cid = str(item.get("id") or "").strip().upper()
+                nome = str(item.get("name") or "").strip()
+                if not cid or not nome:
+                    continue
+
+                path = item.get("path_from_root") if isinstance(item.get("path_from_root"), list) else []
+                if len(path) <= 1:
+                    roots.append(
+                        {
+                            "id": cid,
+                            "name": nome,
+                            "slug": _slugify_categoria_nome(nome),
+                        }
+                    )
+
+                raw_children = item.get("children_categories") if isinstance(item.get("children_categories"), list) else []
+                children = []
+                for child in raw_children:
+                    if not isinstance(child, dict):
+                        continue
+                    child_id = str(child.get("id") or "").strip().upper()
+                    child_nome = str(child.get("name") or "").strip()
+                    if not child_id or not child_nome:
+                        continue
+                    children.append({"id": child_id, "name": child_nome, "slug": _slugify_categoria_nome(child_nome)})
+
+                children_map[cid] = sorted(children, key=lambda c: c.get("name", "").casefold())
+        else:
+            for item in raw_items:
+                if not isinstance(item, dict):
+                    continue
+                cid = str(item.get("id") or "").strip().upper()
+                nome = str(item.get("name") or "").strip()
+                if not cid or not nome:
+                    continue
+                roots.append(
+                    {
+                        "id": cid,
+                        "name": nome,
+                        "slug": _slugify_categoria_nome(nome),
+                    }
+                )
+
+            roots = _normalizar_raizes_categoria(roots, categorias_fallback)
+            for root in roots:
+                rid = str(root.get("id") or "").strip().upper()
+                if not rid:
+                    continue
+
+                filhos_cache = cache_children.get(rid)
+                if isinstance(filhos_cache, list) and filhos_cache:
+                    children_map[rid] = filhos_cache
+                    continue
+
+                children = []
+                try:
+                    url = ML_CATEGORY_DETAIL_URL_TEMPLATE.format(category_id=rid)
+                    detalhe = _ml_get_json(url)
+                    raw_children = detalhe.get("children_categories") if isinstance(detalhe, dict) else []
+                    if isinstance(raw_children, list):
+                        for item in raw_children:
+                            cid = str(item.get("id") or "").strip().upper()
+                            nome = str(item.get("name") or "").strip()
+                            if not cid or not nome:
+                                continue
+                            children.append({"id": cid, "name": nome, "slug": _slugify_categoria_nome(nome)})
+                except Exception:
+                    children = []
+
+                children_map[rid] = sorted(children, key=lambda c: c.get("name", "").casefold())
+
+        roots = _normalizar_raizes_categoria(roots, categorias_fallback)
+
+        payload = {
+            "fetched_at": datetime.now().isoformat(timespec="seconds"),
+            "roots": roots,
+            "children": children_map,
+        }
+        _salvar_cache_categorias_ml(payload)
+        return payload
+    except Exception:
+        if isinstance(cache.get("roots"), list) and cache.get("roots"):
+            cache_roots = _normalizar_raizes_categoria(cache.get("roots"), categorias_fallback)
+            return {
+                "roots": cache_roots,
+                "children": cache_children,
+            }
+
+    fallback_roots = _normalizar_raizes_categoria([], categorias_fallback)
+    return {"roots": fallback_roots, "children": {}}
+
+
+def _ensure_ml_subcategories(catalog, parent_id):
+    pid = str(parent_id or "").strip().upper()
+    if not pid:
+        return []
+
+    children_map = catalog.setdefault("children", {})
+    return children_map.get(pid) or []
+
 
 class Tooltip:
     def __init__(self, widget, text):
@@ -1304,6 +1497,9 @@ def create_gui(categorias):
     desconto_var = tk.StringVar()
     limite_candidatos_prod_var = tk.StringVar()
     categoria_var = tk.StringVar(value="")
+    subcategoria_var = tk.StringVar(value="")
+    categoria_id_var = tk.StringVar(value="")
+    subcategoria_id_var = tk.StringVar(value="")
 
     fontes_vars = {
         "Mercado Livre": tk.BooleanVar(value=True),
@@ -1317,9 +1513,20 @@ def create_gui(categorias):
     rel_preco_max_var = tk.StringVar()
     rel_desconto_var = tk.StringVar()
     rel_limite_var = tk.StringVar()
-    rel_categoria_var = tk.StringVar(value="Todas categorias")
     rel_descricao_var = tk.StringVar()
     rel_padrao_var = tk.BooleanVar(value=False)
+
+    categories_catalog = _load_ml_categories_catalog(categorias)
+    categorias_raiz = categories_catalog.get("roots") if isinstance(categories_catalog.get("roots"), list) else []
+    categorias_raiz = _normalizar_raizes_categoria(categorias_raiz, categorias)
+
+    map_categoria_nome_para_id = {
+        _chave_nome_categoria(c.get("name") or ""): str(c.get("id") or "").strip().upper()
+        for c in categorias_raiz
+        if str(c.get("name") or "").strip()
+    }
+    categorias_prod_values = ["", *[str(c.get("name") or "") for c in categorias_raiz]]
+    map_subcategoria_prod_nome_para_id = {}
 
     def _decimal_input_valido(texto):
         texto = (texto or "").strip()
@@ -1390,9 +1597,14 @@ def create_gui(categorias):
         ttk.Checkbutton(source_frame, text=nome, variable=fontes_vars[nome], command=cmd).grid(row=0, column=idx + 1, padx=(0, 10), sticky="w")
 
     row += 1
-    ttk.Label(product_frame, text="Categoria:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(6, 0))
-    categorias_combo = ttk.Combobox(product_frame, textvariable=categoria_var, values=["", *categorias], state="readonly")
+    ttk.Label(product_frame, text="Categoria principal:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(6, 0))
+    categorias_combo = ttk.Combobox(product_frame, textvariable=categoria_var, values=categorias_prod_values, state="readonly")
     categorias_combo.grid(row=row, column=1, columnspan=2, sticky="ew", pady=(6, 0))
+
+    row += 1
+    ttk.Label(product_frame, text="Subcategoria:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(6, 0))
+    subcategorias_combo = ttk.Combobox(product_frame, textvariable=subcategoria_var, values=[""], state="disabled")
+    subcategorias_combo.grid(row=row, column=1, columnspan=2, sticky="ew", pady=(6, 0))
 
     row += 1
     ttk.Label(product_frame, text="Preco minimo:", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(6, 0))
@@ -1452,12 +1664,6 @@ def create_gui(categorias):
         product_frame.columnconfigure(col, weight=1)
 
     rel_row = 0
-    ttk.Label(relampago_frame, text="Categoria:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w")
-    rel_categorias = ["Todas categorias", *categorias]
-    rel_categoria_combo = ttk.Combobox(relampago_frame, textvariable=rel_categoria_var, values=rel_categorias, state="readonly")
-    rel_categoria_combo.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0))
-
-    rel_row += 1
     ttk.Label(relampago_frame, text="Descricao (opcional):", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(6, 0))
     rel_descricao_entry = ttk.Entry(relampago_frame, textvariable=rel_descricao_var)
     rel_descricao_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
@@ -1518,7 +1724,6 @@ def create_gui(categorias):
     Tooltip(rel_padrao_info, "O modo padrão busca 10 ofertas relâmpago sem especificar categoria, desconto, descrição ou faixa de preço")
 
     relampago_inputs = [
-        rel_categoria_combo,
         rel_descricao_entry,
         rel_preco_min_entry,
         rel_preco_max_entry,
@@ -1526,13 +1731,58 @@ def create_gui(categorias):
         rel_limite_entry,
     ]
 
+    def _atualizar_subcategorias_produto(parent_id):
+        subcategoria_var.set("")
+        subcategoria_id_var.set("")
+        map_subcategoria_prod_nome_para_id.clear()
+
+        pid = str(parent_id or "").strip().upper()
+        if not pid:
+            subcategorias_combo.configure(values=[""], state="disabled")
+            return
+
+        children = _ensure_ml_subcategories(categories_catalog, pid)
+        nomes = [str(item.get("name") or "").strip() for item in children if str(item.get("name") or "").strip()]
+        map_subcategoria_prod_nome_para_id.update(
+            {
+                str(item.get("name") or "").strip(): str(item.get("id") or "").strip().upper()
+                for item in children
+                if str(item.get("name") or "").strip()
+            }
+        )
+
+        if not nomes:
+            subcategorias_combo.configure(values=[""], state="disabled")
+            return
+
+        subcategorias_combo.configure(values=["", *nomes], state="readonly")
+
+    def _on_categoria_produto_change(_event=None):
+        nome = (categoria_var.get() or "").strip()
+        chave = _chave_nome_categoria(nome)
+        cid = str(map_categoria_nome_para_id.get(chave) or "").strip().upper()
+
+        categoria_id_var.set(cid)
+        _atualizar_subcategorias_produto(cid)
+
+    def _on_subcategoria_produto_change(_event=None):
+        nome = (subcategoria_var.get() or "").strip()
+        sid = str(map_subcategoria_prod_nome_para_id.get(nome) or "").strip().upper()
+        subcategoria_id_var.set(sid)
+
+    categorias_combo.bind("<<ComboboxSelected>>", _on_categoria_produto_change)
+    subcategorias_combo.bind("<<ComboboxSelected>>", _on_subcategoria_produto_change)
+    categoria_var.trace_add("write", lambda *_: _on_categoria_produto_change())
+    subcategoria_var.trace_add("write", lambda *_: _on_subcategoria_produto_change())
+
+    _on_categoria_produto_change()
+
     def atualizar_estado_campos_relampago():
-        estado = "disabled" if rel_padrao_var.get() else "normal"
+        rel_padrao = bool(rel_padrao_var.get())
+        estado_entrada = "disabled" if rel_padrao else "normal"
 
-        rel_categoria_combo.configure(state="disabled" if rel_padrao_var.get() else "readonly")
-
-        for widget in relampago_inputs[1:]:
-            widget.configure(state=estado)
+        for widget in [rel_descricao_entry, rel_preco_min_entry, rel_preco_max_entry, rel_desconto_entry, rel_limite_entry]:
+            widget.configure(state=estado_entrada)
 
     rel_padrao_check.configure(command=atualizar_estado_campos_relampago)
     atualizar_estado_campos_relampago()
@@ -4110,9 +4360,13 @@ def create_gui(categorias):
             return
 
         descricao = descricao_var.get().strip()
-        categoria = categoria_var.get().strip()
+        categoria_principal = (categoria_var.get() or "").strip()
+        subcategoria = (subcategoria_var.get() or "").strip()
+        categoria = subcategoria or categoria_principal
+        categoria_id = (subcategoria_id_var.get() or categoria_id_var.get() or "").strip().upper()
+        subcategoria_id = (subcategoria_id_var.get() or "").strip().upper()
 
-        possui_categoria = bool(categoria and categoria != "Todas categorias")
+        possui_categoria = bool(categoria_id or (categoria and categoria != "Todas categorias"))
         if not descricao and not possui_categoria:
             messagebox.showwarning(
                 "Atencao",
@@ -4128,6 +4382,10 @@ def create_gui(categorias):
             return
 
         args = _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto, limite_candidatos)
+        if categoria_id:
+            args.extend(["--categoria-id", categoria_id])
+        if subcategoria_id:
+            args.extend(["--subcategoria-id", subcategoria_id])
         args.extend(["--pasta-saida", pasta_saida, "--modalidade-execucao", "ondemand"])
 
         launch_process(args, "Busca de produto on demand iniciada em nova janela.")
@@ -4156,13 +4414,11 @@ def create_gui(categorias):
             messagebox.showerror("Validacao", str(exc))
             return
 
-        categoria = rel_categoria_var.get().strip()
         descricao = (rel_descricao_var.get() or "").strip()
 
         possui_parametro = any(
             [
-                bool(categoria and categoria != "Todas categorias"),
-            bool(descricao),
+                bool(descricao),
                 preco_min is not None,
                 preco_max is not None,
                 desconto is not None,
@@ -4187,8 +4443,6 @@ def create_gui(categorias):
         args = []
 
         args.append("--somente-relampago")
-        if categoria and categoria != "Todas categorias":
-            args.extend(["--categoria", categoria])
         if descricao:
             args.extend(["--descricao-produto", descricao])
         if preco_min is not None:

@@ -4,12 +4,18 @@ import random
 import time
 import json
 import sys
+import unicodedata
 from pathlib import Path
 from math import ceil
 from urllib.parse import quote
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.request import Request, urlopen
 from datetime import datetime
 from bs4 import BeautifulSoup
+
+
+BASE_DIR = Path(__file__).resolve().parents[1]
+ML_CATEGORIES_DEPARA_FILE = BASE_DIR / "ml_categories_depara_full.json"
 
 
 def debug_pausa(rotulo):
@@ -2054,53 +2060,160 @@ def _coletar_resultados_pesquisa_da_pagina(page):
     )
 
 
-def _resolver_url_categoria_na_home(page, categoria):
-    categoria = normalizar_descricao(categoria)
-    if not categoria:
+def _ml_api_get_json(url, timeout=10):
+    req = Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0",
+            "Accept": "application/json",
+        },
+    )
+    with urlopen(req, timeout=timeout) as resp:
+        payload = resp.read().decode("utf-8", errors="ignore")
+    return json.loads(payload)
+
+
+def _carregar_depara_categorias_ml():
+    try:
+        with open(ML_CATEGORIES_DEPARA_FILE, "r", encoding="utf-8") as arquivo:
+            payload = json.load(arquivo)
+            if isinstance(payload, dict):
+                return payload
+    except Exception:
+        pass
+
+    return {"path_to_id": {}, "id_to_meta": {}}
+
+
+def _slugify_categoria_texto(texto):
+    normalizado = unicodedata.normalize("NFKD", str(texto or ""))
+    ascii_only = normalizado.encode("ascii", "ignore").decode("ascii")
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", ascii_only.lower()).strip("-")
+    return slug
+
+
+def _url_categoria_por_path(path_texto):
+    partes = [parte.strip() for parte in str(path_texto or "").split(" > ") if parte.strip()]
+    if not partes:
+        return ""
+
+    slugs = [_slugify_categoria_texto(parte) for parte in partes]
+    slugs = [slug for slug in slugs if slug]
+    if not slugs:
+        return ""
+
+    return f"https://lista.mercadolivre.com.br/{'/'.join(slugs)}"
+
+
+def _resolver_url_categoria_por_id_depara(categoria_id, depara=None):
+    cid_inicial = str(categoria_id or "").strip().upper()
+    if not cid_inicial:
+        return "", "", ""
+
+    depara = depara or _carregar_depara_categorias_ml()
+    id_to_meta = depara.get("id_to_meta") if isinstance(depara.get("id_to_meta"), dict) else {}
+
+    cid_atual = cid_inicial
+    while cid_atual:
+        meta = id_to_meta.get(cid_atual)
+        if isinstance(meta, dict):
+            url = str(meta.get("url") or "").strip()
+            if not url:
+                url = _url_categoria_por_path(meta.get("path") or "")
+
+            if url and bool(meta.get("navegavel", True)):
+                return url, cid_atual, str(meta.get("path") or "").strip()
+
+            parent_id = str(meta.get("parent_id") or "").strip().upper()
+            if not parent_id or parent_id == cid_atual:
+                break
+            cid_atual = parent_id
+            continue
+
+        break
+
+    meta_inicial = id_to_meta.get(cid_inicial)
+    if isinstance(meta_inicial, dict):
+        url = str(meta_inicial.get("url") or "").strip()
+        if not url:
+            url = _url_categoria_por_path(meta_inicial.get("path") or "")
+        if url:
+            return url, cid_inicial, str(meta_inicial.get("path") or "").strip()
+
+    return "", "", ""
+
+
+def _resolver_url_categoria_por_id_api(categoria_id):
+    cid = str(categoria_id or "").strip().upper()
+    if not cid:
         return ""
 
     try:
-        page.goto("https://www.mercadolivre.com.br", timeout=90000, wait_until="domcontentloaded")
-        time.sleep(random.uniform(1.2, 2.0))
-
-        gatilho = page.locator(
-            "a.nav-menu-categories-link[data-js='nav-menu-categories-trigger']"
-        ).first
-
-        gatilho.wait_for(state="visible", timeout=10000)
-        gatilho.click()
-        time.sleep(random.uniform(0.8, 1.4))
-
-        href_categoria = page.evaluate(
-            """(categoriaAlvo) => {
-                const normalizar = (v) => (v || '').toLowerCase().trim().replace(/\s+/g, ' ');
-                const alvo = normalizar(categoriaAlvo);
-                if (!alvo) return '';
-
-                const links = Array.from(document.querySelectorAll('a[href]'));
-                const candidato = links.find((a) => {
-                    const texto = normalizar(a.textContent || '');
-                    const href = (a.getAttribute('href') || '').trim();
-                    if (!texto || !href) return false;
-                    const textoBate = texto.includes(alvo) || alvo.includes(texto);
-                    if (!textoBate) return false;
-                    return href.startsWith('http') || href.startsWith('/');
-                });
-
-                return candidato ? candidato.href : '';
-            }""",
-            categoria,
-        )
-
-        return (href_categoria or "").strip()
+        detalhe = _ml_api_get_json(f"https://api.mercadolibre.com/categories/{cid}")
     except Exception as exc:
-        print(f"[AVISO] Não foi possível resolver categoria pela home: {exc}")
+        print(f"[AVISO] Nao foi possivel consultar categoria {cid} na API publica: {exc}")
         return ""
+
+    permalink = str((detalhe or {}).get("permalink") or "").strip()
+    if permalink:
+        return permalink
+
+    return ""
+
+
+def _resolver_url_categoria_por_nome_api(categoria_nome):
+    nome_alvo = _normalizar_filtro_categoria(categoria_nome)
+    if not nome_alvo:
+        return ""
+
+    try:
+        payload = _ml_api_get_json("https://api.mercadolibre.com/sites/MLB/categories/all")
+    except Exception as exc:
+        print(f"[AVISO] Nao foi possivel consultar categorias na API publica: {exc}")
+        return ""
+
+    itens = []
+    if isinstance(payload, list):
+        itens = payload
+    elif isinstance(payload, dict):
+        itens = list(payload.values())
+
+    candidato = None
+    for item in itens:
+        if not isinstance(item, dict):
+            continue
+
+        nome_item = str(item.get("name") or "").strip()
+        if not nome_item:
+            continue
+
+        nome_item_norm = _normalizar_filtro_categoria(nome_item)
+        if nome_item_norm == nome_alvo:
+            candidato = item
+            break
+
+        if not candidato and (nome_alvo in nome_item_norm or nome_item_norm in nome_alvo):
+            candidato = item
+
+    if not candidato:
+        return ""
+
+    permalink = str(candidato.get("permalink") or "").strip()
+    if permalink:
+        return permalink
+
+    cid = str(candidato.get("id") or "").strip().upper()
+    if cid:
+        return _resolver_url_categoria_por_id_api(cid)
+
+    return ""
 
 
 def processar_produtos_home_por_pesquisa(
     page,
     categoria=None,
+    categoria_id=None,
+    subcategoria_id=None,
     descricao=None,
     preco_minimo=None,
     preco_maximo=None,
@@ -2116,20 +2229,54 @@ def processar_produtos_home_por_pesquisa(
 
     termo_base = normalizar_descricao(descricao or "")
     categoria_base = normalizar_descricao(categoria or "")
+    categoria_alvo_id = str(subcategoria_id or categoria_id or "").strip().upper()
 
     if not termo_base and not categoria_base:
         raise ValueError(
             "Informe ao menos Categoria e/ou Descricao para buscar produto."
         )
 
-    # Resolve URL da categoria pela home quando categoria for informada
-    url_categoria_home = ""
-    if categoria_base:
-        url_categoria_home = _resolver_url_categoria_na_home(page, categoria_base)
-        if url_categoria_home:
-            print(f"Categoria resolvida pela home: {categoria_base} → {url_categoria_home}")
+    def _log_url_categoria_resolvida(url, origem):
+        url_limpa = str(url or "").strip()
+        if url_limpa:
+            print(f"[CATEGORIA_URL_RESOLVIDA] origem={origem} url={url_limpa}")
         else:
-            print(f"[AVISO] Não foi possível resolver URL da categoria '{categoria_base}'. Buscando só por descrição.")
+            print(f"[CATEGORIA_URL_RESOLVIDA] origem={origem} url=<nao_resolvida>")
+
+    depara_categorias = _carregar_depara_categorias_ml()
+
+    # Resolve URL da categoria usando o DePara com fallback para o ancestral navegável.
+    url_categoria_home = ""
+    categoria_base_resolvida = categoria_base
+    categoria_id_resolvido = categoria_alvo_id
+
+    if categoria_alvo_id:
+        url_categoria_home, categoria_id_resolvido, path_resolvido = _resolver_url_categoria_por_id_depara(
+            categoria_alvo_id,
+            depara_categorias,
+        )
+        if url_categoria_home:
+            categoria_base_resolvida = path_resolvido or categoria_base_resolvida
+            print(
+                f"Categoria resolvida por DePara: {categoria_alvo_id} -> {categoria_id_resolvido} → {url_categoria_home}"
+            )
+            _log_url_categoria_resolvida(url_categoria_home, f"depara_id:{categoria_id_resolvido}")
+        else:
+            print(
+                f"[AVISO] Nao foi possivel resolver URL navegavel para categoria ID '{categoria_alvo_id}'. "
+                "Aplicando fallback por nome/descricao."
+            )
+
+    if not url_categoria_home and categoria_base:
+        url_categoria_home = _resolver_url_categoria_por_nome_api(categoria_base)
+        if url_categoria_home:
+            print(f"Categoria resolvida por API publica (nome): {categoria_base} → {url_categoria_home}")
+            _log_url_categoria_resolvida(url_categoria_home, "api_nome")
+        else:
+            print(f"[AVISO] Nao foi possivel resolver URL da categoria '{categoria_base}' na API publica. Buscando so por descricao.")
+
+    if not url_categoria_home and (categoria_alvo_id or categoria_base):
+        _log_url_categoria_resolvida("", "nao_resolvida")
 
     limite_paginas = max(1, int(limite_paginas or 1))
     limite_validos = max(1, int(limite_validos or 1))
@@ -2201,7 +2348,7 @@ def processar_produtos_home_por_pesquisa(
             candidatos.append(
                 {
                     "id_anuncio": id_anuncio,
-                    "categoria": categoria_base or "Pesquisa genérica",
+                    "categoria": categoria_base_resolvida or (categoria_id_resolvido if categoria_id_resolvido else "Pesquisa genérica"),
                     "descricao": normalizar_descricao(resultado.get("descricao") or termo_base),
                     "antes": "Sem preço anterior",
                     "desconto": (f"{desconto_int}% OFF" if desconto_int is not None else "Sem desconto"),
@@ -2516,7 +2663,6 @@ def processar_ofertas_relampago(
     page,
     url_relampago,
     desconto_minimo=30,
-    categoria=None,
     descricao=None,
     preco_minimo=None,
     preco_maximo=None,
@@ -2538,16 +2684,12 @@ def processar_ofertas_relampago(
 
     id_execucao = _proxima_execucao_fluxo("relampago")
 
-    categoria_filtro = _normalizar_filtro_categoria(categoria) if categoria else ""
     descricao_filtro = normalizar_descricao(descricao)
 
     url_base_paginas = url_relampago
 
-    # Prioridade: 1) Categoria (na própria página de ofertas),
-    # 2) Descrição (filtro textual sobre as ofertas extraídas),
-    # 3) Preço e desconto.
-    if categoria_filtro:
-        url_base_paginas = _resolver_url_base_relampago(page, url_relampago, categoria)
+    # No modo relampago, os filtros sao aplicados sobre o contexto dos HTMLs extraidos.
+    # Nao ha aplicacao de categoria via navegacao ou query de URL.
 
     if descricao_filtro:
         print(f"Filtro de descricao ativo no relampago: '{descricao_filtro}'")
@@ -2556,8 +2698,7 @@ def processar_ofertas_relampago(
         ids_descartados = historico_anuncios
 
     modo_sem_parametros = bool(forcar_modo_incremental) or (
-        not categoria_filtro
-        and not _tem_filtros_ativos(
+        not _tem_filtros_ativos(
             desconto_minimo=desconto_minimo,
             preco_minimo=preco_minimo,
             preco_maximo=preco_maximo,
@@ -2746,7 +2887,6 @@ def processar_ofertas_relampago(
                 "status": "sem_ofertas",
                 "pasta_html": PASTA_RELAMPAGO_HTML,
                 "pasta_historico": PASTA_RELAMPAGO_HISTORICO,
-                "categoria": categoria,
                 "descricao": descricao_filtro,
                 "desconto_minimo": desconto_minimo,
                 "preco_minimo": preco_minimo,
@@ -2772,7 +2912,6 @@ def processar_ofertas_relampago(
             "status": "ok",
             "pasta_html": PASTA_RELAMPAGO_HTML,
             "pasta_historico": PASTA_RELAMPAGO_HISTORICO,
-            "categoria": categoria,
             "descricao": descricao_filtro,
             "desconto_minimo": desconto_minimo,
             "preco_minimo": preco_minimo,
