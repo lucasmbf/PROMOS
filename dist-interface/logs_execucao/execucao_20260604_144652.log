@@ -1,0 +1,17 @@
+=== Inicio da execucao: 2026-06-04T14:46:52 ===
+Args: --produto-por-html --categoria Eletrônicos, Áudio e Vídeo --preco-maximo 600.0 --desconto-minimo 30 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+[AVISO] Nao foi possivel consultar categorias na API publica: Expecting value: line 1 column 1 (char 0)
+[AVISO] Nao foi possivel resolver URL da categoria 'Eletrônicos, Áudio e Vídeo' na API publica. Buscando so por descricao.
+[CATEGORIA_URL_RESOLVIDA] origem=nao_resolvida url=<nao_resolvida>
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/
+
+[Pesquisa inicial] Página 2: https://lista.mercadolivre.com.br/_Desde_51
+
+[Pesquisa inicial] Página 3: https://lista.mercadolivre.com.br/_Desde_101
+
+=== Fim da execucao: 2026-06-04T14:47:08 ===

@@ -1142,10 +1142,19 @@ def mercado_livre(page, url):
 
 def _obter_diretorio_saida():
 
-    if getattr(sys, "frozen", False):
-        return Path(sys.executable).resolve().parent
+    override = os.getenv("PROMOS_OUTPUT_DIR", "").strip()
+    if override:
+        return Path(override).expanduser().resolve()
 
-    return Path.cwd()
+    if getattr(sys, "frozen", False):
+        exe_dir = Path(sys.executable).resolve().parent
+
+        if exe_dir.name.lower() in {"dist-interface", "dist-categorias"}:
+            return exe_dir.parent
+
+        return exe_dir
+
+    return Path(__file__).resolve().parents[1]
 
 
 BASE_SAIDA = _obter_diretorio_saida()

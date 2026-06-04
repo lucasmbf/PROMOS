@@ -1,0 +1,22 @@
+=== Inicio da execucao: 2026-06-02T12:09:40 ===
+Args: --produto-por-html --descricao-produto Cafeteira Espresso Série 1200 Philips Walita Ep1220 1400W Cor Preta --preco-minimo 2000.0 --preco-maximo 2300.0 --limite-candidatos 5 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/Cafeteira-Espresso-S%C3%A9rie-1200-Philips-Walita-Ep1220-1400W-Cor-Preta
+
+[Pesquisa inicial] Página 2: https://lista.mercadolivre.com.br/Cafeteira-Espresso-S%C3%A9rie-1200-Philips-Walita-Ep1220-1400W-Cor-Preta_Desde_51
+
+[Pesquisa inicial] Página 3: https://lista.mercadolivre.com.br/Cafeteira-Espresso-S%C3%A9rie-1200-Philips-Walita-Ep1220-1400W-Cor-Preta_Desde_101
+
+[Pesquisa inicial] Página 4: https://lista.mercadolivre.com.br/Cafeteira-Espresso-S%C3%A9rie-1200-Philips-Walita-Ep1220-1400W-Cor-Preta_Desde_151
+
+[Pesquisa inicial] Página 5: https://lista.mercadolivre.com.br/Cafeteira-Espresso-S%C3%A9rie-1200-Philips-Walita-Ep1220-1400W-Cor-Preta_Desde_201
+
+Nenhum candidato válido encontrado na pesquisa inicial.
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-06-02T12:10:10 ===

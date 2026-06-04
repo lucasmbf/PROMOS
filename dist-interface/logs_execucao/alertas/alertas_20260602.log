@@ -1,0 +1,314 @@
+=== Inicio do log de alertas: 2026-06-02T08:33:23 ===
+[2026-06-02 08:34:23] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica.
+[2026-06-02 08:34:23] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-06-02 08:34:23] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-06-02 08:34:23] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-06-02 08:34:23] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-06-02 08:34:23] Alerta 000021 enfileirado (scheduler) - nome: Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®.
+[2026-06-02 08:34:23] Alerta 000022 enfileirado (scheduler) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-06-02 08:34:23] Alerta 000028 enfileirado (scheduler) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-02 08:34:23] Alerta 000029 enfileirado (scheduler) - nome: Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto.
+[2026-06-02 08:34:23] Iniciando execucao do alerta 000006.
+[2026-06-02 08:34:25] Alerta 000030 enfileirado (manual) - nome: Projetor 4k.
+[2026-06-02 08:34:45] Alerta 000006 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-06-02 08:34:45] Alerta 000006 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-06-02 08:34:45] Execucao finalizada sem disparos.
+[2026-06-02 08:34:45] Finalizada execucao do alerta 000006.
+[2026-06-02 08:34:45] Iniciando execucao do alerta 000010.
+[2026-06-02 08:34:58] Alerta 000010 checado: triggered=False preco=179.85 alvo=135.0
+[2026-06-02 08:34:58] Alerta 000010 sem disparo nesta execucao.
+[2026-06-02 08:34:58] Execucao finalizada sem disparos.
+[2026-06-02 08:34:58] Finalizada execucao do alerta 000010.
+[2026-06-02 08:34:58] Iniciando execucao do alerta 000013.
+[2026-06-02 08:35:04] Alerta 000013 checado: triggered=False preco=89.65 alvo=70.0
+[2026-06-02 08:35:04] Alerta 000013 sem disparo nesta execucao.
+[2026-06-02 08:35:04] Execucao finalizada sem disparos.
+[2026-06-02 08:35:04] Finalizada execucao do alerta 000013.
+[2026-06-02 08:35:04] Iniciando execucao do alerta 000014.
+[2026-06-02 08:35:17] Alerta 000014 checado: triggered=False preco=781.51 alvo=700.0
+[2026-06-02 08:35:17] Alerta 000014 sem disparo nesta execucao.
+[2026-06-02 08:35:17] Execucao finalizada sem disparos.
+[2026-06-02 08:35:17] Finalizada execucao do alerta 000014.
+[2026-06-02 08:35:17] Iniciando execucao do alerta 000020.
+[2026-06-02 08:35:23] Alerta 000020 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 08:35:23] Alerta 000021 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 08:35:23] Alerta 000022 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 08:35:23] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 08:35:23] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 08:35:28] Alerta 000020 checado: triggered=False preco=333.0 alvo=250.0
+[2026-06-02 08:35:28] Alerta 000020 sem disparo nesta execucao.
+[2026-06-02 08:35:28] Execucao finalizada sem disparos.
+[2026-06-02 08:35:28] Finalizada execucao do alerta 000020.
+[2026-06-02 08:35:28] Iniciando execucao do alerta 000021.
+[2026-06-02 08:35:40] Alerta 000021 checado: triggered=True preco=689.0 alvo=710.0
+[2026-06-02 08:35:41] Notificacao alerta 000021: email=sem destinos; whatsapp=1 envio(s) destinos=***3269 sid=SM75aa9412f58bb2f2c8c952d0d91f7ccc.
+[2026-06-02 08:35:41] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-06-02 08:35:41] Finalizada execucao do alerta 000021.
+[2026-06-02 08:35:41] Iniciando execucao do alerta 000022.
+[2026-06-02 08:35:53] Alerta 000022 checado: triggered=False preco=499.0 alvo=380.0
+[2026-06-02 08:35:53] Alerta 000022 sem disparo nesta execucao.
+[2026-06-02 08:35:53] Execucao finalizada sem disparos.
+[2026-06-02 08:35:53] Finalizada execucao do alerta 000022.
+[2026-06-02 08:35:53] Iniciando execucao do alerta 000028.
+[2026-06-02 08:36:20] Alerta 000028 checado: triggered=False preco=6100.0 alvo=5000.0
+[2026-06-02 08:36:20] Alerta 000028 sem disparo nesta execucao.
+[2026-06-02 08:36:20] Execucao finalizada sem disparos.
+[2026-06-02 08:36:20] Finalizada execucao do alerta 000028.
+[2026-06-02 08:36:20] Iniciando execucao do alerta 000029.
+[2026-06-02 08:36:23] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 08:36:31] Alerta 000029 checado: triggered=False preco=9910.15 alvo=8000.0
+[2026-06-02 08:36:31] Alerta 000029 sem disparo nesta execucao.
+[2026-06-02 08:36:31] Execucao finalizada sem disparos.
+[2026-06-02 08:36:31] Finalizada execucao do alerta 000029.
+[2026-06-02 08:36:31] Iniciando execucao do alerta 000030.
+[2026-06-02 08:36:38] Alerta 000030 checado: triggered=True preco=201.0 alvo=250.0
+[2026-06-02 08:36:38] Alerta 000030 marcou primeiro disparo em 2026-06-02T08:36:38.
+[2026-06-02 08:36:38] Notificacao alerta 000030: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SMe0aa62b1cf38f399cdd2ee93298d1555.
+[2026-06-02 08:36:38] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-06-02 08:36:38] Finalizada execucao do alerta 000030.
+[2026-06-02 11:35:24] Alerta 000006 enfileirado (scheduler) - nome: Cafeteira Elétrica.
+[2026-06-02 11:35:24] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-06-02 11:35:24] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-06-02 11:35:24] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-06-02 11:35:24] Iniciando execucao do alerta 000006.
+[2026-06-02 11:35:46] Alerta 000006 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-06-02 11:35:46] Alerta 000006 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-06-02 11:35:46] Execucao finalizada sem disparos.
+[2026-06-02 11:35:46] Finalizada execucao do alerta 000006.
+[2026-06-02 11:35:46] Iniciando execucao do alerta 000010.
+[2026-06-02 11:35:59] Alerta 000010 checado: triggered=False preco=179.85 alvo=135.0
+[2026-06-02 11:35:59] Alerta 000010 sem disparo nesta execucao.
+[2026-06-02 11:35:59] Execucao finalizada sem disparos.
+[2026-06-02 11:35:59] Finalizada execucao do alerta 000010.
+[2026-06-02 11:35:59] Iniciando execucao do alerta 000013.
+[2026-06-02 11:36:05] Alerta 000013 checado: triggered=False preco=89.65 alvo=70.0
+[2026-06-02 11:36:05] Alerta 000013 sem disparo nesta execucao.
+[2026-06-02 11:36:05] Execucao finalizada sem disparos.
+[2026-06-02 11:36:05] Finalizada execucao do alerta 000013.
+[2026-06-02 11:36:05] Iniciando execucao do alerta 000014.
+[2026-06-02 11:36:18] Alerta 000014 checado: triggered=False preco=781.51 alvo=700.0
+[2026-06-02 11:36:18] Alerta 000014 sem disparo nesta execucao.
+[2026-06-02 11:36:18] Execucao finalizada sem disparos.
+[2026-06-02 11:36:18] Finalizada execucao do alerta 000014.
+[2026-06-02 11:36:24] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-06-02 11:36:24] Alerta 000021 enfileirado (scheduler) - nome: Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®.
+[2026-06-02 11:36:24] Alerta 000022 enfileirado (scheduler) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-06-02 11:36:24] Alerta 000028 enfileirado (scheduler) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-02 11:36:24] Iniciando execucao do alerta 000020.
+[2026-06-02 11:36:38] Alerta 000020 checado: triggered=False preco=333.0 alvo=250.0
+[2026-06-02 11:36:38] Alerta 000020 sem disparo nesta execucao.
+[2026-06-02 11:36:38] Execucao finalizada sem disparos.
+[2026-06-02 11:36:38] Finalizada execucao do alerta 000020.
+[2026-06-02 11:36:38] Iniciando execucao do alerta 000021.
+[2026-06-02 11:36:50] Alerta 000021 checado: triggered=True preco=689.0 alvo=710.0
+[2026-06-02 11:36:50] Alerta 000021 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-06-02 11:36:50] Execucao finalizada sem disparos.
+[2026-06-02 11:36:50] Finalizada execucao do alerta 000021.
+[2026-06-02 11:36:50] Iniciando execucao do alerta 000022.
+[2026-06-02 11:37:02] Alerta 000022 checado: triggered=True preco=229.0 alvo=380.0
+[2026-06-02 11:37:02] Notificacao alerta 000022: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SMcff894408e6dcd69c859bf53dc805dac.
+[2026-06-02 11:37:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:37:25] Alerta 000029 enfileirado (scheduler) - nome: Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto.
+[2026-06-02 11:37:25] Alerta 000030 enfileirado (scheduler) - nome: Projetor 4k.
+[2026-06-02 11:38:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:38:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:38:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:39:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:39:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:39:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:40:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:40:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:40:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:41:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:41:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:41:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:42:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:42:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:42:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:43:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:43:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:43:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:44:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:44:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:44:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:45:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:45:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:45:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:46:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:46:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:46:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:47:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:47:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:47:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:48:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:48:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:48:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:49:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:49:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:49:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:50:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:50:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:50:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:51:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:51:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:51:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:52:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:52:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:52:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:53:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:53:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:53:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:53:39] Alerta 000006 enfileirado (manual) - nome: Cafeteira Elétrica.
+[2026-06-02 11:54:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:54:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:54:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:55:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:55:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:55:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:56:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:56:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:56:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:57:16] Alerta 000031 enfileirado (manual) - nome: Cafeteira 1200 Walita.
+[2026-06-02 11:57:19] Alerta 000031 ignorado no enfileiramento (manual): ja em execucao/fila.
+[2026-06-02 11:57:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:57:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:57:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:58:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:58:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:58:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:58:52] Alerta 000031 ignorado no enfileiramento (manual): ja em execucao/fila.
+[2026-06-02 11:59:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:59:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 11:59:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:00:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:00:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:00:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:01:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:01:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:01:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:02:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:02:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:02:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:03:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:03:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:03:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:04:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:04:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:04:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:05:25] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:05:25] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:05:25] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 12:06:33] Alerta 000031 enfileirado (manual) - nome: Cafeteira 1200 Walita.
+[2026-06-02 12:06:33] Iniciando execucao do alerta 000031.
+[2026-06-02 12:06:46] Alerta 000031 checado: triggered=False preco=2299.0 alvo=2100.0
+[2026-06-02 12:06:46] Alerta 000031 sem disparo nesta execucao.
+[2026-06-02 12:06:46] Execucao finalizada sem disparos.
+[2026-06-02 12:06:46] Finalizada execucao do alerta 000031.
+[2026-06-02 12:07:23] Alerta 000028 enfileirado (scheduler) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-02 12:07:23] Alerta 000029 enfileirado (scheduler) - nome: Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto.
+[2026-06-02 12:07:23] Alerta 000030 enfileirado (scheduler) - nome: Projetor 4k.
+[2026-06-02 12:07:23] Iniciando execucao do alerta 000028.
+[2026-06-02 12:07:32] Alerta 000028 erro na checagem: Falha ao extrair preco.
+[2026-06-02 12:07:32] Alerta 000028 falhou: Falha ao extrair preco.
+[2026-06-02 12:07:32] Execucao finalizada sem disparos.
+[2026-06-02 12:07:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-02 12:07:32] Finalizada execucao do alerta 000028.
+[2026-06-02 12:07:32] Iniciando execucao do alerta 000029.
+[2026-06-02 12:07:35] Alerta 000029 erro na checagem: Falha ao extrair preco.
+[2026-06-02 12:07:35] Alerta 000029 falhou: Falha ao extrair preco.
+[2026-06-02 12:07:35] Execucao finalizada sem disparos.
+[2026-06-02 12:07:35] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-02 12:07:35] Finalizada execucao do alerta 000029.
+[2026-06-02 12:07:35] Iniciando execucao do alerta 000030.
+[2026-06-02 12:07:40] Alerta 000030 checado: triggered=True preco=201.0 alvo=250.0
+[2026-06-02 12:07:40] Alerta 000030 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-06-02 12:07:40] Execucao finalizada sem disparos.
+[2026-06-02 12:07:40] Finalizada execucao do alerta 000030.
+[2026-06-02 12:08:06] Alerta 000028 enfileirado (manual) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-02 12:08:06] Iniciando execucao do alerta 000028.
+[2026-06-02 12:08:34] Alerta 000028 checado: triggered=False preco=6100.0 alvo=5000.0
+[2026-06-02 12:08:34] Alerta 000028 sem disparo nesta execucao.
+[2026-06-02 12:08:34] Execucao finalizada sem disparos.
+[2026-06-02 12:08:34] Finalizada execucao do alerta 000028.
+[2026-06-02 12:08:48] Alerta 000028 enfileirado (manual) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-02 12:08:48] Iniciando execucao do alerta 000028.
+[2026-06-02 12:09:13] Alerta 000028 checado: triggered=False preco=6100.0 alvo=5000.0
+[2026-06-02 12:09:13] Alerta 000028 sem disparo nesta execucao.
+[2026-06-02 12:09:13] Execucao finalizada sem disparos.
+[2026-06-02 12:09:13] Finalizada execucao do alerta 000028.
+[2026-06-02 12:39:18] Alerta 000014 enfileirado (manual) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-06-02 12:39:18] Iniciando execucao do alerta 000014.
+[2026-06-02 12:39:47] Alerta 000014 checado: triggered=True preco=649.9 alvo=700.0
+[2026-06-02 12:39:47] Alerta 000014 marcou primeiro disparo em 2026-06-02T12:39:47.
+[2026-06-02 12:39:47] Notificacao alerta 000014: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM16d3a54002ed6707ee579c62ed912a0a.
+[2026-06-02 12:39:47] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-06-02 12:39:47] Finalizada execucao do alerta 000014.
+[2026-06-02 18:14:23] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-06-02 18:14:23] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-06-02 18:14:23] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-06-02 18:14:23] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-06-02 18:14:23] Alerta 000021 enfileirado (scheduler) - nome: Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®.
+[2026-06-02 18:14:23] Alerta 000022 enfileirado (scheduler) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-06-02 18:14:23] Alerta 000028 enfileirado (scheduler) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-02 18:14:23] Alerta 000029 enfileirado (scheduler) - nome: Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto.
+[2026-06-02 18:14:23] Alerta 000030 enfileirado (scheduler) - nome: Projetor 4k.
+[2026-06-02 18:14:23] Alerta 000031 enfileirado (scheduler) - nome: Cafeteira 1200 Walita.
+[2026-06-02 18:14:23] Iniciando execucao do alerta 000010.
+[2026-06-02 18:14:35] Alerta 000010 checado: triggered=False preco=140.29 alvo=135.0
+[2026-06-02 18:14:35] Alerta 000010 sem disparo nesta execucao.
+[2026-06-02 18:14:35] Execucao finalizada sem disparos.
+[2026-06-02 18:14:35] Finalizada execucao do alerta 000010.
+[2026-06-02 18:14:35] Iniciando execucao do alerta 000013.
+[2026-06-02 18:14:42] Alerta 000013 checado: triggered=False preco=89.65 alvo=70.0
+[2026-06-02 18:14:42] Alerta 000013 sem disparo nesta execucao.
+[2026-06-02 18:14:42] Execucao finalizada sem disparos.
+[2026-06-02 18:14:42] Finalizada execucao do alerta 000013.
+[2026-06-02 18:14:42] Iniciando execucao do alerta 000014.
+[2026-06-02 18:15:09] Alerta 000014 checado: triggered=True preco=649.9 alvo=700.0
+[2026-06-02 18:15:09] Alerta 000014 marcou primeiro disparo em 2026-06-02T18:15:09.
+[2026-06-02 18:15:09] Notificacao alerta 000014: email=SMTP nao configurado; whatsapp=1 envio(s) destinos=***3269 sid=SM3146528ab056a246876f6ed4908c6cdc.
+[2026-06-02 18:15:09] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-06-02 18:15:09] Finalizada execucao do alerta 000014.
+[2026-06-02 18:15:09] Iniciando execucao do alerta 000020.
+[2026-06-02 18:15:21] Alerta 000020 checado: triggered=False preco=349.0 alvo=250.0
+[2026-06-02 18:15:21] Alerta 000020 sem disparo nesta execucao.
+[2026-06-02 18:15:21] Execucao finalizada sem disparos.
+[2026-06-02 18:15:21] Finalizada execucao do alerta 000020.
+[2026-06-02 18:15:21] Iniciando execucao do alerta 000021.
+[2026-06-02 18:15:23] Alerta 000021 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 18:15:23] Alerta 000022 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 18:15:23] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 18:15:23] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 18:15:23] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 18:15:23] Alerta 000031 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 18:15:31] Alerta 000021 checado: triggered=False preco=999.0 alvo=710.0
+[2026-06-02 18:15:31] Alerta 000021 sem disparo nesta execucao.
+[2026-06-02 18:15:31] Execucao finalizada sem disparos.
+[2026-06-02 18:15:31] Finalizada execucao do alerta 000021.
+[2026-06-02 18:15:31] Iniciando execucao do alerta 000022.
+[2026-06-02 18:15:42] Alerta 000022 checado: triggered=True preco=379.0 alvo=380.0
+[2026-06-02 18:15:42] Alerta 000022 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-06-02 18:15:42] Execucao finalizada sem disparos.
+[2026-06-02 18:15:42] Finalizada execucao do alerta 000022.
+[2026-06-02 18:15:42] Iniciando execucao do alerta 000028.
+[2026-06-02 18:16:08] Alerta 000028 checado: triggered=False preco=6100.0 alvo=5000.0
+[2026-06-02 18:16:08] Alerta 000028 sem disparo nesta execucao.
+[2026-06-02 18:16:08] Execucao finalizada sem disparos.
+[2026-06-02 18:16:08] Finalizada execucao do alerta 000028.
+[2026-06-02 18:16:09] Iniciando execucao do alerta 000029.
+[2026-06-02 18:16:20] Alerta 000029 checado: triggered=False preco=9910.15 alvo=8000.0
+[2026-06-02 18:16:20] Alerta 000029 sem disparo nesta execucao.
+[2026-06-02 18:16:20] Execucao finalizada sem disparos.
+[2026-06-02 18:16:20] Finalizada execucao do alerta 000029.
+[2026-06-02 18:16:20] Iniciando execucao do alerta 000030.
+[2026-06-02 18:16:23] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 18:16:23] Alerta 000031 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-02 18:16:26] Alerta 000030 checado: triggered=True preco=201.0 alvo=250.0
+[2026-06-02 18:16:26] Alerta 000030 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-06-02 18:16:26] Execucao finalizada sem disparos.
+[2026-06-02 18:16:26] Finalizada execucao do alerta 000030.
+[2026-06-02 18:16:26] Iniciando execucao do alerta 000031.
+[2026-06-02 18:16:37] Alerta 000031 checado: triggered=False preco=2299.0 alvo=2100.0
+[2026-06-02 18:16:37] Alerta 000031 sem disparo nesta execucao.
+[2026-06-02 18:16:37] Execucao finalizada sem disparos.
+[2026-06-02 18:16:37] Finalizada execucao do alerta 000031.

@@ -1,0 +1,3 @@
+=== Inicio da execucao: 2026-06-04T14:48:35 ===
+Args: --produto-por-html --descricao-produto Eletronicos --preco-maximo 600.0 --desconto-minimo 30 --limite-candidatos 10 --modalidade-execucao campanha
+

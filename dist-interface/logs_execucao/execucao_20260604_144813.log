@@ -1,0 +1,8 @@
+=== Inicio da execucao: 2026-06-04T14:48:13 ===
+Args: --produto-por-html --preco-maximo 600.0 --desconto-minimo 30 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+=== Fim da execucao: 2026-06-04T14:48:16 ===

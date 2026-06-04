@@ -1162,6 +1162,8 @@ with sync_playwright() as p:
             )
             salvar_saida_execucao_modalidade(ofertas_hub, ARGS.modalidade_execucao or "ondemand")
 
+            enviar_produtos_por_whatsapp(ofertas_hub)
+
             salvar_historico_anuncios_em_arquivo(
                 HISTORICO_ANUNCIOS_ARQUIVO,
                 ofertas_hub
@@ -1221,6 +1223,8 @@ with sync_playwright() as p:
                 incluir_banner_relampago=False,
             )
             salvar_saida_execucao_modalidade([produto_manual], ARGS.modalidade_execucao or "ondemand")
+
+            enviar_produtos_por_whatsapp([produto_manual])
 
             salvar_historico_anuncios_em_arquivo(
                 HISTORICO_ANUNCIOS_ARQUIVO,
@@ -1510,6 +1514,8 @@ with sync_playwright() as p:
 
         salvar_resultado_relampago(ofertas_relampago, pasta=ARGS.pasta_saida or None)
         salvar_saida_execucao_modalidade(ofertas_relampago, ARGS.modalidade_execucao or "ondemand")
+
+        enviar_produtos_por_whatsapp(ofertas_relampago)
 
         salvar_historico_anuncios_em_arquivo(
             HISTORICO_ANUNCIOS_ARQUIVO,

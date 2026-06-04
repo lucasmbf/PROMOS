@@ -19,5 +19,5 @@
 # Bugs and Fixes
 
 
-
+ - Saídas não estão sendo enviadas diretamente pelo Twilio
  
