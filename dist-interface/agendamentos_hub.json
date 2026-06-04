@@ -21,8 +21,8 @@
     "last_run_at": "2026-06-04T14:48:35",
     "configured_at": "2026-06-04T14:48:31",
     "next_run_at": "2026-06-04T15:48:35",
-    "last_execution_status": "falha",
-    "last_execution_message": "Informe ao menos Categoria e/ou Descricao para buscar produto.",
-    "last_execution_at": "2026-06-04T14:48:24"
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-06-04T14:51:25"
   }
 ]

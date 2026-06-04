@@ -2043,15 +2043,43 @@ def _coletar_resultados_pesquisa_da_pagina(page):
                 const descricao = (titleEl.textContent || '').trim();
                 const href = (titleEl.getAttribute('href') || '').trim();
 
-                const fraction = card.querySelector('[data-andes-money-amount-fraction="true"]');
-                const cents = card.querySelector('[data-andes-money-amount-cents="true"]');
+                function montarPrecoDeEscopo(scopeEl) {
+                    if (!scopeEl) {
+                        return '';
+                    }
 
-                let precoTexto = '';
-                if (fraction) {
-                    const reais = (fraction.textContent || '').trim();
-                    const centavos = cents ? (cents.textContent || '').trim() : '';
-                    precoTexto = centavos ? `R$ ${reais},${centavos}` : `R$ ${reais}`;
+                    const fractionEl = scopeEl.querySelector('[data-andes-money-amount-fraction="true"]');
+                    const centsEl = scopeEl.querySelector('[data-andes-money-amount-cents="true"]');
+
+                    if (!fractionEl) {
+                        return '';
+                    }
+
+                    const reais = (fractionEl.textContent || '').trim();
+                    const centavos = centsEl ? (centsEl.textContent || '').trim() : '';
+
+                    return centavos ? `R$ ${reais},${centavos}` : `R$ ${reais}`;
                 }
+
+                const escopoAtual = card.querySelector('.poly-price__current, .ui-search-price__second-line');
+                const escopoAnterior = card.querySelector('s.andes-money-amount--previous, .ui-search-price__original-value');
+
+                let precoAtualTexto = montarPrecoDeEscopo(escopoAtual);
+                let precoAnteriorTexto = montarPrecoDeEscopo(escopoAnterior);
+
+                // Fallback legado para cards fora do padrão esperado.
+                if (!precoAtualTexto) {
+                    const fraction = card.querySelector('[data-andes-money-amount-fraction="true"]');
+                    const cents = card.querySelector('[data-andes-money-amount-cents="true"]');
+                    if (fraction) {
+                        const reais = (fraction.textContent || '').trim();
+                        const centavos = cents ? (cents.textContent || '').trim() : '';
+                        precoAtualTexto = centavos ? `R$ ${reais},${centavos}` : `R$ ${reais}`;
+                    }
+                }
+
+                // Mantido por compatibilidade com código existente.
+                const precoTexto = precoAtualTexto;
 
                 const descontoEl = card.querySelector('.ui-search-price__discount, .andes-money-amount__discount');
                 const descontoTexto = descontoEl ? (descontoEl.textContent || '').trim() : '';
@@ -2059,6 +2087,8 @@ def _coletar_resultados_pesquisa_da_pagina(page):
                 resultados.push({
                     descricao,
                     href,
+                    precoAtualTexto,
+                    precoAnteriorTexto,
                     precoTexto,
                     descontoTexto,
                 });
@@ -2067,6 +2097,20 @@ def _coletar_resultados_pesquisa_da_pagina(page):
             return resultados;
         }"""
     )
+
+
+def _resolver_precos_resultado_pesquisa(resultado):
+
+    preco_atual = _converter_preco_em_float(resultado.get("precoAtualTexto") or resultado.get("precoTexto"))
+    preco_anterior = _converter_preco_em_float(resultado.get("precoAnteriorTexto"))
+
+    # Regra de consistencia: em caso de inversao/ambiguidade, menor = atual e maior = antigo.
+    if preco_atual is not None and preco_anterior is not None:
+        menor = min(preco_atual, preco_anterior)
+        maior = max(preco_atual, preco_anterior)
+        return menor, maior
+
+    return preco_atual, preco_anterior
 
 
 def _ml_api_get_json(url, timeout=10):
@@ -2333,14 +2377,14 @@ def processar_produtos_home_por_pesquisa(
             if not id_anuncio or id_anuncio in ids_vistos or id_anuncio in historico_ids:
                 continue
 
-            preco_valor = _converter_preco_em_float(resultado.get("precoTexto"))
-            if preco_valor is None:
+            preco_atual_valor, preco_anterior_valor = _resolver_precos_resultado_pesquisa(resultado)
+            if preco_atual_valor is None:
                 continue
 
-            if preco_minimo is not None and preco_valor < preco_minimo:
+            if preco_minimo is not None and preco_atual_valor < preco_minimo:
                 continue
 
-            if preco_maximo is not None and preco_valor > preco_maximo:
+            if preco_maximo is not None and preco_atual_valor > preco_maximo:
                 continue
 
             desconto_texto = normalizar_descricao(resultado.get("descontoTexto") or "")
@@ -2359,10 +2403,10 @@ def processar_produtos_home_por_pesquisa(
                     "id_anuncio": id_anuncio,
                     "categoria": categoria_base_resolvida or (categoria_id_resolvido if categoria_id_resolvido else "Pesquisa genérica"),
                     "descricao": normalizar_descricao(resultado.get("descricao") or termo_base),
-                    "antes": "Sem preço anterior",
+                    "antes": _formatar_preco(preco_anterior_valor) if preco_anterior_valor is not None else "Sem preço anterior",
                     "desconto": (f"{desconto_int}% OFF" if desconto_int is not None else "Sem desconto"),
-                    "depois": _formatar_preco(preco_valor),
-                    "depois_valor": preco_valor,
+                    "depois": _formatar_preco(preco_atual_valor),
+                    "depois_valor": preco_atual_valor,
                     "link_anuncio": url_anuncio,
                     "pagina_origem_url": url,
                     "pagina_origem_numero": pagina,
@@ -2498,14 +2542,14 @@ def buscar_produto_por_descricao(
             if not id_anuncio or id_anuncio in ids_vistos or id_anuncio in historico_ids:
                 continue
 
-            preco_valor = _converter_preco_em_float(resultado.get("precoTexto"))
-            if preco_valor is None:
+            preco_atual_valor, preco_anterior_valor = _resolver_precos_resultado_pesquisa(resultado)
+            if preco_atual_valor is None:
                 continue
 
-            if preco_minimo is not None and preco_valor < preco_minimo:
+            if preco_minimo is not None and preco_atual_valor < preco_minimo:
                 continue
 
-            if preco_maximo is not None and preco_valor > preco_maximo:
+            if preco_maximo is not None and preco_atual_valor > preco_maximo:
                 continue
 
             ids_vistos.add(id_anuncio)
@@ -2515,10 +2559,10 @@ def buscar_produto_por_descricao(
                     "id_anuncio": id_anuncio,
                     "categoria": "Pesquisa genérica",
                     "descricao": normalizar_descricao(resultado.get("descricao") or descricao),
-                    "antes": "Sem preço anterior",
+                    "antes": _formatar_preco(preco_anterior_valor) if preco_anterior_valor is not None else "Sem preço anterior",
                     "desconto": "Sem desconto",
-                    "depois": _formatar_preco(preco_valor),
-                    "depois_valor": preco_valor,
+                    "depois": _formatar_preco(preco_atual_valor),
+                    "depois_valor": preco_atual_valor,
                     "link_anuncio": url_anuncio,
                 }
             )

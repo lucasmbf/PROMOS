@@ -1,3 +1,70 @@
 === Inicio da execucao: 2026-06-04T14:48:35 ===
 Args: --produto-por-html --descricao-produto Eletronicos --preco-maximo 600.0 --desconto-minimo 30 --limite-candidatos 10 --modalidade-execucao campanha
 
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/Eletronicos
+
+[Pesquisa inicial] Página 2: https://lista.mercadolivre.com.br/Eletronicos_Desde_51
+✓ Link de afiliado: https://meli.la/2c5e7jL
+✓ Link de afiliado: https://meli.la/1jqcrXe
+✓ Link de afiliado: https://meli.la/1TUsdHS
+✓ Link de afiliado: https://meli.la/1aAFjhW
+✓ Link de afiliado: https://meli.la/326rAxC
+✓ Link de afiliado: https://meli.la/2fsf5Cd
+✓ Link de afiliado: https://meli.la/2otf4Fq
+✓ Link de afiliado: https://meli.la/2r43Ju8
+✓ Link de afiliado: https://meli.la/2j5GY2k
+✓ Link de afiliado: https://meli.la/1NEFYnu
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fone De Ouvido In-ear Kz Edx Pro S/Microfone Cor Verde
+Message SID Twilio: SMf1f0bb40150cf8ac22052895a70cd694
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fone De Ouvido Kz Edx Pro Graves Excelentes No Mic Preto
+Message SID Twilio: SM5f4e30941535cfdc2bcabe8911b69f4e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Eletronica Compatível Para Arduino Uno R3 Iniciantes
+Message SID Twilio: SMa0f7ce6623f96d317a8ee2547fdd9a65
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera De Segurança Babá Eletrônica Pets Visão Noturna E Som
+Message SID Twilio: SM694ca0685936b9eb4eb7fd16bb57e7c6
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera Wifi Babá Eletrônica Pet 360° Visão Noturna Segurança
+Message SID Twilio: SMcac898470655eab2087941d66df796bd
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Arduino Avançado Uno R3 Com Protoboard Para Iniciantes
+Message SID Twilio: SM70600059d81bf212329addf148e6ceeb
+
+Mensagem enviada para whatsapp:+5519991133269:
+Baba Eletronica Sem Internet 3.5 Monitor Transmissão 300m
+Message SID Twilio: SM7370fc338ea0df52ec04bcc4cc0064be
+
+Mensagem enviada para whatsapp:+5519991133269:
+Baba Eletronica Visão Noturna Vb603 Video Voz Camera S/ Fio Cor Branco 127/220V
+Message SID Twilio: SMcdc9e8a76cec8df6b9191ec1c98a8c17
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fechadura Eletrônica Inteligente Abertura Biométrica Cartão Tag Senha App PandaPlus Cor Preto
+Message SID Twilio: SMdc436f66d4a8095e092fc67292380e32
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fechadura Digital Biométrica Tuya Com Wi-Fi Para Casa e Hotel
+Message SID Twilio: SM61639eef0bd002260e0152309a0cd2e6
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-04T14:51:25 ===
