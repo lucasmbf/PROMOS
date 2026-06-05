@@ -69,8 +69,8 @@
     "carimbo_data_hora": "24/05/2026 10:11:01",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T12:24:36",
-    "next_check_at": "2026-06-04T15:24:36",
+    "last_check_at": "2026-06-04T22:33:54",
+    "next_check_at": "2026-06-05T01:33:54",
     "configured_at": "2026-05-24T10:32:15",
     "end_at": "2026-06-23T10:32:15",
     "last_notified_price": null,
@@ -78,7 +78,7 @@
     "first_triggered_at": null,
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T12:24:36"
+    "last_execution_at": "2026-06-04T22:33:54"
   },
   {
     "id": "000013",
@@ -111,8 +111,8 @@
     "carimbo_data_hora": "24/05/2026 11:16:09",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T13:33:24",
-    "next_check_at": "2026-06-04T16:33:24",
+    "last_check_at": "2026-06-04T22:40:49",
+    "next_check_at": "2026-06-05T01:40:49",
     "configured_at": "2026-06-04T13:33:13",
     "end_at": "2026-07-04T13:33:13",
     "last_notified_price": null,
@@ -120,7 +120,7 @@
     "first_triggered_at": null,
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T13:33:24"
+    "last_execution_at": "2026-06-04T22:40:49"
   },
   {
     "id": "000014",
@@ -155,16 +155,16 @@
     "carimbo_data_hora": "24/05/2026 21:50:14",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T12:25:09",
-    "next_check_at": "2026-06-04T15:25:09",
+    "last_check_at": "2026-06-04T22:31:42",
+    "next_check_at": "2026-06-05T01:31:42",
     "configured_at": "2026-06-02T12:40:01",
     "end_at": "2026-07-02T12:40:01",
     "last_notified_price": 649.9,
     "last_notified_at": "2026-06-04T12:25:09",
     "first_triggered_at": "2026-06-02T18:15:09",
-    "last_execution_status": "sucesso",
-    "last_execution_message": "Disparo enviado.",
-    "last_execution_at": "2026-06-04T12:25:09"
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-06-04T22:31:42"
   },
   {
     "id": "000020",
@@ -191,8 +191,8 @@
     "descricao": "Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas",
     "active": true,
     "agendado": true,
-    "last_check_at": "2026-06-04T12:25:21",
-    "next_check_at": "2026-06-04T15:25:21",
+    "last_check_at": "2026-06-04T22:39:19",
+    "next_check_at": "2026-06-05T01:39:19",
     "configured_at": "2026-05-27T19:35:11",
     "end_at": "2026-06-26T19:35:11",
     "dt_criacao": "2026-05-26T21:40:37",
@@ -201,7 +201,7 @@
     "first_triggered_at": "2026-05-31T22:25:29",
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T12:25:21"
+    "last_execution_at": "2026-06-04T22:39:19"
   },
   {
     "id": "000021",
@@ -315,8 +315,8 @@
     "carimbo_data_hora": "30/05/2026 21:26:30",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T12:25:45",
-    "next_check_at": "2026-06-04T15:25:45",
+    "last_check_at": "2026-06-04T22:40:09",
+    "next_check_at": "2026-06-05T01:40:09",
     "configured_at": "2026-05-30T21:30:14",
     "end_at": "2026-06-29T21:30:14",
     "last_notified_price": null,
@@ -324,7 +324,7 @@
     "first_triggered_at": null,
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T12:25:45"
+    "last_execution_at": "2026-06-04T22:40:09"
   },
   {
     "id": "000029",
@@ -357,8 +357,8 @@
     "carimbo_data_hora": "31/05/2026 22:16:04",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T12:25:56",
-    "next_check_at": "2026-06-04T15:25:56",
+    "last_check_at": "2026-06-04T22:41:10",
+    "next_check_at": "2026-06-05T01:41:10",
     "configured_at": "2026-05-31T22:19:07",
     "end_at": "2026-06-30T22:19:07",
     "last_notified_price": null,
@@ -366,7 +366,7 @@
     "first_triggered_at": null,
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T12:25:56"
+    "last_execution_at": "2026-06-04T22:41:10"
   },
   {
     "id": "000030",
@@ -399,16 +399,16 @@
     "carimbo_data_hora": "01/06/2026 08:31:50",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T12:26:03",
-    "next_check_at": "2026-06-04T15:26:03",
+    "last_check_at": "2026-06-04T22:41:16",
+    "next_check_at": "2026-06-05T01:41:16",
     "configured_at": "2026-06-02T08:34:25",
     "end_at": "2026-07-02T08:34:25",
     "last_notified_price": 201.0,
     "last_notified_at": "2026-06-04T12:26:03",
     "first_triggered_at": "2026-06-02T08:36:38",
-    "last_execution_status": "sucesso",
-    "last_execution_message": "Disparo enviado.",
-    "last_execution_at": "2026-06-04T12:26:03"
+    "last_execution_status": "falha",
+    "last_execution_message": "Nao foi possivel gerar link de afiliado para o anuncio encontrado.",
+    "last_execution_at": "2026-06-04T22:35:36"
   },
   {
     "id": "000031",
@@ -435,8 +435,8 @@
     "descricao": "Cafeteira Espresso Série 1200 Philips Walita Ep1220 1400W Cor Preta",
     "active": true,
     "agendado": true,
-    "last_check_at": "2026-06-04T12:26:15",
-    "next_check_at": "2026-06-04T15:26:15",
+    "last_check_at": "2026-06-04T22:40:19",
+    "next_check_at": "2026-06-05T01:40:19",
     "configured_at": "2026-06-02T11:57:16",
     "end_at": "2026-07-02T11:57:16",
     "dt_criacao": "2026-06-02T11:57:16",
@@ -445,6 +445,6 @@
     "first_triggered_at": null,
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T12:26:15"
+    "last_execution_at": "2026-06-04T22:40:19"
   }
 ]

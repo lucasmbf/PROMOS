@@ -744,8 +744,14 @@ def _extract_price_from_soup_mercadolivre(soup):
         if money_tag is None:
             return None
 
-        fraction = money_tag.select_one("span.andes-money-amount__fraction")
-        cents = money_tag.select_one("span.andes-money-amount__cents")
+        fraction = (
+            money_tag.select_one("span.andes-money-amount__fraction")
+            or money_tag.select_one("[data-andes-money-amount-fraction='true']")
+        )
+        cents = (
+            money_tag.select_one("span.andes-money-amount__cents")
+            or money_tag.select_one("[data-andes-money-amount-cents='true']")
+        )
         fraction_text = fraction.get_text("", strip=True) if fraction else ""
         cents_text = cents.get_text("", strip=True) if cents else ""
 
@@ -779,6 +785,15 @@ def _extract_price_from_soup_mercadolivre(soup):
         if price is not None:
             return price
 
+    # 3) Fallback: varre blocos money amount com data-andes atual.
+    for money in soup.select("[data-andes-money-amount='true'], .andes-money-amount"):
+        if any(_has_price_old_markers(parent) for parent in [money] + list(money.parents)):
+            continue
+
+        price = _extract_value_from_money_amount(money)
+        if price is not None:
+            return price
+
     return None
 
 
@@ -798,6 +813,10 @@ def _extract_price_from_soup_generic(soup):
     text_candidates = [
         "[itemprop='price']",
         "[data-testid='price-part']",
+        "[data-andes-money-amount='true']",
+        ".andes-money-amount",
+        ".ui-search-price__second-line",
+        ".poly-price__current",
         ".a-price .a-offscreen",
         ".priceToPay .a-offscreen",
     ]
@@ -818,6 +837,16 @@ def _extract_price_from_soup_generic(soup):
                     return float(found.group(1))
                 except ValueError:
                     continue
+
+    # Fallback final: tenta capturar valores monetarios diretamente do texto.
+    textos = soup.stripped_strings
+    for texto in textos:
+        if "R$" not in texto and "$" not in texto:
+            continue
+
+        price = _parse_brl_price(texto)
+        if price is not None and price > 0:
+            return price
 
     return None
 

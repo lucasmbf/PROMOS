@@ -65,3 +65,199 @@
 [2026-06-04 13:33:24] Alerta 000013 sem disparo nesta execucao.
 [2026-06-04 13:33:24] Execucao finalizada sem disparos.
 [2026-06-04 13:33:24] Finalizada execucao do alerta 000013.
+[2026-06-04 15:25:08] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-06-04 15:25:08] Iniciando execucao do alerta 000010.
+[2026-06-04 15:25:20] Alerta 000010 checado: triggered=False preco=179.85 alvo=135.0
+[2026-06-04 15:25:20] Alerta 000010 sem disparo nesta execucao.
+[2026-06-04 15:25:20] Execucao finalizada sem disparos.
+[2026-06-04 15:25:20] Finalizada execucao do alerta 000010.
+[2026-06-04 15:26:08] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-06-04 15:26:08] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-06-04 15:26:08] Alerta 000028 enfileirado (scheduler) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-04 15:26:08] Alerta 000029 enfileirado (scheduler) - nome: Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto.
+[2026-06-04 15:26:08] Alerta 000030 enfileirado (scheduler) - nome: Projetor 4k.
+[2026-06-04 15:26:08] Iniciando execucao do alerta 000014.
+[2026-06-04 15:26:34] Alerta 000014 checado: triggered=True preco=649.9 alvo=700.0
+[2026-06-04 15:26:34] Alerta 000014 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-06-04 15:26:34] Execucao finalizada sem disparos.
+[2026-06-04 15:26:34] Finalizada execucao do alerta 000014.
+[2026-06-04 15:26:34] Iniciando execucao do alerta 000020.
+[2026-06-04 15:26:45] Alerta 000020 checado: triggered=False preco=279.9 alvo=250.0
+[2026-06-04 15:26:45] Alerta 000020 sem disparo nesta execucao.
+[2026-06-04 15:26:45] Execucao finalizada sem disparos.
+[2026-06-04 15:26:45] Finalizada execucao do alerta 000020.
+[2026-06-04 15:26:45] Iniciando execucao do alerta 000028.
+[2026-06-04 15:27:08] Alerta 000028 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-04 15:27:08] Alerta 000029 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-04 15:27:08] Alerta 000030 ignorado no enfileiramento (scheduler): ja em execucao/fila.
+[2026-06-04 15:27:08] Alerta 000031 enfileirado (scheduler) - nome: Cafeteira 1200 Walita.
+[2026-06-04 15:27:11] Alerta 000028 checado: triggered=False preco=6677.0 alvo=5000.0
+[2026-06-04 15:27:11] Alerta 000028 sem disparo nesta execucao.
+[2026-06-04 15:27:11] Execucao finalizada sem disparos.
+[2026-06-04 15:27:11] Finalizada execucao do alerta 000028.
+[2026-06-04 15:27:11] Iniciando execucao do alerta 000029.
+[2026-06-04 15:27:24] Alerta 000029 checado: triggered=False preco=9910.15 alvo=8000.0
+[2026-06-04 15:27:24] Alerta 000029 sem disparo nesta execucao.
+[2026-06-04 15:27:24] Execucao finalizada sem disparos.
+[2026-06-04 15:27:24] Finalizada execucao do alerta 000029.
+[2026-06-04 15:27:24] Iniciando execucao do alerta 000030.
+[2026-06-04 15:27:30] Alerta 000030 checado: triggered=True preco=201.0 alvo=250.0
+[2026-06-04 15:27:30] Alerta 000030 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-06-04 15:27:30] Execucao finalizada sem disparos.
+[2026-06-04 15:27:30] Finalizada execucao do alerta 000030.
+[2026-06-04 15:27:30] Iniciando execucao do alerta 000031.
+[2026-06-04 15:27:42] Alerta 000031 checado: triggered=False preco=2299.0 alvo=2100.0
+[2026-06-04 15:27:42] Alerta 000031 sem disparo nesta execucao.
+[2026-06-04 15:27:42] Execucao finalizada sem disparos.
+[2026-06-04 15:27:42] Finalizada execucao do alerta 000031.
+[2026-06-04 16:34:09] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-06-04 16:34:09] Iniciando execucao do alerta 000013.
+[2026-06-04 16:34:15] Alerta 000013 checado: triggered=False preco=89.65 alvo=70.0
+[2026-06-04 16:34:15] Alerta 000013 sem disparo nesta execucao.
+[2026-06-04 16:34:15] Execucao finalizada sem disparos.
+[2026-06-04 16:34:15] Finalizada execucao do alerta 000013.
+[2026-06-04 22:28:14] Alerta 000010 enfileirado (scheduler) - nome: Kit irrigação solar automática.
+[2026-06-04 22:28:14] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-06-04 22:28:14] Alerta 000014 enfileirado (scheduler) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-06-04 22:28:14] Alerta 000020 enfileirado (scheduler) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-06-04 22:28:14] Alerta 000028 enfileirado (scheduler) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-04 22:28:14] Alerta 000029 enfileirado (scheduler) - nome: Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto.
+[2026-06-04 22:28:14] Alerta 000030 enfileirado (scheduler) - nome: Projetor 4k.
+[2026-06-04 22:28:14] Alerta 000031 enfileirado (scheduler) - nome: Cafeteira 1200 Walita.
+[2026-06-04 22:28:14] Iniciando execucao do alerta 000010.
+[2026-06-04 22:28:14] Alerta 000010 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:28:14] Alerta 000010 falhou: Falha ao extrair preco.
+[2026-06-04 22:28:14] Execucao finalizada sem disparos.
+[2026-06-04 22:28:15] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:28:15] Finalizada execucao do alerta 000010.
+[2026-06-04 22:28:16] Iniciando execucao do alerta 000013.
+[2026-06-04 22:28:16] Alerta 000013 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:28:16] Alerta 000013 falhou: Falha ao extrair preco.
+[2026-06-04 22:28:16] Execucao finalizada sem disparos.
+[2026-06-04 22:28:16] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:28:16] Finalizada execucao do alerta 000013.
+[2026-06-04 22:28:16] Iniciando execucao do alerta 000014.
+[2026-06-04 22:28:16] Alerta 000014 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:28:16] Alerta 000014 falhou: Falha ao extrair preco.
+[2026-06-04 22:28:16] Execucao finalizada sem disparos.
+[2026-06-04 22:28:16] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:28:16] Finalizada execucao do alerta 000014.
+[2026-06-04 22:28:16] Iniciando execucao do alerta 000020.
+[2026-06-04 22:28:16] Alerta 000020 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:28:16] Alerta 000020 falhou: Falha ao extrair preco.
+[2026-06-04 22:28:16] Execucao finalizada sem disparos.
+[2026-06-04 22:28:16] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:28:16] Finalizada execucao do alerta 000020.
+[2026-06-04 22:28:16] Iniciando execucao do alerta 000028.
+[2026-06-04 22:28:16] Alerta 000028 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:28:16] Alerta 000028 falhou: Falha ao extrair preco.
+[2026-06-04 22:28:16] Execucao finalizada sem disparos.
+[2026-06-04 22:28:16] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:28:16] Finalizada execucao do alerta 000028.
+[2026-06-04 22:28:16] Iniciando execucao do alerta 000029.
+[2026-06-04 22:28:16] Alerta 000029 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:28:16] Alerta 000029 falhou: Falha ao extrair preco.
+[2026-06-04 22:28:16] Execucao finalizada sem disparos.
+[2026-06-04 22:28:16] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:28:16] Finalizada execucao do alerta 000029.
+[2026-06-04 22:28:16] Iniciando execucao do alerta 000030.
+[2026-06-04 22:28:16] Alerta 000030 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:28:16] Alerta 000030 falhou: Falha ao extrair preco.
+[2026-06-04 22:28:16] Execucao finalizada sem disparos.
+[2026-06-04 22:28:16] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:28:16] Finalizada execucao do alerta 000030.
+[2026-06-04 22:28:16] Iniciando execucao do alerta 000031.
+[2026-06-04 22:28:16] Alerta 000031 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:28:16] Alerta 000031 falhou: Falha ao extrair preco.
+[2026-06-04 22:28:16] Execucao finalizada sem disparos.
+[2026-06-04 22:28:16] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:28:16] Finalizada execucao do alerta 000031.
+[2026-06-04 22:31:25] Alerta 000014 enfileirado (manual) - nome: Tênis Asics Gel-challenger 15 Clay Masculino.
+[2026-06-04 22:31:25] Iniciando execucao do alerta 000014.
+[2026-06-04 22:31:42] Alerta 000014 checado: triggered=False preco=731.49 alvo=700.0
+[2026-06-04 22:31:42] Alerta 000014 sem disparo nesta execucao.
+[2026-06-04 22:31:42] Execucao finalizada sem disparos.
+[2026-06-04 22:31:42] Finalizada execucao do alerta 000014.
+[2026-06-04 22:33:42] Alerta 000010 enfileirado (manual) - nome: Kit irrigação solar automática.
+[2026-06-04 22:33:42] Iniciando execucao do alerta 000010.
+[2026-06-04 22:33:54] Alerta 000010 checado: triggered=False preco=179.85 alvo=135.0
+[2026-06-04 22:33:54] Alerta 000010 sem disparo nesta execucao.
+[2026-06-04 22:33:54] Execucao finalizada sem disparos.
+[2026-06-04 22:33:54] Finalizada execucao do alerta 000010.
+[2026-06-04 22:35:18] Alerta 000013 enfileirado (manual) - nome: Fralda.
+[2026-06-04 22:35:18] Iniciando execucao do alerta 000013.
+[2026-06-04 22:35:19] Alerta 000020 enfileirado (manual) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-06-04 22:35:20] Alerta 000013 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-06-04 22:35:20] Alerta 000013 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-06-04 22:35:20] Execucao finalizada sem disparos.
+[2026-06-04 22:35:20] Finalizada execucao do alerta 000013.
+[2026-06-04 22:35:20] Iniciando execucao do alerta 000020.
+[2026-06-04 22:35:21] Alerta 000028 enfileirado (manual) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-04 22:35:23] Alerta 000020 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:35:23] Alerta 000020 falhou: Falha ao extrair preco.
+[2026-06-04 22:35:23] Execucao finalizada sem disparos.
+[2026-06-04 22:35:23] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:35:23] Finalizada execucao do alerta 000020.
+[2026-06-04 22:35:23] Iniciando execucao do alerta 000028.
+[2026-06-04 22:35:23] Alerta 000029 enfileirado (manual) - nome: Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto.
+[2026-06-04 22:35:25] Alerta 000029 ignorado no enfileiramento (manual): ja em execucao/fila.
+[2026-06-04 22:35:25] Alerta 000030 enfileirado (manual) - nome: Projetor 4k.
+[2026-06-04 22:35:26] Alerta 000031 enfileirado (manual) - nome: Cafeteira 1200 Walita.
+[2026-06-04 22:35:32] Alerta 000028 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:35:32] Alerta 000028 falhou: Falha ao extrair preco.
+[2026-06-04 22:35:32] Execucao finalizada sem disparos.
+[2026-06-04 22:35:32] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:35:32] Finalizada execucao do alerta 000028.
+[2026-06-04 22:35:32] Iniciando execucao do alerta 000029.
+[2026-06-04 22:35:34] Alerta 000029 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:35:34] Alerta 000029 falhou: Falha ao extrair preco.
+[2026-06-04 22:35:34] Execucao finalizada sem disparos.
+[2026-06-04 22:35:34] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:35:34] Finalizada execucao do alerta 000029.
+[2026-06-04 22:35:35] Iniciando execucao do alerta 000030.
+[2026-06-04 22:35:36] Alerta 000030 erro na checagem: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-06-04 22:35:36] Alerta 000030 falhou: Nao foi possivel gerar link de afiliado para o anuncio encontrado.
+[2026-06-04 22:35:36] Execucao finalizada sem disparos.
+[2026-06-04 22:35:36] Finalizada execucao do alerta 000030.
+[2026-06-04 22:35:36] Iniciando execucao do alerta 000031.
+[2026-06-04 22:35:39] Alerta 000031 erro na checagem: Falha ao extrair preco.
+[2026-06-04 22:35:39] Alerta 000031 falhou: Falha ao extrair preco.
+[2026-06-04 22:35:39] Execucao finalizada sem disparos.
+[2026-06-04 22:35:39] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-04 22:35:39] Finalizada execucao do alerta 000031.
+[2026-06-04 22:39:07] Alerta 000020 enfileirado (manual) - nome: Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas.
+[2026-06-04 22:39:07] Iniciando execucao do alerta 000020.
+[2026-06-04 22:39:19] Alerta 000020 checado: triggered=False preco=279.9 alvo=250.0
+[2026-06-04 22:39:19] Alerta 000020 sem disparo nesta execucao.
+[2026-06-04 22:39:19] Execucao finalizada sem disparos.
+[2026-06-04 22:39:19] Finalizada execucao do alerta 000020.
+[2026-06-04 22:39:42] Alerta 000028 enfileirado (manual) - nome: Smartphone Motorola Signature 5g - 512gb 24gb (12gb Ram + 12gb Ram Boost), 3 Cameras 50mp Sony Lytia E Zoom 100x, Tela 1.5k Extreme Amoled 165hz - Preto.
+[2026-06-04 22:39:42] Iniciando execucao do alerta 000028.
+[2026-06-04 22:39:49] Alerta 000031 enfileirado (manual) - nome: Cafeteira 1200 Walita.
+[2026-06-04 22:40:09] Alerta 000028 checado: triggered=False preco=6677.0 alvo=5000.0
+[2026-06-04 22:40:09] Alerta 000028 sem disparo nesta execucao.
+[2026-06-04 22:40:09] Execucao finalizada sem disparos.
+[2026-06-04 22:40:09] Finalizada execucao do alerta 000028.
+[2026-06-04 22:40:09] Iniciando execucao do alerta 000031.
+[2026-06-04 22:40:19] Alerta 000031 checado: triggered=False preco=2299.0 alvo=2100.0
+[2026-06-04 22:40:19] Alerta 000031 sem disparo nesta execucao.
+[2026-06-04 22:40:19] Execucao finalizada sem disparos.
+[2026-06-04 22:40:19] Finalizada execucao do alerta 000031.
+[2026-06-04 22:40:43] Alerta 000013 enfileirado (manual) - nome: Fralda.
+[2026-06-04 22:40:43] Iniciando execucao do alerta 000013.
+[2026-06-04 22:40:49] Alerta 000013 checado: triggered=False preco=89.65 alvo=70.0
+[2026-06-04 22:40:49] Alerta 000013 sem disparo nesta execucao.
+[2026-06-04 22:40:49] Execucao finalizada sem disparos.
+[2026-06-04 22:40:49] Finalizada execucao do alerta 000013.
+[2026-06-04 22:40:58] Alerta 000029 enfileirado (manual) - nome: Apple iPhone 16 Pro Max (512 GB) - Titânio-deserto.
+[2026-06-04 22:40:58] Iniciando execucao do alerta 000029.
+[2026-06-04 22:41:03] Alerta 000030 enfileirado (manual) - nome: Projetor 4k.
+[2026-06-04 22:41:10] Alerta 000029 checado: triggered=False preco=9910.15 alvo=8000.0
+[2026-06-04 22:41:10] Alerta 000029 sem disparo nesta execucao.
+[2026-06-04 22:41:10] Execucao finalizada sem disparos.
+[2026-06-04 22:41:10] Finalizada execucao do alerta 000029.
+[2026-06-04 22:41:10] Iniciando execucao do alerta 000030.
+[2026-06-04 22:41:16] Alerta 000030 checado: triggered=True preco=201.0 alvo=250.0
+[2026-06-04 22:41:16] Alerta 000030 sem novo envio (mesmo dia e sem queda adicional de preco).
+[2026-06-04 22:41:16] Execucao finalizada sem disparos.
+[2026-06-04 22:41:16] Finalizada execucao do alerta 000030.

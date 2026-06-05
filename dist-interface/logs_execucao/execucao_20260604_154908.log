@@ -1,0 +1,70 @@
+=== Inicio da execucao: 2026-06-04T15:49:08 ===
+Args: --produto-por-html --descricao-produto Eletronicos --preco-maximo 600.0 --desconto-minimo 30 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/Eletronicos
+
+[Pesquisa inicial] Página 2: https://lista.mercadolivre.com.br/Eletronicos_Desde_51
+✓ Link de afiliado: https://meli.la/22GSvZj
+✓ Link de afiliado: https://meli.la/1r2adVz
+✓ Link de afiliado: https://meli.la/1v6Yzqd
+✓ Link de afiliado: https://meli.la/1nY6PmA
+✓ Link de afiliado: https://meli.la/2RBBr5W
+✓ Link de afiliado: https://meli.la/295e7Mf
+✓ Link de afiliado: https://meli.la/1SAhynC
+✓ Link de afiliado: https://meli.la/2XRs6mW
+✓ Link de afiliado: https://meli.la/1vdz9zn
+✓ Link de afiliado: https://meli.la/1uphF7d
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 16 Peças Jogo Ferramentas Abrir Celular Eletrônicos
+Message SID Twilio: SMb631cb312074cd2cade4b7a646a8c791
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fone De Ouvido Sem Fio Tws Bluetooth 5.1 Kaidi Kd-771 Cor Branco
+Message SID Twilio: SM9cec616e53e529b10a2ab346d5756a52
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fechadura Digital Inteligente Biométrica Touch Eletrônica
+Message SID Twilio: SM1b0a8a37db9136fb3c19b520e98fc8ec
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fechadura Digital Biométrica Primebras Madeira Eletrônica 4 Pilhas AA Serve Para Portas de Correr Giro Pivotante
+Message SID Twilio: SM404edd307562646a91666ea8a858a921
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cofre Pequeno Eletrônico Digital Navalha Senha Chave Seguro 31x20x20 Preto
+Message SID Twilio: SM3b98f042fd9a680c6e6b21998494598e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fechadura Digital Eletrônica Touch Fr 101 Intelbras
+Message SID Twilio: SM72fb9361e1bff7b090ec89ccdfb060a2
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fechadura Eletrônica Digital Tuya Com Biometria, Senha, Tag E Chave Touch Anti-espião Inteligente Preta Para Porta (casa/apartamento/hotel)
+Message SID Twilio: SM2a6b958425c2712adea0681a8324b22b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Celular Samsung Galaxy A07 128Gb 4Gb RAM Preto
+Message SID Twilio: SM4c7e78ddb1856ebd485d44670e5cc33a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Celular Samsung Galaxy A07 128gb, 4gb, Câmera 50mp, Tela 6.7 , Proteção Ip54, Processador 6nm - Violeta
+Message SID Twilio: SM51b82be3372690db3068ed1247c81beb
+
+Mensagem enviada para whatsapp:+5519991133269:
+Celular Samsung Galaxy A07 128gb, 4gb, Câmera 50mp, Tela 6.7 , Proteção Ip54, Processador 6nm - Verde
+Message SID Twilio: SMfd024cda26989c5a3c6e53e86c35835d
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-04T15:51:57 ===
