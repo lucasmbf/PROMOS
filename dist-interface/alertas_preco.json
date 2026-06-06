@@ -1,86 +1,5 @@
 [
   {
-    "id": "000008",
-    "source": "planilha",
-    "sheet_row_number": 7,
-    "name": "Teclado Mecânico Gamer Redragon Draconic",
-    "description": "Teclado Mecânico Gamer Redragon Draconic",
-    "descricao": "Teclado Mecânico Gamer Redragon Draconic",
-    "mode": "url",
-    "target_price": 350.0,
-    "precoDesejado": 350.0,
-    "email": "lucasmbfonseca@gmail.com",
-    "emails": [
-      "lucasmbfonseca@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://www.mercadolivre.com.br/teclado-mecanico-gamer-redragon-draconic-rgb-abnt-2/up/MLBU3262002141?pdp_filters=discount%3A25-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=95a4e5e9-fbc3-4d84-ad37-eef460b20ab8&wid=MLB4110111151&sid=search",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://www.mercadolivre.com.br/teclado-mecanico-gamer-redragon-draconic-rgb-abnt-2/up/MLBU3262002141?pdp_filters=discount%3A25-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=95a4e5e9-fbc3-4d84-ad37-eef460b20ab8&wid=MLB4110111151&sid=search"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-05-24T02:12:21",
-    "carimbo_data_hora": "24/05/2026 02:09:21",
-    "active": false,
-    "interval_hours": 3,
-    "last_check_at": "2026-05-30T20:23:03",
-    "next_check_at": "2026-05-30T23:23:03",
-    "configured_at": "2026-05-30T11:53:05",
-    "end_at": "2026-06-29T11:53:05",
-    "last_notified_price": null,
-    "last_notified_at": null,
-    "first_triggered_at": null
-  },
-  {
-    "id": "000010",
-    "source": "planilha",
-    "sheet_row_number": 9,
-    "name": "Kit irrigação solar automática",
-    "description": "Kit irrigação solar automática",
-    "descricao": "Kit irrigação solar automática",
-    "mode": "url",
-    "target_price": 135.0,
-    "precoDesejado": 135.0,
-    "email": "lucasmbfonseca@gmail.com",
-    "emails": [
-      "lucasmbfonseca@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://www.mercadolivre.com.br/kit-irrigacao-solar-automatica-gotejamento-jardim-e-horta/up/MLBU3776311490?pdp_filters=item_id%3AMLB6221576096&matt_event_ts=1779627502242&matt_d2id=8f869339-b71f-468f-8ed1-e390e5af8718&matt_tracing_id=9c9c56c1-3e90-48df-a8bf-047e47164854#reco_backend=item_decorator&wid=MLB6221576096&reco_client=home_affiliate-profile&reco_item_pos=0&source=affiliate-profile&reco_backend_type=function&reco_id=dd5cf6f3-6b40-40a3-8edb-34fe60d42908&tracking_id=75a5ca7b-7ac3-4ba2-9f7b-3a051cb677dd&sid=recos&c_id=/home/card-featured/element&c_uid=b682e608-2875-4b19-a09a-fee366d4ceda",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://www.mercadolivre.com.br/kit-irrigacao-solar-automatica-gotejamento-jardim-e-horta/up/MLBU3776311490?pdp_filters=item_id%3AMLB6221576096&matt_event_ts=1779627502242&matt_d2id=8f869339-b71f-468f-8ed1-e390e5af8718&matt_tracing_id=9c9c56c1-3e90-48df-a8bf-047e47164854#reco_backend=item_decorator&wid=MLB6221576096&reco_client=home_affiliate-profile&reco_item_pos=0&source=affiliate-profile&reco_backend_type=function&reco_id=dd5cf6f3-6b40-40a3-8edb-34fe60d42908&tracking_id=75a5ca7b-7ac3-4ba2-9f7b-3a051cb677dd&sid=recos&c_id=/home/card-featured/element&c_uid=b682e608-2875-4b19-a09a-fee366d4ceda"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-05-24T10:14:02",
-    "carimbo_data_hora": "24/05/2026 10:11:01",
-    "active": true,
-    "interval_hours": 3,
-    "last_check_at": "2026-06-04T22:33:54",
-    "next_check_at": "2026-06-05T01:33:54",
-    "configured_at": "2026-05-24T10:32:15",
-    "end_at": "2026-06-23T10:32:15",
-    "last_notified_price": null,
-    "last_notified_at": null,
-    "first_triggered_at": null,
-    "last_execution_status": "sem_disparo",
-    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T22:33:54"
-  },
-  {
     "id": "000013",
     "source": "planilha",
     "sheet_row_number": 11,
@@ -111,8 +30,8 @@
     "carimbo_data_hora": "24/05/2026 11:16:09",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T22:40:49",
-    "next_check_at": "2026-06-05T01:40:49",
+    "last_check_at": "2026-06-06T11:14:11",
+    "next_check_at": "2026-06-06T14:14:11",
     "configured_at": "2026-06-04T13:33:13",
     "end_at": "2026-07-04T13:33:13",
     "last_notified_price": null,
@@ -120,7 +39,7 @@
     "first_triggered_at": null,
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T22:40:49"
+    "last_execution_at": "2026-06-06T11:14:11"
   },
   {
     "id": "000014",
@@ -155,16 +74,16 @@
     "carimbo_data_hora": "24/05/2026 21:50:14",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T22:31:42",
-    "next_check_at": "2026-06-05T01:31:42",
+    "last_check_at": "2026-06-06T11:26:55",
+    "next_check_at": "2026-06-06T14:26:55",
     "configured_at": "2026-06-02T12:40:01",
     "end_at": "2026-07-02T12:40:01",
     "last_notified_price": 649.9,
-    "last_notified_at": "2026-06-04T12:25:09",
+    "last_notified_at": "2026-06-06T11:14:36",
     "first_triggered_at": "2026-06-02T18:15:09",
-    "last_execution_status": "sem_disparo",
-    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T22:31:42"
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Disparo enviado.",
+    "last_execution_at": "2026-06-06T11:14:36"
   },
   {
     "id": "000020",
@@ -191,8 +110,8 @@
     "descricao": "Kit Wella Invigo Nutri Enrich Sh, Cond E Válvulas",
     "active": true,
     "agendado": true,
-    "last_check_at": "2026-06-04T22:39:19",
-    "next_check_at": "2026-06-05T01:39:19",
+    "last_check_at": "2026-06-06T11:14:47",
+    "next_check_at": "2026-06-06T14:14:47",
     "configured_at": "2026-05-27T19:35:11",
     "end_at": "2026-06-26T19:35:11",
     "dt_criacao": "2026-05-26T21:40:37",
@@ -201,7 +120,7 @@
     "first_triggered_at": "2026-05-31T22:25:29",
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T22:39:19"
+    "last_execution_at": "2026-06-06T11:14:47"
   },
   {
     "id": "000021",
@@ -226,19 +145,19 @@
     ],
     "description": "Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®",
     "descricao": "Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®",
-    "active": false,
+    "active": true,
     "agendado": true,
-    "last_check_at": "2026-06-02T18:15:31",
-    "next_check_at": "2026-06-02T21:15:31",
+    "last_check_at": "2026-06-06T11:14:58",
+    "next_check_at": "2026-06-06T14:14:58",
     "configured_at": "2026-05-27T21:08:56",
     "end_at": "2026-06-26T21:08:56",
     "dt_criacao": "2026-05-27T21:08:56",
     "last_notified_price": 689.0,
-    "last_notified_at": "2026-06-02T08:35:40",
-    "first_triggered_at": "2026-05-27T21:09:03",
-    "last_execution_status": "sem_disparo",
-    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-02T18:15:31"
+    "last_notified_at": "2026-06-06T11:14:58",
+    "first_triggered_at": "2026-06-06T11:14:58",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Disparo enviado.",
+    "last_execution_at": "2026-06-06T11:14:58"
   },
   {
     "id": "000022",
@@ -269,18 +188,18 @@
     "agendado": true,
     "dt_criacao": "2026-05-27T21:13:30",
     "carimbo_data_hora": "27/05/2026 21:10:15",
-    "active": false,
+    "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-02T18:15:42",
-    "next_check_at": "2026-06-02T21:15:42",
+    "last_check_at": "2026-06-06T11:15:08",
+    "next_check_at": "2026-06-06T14:15:08",
     "configured_at": "2026-05-27T21:13:30",
     "end_at": "2026-06-26T21:13:30",
-    "last_notified_price": 229.0,
-    "last_notified_at": "2026-06-02T11:37:02",
-    "first_triggered_at": "2026-05-27T21:13:38",
-    "last_execution_status": "sucesso",
-    "last_execution_message": "Disparo enviado.",
-    "last_execution_at": "2026-06-02T11:37:02"
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null,
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-06-06T11:15:08"
   },
   {
     "id": "000028",
@@ -315,8 +234,8 @@
     "carimbo_data_hora": "30/05/2026 21:26:30",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T22:40:09",
-    "next_check_at": "2026-06-05T01:40:09",
+    "last_check_at": "2026-06-06T11:15:35",
+    "next_check_at": "2026-06-06T14:15:35",
     "configured_at": "2026-05-30T21:30:14",
     "end_at": "2026-06-29T21:30:14",
     "last_notified_price": null,
@@ -324,7 +243,7 @@
     "first_triggered_at": null,
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T22:40:09"
+    "last_execution_at": "2026-06-06T11:15:35"
   },
   {
     "id": "000029",
@@ -357,8 +276,8 @@
     "carimbo_data_hora": "31/05/2026 22:16:04",
     "active": true,
     "interval_hours": 3,
-    "last_check_at": "2026-06-04T22:41:10",
-    "next_check_at": "2026-06-05T01:41:10",
+    "last_check_at": "2026-06-06T11:15:48",
+    "next_check_at": "2026-06-06T14:15:48",
     "configured_at": "2026-05-31T22:19:07",
     "end_at": "2026-06-30T22:19:07",
     "last_notified_price": null,
@@ -366,49 +285,7 @@
     "first_triggered_at": null,
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T22:41:10"
-  },
-  {
-    "id": "000030",
-    "source": "planilha",
-    "sheet_row_number": 26,
-    "name": "Projetor 4k",
-    "description": "Projetor 4k",
-    "descricao": "Projetor 4k",
-    "mode": "url",
-    "target_price": 250.0,
-    "precoDesejado": 250.0,
-    "email": "allanoliveiradir@gmail.com",
-    "emails": [
-      "allanoliveiradir@gmail.com"
-    ],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "link1": "https://www.mercadolivre.com.br/projetor-4k-ultra-hd-hy320-smart-wi-fi-6-bluetooth-android-cor-preto/p/MLB63950169?pdp_filters=item_id%3AMLB4469987063&from=gshop&matt_tool=52490821&matt_word=&matt_source=google&matt_campaign_id=22090354547&matt_ad_group_id=173090630356&matt_match_type=&matt_network=g&matt_device=c&matt_creative=727882734906&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735128188&matt_product_id=MLB63950169-product&matt_product_partition_id=2387499471547&matt_target_id=pla-2387499471547&cq_src=google_ads&cq_cmp=22090354547&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22090354547&gbraid=0AAAAAD93qcA-dNR2w6FjUyKM9gQaV4rgL&gclid=EAIaIQobChMIr7qnmPbllAMV-2VIAB1UGit3EAQYASABEgIu4vD_BwE#reviews",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "urls": [
-      "https://www.mercadolivre.com.br/projetor-4k-ultra-hd-hy320-smart-wi-fi-6-bluetooth-android-cor-preto/p/MLB63950169?pdp_filters=item_id%3AMLB4469987063&from=gshop&matt_tool=52490821&matt_word=&matt_source=google&matt_campaign_id=22090354547&matt_ad_group_id=173090630356&matt_match_type=&matt_network=g&matt_device=c&matt_creative=727882734906&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735128188&matt_product_id=MLB63950169-product&matt_product_partition_id=2387499471547&matt_target_id=pla-2387499471547&cq_src=google_ads&cq_cmp=22090354547&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22090354547&gbraid=0AAAAAD93qcA-dNR2w6FjUyKM9gQaV4rgL&gclid=EAIaIQobChMIr7qnmPbllAMV-2VIAB1UGit3EAQYASABEgIu4vD_BwE#reviews"
-    ],
-    "agendado": true,
-    "dt_criacao": "2026-06-02T08:34:25",
-    "carimbo_data_hora": "01/06/2026 08:31:50",
-    "active": true,
-    "interval_hours": 3,
-    "last_check_at": "2026-06-04T22:41:16",
-    "next_check_at": "2026-06-05T01:41:16",
-    "configured_at": "2026-06-02T08:34:25",
-    "end_at": "2026-07-02T08:34:25",
-    "last_notified_price": 201.0,
-    "last_notified_at": "2026-06-04T12:26:03",
-    "first_triggered_at": "2026-06-02T08:36:38",
-    "last_execution_status": "falha",
-    "last_execution_message": "Nao foi possivel gerar link de afiliado para o anuncio encontrado.",
-    "last_execution_at": "2026-06-04T22:35:36"
+    "last_execution_at": "2026-06-06T11:15:48"
   },
   {
     "id": "000031",
@@ -435,8 +312,8 @@
     "descricao": "Cafeteira Espresso Série 1200 Philips Walita Ep1220 1400W Cor Preta",
     "active": true,
     "agendado": true,
-    "last_check_at": "2026-06-04T22:40:19",
-    "next_check_at": "2026-06-05T01:40:19",
+    "last_check_at": "2026-06-06T13:22:17",
+    "next_check_at": "2026-06-06T16:22:17",
     "configured_at": "2026-06-02T11:57:16",
     "end_at": "2026-07-02T11:57:16",
     "dt_criacao": "2026-06-02T11:57:16",
@@ -445,6 +322,49 @@
     "first_triggered_at": null,
     "last_execution_status": "sem_disparo",
     "last_execution_message": "Nao se encaixou nos criterios de disparo.",
-    "last_execution_at": "2026-06-04T22:40:19"
+    "last_execution_at": "2026-06-06T13:22:17"
+  },
+  {
+    "id": "000033",
+    "source": "planilha",
+    "sheet_row_number": 27,
+    "name": "Capa Skincase Strongshell Para Macbook Air 15 Preto M5",
+    "description": "Capa Skincase Strongshell Para Macbook Air 15 Preto M5",
+    "descricao": "Capa Skincase Strongshell Para Macbook Air 15 Preto M5",
+    "mode": "url",
+    "target_price": 120.0,
+    "precoDesejado": 120.0,
+    "email": "lucasmbfonseca@gmail.com",
+    "emails": [
+      "lucasmbfonseca@gmail.com"
+    ],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "link1": "https://www.mercadolivre.com.br/capa-skincase-strongshell-para-macbook-air-15-preto-m5-cor-pretocristal/p/MLB69342258?product_trigger_id=MLB69341284&picker=true&quantity=1",
+    "link2": "https://www.mercadolivre.com.br/capa-skincase-strongshell-para-macbook-air-15-preto-m5-cor-pretocristal/p/MLB69342258?pdp_filters=item_id:MLB6739563598#is_advertising=true&searchVariation=MLB69342258&backend_model=search-backend&be_origin=backend&position=1&search_layout=grid&type=pad&tracking_id=95756d23-5181-4710-9856-8d1b84d2b86c&ad_domain=VQCATCORE_LST&ad_position=1&ad_click_id=ZDFkZmIwZGQtOTliMi00MGYxLThhMjYtY2MxNmViMDExZTg3",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/capa-skincase-strongshell-para-macbook-air-15-preto-m5-cor-pretocristal/p/MLB69342258?product_trigger_id=MLB69341284&picker=true&quantity=1",
+      "https://www.mercadolivre.com.br/capa-skincase-strongshell-para-macbook-air-15-preto-m5-cor-pretocristal/p/MLB69342258?pdp_filters=item_id:MLB6739563598#is_advertising=true&searchVariation=MLB69342258&backend_model=search-backend&be_origin=backend&position=1&search_layout=grid&type=pad&tracking_id=95756d23-5181-4710-9856-8d1b84d2b86c&ad_domain=VQCATCORE_LST&ad_position=1&ad_click_id=ZDFkZmIwZGQtOTliMi00MGYxLThhMjYtY2MxNmViMDExZTg3"
+    ],
+    "agendado": true,
+    "dt_criacao": "2026-06-06T11:30:31",
+    "carimbo_data_hora": "06/06/2026 11:27:20",
+    "active": true,
+    "interval_hours": 3,
+    "last_check_at": "2026-06-06T11:30:49",
+    "next_check_at": "2026-06-06T14:30:49",
+    "configured_at": "2026-06-06T11:30:31",
+    "end_at": "2026-07-06T11:30:31",
+    "last_notified_price": null,
+    "last_notified_at": null,
+    "first_triggered_at": null,
+    "last_execution_status": "sem_disparo",
+    "last_execution_message": "Nao se encaixou nos criterios de disparo.",
+    "last_execution_at": "2026-06-06T11:30:49"
   }
 ]
