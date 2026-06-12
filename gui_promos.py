@@ -1599,6 +1599,7 @@ def create_gui(categorias):
     relampago_frame.pack(side="right", fill="both", expand=True, padx=(8, 0))
 
     descricao_var = tk.StringVar()
+    link_produto_var = tk.StringVar()
     preco_min_var = tk.StringVar()
     preco_max_var = tk.StringVar()
     desconto_var = tk.StringVar()
@@ -1669,6 +1670,7 @@ def create_gui(categorias):
     vcmd_inteiro = (root.register(_inteiro_input_valido), "%P")
 
     descricao_var.trace_add("write", lambda *_: _normalizar_varchar(descricao_var))
+    link_produto_var.trace_add("write", lambda *_: _normalizar_varchar(link_produto_var, limite=2000))
 
     row = 0
     ttk.Label(product_frame, text="Descricao:", style="Field.TLabel").grid(row=row, column=0, sticky="w")
@@ -1677,6 +1679,14 @@ def create_gui(categorias):
     info_icon = ttk.Label(product_frame, text="(i)", style="Info.TLabel", cursor="hand2")
     info_icon.grid(row=row, column=2, sticky="w")
     Tooltip(info_icon, "Descreva com o máximo de detalhes possíveis as caracterísiticas do produto desejado")
+
+    row += 1
+    ttk.Label(product_frame, text="Link do produto (opcional):", style="Field.TLabel").grid(row=row, column=0, sticky="w", pady=(6, 0))
+    link_entry = ttk.Entry(product_frame, textvariable=link_produto_var)
+    link_entry.grid(row=row, column=1, sticky="ew", padx=(6, 6), pady=(6, 0))
+    link_info_icon = ttk.Label(product_frame, text="(i)", style="Info.TLabel", cursor="hand2")
+    link_info_icon.grid(row=row, column=2, sticky="w")
+    Tooltip(link_info_icon, "Se preenchido, a busca sera feita primeiro neste link, aplicando os parametros de preço e desconto")
 
     row += 1
     ttk.Label(product_frame, text="MarketPlace:", style="Field.TLabel").grid(row=row, column=0, sticky="nw", pady=(6, 0))
@@ -4564,6 +4574,7 @@ def create_gui(categorias):
             messagebox.showerror("Validacao", "Limite de candidatos deve ser no minimo 1.")
             return
 
+        link_produto = link_produto_var.get().strip()
         descricao = descricao_var.get().strip()
         categoria_principal = (categoria_var.get() or "").strip()
         subcategoria = (subcategoria_var.get() or "").strip()
@@ -4572,10 +4583,10 @@ def create_gui(categorias):
         subcategoria_id = (subcategoria_id_var.get() or "").strip().upper()
 
         possui_categoria = bool(categoria_id or (categoria and categoria != "Todas categorias"))
-        if not descricao and not possui_categoria:
+        if not link_produto and not descricao and not possui_categoria:
             messagebox.showwarning(
                 "Atencao",
-                "Informe ao menos Categoria e/ou Descricao para buscar o produto.",
+                "Informe ao menos Link, Categoria e/ou Descricao para buscar o produto.",
             )
             return
 
@@ -4587,6 +4598,8 @@ def create_gui(categorias):
             return
 
         args = _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto, limite_candidatos)
+        if link_produto:
+            args.extend(["--url-produto", link_produto])
         if categoria_id:
             args.extend(["--categoria-id", categoria_id])
         if subcategoria_id:

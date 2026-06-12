@@ -2429,6 +2429,7 @@ def _coletar_candidatos_filtrados_de_resultados(
     limite_restante=None,
 ):
     candidatos = []
+    termo_filtro = normalizar_descricao(descricao_padrao) if descricao_padrao else ""
 
     for resultado in resultados:
         if limite_restante is not None and len(candidatos) >= limite_restante:
@@ -2461,6 +2462,9 @@ def _coletar_candidatos_filtrados_de_resultados(
         if desconto_minimo is not None:
             if desconto_int is None or desconto_int < int(desconto_minimo):
                 continue
+
+        if termo_filtro and termo_filtro.casefold() not in (resultado.get("descricao") or "").casefold():
+            continue
 
         ids_vistos.add(id_anuncio)
         candidatos.append(
