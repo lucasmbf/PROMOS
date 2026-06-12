@@ -1,0 +1,69 @@
+=== Inicio da execucao: 2026-06-07T21:56:52 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/loja/mamypoko/#component=menu_corridors&tracking_id=34da587d-39c6-4c0f-8759-594882b0a62c&label=Todos+os+produtos&global_position=1 --desconto-minimo 15 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/loja/mamypoko/#component=menu_corridors&tracking_id=34da587d-39c6-4c0f-8759-594882b0a62c&label=Todos+os+produtos&global_position=1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/loja/mamypoko/#component=menu_corridors&tracking_id=34da587d-39c6-4c0f-8759-594882b0a62c&label=Todos+os+produtos&global_position=1
+✓ Link de afiliado: https://meli.la/2FzMQaa
+✓ Link de afiliado: https://meli.la/1GEF5Wm
+✓ Link de afiliado: https://meli.la/2JTcY4q
+✓ Link de afiliado: https://meli.la/2oU95Km
+✓ Link de afiliado: https://meli.la/1vYcCbd
+✓ Link de afiliado: https://meli.la/2Uje2H5
+✓ Link de afiliado: https://meli.la/2web82o
+✓ Link de afiliado: https://meli.la/2QUPP2k
+✓ Link de afiliado: https://meli.la/1vqyFw8
+✓ Link de afiliado: https://meli.la/2K4SFtq
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Absorvente Geriátrico Lifree para Enchimento de Cueca Refil com 20
+Message SID Twilio: SMa91a76277b9f826b395bd2ab7637c7b4
+
+Mensagem enviada para whatsapp:+5519991133269:
+Toalhas umedecidas MamyPoko Dia&Noite 200 unidades
+Message SID Twilio: SM645e89c443175bb5915e730ce0c83db7
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Calça Mamy Poko Superproteção Jumbo M 34 Unidades
+Message SID Twilio: SM3759f025f5165598dd89b52159277bf4
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Calça Mamy Poko Superproteção Jumbo Xg 24 Unidades Extra Grande (xg) Sem Gênero
+Message SID Twilio: SM843399ce3607a1356083e840e532c6eb
+
+Mensagem enviada para whatsapp:+5519991133269:
+Pacote Fralda Calça Mamy Poko Super Proteção Xxg com 22 unidades
+Message SID Twilio: SM797333d4fb04f70f7554ac9395c038bd
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda-Calça Mamypoko RN 36un Cuidado Real Super Absorção 5kg
+Message SID Twilio: SMdd1a7de9ef816adc105ccc2c981fe1cc
+
+Mensagem enviada para whatsapp:+5519991133269:
+Unicharm fralda calça geriatrica lifree g xg pack 16 unidades
+Message SID Twilio: SMf1192bb5a94ed168b67a69ffe1f3c6be
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fraldas MamyPoko Dia&Noite Calça P
+Message SID Twilio: SMbefeb9e84eda407722701a9686bea3ee
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Calça MamyPoko Super Seca Tamanho P 46 Unidades Hipoalergênica
+Message SID Twilio: SM47055970d00cfba2b16e7e12ab37a64d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda-Calça MamyPoko G 60 Unidades Super Absorvente e Respirável
+Message SID Twilio: SMab117f5024fcbb82353c8e84539e2443
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-07T21:59:19 ===

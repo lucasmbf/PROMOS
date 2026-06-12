@@ -9,6 +9,7 @@ from pathlib import Path
 from math import ceil
 from urllib.parse import quote
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.parse import urljoin
 from urllib.request import Request, urlopen
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -2099,6 +2100,66 @@ def _coletar_resultados_pesquisa_da_pagina(page):
     )
 
 
+def _coletar_resultados_pesquisa_do_html(html, url_base=""):
+    soup = BeautifulSoup(html or "", "html.parser")
+    resultados = []
+
+    def _montar_preco_de_escopo(scope_el):
+        if not scope_el:
+            return ""
+
+        fraction_el = scope_el.select_one('[data-andes-money-amount-fraction="true"]')
+        cents_el = scope_el.select_one('[data-andes-money-amount-cents="true"]')
+
+        if not fraction_el:
+            return ""
+
+        reais = fraction_el.get_text(" ", strip=True)
+        centavos = cents_el.get_text(" ", strip=True) if cents_el else ""
+        return f"R$ {reais},{centavos}" if centavos else f"R$ {reais}"
+
+    for card in soup.select("li.ui-search-layout__item, li.poly-card"):
+        title_el = card.select_one(
+            "a.poly-component__title[href], a.ui-search-item__group__element--title[href], a[href*='/MLB-']"
+        )
+        if not title_el:
+            continue
+
+        descricao = title_el.get_text(" ", strip=True)
+        href = (title_el.get("href") or "").strip()
+        href_resolvido = urljoin(url_base, href) if href else ""
+
+        escopo_atual = card.select_one(".poly-price__current, .ui-search-price__second-line")
+        escopo_anterior = card.select_one("s.andes-money-amount--previous, .ui-search-price__original-value")
+
+        preco_atual_texto = _montar_preco_de_escopo(escopo_atual)
+        preco_anterior_texto = _montar_preco_de_escopo(escopo_anterior)
+
+        if not preco_atual_texto:
+            fraction_el = card.select_one('[data-andes-money-amount-fraction="true"]')
+            cents_el = card.select_one('[data-andes-money-amount-cents="true"]')
+            if fraction_el:
+                reais = fraction_el.get_text(" ", strip=True)
+                centavos = cents_el.get_text(" ", strip=True) if cents_el else ""
+                preco_atual_texto = f"R$ {reais},{centavos}" if centavos else f"R$ {reais}"
+
+        desconto_el = card.select_one(".ui-search-price__discount, .andes-money-amount__discount")
+        desconto_texto = desconto_el.get_text(" ", strip=True) if desconto_el else ""
+
+        resultados.append(
+            {
+                "descricao": descricao,
+                "href": href_resolvido,
+                "precoAtualTexto": preco_atual_texto,
+                "precoAnteriorTexto": preco_anterior_texto,
+                "precoTexto": preco_atual_texto,
+                "descontoTexto": desconto_texto,
+            }
+        )
+
+    return resultados
+
+
 def _resolver_precos_resultado_pesquisa(resultado):
 
     preco_atual = _converter_preco_em_float(resultado.get("precoAtualTexto") or resultado.get("precoTexto"))
@@ -2262,170 +2323,172 @@ def _resolver_url_categoria_por_nome_api(categoria_nome):
     return ""
 
 
-def processar_produtos_home_por_pesquisa(
-    page,
-    categoria=None,
-    categoria_id=None,
-    subcategoria_id=None,
-    descricao=None,
+def _extrair_item_id_ml_da_url(url):
+    texto = str(url or "").upper()
+    if not texto:
+        return ""
+
+    for padrao in [r"[?&]WID=(MLB\d{6,})\b", r"ITEM_ID:(MLB\d{6,})\b", r"[?&]ITEM_ID=(MLB\d{6,})\b"]:
+        encontrado = re.search(padrao, texto)
+        if encontrado:
+            return encontrado.group(1)
+
+    encontrado = re.search(r"\b(MLB\d{6,})\b", texto)
+    if encontrado:
+        return encontrado.group(1)
+
+    return ""
+
+
+def _coletar_candidato_por_url_direta(
+    url_bruta,
+    descricao_padrao=None,
+    categoria_padrao=None,
     preco_minimo=None,
     preco_maximo=None,
     desconto_minimo=None,
-    limite_candidatos=None,
-    historico_anuncios=None,
-    limite_validos=10,
-    limite_paginas=5,
+    historico_ids=None,
+    ids_vistos=None,
 ):
-    """Coleta candidatos a partir da pesquisa pública do Mercado Livre,
-    aplica filtros e enriquece os aprovados com link de afiliado.
-    """
+    url_anuncio = _normalizar_url_resultado(url_bruta)
+    item_id = _extrair_item_id_ml_da_url(url_anuncio)
+    id_anuncio = _normalizar_chave_historico(item_id or _extrair_id_anuncio_de_texto(url_anuncio))
 
-    termo_base = normalizar_descricao(descricao or "")
-    categoria_base = normalizar_descricao(categoria or "")
-    categoria_alvo_id = str(subcategoria_id or categoria_id or "").strip().upper()
+    if not url_anuncio or not id_anuncio:
+        return None
 
-    if not termo_base and not categoria_base:
-        raise ValueError(
-            "Informe ao menos Categoria e/ou Descricao para buscar produto."
-        )
+    if id_anuncio in (ids_vistos or set()) or id_anuncio in (historico_ids or set()):
+        return None
 
-    def _log_url_categoria_resolvida(url, origem):
-        url_limpa = str(url or "").strip()
-        if url_limpa:
-            print(f"[CATEGORIA_URL_RESOLVIDA] origem={origem} url={url_limpa}")
-        else:
-            print(f"[CATEGORIA_URL_RESOLVIDA] origem={origem} url=<nao_resolvida>")
+    if not item_id:
+        print(f"[AVISO] Link sem item_id reconhecivel ignorado: {url_anuncio}")
+        return None
 
-    depara_categorias = _carregar_depara_categorias_ml()
+    try:
+        detalhe = _ml_api_get_json(f"https://api.mercadolibre.com/items/{item_id}")
+    except Exception as exc:
+        print(f"[AVISO] Falha ao consultar item direto {item_id}: {exc}")
+        return None
 
-    # Resolve URL da categoria usando o DePara com fallback para o ancestral navegável.
-    url_categoria_home = ""
-    categoria_base_resolvida = categoria_base
-    categoria_id_resolvido = categoria_alvo_id
+    try:
+        preco_atual_valor = float(detalhe.get("price")) if detalhe.get("price") is not None else None
+    except (TypeError, ValueError):
+        preco_atual_valor = None
 
-    if categoria_alvo_id:
-        url_categoria_home, categoria_id_resolvido, path_resolvido = _resolver_url_categoria_por_id_depara(
-            categoria_alvo_id,
-            depara_categorias,
-        )
-        if url_categoria_home:
-            categoria_base_resolvida = path_resolvido or categoria_base_resolvida
-            print(
-                f"Categoria resolvida por DePara: {categoria_alvo_id} -> {categoria_id_resolvido} → {url_categoria_home}"
-            )
-            _log_url_categoria_resolvida(url_categoria_home, f"depara_id:{categoria_id_resolvido}")
-        else:
-            print(
-                f"[AVISO] Nao foi possivel resolver URL navegavel para categoria ID '{categoria_alvo_id}'. "
-                "Aplicando fallback por nome/descricao."
-            )
+    try:
+        preco_anterior_valor = float(detalhe.get("original_price")) if detalhe.get("original_price") is not None else None
+    except (TypeError, ValueError):
+        preco_anterior_valor = None
 
-    if not url_categoria_home and categoria_base:
-        url_categoria_home = _resolver_url_categoria_por_nome_api(categoria_base)
-        if url_categoria_home:
-            print(f"Categoria resolvida por API publica (nome): {categoria_base} → {url_categoria_home}")
-            _log_url_categoria_resolvida(url_categoria_home, "api_nome")
-        else:
-            print(f"[AVISO] Nao foi possivel resolver URL da categoria '{categoria_base}' na API publica. Buscando so por descricao.")
+    if preco_atual_valor is None:
+        return None
 
-    if not url_categoria_home and (categoria_alvo_id or categoria_base):
-        _log_url_categoria_resolvida("", "nao_resolvida")
+    if preco_minimo is not None and preco_atual_valor < preco_minimo:
+        return None
 
-    limite_paginas = max(1, int(limite_paginas or 1))
-    limite_validos = max(1, int(limite_validos or 1))
-    limite_candidatos_int = None if limite_candidatos is None else max(1, int(limite_candidatos))
+    if preco_maximo is not None and preco_atual_valor > preco_maximo:
+        return None
 
-    historico_ids = set(
-        _normalizar_chave_historico(item) for item in (historico_anuncios or set()) if item
-    )
+    desconto_int = _extrair_desconto_valor("", preco_anterior_valor, preco_atual_valor)
+    if desconto_minimo is not None:
+        if desconto_int is None or desconto_int < int(desconto_minimo):
+            return None
 
+    if ids_vistos is not None:
+        ids_vistos.add(id_anuncio)
+
+    permalink = _normalizar_url_resultado(str(detalhe.get("permalink") or "").strip() or url_anuncio)
+    descricao = normalizar_descricao(detalhe.get("title") or descricao_padrao or "Sem descrição")
+    categoria_item = str(detalhe.get("category_id") or "").strip().upper()
+
+    return {
+        "id_anuncio": id_anuncio,
+        "categoria": categoria_padrao or categoria_item or "Link direto",
+        "descricao": descricao,
+        "antes": _formatar_preco(preco_anterior_valor) if preco_anterior_valor is not None else "Sem preço anterior",
+        "desconto": (f"{desconto_int}% OFF" if desconto_int is not None else "Sem desconto"),
+        "depois": _formatar_preco(preco_atual_valor),
+        "depois_valor": preco_atual_valor,
+        "link_anuncio": permalink,
+        "pagina_origem_url": url_anuncio,
+        "pagina_origem_numero": 1,
+    }
+
+
+def _coletar_candidatos_filtrados_de_resultados(
+    resultados,
+    url_origem,
+    pagina_origem,
+    categoria_padrao,
+    descricao_padrao,
+    preco_minimo,
+    preco_maximo,
+    desconto_minimo,
+    historico_ids,
+    ids_vistos,
+    limite_restante=None,
+):
     candidatos = []
-    ids_vistos = set()
 
-    for pagina in range(1, limite_paginas + 1):
-        if limite_candidatos_int is not None and len(candidatos) >= limite_candidatos_int:
+    for resultado in resultados:
+        if limite_restante is not None and len(candidatos) >= limite_restante:
             break
 
-        if url_categoria_home and termo_base:
-            # Prioridade 1+2: categoria e depois descricao dentro da categoria.
-            url = _montar_url_pesquisa_em_categoria(url_categoria_home, termo_base, pagina)
-        elif url_categoria_home:
-            # Prioridade 1: apenas categoria.
-            url = url_categoria_home if pagina == 1 else _montar_url_paginada(url_categoria_home, pagina)
-        else:
-            # Prioridade 2: sem categoria, usa busca por descricao.
-            url = _montar_url_pesquisa_generica(termo_base, pagina)
+        url_anuncio = _normalizar_url_resultado(resultado.get("href"))
+        id_anuncio = _normalizar_chave_historico(
+            _extrair_id_anuncio_de_texto(url_anuncio)
+        )
 
-        print(f"\n[Pesquisa inicial] Página {pagina}: {url}")
-
-        page.goto(url, timeout=90000, wait_until="domcontentloaded")
-        time.sleep(random.uniform(2.5, 4.5))
-
-        resultados = _coletar_resultados_pesquisa_da_pagina(page)
-        if not resultados:
+        if not id_anuncio or id_anuncio in ids_vistos or id_anuncio in historico_ids:
             continue
 
-        for resultado in resultados:
-            if limite_candidatos_int is not None and len(candidatos) >= limite_candidatos_int:
-                break
+        preco_atual_valor, preco_anterior_valor = _resolver_precos_resultado_pesquisa(resultado)
+        if preco_atual_valor is None:
+            continue
 
-            url_anuncio = _normalizar_url_resultado(resultado.get("href"))
-            id_anuncio = _normalizar_chave_historico(
-                _extrair_id_anuncio_de_texto(url_anuncio)
-            )
+        if preco_minimo is not None and preco_atual_valor < preco_minimo:
+            continue
 
-            if not id_anuncio or id_anuncio in ids_vistos or id_anuncio in historico_ids:
+        if preco_maximo is not None and preco_atual_valor > preco_maximo:
+            continue
+
+        desconto_texto = normalizar_descricao(resultado.get("descontoTexto") or "")
+        desconto_int = None
+        encontrado = re.search(r"(\d+)", desconto_texto)
+        if encontrado:
+            desconto_int = int(encontrado.group(1))
+
+        if desconto_minimo is not None:
+            if desconto_int is None or desconto_int < int(desconto_minimo):
                 continue
 
-            preco_atual_valor, preco_anterior_valor = _resolver_precos_resultado_pesquisa(resultado)
-            if preco_atual_valor is None:
-                continue
+        ids_vistos.add(id_anuncio)
+        candidatos.append(
+            {
+                "id_anuncio": id_anuncio,
+                "categoria": categoria_padrao,
+                "descricao": normalizar_descricao(resultado.get("descricao") or descricao_padrao),
+                "antes": _formatar_preco(preco_anterior_valor) if preco_anterior_valor is not None else "Sem preço anterior",
+                "desconto": (f"{desconto_int}% OFF" if desconto_int is not None else "Sem desconto"),
+                "depois": _formatar_preco(preco_atual_valor),
+                "depois_valor": preco_atual_valor,
+                "link_anuncio": url_anuncio,
+                "pagina_origem_url": url_origem,
+                "pagina_origem_numero": pagina_origem,
+            }
+        )
 
-            if preco_minimo is not None and preco_atual_valor < preco_minimo:
-                continue
+    return candidatos
 
-            if preco_maximo is not None and preco_atual_valor > preco_maximo:
-                continue
 
-            desconto_texto = normalizar_descricao(resultado.get("descontoTexto") or "")
-            desconto_int = None
-            encontrado = re.search(r"(\d+)", desconto_texto)
-            if encontrado:
-                desconto_int = int(encontrado.group(1))
-
-            if desconto_minimo is not None:
-                if desconto_int is None or desconto_int < int(desconto_minimo):
-                    continue
-
-            ids_vistos.add(id_anuncio)
-            candidatos.append(
-                {
-                    "id_anuncio": id_anuncio,
-                    "categoria": categoria_base_resolvida or (categoria_id_resolvido if categoria_id_resolvido else "Pesquisa genérica"),
-                    "descricao": normalizar_descricao(resultado.get("descricao") or termo_base),
-                    "antes": _formatar_preco(preco_anterior_valor) if preco_anterior_valor is not None else "Sem preço anterior",
-                    "desconto": (f"{desconto_int}% OFF" if desconto_int is not None else "Sem desconto"),
-                    "depois": _formatar_preco(preco_atual_valor),
-                    "depois_valor": preco_atual_valor,
-                    "link_anuncio": url_anuncio,
-                    "pagina_origem_url": url,
-                    "pagina_origem_numero": pagina,
-                }
-            )
-
-    if not candidatos:
-        print("\nNenhum candidato válido encontrado na pesquisa inicial.")
-        return []
-
-    # Mantém comportamento anterior: prefere menor preço quando múltiplos candidatos passam.
-    candidatos.sort(key=lambda item: item.get("depois_valor", float("inf")))
-
+def _enriquecer_candidatos_aprovados(page, candidatos, categoria_base=None, limite_validos=10):
+    candidatos_ordenados = sorted(candidatos, key=lambda item: item.get("depois_valor", float("inf")))
     categoria_filtro = _normalizar_filtro_categoria(categoria_base) if categoria_base else ""
     aprovados = []
     falhas_enriquecimento = 0
     falhas_login_afiliados = 0
 
-    for candidato in candidatos:
+    for candidato in candidatos_ordenados:
         href = _normalizar_url_resultado(candidato.get("link_anuncio") or "")
         if not href:
             continue
@@ -2464,11 +2527,247 @@ def processar_produtos_home_por_pesquisa(
         candidato["categoria"] = categoria_breadcrumb or candidato.get("categoria") or "Pesquisa genérica"
         candidato["link_original"] = href
         candidato["link"] = link_afiliado
-
         aprovados.append(candidato)
 
         if len(aprovados) >= limite_validos:
             break
+
+    return aprovados, falhas_enriquecimento, falhas_login_afiliados
+
+
+def processar_produtos_home_por_pesquisa(
+    page,
+    categoria=None,
+    categoria_id=None,
+    subcategoria_id=None,
+    descricao=None,
+    urls=None,
+    preco_minimo=None,
+    preco_maximo=None,
+    desconto_minimo=None,
+    limite_candidatos=None,
+    historico_anuncios=None,
+    limite_validos=10,
+    limite_paginas=5,
+):
+    """Coleta candidatos a partir da pesquisa pública do Mercado Livre,
+    aplica filtros e enriquece os aprovados com link de afiliado.
+    """
+
+    termo_base = normalizar_descricao(descricao or "")
+    categoria_base = normalizar_descricao(categoria or "")
+    categoria_alvo_id = str(subcategoria_id or categoria_id or "").strip().upper()
+    urls_prioritarias = [
+        _normalizar_url_resultado(url)
+        for url in (urls or [])
+        if _normalizar_url_resultado(url)
+    ][:5]
+
+    if not termo_base and not categoria_base and not urls_prioritarias:
+        raise ValueError(
+            "Informe ao menos Categoria, Descricao e/ou Link para buscar produto."
+        )
+
+    def _log_url_categoria_resolvida(url, origem):
+        url_limpa = str(url or "").strip()
+        if url_limpa:
+            print(f"[CATEGORIA_URL_RESOLVIDA] origem={origem} url={url_limpa}")
+        else:
+            print(f"[CATEGORIA_URL_RESOLVIDA] origem={origem} url=<nao_resolvida>")
+
+    usar_links_diretos = bool(urls_prioritarias)
+    depara_categorias = _carregar_depara_categorias_ml()
+
+    # Resolve URL da categoria usando o DePara com fallback para o ancestral navegável.
+    url_categoria_home = ""
+    categoria_base_resolvida = categoria_base
+    categoria_id_resolvido = categoria_alvo_id
+
+    if categoria_alvo_id and not usar_links_diretos:
+        url_categoria_home, categoria_id_resolvido, path_resolvido = _resolver_url_categoria_por_id_depara(
+            categoria_alvo_id,
+            depara_categorias,
+        )
+        if url_categoria_home:
+            categoria_base_resolvida = path_resolvido or categoria_base_resolvida
+            print(
+                f"Categoria resolvida por DePara: {categoria_alvo_id} -> {categoria_id_resolvido} → {url_categoria_home}"
+            )
+            _log_url_categoria_resolvida(url_categoria_home, f"depara_id:{categoria_id_resolvido}")
+        else:
+            print(
+                f"[AVISO] Nao foi possivel resolver URL navegavel para categoria ID '{categoria_alvo_id}'. "
+                "Aplicando fallback por nome/descricao."
+            )
+
+    if not url_categoria_home and categoria_base and not usar_links_diretos:
+        url_categoria_home = _resolver_url_categoria_por_nome_api(categoria_base)
+        if url_categoria_home:
+            print(f"Categoria resolvida por API publica (nome): {categoria_base} → {url_categoria_home}")
+            _log_url_categoria_resolvida(url_categoria_home, "api_nome")
+        else:
+            print(f"[AVISO] Nao foi possivel resolver URL da categoria '{categoria_base}' na API publica. Buscando so por descricao.")
+
+    if not url_categoria_home and (categoria_alvo_id or categoria_base) and not usar_links_diretos:
+        _log_url_categoria_resolvida("", "nao_resolvida")
+
+    limite_paginas = max(1, int(limite_paginas or 1))
+    limite_validos = max(1, int(limite_validos or 1))
+    limite_candidatos_int = None if limite_candidatos is None else max(1, int(limite_candidatos))
+
+    historico_ids = set(
+        _normalizar_chave_historico(item) for item in (historico_anuncios or set()) if item
+    )
+
+    candidatos = []
+    ids_vistos = set()
+
+    if usar_links_diretos:
+        max_paginas_por_link = min(3, limite_paginas)
+        aprovados = []
+        falhas_enriquecimento = 0
+        falhas_login_afiliados = 0
+
+        for indice_link, url_base in enumerate(urls_prioritarias, start=1):
+            if len(aprovados) >= limite_validos:
+                break
+
+            print(f"\n[LINK_BASE_{indice_link}] Processando listagem direta: {url_base}")
+
+            for pagina_atual in range(1, max_paginas_por_link + 1):
+                if len(aprovados) >= limite_validos:
+                    break
+
+                url_pagina = url_base if pagina_atual == 1 else _montar_url_paginada(url_base, pagina_atual)
+                print(f"[LISTAGEM_DIRETA] Link {indice_link} - página {pagina_atual}: {url_pagina}")
+
+                page.goto(url_pagina, timeout=90000, wait_until="domcontentloaded")
+                time.sleep(random.uniform(2.5, 4.5))
+
+                html_pagina = page.content()
+                resultados = _coletar_resultados_pesquisa_do_html(html_pagina, url_pagina)
+                if not resultados:
+                    continue
+
+                limite_restante = None
+                if limite_candidatos_int is not None:
+                    limite_restante = max(0, limite_candidatos_int - len(candidatos))
+                    if limite_restante == 0:
+                        break
+
+                candidatos_pagina = _coletar_candidatos_filtrados_de_resultados(
+                    resultados,
+                    url_pagina,
+                    pagina_atual,
+                    categoria_base or "Listagem direta",
+                    termo_base,
+                    preco_minimo,
+                    preco_maximo,
+                    desconto_minimo,
+                    historico_ids,
+                    ids_vistos,
+                    limite_restante=limite_restante,
+                )
+
+                if not candidatos_pagina:
+                    continue
+
+                candidatos.extend(candidatos_pagina)
+                aprovados_pagina, falhas_pagina, falhas_login_pagina = _enriquecer_candidatos_aprovados(
+                    page,
+                    candidatos_pagina,
+                    categoria_base=categoria_base,
+                    limite_validos=max(1, limite_validos - len(aprovados)),
+                )
+                aprovados.extend(aprovados_pagina)
+                falhas_enriquecimento += falhas_pagina
+                falhas_login_afiliados += falhas_login_pagina
+
+            if len(aprovados) >= limite_validos:
+                break
+
+        if falhas_login_afiliados:
+            print(
+                f"[AVISO] {falhas_login_afiliados} candidato(s) exigiram login no Afiliados para gerar link com comissao."
+            )
+
+        if falhas_enriquecimento:
+            print(
+                f"[AVISO] Enriquecimento com afiliado falhou em {falhas_enriquecimento} candidato(s). "
+                "Anuncios sem link de afiliado valido foram ignorados."
+            )
+
+        if not aprovados and falhas_enriquecimento:
+            raise RuntimeError(
+                "Nao foi possivel gerar links de afiliado para os candidatos. "
+                "Faca login no Mercado Livre Afiliados e execute novamente."
+            )
+
+        if not aprovados:
+            print("\nNenhum candidato válido encontrado nas listagens diretas informadas.")
+
+        return aprovados
+
+    executar_busca_generica = True
+
+    for pagina in range(1, limite_paginas + 1):
+        if not executar_busca_generica:
+            break
+
+        if limite_candidatos_int is not None and len(candidatos) >= limite_candidatos_int:
+            break
+
+        if url_categoria_home and termo_base:
+            # Prioridade 1+2: categoria e depois descricao dentro da categoria.
+            url = _montar_url_pesquisa_em_categoria(url_categoria_home, termo_base, pagina)
+        elif url_categoria_home:
+            # Prioridade 1: apenas categoria.
+            url = url_categoria_home if pagina == 1 else _montar_url_paginada(url_categoria_home, pagina)
+        else:
+            # Prioridade 2: sem categoria, usa busca por descricao.
+            url = _montar_url_pesquisa_generica(termo_base, pagina)
+
+        print(f"\n[Pesquisa inicial] Página {pagina}: {url}")
+
+        page.goto(url, timeout=90000, wait_until="domcontentloaded")
+        time.sleep(random.uniform(2.5, 4.5))
+
+        resultados = _coletar_resultados_pesquisa_da_pagina(page)
+        if not resultados:
+            continue
+
+        limite_restante = None
+        if limite_candidatos_int is not None:
+            limite_restante = max(0, limite_candidatos_int - len(candidatos))
+            if limite_restante == 0:
+                break
+
+        candidatos.extend(
+            _coletar_candidatos_filtrados_de_resultados(
+                resultados,
+                url,
+                pagina,
+                categoria_base_resolvida or (categoria_id_resolvido if categoria_id_resolvido else "Pesquisa genérica"),
+                termo_base,
+                preco_minimo,
+                preco_maximo,
+                desconto_minimo,
+                historico_ids,
+                ids_vistos,
+                limite_restante=limite_restante,
+            )
+        )
+
+    if not candidatos:
+        print("\nNenhum candidato válido encontrado na pesquisa inicial.")
+        return []
+
+    aprovados, falhas_enriquecimento, falhas_login_afiliados = _enriquecer_candidatos_aprovados(
+        page,
+        candidatos,
+        categoria_base=categoria_base,
+        limite_validos=limite_validos,
+    )
 
     if falhas_login_afiliados:
         print(

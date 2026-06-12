@@ -1,0 +1,44 @@
+=== Inicio da execucao: 2026-06-08T16:51:10 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True --preco-minimo 30.0 --preco-maximo 140.0 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+✓ Link de afiliado: https://meli.la/1Ehq8U3
+✓ Link de afiliado: https://meli.la/2s6rV9c
+✓ Link de afiliado: https://meli.la/1XtKGqU
+✓ Link de afiliado: https://meli.la/1DUK2Bm
+✓ Link de afiliado: https://meli.la/1ad1ByM
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Adesivo Escudo Brasil Copa 2026 Resinado Alto Relevo
+Message SID Twilio: SMe1949a6acf0f7860abb31831fd3dcf2d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Camiseta Seleção Argentina Copa 2026 Futebol Jogo Cup
+Message SID Twilio: SM89656ff2a380c6e97a85a8010005f628
+
+Mensagem enviada para whatsapp:+5519991133269:
+Produto Recomendado Pela Virginia! Conjunto Da Copa Do Mundo
+Message SID Twilio: SM21d9caca078c9c70bc92dd7682476ba5
+
+Mensagem enviada para whatsapp:+5519991133269:
+Camiseta Feminina Borboleta Bandeira Brasil Copa Mundo 2026
+Message SID Twilio: SM8dfcd72ee9389587b88b6979fc548226
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cards Copa 2026 - Contém 6 Envelopes (48 Cards) - Oficial
+Message SID Twilio: SM1f4a09fc21c7d4479efa92320a25b0bc
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-08T16:52:29 ===

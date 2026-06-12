@@ -1,0 +1,74 @@
+=== Inicio da execucao: 2026-06-06T17:10:26 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/_Container_jogos-digitais#c_container_id=MLB1495632-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=3&c_campaign=jogos-digitais&c_label=%2Fsplinter%2Fcarouselitem&c_uid=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_element_id=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_content_origin=splinter-default&c_content_type=default&c_global_position=3&deal_print_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174&c_tracking_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174 --url-produto https://lista.mercadolivre.com.br/cameras-acessorios/acessorios-cameras/_NoIndex_True?original_category_landing=true --url-produto https://lista.mercadolivre.com.br/eletronicos-audio-video/acessorios-tv/#menu=categories --url-produto https://lista.mercadolivre.com.br/informatica/portateis-acessorios/acessorios-notebook/#menu=categories --url-produto https://lista.mercadolivre.com.br/celulares-telefones/acessorios-celulares/#menu=categories --preco-minimo 50.0 --preco-maximo 400.0 --desconto-minimo 10 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_jogos-digitais#c_container_id=MLB1495632-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=3&c_campaign=jogos-digitais&c_label=%2Fsplinter%2Fcarouselitem&c_uid=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_element_id=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_content_origin=splinter-default&c_content_type=default&c_global_position=3&deal_print_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174&c_tracking_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_jogos-digitais#c_container_id=MLB1495632-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=3&c_campaign=jogos-digitais&c_label=%2Fsplinter%2Fcarouselitem&c_uid=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_element_id=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_content_origin=splinter-default&c_content_type=default&c_global_position=3&deal_print_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174&c_tracking_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/_Container_jogos-digitais?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/_Container_jogos-digitais?page=3
+
+[LINK_BASE_2] Processando listagem direta: https://lista.mercadolivre.com.br/cameras-acessorios/acessorios-cameras/_NoIndex_True?original_category_landing=true
+[LISTAGEM_DIRETA] Link 2 - página 1: https://lista.mercadolivre.com.br/cameras-acessorios/acessorios-cameras/_NoIndex_True?original_category_landing=true
+✓ Link de afiliado: https://meli.la/2fit1bB
+✓ Link de afiliado: https://meli.la/1PXqsMC
+✓ Link de afiliado: https://meli.la/31GLiY5
+✓ Link de afiliado: https://meli.la/2fs2J4o
+✓ Link de afiliado: https://meli.la/25venHA
+✓ Link de afiliado: https://meli.la/2gW62z7
+✓ Link de afiliado: https://meli.la/1iVoevm
+✓ Link de afiliado: https://meli.la/2DKeYeG
+✓ Link de afiliado: https://meli.la/1RaV7pn
+✓ Link de afiliado: https://meli.la/2HMuAob
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ring Light 10 Polegadas Com Tripé 2,10m Profissional Video Maker Suporte Celular E Led 3 Cores Iluminação Maquiagem E Gravações Luxside
+Message SID Twilio: SM13e3fb1a26726a320af0835b21bf6a04
+
+Mensagem enviada para whatsapp:+5519991133269:
+Basike Tripé Bastão Pau De Selfie Celular Mini Portátil 360° Com Bluetooth Controles Remotos Extensível Altura Ajustável Alumínio Silicone Base Compacto E Leve Viagens E Aventuras Para iPhone Samsung
+Message SID Twilio: SMd48f2fa8225b454fe00cdda7cacb593a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Microfone Lapela Redondo Imã Sem Fio Tipo C Preto Anti Ruído Duplo MyMotors Para Android E iPhone 15 16 E 17
+Message SID Twilio: SM13bb5dbd97bade0a93e995c7c4493ba3
+
+Mensagem enviada para whatsapp:+5519991133269:
+Zeiss Lens Wipes x100 Lenços Umedecido Limpa Lentes Óculos
+Message SID Twilio: SM29f2b24b60948f42eeab884a3752fa53
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bastão Tripé Pau De Selfie Bluetooth 171cm Com Controle Zp24
+Message SID Twilio: SM745153e470892d0942cda98fb8c4c367
+
+Mensagem enviada para whatsapp:+5519991133269:
+Monopé Wt-1003 Ate 1,70m Suporta 3kg Para Sony Nikon Canon
+Message SID Twilio: SMe414a07a81bf2403a5341d415a803b76
+
+Mensagem enviada para whatsapp:+5519991133269:
+Iluminador LED Profissional Quadrado Lumi Para Fotos e Vídeos, Com Tripé de 2,10m e Luz Ajustável
+Message SID Twilio: SMf1a04c3612b01506a5f665b13b31ea15
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tripé Profissional Basike de 180cm para Celular e Câmera com Controle Bluetooth
+Message SID Twilio: SMfb1835259cb5a63331951d21e2fa7eff
+
+Mensagem enviada para whatsapp:+5519991133269:
+170cm Tripé Câmera Profissional Basike para Câmera e Celular – Cabeça 3 Vias 630° Panorâmico, Nível Bolha, Bolsa de Transporte,suporte de Celular – Ideal para Fotografia, Live, Vlog
+Message SID Twilio: SMbdadb3e4a8246a33936400aab466ab2b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Carregador De Câmera Np-fw50 Bateria Para Sony Zve10 A6100
+Message SID Twilio: SMff01801bc0a708c00759a8779cb63ad1
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-06T17:13:10 ===

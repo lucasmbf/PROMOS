@@ -1,0 +1,44 @@
+=== Inicio da execucao: 2026-06-07T21:02:55 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True --preco-minimo 30.0 --preco-maximo 140.0 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+✓ Link de afiliado: https://meli.la/1faQjgd
+✓ Link de afiliado: https://meli.la/2zDApWa
+✓ Link de afiliado: https://meli.la/2FNkhE8
+✓ Link de afiliado: https://meli.la/2sKimRM
+✓ Link de afiliado: https://meli.la/1MPLAqL
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Troféu Decorativo Copa Do Mundo Futebol Fifa
+Message SID Twilio: SM4587e7d0677cbdbdd41addc7d5e2781e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 70 Figurinhas Album Copa Do Mundo 2026
+Message SID Twilio: SM636331f4314bb452bc7a7ab5f51ee5a5
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 600 Cards 150 Envelopes Futebol Copa Do Mundo 2026
+Message SID Twilio: SM3ae604f82446eeb16d8b3037871ae1d1
+
+Mensagem enviada para whatsapp:+5519991133269:
+Camiseta Dryfit Futebol Seleções 2026 Torcedor Copa Brasil
+Message SID Twilio: SM79a51784b22e5e7348f2cd0be01786c2
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Adesivos Compatível Com Xre 190 2025-2026 Copa Brasil
+Message SID Twilio: SM277e2b9bab5c6dc294604d4ac2d4e058
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-07T21:04:10 ===

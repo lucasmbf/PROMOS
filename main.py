@@ -122,6 +122,16 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--url-produto",
+        action="append",
+        default=None,
+        help=(
+            "URL direta de produto para priorizar na busca do hub. "
+            "Pode ser informado ate 5 vezes."
+        ),
+    )
+
+    parser.add_argument(
         "--limite-paginas-pesquisa",
         type=int,
         default=LIMITE_PAGINAS_PESQUISA_PADRAO,
@@ -199,6 +209,7 @@ ARG_PRECO_MINIMO_INFORMADO = "--preco-minimo" in RAW_ARGS
 ARG_DESCONTO_MINIMO_INFORMADO = "--desconto-minimo" in RAW_ARGS
 ARG_LIMITE_CANDIDATOS_INFORMADO = "--limite-candidatos" in RAW_ARGS
 ARG_DESCRICAO_PRODUTO_INFORMADA = "--descricao-produto" in RAW_ARGS
+ARG_URL_PRODUTO_INFORMADA = "--url-produto" in RAW_ARGS
 
 MODO_SOMENTE_RELAMPAGO = ARGS.somente_relampago or os.getenv("RUN_ONLY_RELAMPAGO", "0") == "1"
 MODO_RELAMPAGO_PADRAO = ARGS.relampago_padrao
@@ -1090,6 +1101,15 @@ categoria_parametrizada = (ARGS.categoria or "").strip() if ARG_CATEGORIA_INFORM
 categoria_id_parametrizada = (ARGS.categoria_id or "").strip().upper() if ARG_CATEGORIA_ID_INFORMADA else None
 subcategoria_id_parametrizada = (ARGS.subcategoria_id or "").strip().upper() if ARG_SUBCATEGORIA_ID_INFORMADA else None
 descricao_parametrizada = (ARGS.descricao_produto or "").strip() if ARG_DESCRICAO_PRODUTO_INFORMADA else None
+urls_produto_parametrizadas = None
+if ARG_URL_PRODUTO_INFORMADA:
+    urls_produto_parametrizadas = [
+        str(url).strip()
+        for url in (ARGS.url_produto or [])
+        if str(url).strip()
+    ][:5]
+    if not urls_produto_parametrizadas:
+        urls_produto_parametrizadas = None
 preco_minimo_parametrizado = PRECO_MINIMO if ARG_PRECO_MINIMO_INFORMADO else None
 preco_maximo_parametrizado = PRECO_MAXIMO if ARG_PRECO_MAXIMO_INFORMADO else None
 desconto_minimo_parametrizado = DESCONTO_MINIMO if ARG_DESCONTO_MINIMO_INFORMADO else None
@@ -1127,11 +1147,13 @@ with sync_playwright() as p:
         print("[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA")
         print("\nModo procurar produto ativado (pesquisa pela home do Mercado Livre).")
 
-        page.goto(
-            "https://www.mercadolivre.com.br",
-            timeout=90000,
-            wait_until="domcontentloaded"
-        )
+        usar_links_diretos = bool(urls_produto_parametrizadas)
+        if not usar_links_diretos:
+            page.goto(
+                "https://www.mercadolivre.com.br",
+                timeout=90000,
+                wait_until="domcontentloaded"
+            )
 
         ofertas_hub = processar_produtos_home_por_pesquisa(
             page,
@@ -1139,12 +1161,13 @@ with sync_playwright() as p:
             categoria_id=categoria_id_parametrizada,
             subcategoria_id=subcategoria_id_parametrizada,
             descricao=(ARGS.descricao_produto or "").strip() or None,
+            urls=urls_produto_parametrizadas,
             preco_minimo=preco_minimo_parametrizado,
             preco_maximo=preco_maximo_parametrizado,
             desconto_minimo=desconto_minimo_parametrizado,
             limite_candidatos=limite_candidatos_parametrizado,
             historico_anuncios=historico_anuncios,
-            limite_validos=10,
+            limite_validos=(limite_candidatos_parametrizado or 10),
             limite_paginas=LIMITE_PAGINAS_PESQUISA,
         )
 

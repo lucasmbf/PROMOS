@@ -725,43 +725,61 @@ def _detect_marketplace_from_url(url):
     return "generic"
 
 
-def _extract_price_from_soup_mercadolivre(soup):
-    def _classes_of(tag):
-        return [str(c).strip() for c in (tag.get("class") or []) if str(c).strip()]
+def _classes_of_tag(tag):
+    return [str(c).strip() for c in (tag.get("class") or []) if str(c).strip()]
 
-    def _has_price_old_markers(tag):
-        classes = _classes_of(tag)
-        joined = " ".join(classes).casefold()
-        return (
-            "previous" in joined
-            or "original-value" in joined
-            or "price-old" in joined
-            or "ui-pdp-price__part--original-value" in classes
-            or "andes-money-amount--previous" in classes
-        )
 
-    def _extract_value_from_money_amount(money_tag):
-        if money_tag is None:
-            return None
+def _has_price_old_markers(tag):
+    classes = _classes_of_tag(tag)
+    joined = " ".join(classes).casefold()
+    return (
+        "previous" in joined
+        or "original-value" in joined
+        or "price-old" in joined
+        or "ui-pdp-price__part--original-value" in classes
+        or "andes-money-amount--previous" in classes
+    )
 
-        fraction = (
-            money_tag.select_one("span.andes-money-amount__fraction")
-            or money_tag.select_one("[data-andes-money-amount-fraction='true']")
-        )
-        cents = (
-            money_tag.select_one("span.andes-money-amount__cents")
-            or money_tag.select_one("[data-andes-money-amount-cents='true']")
-        )
-        fraction_text = fraction.get_text("", strip=True) if fraction else ""
-        cents_text = cents.get_text("", strip=True) if cents else ""
 
-        raw = (fraction_text or "").strip()
-        if cents_text:
-            raw = f"{raw},{cents_text.strip()}"
+def _extract_value_from_money_amount(money_tag):
+    if money_tag is None:
+        return None
 
-        return _parse_brl_price(raw)
+    fraction = (
+        money_tag.select_one("span.andes-money-amount__fraction")
+        or money_tag.select_one("[data-andes-money-amount-fraction='true']")
+    )
+    cents = (
+        money_tag.select_one("span.andes-money-amount__cents")
+        or money_tag.select_one("[data-andes-money-amount-cents='true']")
+    )
+    fraction_text = fraction.get_text("", strip=True) if fraction else ""
+    cents_text = cents.get_text("", strip=True) if cents else ""
 
-    # 1) Prioriza o bloco de preco atual (second-line), ignorando preco antigo/riscado.
+    raw = (fraction_text or "").strip()
+    if cents_text:
+        raw = f"{raw},{cents_text.strip()}"
+
+    return _parse_brl_price(raw)
+
+
+def _extract_price_pair_from_soup_mercadolivre(soup):
+    price_before = None
+    previous_money_selectors = [
+        ".ui-pdp-price__part--original-value .andes-money-amount",
+        ".ui-pdp-price__original-value .andes-money-amount",
+        ".andes-money-amount--previous",
+    ]
+    for selector in previous_money_selectors:
+        for money in soup.select(selector):
+            value = _extract_value_from_money_amount(money)
+            if value is not None:
+                price_before = value
+                break
+        if price_before is not None:
+            break
+
+    price_after = None
     preferred_money_selectors = [
         ".ui-pdp-price__second-line .andes-money-amount",
         "[data-testid='price-part']:not(.ui-pdp-price__part--original-value) .andes-money-amount",
@@ -772,29 +790,49 @@ def _extract_price_from_soup_mercadolivre(soup):
             if any(_has_price_old_markers(parent) for parent in [money] + list(money.parents)):
                 continue
 
-            price = _extract_value_from_money_amount(money)
-            if price is not None:
-                return price
+            value = _extract_value_from_money_amount(money)
+            if value is not None:
+                price_after = value
+                break
+        if price_after is not None:
+            break
 
-    # 2) Fallback: varre frações, mas ainda descartando blocos de preco antigo.
-    for element in soup.select("span.andes-money-amount__fraction"):
-        if any(_has_price_old_markers(parent) for parent in [element] + list(element.parents)):
-            continue
+    if price_before is None or price_after is None:
+        old_values = []
+        current_values = []
 
-        price = _parse_brl_price(element.get_text(" ", strip=True))
-        if price is not None:
-            return price
+        for element in soup.select("span.andes-money-amount__fraction"):
+            value = _parse_brl_price(element.get_text(" ", strip=True))
+            if value is None:
+                continue
 
-    # 3) Fallback: varre blocos money amount com data-andes atual.
-    for money in soup.select("[data-andes-money-amount='true'], .andes-money-amount"):
-        if any(_has_price_old_markers(parent) for parent in [money] + list(money.parents)):
-            continue
+            if any(_has_price_old_markers(parent) for parent in [element] + list(element.parents)):
+                old_values.append(value)
+            else:
+                current_values.append(value)
 
-        price = _extract_value_from_money_amount(money)
-        if price is not None:
-            return price
+        if price_before is None and old_values:
+            price_before = old_values[0]
 
-    return None
+        if price_after is None and current_values:
+            price_after = current_values[0]
+
+        if (price_before is None or price_after is None) and not old_values and len(current_values) >= 2:
+            maiores = sorted(current_values, reverse=True)
+            if price_before is None:
+                price_before = maiores[0]
+            if price_after is None:
+                price_after = maiores[-1]
+
+    if price_before is not None and price_after is not None and price_before < price_after:
+        price_before, price_after = price_after, price_before
+
+    return price_after, price_before
+
+
+def _extract_price_from_soup_mercadolivre(soup):
+    price_after, _ = _extract_price_pair_from_soup_mercadolivre(soup)
+    return price_after
 
 
 def _extract_price_from_soup_generic(soup):
@@ -860,6 +898,18 @@ def _extract_price_from_html(html, marketplace="generic"):
             return price
 
     return _extract_price_from_soup_generic(soup)
+
+
+def _extract_price_pair_from_html(html, marketplace="generic"):
+    soup = BeautifulSoup(html, "html.parser")
+
+    if marketplace == "mercadolivre":
+        price_after, price_before = _extract_price_pair_from_soup_mercadolivre(soup)
+        if price_after is not None:
+            return price_after, price_before
+
+    price = _extract_price_from_soup_generic(soup)
+    return price, None
 
 
 def _is_ml_challenge_html(html):
@@ -945,7 +995,7 @@ def _fetch_price_and_title_from_url_via_browser(url):
     try:
         from playwright.sync_api import sync_playwright
     except Exception:
-        return None, url, ""
+        return None, url, "", None, None
 
     perfis = []
     candidatos = [
@@ -994,19 +1044,19 @@ def _fetch_price_and_title_from_url_via_browser(url):
                     resolved_url = page.url or url
                     marketplace = _detect_marketplace_from_url(resolved_url)
                     title = _extract_title_from_html(html)
-                    price = _extract_price_from_html(html, marketplace=marketplace)
+                    price, price_before = _extract_price_pair_from_html(html, marketplace=marketplace)
 
                     context.close()
 
                     if price is not None:
-                        return price, resolved_url, title
+                        return price, resolved_url, title, price_before, price
 
                     if title:
-                        return None, resolved_url, title
+                        return None, resolved_url, title, None, None
             except Exception:
                 continue
 
-    return None, url, ""
+    return None, url, "", None, None
 
 
 def _extract_ml_item_id_from_url(url):
@@ -1025,7 +1075,7 @@ def _extract_ml_item_id_from_url(url):
 def _fetch_price_and_title_from_ml_public_api(url):
     item_id = _extract_ml_item_id_from_url(url)
     if not item_id:
-        return None, url, ""
+        return None, url, "", None, None
 
     endpoint = f"https://api.mercadolibre.com/items/{item_id}"
 
@@ -1034,7 +1084,7 @@ def _fetch_price_and_title_from_ml_public_api(url):
         response.raise_for_status()
         payload = response.json() if response.content else {}
     except Exception:
-        return None, url, ""
+        return None, url, "", None, None
 
     preco = payload.get("price")
     titulo = (payload.get("title") or "").strip()
@@ -1045,7 +1095,15 @@ def _fetch_price_and_title_from_ml_public_api(url):
     except (TypeError, ValueError):
         preco_float = None
 
-    return preco_float, permalink, titulo
+    price_before = None
+    original_price = payload.get("original_price")
+    try:
+        if original_price is not None:
+            price_before = float(original_price)
+    except (TypeError, ValueError):
+        price_before = None
+
+    return preco_float, permalink, titulo, price_before, preco_float
 
 
 def _extract_title_from_html(html):
@@ -1075,23 +1133,23 @@ def _fetch_price_from_url(url):
 
 def _fetch_price_and_title_from_url(url):
     response, marketplace = _fetch_with_marketplace_handling(url)
-    price = _extract_price_from_html(response.text, marketplace=marketplace)
+    price, price_before = _extract_price_pair_from_html(response.text, marketplace=marketplace)
     title = _extract_title_from_html(response.text)
 
     if marketplace == "mercadolivre" and _is_ml_verification_response(response.url, response.text, title):
-        browser_price, browser_url, browser_title = _fetch_price_and_title_from_url_via_browser(url)
+        browser_price, browser_url, browser_title, browser_before, browser_after = _fetch_price_and_title_from_url_via_browser(url)
 
         if browser_price is not None:
-            return browser_price, browser_url, browser_title or title
+            return browser_price, browser_url, browser_title or title, browser_before, (browser_after or browser_price)
 
-        api_price, api_url, api_title = _fetch_price_and_title_from_ml_public_api(url)
+        api_price, api_url, api_title, api_before, api_after = _fetch_price_and_title_from_ml_public_api(url)
         if api_price is not None:
-            return api_price, api_url, api_title or browser_title or title
+            return api_price, api_url, api_title or browser_title or title, api_before, (api_after or api_price)
 
         if browser_title or api_title:
-            return price, (browser_url or api_url or response.url), (browser_title or api_title)
+            return price, (browser_url or api_url or response.url), (browser_title or api_title), price_before, price
 
-    return price, response.url, title
+    return price, response.url, title, price_before, price
 
 
 def _fetch_price_from_description(description):
@@ -2249,17 +2307,20 @@ def create_gui(categorias):
             return float(alert.get("precoDesejado"))
         return float(alert.get("target_price", 0) or 0)
 
-    def _urls_from_alert(alert):
-        urls = [str(url).strip() for url in (alert.get("urls") or []) if str(url).strip()]
+    def _urls_from_config(config):
+        urls = [str(url).strip() for url in (config.get("urls") or []) if str(url).strip()]
         if urls:
-            return urls
+            return urls[:5]
 
         links = []
         for idx in range(1, 6):
-            link = str(alert.get(f"link{idx}", "")).strip()
+            link = str(config.get(f"link{idx}", "")).strip()
             if link:
                 links.append(link)
         return links
+
+    def _urls_from_alert(alert):
+        return _urls_from_config(alert)
 
     def _normalizar_alertas_schema():
         alterou = False
@@ -2320,6 +2381,42 @@ def create_gui(categorias):
 
         if alterou:
             persist_alerts()
+
+    def _normalizar_hub_schedules_schema():
+        alterou = False
+
+        for schedule in hub_schedules:
+            urls = _urls_from_config(schedule)
+            emails = schedule.get("emails")
+            if not isinstance(emails, list):
+                emails = _split_destinos(schedule.get("email", ""))
+            emails = [str(e).strip() for e in emails if str(e).strip()][:1]
+
+            phones = schedule.get("phones")
+            if not isinstance(phones, list):
+                phones = _split_destinos(schedule.get("telefone", ""))
+            phones = [str(p).strip() for p in phones if str(p).strip()][:1]
+
+            novo_schedule = {
+                **schedule,
+                "emails": emails,
+                "email": (emails[0] if emails else ""),
+                "phones": phones,
+                "telefone": (phones[0] if phones else ""),
+                "urls": urls,
+                "active": bool(schedule.get("active", True)),
+            }
+
+            for idx in range(1, 6):
+                novo_schedule[f"link{idx}"] = urls[idx - 1] if idx - 1 < len(urls) else ""
+
+            if novo_schedule != schedule:
+                schedule.clear()
+                schedule.update(novo_schedule)
+                alterou = True
+
+        if alterou:
+            persist_hub_schedules()
 
     def _parse_schedule_datetime_input(value, field_name, required=False, end_of_day=False):
         texto = (value or "").strip()
@@ -2988,8 +3085,11 @@ def create_gui(categorias):
     selecionar_todas_var.trace_add("write", lambda *_: _toggle_select_all_programacoes())
     filtro_programacoes_var.trace_add("write", lambda *_: _refresh_hub_schedules_grid())
 
-    def _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto_min, limite_candidatos=None):
+    def _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto_min, limite_candidatos=None, urls=None):
         args = ["--produto-por-html"]
+
+        for url in [str(item).strip() for item in (urls or []) if str(item).strip()][:5]:
+            args.extend(["--url-produto", url])
 
         if categoria and categoria != "Todas categorias":
             args.extend(["--categoria", categoria])
@@ -3019,13 +3119,14 @@ def create_gui(categorias):
             schedule.get("preco_maximo"),
             schedule.get("desconto_minimo"),
             schedule.get("limite_candidatos"),
+            _urls_from_config(schedule),
         )
 
     def open_hub_schedule_modal(schedule=None):
         modal = tk.Toplevel(root)
         modal.title("Configurar rotina programada do hub")
-        modal.geometry("760x700")
-        modal.minsize(700, 640)
+        modal.geometry("760x900")
+        modal.minsize(700, 820)
         modal.configure(bg="#ececec")
         modal.transient(root)
         modal.grab_set()
@@ -3097,6 +3198,10 @@ def create_gui(categorias):
                 else ""
             )
         )
+        urls_campanha = _urls_from_config(schedule or {})
+        while len(urls_campanha) < 5:
+            urls_campanha.append("")
+        link_vars = [tk.StringVar(value=urls_campanha[idx]) for idx in range(5)]
 
         inicio_lock = {"value": False}
         fim_lock = {"value": False}
@@ -3135,29 +3240,41 @@ def create_gui(categorias):
         ttk.Label(frame, text="Descricao (opcional):", style="Field.TLabel").grid(row=6, column=0, sticky="w", pady=(12, 0))
         ttk.Entry(frame, textvariable=descricao_ag_var).grid(row=6, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Preco minimo (opcional):", style="Field.TLabel").grid(row=7, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=preco_min_ag_var).grid(row=7, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        for idx, link_var in enumerate(link_vars, start=1):
+            ttk.Label(frame, text=f"Link {idx} (opcional):", style="Field.TLabel").grid(row=6 + idx, column=0, sticky="w", pady=(12, 0))
+            ttk.Entry(frame, textvariable=link_var).grid(row=6 + idx, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Preco maximo (opcional):", style="Field.TLabel").grid(row=8, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=preco_max_ag_var).grid(row=8, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Preco minimo (opcional):", style="Field.TLabel").grid(row=12, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=preco_min_ag_var).grid(row=12, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Desconto minimo (%) opcional:", style="Field.TLabel").grid(row=9, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=desconto_ag_var).grid(row=9, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Preco maximo (opcional):", style="Field.TLabel").grid(row=13, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=preco_max_ag_var).grid(row=13, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Qtd. candidatos validos:", style="Field.TLabel").grid(row=10, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=limite_candidatos_ag_var, validate="key", validatecommand=vcmd_inteiro).grid(row=10, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Desconto minimo (%) opcional:", style="Field.TLabel").grid(row=14, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=desconto_ag_var).grid(row=14, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=11, column=0, columnspan=2, sticky="w", pady=(12, 0))
-        ttk.Checkbutton(frame, text="Executar a primeira vez assim que salvar", variable=executar_ao_salvar_var).grid(row=12, column=0, columnspan=2, sticky="w", pady=(8, 0))
+        ttk.Label(frame, text="Qtd. candidatos validos:", style="Field.TLabel").grid(row=15, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=limite_candidatos_ag_var, validate="key", validatecommand=vcmd_inteiro).grid(row=15, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="E-mail:", style="Field.TLabel").grid(row=13, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=email_ag_var).grid(row=13, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Se informado, o link tem prioridade de busca.", style="Hint.TLabel").grid(
+            row=16,
+            column=0,
+            columnspan=2,
+            sticky="w",
+            pady=(12, 0),
+        )
 
-        ttk.Label(frame, text="Telefone:", style="Field.TLabel").grid(row=14, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=telefone_ag_var).grid(row=14, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=17, column=0, columnspan=2, sticky="w", pady=(12, 0))
+        ttk.Checkbutton(frame, text="Executar a primeira vez assim que salvar", variable=executar_ao_salvar_var).grid(row=18, column=0, columnspan=2, sticky="w", pady=(8, 0))
+
+        ttk.Label(frame, text="E-mail:", style="Field.TLabel").grid(row=19, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=email_ag_var).grid(row=19, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
+        ttk.Label(frame, text="Telefone:", style="Field.TLabel").grid(row=20, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=telefone_ag_var).grid(row=20, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
         botoes = ttk.Frame(frame, style="Main.TFrame")
-        botoes.grid(row=15, column=0, columnspan=2, sticky="w", pady=(18, 0))
+        botoes.grid(row=21, column=0, columnspan=2, sticky="w", pady=(18, 0))
 
         def salvar_rotina():
             nome = (nome_var.get() or "").strip()
@@ -3192,10 +3309,17 @@ def create_gui(categorias):
 
             categoria_valor = (categoria_ag_var.get() or "Todas categorias").strip() or "Todas categorias"
             descricao_valor = (descricao_ag_var.get() or "").strip()
+            urls = [str(var.get()).strip() for var in link_vars if str(var.get()).strip()]
+            invalidas = [url for url in urls if not url.startswith("http://") and not url.startswith("https://")]
+            if invalidas:
+                messagebox.showerror("Validacao", "Todos os links devem comecar com http:// ou https://.", parent=modal)
+                return
+
             email_unico, emails = _single_destino(email_ag_var.get())
             telefone_unico, telefones = _single_destino(telefone_ag_var.get())
             agora = datetime.now()
             executar_agora = bool(executar_ao_salvar_var.get())
+            link_map = {f"link{idx}": (urls[idx - 1] if idx - 1 < len(urls) else "") for idx in range(1, 6)}
 
             if len(_split_destinos(email_ag_var.get())) > 1:
                 messagebox.showerror("Validacao", "Informe apenas 1 e-mail na rotina.", parent=modal)
@@ -3220,6 +3344,8 @@ def create_gui(categorias):
                     "interval_hours": int(ciclo_horas),
                     "categoria": categoria_valor,
                     "descricao": descricao_valor,
+                    "urls": urls,
+                    **link_map,
                     "email": email_unico,
                     "emails": emails,
                     "telefone": telefone_unico,
@@ -3243,6 +3369,8 @@ def create_gui(categorias):
                 schedule["interval_hours"] = int(ciclo_horas)
                 schedule["categoria"] = categoria_valor
                 schedule["descricao"] = descricao_valor
+                schedule["urls"] = urls
+                schedule.update(link_map)
                 schedule["email"] = email_unico
                 schedule["emails"] = emails
                 schedule["telefone"] = telefone_unico
@@ -3672,6 +3800,7 @@ def create_gui(categorias):
     _save_sheets_alerts_config(SHEETS_ALERTS_CONFIG_FILE, sheets_alerts_config)
     _padronizar_formato_ids_configuracoes()
     _normalizar_alertas_schema()
+    _normalizar_hub_schedules_schema()
     _forcar_whatsapp_trial_nas_configs_ativas()
     _normalizar_proximas_execucoes()
     _refresh_hub_schedules_grid()
@@ -3875,6 +4004,8 @@ def create_gui(categorias):
         target_price = _target_price_from_alert(alert)
         alert_id = str(alert.get("id", "-")).strip() or "-"
         lowest_price = None
+        lowest_price_before = None
+        lowest_price_after = None
         source = ""
         title_found = ""
         error_message = None
@@ -3894,7 +4025,7 @@ def create_gui(categorias):
                 urls_processadas += 1
 
                 try:
-                    price, src, title = _fetch_price_and_title_from_url(url_limpa)
+                    price, src, title, price_before, price_after = _fetch_price_and_title_from_url(url_limpa)
                 except Exception:
                     falhas_extracao += 1
                     continue
@@ -3913,6 +4044,8 @@ def create_gui(categorias):
                     lowest_price = price
                     source = src
                     title_found = title
+                    lowest_price_before = price_before
+                    lowest_price_after = price_after or price
 
             if lowest_price is None and description:
                 try:
@@ -3958,6 +4091,8 @@ def create_gui(categorias):
                 "alert": alert,
                 "triggered": False,
                 "price": None,
+                "price_before": None,
+                "price_after": None,
                 "source": source,
                 "title": title_found,
                 "error": error_message,
@@ -3977,6 +4112,8 @@ def create_gui(categorias):
             "alert": alert,
             "triggered": triggered,
             "price": lowest_price,
+            "price_before": lowest_price_before,
+            "price_after": lowest_price_after,
             "source": source,
             "title": title_found,
             "error": None,
@@ -4150,12 +4287,25 @@ def create_gui(categorias):
                 f"Preco: R$ {price:.2f}. Destinos: {('; '.join(destinos) if destinos else 'nao configurados')}.\n"
             )
 
+            # "Antes" e "Depois" devem vir do HTML do anúncio (quando disponíveis).
+            price_maior = result.get("price_before")
+            price_menor = result.get("price_after")
+
+            if price_menor is None:
+                price_menor = float(price)
+
+            if price_maior is None:
+                price_maior = float(price_menor)
+
+            if float(price_maior) < float(price_menor):
+                price_maior, price_menor = price_menor, price_maior
+            
             oferta_alerta = {
                 "categoria": "Alerta > Preco",
                 "descricao": alert.get("name", "Alerta"),
-                "antes": f"R$ {_target_price_from_alert(alert):.2f}",
+                "antes": f"R$ {price_maior:.2f}",
                 "desconto": "-",
-                "depois": f"R$ {float(price):.2f}",
+                "depois": f"R$ {price_menor:.2f}",
                 "link": result.get("source") or "-",
             }
             ofertas_alerta_saida.append(oferta_alerta)
@@ -4165,6 +4315,8 @@ def create_gui(categorias):
                 f"{alert.get('name', 'Alerta')} disparou!\n\n"
                 f"Descricao validada: {alert.get('description') or alert.get('descricao') or '-'}\n"
                 f"Preco encontrado: {_formatar_preco_brl(price)}\n"
+                f"Antes: ~{_formatar_preco_brl(price_maior)}~\n"
+                f"Depois: *{_formatar_preco_brl(price_menor)}*\n"
                 f"Preco desejado: {_formatar_preco_brl(_target_price_from_alert(alert))}\n"
                 f"Origem: {result.get('source') or '-'}"
             )
@@ -4172,6 +4324,8 @@ def create_gui(categorias):
                 "ALERTA DE OFERTA\n\n"
                 f"O produto {alert.get('description') or alert.get('descricao') or '-'} "
                 f"foi anunciado com valor abaixo de {_formatar_preco_brl(_target_price_from_alert(alert))}\n\n"
+                f"Antes: ~{_formatar_preco_brl(price_maior)}~\n"
+                f"Depois: *{_formatar_preco_brl(price_menor)}*\n\n"
                 f"Acesse o link para visualizar: {result.get('source') or '-'}"
             )
 
@@ -4198,6 +4352,8 @@ def create_gui(categorias):
             msg = (
                 f"{alert.get('name', 'Alerta')} disparou!\n\n"
                 f"Preço encontrado: R$ {price:.2f}\n"
+                f"Antes: ~{_formatar_preco_brl(price_maior)}~\n"
+                f"Depois: *{_formatar_preco_brl(price_menor)}*\n"
                 f"Preço alvo: R$ {_target_price_from_alert(alert):.2f}\n"
                 f"Origem: {result.get('source') or '-'}\n"
                 f"Email: {'OK' if email_ok else 'pendente/falhou'} | WhatsApp: {'OK' if whatsapp_ok else 'pendente/falhou'}"

@@ -1,0 +1,84 @@
+=== Inicio da execucao: 2026-06-06T16:38:15 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16031#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D16031%26applied_value_name%3DWilson%26applied_value_order%3D3%26applied_value_results%3D678%26is_custom%3Dfalse --url-produto https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16263#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D16263%26applied_value_name%3DHead%26applied_value_order%3D12%26applied_value_results%3D209%26is_custom%3Dfalse%26view_more_flag%3Dtrue --url-produto https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_205839#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D205839%26applied_value_name%3DTecnifibre%26applied_value_order%3D48%26applied_value_results%3D48%26is_custom%3Dfalse%26view_more_flag%3Dtrue --url-produto https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_24667154#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D24667154%26applied_value_name%3DRobin+S%C3%B6derling%26applied_value_order%3D27%26applied_value_results%3D80%26is_custom%3Dfalse%26view_more_flag%3Dtrue --preco-minimo 50.0 --preco-maximo 400.0 --desconto-minimo 10 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16031#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D16031%26applied_value_name%3DWilson%26applied_value_order%3D3%26applied_value_results%3D678%26is_custom%3Dfalse
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16031#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D16031%26applied_value_name%3DWilson%26applied_value_order%3D3%26applied_value_results%3D678%26is_custom%3Dfalse
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16031?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16031?page=3
+
+[LINK_BASE_2] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16263#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D16263%26applied_value_name%3DHead%26applied_value_order%3D12%26applied_value_results%3D209%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+[LISTAGEM_DIRETA] Link 2 - página 1: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16263#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D16263%26applied_value_name%3DHead%26applied_value_order%3D12%26applied_value_results%3D209%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+✓ Link de afiliado: https://meli.la/2bpNSBZ
+[LISTAGEM_DIRETA] Link 2 - página 2: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16263?page=2
+[LISTAGEM_DIRETA] Link 2 - página 3: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_16263?page=3
+
+[LINK_BASE_3] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_205839#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D205839%26applied_value_name%3DTecnifibre%26applied_value_order%3D48%26applied_value_results%3D48%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+[LISTAGEM_DIRETA] Link 3 - página 1: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_205839#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D205839%26applied_value_name%3DTecnifibre%26applied_value_order%3D48%26applied_value_results%3D48%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+✓ Link de afiliado: https://meli.la/1cpAq7Y
+✓ Link de afiliado: https://meli.la/1kbxtf4
+✓ Link de afiliado: https://meli.la/2PUDUFo
+✓ Link de afiliado: https://meli.la/191ognu
+✓ Link de afiliado: https://meli.la/17JA7YK
+✓ Link de afiliado: https://meli.la/1fVjGDc
+✓ Link de afiliado: https://meli.la/2sak1xw
+✓ Link de afiliado: https://meli.la/1nBcNLm
+[LISTAGEM_DIRETA] Link 3 - página 2: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_205839?page=2
+[LISTAGEM_DIRETA] Link 3 - página 3: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_205839?page=3
+
+[LINK_BASE_4] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_24667154#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D24667154%26applied_value_name%3DRobin+S%C3%B6derling%26applied_value_order%3D27%26applied_value_results%3D80%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+[LISTAGEM_DIRETA] Link 4 - página 1: https://lista.mercadolivre.com.br/_Container_sports-bolas_BRAND_24667154#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D17%26applied_value_id%3D24667154%26applied_value_name%3DRobin+S%C3%B6derling%26applied_value_order%3D27%26applied_value_results%3D80%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+✓ Link de afiliado: https://meli.la/11XcTyp
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola De Tênis Head Tour - Tubo Com 3 Bolas
+Message SID Twilio: SM1fe431f9f4e80d1a4307402f314a869b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tubo Com 3 Un Bolas de Tenis Court Amarelo TECNIFIBRE
+Message SID Twilio: SM59e933e38bb712a5c085108d3d10863f
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bolas de Tênis Tecnifibre Club Profissional Tubo Com 3 Amarelas
+Message SID Twilio: SM604fd410a859ce597b82e2a199a5ea08
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola De Tênis Tecnifibre Court (tubo Com 3 Bolas)
+Message SID Twilio: SM272d4082830b739a4ada0484a193bbe1
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tubo Com 3 Un Bolas de Tenis X One Amarelo TECNIFIBRE
+Message SID Twilio: SM4351a65e5073c77ee252a7378dfc4ee6
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bolas De Padel Treinamento Tecnifibre Team Verde 3 Unidades Tubo
+Message SID Twilio: SMe7a4161b8dc0e0b0dde691d96475c680
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola De Tênis Tecnifibre Court Tubo C/4 - Pack Com 2 Tubos
+Message SID Twilio: SMc73c2c8f1bec022f1e2f678d6ec8cf3b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bipack 2 Tubos Com 4 Un Bolas de Tenis Court Amarelo TECNIFIBRE
+Message SID Twilio: SMa9e879dcab26b077ef7db10990860e1d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola de Tênis Tecnifibre X-One Amarela 9 Unidades Profissional Quadra Rápida
+Message SID Twilio: SMc6c99d58d1a22fbaf15ed0377cc88d73
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola De Tênis Robin Soderling - Tour Ed. - 01 Tubo C/4 Bolas
+Message SID Twilio: SMa5bd83a179f6568200778fd1af69bf05
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-06T16:41:30 ===

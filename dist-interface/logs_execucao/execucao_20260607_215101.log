@@ -1,0 +1,74 @@
+=== Inicio da execucao: 2026-06-07T21:51:01 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/bebes/passeio-bebe/?forceContainer=true#c_container_id=not_apply&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=1&c_campaign=bolota-passeio-do-bebe&c_label=%2Fsplinter%2Fcarouselitem&c_uid=eb331520-61e3-11f1-86c0-f1eb3b0c1944&c_element_id=eb331520-61e3-11f1-86c0-f1eb3b0c1944&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2&c_tracking_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2 --url-produto https://lista.mercadolivre.com.br/supermercado/market/_Container_cpg-landing-baby?forceContainer=true#c_container_id=MLB1294735-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=4&c_campaign=bolota-supermercado&c_label=%2Fsplinter%2Fcarouselitem&c_uid=eb2ef673-61e3-11f1-86c0-f1eb3b0c1944&c_element_id=eb2ef673-61e3-11f1-86c0-f1eb3b0c1944&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2&c_tracking_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2 --url-produto https://lista.mercadolivre.com.br/bebes/quarto-bebe/?forceContainer=true#c_container_id=not_apply&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=5&c_campaign=bolota-quarto-do-bebe&c_label=%2Fsplinter%2Fcarouselitem&c_uid=eb338a50-61e3-11f1-86c0-f1eb3b0c1944&c_element_id=eb338a50-61e3-11f1-86c0-f1eb3b0c1944&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2&c_tracking_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2 --url-produto https://lista.mercadolivre.com.br/bebes/seguranca-bebe/?forceContainer=true#c_container_id=not_apply&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=6&c_campaign=bolota-seguranca-do-bebe&c_label=%2Fsplinter%2Fcarouselitem&c_uid=eb33b160-61e3-11f1-86c0-f1eb3b0c1944&c_element_id=eb33b160-61e3-11f1-86c0-f1eb3b0c1944&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2&c_tracking_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2 --url-produto https://lista.mercadolivre.com.br/bebes/banho-bebe/?forceContainer=true#c_container_id=not_apply&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=7&c_campaign=bolota-banho-do-bebe&c_label=%2Fsplinter%2Fcarouselitem&c_uid=eb33ff80-61e3-11f1-86c0-f1eb3b0c1944&c_element_id=eb33ff80-61e3-11f1-86c0-f1eb3b0c1944&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2&c_tracking_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2 --preco-minimo 50.0 --preco-maximo 400.0 --desconto-minimo 10 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/bebes/passeio-bebe/?forceContainer=true#c_container_id=not_apply&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=1&c_campaign=bolota-passeio-do-bebe&c_label=%2Fsplinter%2Fcarouselitem&c_uid=eb331520-61e3-11f1-86c0-f1eb3b0c1944&c_element_id=eb331520-61e3-11f1-86c0-f1eb3b0c1944&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2&c_tracking_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/bebes/passeio-bebe/?forceContainer=true#c_container_id=not_apply&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=1&c_campaign=bolota-passeio-do-bebe&c_label=%2Fsplinter%2Fcarouselitem&c_uid=eb331520-61e3-11f1-86c0-f1eb3b0c1944&c_element_id=eb331520-61e3-11f1-86c0-f1eb3b0c1944&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2&c_tracking_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/bebes/passeio-bebe/?forceContainer=true&page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/bebes/passeio-bebe/?forceContainer=true&page=3
+
+[LINK_BASE_2] Processando listagem direta: https://lista.mercadolivre.com.br/supermercado/market/_Container_cpg-landing-baby?forceContainer=true#c_container_id=MLB1294735-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=4&c_campaign=bolota-supermercado&c_label=%2Fsplinter%2Fcarouselitem&c_uid=eb2ef673-61e3-11f1-86c0-f1eb3b0c1944&c_element_id=eb2ef673-61e3-11f1-86c0-f1eb3b0c1944&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2&c_tracking_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2
+[LISTAGEM_DIRETA] Link 2 - página 1: https://lista.mercadolivre.com.br/supermercado/market/_Container_cpg-landing-baby?forceContainer=true#c_container_id=MLB1294735-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=4&c_campaign=bolota-supermercado&c_label=%2Fsplinter%2Fcarouselitem&c_uid=eb2ef673-61e3-11f1-86c0-f1eb3b0c1944&c_element_id=eb2ef673-61e3-11f1-86c0-f1eb3b0c1944&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2&c_tracking_id=ea304b20-61e3-11f1-b5b5-d3f84d3db8b2
+✓ Link de afiliado: https://meli.la/1WL4wvJ
+✓ Link de afiliado: https://meli.la/12T4ruE
+✓ Link de afiliado: https://meli.la/2dzLgFu
+✓ Link de afiliado: https://meli.la/2RrEisK
+✓ Link de afiliado: https://meli.la/2MmHPq1
+✓ Link de afiliado: https://meli.la/2epG5E9
+✓ Link de afiliado: https://meli.la/1WQSyDL
+✓ Link de afiliado: https://meli.la/1yBpfeY
+✓ Link de afiliado: https://meli.la/2TvpCk9
+✓ Link de afiliado: https://meli.la/1CdF1oQ
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Premium Care Tamanho P 40 Unidades
+Message SID Twilio: SMc59a5ae12bb8e2a8fd0d3e0517efc069
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Confort Sec P 50 unidades
+Message SID Twilio: SMb98f57c438bc5ccd114733a3985ed1ab
+
+Mensagem enviada para whatsapp:+5519991133269:
+Nova Fralda Personal Protect & Sec Tamanho G 78 Unidades
+Message SID Twilio: SMc16057db2332626f2fff5ab4cf248964
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pants Roupinha Premium Natural Care XG 56 Unidades Huggies
+Message SID Twilio: SMb3b014eeffe14be4c396da2fa5540d47
+
+Mensagem enviada para whatsapp:+5519991133269:
+Huggies Fralda Pants Roupinha Premium Natural Care XXG - 52 Unidades
+Message SID Twilio: SM361e89e197603420b36b59c32eb60ff1
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda descartável Pampers Supersequinha, Tamanho G 80 Unidades
+Message SID Twilio: SM28a330e4a291b4be65fbcc348988f50b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Pants Premium Care XXG 60 unidades
+Message SID Twilio: SM941ee95023508c8d358bf8ea4757a2c5
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Pants Ajuste Total Tamanho G, 94 Unidades
+Message SID Twilio: SM78f66de856a6b060f2c44ef1cd85b90f
+
+Mensagem enviada para whatsapp:+5519991133269:
+Lenços Umedecidos Pampers, Cuidado de bebê 12 pacotes em total 576 Unidades
+Message SID Twilio: SMd628890e7d3ac67697ddb2a2694176b5
+
+Mensagem enviada para whatsapp:+5519991133269:
+Huggies Fralda Descartável Máxima Proteção XXG - 112 Un
+Message SID Twilio: SM23d51d87f618b8b02037bc898cebbcca
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-07T21:53:43 ===

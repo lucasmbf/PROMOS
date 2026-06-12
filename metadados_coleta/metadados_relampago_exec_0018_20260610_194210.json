@@ -1,0 +1,19 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 18,
+  "gerado_em": "2026-06-10T19:42:10",
+  "total_ofertas": 0,
+  "contexto_execucao": {
+    "status": "sem_ofertas",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "Luminária mata mosquito",
+    "desconto_minimo": 46,
+    "preco_minimo": 48.0,
+    "preco_maximo": 50.0,
+    "limite_candidatos": 2,
+    "limite_validos": 10,
+    "modo_sem_parametros": false
+  },
+  "ofertas": []
+}
