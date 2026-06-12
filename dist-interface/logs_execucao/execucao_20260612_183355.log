@@ -1,0 +1,44 @@
+=== Inicio da execucao: 2026-06-12T18:33:55 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True --preco-minimo 30.0 --preco-maximo 140.0 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+✓ Link de afiliado: https://meli.la/1u13Gn6
+✓ Link de afiliado: https://meli.la/1s8LFPE
+✓ Link de afiliado: https://meli.la/2AEUdLL
+✓ Link de afiliado: https://meli.la/2mkUtU8
+✓ Link de afiliado: https://meli.la/1Z2Hxrr
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Camiseta Brasil Futebol Copa
+Message SID Twilio: SM764e8e143efaf02062da3d9f90e2c15d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Copa Do Mundo 2026 - Contém 6 Envelopes (42 Figurinhas)
+Message SID Twilio: SMef406bf04eb93cf8e40daee0b5e5fb5b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Álbum Copa Do Mundo 2026 Capa Dura Panini Oficial
+Message SID Twilio: SM05078a63b9c88876067d50d8bfa4d443
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 600 Cards 150 Envelopes Cartinhas Copa Do Mundo 2026
+Message SID Twilio: SMf76f843612774b0ed86b648827a52f8f
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Adesivo Compatível Com Titan 160 2025 - 2026 Brasil Copa
+Message SID Twilio: SMfdb125719356665be7803f255d26123d
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-12T18:35:11 ===

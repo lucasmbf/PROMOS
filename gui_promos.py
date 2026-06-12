@@ -763,7 +763,14 @@ def _extract_value_from_money_amount(money_tag):
     return _parse_brl_price(raw)
 
 
+def _resolve_ml_main_price_scope(soup):
+    return soup.select_one("div.ui-pdp-price__main-container")
+
+
 def _extract_price_pair_from_soup_mercadolivre(soup):
+    price_scope = _resolve_ml_main_price_scope(soup)
+    source_root = price_scope if price_scope is not None else soup
+
     price_before = None
     previous_money_selectors = [
         ".ui-pdp-price__part--original-value .andes-money-amount",
@@ -771,7 +778,7 @@ def _extract_price_pair_from_soup_mercadolivre(soup):
         ".andes-money-amount--previous",
     ]
     for selector in previous_money_selectors:
-        for money in soup.select(selector):
+        for money in source_root.select(selector):
             value = _extract_value_from_money_amount(money)
             if value is not None:
                 price_before = value
@@ -780,13 +787,21 @@ def _extract_price_pair_from_soup_mercadolivre(soup):
             break
 
     price_after = None
+
+    if price_scope is not None:
+        meta_price = price_scope.select_one(
+            ".ui-pdp-price__second-line meta[itemprop='price'], meta[itemprop='price']"
+        )
+        if meta_price is not None:
+            price_after = _parse_brl_price(meta_price.get("content", ""))
+
     preferred_money_selectors = [
         ".ui-pdp-price__second-line .andes-money-amount",
         "[data-testid='price-part']:not(.ui-pdp-price__part--original-value) .andes-money-amount",
         ".ui-pdp-price .andes-money-amount",
     ]
     for selector in preferred_money_selectors:
-        for money in soup.select(selector):
+        for money in source_root.select(selector):
             if any(_has_price_old_markers(parent) for parent in [money] + list(money.parents)):
                 continue
 
@@ -801,7 +816,7 @@ def _extract_price_pair_from_soup_mercadolivre(soup):
         old_values = []
         current_values = []
 
-        for element in soup.select("span.andes-money-amount__fraction"):
+        for element in source_root.select("span.andes-money-amount__fraction"):
             value = _parse_brl_price(element.get_text(" ", strip=True))
             if value is None:
                 continue
@@ -817,7 +832,12 @@ def _extract_price_pair_from_soup_mercadolivre(soup):
         if price_after is None and current_values:
             price_after = current_values[0]
 
-        if (price_before is None or price_after is None) and not old_values and len(current_values) >= 2:
+        if (
+            price_scope is None
+            and (price_before is None or price_after is None)
+            and not old_values
+            and len(current_values) >= 2
+        ):
             maiores = sorted(current_values, reverse=True)
             if price_before is None:
                 price_before = maiores[0]
