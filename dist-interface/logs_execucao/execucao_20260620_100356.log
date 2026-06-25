@@ -1,0 +1,48 @@
+=== Inicio da execucao: 2026-06-20T10:03:56 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True --preco-minimo 30.0 --preco-maximo 140.0 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+✓ Link de afiliado: https://meli.la/2YN2S55
+✓ Link de afiliado: https://meli.la/2Sv5B3u
+✓ Link de afiliado: https://meli.la/1QtEoau
+✓ Link de afiliado: https://meli.la/2AHisRh
+✓ Link de afiliado: https://meli.la/2Qq46Y6
+[BLOCO_1] Resultado: 5 candidato(s) coletado(s), 5 válido(s) enriquecido(s). Total: 5/5
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Adesivo Escudo Alemanha Copa 2026 Resinado Alto Relevo
+Message SID Twilio: SM7df398b6028b48680f3c80c6b561b18d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Camisa Brasil Infantil Dryfit Camiseta 2 A 16 Copa Do Mundo
+Message SID Twilio: SM647a39a88304f577106eb163d8519495
+
+Mensagem enviada para whatsapp:+5519991133269:
+Camiseta Infantil Amarela Brasil Personalizada Nome Copa2026
+Message SID Twilio: SM344c4d3208a2fe3cf78a8472971cc04e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Card Golden Baller Copa Do Mundo 2026 Heungmin Son
+Message SID Twilio: SM89769d76a016f436b030fcc827e270fe
+
+Mensagem enviada para whatsapp:+5519991133269:
+Display Mesa Brasil Copa Do Mundo 2026 Para Decoração
+Message SID Twilio: SMb398d31f680f8d0c854020fdfe7ce872
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-20T10:05:13 ===

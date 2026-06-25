@@ -1,0 +1,5 @@
+=== Inicio da execucao: 2026-06-17T19:42:13 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/saude/suplementos-alimentares/growth-supplements/whey_Discount_5-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D7%26applied_value_id%3D5-100%26applied_value_name%3DMais+de+5%25+OFF%26applied_value_order%3D1%26applied_value_results%3D92%26is_custom%3Dfalse --desconto-minimo 10 --limite-candidatos 3 --modalidade-execucao campanha
+
+
+=== Fim da execucao: 2026-06-17T19:42:26 ===

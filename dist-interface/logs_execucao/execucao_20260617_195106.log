@@ -1,0 +1,17 @@
+=== Inicio da execucao: 2026-06-17T19:51:06 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/loja/mamypoko/#component=menu_corridors&tracking_id=34da587d-39c6-4c0f-8759-594882b0a62c&label=Todos+os+produtos&global_position=1 --desconto-minimo 15 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/loja/mamypoko/#component=menu_corridors&tracking_id=34da587d-39c6-4c0f-8759-594882b0a62c&label=Todos+os+produtos&global_position=1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/loja/mamypoko/#component=menu_corridors&tracking_id=34da587d-39c6-4c0f-8759-594882b0a62c&label=Todos+os+produtos&global_position=1
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/loja/mamypoko/?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/loja/mamypoko/?page=3
+
+Nenhum candidato válido encontrado nas listagens diretas informadas.
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-06-17T19:51:24 ===

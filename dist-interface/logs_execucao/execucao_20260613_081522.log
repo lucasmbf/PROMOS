@@ -1,0 +1,5 @@
+=== Inicio da execucao: 2026-06-13T08:15:22 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/_Container_jogos-digitais#c_container_id=MLB1495632-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=3&c_campaign=jogos-digitais&c_label=%2Fsplinter%2Fcarouselitem&c_uid=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_element_id=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_content_origin=splinter-default&c_content_type=default&c_global_position=3&deal_print_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174&c_tracking_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174 --url-produto https://lista.mercadolivre.com.br/informatica/portateis-acessorios/acessorios-notebook/#menu=categories --url-produto https://lista.mercadolivre.com.br/eletronicos-audio-video/acessorios-tv/#menu=categories --url-produto https://lista.mercadolivre.com.br/celulares-telefones/acessorios-celulares/#menu=categories --preco-minimo 50.0 --preco-maximo 400.0 --desconto-minimo 10 --limite-candidatos 10 --modalidade-execucao campanha
+
+
+=== Fim da execucao: 2026-06-13T08:15:23 ===

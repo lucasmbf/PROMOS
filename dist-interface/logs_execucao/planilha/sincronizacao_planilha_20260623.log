@@ -1,0 +1,220 @@
+=== Inicio do log de sincronizacao de planilha: 2026-06-23T17:19:36 ===
+[2026-06-23 17:19:36] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 17:19:36] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 17:19:36] Atualizando token OAuth da planilha.
+[2026-06-23 17:19:38] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 17:19:38] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 17:19:38] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 17:19:38] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 17:19:38] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 17:19:38] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 17:30:36] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 17:30:36] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 17:30:38] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 17:30:38] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 17:30:38] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 17:30:38] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 17:30:38] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 17:30:38] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 17:41:36] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 17:41:36] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 17:41:38] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 17:41:38] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 17:41:38] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 17:41:38] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 17:41:38] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 17:41:38] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 17:52:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 17:52:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 17:52:38] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 17:52:38] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 17:52:38] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 17:52:38] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 17:52:38] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 17:52:38] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 18:03:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 18:03:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 18:03:38] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 18:03:38] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:03:38] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:03:38] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:03:38] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:03:38] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 18:14:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 18:14:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 18:14:38] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 18:14:38] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:14:38] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:14:38] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:14:38] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:14:38] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 18:25:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 18:25:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 18:25:37] Atualizando token OAuth da planilha.
+[2026-06-23 18:25:39] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 18:25:39] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:25:39] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:25:39] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:25:39] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:25:39] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 18:36:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 18:36:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 18:36:38] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 18:36:38] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:36:38] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:36:38] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:36:38] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:36:38] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 18:47:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 18:47:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 18:47:39] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 18:47:39] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:47:39] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:47:39] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:47:39] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:47:39] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 18:58:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 18:58:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 18:58:39] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 18:58:39] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:58:39] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 18:58:39] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:58:39] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 18:58:39] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 19:09:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:09:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 19:09:39] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 19:09:39] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 19:09:39] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 19:09:39] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 19:09:39] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 19:09:39] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 19:20:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:20:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 19:20:39] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-23 19:20:39] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 19:20:39] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-23 19:20:39] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 19:20:39] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-23 19:20:39] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-06-23 19:31:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:31:37] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-06-23 19:31:37] Atualizando token OAuth da planilha.
+[2026-06-23 19:31:38] Token OAuth expirado/revogado. Solicitando nova autorizacao no navegador.
+[2026-06-23 19:31:38] Aguardando autorizacao do Google no navegador para sincronizar a planilha.
+[2026-06-23 19:32:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:32:37] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:33:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:33:37] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:34:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:34:37] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:35:37] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:35:37] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:36:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:36:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:37:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:37:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:38:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:38:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:39:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:39:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:40:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:40:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:41:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:41:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:42:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:42:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:43:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:43:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:44:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:44:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:45:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:45:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:46:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:46:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:47:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:47:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:48:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:48:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:49:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:49:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:50:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:50:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:51:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:51:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:52:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:52:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:53:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:53:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:54:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:54:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:55:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:55:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:56:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:56:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:57:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:57:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:58:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:58:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 19:59:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 19:59:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:00:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:00:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:01:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:01:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:02:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:02:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:03:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:03:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:04:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:04:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:05:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:05:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:06:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:06:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:07:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:07:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:08:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:08:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:09:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:09:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:10:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:10:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:11:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:11:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:12:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:12:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:13:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:13:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:14:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:14:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:15:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:15:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:16:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:16:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-23 20:17:38] Inicio da rotina de sincronizacao da planilha.
+[2026-06-23 20:17:38] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:15:06] Inicio da rotina de sincronizacao da planilha.
+[2026-06-25 19:15:06] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:16:07] Inicio da rotina de sincronizacao da planilha.
+[2026-06-25 19:16:07] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:17:07] Inicio da rotina de sincronizacao da planilha.
+[2026-06-25 19:17:07] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:18:07] Inicio da rotina de sincronizacao da planilha.
+[2026-06-25 19:18:07] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:19:07] Inicio da rotina de sincronizacao da planilha.
+[2026-06-25 19:19:07] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:20:07] Inicio da rotina de sincronizacao da planilha.
+[2026-06-25 19:20:07] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:21:07] Inicio da rotina de sincronizacao da planilha.
+[2026-06-25 19:21:07] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:22:07] Inicio da rotina de sincronizacao da planilha.
+[2026-06-25 19:22:07] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:23:07] Inicio da rotina de sincronizacao da planilha.
+[2026-06-25 19:23:07] Sincronizacao ignorada: ja existe execucao em andamento.
+[2026-06-25 19:23:18] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-06-25 19:23:18] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-25 19:23:18] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-06-25 19:23:18] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-25 19:23:18] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-06-25 19:23:18] Finalizacao da sincronizacao. falhou=False importados=0.

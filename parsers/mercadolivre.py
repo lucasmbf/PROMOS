@@ -2627,7 +2627,8 @@ def processar_produtos_home_por_pesquisa(
     ids_vistos = set()
 
     if usar_links_diretos:
-        max_paginas_por_link = min(3, limite_paginas)
+        TAMANHO_BLOCO_PAGINAS = 3
+        total_paginas_link = limite_paginas
         aprovados = []
         falhas_enriquecimento = 0
         falhas_login_afiliados = 0
@@ -2637,55 +2638,80 @@ def processar_produtos_home_por_pesquisa(
                 break
 
             print(f"\n[LINK_BASE_{indice_link}] Processando listagem direta: {url_base}")
+            print(f"[LINK_BASE_{indice_link}] Carregando em blocos de {TAMANHO_BLOCO_PAGINAS} páginas até encontrar candidatos válidos")
 
-            for pagina_atual in range(1, max_paginas_por_link + 1):
-                if len(aprovados) >= limite_validos:
-                    break
-
-                url_pagina = url_base if pagina_atual == 1 else _montar_url_paginada(url_base, pagina_atual)
-                print(f"[LISTAGEM_DIRETA] Link {indice_link} - página {pagina_atual}: {url_pagina}")
-
-                page.goto(url_pagina, timeout=90000, wait_until="domcontentloaded")
-                time.sleep(random.uniform(2.5, 4.5))
-
-                html_pagina = page.content()
-                resultados = _coletar_resultados_pesquisa_do_html(html_pagina, url_pagina)
-                if not resultados:
-                    continue
-
-                limite_restante = None
-                if limite_candidatos_int is not None:
-                    limite_restante = max(0, limite_candidatos_int - len(candidatos))
-                    if limite_restante == 0:
+            numero_bloco = 0
+            
+            while len(aprovados) < limite_validos and numero_bloco * TAMANHO_BLOCO_PAGINAS < total_paginas_link:
+                numero_bloco += 1
+                pagina_inicio = (numero_bloco - 1) * TAMANHO_BLOCO_PAGINAS + 1
+                pagina_fim = min(numero_bloco * TAMANHO_BLOCO_PAGINAS, total_paginas_link)
+                
+                aprovados_antes_bloco = len(aprovados)
+                candidatos_antes_bloco = len(candidatos)
+                
+                print(f"\n[BLOCO_{numero_bloco}] Carregando páginas {pagina_inicio} a {pagina_fim} do Link {indice_link}")
+                
+                for pagina_atual in range(pagina_inicio, pagina_fim + 1):
+                    if len(aprovados) >= limite_validos:
                         break
 
-                candidatos_pagina = _coletar_candidatos_filtrados_de_resultados(
-                    resultados,
-                    url_pagina,
-                    pagina_atual,
-                    categoria_base or "Listagem direta",
-                    termo_base,
-                    preco_minimo,
-                    preco_maximo,
-                    desconto_minimo,
-                    historico_ids,
-                    ids_vistos,
-                    limite_restante=limite_restante,
-                )
+                    url_pagina = url_base if pagina_atual == 1 else _montar_url_paginada(url_base, pagina_atual)
+                    print(f"[LISTAGEM_DIRETA] Link {indice_link} - página {pagina_atual}: {url_pagina}")
 
-                if not candidatos_pagina:
-                    continue
+                    page.goto(url_pagina, timeout=90000, wait_until="domcontentloaded")
+                    time.sleep(random.uniform(2.5, 4.5))
 
-                candidatos.extend(candidatos_pagina)
-                aprovados_pagina, falhas_pagina, falhas_login_pagina = _enriquecer_candidatos_aprovados(
-                    page,
-                    candidatos_pagina,
-                    categoria_base=categoria_base,
-                    limite_validos=max(1, limite_validos - len(aprovados)),
+                    html_pagina = page.content()
+                    resultados = _coletar_resultados_pesquisa_do_html(html_pagina, url_pagina)
+                    if not resultados:
+                        continue
+
+                    limite_restante = None
+                    if limite_candidatos_int is not None:
+                        limite_restante = max(0, limite_candidatos_int - len(candidatos))
+                        if limite_restante == 0:
+                            break
+
+                    candidatos_pagina = _coletar_candidatos_filtrados_de_resultados(
+                        resultados,
+                        url_pagina,
+                        pagina_atual,
+                        categoria_base or "Listagem direta",
+                        termo_base,
+                        preco_minimo,
+                        preco_maximo,
+                        desconto_minimo,
+                        historico_ids,
+                        ids_vistos,
+                        limite_restante=limite_restante,
+                    )
+
+                    if not candidatos_pagina:
+                        continue
+
+                    candidatos.extend(candidatos_pagina)
+                    aprovados_pagina, falhas_pagina, falhas_login_pagina = _enriquecer_candidatos_aprovados(
+                        page,
+                        candidatos_pagina,
+                        categoria_base=categoria_base,
+                        limite_validos=max(1, limite_validos - len(aprovados)),
+                    )
+                    aprovados.extend(aprovados_pagina)
+                    falhas_enriquecimento += falhas_pagina
+                    falhas_login_afiliados += falhas_login_pagina
+
+                candidatos_novos = len(candidatos) - candidatos_antes_bloco
+                aprovados_novos = len(aprovados) - aprovados_antes_bloco
+                
+                print(
+                    f"[BLOCO_{numero_bloco}] Resultado: {candidatos_novos} candidato(s) coletado(s), "
+                    f"{aprovados_novos} válido(s) enriquecido(s). Total: {len(aprovados)}/{limite_validos}"
                 )
-                aprovados.extend(aprovados_pagina)
-                falhas_enriquecimento += falhas_pagina
-                falhas_login_afiliados += falhas_login_pagina
+                
+                if aprovados_novos == 0 and candidatos_novos == 0:
+                    print(f"[BLOCO_{numero_bloco}] Nenhum candidato encontrado. Parando busca neste link.")
+                    break
 
             if len(aprovados) >= limite_validos:
                 break
@@ -2713,54 +2739,75 @@ def processar_produtos_home_por_pesquisa(
         return aprovados
 
     executar_busca_generica = True
+    TAMANHO_BLOCO_PAGINAS = 3
+    numero_bloco = 0
 
-    for pagina in range(1, limite_paginas + 1):
-        if not executar_busca_generica:
-            break
-
-        if limite_candidatos_int is not None and len(candidatos) >= limite_candidatos_int:
-            break
-
-        if url_categoria_home and termo_base:
-            # Prioridade 1+2: categoria e depois descricao dentro da categoria.
-            url = _montar_url_pesquisa_em_categoria(url_categoria_home, termo_base, pagina)
-        elif url_categoria_home:
-            # Prioridade 1: apenas categoria.
-            url = url_categoria_home if pagina == 1 else _montar_url_paginada(url_categoria_home, pagina)
-        else:
-            # Prioridade 2: sem categoria, usa busca por descricao.
-            url = _montar_url_pesquisa_generica(termo_base, pagina)
-
-        print(f"\n[Pesquisa inicial] Página {pagina}: {url}")
-
-        page.goto(url, timeout=90000, wait_until="domcontentloaded")
-        time.sleep(random.uniform(2.5, 4.5))
-
-        resultados = _coletar_resultados_pesquisa_da_pagina(page)
-        if not resultados:
-            continue
-
-        limite_restante = None
-        if limite_candidatos_int is not None:
-            limite_restante = max(0, limite_candidatos_int - len(candidatos))
-            if limite_restante == 0:
+    while executar_busca_generica and len(candidatos) < (limite_candidatos_int or limite_validos):
+        numero_bloco += 1
+        pagina_inicio = (numero_bloco - 1) * TAMANHO_BLOCO_PAGINAS + 1
+        pagina_fim = min(numero_bloco * TAMANHO_BLOCO_PAGINAS, limite_paginas)
+        
+        candidatos_antes_bloco = len(candidatos)
+        
+        print(f"\n[BLOCO_GENERICA_{numero_bloco}] Carregando páginas {pagina_inicio} a {pagina_fim}")
+        
+        for pagina in range(pagina_inicio, pagina_fim + 1):
+            if limite_candidatos_int is not None and len(candidatos) >= limite_candidatos_int:
                 break
 
-        candidatos.extend(
-            _coletar_candidatos_filtrados_de_resultados(
-                resultados,
-                url,
-                pagina,
-                categoria_base_resolvida or (categoria_id_resolvido if categoria_id_resolvido else "Pesquisa genérica"),
-                termo_base,
-                preco_minimo,
-                preco_maximo,
-                desconto_minimo,
-                historico_ids,
-                ids_vistos,
-                limite_restante=limite_restante,
+            if url_categoria_home and termo_base:
+                # Prioridade 1+2: categoria e depois descricao dentro da categoria.
+                url = _montar_url_pesquisa_em_categoria(url_categoria_home, termo_base, pagina)
+            elif url_categoria_home:
+                # Prioridade 1: apenas categoria.
+                url = url_categoria_home if pagina == 1 else _montar_url_paginada(url_categoria_home, pagina)
+            else:
+                # Prioridade 2: sem categoria, usa busca por descricao.
+                url = _montar_url_pesquisa_generica(termo_base, pagina)
+
+            print(f"[BLOCO_GENERICA_{numero_bloco}] Página {pagina}: {url}")
+
+            page.goto(url, timeout=90000, wait_until="domcontentloaded")
+            time.sleep(random.uniform(2.5, 4.5))
+
+            resultados = _coletar_resultados_pesquisa_da_pagina(page)
+            if not resultados:
+                continue
+
+            limite_restante = None
+            if limite_candidatos_int is not None:
+                limite_restante = max(0, limite_candidatos_int - len(candidatos))
+                if limite_restante == 0:
+                    break
+
+            candidatos.extend(
+                _coletar_candidatos_filtrados_de_resultados(
+                    resultados,
+                    url,
+                    pagina,
+                    categoria_base_resolvida or (categoria_id_resolvido if categoria_id_resolvido else "Pesquisa genérica"),
+                    termo_base,
+                    preco_minimo,
+                    preco_maximo,
+                    desconto_minimo,
+                    historico_ids,
+                    ids_vistos,
+                    limite_restante=limite_restante,
+                )
             )
+        
+        candidatos_novos = len(candidatos) - candidatos_antes_bloco
+        print(
+            f"[BLOCO_GENERICA_{numero_bloco}] Resultado: {candidatos_novos} candidato(s) coletado(s). "
+            f"Total: {len(candidatos)}"
         )
+        
+        if candidatos_novos == 0:
+            print(f"[BLOCO_GENERICA_{numero_bloco}] Nenhum candidato novo encontrado. Parando busca genérica.")
+            executar_busca_generica = False
+        elif pagina_fim >= limite_paginas:
+            print(f"[BLOCO_GENERICA_{numero_bloco}] Limite de páginas atingido.")
+            executar_busca_generica = False
 
     if not candidatos:
         print("\nNenhum candidato válido encontrado na pesquisa inicial.")
@@ -3311,13 +3358,13 @@ def salvar_resultado_relampago(ofertas, pasta=None, incluir_banner_relampago=Tru
         f.write(f"===== EXECUCAO {timestamp} | TOTAL {len(ofertas)} =====\n\n")
         for oferta in ofertas:
             if incluir_banner_relampago:
-                f.write("⚡️ *OFERTA RELÂMPAGO*⚡️ \n\n\n")
+                f.write("*⚡⚡OFERTA RELAMPAGO⚡⚡*\n\n\n")
             categoria = oferta.get("categoria", "-")
             descricao = oferta.get("descricao", "-")
 
             f.write(f"*{categoria}*\n\n")
             f.write(f"{descricao}\n\n\n")
-            f.write(f"Antes: ~{_formatar_preco_txt(oferta.get('antes', '-'))}~\n")
+            f.write(f"~Antes: {_formatar_preco_txt(oferta.get('antes', '-'))}~\n")
             f.write(f"*Desconto: {oferta.get('desconto', '-')}*\n")
             f.write(f"*Depois: {_formatar_preco_txt(oferta.get('depois', '-'))}*\n")
             f.write(f"{oferta.get('link', '-')}\n")

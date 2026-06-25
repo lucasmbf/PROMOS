@@ -1,0 +1,69 @@
+=== Inicio da execucao: 2026-06-15T19:54:53 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/saude/suplementos-alimentares/growth-supplements/whey_Discount_5-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D7%26applied_value_id%3D5-100%26applied_value_name%3DMais+de+5%25+OFF%26applied_value_order%3D1%26applied_value_results%3D92%26is_custom%3Dfalse --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/saude/suplementos-alimentares/growth-supplements/whey_Discount_5-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D7%26applied_value_id%3D5-100%26applied_value_name%3DMais+de+5%25+OFF%26applied_value_order%3D1%26applied_value_results%3D92%26is_custom%3Dfalse
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/saude/suplementos-alimentares/growth-supplements/whey_Discount_5-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D7%26applied_value_id%3D5-100%26applied_value_name%3DMais+de+5%25+OFF%26applied_value_order%3D1%26applied_value_results%3D92%26is_custom%3Dfalse
+✓ Link de afiliado: https://meli.la/1bJ4VXn
+✓ Link de afiliado: https://meli.la/1He8R1e
+✓ Link de afiliado: https://meli.la/1dE3SUJ
+✓ Link de afiliado: https://meli.la/16baiWo
+✓ Link de afiliado: https://meli.la/2Drmjkc
+✓ Link de afiliado: https://meli.la/2Drmjkc
+✓ Link de afiliado: https://meli.la/1UMRyxv
+✓ Link de afiliado: https://meli.la/1oSRnmD
+✓ Link de afiliado: https://meli.la/1oSRnmD
+✓ Link de afiliado: https://meli.la/2AR2hN8
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Basic Whey 1kg Growth Supplements
+Message SID Twilio: SMeaf28be086ae980c146e8be237faaf97
+
+Mensagem enviada para whatsapp:+5519991133269:
+Basic Whey 1kg Growth Supplements
+Message SID Twilio: SM81eb56c0445b8373a0d66c3e5aa804f7
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey Protein Gourmet 400g Growth Supplements - Tiramisu
+Message SID Twilio: SM2f9c68341f7d7df190600a221c28e24a
+
+Mensagem enviada para whatsapp:+5519991133269:
+100% Whey Concentrado 450g Growth Supplements
+Message SID Twilio: SM9a19750ed433add78f0da85af0117d50
+
+Mensagem enviada para whatsapp:+5519991133269:
+Daily Whey Protein 800g Growth Supplements
+Message SID Twilio: SMc1a1b91ef1cf91da6c418a56400e5952
+
+Mensagem enviada para whatsapp:+5519991133269:
+Daily Whey Protein 800g Growth Supplements
+Message SID Twilio: SM48de4beece00f3b86aea5db425b94534
+
+Mensagem enviada para whatsapp:+5519991133269:
+Daily Whey Protein Zero Lactose 800g Growth Supplements
+Message SID Twilio: SM9529becca5e491943435eabe35f677a7
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey Protein Gourmet 800g Growth Supplements - Tiramisu
+Message SID Twilio: SMb4827b71b417ef1551fd9c7412379d95
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey Protein Gourmet 800g Growth Supplements - Tiramisu
+Message SID Twilio: SM9ebf9bd833c45c0bb720836d0d31d273
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey Protein Concentrado Sabor Chocolate Growth 1kg
+Message SID Twilio: SMc309b9441b6f674649937fbacf41b1de
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-15T19:57:15 ===

@@ -1,0 +1,48 @@
+=== Inicio da execucao: 2026-06-19T18:16:45 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True --preco-minimo 30.0 --preco-maximo 140.0 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True
+✓ Link de afiliado: https://meli.la/14EBtgz
+✓ Link de afiliado: https://meli.la/2dfi8JA
+✓ Link de afiliado: https://meli.la/2roYFLj
+✓ Link de afiliado: https://meli.la/2uGK2tP
+✓ Link de afiliado: https://meli.la/1hmWdt1
+[BLOCO_1] Resultado: 5 candidato(s) coletado(s), 5 válido(s) enriquecido(s). Total: 5/5
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Álbum Capa Dura Fifa World Cup 2026 Panini Oficial
+Message SID Twilio: SMe7ff8787b524a19d4eed5d5b7361349c
+
+Mensagem enviada para whatsapp:+5519991133269:
+Alternativo Kit Figurinhas Copa Futebol 2026 (com/sem Álbum)
+Message SID Twilio: SM6a552e85108592fe03b828d2d051b47e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Camisa Brasil Infantil Dryfit Camiseta 2 A 16 Copa Do Mundo
+Message SID Twilio: SMcb41df55ae9a525bd88e39392e959d70
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Torcedor Brasil 12 Peças, Ideal Para Copa Do Mundo 2026
+Message SID Twilio: SMe5697fa393fdaad982955c4a430bad6c
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Festa Decoração Lembrancinhas Copa Do Mundo Brasil
+Message SID Twilio: SM8d6f37a69d688233cdad9d43d827f073
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-19T18:18:04 ===

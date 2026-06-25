@@ -1,0 +1,72 @@
+=== Inicio do log de alertas: 2026-06-15T19:22:52 ===
+[2026-06-15 19:23:52] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-06-15 19:23:52] Alerta 000022 enfileirado (scheduler) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-06-15 19:23:52] Alerta 000031 enfileirado (scheduler) - nome: Cafeteira 1200 Walita.
+[2026-06-15 19:23:52] Alerta 000039 enfileirado (scheduler) - nome: amazon firestick 4k.
+[2026-06-15 19:23:52] Iniciando execucao do alerta 000013.
+[2026-06-15 19:23:56] Alerta 000013 erro na checagem: Falha ao extrair preco.
+[2026-06-15 19:23:56] Alerta 000013 falhou: Falha ao extrair preco.
+[2026-06-15 19:23:56] Execucao finalizada sem disparos.
+[2026-06-15 19:23:56] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-15 19:23:56] Finalizada execucao do alerta 000013.
+[2026-06-15 19:23:56] Iniciando execucao do alerta 000022.
+[2026-06-15 19:24:01] Alerta 000022 erro na checagem: Falha ao extrair preco.
+[2026-06-15 19:24:01] Alerta 000022 falhou: Falha ao extrair preco.
+[2026-06-15 19:24:01] Execucao finalizada sem disparos.
+[2026-06-15 19:24:01] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-15 19:24:01] Finalizada execucao do alerta 000022.
+[2026-06-15 19:24:01] Iniciando execucao do alerta 000031.
+[2026-06-15 19:24:05] Alerta 000031 erro na checagem: Falha ao extrair preco.
+[2026-06-15 19:24:05] Alerta 000031 falhou: Falha ao extrair preco.
+[2026-06-15 19:24:05] Execucao finalizada sem disparos.
+[2026-06-15 19:24:05] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-15 19:24:05] Finalizada execucao do alerta 000031.
+[2026-06-15 19:24:05] Iniciando execucao do alerta 000039.
+[2026-06-15 19:24:12] Alerta 000039 erro na checagem: Falha ao extrair preco.
+[2026-06-15 19:24:12] Alerta 000039 falhou: Falha ao extrair preco.
+[2026-06-15 19:24:12] Execucao finalizada sem disparos.
+[2026-06-15 19:24:12] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-15 19:24:12] Finalizada execucao do alerta 000039.
+[2026-06-15 20:05:13] Alerta 000013 enfileirado (manual) - nome: Fralda.
+[2026-06-15 20:05:13] Iniciando execucao do alerta 000013.
+[2026-06-15 20:05:18] Alerta 000022 enfileirado (manual) - nome: Fritadeira Air Fryer Oven Britânia 11 Litros 8 Funções 1800W BAF11A.
+[2026-06-15 20:05:19] Alerta 000031 enfileirado (manual) - nome: Cafeteira 1200 Walita.
+[2026-06-15 20:05:20] Alerta 000039 enfileirado (manual) - nome: amazon firestick 4k.
+[2026-06-15 20:05:26] Alerta 000013 checado: triggered=False preco=114.34 alvo=70.0
+[2026-06-15 20:05:26] Alerta 000013 sem disparo nesta execucao.
+[2026-06-15 20:05:26] Execucao finalizada sem disparos.
+[2026-06-15 20:05:26] Finalizada execucao do alerta 000013.
+[2026-06-15 20:05:26] Iniciando execucao do alerta 000022.
+[2026-06-15 20:05:37] Alerta 000022 checado: triggered=False preco=379.0 alvo=370.0
+[2026-06-15 20:05:37] Alerta 000022 sem disparo nesta execucao.
+[2026-06-15 20:05:37] Execucao finalizada sem disparos.
+[2026-06-15 20:05:37] Finalizada execucao do alerta 000022.
+[2026-06-15 20:05:37] Iniciando execucao do alerta 000031.
+[2026-06-15 20:05:53] Alerta 000031 checado: triggered=True preco=1990.0 alvo=2100.0
+[2026-06-15 20:05:53] Alerta 000031 marcou primeiro disparo em 2026-06-15T20:05:53.
+[2026-06-15 20:05:53] Notificacao alerta 000031: email=sem destinos; whatsapp=1 envio(s) destinos=***3269 sid=SM630dd3a2d37a07cfc14a504459e15447.
+[2026-06-15 20:05:53] Execucao finalizada com 1 alerta(s) disparado(s).
+[2026-06-15 20:05:53] Finalizada execucao do alerta 000031.
+[2026-06-15 20:05:53] Iniciando execucao do alerta 000039.
+[2026-06-15 20:06:15] Alerta 000039 checado: triggered=False preco=247.0 alvo=230.0
+[2026-06-15 20:06:15] Alerta 000039 sem disparo nesta execucao.
+[2026-06-15 20:06:15] Execucao finalizada sem disparos.
+[2026-06-15 20:06:15] Finalizada execucao do alerta 000039.
+[2026-06-15 20:21:49] Alerta 000043 enfileirado (manual) - nome: Console Nintendo Switch 2, Modelo Nacional de Tomada.
+[2026-06-15 20:21:49] Iniciando execucao do alerta 000043.
+[2026-06-15 20:22:01] Alerta 000043 checado: triggered=False preco=4099.0 alvo=4000.0
+[2026-06-15 20:22:01] Alerta 000043 sem disparo nesta execucao.
+[2026-06-15 20:22:01] Execucao finalizada sem disparos.
+[2026-06-15 20:22:01] Finalizada execucao do alerta 000043.
+[2026-06-15 20:42:06] Alerta 000043 enfileirado (manual) - nome: Console Nintendo Switch 2, Modelo Nacional de Tomada.
+[2026-06-15 20:42:06] Iniciando execucao do alerta 000043.
+[2026-06-15 20:42:19] Alerta 000043 checado: triggered=False preco=4099.0 alvo=4000.0
+[2026-06-15 20:42:19] Alerta 000043 sem disparo nesta execucao.
+[2026-06-15 20:42:19] Execucao finalizada sem disparos.
+[2026-06-15 20:42:19] Finalizada execucao do alerta 000043.
+[2026-06-15 20:43:18] Alerta 000021 enfileirado (manual) - nome: Monitor Gamer LG UltraGear 24” 24GS60F-B IPS Full HD 180Hz 1ms (GtG) NVIDIA® G-SYNC®.
+[2026-06-15 20:43:18] Iniciando execucao do alerta 000021.
+[2026-06-15 20:43:32] Alerta 000021 checado: triggered=False preco=749.0 alvo=710.0
+[2026-06-15 20:43:32] Alerta 000021 sem disparo nesta execucao.
+[2026-06-15 20:43:32] Execucao finalizada sem disparos.
+[2026-06-15 20:43:32] Finalizada execucao do alerta 000021.

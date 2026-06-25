@@ -1,0 +1,43 @@
+=== Inicio da execucao: 2026-06-25T20:36:52 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/cerveja-long-necj#D[A:cerveja%20long%20necj] --desconto-minimo 30 --limite-candidatos 4 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/cerveja-long-necj#D[A:cerveja%20long%20necj]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/cerveja-long-necj#D[A:cerveja%20long%20necj]
+✓ Link de afiliado: https://meli.la/1K2wWi3
+✓ Link de afiliado: https://meli.la/31ETDrg
+✓ Link de afiliado: https://meli.la/11Jpvxn
+✓ Link de afiliado: https://meli.la/25Q48RZ
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Budweiser Long Neck 330ml Kit Com 6 Unidades
+Message SID Twilio: SMfd366470460e17a51453fa5882d6854d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Corona Extra Lata 350ml - Pack 8 Unidades
+Message SID Twilio: SM08079e04af99283b2a7f2d9bf0848f24
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Praya Lager 330ml sem glúten Pack 6 Unidades
+Message SID Twilio: SM31886a8ccbd0c3ed4037ae7fd912a8e6
+
+Mensagem enviada para whatsapp:+5519991133269:
+6 Cerveja Stella Pure Gold Sem Glúten Menos Calorias 330ml
+Message SID Twilio: SM36b828d41f859fe98c4b1f1b18aa4fe6
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-25T20:37:55 ===

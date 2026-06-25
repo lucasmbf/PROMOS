@@ -1,0 +1,119 @@
+=== Inicio da execucao: 2026-06-21T21:34:26 ===
+Args: --somente-relampago --desconto-minimo 50 --limite-candidatos 10 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260621_213451_174839_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260621_213451_174839_01.txt
+8 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb3809352680 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6880372036 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5355020990 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6727710506 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5862685042 marcado como anuncio_inedito=false no histórico.
+Página atual trouxe 2/10 oferta(s) válida(s). Coletando página 2/25.
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning&page=2
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260621_213512_994393_02.txt
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260621_213451_174839_01.txt
+8 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb3809352680 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6880372036 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5355020990 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6727710506 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5862685042 marcado como anuncio_inedito=false no histórico.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260621_213512_994393_02.txt
+12 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb4158012367 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4415801503 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4408174713 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6193196778 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 225 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260621_213513.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2QCZTq8
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2kDS23G
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/349gwJa
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1GYFWeo
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1thy23u
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/27SqDCv
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2Awxudr
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1DfBppa
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1YoTNFb
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2q3w8j4
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0033_20260621_213656.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 5 Camisetas Básicas Masculina Dry Fit Lisa Tradicional  Variado G
+Message SID Twilio: SMf5ffe5d78ec73b36defc11896211e574
+
+Mensagem enviada para whatsapp:+5519991133269:
+Shorts Running Woom Marathon Masculino I
+Message SID Twilio: SM2e28670a1ad4514282a84b1aedfd46f0
+
+Mensagem enviada para whatsapp:+5519991133269:
+Lustres Led Pendente Moderno,luminaria De Teto 2anéis 4bolas 127/220v Dourado
+Message SID Twilio: SMef1cc8087b8068f9ea72e4375a4faf9c
+
+Mensagem enviada para whatsapp:+5519991133269:
+Pacote Figurinha Sticker Com Legend Extra Original Copa 2026 1 Legend Extra Sticker Copa Do Mundo 2026
+Message SID Twilio: SM06b24e23f8f2e63a69551a3307d1d04a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Baú Bauleto 57 Litros Aluminio Base Universal Todas As Motos Preto 57l
+Message SID Twilio: SM835c216404a1b60b70db18695d815e3b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ventilador De Teto Aliseu Retrátil Mid Branco Diâmetro 70 Cm Quantidade De Pás 3 127/220v Transparente Plástico
+Message SID Twilio: SM0c30cbac5917fe67965ff448a5825d62
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tela De Projeção Retrátil Dobrável De 120'' Com Suporte 0
+Message SID Twilio: SMe4e1881db4793c3229070251c085153d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Liso Etico Gold Spell Cosmeticos
+Message SID Twilio: SM4a08f3d14b3fc0ffa38e2807e83e7ded
+
+Mensagem enviada para whatsapp:+5519991133269:
+Massageador De Pes Eletrico Portatil Com Aquecimento E Controle Remoto Para Relaxamento Pés E Pernas Shiatsu Profissional Preto
+Message SID Twilio: SM5b4079b15c04802cf3441c71358bddce
+
+Mensagem enviada para whatsapp:+5519991133269:
+Pc Gamer Ryzen 7 5700g 16gb Ssd 480gb Monitor 20 Branco 480 Gb 16 Gb Radeon Vega 8 Graphics.
+Message SID Twilio: SM0a06f62edc4fedc43fc242dbe2209028
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-06-21T21:37:40 ===

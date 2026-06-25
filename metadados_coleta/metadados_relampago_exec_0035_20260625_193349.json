@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 35,
+  "gerado_em": "2026-06-25T19:33:49",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 2,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB5742883634",
+      "descricao": "Tp-link Deco X50(3-pack) Roteador Mesh Wifi6 Ax3000 Cobre Até 600m²",
+      "categoria": "Roteadores > Roteador Tp Link",
+      "antes": "R$ 1299",
+      "depois": "R$ 948",
+      "desconto": "27% OFF",
+      "link": "https://meli.la/2H6kqg8",
+      "link_original": "https://www.mercadolivre.com.br/tp-link-deco-x503-pack-roteador-mesh-wifi6-ax3000-cobre-ate-600m/p/MLB52106020?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=e70d0542-e88c-4704-9372-b16c5713fe67&position=1&tracking_id=351db3fc-b7f4-4220-a62e-0e0eb947b72f&wid=MLB5742883634&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/tp-link-deco-x503-pack-roteador-mesh-wifi6-ax3000-cobre-ate-600m/p/MLB52106020?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=e70d0542-e88c-4704-9372-b16c5713fe67&position=1&tracking_id=351db3fc-b7f4-4220-a62e-0e0eb947b72f&wid=MLB5742883634&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260625_193339_669180_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

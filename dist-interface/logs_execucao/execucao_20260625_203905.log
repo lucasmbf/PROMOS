@@ -1,0 +1,43 @@
+=== Inicio da execucao: 2026-06-25T20:39:05 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/suplementos#D[A:suplementos] --desconto-minimo 30 --limite-candidatos 4 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/suplementos#D[A:suplementos]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/suplementos#D[A:suplementos]
+✓ Link de afiliado: https://meli.la/2DqRo2u
+✓ Link de afiliado: https://meli.la/2Ap1ESJ
+✓ Link de afiliado: https://meli.la/2BCZKHy
+✓ Link de afiliado: https://meli.la/2hARw6y
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Hmb 90 Cápsulas Growth Supplements Sem Sabor
+Message SID Twilio: SMeebdb65d464c36bd9ea0a13809c59c2a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Basic Whey 1kg Growth Supplements - Chocolate
+Message SID Twilio: SMdfad9a8bafae6cad45dc981d6f8a6cc7
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey 100% Hd Refil Black Skull - 900g (wpc, Wpi E Wph) Sabor Chocolate
+Message SID Twilio: SM6b70c7e62e3835f16d4815c175ec297e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey Protein Concentrado 1kg Growth Supplements - Leite em Pó
+Message SID Twilio: SM25ad0ba49db9289e8b75c8aa0e87a507
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-25T20:40:15 ===

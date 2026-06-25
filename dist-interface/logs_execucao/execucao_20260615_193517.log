@@ -1,0 +1,61 @@
+=== Inicio da execucao: 2026-06-15T19:35:17 ===
+Args: --produto-por-html --descricao-produto Aquecedor --desconto-minimo 50 --limite-candidatos 10 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[Pesquisa inicial] Página 1: https://lista.mercadolivre.com.br/Aquecedor
+
+[Pesquisa inicial] Página 2: https://lista.mercadolivre.com.br/Aquecedor_Desde_51
+
+[Pesquisa inicial] Página 3: https://lista.mercadolivre.com.br/Aquecedor_Desde_101
+
+[Pesquisa inicial] Página 4: https://lista.mercadolivre.com.br/Aquecedor_Desde_151
+
+[Pesquisa inicial] Página 5: https://lista.mercadolivre.com.br/Aquecedor_Desde_201
+✓ Link de afiliado: https://meli.la/2KeZ92f
+✓ Link de afiliado: https://meli.la/13gDtjb
+✓ Link de afiliado: https://meli.la/13gDtjb
+✓ Link de afiliado: https://meli.la/2XVb8mP
+✓ Link de afiliado: https://meli.la/1PnC6ar
+✓ Link de afiliado: https://meli.la/1PnC6ar
+✓ Link de afiliado: https://meli.la/1tsDLba
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Aquecedor Elétrico Thermo Confort Koti - 127v Ou 220v
+Message SID Twilio: SM2d688f03c4acf40dfd06ab898fee1258
+
+Mensagem enviada para whatsapp:+5519991133269:
+Aquecedor Elétrico 1500W Portátil Branco Good&Go Termoventilador
+Message SID Twilio: SM9b177e7e88405208215eb9d944737414
+
+Mensagem enviada para whatsapp:+5519991133269:
+Aquecedor Elétrico 1500W Portátil Branco Good&Go Termoventilador
+Message SID Twilio: SM0a837d575debad56ff71d788103ba48d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Aquecedor De Ar Elétrico Portátil 2 Em 1 Ventilação Inverno Cor Branco
+Message SID Twilio: SMc5da51cd4fc98bc507bf7ecb017e3ff3
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ceramic Aquecedor Eletrico Portatil Para Uso Interno 120v
+Message SID Twilio: SM236a601aa805494251cc61b7a5a58a64
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ceramic Aquecedor Eletrico Portatil Para Uso Interno 120v
+Message SID Twilio: SMe8ce859bdb7ac6ee1b93baa1c9a05c0b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Aquecedor Britânia De Parede 1500w 2 Em 1 Baq2200b Cor Branco
+Message SID Twilio: SM409bce718b9dbc64ed3fa5585dc4bd64
+
+7 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-15T19:37:31 ===

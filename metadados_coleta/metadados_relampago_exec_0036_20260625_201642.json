@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 36,
+  "gerado_em": "2026-06-25T20:16:42",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 2,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB4618730661",
+      "descricao": "Camiseta Masculina Ess Logo Tee  Puma Puma Black Lisa G",
+      "categoria": "Calçados, Roupas e Bolsas > Camisas",
+      "antes": "R$ 109,99",
+      "depois": "R$ 56,99",
+      "desconto": "48% OFF",
+      "link": "https://meli.la/2SR3oXj",
+      "link_original": "https://www.mercadolivre.com.br/camiseta-masculina-ess-logo-tee--puma/up/MLBU3448275084?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=557e09b7-6420-4bf3-97ee-a6500b37385c&position=3&tracking_id=511fea5f-7ddf-4039-949b-c24233b04212&wid=MLB4618730661&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/camiseta-masculina-ess-logo-tee--puma/up/MLBU3448275084?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=557e09b7-6420-4bf3-97ee-a6500b37385c&position=3&tracking_id=511fea5f-7ddf-4039-949b-c24233b04212&wid=MLB4618730661&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260625_201631_966137_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

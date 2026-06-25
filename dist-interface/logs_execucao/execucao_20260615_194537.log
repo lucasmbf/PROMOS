@@ -1,0 +1,37 @@
+=== Inicio da execucao: 2026-06-15T19:45:37 ===
+Args: --produto-por-html --url-produto https://www.mercadolivre.com.br/raco-golden-formula-mini-bits-ces-adultos-pequeno-porte-carne-e-arroz-3kg-original/p/MLB10703984#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=5&type=product&tracking_id=4bd8ea57-77e9-4944-bdb0-8c07dbd709cf&wid=MLB4280899516&sid=search --url-produto https://www.mercadolivre.com.br/raco-royal-canin-maxi-ageing-8-para-co-snior-de-porte-grande-12-kg/p/MLB49040585?pdp_filters=item_id:MLB4162712053#is_advertising=true&searchVariation=MLB49040585&backend_model=search-backend&be_origin=backend&position=4&search_layout=grid&type=pad&tracking_id=cd5ecc84-7826-4ef4-9851-8eb8554eb384&ad_domain=VQCATCORE_LST&ad_position=4&ad_click_id=OTllMTgwZTYtOGEzZC00ZDFmLWJjMGYtZDc2ZTMzN2NmZGNk --url-produto https://www.mercadolivre.com.br/raco-royal-canin-veterinary-diet-canine-hypoallergenic-para-ces-adultos-de-racas-pequenas-2-kg/p/MLB16139787#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=7&type=product&tracking_id=ccc7e0b4-863e-438e-97d7-9f443b0bf7f0&wid=MLB3979816371&sid=search --url-produto https://www.mercadolivre.com.br/pro-plan-sensitive-skin-raco-ces-ad-mini-e-pequeno-75kg/p/MLB49248851#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=c512d256-f772-49eb-a4ed-d3acc5de34a1&wid=MLB6082343686&sid=search --url-produto https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=8be620af-ca1e-4f8b-bb52-c01aa4498a13&wid=MLB6850729492&sid=search --descricao-produto ração 2 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://www.mercadolivre.com.br/raco-golden-formula-mini-bits-ces-adultos-pequeno-porte-carne-e-arroz-3kg-original/p/MLB10703984#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=5&type=product&tracking_id=4bd8ea57-77e9-4944-bdb0-8c07dbd709cf&wid=MLB4280899516&sid=search
+[LISTAGEM_DIRETA] Link 1 - página 1: https://www.mercadolivre.com.br/raco-golden-formula-mini-bits-ces-adultos-pequeno-porte-carne-e-arroz-3kg-original/p/MLB10703984#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=5&type=product&tracking_id=4bd8ea57-77e9-4944-bdb0-8c07dbd709cf&wid=MLB4280899516&sid=search
+[LISTAGEM_DIRETA] Link 1 - página 2: https://www.mercadolivre.com.br/raco-golden-formula-mini-bits-ces-adultos-pequeno-porte-carne-e-arroz-3kg-original/p/MLB10703984?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://www.mercadolivre.com.br/raco-golden-formula-mini-bits-ces-adultos-pequeno-porte-carne-e-arroz-3kg-original/p/MLB10703984?page=3
+
+[LINK_BASE_2] Processando listagem direta: https://www.mercadolivre.com.br/raco-royal-canin-maxi-ageing-8-para-co-snior-de-porte-grande-12-kg/p/MLB49040585?pdp_filters=item_id:MLB4162712053#is_advertising=true&searchVariation=MLB49040585&backend_model=search-backend&be_origin=backend&position=4&search_layout=grid&type=pad&tracking_id=cd5ecc84-7826-4ef4-9851-8eb8554eb384&ad_domain=VQCATCORE_LST&ad_position=4&ad_click_id=OTllMTgwZTYtOGEzZC00ZDFmLWJjMGYtZDc2ZTMzN2NmZGNk
+[LISTAGEM_DIRETA] Link 2 - página 1: https://www.mercadolivre.com.br/raco-royal-canin-maxi-ageing-8-para-co-snior-de-porte-grande-12-kg/p/MLB49040585?pdp_filters=item_id:MLB4162712053#is_advertising=true&searchVariation=MLB49040585&backend_model=search-backend&be_origin=backend&position=4&search_layout=grid&type=pad&tracking_id=cd5ecc84-7826-4ef4-9851-8eb8554eb384&ad_domain=VQCATCORE_LST&ad_position=4&ad_click_id=OTllMTgwZTYtOGEzZC00ZDFmLWJjMGYtZDc2ZTMzN2NmZGNk
+[LISTAGEM_DIRETA] Link 2 - página 2: https://www.mercadolivre.com.br/raco-royal-canin-maxi-ageing-8-para-co-snior-de-porte-grande-12-kg/p/MLB49040585?pdp_filters=item_id%3AMLB4162712053&page=2
+[LISTAGEM_DIRETA] Link 2 - página 3: https://www.mercadolivre.com.br/raco-royal-canin-maxi-ageing-8-para-co-snior-de-porte-grande-12-kg/p/MLB49040585?pdp_filters=item_id%3AMLB4162712053&page=3
+
+[LINK_BASE_3] Processando listagem direta: https://www.mercadolivre.com.br/raco-royal-canin-veterinary-diet-canine-hypoallergenic-para-ces-adultos-de-racas-pequenas-2-kg/p/MLB16139787#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=7&type=product&tracking_id=ccc7e0b4-863e-438e-97d7-9f443b0bf7f0&wid=MLB3979816371&sid=search
+[LISTAGEM_DIRETA] Link 3 - página 1: https://www.mercadolivre.com.br/raco-royal-canin-veterinary-diet-canine-hypoallergenic-para-ces-adultos-de-racas-pequenas-2-kg/p/MLB16139787#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=7&type=product&tracking_id=ccc7e0b4-863e-438e-97d7-9f443b0bf7f0&wid=MLB3979816371&sid=search
+[LISTAGEM_DIRETA] Link 3 - página 2: https://www.mercadolivre.com.br/raco-royal-canin-veterinary-diet-canine-hypoallergenic-para-ces-adultos-de-racas-pequenas-2-kg/p/MLB16139787?page=2
+[LISTAGEM_DIRETA] Link 3 - página 3: https://www.mercadolivre.com.br/raco-royal-canin-veterinary-diet-canine-hypoallergenic-para-ces-adultos-de-racas-pequenas-2-kg/p/MLB16139787?page=3
+
+[LINK_BASE_4] Processando listagem direta: https://www.mercadolivre.com.br/pro-plan-sensitive-skin-raco-ces-ad-mini-e-pequeno-75kg/p/MLB49248851#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=c512d256-f772-49eb-a4ed-d3acc5de34a1&wid=MLB6082343686&sid=search
+[LISTAGEM_DIRETA] Link 4 - página 1: https://www.mercadolivre.com.br/pro-plan-sensitive-skin-raco-ces-ad-mini-e-pequeno-75kg/p/MLB49248851#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=c512d256-f772-49eb-a4ed-d3acc5de34a1&wid=MLB6082343686&sid=search
+[LISTAGEM_DIRETA] Link 4 - página 2: https://www.mercadolivre.com.br/pro-plan-sensitive-skin-raco-ces-ad-mini-e-pequeno-75kg/p/MLB49248851?page=2
+[LISTAGEM_DIRETA] Link 4 - página 3: https://www.mercadolivre.com.br/pro-plan-sensitive-skin-raco-ces-ad-mini-e-pequeno-75kg/p/MLB49248851?page=3
+
+[LINK_BASE_5] Processando listagem direta: https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=8be620af-ca1e-4f8b-bb52-c01aa4498a13&wid=MLB6850729492&sid=search
+[LISTAGEM_DIRETA] Link 5 - página 1: https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=8be620af-ca1e-4f8b-bb52-c01aa4498a13&wid=MLB6850729492&sid=search
+[LISTAGEM_DIRETA] Link 5 - página 2: https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100&page=2
+[LISTAGEM_DIRETA] Link 5 - página 3: https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100&page=3
+
+Nenhum candidato válido encontrado nas listagens diretas informadas.
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-06-15T19:47:06 ===

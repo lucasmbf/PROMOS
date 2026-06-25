@@ -862,15 +862,35 @@ def aguardar_login_mercado_livre(page):
     )
 
 
-def montar_mensagem_produto(produto):
+def montar_mensagem_produto(produto, incluir_banner_relampago=False):
 
-    return (
-        f"{produto['descricao']}\n\n"
-        f"Antes: {produto['antes']}\n"
-        f"Depois: {produto['depois']}\n"
-        f"Desconto: {produto['desconto']}\n"
-        f"Link: {produto['link']}"
+    categoria = produto.get("categoria", "-")
+    descricao = produto.get("descricao", "-")
+    antes = produto.get("antes", "-")
+    depois = produto.get("depois", "-")
+    desconto = produto.get("desconto", "-")
+    link = produto.get("link", "-")
+
+    linhas = []
+
+    if incluir_banner_relampago:
+        linhas.append("*⚡⚡ OFERTA RELAMPAGO ⚡⚡*")
+        linhas.append("")
+
+    linhas.extend(
+        [
+            f"*{categoria}*",
+            "",
+            f"{descricao}",
+            "",
+            f"~Antes: {antes}~",
+            f"*Desconto: {desconto}*",
+            f"*Depois: {depois}*",
+            f"{link}",
+        ]
     )
+
+    return "\n".join(linhas)
 
 
 def registrar_produto_ignorado(produto, motivo, detalhe=""):
@@ -890,7 +910,7 @@ def registrar_produto_ignorado(produto, motivo, detalhe=""):
         )
 
 
-def enviar_produtos_por_whatsapp(produtos):
+def enviar_produtos_por_whatsapp(produtos, incluir_banner_relampago=False):
 
     if not produtos:
 
@@ -939,7 +959,10 @@ def enviar_produtos_por_whatsapp(produtos):
 
     for produto in produtos:
 
-        mensagem = montar_mensagem_produto(produto)
+        mensagem = montar_mensagem_produto(
+            produto,
+            incluir_banner_relampago=incluir_banner_relampago,
+        )
         # Teste sem imagem: o envio fica somente no texto da mensagem.
         # imagem = (produto.get("imagem") or "").strip()
         parametros_envio = {
@@ -1538,7 +1561,10 @@ with sync_playwright() as p:
         salvar_resultado_relampago(ofertas_relampago, pasta=ARGS.pasta_saida or None)
         salvar_saida_execucao_modalidade(ofertas_relampago, ARGS.modalidade_execucao or "ondemand")
 
-        enviar_produtos_por_whatsapp(ofertas_relampago)
+        enviar_produtos_por_whatsapp(
+            ofertas_relampago,
+            incluir_banner_relampago=True,
+        )
 
         salvar_historico_anuncios_em_arquivo(
             HISTORICO_ANUNCIOS_ARQUIVO,

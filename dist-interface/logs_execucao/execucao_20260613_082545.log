@@ -1,0 +1,69 @@
+=== Inicio da execucao: 2026-06-13T08:25:45 ===
+Args: --produto-por-html --desconto-minimo 20 --limite-candidatos 10 --url-produto https://lista.mercadolivre.com.br/_Container_fh-top-lojas-moveis --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_fh-top-lojas-moveis
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_fh-top-lojas-moveis
+✓ Link de afiliado: https://meli.la/1KEGaBf
+✓ Link de afiliado: https://meli.la/1sWDkgM
+✓ Link de afiliado: https://meli.la/11ktfWo
+✓ Link de afiliado: https://meli.la/1ZBLuvd
+✓ Link de afiliado: https://meli.la/31b5N14
+✓ Link de afiliado: https://meli.la/1WBmuJq
+✓ Link de afiliado: https://meli.la/1bEjV9o
+✓ Link de afiliado: https://meli.la/2NrwCfK
+✓ Link de afiliado: https://meli.la/315TRaN
+✓ Link de afiliado: https://meli.la/113dMKR
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo Toalhas De Algodão 4 Peças Banho E Rosto Bege Marrom Karsten
+Message SID Twilio: SM90ebbc5f7f11eff3b985e7a7e0c8bb34
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo De Toalhas De Algodão 4 Peças Banho E Rosto Bege Karsten
+Message SID Twilio: SM0d21e13e5a489ff1835877b2ede4318f
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cômoda Com 6 Gavetas 120cm Multimóveis Mp4396 Branco
+Message SID Twilio: SMc8e22cc35a943913d82629cb2f3e0a43
+
+Mensagem enviada para whatsapp:+5519991133269:
+Armário de cozinha modulada completa compacta Emilly pop com armário e balcão cor rustic/preto GREM229002
+Message SID Twilio: SMeaaf321265af665bfb7d5dc98b6e9516
+
+Mensagem enviada para whatsapp:+5519991133269:
+Guarda-roupa Casal 6 Portas 2 Gavetas França Wt
+Message SID Twilio: SM5aacb1e8f2ee26355e053d3e89e99872
+
+Mensagem enviada para whatsapp:+5519991133269:
+Colchão Casal Molas Qatar 138x188x22cm Bege/branco Inducol Cor Bege
+Message SID Twilio: SM34403f7015a90e5c6b19cf9b89c7a5f9
+
+Mensagem enviada para whatsapp:+5519991133269:
+Colchão Casal Ortopédico Black 138x188x32 Espuma D33 Preto
+Message SID Twilio: SM99d6d0c68036d6ad07f39f6f64532c9f
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cama Box Baú Casal Colchão Gazin Molas Flora Bege 138x188x61cm
+Message SID Twilio: SM76b0450f7f34e18b601134ae9e66284c
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cama Box Baú Colchão Casal Molas Ensacadas City Pillow Top 138x188x64cm Branco e Bege Hellen
+Message SID Twilio: SMbab816f5ba63de34131f0c3246d5d216
+
+Mensagem enviada para whatsapp:+5519991133269:
+Guarda-roupa Casal MDF 2 Portas Corrediças Branco 6 Gavetas Móveis Lopas
+Message SID Twilio: SM26dc943b46711f81d0195e1dbacf7cd8
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-06-13T08:28:17 ===

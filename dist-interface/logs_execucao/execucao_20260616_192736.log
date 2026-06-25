@@ -1,0 +1,32 @@
+=== Inicio da execucao: 2026-06-16T19:27:36 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/_Container_jogos-digitais#c_container_id=MLB1495632-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=3&c_campaign=jogos-digitais&c_label=%2Fsplinter%2Fcarouselitem&c_uid=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_element_id=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_content_origin=splinter-default&c_content_type=default&c_global_position=3&deal_print_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174&c_tracking_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174 --url-produto https://lista.mercadolivre.com.br/informatica/portateis-acessorios/acessorios-notebook/#menu=categories --url-produto https://lista.mercadolivre.com.br/eletronicos-audio-video/acessorios-tv/#menu=categories --url-produto https://lista.mercadolivre.com.br/celulares-telefones/acessorios-celulares/#menu=categories --preco-minimo 50.0 --preco-maximo 400.0 --desconto-minimo 10 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_jogos-digitais#c_container_id=MLB1495632-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=3&c_campaign=jogos-digitais&c_label=%2Fsplinter%2Fcarouselitem&c_uid=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_element_id=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_content_origin=splinter-default&c_content_type=default&c_global_position=3&deal_print_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174&c_tracking_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_jogos-digitais#c_container_id=MLB1495632-1&c_id=%2Fsplinter%2Fcarouselitem&c_element_order=3&c_campaign=jogos-digitais&c_label=%2Fsplinter%2Fcarouselitem&c_uid=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_element_id=fe0cf040-61e2-11f1-8622-352a5eed86fd&c_content_origin=splinter-default&c_content_type=default&c_global_position=3&deal_print_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174&c_tracking_id=fde73fd0-61e2-11f1-84a4-bd481f0d5174
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/_Container_jogos-digitais?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/_Container_jogos-digitais?page=3
+
+[LINK_BASE_2] Processando listagem direta: https://lista.mercadolivre.com.br/informatica/portateis-acessorios/acessorios-notebook/#menu=categories
+[LISTAGEM_DIRETA] Link 2 - página 1: https://lista.mercadolivre.com.br/informatica/portateis-acessorios/acessorios-notebook/#menu=categories
+[LISTAGEM_DIRETA] Link 2 - página 2: https://lista.mercadolivre.com.br/informatica/portateis-acessorios/acessorios-notebook/?page=2
+[LISTAGEM_DIRETA] Link 2 - página 3: https://lista.mercadolivre.com.br/informatica/portateis-acessorios/acessorios-notebook/?page=3
+
+[LINK_BASE_3] Processando listagem direta: https://lista.mercadolivre.com.br/eletronicos-audio-video/acessorios-tv/#menu=categories
+[LISTAGEM_DIRETA] Link 3 - página 1: https://lista.mercadolivre.com.br/eletronicos-audio-video/acessorios-tv/#menu=categories
+[LISTAGEM_DIRETA] Link 3 - página 2: https://lista.mercadolivre.com.br/eletronicos-audio-video/acessorios-tv/?page=2
+[LISTAGEM_DIRETA] Link 3 - página 3: https://lista.mercadolivre.com.br/eletronicos-audio-video/acessorios-tv/?page=3
+
+[LINK_BASE_4] Processando listagem direta: https://lista.mercadolivre.com.br/celulares-telefones/acessorios-celulares/#menu=categories
+[LISTAGEM_DIRETA] Link 4 - página 1: https://lista.mercadolivre.com.br/celulares-telefones/acessorios-celulares/#menu=categories
+[LISTAGEM_DIRETA] Link 4 - página 2: https://lista.mercadolivre.com.br/celulares-telefones/acessorios-celulares/?page=2
+[LISTAGEM_DIRETA] Link 4 - página 3: https://lista.mercadolivre.com.br/celulares-telefones/acessorios-celulares/?page=3
+
+Nenhum candidato válido encontrado nas listagens diretas informadas.
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-06-16T19:29:04 ===

@@ -1,0 +1,41 @@
+=== Inicio do log de alertas: 2026-06-23T17:18:36 ===
+[2026-06-23 17:19:36] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-06-23 17:19:36] Alerta 000039 enfileirado (scheduler) - nome: amazon firestick 4k.
+[2026-06-23 17:19:36] Iniciando execucao do alerta 000013.
+[2026-06-23 17:19:40] Alerta 000013 erro na checagem: Falha ao extrair preco.
+[2026-06-23 17:19:40] Alerta 000013 falhou: Falha ao extrair preco.
+[2026-06-23 17:19:40] Execucao finalizada sem disparos.
+[2026-06-23 17:19:40] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-23 17:19:40] Finalizada execucao do alerta 000013.
+[2026-06-23 17:19:40] Iniciando execucao do alerta 000039.
+[2026-06-23 17:19:47] Alerta 000039 erro na checagem: Falha ao extrair preco.
+[2026-06-23 17:19:47] Alerta 000039 falhou: Falha ao extrair preco.
+[2026-06-23 17:19:47] Execucao finalizada sem disparos.
+[2026-06-23 17:19:47] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-23 17:19:47] Finalizada execucao do alerta 000039.
+[2026-06-25 19:15:06] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-06-25 19:15:06] Alerta 000039 enfileirado (scheduler) - nome: amazon firestick 4k.
+[2026-06-25 19:15:06] Iniciando execucao do alerta 000013.
+[2026-06-25 19:15:06] Alerta 000013 erro na checagem: Falha ao extrair preco.
+[2026-06-25 19:15:07] Alerta 000013 falhou: Falha ao extrair preco.
+[2026-06-25 19:15:07] Execucao finalizada sem disparos.
+[2026-06-25 19:15:07] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-25 19:15:07] Finalizada execucao do alerta 000013.
+[2026-06-25 19:15:07] Iniciando execucao do alerta 000039.
+[2026-06-25 19:15:07] Alerta 000039 erro na checagem: Falha ao extrair preco.
+[2026-06-25 19:15:07] Alerta 000039 falhou: Falha ao extrair preco.
+[2026-06-25 19:15:07] Execucao finalizada sem disparos.
+[2026-06-25 19:15:07] Resumo de falhas: links invalidos=0; descricao divergente=0; falha extracao preco=1.
+[2026-06-25 19:15:07] Finalizada execucao do alerta 000039.
+[2026-06-25 19:24:24] Alerta 000039 enfileirado (manual) - nome: amazon firestick 4k.
+[2026-06-25 19:24:24] Iniciando execucao do alerta 000039.
+[2026-06-25 19:24:48] Alerta 000039 checado: triggered=False preco=254.0 alvo=230.0
+[2026-06-25 19:24:48] Alerta 000039 sem disparo nesta execucao.
+[2026-06-25 19:24:48] Execucao finalizada sem disparos.
+[2026-06-25 19:24:48] Finalizada execucao do alerta 000039.
+[2026-06-25 19:24:54] Alerta 000039 enfileirado (manual) - nome: amazon firestick 4k.
+[2026-06-25 19:24:54] Iniciando execucao do alerta 000039.
+[2026-06-25 19:25:20] Alerta 000039 checado: triggered=False preco=254.0 alvo=230.0
+[2026-06-25 19:25:20] Alerta 000039 sem disparo nesta execucao.
+[2026-06-25 19:25:20] Execucao finalizada sem disparos.
+[2026-06-25 19:25:20] Finalizada execucao do alerta 000039.
