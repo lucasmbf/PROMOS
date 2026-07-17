@@ -1,0 +1,52 @@
+=== Inicio da execucao: 2026-07-14T19:55:42 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D07c3c6ac-63be-41c7-9661-15b7fb6b5598%26tracking_id%3D00865ebe-665b-45f1-964a-0c02a0ba3cda --url-produto https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203380_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203380%26applied_value_name%3DPedigree%26applied_value_order%3D1%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3De8762de2-15d0-48de-a1fe-9dadd238a6f8%26tracking_id%3D9bd718ab-05d5-4e12-a222-a5332bd2a787 --url-produto https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213835%26applied_value_name%3DPurina%26applied_value_order%3D3%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D008918ca-2aca-4fa8-9159-493ef44d5342%26tracking_id%3Db268211c-bee9-4af3-827e-8749eca2fd0a --url-produto https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213847%26applied_value_name%3DPro+Plan%26applied_value_order%3D5%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3Da70da431-ba7a-47e6-986a-f72e2264e321%26tracking_id%3Dbdb68b4f-01d5-49ae-9930-a5d30b96efe9 --descricao-produto ração 1 --desconto-minimo 10 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D07c3c6ac-63be-41c7-9661-15b7fb6b5598%26tracking_id%3D00865ebe-665b-45f1-964a-0c02a0ba3cda
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D07c3c6ac-63be-41c7-9661-15b7fb6b5598%26tracking_id%3D00865ebe-665b-45f1-964a-0c02a0ba3cda
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?sb=all_mercadolibre&page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?sb=all_mercadolibre&page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+[LINK_BASE_2] Processando listagem direta: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203380_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203380%26applied_value_name%3DPedigree%26applied_value_order%3D1%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3De8762de2-15d0-48de-a1fe-9dadd238a6f8%26tracking_id%3D9bd718ab-05d5-4e12-a222-a5332bd2a787
+[LINK_BASE_2] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 2
+[LISTAGEM_DIRETA] Link 2 - página 1: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203380_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203380%26applied_value_name%3DPedigree%26applied_value_order%3D1%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3De8762de2-15d0-48de-a1fe-9dadd238a6f8%26tracking_id%3D9bd718ab-05d5-4e12-a222-a5332bd2a787
+[LISTAGEM_DIRETA] Link 2 - página 2: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203380_NoIndex_True?sb=all_mercadolibre&page=2
+[LISTAGEM_DIRETA] Link 2 - página 3: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203380_NoIndex_True?sb=all_mercadolibre&page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+[LINK_BASE_3] Processando listagem direta: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213835%26applied_value_name%3DPurina%26applied_value_order%3D3%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D008918ca-2aca-4fa8-9159-493ef44d5342%26tracking_id%3Db268211c-bee9-4af3-827e-8749eca2fd0a
+[LINK_BASE_3] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 3
+[LISTAGEM_DIRETA] Link 3 - página 1: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213835%26applied_value_name%3DPurina%26applied_value_order%3D3%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D008918ca-2aca-4fa8-9159-493ef44d5342%26tracking_id%3Db268211c-bee9-4af3-827e-8749eca2fd0a
+[LISTAGEM_DIRETA] Link 3 - página 2: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True?sb=all_mercadolibre&page=2
+[LISTAGEM_DIRETA] Link 3 - página 3: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True?sb=all_mercadolibre&page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+[LINK_BASE_4] Processando listagem direta: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213847%26applied_value_name%3DPro+Plan%26applied_value_order%3D5%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3Da70da431-ba7a-47e6-986a-f72e2264e321%26tracking_id%3Dbdb68b4f-01d5-49ae-9930-a5d30b96efe9
+[LINK_BASE_4] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 4
+[LISTAGEM_DIRETA] Link 4 - página 1: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213847%26applied_value_name%3DPro+Plan%26applied_value_order%3D5%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3Da70da431-ba7a-47e6-986a-f72e2264e321%26tracking_id%3Dbdb68b4f-01d5-49ae-9930-a5d30b96efe9
+[LISTAGEM_DIRETA] Link 4 - página 2: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True?sb=all_mercadolibre&page=2
+[LISTAGEM_DIRETA] Link 4 - página 3: https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True?sb=all_mercadolibre&page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+Nenhum candidato válido encontrado nas listagens diretas informadas.
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-07-14T19:57:18 ===

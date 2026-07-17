@@ -1,0 +1,169 @@
+=== Inicio da execucao: 2026-07-17T19:33:17 ===
+Args: --relampago-padrao --url-relampago https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 3 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260717_193343_254222_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260717_193343_254222_01.txt
+32 oferta(s) com 30% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb2749770580 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4077829432 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4812130742 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6419705000 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6465256686 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3817089255 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4314606824 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3319502667 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4718918529 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4888474966 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3547094541 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4067271145 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4471841974 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6549158890 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3525364839 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4783917119 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb2897426576 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5522151066 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4097739991 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3754624021 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4291609113 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761715520 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb2749782720 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4790022381 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6657396478 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5552965854 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4508079021 marcado como anuncio_inedito=false no histórico.
+Primeira página não foi suficiente (2/10). Coletando página 2/2.
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning&page=2
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260717_193405_781138_02.txt
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260717_193343_254222_01.txt
+32 oferta(s) com 30% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb2749770580 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4077829432 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4812130742 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6419705000 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6465256686 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3817089255 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4314606824 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3319502667 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4718918529 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4888474966 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3547094541 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4067271145 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4471841974 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6549158890 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3525364839 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4783917119 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb2897426576 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5522151066 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4097739991 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3754624021 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4291609113 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761715520 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb2749782720 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4790022381 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6657396478 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5552965854 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4508079021 marcado como anuncio_inedito=false no histórico.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260717_193405_781138_02.txt
+31 oferta(s) com 30% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb6759051962 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6295525526 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4709036049 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6391243490 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4677833439 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4307126823 marcado como anuncio_inedito=false no histórico.
+Paginação limitada a 2 página(s) para evitar varredura excessiva (detecção original: 223 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260717_193405.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2Qq9ymY
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1cQgLH7
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2WFHWRD
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/29zDQ6k
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1QxEBtD
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2w8p4tG
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2WwGPQr
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1Qsk1u7
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2Z6fgfG
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2u4kAhq
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0068_20260717_193542.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera Inteligente Resistente a Chuva e Poeira iM7 S Branca Intelbras
+Message SID Twilio: SMeb31cecdeb6d9ada70420a76568fefdf
+
+Mensagem enviada para whatsapp:+5519991133269:
+Politriz Angular Automotiva 5 Polegadas 1000w 2800-5800 Rpm Btp1000 The Black Tools
+Message SID Twilio: SM001e03b9fd1aea04485c7050eee48363
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ômega 3 Epa Dha 120 Cápsulas Dark Lab
+Message SID Twilio: SM35da5141391ea6ebee504532a80060d8
+
+Mensagem enviada para whatsapp:+5519991133269:
+Air Fryer Oven Philco 11L 8 Funções Visor 1800W PAF11B
+Message SID Twilio: SMa5862faed61e1184abe16b0e284b2c5a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Martelete Perfurador Rompedor Professional 26mm 900w Sds Plus 3j Com Maleta E Acessorios Trm-3000 The Black Tools
+Message SID Twilio: SMab1a4fedf55a4d939b544b70fd382e3e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cadeira Gamer Lancer Preta e Branca Healer
+Message SID Twilio: SM1b8e1529be51dc3abba5db64b7586570
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis Masculino Vl Court 3.0 adidas Preto/branco Lisa 40 Br
+Message SID Twilio: SMc27ffcbce5ad943bfb4da5e9f2dd4676
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Alicate Crimpar Descascador 1200 Terminais Ilhós Tubular Cietec
+Message SID Twilio: SMada1d4df403b44d3373a1309330da5b7
+
+Mensagem enviada para whatsapp:+5519991133269:
+Relógio Inteligente Smartwatch Alexa Chamadas NOVANTE Masculino Feminino Esportivo Ip68 Bluetooth Notificações Instantâneas Tela Hd 1.83 300mAh 10Dias Monitor Cardíaco Spo2 Sono Ecg Pagamento Offline
+Message SID Twilio: SM3b749f56689f6fc1e86ce1cea622b281
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey Protein Concentrado 1kg Dark Lab Sabor Paçoca
+Message SID Twilio: SMa40973849ac009ed690cec209731d101
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-17T19:36:29 ===

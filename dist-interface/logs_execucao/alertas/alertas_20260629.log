@@ -1,0 +1,7 @@
+=== Inicio do log de alertas: 2026-06-29T18:49:46 ===
+[2026-06-29 18:50:46] Alerta 000013 enfileirado (scheduler) - nome: Fralda.
+[2026-06-29 18:50:46] Iniciando execucao do alerta 000013.
+[2026-06-29 18:51:00] Alerta 000013 checado: triggered=False preco=144.05 alvo=70.0
+[2026-06-29 18:51:00] Alerta 000013 sem disparo nesta execucao.
+[2026-06-29 18:51:00] Execucao finalizada sem disparos.
+[2026-06-29 18:51:00] Finalizada execucao do alerta 000013.

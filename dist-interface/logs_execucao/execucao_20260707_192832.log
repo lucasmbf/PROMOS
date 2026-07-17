@@ -1,0 +1,62 @@
+=== Inicio da execucao: 2026-07-07T19:28:32 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3Dd99d9fd2-7fd4-4225-b8c3-b4a0e158aa78%26tracking_id%3D158c45e0-e929-4088-a373-c83b42e032f1 --url-produto https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2623560_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2623560%26applied_value_name%3DWhiskas%26applied_value_order%3D1%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D89c66c07-73fb-443c-81ce-d5ca394dad9a%26tracking_id%3Dd4418521-80c7-41c2-a9e8-c9719815db79 --url-produto https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213835%26applied_value_name%3DPurina%26applied_value_order%3D2%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D440692ff-7814-49df-bc76-f41a8226cd9b%26tracking_id%3D9ee383d1-186e-46b3-b075-c20acff53d89 --url-produto https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213847%26applied_value_name%3DPro+Plan%26applied_value_order%3D3%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D63b1b5d1-e595-42e3-83ee-a55bdd4a4923%26tracking_id%3De1416fd1-6fd2-4494-9afa-291424e5421f --url-produto https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=8be620af-ca1e-4f8b-bb52-c01aa4498a13&wid=MLB6850729492&sid=search --descricao-produto ração 2 --preco-minimo 0.37332033803263265 --desconto-minimo 10 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3Dd99d9fd2-7fd4-4225-b8c3-b4a0e158aa78%26tracking_id%3D158c45e0-e929-4088-a373-c83b42e032f1
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3Dd99d9fd2-7fd4-4225-b8c3-b4a0e158aa78%26tracking_id%3D158c45e0-e929-4088-a373-c83b42e032f1
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/5
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+[LINK_BASE_2] Processando listagem direta: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2623560_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2623560%26applied_value_name%3DWhiskas%26applied_value_order%3D1%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D89c66c07-73fb-443c-81ce-d5ca394dad9a%26tracking_id%3Dd4418521-80c7-41c2-a9e8-c9719815db79
+[LINK_BASE_2] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 2
+[LISTAGEM_DIRETA] Link 2 - página 1: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2623560_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2623560%26applied_value_name%3DWhiskas%26applied_value_order%3D1%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D89c66c07-73fb-443c-81ce-d5ca394dad9a%26tracking_id%3Dd4418521-80c7-41c2-a9e8-c9719815db79
+[LISTAGEM_DIRETA] Link 2 - página 2: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2623560_NoIndex_True?page=2
+[LISTAGEM_DIRETA] Link 2 - página 3: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2623560_NoIndex_True?page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/5
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+[LINK_BASE_3] Processando listagem direta: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213835%26applied_value_name%3DPurina%26applied_value_order%3D2%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D440692ff-7814-49df-bc76-f41a8226cd9b%26tracking_id%3D9ee383d1-186e-46b3-b075-c20acff53d89
+[LINK_BASE_3] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 3
+[LISTAGEM_DIRETA] Link 3 - página 1: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213835%26applied_value_name%3DPurina%26applied_value_order%3D2%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D440692ff-7814-49df-bc76-f41a8226cd9b%26tracking_id%3D9ee383d1-186e-46b3-b075-c20acff53d89
+[LISTAGEM_DIRETA] Link 3 - página 2: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True?page=2
+[LISTAGEM_DIRETA] Link 3 - página 3: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True?page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/5
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+[LINK_BASE_4] Processando listagem direta: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213847%26applied_value_name%3DPro+Plan%26applied_value_order%3D3%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D63b1b5d1-e595-42e3-83ee-a55bdd4a4923%26tracking_id%3De1416fd1-6fd2-4494-9afa-291424e5421f
+[LINK_BASE_4] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 4
+[LISTAGEM_DIRETA] Link 4 - página 1: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213847%26applied_value_name%3DPro+Plan%26applied_value_order%3D3%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D63b1b5d1-e595-42e3-83ee-a55bdd4a4923%26tracking_id%3De1416fd1-6fd2-4494-9afa-291424e5421f
+[LISTAGEM_DIRETA] Link 4 - página 2: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True?page=2
+[LISTAGEM_DIRETA] Link 4 - página 3: https://lista.mercadolivre.com.br/animais/gatos/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True?page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/5
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+[LINK_BASE_5] Processando listagem direta: https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=8be620af-ca1e-4f8b-bb52-c01aa4498a13&wid=MLB6850729492&sid=search
+[LINK_BASE_5] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 5
+[LISTAGEM_DIRETA] Link 5 - página 1: https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=8be620af-ca1e-4f8b-bb52-c01aa4498a13&wid=MLB6850729492&sid=search
+[LISTAGEM_DIRETA] Link 5 - página 2: https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100&page=2
+[LISTAGEM_DIRETA] Link 5 - página 3: https://www.mercadolivre.com.br/racao-pro-plan-purina-frango-filhotes-mini-e-pequenos-1kg/up/MLBU4010431067?pdp_filters=discount%3A40-100&page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/5
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+Nenhum candidato válido encontrado nas listagens diretas informadas.
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-07-07T19:30:17 ===

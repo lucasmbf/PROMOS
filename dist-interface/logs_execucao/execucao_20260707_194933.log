@@ -1,0 +1,19 @@
+=== Inicio da execucao: 2026-07-07T19:49:33 ===
+Args: --produto-por-html --descricao-produto bola de tenis robin soderling --limite-candidatos 4 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[BLOCO_GENERICA_1] Carregando páginas 1 a 3
+[BLOCO_GENERICA_1] Página 1: https://lista.mercadolivre.com.br/bola-de-tenis-robin-soderling
+[BLOCO_GENERICA_1] Página 2: https://lista.mercadolivre.com.br/bola-de-tenis-robin-soderling_Desde_51
+[BLOCO_GENERICA_1] Página 3: https://lista.mercadolivre.com.br/bola-de-tenis-robin-soderling_Desde_101
+[BLOCO_GENERICA_1] Resultado: 0 candidato(s) coletado(s). Total: 0
+[BLOCO_GENERICA_1] Nenhum candidato novo encontrado. Parando busca genérica.
+
+Nenhum candidato válido encontrado na pesquisa inicial.
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-07-07T19:49:56 ===

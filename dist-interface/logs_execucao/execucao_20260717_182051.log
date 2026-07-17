@@ -1,0 +1,36 @@
+=== Inicio da execucao: 2026-07-17T18:20:51 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/suplementos#D[A:suplementos] --descricao-produto Creatina --desconto-minimo 30 --limite-candidatos 4 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/suplementos#D[A:suplementos]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/suplementos#D[A:suplementos]
+✓ Link de afiliado: https://meli.la/2xe8W2C
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/suplementos?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/suplementos?page=3
+[BLOCO_1] Resultado: 1 candidato(s) coletado(s), 1 válido(s) enriquecido(s). Total: 1/4
+
+[BLOCO_2] Carregando páginas 4 a 5 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 4: https://lista.mercadolivre.com.br/suplementos?page=4
+[LISTAGEM_DIRETA] Link 1 - página 5: https://lista.mercadolivre.com.br/suplementos?page=5
+[BLOCO_2] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 1/4
+[BLOCO_2] Nenhum candidato encontrado. Parando busca neste link.
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Monohidratada 1200g Soldiers Nutrition 100% Pura Sem Sabor
+Message SID Twilio: SM3366bd36d00d5217060b2a2850413fea
+
+1 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-17T18:21:53 ===

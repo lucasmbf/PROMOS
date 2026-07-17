@@ -1,0 +1,25 @@
+=== Inicio da execucao: 2026-07-09T09:33:54 ===
+Args: --produto-por-html --descricao-produto Painel Pegboard Mdf Cor Preto 59x33 Organizador Setup Gamer --preco-minimo 48.0 --preco-maximo 50.0 --limite-candidatos 1 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[BLOCO_GENERICA_1] Carregando páginas 1 a 3
+[BLOCO_GENERICA_1] Página 1: https://lista.mercadolivre.com.br/Painel-Pegboard-Mdf-Cor-Preto-59x33-Organizador-Setup-Gamer
+[BLOCO_GENERICA_1] Resultado: 1 candidato(s) coletado(s). Total: 1
+✓ Link de afiliado: https://meli.la/2ngBe6E
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Painel Pegboard Mdf Cor Preto 59x33 Organizador Setup Gamer
+Message SID Twilio: SM36b73f6b0c70f976b580a4455a89de2d
+
+1 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-09T09:34:18 ===

@@ -54,6 +54,8 @@ SHEETS_SYNC_LOGS_DIR = LOGS_DIR / "planilha"
 LOGIN_OK_SIGNAL_FILE = BASE_DIR / ".ml_login_ok.signal"
 AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
 AUTH_MARKER_STILL_PENDING_ML = "[AUTH_STILL_PENDING_ML]"
+AUTH_MARKER_REQUIRED_AMAZON = "[AUTH_REQUIRED_AMAZON]"
+AUTH_MARKER_STILL_PENDING_AMAZON = "[AUTH_STILL_PENDING_AMAZON]"
 SCHEDULER_TICK_MS = 60000
 ALERTS_IMPORT_INTERVAL_MINUTES = 10
 ALERT_INTERVAL_HOURS_FIXED = 3
@@ -365,6 +367,97 @@ DEFAULT_CATEGORIES = [
 ML_CATEGORIES_ALL_URL = "https://api.mercadolibre.com/sites/MLB/categories/all"
 ML_CATEGORY_DETAIL_URL_TEMPLATE = "https://api.mercadolibre.com/categories/{category_id}"
 ML_CATEGORIES_CACHE_FILE = BASE_DIR / "ml_categories_cache.json"
+MERCADOLIVRE_RELAMPAGO_URL_PADRAO = (
+    "https://www.mercadolivre.com.br/ofertas"
+    "?promotion_type=lightning"
+    "#filter_applied=promotion_type&filter_position=3&origin=qcat"
+)
+AMAZON_ACHADINHOS_CASA_COZINHA_URL = (
+    "https://www.amazon.com.br/b?ie=UTF8&node=217012904011&pd_rd_w=BAvrb"
+    "&content-id=amzn1.sym.104d20c3-3fa8-4cb2-9444-a3876263d763"
+    "&pf_rd_p=104d20c3-3fa8-4cb2-9444-a3876263d763&pf_rd_r=E93SY0MTXVY2W7FQJY6F"
+    "&pd_rd_wg=5BgiX&pd_rd_r=b85d8ec0-d8bb-4515-a7b9-fe6db406b361"
+    "&ref_=achadinhos-nonftac-home_cta"
+)
+
+AMAZON_CATEGORIES_CATALOG = {
+    "roots": [
+        {"id": "amz-eletronicos", "name": "Eletronicos"},
+        {"id": "amz-informatica", "name": "Informatica"},
+        {"id": "amz-games", "name": "Games"},
+        {"id": "amz-casa", "name": "Casa e Cozinha"},
+        {"id": "amz-eletro", "name": "Eletrodomesticos"},
+        {"id": "amz-ferramentas", "name": "Ferramentas e Construcao"},
+        {"id": "amz-esporte", "name": "Esporte e Aventura"},
+        {"id": "amz-beleza", "name": "Beleza"},
+        {"id": "amz-saude", "name": "Saude"},
+        {"id": "amz-bebe", "name": "Bebe"},
+        {"id": "amz-pet", "name": "Pet Shop"},
+        {"id": "amz-livros", "name": "Livros"},
+    ],
+    "children": {
+        "amz-eletronicos": [
+            {"id": "amz-eletronicos-tv", "name": "TV e Video"},
+            {"id": "amz-eletronicos-audio", "name": "Audio"},
+            {"id": "amz-eletronicos-fone", "name": "Fones de Ouvido"},
+        ],
+        "amz-informatica": [
+            {"id": "amz-info-notebook", "name": "Notebooks"},
+            {"id": "amz-info-monitores", "name": "Monitores"},
+            {"id": "amz-info-perifericos", "name": "Perifericos"},
+        ],
+        "amz-games": [
+            {"id": "amz-games-consoles", "name": "Consoles"},
+            {"id": "amz-games-jogos", "name": "Jogos"},
+            {"id": "amz-games-acessorios", "name": "Acessorios"},
+        ],
+        "amz-casa": [
+            {"id": "amz-casa-cozinha", "name": "Cozinha"},
+            {"id": "amz-casa-limpeza", "name": "Limpeza"},
+            {"id": "amz-casa-organizacao", "name": "Organizacao"},
+        ],
+        "amz-eletro": [
+            {"id": "amz-eletro-portateis", "name": "Portateis"},
+            {"id": "amz-eletro-lavanderia", "name": "Lavanderia"},
+            {"id": "amz-eletro-climatizacao", "name": "Climatizacao"},
+        ],
+        "amz-ferramentas": [
+            {"id": "amz-ferramentas-eletricas", "name": "Ferramentas Eletricas"},
+            {"id": "amz-ferramentas-manuais", "name": "Ferramentas Manuais"},
+            {"id": "amz-ferramentas-jardim", "name": "Jardim"},
+        ],
+        "amz-esporte": [
+            {"id": "amz-esporte-academia", "name": "Academia"},
+            {"id": "amz-esporte-bike", "name": "Ciclismo"},
+            {"id": "amz-esporte-camping", "name": "Camping"},
+        ],
+        "amz-beleza": [
+            {"id": "amz-beleza-cabelo", "name": "Cabelo"},
+            {"id": "amz-beleza-pele", "name": "Cuidados com a Pele"},
+            {"id": "amz-beleza-maquiagem", "name": "Maquiagem"},
+        ],
+        "amz-saude": [
+            {"id": "amz-saude-suplementos", "name": "Suplementos"},
+            {"id": "amz-saude-vitaminas", "name": "Vitaminas"},
+            {"id": "amz-saude-bemestar", "name": "Bem-Estar"},
+        ],
+        "amz-bebe": [
+            {"id": "amz-bebe-fraldas", "name": "Fraldas"},
+            {"id": "amz-bebe-higiene", "name": "Higiene do Bebe"},
+            {"id": "amz-bebe-alimentacao", "name": "Alimentacao"},
+        ],
+        "amz-pet": [
+            {"id": "amz-pet-caes", "name": "Caes"},
+            {"id": "amz-pet-gatos", "name": "Gatos"},
+            {"id": "amz-pet-acessorios", "name": "Acessorios Pet"},
+        ],
+        "amz-livros": [
+            {"id": "amz-livros-negocios", "name": "Negocios"},
+            {"id": "amz-livros-tecnologia", "name": "Tecnologia"},
+            {"id": "amz-livros-infantil", "name": "Infantil"},
+        ],
+    },
+}
 
 
 def _slugify_categoria_nome(texto):
@@ -1590,13 +1683,29 @@ def create_gui(categorias):
     ttk.Label(main_frame, text="Entre com os dados do processo no formulario.", style="Hint.TLabel").pack(anchor="w", pady=(0, 6))
 
     top = ttk.Frame(main_frame, style="Main.TFrame")
-    top.pack(fill="x", expand=False, pady=(0, 4))
+    top.pack(fill="x", expand=False, pady=(0, 2))
 
     product_frame = ttk.LabelFrame(top, text="PROCURAR PRODUTO", style="Card.TLabelframe", padding=8)
-    product_frame.pack(side="left", fill="both", expand=True, padx=(0, 8))
+    product_frame.pack(side="left", fill="x", expand=True, padx=(0, 8))
 
-    relampago_frame = ttk.LabelFrame(top, text="PROCURAR OFERTAS RELAMPAGO", style="Card.TLabelframe", padding=8)
-    relampago_frame.pack(side="right", fill="both", expand=True, padx=(8, 0))
+    right_column = ttk.Frame(top, style="Main.TFrame")
+    right_column.pack(side="right", fill="x", expand=True, padx=(8, 0))
+
+    relampago_frame = ttk.LabelFrame(
+        right_column,
+        text="PROCURAR OFERTAS RELAMPAGO - MERCADO LIVRE",
+        style="Card.TLabelframe",
+        padding=6,
+    )
+    relampago_frame.pack(fill="x", expand=False)
+
+    achados_amazon_frame = ttk.LabelFrame(
+        right_column,
+        text="PROCURAR ACHADOS AMAZON",
+        style="Card.TLabelframe",
+        padding=6,
+    )
+    achados_amazon_frame.pack(fill="x", expand=False, pady=(8, 0))
 
     descricao_var = tk.StringVar()
     link_produto_var = tk.StringVar()
@@ -1623,18 +1732,40 @@ def create_gui(categorias):
     rel_limite_var = tk.StringVar()
     rel_descricao_var = tk.StringVar()
     rel_padrao_var = tk.BooleanVar(value=False)
+    relampago_url_var = tk.StringVar(value=MERCADOLIVRE_RELAMPAGO_URL_PADRAO)
+    amz_preco_min_var = tk.StringVar()
+    amz_preco_max_var = tk.StringVar()
+    amz_desconto_var = tk.StringVar()
+    amz_limite_var = tk.StringVar()
+    amz_descricao_var = tk.StringVar()
+    amz_achados_url_var = tk.StringVar(value=AMAZON_ACHADINHOS_CASA_COZINHA_URL)
 
     categories_catalog = _load_ml_categories_catalog(categorias)
     categorias_raiz = categories_catalog.get("roots") if isinstance(categories_catalog.get("roots"), list) else []
     categorias_raiz = _normalizar_raizes_categoria(categorias_raiz, categorias)
+    amazon_raizes = _normalizar_raizes_categoria(AMAZON_CATEGORIES_CATALOG.get("roots"), [])
+    amazon_children = AMAZON_CATEGORIES_CATALOG.get("children") if isinstance(AMAZON_CATEGORIES_CATALOG.get("children"), dict) else {}
 
-    map_categoria_nome_para_id = {
+    map_categoria_ml_nome_para_id = {
         _chave_nome_categoria(c.get("name") or ""): str(c.get("id") or "").strip().upper()
         for c in categorias_raiz
         if str(c.get("name") or "").strip()
     }
+    map_categoria_amazon_nome_para_id = {
+        _chave_nome_categoria(c.get("name") or ""): str(c.get("id") or "").strip().upper()
+        for c in amazon_raizes
+        if str(c.get("name") or "").strip()
+    }
     categorias_prod_values = ["", *[str(c.get("name") or "") for c in categorias_raiz]]
     map_subcategoria_prod_nome_para_id = {}
+
+    def _fonte_amazon_ativa_na_ui():
+        return bool(fontes_vars["Amazon"].get()) and not bool(fontes_vars["Todas"].get())
+
+    def _map_categoria_ativo():
+        if _fonte_amazon_ativa_na_ui():
+            return map_categoria_amazon_nome_para_id
+        return map_categoria_ml_nome_para_id
 
     def _decimal_input_valido(texto):
         texto = (texto or "").strip()
@@ -1671,6 +1802,7 @@ def create_gui(categorias):
 
     descricao_var.trace_add("write", lambda *_: _normalizar_varchar(descricao_var))
     link_produto_var.trace_add("write", lambda *_: _normalizar_varchar(link_produto_var, limite=2000))
+    amz_descricao_var.trace_add("write", lambda *_: _normalizar_varchar(amz_descricao_var))
 
     row = 0
     ttk.Label(product_frame, text="Descricao:", style="Field.TLabel").grid(row=row, column=0, sticky="w")
@@ -1701,6 +1833,7 @@ def create_gui(categorias):
             for nome, var in fontes_vars.items():
                 if nome != "Todas":
                     var.set(True)
+        _recarregar_categorias_por_fonte()
 
     def on_toggle_source():
         names = ["Mercado Livre", "Amazon", "Shoppee", "Tiktok shop"]
@@ -1708,6 +1841,7 @@ def create_gui(categorias):
             fontes_vars["Todas"].set(True)
         else:
             fontes_vars["Todas"].set(False)
+        _recarregar_categorias_por_fonte()
 
     for idx, nome in enumerate(["Mercado Livre", "Amazon", "Shoppee", "Tiktok shop", "Todas"]):
         cmd = on_toggle_all if nome == "Todas" else on_toggle_source
@@ -1784,6 +1918,9 @@ def create_gui(categorias):
     ttk.Label(relampago_frame, text="Descricao (opcional):", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(6, 0))
     rel_descricao_entry = ttk.Entry(relampago_frame, textvariable=rel_descricao_var)
     rel_descricao_entry.grid(row=rel_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
+    rel_url_cfg_btn = ttk.Button(relampago_frame, text="⚙", width=3)
+    rel_url_cfg_btn.grid(row=rel_row, column=2, sticky="e", padx=(8, 0), pady=(6, 0))
+    Tooltip(rel_url_cfg_btn, "Configurar URL de busca do relampago Mercado Livre")
 
     rel_row += 1
     ttk.Label(relampago_frame, text="Preco minimo:", style="Field.TLabel").grid(row=rel_row, column=0, sticky="w", pady=(6, 0))
@@ -1848,6 +1985,19 @@ def create_gui(categorias):
         rel_limite_entry,
     ]
 
+    def _recarregar_categorias_por_fonte():
+        valores_atuais = list(categorias_combo.cget("values"))
+        valores_ml = ["", *[str(c.get("name") or "") for c in categorias_raiz]]
+        valores_amazon = ["", *[str(c.get("name") or "") for c in amazon_raizes]]
+        novos_valores = valores_amazon if _fonte_amazon_ativa_na_ui() else valores_ml
+
+        if valores_atuais != novos_valores:
+            categorias_combo.configure(values=novos_valores)
+            categoria_var.set("")
+            categoria_id_var.set("")
+            subcategoria_var.set("")
+            subcategoria_id_var.set("")
+
     def _atualizar_subcategorias_produto(parent_id):
         subcategoria_var.set("")
         subcategoria_id_var.set("")
@@ -1858,7 +2008,18 @@ def create_gui(categorias):
             subcategorias_combo.configure(values=[""], state="disabled")
             return
 
-        children = _ensure_ml_subcategories(categories_catalog, pid)
+        if _fonte_amazon_ativa_na_ui():
+            children = [
+                {
+                    "id": str(item.get("id") or "").strip().upper(),
+                    "name": str(item.get("name") or "").strip(),
+                }
+                for item in amazon_children.get(pid, [])
+                if str(item.get("name") or "").strip()
+            ]
+        else:
+            children = _ensure_ml_subcategories(categories_catalog, pid)
+
         nomes = [str(item.get("name") or "").strip() for item in children if str(item.get("name") or "").strip()]
         map_subcategoria_prod_nome_para_id.update(
             {
@@ -1877,7 +2038,7 @@ def create_gui(categorias):
     def _on_categoria_produto_change(_event=None):
         nome = (categoria_var.get() or "").strip()
         chave = _chave_nome_categoria(nome)
-        cid = str(map_categoria_nome_para_id.get(chave) or "").strip().upper()
+        cid = str(_map_categoria_ativo().get(chave) or "").strip().upper()
 
         categoria_id_var.set(cid)
         _atualizar_subcategorias_produto(cid)
@@ -1892,6 +2053,7 @@ def create_gui(categorias):
     categoria_var.trace_add("write", lambda *_: _on_categoria_produto_change())
     subcategoria_var.trace_add("write", lambda *_: _on_subcategoria_produto_change())
 
+    _recarregar_categorias_por_fonte()
     _on_categoria_produto_change()
 
     def atualizar_estado_campos_relampago():
@@ -1909,9 +2071,136 @@ def create_gui(categorias):
     buscar_relampago_btn.grid(row=rel_row, column=0, columnspan=2, sticky="w", pady=(10, 0))
 
     relampago_frame.columnconfigure(1, weight=1)
+    relampago_frame.columnconfigure(2, weight=0)
 
-    output_frame = ttk.LabelFrame(main_frame, text="PAINEL DE EXECUCAO", style="Card.TLabelframe", padding=10)
-    output_frame.pack(fill="both", expand=True, pady=(12, 0))
+    amz_row = 0
+    ttk.Label(achados_amazon_frame, text="Descricao (opcional):", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
+    amz_descricao_entry = ttk.Entry(achados_amazon_frame, textvariable=amz_descricao_var)
+    amz_descricao_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
+    amz_url_cfg_btn = ttk.Button(achados_amazon_frame, text="⚙", width=3)
+    amz_url_cfg_btn.grid(row=amz_row, column=2, sticky="e", padx=(8, 0), pady=(6, 0))
+    Tooltip(amz_url_cfg_btn, "Configurar URL dos achados Amazon")
+
+    amz_row += 1
+    ttk.Label(achados_amazon_frame, text="Preco minimo:", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
+    amz_preco_min_entry = ttk.Entry(
+        achados_amazon_frame,
+        textvariable=amz_preco_min_var,
+        validate="key",
+        validatecommand=vcmd_decimal,
+    )
+    amz_preco_min_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
+
+    amz_row += 1
+    ttk.Label(achados_amazon_frame, text="Preco maximo:", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
+    amz_preco_max_entry = ttk.Entry(
+        achados_amazon_frame,
+        textvariable=amz_preco_max_var,
+        validate="key",
+        validatecommand=vcmd_decimal,
+    )
+    amz_preco_max_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
+
+    amz_row += 1
+    ttk.Label(achados_amazon_frame, text="Desconto minimo (%):", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
+    amz_desconto_entry = ttk.Entry(
+        achados_amazon_frame,
+        textvariable=amz_desconto_var,
+        validate="key",
+        validatecommand=vcmd_inteiro,
+    )
+    amz_desconto_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
+
+    amz_row += 1
+    ttk.Label(achados_amazon_frame, text="Limite de candidatos:", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
+    amz_limite_entry = ttk.Entry(
+        achados_amazon_frame,
+        textvariable=amz_limite_var,
+        validate="key",
+        validatecommand=vcmd_inteiro,
+    )
+    amz_limite_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
+
+    amz_row += 1
+    buscar_achados_amazon_btn = ttk.Button(achados_amazon_frame, text="BUSCAR ACHADOS AMAZON", style="Action.TButton")
+    buscar_achados_amazon_btn.grid(row=amz_row, column=0, columnspan=2, sticky="w", pady=(10, 0))
+
+    achados_amazon_frame.columnconfigure(1, weight=1)
+    achados_amazon_frame.columnconfigure(2, weight=0)
+
+    for decimal_var, decimal_entry in [
+        (amz_preco_min_var, amz_preco_min_entry),
+        (amz_preco_max_var, amz_preco_max_entry),
+    ]:
+        decimal_entry.bind("<FocusOut>", lambda _e, var=decimal_var: _formatar_decimal_em_var(var))
+
+    def _abrir_modal_config_url(titulo, url_var, url_padrao):
+        modal = tk.Toplevel(root)
+        modal.title(titulo)
+        modal.geometry("760x180")
+        modal.minsize(680, 180)
+        modal.transient(root)
+        modal.grab_set()
+
+        frame = ttk.Frame(modal, style="Main.TFrame", padding=12)
+        frame.pack(fill="both", expand=True)
+
+        ttk.Label(frame, text="URL de busca:", style="Field.TLabel").grid(row=0, column=0, sticky="w")
+        valor_var = tk.StringVar(value=(url_var.get() or "").strip())
+        entry = ttk.Entry(frame, textvariable=valor_var)
+        entry.grid(row=0, column=1, sticky="ew", padx=(8, 0))
+
+        ttk.Label(frame, text="A URL deve comecar com http:// ou https://", style="Hint.TLabel").grid(
+            row=1,
+            column=0,
+            columnspan=2,
+            sticky="w",
+            pady=(8, 0),
+        )
+
+        botoes = ttk.Frame(frame, style="Main.TFrame")
+        botoes.grid(row=2, column=0, columnspan=2, sticky="w", pady=(12, 0))
+
+        def _restaurar_padrao():
+            valor_var.set(url_padrao)
+
+        def _salvar():
+            valor = (valor_var.get() or "").strip()
+            if not valor:
+                messagebox.showerror("Validacao", "Informe uma URL valida.", parent=modal)
+                return
+
+            if not valor.startswith("http://") and not valor.startswith("https://"):
+                messagebox.showerror("Validacao", "A URL deve comecar com http:// ou https://.", parent=modal)
+                return
+
+            url_var.set(valor)
+            modal.destroy()
+
+        ttk.Button(botoes, text="Restaurar padrao", command=_restaurar_padrao).pack(side="left")
+        ttk.Button(botoes, text="Salvar", style="Action.TButton", command=_salvar).pack(side="left", padx=(8, 0))
+        ttk.Button(botoes, text="Cancelar", command=modal.destroy).pack(side="left", padx=(8, 0))
+
+        frame.columnconfigure(1, weight=1)
+        entry.focus_set()
+
+    rel_url_cfg_btn.configure(
+        command=lambda: _abrir_modal_config_url(
+            "Configurar URL - Relampago Mercado Livre",
+            relampago_url_var,
+            MERCADOLIVRE_RELAMPAGO_URL_PADRAO,
+        )
+    )
+    amz_url_cfg_btn.configure(
+        command=lambda: _abrir_modal_config_url(
+            "Configurar URL - Achados Amazon",
+            amz_achados_url_var,
+            AMAZON_ACHADINHOS_CASA_COZINHA_URL,
+        )
+    )
+
+    output_frame = ttk.LabelFrame(main_frame, text="PAINEL DE EXECUCAO", style="Card.TLabelframe", padding=6)
+    output_frame.pack(fill="x", expand=False, pady=(6, 0))
     status_var = tk.StringVar(value="Pronto para executar.")
     status_label = ttk.Label(output_frame, textvariable=status_var, style="Hint.TLabel", justify="left")
     status_label.pack(anchor="w", fill="x")
@@ -1938,7 +2227,7 @@ def create_gui(categorias):
 
     resumo_text = tk.Text(
         resumo_wrap,
-        height=10,
+        height=4,
         wrap="word",
         background="#f6f6f6",
         foreground="#303030",
@@ -1967,7 +2256,9 @@ def create_gui(categorias):
     schedules_frame = ttk.LabelFrame(main_frame, text="PROGRAMACOES", style="Card.TLabelframe", padding=8)
     schedules_frame.pack(fill="both", expand=True, pady=(8, 0))
     output_frame.pack_forget()
-    output_frame.pack(fill="both", expand=True, pady=(12, 0))
+    schedules_frame.pack_forget()
+    schedules_frame.pack(fill="both", expand=True, pady=(8, 0))
+    output_frame.pack(fill="x", expand=False, pady=(6, 0))
 
     schedules_actions = ttk.Frame(schedules_frame, style="Main.TFrame")
     schedules_actions.pack(fill="x", pady=(0, 6))
@@ -2000,7 +2291,7 @@ def create_gui(categorias):
         grid_wrap,
         columns=("sel", "ativo", "id", "nome", "tipo", "inicio", "fim", "ultima", "proxima", "ciclo", "execucao", "acoes"),
         show="headings",
-        height=9,
+        height=7,
     )
 
     hub_schedule_tree.heading("sel", text="Sel")
@@ -3115,8 +3406,9 @@ def create_gui(categorias):
     selecionar_todas_var.trace_add("write", lambda *_: _toggle_select_all_programacoes())
     filtro_programacoes_var.trace_add("write", lambda *_: _refresh_hub_schedules_grid())
 
-    def _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto_min, limite_candidatos=None, urls=None):
+    def _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto_min, limite_candidatos=None, urls=None, fonte="mercadolivre"):
         args = ["--produto-por-html"]
+        args.extend(["--fonte", (fonte or "mercadolivre")])
 
         for url in [str(item).strip() for item in (urls or []) if str(item).strip()][:5]:
             args.extend(["--url-produto", url])
@@ -3150,6 +3442,7 @@ def create_gui(categorias):
             schedule.get("desconto_minimo"),
             schedule.get("limite_candidatos"),
             _urls_from_config(schedule),
+            "mercadolivre",
         )
 
     def open_hub_schedule_modal(schedule=None):
@@ -3836,7 +4129,7 @@ def create_gui(categorias):
     _refresh_hub_schedules_grid()
     _iniciar_log_alertas()
 
-    def _mostrar_modal_continuar_login_ml():
+    def _mostrar_modal_continuar_login(fonte):
         confirmado = {"value": False}
 
         modal = tk.Toplevel(root)
@@ -3851,7 +4144,7 @@ def create_gui(categorias):
 
         ttk.Label(
             frame,
-            text="Mercado Livre não autenticado, realize o login e clique em 'Continuar'",
+            text=f"{fonte} não autenticado, realize o login e clique em 'Continuar'",
             style="Hint.TLabel",
             wraplength=420,
             justify="left",
@@ -3870,24 +4163,29 @@ def create_gui(categorias):
 
         return confirmado["value"]
 
-    def _sinalizar_confirmacao_login_ml():
+    def _sinalizar_confirmacao_login():
         try:
             LOGIN_OK_SIGNAL_FILE.write_text(datetime.now().isoformat(timespec="seconds"), encoding="utf-8")
-            status_var.set("Confirmacao enviada. Validando login do Mercado Livre...")
+            status_var.set("Confirmacao enviada. Validando login...")
         except Exception as exc:
             messagebox.showerror("Falha", f"Nao foi possivel enviar confirmacao de login.\n\n{exc}")
 
     def _tratar_marcadores_autenticacao(texto):
-        if AUTH_MARKER_REQUIRED_ML not in texto and AUTH_MARKER_STILL_PENDING_ML not in texto:
+        tem_ml = AUTH_MARKER_REQUIRED_ML in texto or AUTH_MARKER_STILL_PENDING_ML in texto
+        tem_amz = AUTH_MARKER_REQUIRED_AMAZON in texto or AUTH_MARKER_STILL_PENDING_AMAZON in texto
+
+        if not tem_ml and not tem_amz:
             return
 
-        if AUTH_MARKER_STILL_PENDING_ML in texto:
-            status_var.set("Login ainda nao confirmado. Finalize o login e clique em 'Continuar' novamente.")
-        else:
-            status_var.set("Aguardando login no Mercado Livre...")
+        fonte = "Mercado Livre" if tem_ml else "Amazon"
 
-        if _mostrar_modal_continuar_login_ml():
-            _sinalizar_confirmacao_login_ml()
+        if AUTH_MARKER_STILL_PENDING_ML in texto or AUTH_MARKER_STILL_PENDING_AMAZON in texto:
+            status_var.set(f"Login {fonte} ainda nao confirmado. Finalize o login e clique em 'Continuar' novamente.")
+        else:
+            status_var.set(f"Aguardando login no {fonte}...")
+
+        if _mostrar_modal_continuar_login(fonte):
+            _sinalizar_confirmacao_login()
 
     def _append_resumo(texto):
         if not texto:
@@ -4553,13 +4851,19 @@ def create_gui(categorias):
             messagebox.showwarning("Atencao", "Selecione ao menos uma fonte.")
             return
 
-        if not (fontes_vars["Mercado Livre"].get() or fontes_vars["Todas"].get()):
-            messagebox.showwarning("Fonte nao suportada", "No momento o backend implementa apenas Mercado Livre.")
+        if fontes_vars["Todas"].get():
+            messagebox.showinfo("Aviso", "A opcao 'Todas' roda somente Mercado Livre no on-demand. Para Amazon, marque apenas Amazon.")
+
+        fonte_execucao = "mercadolivre"
+        if fontes_vars["Amazon"].get() and not fontes_vars["Todas"].get():
+            fonte_execucao = "amazon"
+        elif not fontes_vars["Mercado Livre"].get() and not fontes_vars["Todas"].get():
+            messagebox.showwarning("Fonte nao suportada", "No momento o on-demand suporta Mercado Livre e Amazon.")
             return
 
-        unsupported = [name for name in ["Amazon", "Shoppee", "Tiktok shop"] if fontes_vars[name].get()]
+        unsupported = [name for name in ["Shoppee", "Tiktok shop"] if fontes_vars[name].get()]
         if unsupported:
-            messagebox.showinfo("Aviso", "Amazon/Shoppee/Tiktok Shop ainda nao estao implementados no backend. A busca rodara no Mercado Livre.")
+            messagebox.showinfo("Aviso", "Shoppee/Tiktok Shop ainda nao estao implementados no backend.")
 
         try:
             preco_min = parse_float(preco_min_var.get(), "Preco minimo")
@@ -4597,18 +4901,35 @@ def create_gui(categorias):
         if not pasta_saida:
             return
 
-        args = _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto, limite_candidatos)
+        args = _build_hub_args_from_values(
+            categoria,
+            descricao,
+            preco_min,
+            preco_max,
+            desconto,
+            limite_candidatos,
+            fonte=fonte_execucao,
+        )
         if link_produto:
             args.extend(["--url-produto", link_produto])
-        if categoria_id:
+        if categoria_id and fonte_execucao == "mercadolivre":
             args.extend(["--categoria-id", categoria_id])
-        if subcategoria_id:
+        if subcategoria_id and fonte_execucao == "mercadolivre":
             args.extend(["--subcategoria-id", subcategoria_id])
         args.extend(["--pasta-saida", pasta_saida, "--modalidade-execucao", "ondemand"])
 
         launch_process(args, "Busca de produto on demand iniciada em nova janela.")
 
     def on_buscar_relampago():
+        url_relampago = (relampago_url_var.get() or "").strip()
+        if not url_relampago:
+            messagebox.showerror("Validacao", "Configure uma URL valida para ofertas relampago.")
+            return
+
+        if not url_relampago.startswith("http://") and not url_relampago.startswith("https://"):
+            messagebox.showerror("Validacao", "A URL do relampago deve comecar com http:// ou https://.")
+            return
+
         if rel_padrao_var.get():
             pasta_saida = filedialog.askdirectory(
                 title="Escolha onde salvar lista_anuncios.txt",
@@ -4618,7 +4939,15 @@ def create_gui(categorias):
                 return
 
             launch_process(
-                ["--relampago-padrao", "--pasta-saida", pasta_saida, "--modalidade-execucao", "ondemand"],
+                [
+                    "--relampago-padrao",
+                    "--url-relampago",
+                    url_relampago,
+                    "--pasta-saida",
+                    pasta_saida,
+                    "--modalidade-execucao",
+                    "ondemand",
+                ],
                 "Processo de ofertas relampago padrao iniciado em nova janela.",
             )
             return
@@ -4661,6 +4990,7 @@ def create_gui(categorias):
         args = []
 
         args.append("--somente-relampago")
+        args.extend(["--url-relampago", url_relampago])
         if descricao:
             args.extend(["--descricao-produto", descricao])
         if preco_min is not None:
@@ -4675,8 +5005,55 @@ def create_gui(categorias):
         args.extend(["--pasta-saida", pasta_saida, "--modalidade-execucao", "ondemand"])
         launch_process(args, "Processo de ofertas relampago iniciado em nova janela.")
 
+    def on_buscar_achados_amazon():
+        url_achados = (amz_achados_url_var.get() or "").strip()
+        if not url_achados:
+            messagebox.showerror("Validacao", "Configure uma URL valida para achados Amazon.")
+            return
+
+        if not url_achados.startswith("http://") and not url_achados.startswith("https://"):
+            messagebox.showerror("Validacao", "A URL dos achados Amazon deve comecar com http:// ou https://.")
+            return
+
+        try:
+            preco_min = parse_float(amz_preco_min_var.get(), "Preco minimo")
+            preco_max = parse_float(amz_preco_max_var.get(), "Preco maximo")
+            desconto = parse_int(amz_desconto_var.get(), "Desconto minimo")
+            limite = parse_int(amz_limite_var.get(), "Limite de candidatos")
+        except ValueError as exc:
+            messagebox.showerror("Validacao", str(exc))
+            return
+
+        if limite is not None and limite < 1:
+            messagebox.showerror("Validacao", "Limite de candidatos deve ser no minimo 1.")
+            return
+
+        descricao = (amz_descricao_var.get() or "").strip()
+
+        pasta_saida = filedialog.askdirectory(
+            title="Escolha onde salvar lista_anuncios.txt",
+            mustexist=True,
+        )
+        if not pasta_saida:
+            return
+
+        args = _build_hub_args_from_values(
+            "",
+            descricao,
+            preco_min,
+            preco_max,
+            desconto,
+            limite,
+            urls=[url_achados],
+            fonte="amazon",
+        )
+        args.extend(["--pasta-saida", pasta_saida, "--modalidade-execucao", "ondemand"])
+
+        launch_process(args, "Processo de achados Amazon iniciado em nova janela.")
+
     buscar_produto_btn.configure(command=on_buscar_produto)
     buscar_relampago_btn.configure(command=on_buscar_relampago)
+    buscar_achados_amazon_btn.configure(command=on_buscar_achados_amazon)
     alerta_preco_btn.configure(command=lambda: open_alerta_preco_form(None))
     campanha_produto_btn.configure(command=lambda: open_hub_schedule_modal(None))
     alerta_config_btn.configure(command=lambda: open_alerta_preco_form(None))

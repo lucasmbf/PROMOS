@@ -1,0 +1,27 @@
+=== Inicio da execucao: 2026-07-17T20:12:06 ===
+Args: --produto-por-html --fonte amazon --preco-minimo 998.0 --preco-maximo 1001.0 --limite-candidatos 3 --url-produto https://www.amazon.com.br/ap/signin --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_AMAZON
+
+Modo procurar produto ativado para Amazon (central de afiliados/SiteStripe).
+
+Amazon nao esta autenticada. Faça login manualmente no navegador aberto.
+[AUTH_REQUIRED_AMAZON] Amazon nao autenticada, realize o login e clique em 'Continuar'.
+
+[AMAZON] Texto 'Faça seu login' detectado. Aguardando 30s para autenticacao...
+
+Login Amazon confirmado. Continuando execução.
+
+[AMAZON] Sessao validada. Iniciando coleta nas listagens configuradas.
+
+[AMAZON] Coletando candidatos em: https://www.amazon.com.br/ap/signin
+[AVISO] Falha ao abrir listagem Amazon: Page.goto: net::ERR_ABORTED at https://www.amazon.com.br/ap/signin
+Call log:
+  - navigating to "https://www.amazon.com.br/ap/signin", waiting until "domcontentloaded"
+
+
+[AMAZON] Nenhum candidato encontrado.
+
+Nenhuma oferta elegível da Amazon foi encontrada.
+
+=== Fim da execucao: 2026-07-17T20:13:32 ===

@@ -1,0 +1,111 @@
+=== Inicio da execucao: 2026-07-16T22:00:03 ===
+Args: --somente-relampago --desconto-minimo 30 --limite-candidatos 15 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260716_220028_071088_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260716_220028_071088_01.txt
+29 oferta(s) com 30% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb4199575191 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6295525528 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4314606824 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6391243490 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4278069215 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6465256686 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb7118006280 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4718918529 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4097739991 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4482832241 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5522151066 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4521214329 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761715520 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6623716064 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4291609113 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3611206469 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 225 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260716_220028.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2RchhQC
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2ihww5A
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/15pEvwr
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/33rZnxD
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2AcqXSr
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2ES3JiM
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1NmWJrL
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1Mjp6NC
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1UsAQ2q
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1YebcWz
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0065_20260716_220210.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Monohidratada Power 300g Refil Profit Sabor Natural
+Message SID Twilio: SM0a1104e52cfe0784b2262cd0f39693ed
+
+Mensagem enviada para whatsapp:+5519991133269:
+Furadeira Parafusadeira Sem Fio A Bateria Gpb12vd 12v 3/8 10mm Com Maleta E Acessórios Gradiente
+Message SID Twilio: SMadd413bc3d1690f6f6011ef024f3dd16
+
+Mensagem enviada para whatsapp:+5519991133269:
+VITAMINA D3 + K2 Menaquinona-7 - Fórmula com Máxima Concentração e Biodisponibilidade - 60 Cápsulas
+Message SID Twilio: SM8dcef1d905c89d19eee7da11dbd4e763
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey Protein Concentrado 1kg Dark Lab Sabor Doce de leite
+Message SID Twilio: SMfb1bcf1240a75ebc83369aeaa55d95c5
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo De Ferramentas Soquetes Encaixe 1/4 E 1/2 Pol. Catraca Reversível Aço Crv 94 Peças Com Maleta Tkf94 The Black Tools
+Message SID Twilio: SM95d80c3fdb605cb07dc81076eabdba58
+
+Mensagem enviada para whatsapp:+5519991133269:
+Rádio Px Para Caminhões 80 Canais Am Ssb Direto Da Fábrica
+Message SID Twilio: SMb44bcea65d5aec0a07555f2f90155267
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo De Toalhas Buddemeyer Atena Fio Penteado Banho Azul/azul Claro 4 Peças
+Message SID Twilio: SMe6755b7a3c651af109e95495ed81fb7e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 5 Plafon LED 25W Bivolt 21x21cm Starbright Branco Frio 6500K
+Message SID Twilio: SMe93f00351125dd1beb34b40153366ca0
+
+Mensagem enviada para whatsapp:+5519991133269:
+Happy Max Motor V8 Funcional Bloco De Montar Construção 478+ Peças mini motor v8 funcional-dk200
+Message SID Twilio: SM59f43b97f69028480a2f1c11c989b1a3
+
+Mensagem enviada para whatsapp:+5519991133269:
+2 Câmera Segurança Ip Wifi Icsee Infravermelho Prova Dágua Branco
+Message SID Twilio: SMf4142935175b1ea1d5ebb8d3b7152d2a
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-16T22:02:55 ===

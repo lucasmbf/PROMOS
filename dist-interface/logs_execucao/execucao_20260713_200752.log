@@ -1,0 +1,35 @@
+=== Inicio da execucao: 2026-07-13T20:07:52 ===
+Args: --produto-por-html --descricao-produto wella --desconto-minimo 40 --limite-candidatos 3 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[BLOCO_GENERICA_1] Carregando páginas 1 a 3
+[BLOCO_GENERICA_1] Página 1: https://lista.mercadolivre.com.br/wella
+[BLOCO_GENERICA_1] Resultado: 3 candidato(s) coletado(s). Total: 3
+✓ Link de afiliado: https://meli.la/1Y5FEBv
+✓ Link de afiliado: https://meli.la/2HM2c5N
+✓ Link de afiliado: https://meli.la/1Mazeae
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Wella Pro Invigo Enrich - Shampoo 250ml + Máscara 150ml
+Message SID Twilio: SM094fdc43f8cc340caaf413df818ecbe1
+
+Mensagem enviada para whatsapp:+5519991133269:
+Condicionador Wella Blondorplex Care Line 1000ml Wella Profissional
+Message SID Twilio: SM2f7e0e54ac2bbe830c2017336d60f1f3
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Wella Professionals Oil Reflections Duo (2 Produtos)
+Message SID Twilio: SMbaec494c9ae37983e57944b2e04cf0d5
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-13T20:08:52 ===

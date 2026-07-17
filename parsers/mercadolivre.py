@@ -378,10 +378,30 @@ def _extrair_ofertas_do_ctx(html, desconto_minimo=30):
                 preco_novo = bloco_preco.get("current_price", {})
                 preco_anterior = preco_antigo.get("value", preco_anterior)
                 preco_atual = preco_novo.get("value", preco_atual)
+
                 desconto_label = bloco_preco.get("discount_label", {})
                 texto_desconto = desconto_label.get("text", texto_desconto)
+
+                for price_label in bloco_preco.get("price_labels", []):
+                    for value in price_label.get("values", []):
+                        if value.get("type") == "pill":
+                            pill = value.get("pill", {})
+                            texto_desconto = pill.get("text", texto_desconto)
+                        elif value.get("type") == "price":
+                            info_preco = value.get("price", {})
+                            if value.get("key") == "previous_price":
+                                preco_anterior = info_preco.get("value", preco_anterior)
+                            elif value.get("key") == "current_price":
+                                preco_atual = info_preco.get("value", preco_atual)
             elif tipo == "brand" and categoria == "Sem categoria":
                 categoria = componente.get("brand", {}).get("text", categoria)
+            elif tipo == "seller" and categoria == "Sem categoria":
+                seller = componente.get("seller", {})
+                for value in seller.get("values", []):
+                    if value.get("type") == "label":
+                        categoria = value.get("label", {}).get("text", categoria)
+                        if categoria != "Sem categoria":
+                            break
             elif tipo == "variations_text" and categoria == "Sem categoria":
                 categoria = componente.get("variations_text", {}).get("text", categoria)
 

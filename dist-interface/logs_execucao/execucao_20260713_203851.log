@@ -1,0 +1,39 @@
+=== Inicio da execucao: 2026-07-13T20:38:51 ===
+Args: --produto-por-html --desconto-minimo 50 --limite-candidatos 3 --url-produto https://lista.mercadolivre.com.br/aquecedor-eletrico#D[A:aquecedor%20eletrico] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/aquecedor-eletrico#D[A:aquecedor%20eletrico]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/aquecedor-eletrico#D[A:aquecedor%20eletrico]
+✓ Link de afiliado: https://meli.la/2ZdjVdZ
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/aquecedor-eletrico?page=2
+✓ Link de afiliado: https://meli.la/1XbdR6i
+✓ Link de afiliado: https://meli.la/1LtUdkq
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Aquecedor Portátil Quartzo Com Ventilador Remoto E Lcd 1600w
+Message SID Twilio: SM71dff8d52ffbe8cbed9eab78960b1656
+
+Mensagem enviada para whatsapp:+5519991133269:
+Aquecedor Ambiente Ar Elétrico Portatil Potente 1000w 127v
+Message SID Twilio: SM3dded354ecd0e8db21d2478fd5b52b29
+
+Mensagem enviada para whatsapp:+5519991133269:
+Aquecedor A Óleo Domestico Portátil Ventilador Arquente 220v
+Message SID Twilio: SM25f0546a4288df6b7b5ce982265a9818
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-13T20:39:47 ===

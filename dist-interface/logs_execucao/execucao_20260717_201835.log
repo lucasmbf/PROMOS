@@ -1,0 +1,11 @@
+=== Inicio da execucao: 2026-07-17T20:18:35 ===
+Args: --produto-por-html --fonte amazon --url-produto https://www.amazon.com.br/b?ie=UTF8&node=217012904011&pd_rd_w=BAvrb&content-id=amzn1.sym.104d20c3-3fa8-4cb2-9444-a3876263d763&pf_rd_p=104d20c3-3fa8-4cb2-9444-a3876263d763&pf_rd_r=E93SY0MTXVY2W7FQJY6F&pd_rd_wg=5BgiX&pd_rd_r=b85d8ec0-d8bb-4515-a7b9-fe6db406b361&ref_=achadinhos-nonftac-home_cta --desconto-minimo 30 --limite-candidatos 3 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_AMAZON
+
+Modo procurar produto ativado para Amazon (central de afiliados/SiteStripe).
+
+[AMAZON] URL(s) parametrizada(s) para busca: ['https://www.amazon.com.br/b?ie=UTF8&node=217012904011&pd_rd_w=BAvrb&content-id=amzn1.sym.104d20c3-3fa8-4cb2-9444-a3876263d763&pf_rd_p=104d20c3-3fa8-4cb2-9444-a3876263d763&pf_rd_r=E93SY0MTXVY2W7FQJY6F&pd_rd_wg=5BgiX&pd_rd_r=b85d8ec0-d8bb-4515-a7b9-fe6db406b361&ref_=achadinhos-nonftac-home_cta']
+
+Amazon nao esta autenticada. Faça login manualmente no navegador aberto.
+[AUTH_REQUIRED_AMAZON] Amazon nao autenticada, realize o login e clique em 'Continuar'.

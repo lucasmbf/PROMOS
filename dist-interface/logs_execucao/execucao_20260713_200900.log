@@ -1,0 +1,12 @@
+=== Inicio da execucao: 2026-07-13T20:09:00 ===
+Args: --produto-por-html --descricao-produto mac --desconto-minimo 40 --limite-candidatos 3 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[BLOCO_GENERICA_1] Carregando páginas 1 a 3
+[BLOCO_GENERICA_1] Página 1: https://lista.mercadolivre.com.br/mac
+[BLOCO_GENERICA_1] Página 2: https://lista.mercadolivre.com.br/mac_Desde_51
+
+=== Fim da execucao: 2026-07-13T20:09:20 ===

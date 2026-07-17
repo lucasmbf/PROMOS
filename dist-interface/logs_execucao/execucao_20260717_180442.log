@@ -1,0 +1,45 @@
+=== Inicio da execucao: 2026-07-17T18:04:42 ===
+Args: --produto-por-html --desconto-minimo 20 --limite-candidatos 6 --url-produto https://lista.mercadolivre.com.br/confort-sec-g#D[A:confort%20sec%20G] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/confort-sec-g#D[A:confort%20sec%20G]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/confort-sec-g#D[A:confort%20sec%20G]
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/confort-sec-g?page=2
+✓ Link de afiliado: https://meli.la/1m2Sza2
+✓ Link de afiliado: https://meli.la/2oeMJKu
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/confort-sec-g?page=3
+[BLOCO_1] Resultado: 2 candidato(s) coletado(s), 2 válido(s) enriquecido(s). Total: 2/6
+
+[BLOCO_2] Carregando páginas 4 a 5 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 4: https://lista.mercadolivre.com.br/confort-sec-g?page=4
+✓ Link de afiliado: https://meli.la/32s7fgZ
+[LISTAGEM_DIRETA] Link 1 - página 5: https://lista.mercadolivre.com.br/confort-sec-g?page=5
+[BLOCO_2] Resultado: 1 candidato(s) coletado(s), 1 válido(s) enriquecido(s). Total: 3/6
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Confort Sec Xxxg 24 Unidades
+Message SID Twilio: SMb560e5f8d1f0a275b9fc287cce74fd2c
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Confort Sec Tamanho XXG 112 Unidades
+Message SID Twilio: SM1201554f4c26a123a1d1a79b79ad54d9
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Fralda Pampers Confort Sec Nova Super Tam. Xg 116 Unid
+Message SID Twilio: SM9bde0cfa473d0d8e22f6a160db3b3133
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-17T18:06:07 ===

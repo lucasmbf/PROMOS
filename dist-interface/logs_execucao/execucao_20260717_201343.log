@@ -1,0 +1,3 @@
+=== Inicio da execucao: 2026-07-17T20:13:43 ===
+Args: --produto-por-html --fonte amazon --preco-minimo 998.0 --preco-maximo 1001.0 --limite-candidatos 3 --url-produto https://www.amazon.com.br/ap/signin --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+

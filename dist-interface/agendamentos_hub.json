@@ -112,42 +112,8 @@
     "last_execution_at": "2026-06-23T17:28:55"
   },
   {
-    "id": "000037",
-    "name": "Copa 2026",
-    "active": true,
-    "start_at": "2026-06-07T00:00",
-    "end_at": "2026-06-23T23:59",
-    "interval_hours": 6,
-    "categoria": "Todas categorias",
-    "descricao": "",
-    "urls": [
-      "https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True"
-    ],
-    "link1": "https://lista.mercadolivre.com.br/produtos-da-copa-2026_NoIndex_True",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "email": "",
-    "emails": [],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "preco_minimo": 30.0,
-    "preco_maximo": 140.0,
-    "desconto_minimo": null,
-    "limite_candidatos": 5,
-    "last_run_at": "2026-06-23T17:29:36",
-    "configured_at": "2026-06-07T10:24:18",
-    "next_run_at": "2026-06-23T23:29:36",
-    "last_execution_status": "sucesso",
-    "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-23T17:30:59"
-  },
-  {
     "id": "000038",
-    "name": "Fralda",
+    "name": "Fralda mamypoko",
     "active": true,
     "start_at": "2026-06-07T00:00",
     "end_at": "2026-06-21T23:59",
@@ -155,9 +121,9 @@
     "categoria": "Todas categorias",
     "descricao": "",
     "urls": [
-      "https://lista.mercadolivre.com.br/loja/mamypoko/#component=menu_corridors&tracking_id=34da587d-39c6-4c0f-8759-594882b0a62c&label=Todos+os+produtos&global_position=1"
+      "https://lista.mercadolivre.com.br/fralda-mamypoko-g#D[A:fralda%20mamypoko%20g]"
     ],
-    "link1": "https://lista.mercadolivre.com.br/loja/mamypoko/#component=menu_corridors&tracking_id=34da587d-39c6-4c0f-8759-594882b0a62c&label=Todos+os+produtos&global_position=1",
+    "link1": "https://lista.mercadolivre.com.br/fralda-mamypoko-g#D[A:fralda%20mamypoko%20g]",
     "link2": "",
     "link3": "",
     "link4": "",
@@ -170,18 +136,18 @@
     ],
     "preco_minimo": null,
     "preco_maximo": null,
-    "desconto_minimo": 15,
-    "limite_candidatos": 10,
-    "last_run_at": "2026-06-21T21:19:43",
-    "configured_at": "2026-06-07T21:55:55",
-    "next_run_at": "2026-06-22T03:19:43",
+    "desconto_minimo": 20,
+    "limite_candidatos": 3,
+    "last_run_at": "2026-07-16T21:02:37",
+    "configured_at": "2026-07-02T19:27:33",
+    "next_run_at": "2026-07-17T03:02:37",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-21T21:20:14"
+    "last_execution_at": "2026-07-16T21:03:29"
   },
   {
     "id": "000040",
-    "name": "ração",
+    "name": "ração 1",
     "active": true,
     "start_at": "2026-06-15T00:00",
     "end_at": "2026-09-30T23:59",
@@ -209,12 +175,12 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-06-25T19:15:06",
-    "configured_at": "2026-06-15T19:51:52",
-    "next_run_at": "2026-06-26T03:15:06",
+    "last_run_at": "2026-07-17T18:08:51",
+    "configured_at": "2026-07-13T19:43:40",
+    "next_run_at": "2026-07-18T02:08:51",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-25T19:16:58"
+    "last_execution_at": "2026-07-17T18:10:25"
   },
   {
     "id": "000041",
@@ -247,12 +213,12 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 5,
-    "last_run_at": "2026-06-25T19:17:07",
+    "last_run_at": "2026-07-17T18:13:51",
     "configured_at": "2026-06-15T19:51:41",
-    "next_run_at": "2026-06-26T03:17:07",
+    "next_run_at": "2026-07-18T02:13:51",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-25T19:18:56"
+    "last_execution_at": "2026-07-17T18:15:36"
   },
   {
     "id": "000044",
@@ -260,7 +226,7 @@
     "active": true,
     "start_at": "2026-06-20T00:00",
     "end_at": "2026-07-31T23:59",
-    "interval_hours": 8,
+    "interval_hours": 72,
     "categoria": "Todas categorias",
     "descricao": "",
     "urls": [
@@ -281,12 +247,12 @@
     "preco_maximo": null,
     "desconto_minimo": 30,
     "limite_candidatos": 4,
-    "last_run_at": "2026-06-25T20:36:52",
-    "configured_at": "2026-06-20T13:40:51",
-    "next_run_at": "2026-06-26T04:36:52",
+    "last_run_at": "2026-07-16T19:40:46",
+    "configured_at": "2026-07-13T19:40:30",
+    "next_run_at": "2026-07-19T19:40:46",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-25T20:37:55"
+    "last_execution_at": "2026-07-16T19:41:53"
   },
   {
     "id": "000045",
@@ -315,12 +281,12 @@
     "preco_maximo": null,
     "desconto_minimo": 20,
     "limite_candidatos": 3,
-    "last_run_at": "2026-06-25T20:37:57",
+    "last_run_at": "2026-07-17T18:19:51",
     "configured_at": "2026-06-22T21:20:06",
-    "next_run_at": "2026-06-26T02:37:57",
+    "next_run_at": "2026-07-18T00:19:51",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-25T20:38:49"
+    "last_execution_at": "2026-07-17T18:20:39"
   },
   {
     "id": "000046",
@@ -330,7 +296,7 @@
     "end_at": "2026-07-23T23:59",
     "interval_hours": 8,
     "categoria": "Todas categorias",
-    "descricao": "",
+    "descricao": "Creatina",
     "urls": [
       "https://lista.mercadolivre.com.br/suplementos#D[A:suplementos]"
     ],
@@ -349,11 +315,147 @@
     "preco_maximo": null,
     "desconto_minimo": 30,
     "limite_candidatos": 4,
-    "last_run_at": "2026-06-25T20:39:05",
-    "configured_at": "2026-06-23T17:50:31",
-    "next_run_at": "2026-06-26T04:39:05",
+    "last_run_at": "2026-07-17T18:20:51",
+    "configured_at": "2026-06-27T10:07:10",
+    "next_run_at": "2026-07-18T02:20:51",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-25T20:40:15"
+    "last_execution_at": "2026-07-17T18:21:53"
+  },
+  {
+    "id": "000049",
+    "name": "tênis masculino new balance fuelcell rebel v5 exclusivo",
+    "active": true,
+    "start_at": "2026-07-07T00:00",
+    "end_at": "2026-07-31T23:59",
+    "interval_hours": 6,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo]"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo]",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": 500.0,
+    "preco_maximo": 770.0,
+    "desconto_minimo": null,
+    "limite_candidatos": 3,
+    "last_run_at": "2026-07-17T18:22:51",
+    "configured_at": "2026-07-13T19:40:09",
+    "next_run_at": "2026-07-18T00:22:51",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-17T18:23:49"
+  },
+  {
+    "id": "000050",
+    "name": "yo pro 12 unidades",
+    "active": true,
+    "start_at": "2026-07-07T00:00",
+    "end_at": "2027-02-28T23:59",
+    "interval_hours": 240,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/yopro-12-unidades?sb=all_mercadolibre#D[A:yopro%2012%20unidades]"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/yopro-12-unidades?sb=all_mercadolibre#D[A:yopro%2012%20unidades]",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": 70.0,
+    "preco_maximo": 77.0,
+    "desconto_minimo": null,
+    "limite_candidatos": 3,
+    "last_run_at": null,
+    "configured_at": "2026-07-13T19:39:55",
+    "next_run_at": "2026-07-23T19:39:55",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-08T22:44:59"
+  },
+  {
+    "id": "000051",
+    "name": "Fralda 30 a 59",
+    "active": true,
+    "start_at": "2026-07-07T00:00",
+    "end_at": "2027-02-28T23:59",
+    "interval_hours": 12,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/30-a-60-unidades/fralda_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B30-60%29%26applied_value_name%3D30+a+59+unidades%26applied_value_order%3D2%26applied_value_results%3D2743%26is_custom%3Dfalse"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/30-a-60-unidades/fralda_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B30-60%29%26applied_value_name%3D30+a+59+unidades%26applied_value_order%3D2%26applied_value_results%3D2743%26is_custom%3Dfalse",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": 30.0,
+    "preco_maximo": 80.0,
+    "desconto_minimo": 30,
+    "limite_candidatos": 5,
+    "last_run_at": "2026-07-17T18:00:43",
+    "configured_at": "2026-07-07T19:43:10",
+    "next_run_at": "2026-07-18T06:00:43",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-17T18:02:06"
+  },
+  {
+    "id": "000052",
+    "name": "Fralda 70 a 90",
+    "active": true,
+    "start_at": "2026-07-07T00:00",
+    "end_at": "2027-03-31T23:59",
+    "interval_hours": 6,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": 60.0,
+    "preco_maximo": 160.0,
+    "desconto_minimo": 20,
+    "limite_candidatos": 5,
+    "last_run_at": "2026-07-17T18:23:51",
+    "configured_at": "2026-07-07T19:41:24",
+    "next_run_at": "2026-07-18T00:23:51",
+    "last_execution_status": "falha",
+    "last_execution_message": "Page.goto: Target page, context or browser has been closed",
+    "last_execution_at": "2026-07-17T18:24:47"
   }
 ]

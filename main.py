@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 
+from parsers.amazon import processar_produtos_amazon_por_afiliados
 from parsers.mercadolivre import (
     buscar_produto_por_descricao,
     coletar_produtos_com_desconto,
@@ -17,7 +18,7 @@ import pdb
 import random
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from twilio.base.exceptions import TwilioRestException
 from twilio.rest import Client
@@ -51,6 +52,7 @@ LIMITE_PAGINAS_PESQUISA_PADRAO = 5
 CATEGORIA_PADRAO = "Acessórios para Veículos"
 
 HISTORICO_ANUNCIOS_ARQUIVO = "historico_anuncios.txt"
+HISTORICO_RETENCAO_DIAS = 20
 
 ARQUIVO_PRODUTOS_PREFIXO = "ofertas_consolidadas"
 
@@ -58,6 +60,8 @@ WHATSAPP_DESTINO_FIXO = "whatsapp:+5519991133269"
 
 AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
 AUTH_MARKER_STILL_PENDING_ML = "[AUTH_STILL_PENDING_ML]"
+AUTH_MARKER_REQUIRED_AMAZON = "[AUTH_REQUIRED_AMAZON]"
+AUTH_MARKER_STILL_PENDING_AMAZON = "[AUTH_STILL_PENDING_AMAZON]"
 LOGIN_OK_SIGNAL_FILE = os.path.join(os.path.dirname(__file__), ".ml_login_ok.signal")
 MODO_INTERFACE = os.getenv("PROMOS_GUI_MODE", "0") == "1"
 
@@ -77,7 +81,14 @@ def parse_args():
     parser.add_argument(
         "--categoria",
         default=None,
-        help="Categoria do Mercado Livre a filtrar na coleta principal.",
+        help="Categoria principal a filtrar na coleta.",
+    )
+
+    parser.add_argument(
+        "--fonte",
+        choices=["mercadolivre", "amazon"],
+        default="mercadolivre",
+        help="Fonte do marketplace para busca de produtos on-demand.",
     )
 
     parser.add_argument(
@@ -184,6 +195,12 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--url-relampago",
+        default=None,
+        help="URL customizada para o fluxo de ofertas relampago do Mercado Livre.",
+    )
+
+    parser.add_argument(
         "--pasta-saida",
         default=None,
         help="Diretório onde o arquivo lista_anuncios.txt será salvo (escolhido pelo usuário na interface).",
@@ -217,6 +234,8 @@ MODO_BUSCA_DESCRICAO = bool((ARGS.descricao_produto or "").strip())
 MODO_PRODUTO_POR_HTML = ARGS.produto_por_html
 PRIORIZAR_MENOR_PRECO = ARGS.menor_preco or MODO_BUSCA_DESCRICAO
 LIMITE_PAGINAS_PESQUISA = max(1, ARGS.limite_paginas_pesquisa)
+FONTE_BUSCA = (ARGS.fonte or "mercadolivre").strip().lower()
+URL_RELAMPAGO_ALVO = (ARGS.url_relampago or "").strip() or URL_OFERTAS_RELAMPAGO
 
 if ARGS.categoria:
     CATEGORIA_PADRAO = ARGS.categoria.strip()
@@ -285,6 +304,153 @@ def normalizar_descricao(texto_descricao):
 def normalizar_chave_historico(valor):
 
     return " ".join((valor or "").split()).strip().lower()
+
+
+def _parse_timestamp_historico(valor):
+
+    texto = str(valor or "").strip()
+
+    if not texto:
+
+        return None
+
+    formatos = (
+        "%Y-%m-%dT%H:%M:%S.%f",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y%m%d_%H%M%S",
+    )
+
+    for formato in formatos:
+
+        try:
+
+            return datetime.strptime(texto, formato)
+
+        except ValueError:
+
+            continue
+
+    return None
+
+
+def _montar_tupla_historico(produto, timestamp=None):
+
+    instante = timestamp or datetime.now()
+
+    return (
+        normalizar_chave_historico(produto.get("id_anuncio")),
+        normalizar_descricao(produto.get("descricao")),
+        (produto.get("antes") or "").strip(),
+        (produto.get("depois") or "").strip(),
+        (produto.get("desconto") or "").strip(),
+        (produto.get("link_original") or produto.get("link") or "").strip(),
+        instante.isoformat(timespec="seconds"),
+    )
+
+
+def _normalizar_tupla_historico_existente(anuncio, timestamp):
+
+    base = list(anuncio[:6])
+
+    while len(base) < 6:
+
+        base.append("")
+
+    base[0] = normalizar_chave_historico(base[0])
+    base[1] = normalizar_descricao(base[1])
+
+    return tuple(base[:6] + [timestamp.isoformat(timespec="seconds")])
+
+
+def _carregar_registros_historico_anuncios(caminho_arquivo):
+
+    registros_por_id = {}
+    precisa_regravar = False
+    limite = datetime.now() - timedelta(days=HISTORICO_RETENCAO_DIAS)
+
+    try:
+
+        mtime_arquivo = datetime.fromtimestamp(os.path.getmtime(caminho_arquivo))
+
+        with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
+
+            for linha in arquivo:
+
+                linha_limpa = linha.strip()
+
+                if not linha_limpa:
+
+                    continue
+
+                try:
+
+                    anuncio = ast.literal_eval(linha_limpa)
+
+                except Exception:
+
+                    precisa_regravar = True
+                    continue
+
+                if not isinstance(anuncio, tuple) or not anuncio:
+
+                    precisa_regravar = True
+                    continue
+
+                anuncio_id = normalizar_chave_historico(str(anuncio[0]))
+
+                if not anuncio_id:
+
+                    precisa_regravar = True
+                    continue
+
+                timestamp = None
+                if len(anuncio) >= 7:
+
+                    timestamp = _parse_timestamp_historico(anuncio[6])
+
+                if timestamp is None:
+
+                    timestamp = mtime_arquivo
+                    precisa_regravar = True
+
+                if timestamp < limite:
+
+                    precisa_regravar = True
+                    continue
+
+                registro = {"id": anuncio_id, "anuncio": anuncio, "timestamp": timestamp}
+                existente = registros_por_id.get(anuncio_id)
+
+                if existente is None or timestamp >= existente["timestamp"]:
+
+                    registros_por_id[anuncio_id] = registro
+
+                if len(anuncio) < 7:
+
+                    precisa_regravar = True
+
+    except FileNotFoundError:
+
+        return []
+
+    registros = sorted(
+        registros_por_id.values(),
+        key=lambda item: (item["timestamp"], item["id"]),
+    )
+
+    if precisa_regravar:
+
+        with open(caminho_arquivo, "w", encoding="utf-8") as arquivo:
+
+            for registro in registros:
+
+                tupla_normalizada = _normalizar_tupla_historico_existente(
+                    registro["anuncio"],
+                    registro["timestamp"],
+                )
+                arquivo.write(f"{tupla_normalizada!r}\n")
+
+    return registros
 
 
 def produto_esta_no_intervalo(produto, preco_minimo, preco_maximo):
@@ -398,78 +564,32 @@ def carregar_historico_precos(caminho_arquivo):
 
 def carregar_historico_anuncios(caminho_arquivo):
 
-    historico = set()
-
-    try:
-
-        with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
-
-            for linha in arquivo:
-
-                linha_limpa = linha.strip()
-
-                if not linha_limpa:
-
-                    continue
-
-                try:
-
-                    anuncio = ast.literal_eval(linha_limpa)
-
-                except Exception:
-
-                    continue
-
-                if isinstance(anuncio, tuple) and anuncio:
-
-                    anuncio_id = normalizar_chave_historico(str(anuncio[0]))
-
-                    if anuncio_id:
-
-                        historico.add(anuncio_id)
-
-    except FileNotFoundError:
-
-        pass
-
-    return historico
+    return {
+        registro["id"]
+        for registro in _carregar_registros_historico_anuncios(caminho_arquivo)
+    }
 
 
 def carregar_historico_precos_por_anuncio(caminho_arquivo):
 
     historico = {}
 
-    try:
+    for registro in _carregar_registros_historico_anuncios(caminho_arquivo):
 
-        with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
+        anuncio = registro["anuncio"]
 
-            for linha in arquivo:
+        if len(anuncio) < 4:
+            continue
 
-                linha_limpa = linha.strip()
-                if not linha_limpa:
-                    continue
+        anuncio_id = registro["id"]
+        preco_atual = converter_preco(str(anuncio[3]))
 
-                try:
-                    anuncio = ast.literal_eval(linha_limpa)
-                except Exception:
-                    continue
+        if not anuncio_id or preco_atual is None:
+            continue
 
-                if not isinstance(anuncio, tuple) or len(anuncio) < 4:
-                    continue
-
-                anuncio_id = normalizar_chave_historico(str(anuncio[0]))
-                preco_atual = converter_preco(str(anuncio[3]))
-
-                if not anuncio_id or preco_atual is None:
-                    continue
-
-                preco_salvo = historico.get(anuncio_id)
-                if preco_salvo is None or preco_atual < preco_salvo:
-                    historico[anuncio_id] = preco_atual
-
-    except FileNotFoundError:
-
-        pass
+        preco_salvo = historico.get(anuncio_id)
+        if preco_salvo is None or preco_atual < preco_salvo:
+            historico[anuncio_id] = preco_atual
 
     return historico
 
@@ -515,14 +635,7 @@ def produto_ja_foi_enviado(produto, historico_anuncios):
 
 def montar_tupla_anuncio(produto):
 
-    return (
-        normalizar_chave_historico(produto.get("id_anuncio")),
-        normalizar_descricao(produto.get("descricao")),
-        (produto.get("antes") or "").strip(),
-        (produto.get("depois") or "").strip(),
-        (produto.get("desconto") or "").strip(),
-        (produto.get("link_original") or produto.get("link") or "").strip(),
-    )
+    return _montar_tupla_historico(produto)
 
 
 def produto_deve_ser_enviado(produto, historico_precos):
@@ -779,6 +892,315 @@ def sessao_ml_ativa_via_requisicao(page):
         return bool(resposta.ok)
     except Exception:
         return False
+
+
+def url_em_fluxo_autenticacao_amazon(url):
+
+    url_atual = (url or "").lower()
+
+    marcadores = [
+        "/ap/signin",
+        "/ap/oa",
+        "/ap/cvf",
+        "signin",
+        "mfa",
+        "otp",
+        "challenge",
+        "verify",
+    ]
+
+    return any(marcador in url_atual for marcador in marcadores)
+
+
+def sessao_amazon_ativa_via_cookies(page):
+
+    try:
+        cookies = page.context.cookies("https://www.amazon.com.br")
+        nomes_cookies = {str(cookie.get("name") or "").strip().lower() for cookie in cookies}
+
+        # Mantem a checagem auxiliar, mas sem concluir login apenas por cookie.
+        return any(nome in nomes_cookies for nome in ["at-main", "session-id", "session-token"])
+    except Exception:
+        return False
+
+
+def sessao_amazon_ativa_via_requisicao(page):
+
+    try:
+        resposta = page.context.request.get(
+            "https://www.amazon.com.br/gp/css/order-history",
+            timeout=5000,
+        )
+
+        url_final = (resposta.url or "").lower()
+        if url_em_fluxo_autenticacao_amazon(url_final):
+            return False
+
+        corpo = ""
+        try:
+            corpo = (resposta.text() or "").lower()
+        except Exception:
+            corpo = ""
+
+        if any(
+            marcador in corpo
+            for marcador in [
+                "faça seu login",
+                "faca seu login",
+                "faça o login",
+                "faca o login",
+                "identifique-se",
+                "ap/signin",
+            ]
+        ):
+            return False
+
+        if not sessao_amazon_ativa_via_cookies(page):
+            return False
+
+        return bool(resposta.ok)
+    except Exception:
+        return False
+
+
+def amazon_esta_em_tela_login(page):
+
+    try:
+        if url_em_fluxo_autenticacao_amazon(page.url):
+            return True
+
+        if page.locator("input[name='email'], input[name='password']").count() > 0:
+            return True
+
+        if amazon_exibe_cta_login(page):
+            return True
+    except Exception:
+        return True
+
+    return False
+
+
+def abrir_tela_login_amazon(page):
+
+    try:
+        if url_em_fluxo_autenticacao_amazon(page.url):
+            return
+
+        page.goto(
+            "https://www.amazon.com.br/ap/signin",
+            timeout=90000,
+            wait_until="domcontentloaded",
+        )
+    except Exception:
+        # Se falhar o redirecionamento, segue para o fluxo de espera sem abortar.
+        pass
+
+
+def usuario_esta_logado_amazon(page):
+
+    try:
+
+        url_atual = (page.url or "").lower()
+        if "/ap/signin" in url_atual or "signin" in url_atual:
+            return False
+
+        if page.locator("input[name='email'], input[name='password']").count() > 0:
+            return False
+
+        if page.locator("text=Faça o login, text=Faca o login, text=Faça seu Login, text=Faça seu login, text=Faca seu Login, text=Faca seu login, text=Identifique-se").count() > 0:
+            return False
+
+        if page.locator("a:has-text('Faça o login'), a:has-text('Faca o login'), a:has-text('Faça seu Login'), a:has-text('Faça seu login'), a:has-text('Faca seu Login'), a:has-text('Faca seu login'), button:has-text('Faça o login'), button:has-text('Faça seu Login'), button:has-text('Faça seu login'), button:has-text('Faca seu Login'), button:has-text('Faca seu login')").count() > 0:
+            return False
+
+        linha_conta = page.locator("#nav-link-accountList-nav-line-1").first
+        if linha_conta.count() > 0:
+            texto = (linha_conta.inner_text(timeout=1200) or "").strip().lower()
+            if any(
+                marcador in texto
+                for marcador in [
+                    "faça seu login",
+                    "faca seu login",
+                    "faça o login",
+                    "faca o login",
+                    "identifique-se",
+                    "identifique se",
+                ]
+            ):
+                return False
+
+            if "olá" in texto or "ola" in texto:
+                return True
+
+            # Algumas variações exibem apenas o nome na linha da conta após login.
+            if texto and "login" not in texto and "identifique" not in texto:
+                return True
+
+        if page.locator("a[href*='ap/signin'], a[href*='signin']").count() > 0:
+            return False
+
+    except Exception:
+
+        return False
+
+    return False
+
+
+def amazon_exibe_cta_login(page):
+
+    try:
+
+        if page.locator("text=Faça seu Login, text=Faça seu login, text=Faca seu Login, text=Faca seu login").count() > 0:
+            return True
+
+        if page.locator("a:has-text('Faça seu Login'), a:has-text('Faça seu login'), a:has-text('Faca seu Login'), a:has-text('Faca seu login'), button:has-text('Faça seu Login'), button:has-text('Faça seu login'), button:has-text('Faca seu Login'), button:has-text('Faca seu login')").count() > 0:
+            return True
+
+    except Exception:
+
+        return False
+
+    return False
+
+
+def aguardar_login_amazon(page):
+
+    url_atual = (page.url or "").lower()
+    if "amazon.com.br" not in url_atual:
+        page.goto(
+            "https://www.amazon.com.br/ap/signin",
+            timeout=90000,
+            wait_until="domcontentloaded",
+        )
+
+    if usuario_esta_logado_amazon(page):
+
+        print("\nAmazon ja esta autenticada.")
+        return
+
+    print("\nAmazon nao esta autenticada. Faça login manualmente no navegador aberto.")
+
+    # Leva o usuário para a tela de login quando ainda não estiver em fluxo de autenticação.
+    abrir_tela_login_amazon(page)
+
+    delay_login_aplicado = False
+
+    if amazon_exibe_cta_login(page):
+        print("\n[AMAZON] Texto 'Faça seu login' detectado. Aguardando 30s para autenticacao...")
+        time.sleep(30)
+        delay_login_aplicado = True
+
+        if usuario_esta_logado_amazon(page):
+            print("\nLogin Amazon confirmado. Continuando execução.")
+            return
+
+        if sessao_amazon_ativa_via_requisicao(page):
+            print("\nLogin Amazon confirmado. Continuando execução.")
+            return
+
+    if MODO_INTERFACE:
+
+        print(
+            f"{AUTH_MARKER_REQUIRED_AMAZON} Amazon nao autenticada, realize o login e clique em 'Continuar'."
+        )
+
+        timeout_segundos = 900
+        inicio_espera = time.time()
+
+        while (time.time() - inicio_espera) < timeout_segundos:
+
+            if usuario_esta_logado_amazon(page) or sessao_amazon_ativa_via_requisicao(page):
+                print("\nLogin Amazon confirmado. Continuando execução.")
+                return
+
+            if not delay_login_aplicado and amazon_exibe_cta_login(page):
+                print("\n[AMAZON] Texto 'Faça seu login' detectado. Aguardando 30s para autenticacao...")
+                time.sleep(30)
+                delay_login_aplicado = True
+                if usuario_esta_logado_amazon(page) or sessao_amazon_ativa_via_requisicao(page):
+                    print("\nLogin Amazon confirmado. Continuando execução.")
+                    return
+
+            if (not usuario_esta_logado_amazon(page)) and (not url_em_fluxo_autenticacao_amazon(page.url)):
+                abrir_tela_login_amazon(page)
+
+            # Não interfere no fluxo de autenticação/MFA enquanto ele está em andamento.
+            if url_em_fluxo_autenticacao_amazon(page.url):
+                if sessao_amazon_ativa_via_requisicao(page):
+                    print("\nLogin Amazon confirmado. Continuando execução.")
+                    return
+
+                time.sleep(2)
+                continue
+
+            if not os.path.exists(LOGIN_OK_SIGNAL_FILE):
+                time.sleep(1)
+                continue
+
+            try:
+                os.remove(LOGIN_OK_SIGNAL_FILE)
+            except Exception:
+                pass
+
+            print("\nConfirmacao recebida da interface. Validando sessao Amazon...")
+
+            if usuario_esta_logado_amazon(page) or sessao_amazon_ativa_via_requisicao(page):
+                print("\nLogin Amazon confirmado. Continuando execução.")
+                return
+
+            # Fallback: se o usuario saiu da tela de login/MFA e confirmou na interface,
+            # prossegue para a coleta para evitar travamento por falso negativo.
+            if not amazon_esta_em_tela_login(page):
+                print("\n[AMAZON] Login nao confirmado por marcador, mas tela de login foi encerrada. Prosseguindo com a coleta.")
+                return
+
+            print(
+                f"{AUTH_MARKER_STILL_PENDING_AMAZON} Login Amazon ainda nao confirmado. Continue no navegador e clique em 'Continuar' novamente."
+            )
+
+        raise RuntimeError(
+            "Sessao da Amazon nao autenticada apos aguardar 900s. "
+            "Entre na conta e execute novamente."
+        )
+
+    timeout_segundos = 300
+    inicio_espera = time.time()
+
+    while (time.time() - inicio_espera) < timeout_segundos:
+
+        if usuario_esta_logado_amazon(page):
+
+            print("\nLogin Amazon confirmado. Continuando execução.")
+            return
+
+        # Não interfere no fluxo de login/MFA enquanto ele está em andamento.
+        if url_em_fluxo_autenticacao_amazon(page.url):
+            if sessao_amazon_ativa_via_requisicao(page):
+                print("\nLogin Amazon confirmado. Continuando execução.")
+                return
+
+            time.sleep(2)
+            continue
+
+        # Valida sessão em background sem interromper a tela atual.
+        if sessao_amazon_ativa_via_requisicao(page):
+            print("\nLogin Amazon confirmado. Continuando execução.")
+            return
+
+        if not delay_login_aplicado and amazon_exibe_cta_login(page):
+            print("\n[AMAZON] Texto 'Faça seu login' detectado. Aguardando 30s para autenticacao...")
+            time.sleep(30)
+            delay_login_aplicado = True
+            if usuario_esta_logado_amazon(page) or sessao_amazon_ativa_via_requisicao(page):
+                print("\nLogin Amazon confirmado. Continuando execução.")
+                return
+
+        time.sleep(2)
+
+    raise RuntimeError(
+        "Sessao da Amazon nao autenticada apos aguardar 300s. "
+        "Entre na conta e execute novamente."
+    )
 
 
 def aguardar_login_mercado_livre(page):
@@ -1167,6 +1589,71 @@ with sync_playwright() as p:
 
     if MODO_PRODUTO_POR_HTML:
 
+        if FONTE_BUSCA == "amazon":
+
+            print("[MODO_ATIVO] PRODUTO_ONDEMAND_AMAZON")
+            print("\nModo procurar produto ativado para Amazon (central de afiliados/SiteStripe).")
+            if urls_produto_parametrizadas:
+                print(f"\n[AMAZON] URL(s) parametrizada(s) para busca: {urls_produto_parametrizadas}")
+
+            aguardar_login_amazon(page)
+
+            ofertas_hub = processar_produtos_amazon_por_afiliados(
+                page,
+                categoria=categoria_parametrizada,
+                subcategoria=None,
+                descricao=(ARGS.descricao_produto or "").strip() or None,
+                urls=urls_produto_parametrizadas,
+                preco_minimo=preco_minimo_parametrizado,
+                preco_maximo=preco_maximo_parametrizado,
+                desconto_minimo=desconto_minimo_parametrizado,
+                limite_candidatos=limite_candidatos_parametrizado,
+                historico_anuncios=historico_anuncios,
+                limite_validos=(limite_candidatos_parametrizado or 10),
+                affiliate_tag="medonlucas-20",
+            )
+
+            ofertas_hub = filtrar_anuncios_ineditos_ou_com_reducao(
+                ofertas_hub,
+                historico_precos_por_anuncio,
+            )
+
+            if ofertas_hub:
+
+                salvar_resultado_relampago(
+                    ofertas_hub,
+                    pasta=ARGS.pasta_saida or None,
+                    incluir_banner_relampago=False,
+                )
+                salvar_saida_execucao_modalidade(ofertas_hub, ARGS.modalidade_execucao or "ondemand")
+
+                enviar_produtos_por_whatsapp(ofertas_hub)
+
+                salvar_historico_anuncios_em_arquivo(
+                    HISTORICO_ANUNCIOS_ARQUIVO,
+                    ofertas_hub
+                )
+
+                for produto in ofertas_hub:
+
+                    anuncio_id = normalizar_chave_historico(
+                        produto.get("id_anuncio")
+                    )
+
+                    if anuncio_id:
+
+                        historico_anuncios.add(anuncio_id)
+
+                print(f"\n{len(ofertas_hub)} oferta(s) da Amazon processada(s) e salva(s).")
+
+            else:
+
+                print("\nNenhuma oferta elegível da Amazon foi encontrada.")
+
+            context.close()
+
+            raise SystemExit(0)
+
         print("[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA")
         print("\nModo procurar produto ativado (pesquisa pela home do Mercado Livre).")
 
@@ -1535,7 +2022,7 @@ with sync_playwright() as p:
 
     ofertas_relampago = processar_ofertas_relampago(
         page,
-        URL_OFERTAS_RELAMPAGO,
+        URL_RELAMPAGO_ALVO,
         desconto_minimo=DESCONTO_MINIMO_RELAMPAGO_PADRAO if MODO_RELAMPAGO_PADRAO else desconto_minimo_parametrizado,
         descricao=None if MODO_RELAMPAGO_PADRAO else descricao_parametrizada,
         preco_minimo=None if MODO_RELAMPAGO_PADRAO else preco_minimo_parametrizado,

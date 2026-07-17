@@ -1,0 +1,11 @@
+=== Inicio da execucao: 2026-07-17T20:20:21 ===
+Args: --produto-por-html --fonte amazon --categoria Beleza --preco-minimo 30.0 --preco-maximo 60.0 --limite-candidatos 3 --url-produto https://www.amazon.com.br/ref=nav_logo --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_AMAZON
+
+Modo procurar produto ativado para Amazon (central de afiliados/SiteStripe).
+
+[AMAZON] URL(s) parametrizada(s) para busca: ['https://www.amazon.com.br/ref=nav_logo']
+
+Amazon nao esta autenticada. Faça login manualmente no navegador aberto.
+[AUTH_REQUIRED_AMAZON] Amazon nao autenticada, realize o login e clique em 'Continuar'.

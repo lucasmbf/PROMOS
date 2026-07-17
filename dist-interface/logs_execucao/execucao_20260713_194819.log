@@ -1,0 +1,43 @@
+=== Inicio da execucao: 2026-07-13T19:48:19 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/suplementos#D[A:suplementos] --descricao-produto Creatina --desconto-minimo 30 --limite-candidatos 4 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/suplementos#D[A:suplementos]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/suplementos#D[A:suplementos]
+✓ Link de afiliado: https://meli.la/1BGMHE1
+✓ Link de afiliado: https://meli.la/1XbVNnm
+✓ Link de afiliado: https://meli.la/13oSA2i
+✓ Link de afiliado: https://meli.la/1bd5j8b
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Ultra 300g Pote - FTW
+Message SID Twilio: SMe790d22df3dbc61d3fbb77bfd463ad06
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Monohidratada Creatine Vitafor 300g Sem Sabor
+Message SID Twilio: SMa6eac659bb32e0f4c4f709b1d18b551b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina 1kg Suplemento Monohidratada em pó 100% Pura - Soldiers Nutrition
+Message SID Twilio: SMbfee42397a805f7ebb1cd22976d0e787
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Creavitalis Pote 300g Dux Nutrition Sabor Sem Sabor
+Message SID Twilio: SM850a7eef463febbe628e467dddc8160f
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-13T19:49:31 ===

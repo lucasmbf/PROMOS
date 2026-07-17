@@ -1,0 +1,48 @@
+=== Inicio da execucao: 2026-07-13T19:50:19 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/30-a-60-unidades/fralda_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B30-60%29%26applied_value_name%3D30+a+59+unidades%26applied_value_order%3D2%26applied_value_results%3D2743%26is_custom%3Dfalse --preco-minimo 30.0 --preco-maximo 80.0 --desconto-minimo 30 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/30-a-60-unidades/fralda_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B30-60%29%26applied_value_name%3D30+a+59+unidades%26applied_value_order%3D2%26applied_value_results%3D2743%26is_custom%3Dfalse
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/30-a-60-unidades/fralda_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B30-60%29%26applied_value_name%3D30+a+59+unidades%26applied_value_order%3D2%26applied_value_results%3D2743%26is_custom%3Dfalse
+✓ Link de afiliado: https://meli.la/1PcyWYg
+✓ Link de afiliado: https://meli.la/2KECoXS
+✓ Link de afiliado: https://meli.la/23b3qHQ
+✓ Link de afiliado: https://meli.la/1kX4ux6
+✓ Link de afiliado: https://meli.la/26Y95dA
+[BLOCO_1] Resultado: 5 candidato(s) coletado(s), 5 válido(s) enriquecido(s). Total: 5/5
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Galinha Pintadinha Ultrasec Xg 30 Unidades Babysec Gênero Sem Gênero Tamanho Extra Grande (xg)
+Message SID Twilio: SM5041894cbf6ec4fccd58dd13b5065bca
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Babysec Ultrasec Galinha Pintadinha M 38 Unidades Médio (m) Sem Gênero
+Message SID Twilio: SM0f3282d4404477c8e57f95f7270a2a5a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Huggies Fralda Descartável Máxima Proteção P - 48 Un
+Message SID Twilio: SM56bfb769e55b83dff2f6d577c60af311
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Infantil Pampers Supersec Mega 5 A 8 Kg P 42 Unidades Tamanho Pequeno (P)
+Message SID Twilio: SM76bed4f4de459dc00632f406848b7494
+
+Mensagem enviada para whatsapp:+5519991133269:
+Huggies Fralda Pants Roupinha Proteção Acolchoada Xxg - 58 Un Xgg
+Message SID Twilio: SM52a9f480e1bc58d3e0bbcf5d1c727b6a
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-13T19:51:42 ===

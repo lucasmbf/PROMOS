@@ -1,0 +1,101 @@
+=== Inicio da execucao: 2026-07-17T18:10:29 ===
+Args: --somente-relampago --desconto-minimo 30 --limite-candidatos 15 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260717_181054_408932_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260717_181054_408932_01.txt
+32 oferta(s) com 30% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb4812130742 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3817089255 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4314606824 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4718918529 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6465256686 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3525364839 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 222 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260717_181054.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2LE8brg
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1EDuq5i
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1Zk2phq
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/29iW7HR
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1YAX6dz
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2fYFn9F
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1Z1vgUh
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2Fk4ubx
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2Mk85sg
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2tRMs6t
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0066_20260717_181235.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Promoção Combo Poderoso (shampoo+cond+tônico) Combo Oficial
+Message SID Twilio: SM39192af00e08cca6f97681bf2f4fe005
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera De Vídeo Wi-Fi Intelbras IM3 C MicroSD 32GB Branco
+Message SID Twilio: SMe22ae313f452922e3f2ab39bb8187ba0
+
+Mensagem enviada para whatsapp:+5519991133269:
+Promoção Combo Poderoso + Sérum De Brinde Reparador
+Message SID Twilio: SMa5cf559e49a89c4322224e59bcff0ea8
+
+Mensagem enviada para whatsapp:+5519991133269:
+Smart Tv Philips 50 4k 50pug7300 Comando De Voz Bluetooth
+Message SID Twilio: SM46fe1c1880778294bc2cc3456266c8d4
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo De Toalhas Banho Village Com 4 Peças Lilás E Roxo Buddemeyer
+Message SID Twilio: SMa38268e242b26169a6453b6ac3fa0193
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fone de Ouvido Earbud AIWA EB-01-B Bluetooth IPX5 ANC Modo Ambiente
+Message SID Twilio: SM6b5918e7039f18e54b2bcb9354123ef6
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mangueira Jardim 20m Metros Com Esguicho Trançada Reforçada Flexível 7/16 Anti Dobra Irrigação Quintal Poço Lavagem Durável Marqs Home
+Message SID Twilio: SMeb1e5f1e8cb58b3e425ac1f6f7e86edd
+
+Mensagem enviada para whatsapp:+5519991133269:
+Hidratante Facial Epidrat Calm 120ml Mantecorp Skincare Todo Tipo De Pele Dia/noite
+Message SID Twilio: SM94d197fab07396981d2ab67ec6faebf2
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mini Ventilador Soprador Ar Turbo 130000RPM Sem Fio Recarregável USB 3 Níveis Jato Forte Portátil Multiuso Limpeza Teclado Carro Acende Churrasqueira Simake
+Message SID Twilio: SM18ba4ac298fa3ff00372d5ac07720bd2
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cuba Pia Gourmet Luxo Guerra Aço Inox + Torneira Flexivel Monocomando Bancada Cozinha 42x60cm Kit Completa 60 Cm 42cm Winda
+Message SID Twilio: SM3283d5b6d1873d300f0a344b465725d6
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-17T18:13:16 ===

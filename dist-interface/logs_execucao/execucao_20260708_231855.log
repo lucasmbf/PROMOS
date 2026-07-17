@@ -1,0 +1,92 @@
+=== Inicio da execucao: 2026-07-08T23:18:55 ===
+Args: --somente-relampago --desconto-minimo 19 --limite-candidatos 10 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 5 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260708_231920_821141_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260708_231920_821141_01.txt
+37 oferta(s) com 19% ou mais de desconto extraída(s) do JSON.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 229 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260708_231921.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2ZEvorF
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1EY9qKd
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/285onXW
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1i8DijL
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/33rqXrn
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2JDrHfB
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1gQjqbE
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1xFdNGB
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2EYKxMP
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/23HhE4C
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0055_20260708_232058.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Monohidratada Pura 1kg Dark Lab Unidade Sem sabor
+Message SID Twilio: SMf4407fe77fee5daf05e690d52ab34d0f
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fechadura Digital De Sobrepor Fr 101 V Preta Intelbras
+Message SID Twilio: SM3ab079d27b0ec44474017228ed1eb229
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mini Compressor De Ar Digital Para Pneus Carro Moto Bike 150psi Recarregável 4000mah
+Message SID Twilio: SM0465e7ffbd9e0bd00c817c952bd65454
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Monohidratada em Pote 300g 100% Pura Dark Lab
+Message SID Twilio: SM9332dedebbfa6cb6c3f05c3fd21fd2ac
+
+Mensagem enviada para whatsapp:+5519991133269:
+Máquina de Solda Multiprocesso MIG Flex 150a Pró Euro Bivolt MIG sem gás MMA TIG
+Message SID Twilio: SM64a3f2f1f2f037438211b9f67addfce4
+
+Mensagem enviada para whatsapp:+5519991133269:
+TP-Link Tapo C206 Câmera de Segurança Wifi 1080P 360° IP65 Interna Externa
+Message SID Twilio: SM25334ff00856f28ec9846833d7d2d380
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mochila Dos Homens Com Faixa Impermeável Para Expansão Preto Liso
+Message SID Twilio: SMd73d0c16e2048939a3ee9e7d419c3afe
+
+Mensagem enviada para whatsapp:+5519991133269:
+Controle Gamesir T4 Nova Lite Sem Fio Para Pc Switch Android Ios Steam Celular Hall Effect Cor Space Purple
+Message SID Twilio: SM17d95c271accfb8a96b363935b062288
+
+Mensagem enviada para whatsapp:+5519991133269:
+TP-Link Tapo C200 Câmera de Segurança Wifi 1080P 360° Pan/Tilt
+Message SID Twilio: SMfc7d11f8becb70a8a764d934e459ff74
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cadeira De Escritório Presidente Dylan Healer Preto Náilon
+Message SID Twilio: SM014203afa58b6fffb03e9bcfaacdeec7
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-08T23:21:41 ===

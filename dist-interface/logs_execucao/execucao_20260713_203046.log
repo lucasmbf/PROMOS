@@ -1,0 +1,68 @@
+=== Inicio da execucao: 2026-07-13T20:30:46 ===
+Args: --somente-relampago --desconto-minimo 40 --limite-candidatos 5 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260713_203110_520226_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260713_203110_520226_01.txt
+22 oferta(s) com 40% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5800919092 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6623716064 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3456684963 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6760301108 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 227 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260713_203110.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1xL1F3i
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2NkNVYj
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2o4RK26
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1iYd6Xj
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2oQdkXr
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0061_20260713_203157.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fritadeira Air Fryer Philco Paf11c Preto Com Acabamento Em Inox
+Message SID Twilio: SMb961c954980925898e579248216c9ef8
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fritadeira Air Fryer Paf11c
+Message SID Twilio: SM39fcc08ba35e9ee2350b21d5cec8365a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mantecorp Hidratante Facial Epidrat Calm Restaurador - 40g
+Message SID Twilio: SMb25a04291b74bb6f5a623aa253049b70
+
+Mensagem enviada para whatsapp:+5519991133269:
+Pendente Luminárias Led Teto Modernas, Lustre Para Sala 60w 127/220v Dourado
+Message SID Twilio: SM0dc5960e12f14feaa57f41afd7d2860c
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mantecorp Hidratante Corporal Hydraporin AI 450g
+Message SID Twilio: SM5f48a61944eec68168ee74ccd5c490b2
+
+5 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-13T20:32:18 ===

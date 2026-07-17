@@ -1,0 +1,38 @@
+=== Inicio da execucao: 2026-07-14T19:59:42 ===
+Args: --produto-por-html --url-produto https://lista.mercadolivre.com.br/games/video-games/novo/jogo-switch-2_NoIndex_True_SHIPPING*ORIGIN_10215068_VIDEO*GAME*PLATFORM_52200449#applied_filter_id%3DITEM_CONDITION%26applied_filter_name%3DCondi%C3%A7%C3%A3o%26applied_filter_order%3D4%26applied_value_id%3D2230284%26applied_value_name%3DNovo%26applied_value_order%3D1%26applied_value_results%3D38%26is_custom%3Dfalse --desconto-minimo 20 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/games/video-games/novo/jogo-switch-2_NoIndex_True_SHIPPING*ORIGIN_10215068_VIDEO*GAME*PLATFORM_52200449#applied_filter_id%3DITEM_CONDITION%26applied_filter_name%3DCondi%C3%A7%C3%A3o%26applied_filter_order%3D4%26applied_value_id%3D2230284%26applied_value_name%3DNovo%26applied_value_order%3D1%26applied_value_results%3D38%26is_custom%3Dfalse
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/games/video-games/novo/jogo-switch-2_NoIndex_True_SHIPPING*ORIGIN_10215068_VIDEO*GAME*PLATFORM_52200449#applied_filter_id%3DITEM_CONDITION%26applied_filter_name%3DCondi%C3%A7%C3%A3o%26applied_filter_order%3D4%26applied_value_id%3D2230284%26applied_value_name%3DNovo%26applied_value_order%3D1%26applied_value_results%3D38%26is_custom%3Dfalse
+✓ Link de afiliado: https://meli.la/26QfyZ3
+✓ Link de afiliado: https://meli.la/2cXmcRP
+✓ Link de afiliado: https://meli.la/1cMjRc5
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Yakuza Kiwami Switch 2
+Message SID Twilio: SM7317d93eb2dceb0f8c2995cb462ad2ee
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo Dragon Ball Sparking Zero Launch Edition Switch 2 M.fis
+Message SID Twilio: SM3b43f31f9179fc6600285e209ac23f29
+
+Mensagem enviada para whatsapp:+5519991133269:
+Hades Ii Switch 2 Midia Fisica
+Message SID Twilio: SMedcfc27a149bac194b38632d5cf5beb7
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-14T20:00:29 ===

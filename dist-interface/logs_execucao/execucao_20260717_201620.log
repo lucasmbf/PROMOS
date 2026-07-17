@@ -1,0 +1,11 @@
+=== Inicio da execucao: 2026-07-17T20:16:20 ===
+Args: --produto-por-html --fonte amazon --preco-minimo 998.0 --preco-maximo 1001.0 --limite-candidatos 3 --url-produto https://www.amazon.com.br/deals?ref_=nav_cs_gb&promotionsSearchLastSeenAsin=B0D4NSS9XV&promotionsSearchStartIndex=0&promotionsSearchPageSize=60 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_AMAZON
+
+Modo procurar produto ativado para Amazon (central de afiliados/SiteStripe).
+
+[AMAZON] URL(s) parametrizada(s) para busca: ['https://www.amazon.com.br/deals?ref_=nav_cs_gb&promotionsSearchLastSeenAsin=B0D4NSS9XV&promotionsSearchStartIndex=0&promotionsSearchPageSize=60']
+
+Amazon nao esta autenticada. Faça login manualmente no navegador aberto.
+[AUTH_REQUIRED_AMAZON] Amazon nao autenticada, realize o login e clique em 'Continuar'.

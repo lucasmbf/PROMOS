@@ -1,0 +1,23 @@
+=== Inicio da execucao: 2026-07-17T20:09:43 ===
+Args: --produto-por-html --fonte amazon --descricao-produto rtx 3050 --preco-minimo 998.0 --preco-maximo 1001.0 --desconto-minimo 3 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_AMAZON
+
+Modo procurar produto ativado para Amazon (central de afiliados/SiteStripe).
+
+Amazon nao esta autenticada. Faça login manualmente no navegador aberto.
+[AUTH_REQUIRED_AMAZON] Amazon nao autenticada, realize o login e clique em 'Continuar'.
+
+Login Amazon confirmado. Continuando execução.
+
+[AMAZON] Sessao validada. Iniciando coleta nas listagens configuradas.
+
+[AMAZON] Coletando candidatos em: https://www.amazon.com.br/b/node/122326793011
+
+[AMAZON] Coletando candidatos em: https://www.amazon.com.br/s?k=rtx+3050
+
+[AMAZON] Nenhum candidato encontrado.
+
+Nenhuma oferta elegível da Amazon foi encontrada.
+
+=== Fim da execucao: 2026-07-17T20:09:57 ===

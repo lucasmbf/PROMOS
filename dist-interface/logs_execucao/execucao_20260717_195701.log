@@ -1,0 +1,22 @@
+=== Inicio da execucao: 2026-07-17T19:57:01 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 998.0 --preco-maximo 1001.0 --limite-candidatos 3 --url-produto https://www.amazon.com.br/deals?ref_=nav_cs_gb --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://www.amazon.com.br/deals?ref_=nav_cs_gb
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://www.amazon.com.br/deals?ref_=nav_cs_gb
+[LISTAGEM_DIRETA] Link 1 - página 2: https://www.amazon.com.br/deals?ref_=nav_cs_gb&page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://www.amazon.com.br/deals?ref_=nav_cs_gb&page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_1] Nenhum candidato encontrado. Parando busca neste link.
+
+Nenhum candidato válido encontrado nas listagens diretas informadas.
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-07-17T19:57:18 ===

@@ -1,0 +1,43 @@
+=== Inicio da execucao: 2026-07-06T19:33:13 ===
+Args: --produto-por-html --desconto-minimo 60 --limite-candidatos 4 --url-produto https://lista.mercadolivre.com.br/potes?sb=all_mercadolibre#D[A:potes] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/potes?sb=all_mercadolibre#D[A:potes]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/potes?sb=all_mercadolibre#D[A:potes]
+✓ Link de afiliado: https://meli.la/1ojYc88
+✓ Link de afiliado: https://meli.la/1rY5ppu
+✓ Link de afiliado: https://meli.la/1ZHs2Ba
+✓ Link de afiliado: https://meli.la/2G2u3UR
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 3 Pote De Vidro Marmita Hermético 370, 640ml, 1040ml Freezer Fitness Vitrex
+Message SID Twilio: SM518d3b81b647bf63d170731cee9f1d63
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 6 Potes 640ml Vidro Hermético 4 Travas Marmita Refratario Star House com 4 travas de super vedação
+Message SID Twilio: SMf233e1fb6b57cd2372fa3ff5d2cecd70
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 10 Pote Herméticos Empilháveis Porta Mantimento Rebirth
+Message SID Twilio: SMb43a0254ed6421c248312ef19e58dd9e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Eps-709 13 Potes Vidro Mantimentos Herméticos Com Tampa Bambu Alta Resistência Epsilon
+Message SID Twilio: SMe50adb0c875517d39dc206dfebc9eee0
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-06T19:34:20 ===

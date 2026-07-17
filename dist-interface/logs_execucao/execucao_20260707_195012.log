@@ -1,0 +1,43 @@
+=== Inicio da execucao: 2026-07-07T19:50:12 ===
+Args: --produto-por-html --limite-candidatos 4 --url-produto https://lista.mercadolivre.com.br/bola-de-tenis-robin-soderling#D[A:bola%20de%20tenis%20robin%20soderling] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/bola-de-tenis-robin-soderling#D[A:bola%20de%20tenis%20robin%20soderling]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/bola-de-tenis-robin-soderling#D[A:bola%20de%20tenis%20robin%20soderling]
+✓ Link de afiliado: https://meli.la/2ZSyfng
+✓ Link de afiliado: https://meli.la/1JGzbVW
+✓ Link de afiliado: https://meli.la/2YMcFJV
+✓ Link de afiliado: https://meli.la/2nkBWhj
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola de Tênis Torneio Robin Soderling Tour Edition Pack com 6 Tubos
+Message SID Twilio: SM72f3570450fcb8752b60d2e99cdbae02
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola De Tênis Robin Söderling Black Ed 06 Tubos Com 4 Bolas
+Message SID Twilio: SM61e799addc6fa8a95d490938d3551329
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola Tênis Robin Söderling Black Edition Pack Com 12 Tubos
+Message SID Twilio: SM13e3f29826417c18072368729840705f
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola De Tênis Robin Söderling Tour Edition Caixa C/ 18 Tubos
+Message SID Twilio: SM55b6358a490cc00439974a134073aaba
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-07T19:51:20 ===

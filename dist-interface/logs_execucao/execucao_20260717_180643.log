@@ -1,0 +1,53 @@
+=== Inicio da execucao: 2026-07-17T18:06:43 ===
+Args: --produto-por-html --desconto-minimo 10 --limite-candidatos 6 --url-produto https://lista.mercadolivre.com.br/confort-sec-g#D[A:confort%20sec%20G] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/confort-sec-g#D[A:confort%20sec%20G]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/confort-sec-g#D[A:confort%20sec%20G]
+✓ Link de afiliado: https://meli.la/1P6ok2E
+✓ Link de afiliado: https://meli.la/2MiHRN9
+✓ Link de afiliado: https://meli.la/2dPbYk7
+✓ Link de afiliado: https://meli.la/1Yp5VSc
+✓ Link de afiliado: https://meli.la/1Yp5VSc
+✓ Link de afiliado: https://meli.la/19fPCP5
+[BLOCO_1] Resultado: 6 candidato(s) coletado(s), 6 válido(s) enriquecido(s). Total: 6/6
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Confort Sec Tamanho Xxg 82 Unidades Pampers
+Message SID Twilio: SM9d7ce5dd953f36f799a29ce9151396c3
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fraldas Pampers Confort Sec Tamanho G 98 unidades
+Message SID Twilio: SM300bb0059c593d536453d4178145a06a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Confort Sec Tamanho G 128 Unidades
+Message SID Twilio: SMcde2bc696b66e45f6392e21a3c90bb4a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Confort Sec Tamanho G 168 Unidades
+Message SID Twilio: SM0bce75c8fa23af85db9bf97368a52b2a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Confort Sec Tamanho G 168 Unidades Sem Gênero
+Message SID Twilio: SM729147671f9edd07605f0773bd1391da
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Confort Sec Tamanho XXG 148 Unidades
+Message SID Twilio: SMd28208cf7fcbd7486c746801b3ab0575
+
+6 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-17T18:08:11 ===

@@ -1,0 +1,112 @@
+=== Inicio da execucao: 2026-07-06T19:19:56 ===
+Args: --somente-relampago --desconto-minimo 50 --limite-candidatos 15 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260706_192022_422942_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260706_192022_422942_01.txt
+10 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5721446740 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5800919092 marcado como anuncio_inedito=false no histórico.
+Página atual trouxe 7/10 oferta(s) válida(s). Coletando página 2/25.
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning&page=2
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260706_192044_033441_02.txt
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260706_192022_422942_01.txt
+10 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5721446740 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5800919092 marcado como anuncio_inedito=false no histórico.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260706_192044_033441_02.txt
+9 oferta(s) com 50% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5862685042 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5835044412 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4415801503 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 212 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260706_192044.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1fgkFcj
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2NAnCxM
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2PK8N8D
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2XcuVbv
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/31fP8Zb
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/285onXW
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2MK7tDL
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2N8J7LY
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2WyqjRd
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1A66V7v
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0049_20260706_192222.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jarra Chaleira Elétrica 1,8l Sumay Cusine Sm-ch220pr Cor Prateado 220v
+Message SID Twilio: SM50be3a037547ceaa2eef5414f2bdaf35
+
+Mensagem enviada para whatsapp:+5519991133269:
+Panela De Pressão Fechamento Externo 4,2l Indução E Gás Bege
+Message SID Twilio: SMeef151b294bb7d5cbc6fb7f4edebe99a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera De Segurança Wifi Icsee Externa Mini Dome Full Hd Infravermelho Prova D'água Kateluo Branco
+Message SID Twilio: SM6b43fc6490f07cddc6c3bbc1c3343bf0
+
+Mensagem enviada para whatsapp:+5519991133269:
+Esteira Elétrica Ergométrica Segurança Intelige 12km/h 150kg Preto 110v
+Message SID Twilio: SMa50d53cf06c4a293cfa166f44e583e14
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bota De Compressao Pneumatica Massageador Pes Easezen 6 Modos Preto/azul 127/220v Azul/preto
+Message SID Twilio: SMe9727efccda95958f5f1876f0bec2b0f
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mini Compressor De Ar Digital Para Pneus Carro Moto Bike 150psi Recarregável 4000mah Preto 127/220v 60 Hz Monofásica
+Message SID Twilio: SM6c2c59a40d231288b508c5fd7ecef09d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Maiô Body Chapa Barriga Modelador Sem Transparência Com Bojo
+Message SID Twilio: SM53eb9b96633c4df8767916dcbea80fe5
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bola Futebol De Campo Storm Xxiii Preto Branco Verde Penalty
+Message SID Twilio: SM109a09a750bddc589231d09862793935
+
+Mensagem enviada para whatsapp:+5519991133269:
+150w Moving Head Led Beam Rgbw Prisma E Gobo Giratório Dmx
+Message SID Twilio: SMf2d2c63840ccfd94323834ce74b6fd01
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Monohidratada Pura 600g Dark Lab Unidade Sem Sabor
+Message SID Twilio: SM4d95301c1d10f119ef1dea03ed375b4c
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-06T19:23:08 ===

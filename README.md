@@ -77,7 +77,7 @@ O objetivo funcional é identificar candidatos válidos, aplicar filtros de pre�
 
 | Tipo | Caminho | Formato | Estratégia de escrita | Origem |
 | --- | --- | --- | --- | --- |
-| Histórico de anúncios enviados | historico_anuncios.txt | texto | append por item/processo | Fluxos gerais |
+| Histórico de anúncios enviados | historico_anuncios.txt | texto | append por item/processo, com limpeza automática de itens acima de 20 dias | Fluxos gerais |
 | Consolidação geral de ofertas | ofertas_consolidadas_*.txt | texto | arquivo por execução | Fluxo sob demanda/hub |
 | HTML de relâmpago | ofertas_relampago/html_relampago_*.txt | texto (HTML bruto) | arquivo por página/coleta | Fluxo relâmpago |
 | Resultado relâmpago | ofertas_relampago/resultado_*.txt | texto | arquivo por execução | Fluxo relâmpago |
@@ -329,6 +329,6 @@ Para facilitar diagnóstico das rotinas de alerta e integração com planilha, a
 ## Saídas geradas
 
 - `ofertas_consolidadas_*.txt`: lista consolidada de produtos para envio.
-- `historico_anuncios.txt`: histórico de anúncios já enviados, usando o ID do anúncio como chave.
+- `historico_anuncios.txt`: histórico de anúncios já enviados, usando o ID do anúncio como chave e removendo registros com mais de 20 dias na carga.
 - `ofertas_relampago/html_relampago_*.txt`: HTML salvo do fluxo de ofertas relâmpago.
 - `ofertas_relampago/resultado_*.txt`: resultado do fluxo de ofertas relâmpago.

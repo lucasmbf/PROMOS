@@ -1,0 +1,11 @@
+=== Inicio da execucao: 2026-07-17T20:18:09 ===
+Args: --produto-por-html --fonte amazon --preco-minimo 998.0 --preco-maximo 1001.0 --limite-candidatos 1 --url-produto https://www.amazon.com.br/s?k=rtx+3050&i=todays-deals&crid=UCT75VQXPC5M&sprefix=rtx+3050%2Ctodays-deals%2C185&ref=nb_sb_ss_ts-doa-p_1_8 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_AMAZON
+
+Modo procurar produto ativado para Amazon (central de afiliados/SiteStripe).
+
+[AMAZON] URL(s) parametrizada(s) para busca: ['https://www.amazon.com.br/s?k=rtx+3050&i=todays-deals&crid=UCT75VQXPC5M&sprefix=rtx+3050%2Ctodays-deals%2C185&ref=nb_sb_ss_ts-doa-p_1_8']
+
+Amazon nao esta autenticada. Faça login manualmente no navegador aberto.
+[AUTH_REQUIRED_AMAZON] Amazon nao autenticada, realize o login e clique em 'Continuar'.
