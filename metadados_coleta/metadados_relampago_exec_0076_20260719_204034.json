@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 76,
+  "gerado_em": "2026-07-19T20:40:34",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 11,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB5446699388",
+      "descricao": "Torre de Som AIWA T1W-02 1600W 1Woofer10\" Bluetooth RGB USB FM DJ",
+      "categoria": "Torres de Som > Caixa de Som",
+      "antes": "R$ 1499",
+      "depois": "R$ 901,55",
+      "desconto": "39% OFF",
+      "link": "https://meli.la/1U6iEcv",
+      "link_original": "https://www.mercadolivre.com.br/torre-de-som-aiwa-t1w-02-1600w-1woofer10-bluetooth-rgb-usb-fm-dj/p/MLB42931183?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=ef558639-7bee-4222-9b60-9cf543ea3ec4&position=4&tracking_id=95c4afe9-86d5-43b0-8aac-a9031a578178&wid=MLB5446699388&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/torre-de-som-aiwa-t1w-02-1600w-1woofer10-bluetooth-rgb-usb-fm-dj/p/MLB42931183?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=ef558639-7bee-4222-9b60-9cf543ea3ec4&position=4&tracking_id=95c4afe9-86d5-43b0-8aac-a9031a578178&wid=MLB5446699388&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260719_204024_636464_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

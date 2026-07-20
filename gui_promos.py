@@ -7,6 +7,7 @@ import json
 import os
 import queue
 import re
+import shutil
 import smtplib
 import subprocess
 import sys
@@ -19,11 +20,29 @@ from pathlib import Path
 from email.mime.text import MIMEText
 from urllib.parse import quote, quote_plus, unquote, urljoin, urlparse
 import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+from tkinter import colorchooser, filedialog, messagebox, ttk
 
 import requests
 from bs4 import BeautifulSoup
-from parsers.mercadolivre import salvar_saida_execucao_modalidade
+from parsers.mercadolivre import (
+    salvar_saida_execucao_modalidade,
+    salvar_saida_execucao_modalidade_json,
+)
+
+Image = None
+ImageDraw = None
+ImageFont = None
+ImageTk = None
+PILLOW_UI_ERRO = ""
+try:
+    Image = importlib.import_module("PIL.Image")
+    ImageDraw = importlib.import_module("PIL.ImageDraw")
+    ImageFont = importlib.import_module("PIL.ImageFont")
+    ImageTk = importlib.import_module("PIL.ImageTk")
+    PILLOW_UI_DISPONIVEL = True
+except Exception as exc:
+    PILLOW_UI_DISPONIVEL = False
+    PILLOW_UI_ERRO = str(exc)
 
 try:
     from dotenv import load_dotenv
@@ -44,18 +63,37 @@ def _resolve_base_dir():
     return Path(__file__).resolve().parent
 
 
+def _resolve_dist_interface_dir(base_dir: Path) -> Path:
+    if base_dir.name.lower() == "dist-interface":
+        return base_dir
+    return base_dir / "dist-interface"
+
+
 BASE_DIR = _resolve_base_dir()
+DIST_INTERFACE_DIR = _resolve_dist_interface_dir(BASE_DIR)
 ALERTS_CONFIG_FILE = BASE_DIR / "alertas_preco.json"
 HUB_SCHEDULES_CONFIG_FILE = BASE_DIR / "agendamentos_hub.json"
 SHEETS_ALERTS_CONFIG_FILE = BASE_DIR / "integracao_planilha_alertas.json"
 LOGS_DIR = BASE_DIR / "logs_execucao"
 ALERT_LOGS_DIR = LOGS_DIR / "alertas"
 SHEETS_SYNC_LOGS_DIR = LOGS_DIR / "planilha"
+
+# Pastas de saída para geradores e históricos de JSONs (FIXOS - independente da pasta escolhida pelo usuário)
+PASTA_HISTORICO_JSON_RELAMPAGO = str(DIST_INTERFACE_DIR / "ofertas_relampago" / "Historico de anuncios")
+PASTA_HISTORICO_JSON_PRODUTO = str(DIST_INTERFACE_DIR / "ofertas_afiliados" / "Historico de anuncios")
+PASTA_SAIDA_ALERTA = str(DIST_INTERFACE_DIR / "saidas_execucoes" / "Alerta")
+PASTA_SAIDA_CAMPANHA = str(DIST_INTERFACE_DIR / "saidas_execucoes" / "Campanha")
+PASTA_SAIDA_ONDEMAND = str(DIST_INTERFACE_DIR / "saidas_execucoes" / "OnDemand")
+PASTA_GERADORES_SAIDA = str(DIST_INTERFACE_DIR / "instagram_posts")
+PASTA_TEMPLATES_INSTAGRAM = str(DIST_INTERFACE_DIR / "instagram_templates")
+PASTA_TEMPLATES_INSTAGRAM_LEGADO = str(DIST_INTERFACE_DIR / "dist-interface" / "instagram_templates")
+
+# Compatibilidade (referências antigas)
+PASTA_RELAMPAGO_HISTORICO = PASTA_HISTORICO_JSON_RELAMPAGO
+
 LOGIN_OK_SIGNAL_FILE = BASE_DIR / ".ml_login_ok.signal"
 AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
 AUTH_MARKER_STILL_PENDING_ML = "[AUTH_STILL_PENDING_ML]"
-AUTH_MARKER_REQUIRED_AMAZON = "[AUTH_REQUIRED_AMAZON]"
-AUTH_MARKER_STILL_PENDING_AMAZON = "[AUTH_STILL_PENDING_AMAZON]"
 SCHEDULER_TICK_MS = 60000
 ALERTS_IMPORT_INTERVAL_MINUTES = 10
 ALERT_INTERVAL_HOURS_FIXED = 3
@@ -73,6 +111,37 @@ HTTP_HEADERS = {
 
 if load_dotenv is not None:
     load_dotenv()
+
+
+def _migrar_templates_instagram_legado():
+    origem = Path(PASTA_TEMPLATES_INSTAGRAM_LEGADO)
+    destino = Path(PASTA_TEMPLATES_INSTAGRAM)
+
+    if not origem.exists() or not origem.is_dir():
+        return 0
+
+    destino.mkdir(parents=True, exist_ok=True)
+    migrados = 0
+    extensoes_validas = {".png", ".jpg", ".jpeg", ".webp"}
+
+    for arquivo in origem.iterdir():
+        if not arquivo.is_file():
+            continue
+
+        if arquivo.suffix.lower() not in extensoes_validas:
+            continue
+
+        alvo = destino / arquivo.name
+        if alvo.exists():
+            alvo = destino / f"{arquivo.stem}_{datetime.now().strftime('%Y%m%d_%H%M%S')}{arquivo.suffix.lower()}"
+
+        try:
+            shutil.move(str(arquivo), str(alvo))
+            migrados += 1
+        except Exception:
+            continue
+
+    return migrados
 
 
 def _ler_variavel_ambiente(nome):
@@ -372,92 +441,6 @@ MERCADOLIVRE_RELAMPAGO_URL_PADRAO = (
     "?promotion_type=lightning"
     "#filter_applied=promotion_type&filter_position=3&origin=qcat"
 )
-AMAZON_ACHADINHOS_CASA_COZINHA_URL = (
-    "https://www.amazon.com.br/b?ie=UTF8&node=217012904011&pd_rd_w=BAvrb"
-    "&content-id=amzn1.sym.104d20c3-3fa8-4cb2-9444-a3876263d763"
-    "&pf_rd_p=104d20c3-3fa8-4cb2-9444-a3876263d763&pf_rd_r=E93SY0MTXVY2W7FQJY6F"
-    "&pd_rd_wg=5BgiX&pd_rd_r=b85d8ec0-d8bb-4515-a7b9-fe6db406b361"
-    "&ref_=achadinhos-nonftac-home_cta"
-)
-
-AMAZON_CATEGORIES_CATALOG = {
-    "roots": [
-        {"id": "amz-eletronicos", "name": "Eletronicos"},
-        {"id": "amz-informatica", "name": "Informatica"},
-        {"id": "amz-games", "name": "Games"},
-        {"id": "amz-casa", "name": "Casa e Cozinha"},
-        {"id": "amz-eletro", "name": "Eletrodomesticos"},
-        {"id": "amz-ferramentas", "name": "Ferramentas e Construcao"},
-        {"id": "amz-esporte", "name": "Esporte e Aventura"},
-        {"id": "amz-beleza", "name": "Beleza"},
-        {"id": "amz-saude", "name": "Saude"},
-        {"id": "amz-bebe", "name": "Bebe"},
-        {"id": "amz-pet", "name": "Pet Shop"},
-        {"id": "amz-livros", "name": "Livros"},
-    ],
-    "children": {
-        "amz-eletronicos": [
-            {"id": "amz-eletronicos-tv", "name": "TV e Video"},
-            {"id": "amz-eletronicos-audio", "name": "Audio"},
-            {"id": "amz-eletronicos-fone", "name": "Fones de Ouvido"},
-        ],
-        "amz-informatica": [
-            {"id": "amz-info-notebook", "name": "Notebooks"},
-            {"id": "amz-info-monitores", "name": "Monitores"},
-            {"id": "amz-info-perifericos", "name": "Perifericos"},
-        ],
-        "amz-games": [
-            {"id": "amz-games-consoles", "name": "Consoles"},
-            {"id": "amz-games-jogos", "name": "Jogos"},
-            {"id": "amz-games-acessorios", "name": "Acessorios"},
-        ],
-        "amz-casa": [
-            {"id": "amz-casa-cozinha", "name": "Cozinha"},
-            {"id": "amz-casa-limpeza", "name": "Limpeza"},
-            {"id": "amz-casa-organizacao", "name": "Organizacao"},
-        ],
-        "amz-eletro": [
-            {"id": "amz-eletro-portateis", "name": "Portateis"},
-            {"id": "amz-eletro-lavanderia", "name": "Lavanderia"},
-            {"id": "amz-eletro-climatizacao", "name": "Climatizacao"},
-        ],
-        "amz-ferramentas": [
-            {"id": "amz-ferramentas-eletricas", "name": "Ferramentas Eletricas"},
-            {"id": "amz-ferramentas-manuais", "name": "Ferramentas Manuais"},
-            {"id": "amz-ferramentas-jardim", "name": "Jardim"},
-        ],
-        "amz-esporte": [
-            {"id": "amz-esporte-academia", "name": "Academia"},
-            {"id": "amz-esporte-bike", "name": "Ciclismo"},
-            {"id": "amz-esporte-camping", "name": "Camping"},
-        ],
-        "amz-beleza": [
-            {"id": "amz-beleza-cabelo", "name": "Cabelo"},
-            {"id": "amz-beleza-pele", "name": "Cuidados com a Pele"},
-            {"id": "amz-beleza-maquiagem", "name": "Maquiagem"},
-        ],
-        "amz-saude": [
-            {"id": "amz-saude-suplementos", "name": "Suplementos"},
-            {"id": "amz-saude-vitaminas", "name": "Vitaminas"},
-            {"id": "amz-saude-bemestar", "name": "Bem-Estar"},
-        ],
-        "amz-bebe": [
-            {"id": "amz-bebe-fraldas", "name": "Fraldas"},
-            {"id": "amz-bebe-higiene", "name": "Higiene do Bebe"},
-            {"id": "amz-bebe-alimentacao", "name": "Alimentacao"},
-        ],
-        "amz-pet": [
-            {"id": "amz-pet-caes", "name": "Caes"},
-            {"id": "amz-pet-gatos", "name": "Gatos"},
-            {"id": "amz-pet-acessorios", "name": "Acessorios Pet"},
-        ],
-        "amz-livros": [
-            {"id": "amz-livros-negocios", "name": "Negocios"},
-            {"id": "amz-livros-tecnologia", "name": "Tecnologia"},
-            {"id": "amz-livros-infantil", "name": "Infantil"},
-        ],
-    },
-}
 
 
 def _slugify_categoria_nome(texto):
@@ -1544,6 +1527,11 @@ def run_main_mode(forward_args):
     previous_gui_mode = os.environ.get("PROMOS_GUI_MODE")
     try:
         os.environ["PROMOS_GUI_MODE"] = "1"
+        # Recarrega o parser para refletir ajustes aplicados em tempo de desenvolvimento.
+        if "parsers.mercadolivre" in sys.modules:
+            importlib.reload(sys.modules["parsers.mercadolivre"])
+        else:
+            importlib.import_module("parsers.mercadolivre")
         sys.argv = ["main.py", *forward_args]
         if "main" in sys.modules:
             importlib.reload(sys.modules["main"])
@@ -1688,24 +1676,13 @@ def create_gui(categorias):
     product_frame = ttk.LabelFrame(top, text="PROCURAR PRODUTO", style="Card.TLabelframe", padding=8)
     product_frame.pack(side="left", fill="x", expand=True, padx=(0, 8))
 
-    right_column = ttk.Frame(top, style="Main.TFrame")
-    right_column.pack(side="right", fill="x", expand=True, padx=(8, 0))
-
     relampago_frame = ttk.LabelFrame(
-        right_column,
+        top,
         text="PROCURAR OFERTAS RELAMPAGO - MERCADO LIVRE",
         style="Card.TLabelframe",
         padding=6,
     )
-    relampago_frame.pack(fill="x", expand=False)
-
-    achados_amazon_frame = ttk.LabelFrame(
-        right_column,
-        text="PROCURAR ACHADOS AMAZON",
-        style="Card.TLabelframe",
-        padding=6,
-    )
-    achados_amazon_frame.pack(fill="x", expand=False, pady=(8, 0))
+    relampago_frame.pack(side="right", fill="x", expand=True, padx=(8, 0))
 
     descricao_var = tk.StringVar()
     link_produto_var = tk.StringVar()
@@ -1720,7 +1697,6 @@ def create_gui(categorias):
 
     fontes_vars = {
         "Mercado Livre": tk.BooleanVar(value=True),
-        "Amazon": tk.BooleanVar(value=False),
         "Shoppee": tk.BooleanVar(value=False),
         "Tiktok shop": tk.BooleanVar(value=False),
         "Todas": tk.BooleanVar(value=False),
@@ -1733,38 +1709,20 @@ def create_gui(categorias):
     rel_descricao_var = tk.StringVar()
     rel_padrao_var = tk.BooleanVar(value=False)
     relampago_url_var = tk.StringVar(value=MERCADOLIVRE_RELAMPAGO_URL_PADRAO)
-    amz_preco_min_var = tk.StringVar()
-    amz_preco_max_var = tk.StringVar()
-    amz_desconto_var = tk.StringVar()
-    amz_limite_var = tk.StringVar()
-    amz_descricao_var = tk.StringVar()
-    amz_achados_url_var = tk.StringVar(value=AMAZON_ACHADINHOS_CASA_COZINHA_URL)
 
     categories_catalog = _load_ml_categories_catalog(categorias)
     categorias_raiz = categories_catalog.get("roots") if isinstance(categories_catalog.get("roots"), list) else []
     categorias_raiz = _normalizar_raizes_categoria(categorias_raiz, categorias)
-    amazon_raizes = _normalizar_raizes_categoria(AMAZON_CATEGORIES_CATALOG.get("roots"), [])
-    amazon_children = AMAZON_CATEGORIES_CATALOG.get("children") if isinstance(AMAZON_CATEGORIES_CATALOG.get("children"), dict) else {}
 
     map_categoria_ml_nome_para_id = {
         _chave_nome_categoria(c.get("name") or ""): str(c.get("id") or "").strip().upper()
         for c in categorias_raiz
         if str(c.get("name") or "").strip()
     }
-    map_categoria_amazon_nome_para_id = {
-        _chave_nome_categoria(c.get("name") or ""): str(c.get("id") or "").strip().upper()
-        for c in amazon_raizes
-        if str(c.get("name") or "").strip()
-    }
     categorias_prod_values = ["", *[str(c.get("name") or "") for c in categorias_raiz]]
     map_subcategoria_prod_nome_para_id = {}
 
-    def _fonte_amazon_ativa_na_ui():
-        return bool(fontes_vars["Amazon"].get()) and not bool(fontes_vars["Todas"].get())
-
     def _map_categoria_ativo():
-        if _fonte_amazon_ativa_na_ui():
-            return map_categoria_amazon_nome_para_id
         return map_categoria_ml_nome_para_id
 
     def _decimal_input_valido(texto):
@@ -1802,7 +1760,6 @@ def create_gui(categorias):
 
     descricao_var.trace_add("write", lambda *_: _normalizar_varchar(descricao_var))
     link_produto_var.trace_add("write", lambda *_: _normalizar_varchar(link_produto_var, limite=2000))
-    amz_descricao_var.trace_add("write", lambda *_: _normalizar_varchar(amz_descricao_var))
 
     row = 0
     ttk.Label(product_frame, text="Descricao:", style="Field.TLabel").grid(row=row, column=0, sticky="w")
@@ -1836,14 +1793,14 @@ def create_gui(categorias):
         _recarregar_categorias_por_fonte()
 
     def on_toggle_source():
-        names = ["Mercado Livre", "Amazon", "Shoppee", "Tiktok shop"]
+        names = ["Mercado Livre", "Shoppee", "Tiktok shop"]
         if all(fontes_vars[name].get() for name in names):
             fontes_vars["Todas"].set(True)
         else:
             fontes_vars["Todas"].set(False)
         _recarregar_categorias_por_fonte()
 
-    for idx, nome in enumerate(["Mercado Livre", "Amazon", "Shoppee", "Tiktok shop", "Todas"]):
+    for idx, nome in enumerate(["Mercado Livre", "Shoppee", "Tiktok shop", "Todas"]):
         cmd = on_toggle_all if nome == "Todas" else on_toggle_source
         ttk.Checkbutton(source_frame, text=nome, variable=fontes_vars[nome], command=cmd).grid(row=0, column=idx + 1, padx=(0, 10), sticky="w")
 
@@ -1988,10 +1945,8 @@ def create_gui(categorias):
     def _recarregar_categorias_por_fonte():
         valores_atuais = list(categorias_combo.cget("values"))
         valores_ml = ["", *[str(c.get("name") or "") for c in categorias_raiz]]
-        valores_amazon = ["", *[str(c.get("name") or "") for c in amazon_raizes]]
-        novos_valores = valores_amazon if _fonte_amazon_ativa_na_ui() else valores_ml
 
-        if valores_atuais != novos_valores:
+        if valores_atuais != valores_ml:
             categorias_combo.configure(values=novos_valores)
             categoria_var.set("")
             categoria_id_var.set("")
@@ -2008,17 +1963,7 @@ def create_gui(categorias):
             subcategorias_combo.configure(values=[""], state="disabled")
             return
 
-        if _fonte_amazon_ativa_na_ui():
-            children = [
-                {
-                    "id": str(item.get("id") or "").strip().upper(),
-                    "name": str(item.get("name") or "").strip(),
-                }
-                for item in amazon_children.get(pid, [])
-                if str(item.get("name") or "").strip()
-            ]
-        else:
-            children = _ensure_ml_subcategories(categories_catalog, pid)
+        children = _ensure_ml_subcategories(categories_catalog, pid)
 
         nomes = [str(item.get("name") or "").strip() for item in children if str(item.get("name") or "").strip()]
         map_subcategoria_prod_nome_para_id.update(
@@ -2072,67 +2017,6 @@ def create_gui(categorias):
 
     relampago_frame.columnconfigure(1, weight=1)
     relampago_frame.columnconfigure(2, weight=0)
-
-    amz_row = 0
-    ttk.Label(achados_amazon_frame, text="Descricao (opcional):", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
-    amz_descricao_entry = ttk.Entry(achados_amazon_frame, textvariable=amz_descricao_var)
-    amz_descricao_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
-    amz_url_cfg_btn = ttk.Button(achados_amazon_frame, text="⚙", width=3)
-    amz_url_cfg_btn.grid(row=amz_row, column=2, sticky="e", padx=(8, 0), pady=(6, 0))
-    Tooltip(amz_url_cfg_btn, "Configurar URL dos achados Amazon")
-
-    amz_row += 1
-    ttk.Label(achados_amazon_frame, text="Preco minimo:", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
-    amz_preco_min_entry = ttk.Entry(
-        achados_amazon_frame,
-        textvariable=amz_preco_min_var,
-        validate="key",
-        validatecommand=vcmd_decimal,
-    )
-    amz_preco_min_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
-
-    amz_row += 1
-    ttk.Label(achados_amazon_frame, text="Preco maximo:", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
-    amz_preco_max_entry = ttk.Entry(
-        achados_amazon_frame,
-        textvariable=amz_preco_max_var,
-        validate="key",
-        validatecommand=vcmd_decimal,
-    )
-    amz_preco_max_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
-
-    amz_row += 1
-    ttk.Label(achados_amazon_frame, text="Desconto minimo (%):", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
-    amz_desconto_entry = ttk.Entry(
-        achados_amazon_frame,
-        textvariable=amz_desconto_var,
-        validate="key",
-        validatecommand=vcmd_inteiro,
-    )
-    amz_desconto_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
-
-    amz_row += 1
-    ttk.Label(achados_amazon_frame, text="Limite de candidatos:", style="Field.TLabel").grid(row=amz_row, column=0, sticky="w", pady=(6, 0))
-    amz_limite_entry = ttk.Entry(
-        achados_amazon_frame,
-        textvariable=amz_limite_var,
-        validate="key",
-        validatecommand=vcmd_inteiro,
-    )
-    amz_limite_entry.grid(row=amz_row, column=1, sticky="ew", padx=(8, 0), pady=(6, 0))
-
-    amz_row += 1
-    buscar_achados_amazon_btn = ttk.Button(achados_amazon_frame, text="BUSCAR ACHADOS AMAZON", style="Action.TButton")
-    buscar_achados_amazon_btn.grid(row=amz_row, column=0, columnspan=2, sticky="w", pady=(10, 0))
-
-    achados_amazon_frame.columnconfigure(1, weight=1)
-    achados_amazon_frame.columnconfigure(2, weight=0)
-
-    for decimal_var, decimal_entry in [
-        (amz_preco_min_var, amz_preco_min_entry),
-        (amz_preco_max_var, amz_preco_max_entry),
-    ]:
-        decimal_entry.bind("<FocusOut>", lambda _e, var=decimal_var: _formatar_decimal_em_var(var))
 
     def _abrir_modal_config_url(titulo, url_var, url_padrao):
         modal = tk.Toplevel(root)
@@ -2191,13 +2075,6 @@ def create_gui(categorias):
             MERCADOLIVRE_RELAMPAGO_URL_PADRAO,
         )
     )
-    amz_url_cfg_btn.configure(
-        command=lambda: _abrir_modal_config_url(
-            "Configurar URL - Achados Amazon",
-            amz_achados_url_var,
-            AMAZON_ACHADINHOS_CASA_COZINHA_URL,
-        )
-    )
 
     output_frame = ttk.LabelFrame(main_frame, text="PAINEL DE EXECUCAO", style="Card.TLabelframe", padding=6)
     output_frame.pack(fill="x", expand=False, pady=(6, 0))
@@ -2253,6 +2130,738 @@ def create_gui(categorias):
     output_frame.bind("<Configure>", _ajustar_wrap_painel)
     _ajustar_wrap_painel()
 
+    # Definir função de diálogo para gerar arte Instagram ANTES de criar os botões
+    def open_gerar_posts_instagram_dialog():
+        """Abre modal para criar um post Instagram a partir de template com texto arrastável."""
+        if not PILLOW_UI_DISPONIVEL:
+            detalhe_erro = PILLOW_UI_ERRO or "erro desconhecido ao importar PIL"
+            detalhe_exec = sys.executable
+            if getattr(sys, "frozen", False):
+                orientacao = (
+                    "A interface está rodando como executável (frozen).\n"
+                    "Instalar com pip no venv não altera o executável já gerado.\n"
+                    "Regenere o executável incluindo Pillow/PIL.ImageTk ou rode via python do venv."
+                )
+            else:
+                orientacao = (
+                    "Verifique se a interface foi iniciada com o mesmo Python onde o Pillow foi instalado.\n"
+                    "Se necessário, abra o app com o python do venv."
+                )
+            messagebox.showerror(
+                "Dependência do editor visual indisponível",
+                "Não foi possível carregar Pillow para o editor de post.\n\n"
+                f"Erro: {detalhe_erro}\n"
+                f"Python em uso: {detalhe_exec}\n\n"
+                f"{orientacao}",
+                parent=root,
+            )
+            return
+
+        os.makedirs(PASTA_GERADORES_SAIDA, exist_ok=True)
+        os.makedirs(PASTA_TEMPLATES_INSTAGRAM, exist_ok=True)
+
+        templates_migrados = _migrar_templates_instagram_legado()
+        if templates_migrados > 0:
+            status_var.set(f"{templates_migrados} template(s) migrado(s) da pasta legada para a pasta correta.")
+
+        dialog_root = tk.Toplevel(root)
+        dialog_root.title("Criar Post Instagram")
+        dialog_root.geometry("980x700")
+        dialog_root.minsize(860, 620)
+        dialog_root.transient(root)
+        dialog_root.grab_set()
+
+        container = ttk.Frame(dialog_root, padding=10)
+        container.pack(fill="both", expand=True)
+
+        left_panel = ttk.LabelFrame(container, text="Configuração", padding=10)
+        left_panel.pack(side="left", fill="y")
+
+        right_panel = ttk.LabelFrame(container, text="Preview (arraste o texto)", padding=10)
+        right_panel.pack(side="left", fill="both", expand=True, padx=(10, 0))
+
+        ttk.Label(left_panel, text="Texto do post:").pack(anchor="w")
+        texto_post = tk.Text(left_panel, width=34, height=9, wrap="word")
+        texto_post.pack(fill="x", pady=(6, 10))
+
+        ttk.Label(left_panel, text="Template salvo:").pack(anchor="w")
+        template_var = tk.StringVar(value="")
+        template_combo = ttk.Combobox(left_panel, textvariable=template_var, state="readonly", width=42)
+        template_combo.pack(fill="x", pady=(6, 6))
+
+        info_var = tk.StringVar(value=f"Selecione um template para iniciar. Pasta: {PASTA_TEMPLATES_INSTAGRAM}")
+        ttk.Label(left_panel, textvariable=info_var, style="Hint.TLabel", wraplength=300, justify="left").pack(anchor="w", fill="x", pady=(2, 8))
+
+        tamanho_fonte_var = tk.IntVar(value=56)
+        ttk.Label(left_panel, text="Tamanho da fonte:").pack(anchor="w", pady=(2, 0))
+        fonte_scale = ttk.Scale(left_panel, from_=24, to=120, orient="horizontal")
+        fonte_scale.pack(fill="x", pady=(6, 10))
+        fonte_scale.set(56)
+
+        largura_texto_var = tk.IntVar(value=80)
+        ttk.Label(left_panel, text="Largura da caixa de texto (% da imagem):").pack(anchor="w", pady=(2, 0))
+        largura_scale = ttk.Scale(left_panel, from_=30, to=95, orient="horizontal")
+        largura_scale.pack(fill="x", pady=(6, 10))
+        largura_scale.set(80)
+
+        tamanho_anuncio_var = tk.IntVar(value=35)
+        ttk.Label(left_panel, text="Tamanho da imagem do anúncio (% da largura):").pack(anchor="w", pady=(2, 0))
+        anuncio_scale = ttk.Scale(left_panel, from_=10, to=95, orient="horizontal")
+        anuncio_scale.pack(fill="x", pady=(6, 10))
+        anuncio_scale.set(35)
+
+        btns_anuncio_frame = ttk.Frame(left_panel)
+        btns_anuncio_frame.pack(fill="x", pady=(0, 10))
+
+        cor_texto_var = tk.StringVar(value="#ffffff")
+        cor_texto_btn = ttk.Button(left_panel, text="Cor da fonte: #FFFFFF")
+        cor_texto_btn.pack(fill="x", pady=(0, 10))
+
+        posicao_var = tk.StringVar(value="Posição: -")
+        ttk.Label(left_panel, textvariable=posicao_var, style="Hint.TLabel").pack(anchor="w", pady=(0, 10))
+
+        btns_templates_frame = ttk.Frame(left_panel)
+        btns_templates_frame.pack(fill="x")
+
+        canvas = tk.Canvas(right_panel, background="#111111", highlightthickness=1, highlightbackground="#d5e0e7")
+        canvas.pack(fill="both", expand=True)
+
+        btns_actions_frame = ttk.Frame(left_panel)
+        btns_actions_frame.pack(fill="x", pady=(14, 0))
+
+        preview_state = {
+            "templates": [],
+            "template_selecionado": None,
+            "img_original": None,
+            "img_preview": None,
+            "img_preview_tk": None,
+            "anuncio_img_original": None,
+            "anuncio_img_preview_tk": None,
+            "preview_scale": 1.0,
+            "preview_offset": (0, 0),
+            "canvas_img_id": None,
+            "canvas_anuncio_id": None,
+            "canvas_text_id": None,
+            "drag_dx": 0,
+            "drag_dy": 0,
+            "anuncio_drag_dx": 0,
+            "anuncio_drag_dy": 0,
+            "anuncio_size_preview": (0, 0),
+            "text_width_px_preview": 0,
+        }
+
+        def _importar_templates_de_jsons(max_jsons=10, max_novas=25):
+            pastas_json = [
+                PASTA_HISTORICO_JSON_RELAMPAGO,
+                PASTA_HISTORICO_JSON_PRODUTO,
+                str(BASE_DIR / "ofertas_relampago" / "Historico de anuncios"),
+                str(BASE_DIR / "ofertas_afiliados" / "Historico de anuncios"),
+                str(DIST_INTERFACE_DIR / "ofertas_relampago" / "Historico de anuncios"),
+                str(DIST_INTERFACE_DIR / "ofertas_afiliados" / "Historico de anuncios"),
+            ]
+            caminhos_json = []
+
+            for pasta in dict.fromkeys(pastas_json):
+                if not os.path.exists(pasta):
+                    continue
+                for nome in os.listdir(pasta):
+                    if nome.startswith("ofertas_") and nome.endswith(".json"):
+                        caminhos_json.append(os.path.join(pasta, nome))
+
+            if not caminhos_json:
+                return 0
+
+            caminhos_json.sort(key=os.path.getmtime, reverse=True)
+            caminhos_json = caminhos_json[:max_jsons]
+
+            novas = 0
+            headers = {"User-Agent": HTTP_HEADERS.get("User-Agent", "Mozilla/5.0")}
+
+            for caminho_json in caminhos_json:
+                if novas >= max_novas:
+                    break
+
+                try:
+                    with open(caminho_json, "r", encoding="utf-8") as arquivo:
+                        dados = json.load(arquivo)
+                except Exception:
+                    continue
+
+                ofertas = dados.get("ofertas") if isinstance(dados, dict) else []
+                if not isinstance(ofertas, list):
+                    continue
+
+                for oferta in ofertas:
+                    if novas >= max_novas:
+                        break
+                    if not isinstance(oferta, dict):
+                        continue
+
+                    imagem_url = str(
+                        oferta.get("imagem_principal")
+                        or oferta.get("url_imagem")
+                        or oferta.get("imagem")
+                        or ""
+                    ).strip()
+
+                    if not imagem_url:
+                        link_anuncio = str(oferta.get("link_anuncio") or oferta.get("link") or "").strip()
+                        item_id_match = re.search(r"\b(MLB\d{6,})\b", link_anuncio.upper())
+                        if item_id_match:
+                            item_id = item_id_match.group(1)
+                            try:
+                                resposta_item = requests.get(
+                                    f"https://api.mercadolibre.com/items/{item_id}",
+                                    headers=headers,
+                                    timeout=12,
+                                )
+                                if resposta_item.status_code == 200:
+                                    payload_item = resposta_item.json() if resposta_item.content else {}
+                                    candidatos = [
+                                        payload_item.get("secure_thumbnail"),
+                                        payload_item.get("thumbnail"),
+                                    ]
+                                    for pic in payload_item.get("pictures") or []:
+                                        if isinstance(pic, dict):
+                                            candidatos.extend([pic.get("secure_url"), pic.get("url")])
+
+                                    for candidato in candidatos:
+                                        candidato_str = str(candidato or "").strip()
+                                        if candidato_str.startswith(("http://", "https://")):
+                                            imagem_url = candidato_str
+                                            break
+                            except Exception:
+                                pass
+
+                    if not imagem_url or not imagem_url.startswith(("http://", "https://")):
+                        continue
+
+                    id_anuncio = str(oferta.get("id_anuncio") or "").strip()
+                    if not id_anuncio:
+                        id_anuncio = hashlib.md5(imagem_url.encode("utf-8")).hexdigest()[:12]
+
+                    caminho_url = urlparse(imagem_url).path or ""
+                    ext = Path(caminho_url).suffix.lower()
+                    if ext not in {".png", ".jpg", ".jpeg", ".webp"}:
+                        ext = ".jpg"
+
+                    destino = os.path.join(PASTA_TEMPLATES_INSTAGRAM, f"anuncio_{id_anuncio}{ext}")
+                    if os.path.exists(destino):
+                        continue
+
+                    try:
+                        resposta = requests.get(imagem_url, headers=headers, timeout=12)
+                        if resposta.status_code != 200:
+                            continue
+
+                        conteudo = resposta.content
+                        if not conteudo:
+                            continue
+
+                        with open(destino, "wb") as saida:
+                            saida.write(conteudo)
+
+                        novas += 1
+                    except Exception:
+                        continue
+
+            return novas
+
+        def _listar_templates_instagram():
+            extensoes = ("*.png", "*.jpg", "*.jpeg", "*.webp")
+            encontrados = []
+            for ext in extensoes:
+                encontrados.extend(Path(PASTA_TEMPLATES_INSTAGRAM).glob(ext))
+                encontrados.extend(Path(PASTA_TEMPLATES_INSTAGRAM).glob(ext.upper()))
+            encontrados = sorted({str(p.resolve()) for p in encontrados}, key=lambda p: os.path.basename(p).lower())
+            return encontrados
+
+        def _fonte_para_overlay(tamanho):
+            tamanho = max(12, int(tamanho))
+            fontes = [
+                "C:/Windows/Fonts/seguiemj.ttf",
+                "C:/Windows/Fonts/segoeuib.ttf",
+                "C:/Windows/Fonts/segoeui.ttf",
+                "C:/Windows/Fonts/arialbd.ttf",
+                "C:/Windows/Fonts/arial.ttf",
+            ]
+            for caminho_fonte in fontes:
+                if os.path.exists(caminho_fonte):
+                    try:
+                        return ImageFont.truetype(caminho_fonte, tamanho)
+                    except Exception:
+                        continue
+            return ImageFont.load_default()
+
+        def _atualizar_posicao_label():
+            if not preview_state["canvas_text_id"]:
+                posicao_var.set("Posição: -")
+                return
+            x_canvas, y_canvas = canvas.coords(preview_state["canvas_text_id"])
+            off_x, off_y = preview_state["preview_offset"]
+            escala = max(0.0001, float(preview_state["preview_scale"]))
+            x_img = int((x_canvas - off_x) / escala)
+            y_img = int((y_canvas - off_y) / escala)
+            posicao_var.set(f"Posição: x={x_img}px, y={y_img}px")
+
+        def _render_preview(reset_texto_pos=False):
+            if preview_state["img_original"] is None:
+                return
+
+            canvas.update_idletasks()
+            area_w = max(200, canvas.winfo_width() - 8)
+            area_h = max(200, canvas.winfo_height() - 8)
+
+            img = preview_state["img_original"]
+            base_w, base_h = img.size
+            escala = min(area_w / base_w, area_h / base_h)
+            escala = min(1.0, max(0.05, escala))
+            preview_w = max(1, int(base_w * escala))
+            preview_h = max(1, int(base_h * escala))
+
+            preview = img.resize((preview_w, preview_h), Image.Resampling.LANCZOS)
+            preview_tk = ImageTk.PhotoImage(preview)
+
+            canvas.delete("all")
+            cx = area_w // 2 + 4
+            cy = area_h // 2 + 4
+
+            img_id = canvas.create_image(cx, cy, image=preview_tk, anchor="center")
+
+            anuncio_id = None
+            anuncio_preview_size = (0, 0)
+            anuncio_img = preview_state.get("anuncio_img_original")
+            if anuncio_img is not None:
+                anuncio_original = anuncio_img.copy()
+                largura_alvo_base = max(40, int(base_w * (max(10, min(95, tamanho_anuncio_var.get())) / 100.0)))
+                proporcao = anuncio_original.height / max(1, anuncio_original.width)
+                altura_alvo_base = max(40, int(largura_alvo_base * proporcao))
+                largura_alvo_preview = max(20, int(largura_alvo_base * escala))
+                altura_alvo_preview = max(20, int(altura_alvo_base * escala))
+
+                anuncio_preview = anuncio_original.resize(
+                    (largura_alvo_preview, altura_alvo_preview),
+                    Image.Resampling.LANCZOS,
+                )
+                anuncio_preview_tk = ImageTk.PhotoImage(anuncio_preview)
+
+                if reset_texto_pos or preview_state.get("canvas_anuncio_id") is None:
+                    anuncio_x, anuncio_y = cx, cy
+                else:
+                    anuncio_x, anuncio_y = canvas.coords(preview_state["canvas_anuncio_id"])
+
+                limite_x_min = cx - preview_w / 2 + largura_alvo_preview / 2
+                limite_x_max = cx + preview_w / 2 - largura_alvo_preview / 2
+                limite_y_min = cy - preview_h / 2 + altura_alvo_preview / 2
+                limite_y_max = cy + preview_h / 2 - altura_alvo_preview / 2
+
+                anuncio_x = min(limite_x_max, max(limite_x_min, anuncio_x))
+                anuncio_y = min(limite_y_max, max(limite_y_min, anuncio_y))
+
+                anuncio_id = canvas.create_image(
+                    anuncio_x,
+                    anuncio_y,
+                    image=anuncio_preview_tk,
+                    anchor="center",
+                    tags=("overlay_anuncio",),
+                )
+                preview_state["anuncio_img_preview_tk"] = anuncio_preview_tk
+                anuncio_preview_size = (largura_alvo_preview, altura_alvo_preview)
+
+            texto = (texto_post.get("1.0", "end").strip() or "Seu texto aqui")
+
+            if reset_texto_pos or preview_state["canvas_text_id"] is None:
+                text_x, text_y = cx, cy
+            else:
+                old_x, old_y = canvas.coords(preview_state["canvas_text_id"])
+                text_x, text_y = old_x, old_y
+
+            text_x = min(cx + preview_w // 2, max(cx - preview_w // 2, text_x))
+            text_y = min(cy + preview_h // 2, max(cy - preview_h // 2, text_y))
+
+            text_id = canvas.create_text(
+                text_x,
+                text_y,
+                text=texto,
+                fill=cor_texto_var.get(),
+                font=("Segoe UI", max(10, int(tamanho_fonte_var.get() * escala)), "bold"),
+                justify="center",
+                anchor="center",
+                width=max(80, int(preview_w * (max(30, min(95, largura_texto_var.get())) / 100.0))),
+                tags=("overlay_text",),
+            )
+
+            preview_state["img_preview"] = preview
+            preview_state["img_preview_tk"] = preview_tk
+            preview_state["preview_scale"] = escala
+            preview_state["preview_offset"] = (cx - preview_w / 2, cy - preview_h / 2)
+            preview_state["canvas_img_id"] = img_id
+            preview_state["canvas_anuncio_id"] = anuncio_id
+            preview_state["anuncio_size_preview"] = anuncio_preview_size
+            preview_state["canvas_text_id"] = text_id
+            preview_state["text_width_px_preview"] = max(80, int(preview_w * (max(30, min(95, largura_texto_var.get())) / 100.0)))
+            _atualizar_posicao_label()
+
+        def _carregar_template(caminho):
+            if not caminho:
+                return
+            try:
+                imagem = Image.open(caminho).convert("RGB")
+            except Exception as exc:
+                messagebox.showerror("Template inválido", f"Não foi possível abrir o template.\n\n{exc}", parent=dialog_root)
+                return
+
+            preview_state["template_selecionado"] = caminho
+            preview_state["img_original"] = imagem
+            info_var.set(f"Template: {os.path.basename(caminho)} ({imagem.size[0]}x{imagem.size[1]})")
+            _render_preview(reset_texto_pos=True)
+
+        def _recarregar_templates(selecionar_caminho=None):
+            templates = _listar_templates_instagram()
+            preview_state["templates"] = templates
+            nomes = [os.path.basename(p) for p in templates]
+            template_combo["values"] = nomes
+
+            if not templates:
+                template_var.set("")
+                info_var.set(
+                    "Nenhum template salvo. Use 'Upload template' ou gere uma busca para importar imagens do anúncio. "
+                    f"Pasta atual: {PASTA_TEMPLATES_INSTAGRAM}"
+                )
+                canvas.delete("all")
+                preview_state["template_selecionado"] = None
+                preview_state["img_original"] = None
+                preview_state["canvas_text_id"] = None
+                _atualizar_posicao_label()
+                return
+
+            indice = 0
+            if selecionar_caminho:
+                for i, caminho in enumerate(templates):
+                    if os.path.normcase(caminho) == os.path.normcase(selecionar_caminho):
+                        indice = i
+                        break
+
+            template_combo.current(indice)
+            _carregar_template(templates[indice])
+
+        def _abrir_pasta_templates():
+            try:
+                os.makedirs(PASTA_TEMPLATES_INSTAGRAM, exist_ok=True)
+                if sys.platform.startswith("win"):
+                    os.startfile(PASTA_TEMPLATES_INSTAGRAM)
+                elif sys.platform == "darwin":
+                    subprocess.Popen(["open", PASTA_TEMPLATES_INSTAGRAM])
+                else:
+                    subprocess.Popen(["xdg-open", PASTA_TEMPLATES_INSTAGRAM])
+            except Exception as exc:
+                messagebox.showerror(
+                    "Falha ao abrir pasta",
+                    f"Nao foi possivel abrir a pasta de templates.\n\n{exc}\n\nCaminho: {PASTA_TEMPLATES_INSTAGRAM}",
+                    parent=dialog_root,
+                )
+
+        def _upload_template():
+            caminho_origem = filedialog.askopenfilename(
+                title="Selecionar template de imagem",
+                filetypes=[
+                    ("Imagens", "*.png *.jpg *.jpeg *.webp"),
+                    ("Todos os arquivos", "*.*"),
+                ],
+                parent=dialog_root,
+            )
+            if not caminho_origem:
+                return
+
+            destino_nome = os.path.basename(caminho_origem)
+            destino = os.path.join(PASTA_TEMPLATES_INSTAGRAM, destino_nome)
+
+            if os.path.exists(destino):
+                base = Path(destino_nome).stem
+                ext = Path(destino_nome).suffix
+                destino = os.path.join(PASTA_TEMPLATES_INSTAGRAM, f"{base}_{datetime.now().strftime('%Y%m%d_%H%M%S')}{ext}")
+
+            try:
+                shutil.copy2(caminho_origem, destino)
+            except Exception as exc:
+                messagebox.showerror("Erro no upload", f"Não foi possível copiar o template.\n\n{exc}", parent=dialog_root)
+                return
+
+            _recarregar_templates(selecionar_caminho=destino)
+
+        def _on_template_change(_event=None):
+            indice = template_combo.current()
+            if indice < 0 or indice >= len(preview_state["templates"]):
+                return
+            _carregar_template(preview_state["templates"][indice])
+
+        def _on_text_change(_event=None):
+            if preview_state["img_original"] is None:
+                return
+            _render_preview(reset_texto_pos=False)
+
+        def _on_font_scale(_event=None):
+            tamanho_fonte_var.set(int(float(fonte_scale.get())))
+            if preview_state["img_original"] is None:
+                return
+            _render_preview(reset_texto_pos=False)
+
+        def _on_largura_scale(_event=None):
+            largura_texto_var.set(int(float(largura_scale.get())))
+            if preview_state["img_original"] is None:
+                return
+            _render_preview(reset_texto_pos=False)
+
+        def _on_anuncio_scale(_event=None):
+            tamanho_anuncio_var.set(int(float(anuncio_scale.get())))
+            if preview_state["img_original"] is None:
+                return
+            _render_preview(reset_texto_pos=False)
+
+        def _upload_imagem_anuncio():
+            caminho_origem = filedialog.askopenfilename(
+                title="Selecionar imagem do anúncio",
+                filetypes=[
+                    ("Imagens", "*.png *.jpg *.jpeg *.webp"),
+                    ("Todos os arquivos", "*.*"),
+                ],
+                parent=dialog_root,
+            )
+            if not caminho_origem:
+                return
+
+            try:
+                imagem_anuncio = Image.open(caminho_origem).convert("RGBA")
+            except Exception as exc:
+                messagebox.showerror("Imagem inválida", f"Não foi possível abrir a imagem do anúncio.\n\n{exc}", parent=dialog_root)
+                return
+
+            preview_state["anuncio_img_original"] = imagem_anuncio
+            _render_preview(reset_texto_pos=False)
+
+        def _remover_imagem_anuncio():
+            preview_state["anuncio_img_original"] = None
+            preview_state["anuncio_img_preview_tk"] = None
+            preview_state["canvas_anuncio_id"] = None
+            preview_state["anuncio_size_preview"] = (0, 0)
+            if preview_state["img_original"] is not None:
+                _render_preview(reset_texto_pos=False)
+
+        def _selecionar_cor_texto():
+            cor_atual = cor_texto_var.get()
+            _, cor_hex = colorchooser.askcolor(color=cor_atual, parent=dialog_root, title="Selecionar cor da fonte")
+            if not cor_hex:
+                return
+            cor_texto_var.set(cor_hex)
+            cor_texto_btn.configure(text=f"Cor da fonte: {cor_hex.upper()}")
+            if preview_state["img_original"] is None:
+                return
+            _render_preview(reset_texto_pos=False)
+
+        def _limitar_texto_na_imagem(x, y):
+            if preview_state["img_preview"] is None:
+                return x, y
+            off_x, off_y = preview_state["preview_offset"]
+            prev_w, prev_h = preview_state["img_preview"].size
+            x = min(off_x + prev_w, max(off_x, x))
+            y = min(off_y + prev_h, max(off_y, y))
+            return x, y
+
+        def _drag_start(event):
+            if not preview_state["canvas_text_id"]:
+                return
+            x, y = canvas.coords(preview_state["canvas_text_id"])
+            preview_state["drag_dx"] = x - event.x
+            preview_state["drag_dy"] = y - event.y
+
+        def _drag_move(event):
+            if not preview_state["canvas_text_id"]:
+                return
+            novo_x = event.x + preview_state["drag_dx"]
+            novo_y = event.y + preview_state["drag_dy"]
+            novo_x, novo_y = _limitar_texto_na_imagem(novo_x, novo_y)
+            canvas.coords(preview_state["canvas_text_id"], novo_x, novo_y)
+            _atualizar_posicao_label()
+
+        def _limitar_anuncio_na_imagem(x, y):
+            if preview_state["img_preview"] is None:
+                return x, y
+            off_x, off_y = preview_state["preview_offset"]
+            prev_w, prev_h = preview_state["img_preview"].size
+            anuncio_w, anuncio_h = preview_state.get("anuncio_size_preview") or (0, 0)
+            metade_w = max(1, anuncio_w / 2)
+            metade_h = max(1, anuncio_h / 2)
+            x = min(off_x + prev_w - metade_w, max(off_x + metade_w, x))
+            y = min(off_y + prev_h - metade_h, max(off_y + metade_h, y))
+            return x, y
+
+        def _drag_start_anuncio(event):
+            if not preview_state.get("canvas_anuncio_id"):
+                return
+            x, y = canvas.coords(preview_state["canvas_anuncio_id"])
+            preview_state["anuncio_drag_dx"] = x - event.x
+            preview_state["anuncio_drag_dy"] = y - event.y
+
+        def _drag_move_anuncio(event):
+            if not preview_state.get("canvas_anuncio_id"):
+                return
+            novo_x = event.x + preview_state["anuncio_drag_dx"]
+            novo_y = event.y + preview_state["anuncio_drag_dy"]
+            novo_x, novo_y = _limitar_anuncio_na_imagem(novo_x, novo_y)
+            canvas.coords(preview_state["canvas_anuncio_id"], novo_x, novo_y)
+
+        def _salvar_post_customizado():
+            texto = texto_post.get("1.0", "end").strip()
+            if not texto:
+                messagebox.showwarning("Texto obrigatório", "Informe o texto do post antes de salvar.", parent=dialog_root)
+                return
+
+            caminho_template = preview_state["template_selecionado"]
+            if not caminho_template or preview_state["img_original"] is None:
+                messagebox.showwarning("Template obrigatório", "Selecione ou envie um template antes de salvar.", parent=dialog_root)
+                return
+
+            if not preview_state["canvas_text_id"]:
+                messagebox.showwarning("Preview indisponível", "Não foi possível determinar a posição do texto.", parent=dialog_root)
+                return
+
+            try:
+                imagem_saida = preview_state["img_original"].copy().convert("RGBA")
+                draw = ImageDraw.Draw(imagem_saida)
+
+                if preview_state.get("anuncio_img_original") is not None and preview_state.get("canvas_anuncio_id"):
+                    ax_canvas, ay_canvas = canvas.coords(preview_state["canvas_anuncio_id"])
+                    off_x, off_y = preview_state["preview_offset"]
+                    escala = max(0.0001, float(preview_state["preview_scale"]))
+
+                    ax_img = int((ax_canvas - off_x) / escala)
+                    ay_img = int((ay_canvas - off_y) / escala)
+
+                    anuncio_original = preview_state["anuncio_img_original"].copy().convert("RGBA")
+                    largura_alvo_base = max(
+                        40,
+                        int(imagem_saida.size[0] * (max(10, min(95, tamanho_anuncio_var.get())) / 100.0)),
+                    )
+                    proporcao = anuncio_original.height / max(1, anuncio_original.width)
+                    altura_alvo_base = max(40, int(largura_alvo_base * proporcao))
+
+                    anuncio_resized = anuncio_original.resize(
+                        (largura_alvo_base, altura_alvo_base),
+                        Image.Resampling.LANCZOS,
+                    )
+
+                    x0 = int(ax_img - largura_alvo_base / 2)
+                    y0 = int(ay_img - altura_alvo_base / 2)
+                    x0 = min(imagem_saida.size[0] - 1, max(-largura_alvo_base + 1, x0))
+                    y0 = min(imagem_saida.size[1] - 1, max(-altura_alvo_base + 1, y0))
+
+                    camada = Image.new("RGBA", imagem_saida.size, (0, 0, 0, 0))
+                    camada.paste(anuncio_resized, (x0, y0), anuncio_resized)
+                    imagem_saida = Image.alpha_composite(imagem_saida, camada)
+                    draw = ImageDraw.Draw(imagem_saida)
+
+                x_canvas, y_canvas = canvas.coords(preview_state["canvas_text_id"])
+                off_x, off_y = preview_state["preview_offset"]
+                escala = max(0.0001, float(preview_state["preview_scale"]))
+
+                x_img = int((x_canvas - off_x) / escala)
+                y_img = int((y_canvas - off_y) / escala)
+                x_img = min(imagem_saida.size[0], max(0, x_img))
+                y_img = min(imagem_saida.size[1], max(0, y_img))
+
+                fonte = _fonte_para_overlay(tamanho_fonte_var.get())
+                largura_fracao = max(30, min(95, largura_texto_var.get())) / 100.0
+                largura_texto_px = max(120, int(imagem_saida.size[0] * largura_fracao))
+                texto_quebrado = _quebrar_texto_por_largura(draw, texto, fonte, largura_texto_px)
+                draw.multiline_text(
+                    (x_img, y_img),
+                    texto_quebrado,
+                    fill=cor_texto_var.get(),
+                    font=fonte,
+                    anchor="mm",
+                    align="center",
+                    spacing=8,
+                    stroke_width=3,
+                    stroke_fill=(0, 0, 0),
+                )
+
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                nome_arquivo = f"post_instagram_custom_{timestamp}.png"
+                caminho_saida = os.path.join(PASTA_GERADORES_SAIDA, nome_arquivo)
+                imagem_saida.convert("RGB").save(caminho_saida, "PNG")
+
+                status_var.set(f"Post Instagram criado: {nome_arquivo}")
+                msg = (
+                    "Post criado com sucesso.\n\n"
+                    f"Arquivo: {nome_arquivo}\n"
+                    f"Template: {os.path.basename(caminho_template)}\n\n"
+                    "Deseja abrir a pasta de saída?"
+                )
+                if messagebox.askyesno("Sucesso", msg, parent=dialog_root):
+                    import platform
+                    if platform.system() == "Windows":
+                        os.startfile(PASTA_GERADORES_SAIDA)
+                    elif platform.system() == "Darwin":
+                        subprocess.Popen(["open", PASTA_GERADORES_SAIDA])
+                    else:
+                        subprocess.Popen(["xdg-open", PASTA_GERADORES_SAIDA])
+            except Exception as exc:
+                messagebox.showerror("Erro", f"Erro ao salvar post:\n\n{exc}", parent=dialog_root)
+                status_var.set("Erro ao criar post Instagram customizado.")
+
+        def _quebrar_texto_por_largura(draw_obj, texto_original, fonte_obj, largura_max):
+            linhas_saida = []
+            for paragrafo in texto_original.splitlines() or [texto_original]:
+                palavras = paragrafo.split()
+                if not palavras:
+                    linhas_saida.append("")
+                    continue
+
+                linha_atual = palavras[0]
+                for palavra in palavras[1:]:
+                    tentativa = f"{linha_atual} {palavra}"
+                    bbox = draw_obj.textbbox((0, 0), tentativa, font=fonte_obj)
+                    largura_tentativa = bbox[2] - bbox[0]
+                    if largura_tentativa <= largura_max:
+                        linha_atual = tentativa
+                    else:
+                        linhas_saida.append(linha_atual)
+                        linha_atual = palavra
+                linhas_saida.append(linha_atual)
+
+            return "\n".join(linhas_saida)
+
+        ttk.Button(btns_templates_frame, text="Atualizar templates", command=_recarregar_templates).pack(side="left")
+        ttk.Button(btns_templates_frame, text="Upload template", command=_upload_template).pack(side="left", padx=(8, 0))
+        ttk.Button(btns_templates_frame, text="Abrir pasta", command=_abrir_pasta_templates).pack(side="left", padx=(8, 0))
+        ttk.Button(btns_anuncio_frame, text="Upload imagem do anúncio", command=_upload_imagem_anuncio).pack(side="left")
+        ttk.Button(btns_anuncio_frame, text="Remover imagem", command=_remover_imagem_anuncio).pack(side="left", padx=(8, 0))
+        cor_texto_btn.configure(command=_selecionar_cor_texto)
+
+        ttk.Button(btns_actions_frame, text="Salvar post", style="Action.TButton", command=_salvar_post_customizado).pack(side="left")
+        ttk.Button(btns_actions_frame, text="Fechar", command=dialog_root.destroy).pack(side="left", padx=(8, 0))
+
+        template_combo.bind("<<ComboboxSelected>>", _on_template_change)
+        texto_post.bind("<KeyRelease>", _on_text_change)
+        fonte_scale.bind("<ButtonRelease-1>", _on_font_scale)
+        fonte_scale.bind("<B1-Motion>", _on_font_scale)
+        largura_scale.bind("<ButtonRelease-1>", _on_largura_scale)
+        largura_scale.bind("<B1-Motion>", _on_largura_scale)
+        anuncio_scale.bind("<ButtonRelease-1>", _on_anuncio_scale)
+        anuncio_scale.bind("<B1-Motion>", _on_anuncio_scale)
+        canvas.tag_bind("overlay_text", "<ButtonPress-1>", _drag_start)
+        canvas.tag_bind("overlay_text", "<B1-Motion>", _drag_move)
+        canvas.tag_bind("overlay_anuncio", "<ButtonPress-1>", _drag_start_anuncio)
+        canvas.tag_bind("overlay_anuncio", "<B1-Motion>", _drag_move_anuncio)
+        canvas.bind("<Configure>", lambda _event: _render_preview(reset_texto_pos=False) if preview_state["img_original"] else None)
+
+        novas_templates = _importar_templates_de_jsons()
+        if novas_templates > 0:
+            status_var.set(f"{novas_templates} imagem(ns) principal(is) de anúncios importada(s) para templates.")
+
+        texto_post.insert("1.0", "Texto promocional aqui")
+        _recarregar_templates()
+
     schedules_frame = ttk.LabelFrame(main_frame, text="PROGRAMACOES", style="Card.TLabelframe", padding=8)
     schedules_frame.pack(fill="both", expand=True, pady=(8, 0))
     output_frame.pack_forget()
@@ -2271,6 +2880,9 @@ def create_gui(categorias):
 
     sync_sheet_now_btn = ttk.Button(schedules_actions, text="SINCRONIZAR PLANILHA AGORA", style="Action.TButton")
     sync_sheet_now_btn.pack(side="left", padx=(8, 0))
+
+    gerar_posts_instagram_btn = ttk.Button(schedules_actions, text="📸 GERAR POSTS INSTAGRAM", style="Action.TButton", command=open_gerar_posts_instagram_dialog)
+    gerar_posts_instagram_btn.pack(side="left", padx=(8, 0))
 
     selecionar_todas_var = tk.BooleanVar(value=False)
     ttk.Checkbutton(schedules_actions, text="Selecionar todas", variable=selecionar_todas_var).pack(side="left", padx=(12, 0))
@@ -4172,17 +4784,14 @@ def create_gui(categorias):
 
     def _tratar_marcadores_autenticacao(texto):
         tem_ml = AUTH_MARKER_REQUIRED_ML in texto or AUTH_MARKER_STILL_PENDING_ML in texto
-        tem_amz = AUTH_MARKER_REQUIRED_AMAZON in texto or AUTH_MARKER_STILL_PENDING_AMAZON in texto
 
-        if not tem_ml and not tem_amz:
+        if not tem_ml:
             return
 
-        fonte = "Mercado Livre" if tem_ml else "Amazon"
-
-        if AUTH_MARKER_STILL_PENDING_ML in texto or AUTH_MARKER_STILL_PENDING_AMAZON in texto:
-            status_var.set(f"Login {fonte} ainda nao confirmado. Finalize o login e clique em 'Continuar' novamente.")
+        if AUTH_MARKER_STILL_PENDING_ML in texto:
+            status_var.set(f"Login Mercado Livre ainda nao confirmado. Finalize o login e clique em 'Continuar' novamente.")
         else:
-            status_var.set(f"Aguardando login no {fonte}...")
+            status_var.set(f"Aguardando login no Mercado Livre...")
 
         if _mostrar_modal_continuar_login(fonte):
             _sinalizar_confirmacao_login()
@@ -4713,6 +5322,7 @@ def create_gui(categorias):
 
         if ofertas_alerta_saida:
             salvar_saida_execucao_modalidade(ofertas_alerta_saida, "alerta")
+            salvar_saida_execucao_modalidade_json(ofertas_alerta_saida, "alerta")
 
         persist_alerts()
         if queue_finalize:
@@ -4852,14 +5462,9 @@ def create_gui(categorias):
             return
 
         if fontes_vars["Todas"].get():
-            messagebox.showinfo("Aviso", "A opcao 'Todas' roda somente Mercado Livre no on-demand. Para Amazon, marque apenas Amazon.")
+            pass
 
         fonte_execucao = "mercadolivre"
-        if fontes_vars["Amazon"].get() and not fontes_vars["Todas"].get():
-            fonte_execucao = "amazon"
-        elif not fontes_vars["Mercado Livre"].get() and not fontes_vars["Todas"].get():
-            messagebox.showwarning("Fonte nao suportada", "No momento o on-demand suporta Mercado Livre e Amazon.")
-            return
 
         unsupported = [name for name in ["Shoppee", "Tiktok shop"] if fontes_vars[name].get()]
         if unsupported:
@@ -5005,55 +5610,8 @@ def create_gui(categorias):
         args.extend(["--pasta-saida", pasta_saida, "--modalidade-execucao", "ondemand"])
         launch_process(args, "Processo de ofertas relampago iniciado em nova janela.")
 
-    def on_buscar_achados_amazon():
-        url_achados = (amz_achados_url_var.get() or "").strip()
-        if not url_achados:
-            messagebox.showerror("Validacao", "Configure uma URL valida para achados Amazon.")
-            return
-
-        if not url_achados.startswith("http://") and not url_achados.startswith("https://"):
-            messagebox.showerror("Validacao", "A URL dos achados Amazon deve comecar com http:// ou https://.")
-            return
-
-        try:
-            preco_min = parse_float(amz_preco_min_var.get(), "Preco minimo")
-            preco_max = parse_float(amz_preco_max_var.get(), "Preco maximo")
-            desconto = parse_int(amz_desconto_var.get(), "Desconto minimo")
-            limite = parse_int(amz_limite_var.get(), "Limite de candidatos")
-        except ValueError as exc:
-            messagebox.showerror("Validacao", str(exc))
-            return
-
-        if limite is not None and limite < 1:
-            messagebox.showerror("Validacao", "Limite de candidatos deve ser no minimo 1.")
-            return
-
-        descricao = (amz_descricao_var.get() or "").strip()
-
-        pasta_saida = filedialog.askdirectory(
-            title="Escolha onde salvar lista_anuncios.txt",
-            mustexist=True,
-        )
-        if not pasta_saida:
-            return
-
-        args = _build_hub_args_from_values(
-            "",
-            descricao,
-            preco_min,
-            preco_max,
-            desconto,
-            limite,
-            urls=[url_achados],
-            fonte="amazon",
-        )
-        args.extend(["--pasta-saida", pasta_saida, "--modalidade-execucao", "ondemand"])
-
-        launch_process(args, "Processo de achados Amazon iniciado em nova janela.")
-
     buscar_produto_btn.configure(command=on_buscar_produto)
     buscar_relampago_btn.configure(command=on_buscar_relampago)
-    buscar_achados_amazon_btn.configure(command=on_buscar_achados_amazon)
     alerta_preco_btn.configure(command=lambda: open_alerta_preco_form(None))
     campanha_produto_btn.configure(command=lambda: open_hub_schedule_modal(None))
     alerta_config_btn.configure(command=lambda: open_alerta_preco_form(None))

@@ -1,0 +1,18 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260719_200549",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB5761900430",
+      "categoria": "Fornos e Fogões > Fogões",
+      "descricao": "Fogão 5 Bocas Atlas Atenas Glass A Gás com Mesa de Vidro e Mega Chama Preto Bivolt",
+      "antes": "R$ 1859",
+      "antes_valor": 1859.0,
+      "desconto": "43% OFF",
+      "depois": "R$ 1053",
+      "depois_valor": 1053.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/fogo-5-bocas-atlas-atenas-glass-a-gas-com-mesa-de-vidro-e-mega-chama-preto-bivolt/p/MLB18612048?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=994fb18c-43af-4819-8687-458edccec21d&position=1&tracking_id=10a82a74-5c7e-44a9-9166-f597f2922b22&wid=MLB5761900430&sid=offers"
+    }
+  ]
+}

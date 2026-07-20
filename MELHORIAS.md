@@ -1,6 +1,29 @@
 
 # Melhorias
 
+## Fase 1: Saída em JSON ✅ CONCLUÍDA
+- [x] Salvar saídas de buscas em JSON estruturado
+- [x] Função `salvar_resultado_relampago_json()`
+- [x] Função `salvar_saida_execucao_modalidade_json()`
+- [x] Integração em main.py (3 pontos de chamada)
+- [x] Integração em gui_promos.py (alerta)
+
+## Fase 2: Gerador de Posts Instagram ✅ CONCLUÍDA
+- [x] Módulo `generators/instagram_post_generator.py`
+- [x] Gera posts Feed (1080x1350)
+- [x] Gera posts Stories (1080x1920)
+- [x] Interface CLI
+- [x] Helper para lote (`generators_helper.py`)
+- [x] Documentação em `generators/README.md`
+
+## Fase 3: Integração GUI ✅ CONCLUÍDA
+- [x] Botão "📸 GERAR POSTS INSTAGRAM" na interface
+- [x] Dialog para selecionar formato (feed/story/ambos)
+- [x] Procura automaticamente o JSON mais recente
+- [x] Abre pasta de saída automaticamente
+- [x] Integração com generators e generators_helper
+
+## Melhorias Futuras
 - Normalizar a forma de busca, os marcadores HTML mudam muito de um para o outro. Passar condições da tela (Deve conter texto especifico, Nao pode conter texto especifico)
 - Aceitar link em todas as configurações. O Link tem prioridade de busca.
 

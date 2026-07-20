@@ -1,0 +1,34 @@
+=== Inicio da execucao: 2026-07-19T21:02:27 ===
+Args: --produto-por-html --fonte mercadolivre --descricao-produto Carregador Compativel Com iPhone 8 X Xr 11 12 13 14 Pro Max Turbo Fonte Tipo C Boyu Cell --limite-candidatos 1 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[BLOCO_GENERICA_1] Carregando páginas 1 a 3
+[BLOCO_GENERICA_1] Página 1: https://lista.mercadolivre.com.br/Carregador-Compativel-Com-iPhone-8-X-Xr-11-12-13-14-Pro-Max-Turbo-Fonte-Tipo-C-Boyu-Cell
+[BLOCO_GENERICA_1] Resultado: 1 candidato(s) coletado(s). Total: 1
+✓ Link de afiliado: https://meli.la/2sJvUQ9
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 1 imagem(ns) principal(is) salvas em templates: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_templates
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260719_210249.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260719_210249.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Carregador Compativel Com iPhone 8 X Xr 11 12 13 14 Pro Max Turbo Fonte Tipo C Boyu Cell Branco
+Message SID Twilio: SM2f398f0e2b2abca7ba2fca58d34a4828
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "tkinter\__init__.py", line 1967, in __call__
+  File "gui_promos.py", line 2856, in <lambda>
+  File "gui_promos.py", line 2476, in _render_preview
+ValueError: not enough values to unpack (expected 2, got 0)
+
+1 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-19T21:02:54 ===

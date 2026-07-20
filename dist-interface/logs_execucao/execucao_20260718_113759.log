@@ -1,0 +1,18 @@
+=== Inicio da execucao: 2026-07-18T11:37:59 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo] --preco-minimo 500.0 --preco-maximo 770.0 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo]
+[LOGIN_REQUIRED_AFILIADOS] Nao foi possivel gerar link de afiliado para mlb36710725 (Sessao do Mercado Livre nao autenticada: botao de Afiliados indisponivel. Faça login e execute novamente.).
+[ERRO] Falha ao clicar no botão Afiliados/Compartilhar: Locator.count: Target page, context or browser has been closed
+[LOGIN_REQUIRED_AFILIADOS] Link de afiliado nao gerado para https://produto.mercadolivre.com.br/mlb-4752474553-tnis-new-balance-fuelcell-rebel-v5-corrida-esportivo-_jm?searchvariation=204736428677#polycard_client=search-desktop&be_origin=backend&searchvariation=204736428677&search_layout=grid&position=20&type=item&tracking_id=755a1d44-7f27-4444-b15a-d05894565f2c&sid=search. Anuncio ignorado. Faca login no Afiliados e execute novamente.
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo?page=2
+
+=== Fim da execucao: 2026-07-18T11:38:20 ===

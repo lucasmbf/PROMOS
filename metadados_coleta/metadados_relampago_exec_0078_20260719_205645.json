@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 78,
+  "gerado_em": "2026-07-19T20:56:45",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 1,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB5534487596",
+      "descricao": "Smartphone Samsung Galaxy A36 5g 128gb 6gb Ram Câmera Tripla De Até 50mp Selfie De 12mp Ip67 Super Amoled 6.7'' Nfc Recursos Ai Android E Segurança Snapdragon - Violeta",
+      "categoria": "Celulares e Smartphones > Samsung",
+      "antes": "R$ 2538,57",
+      "depois": "R$ 1276",
+      "desconto": "49% OFF",
+      "link": "https://meli.la/2dsDdNf",
+      "link_original": "https://www.mercadolivre.com.br/smartphone-samsung-galaxy-a36-5g-128gb-6gb-ram-cmera-tripla-de-ate-50mp-selfie-de-12mp-ip67-super-amoled-67-nfc-recursos-ai-android-e-seguranca-snapdragon-violeta/p/MLB47113437?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=c5842e15-e5d9-462e-acb1-9af5ead35aa9&position=6&tracking_id=7a87c0d6-a432-4d85-80e6-2313e7cb42db&wid=MLB5534487596&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/smartphone-samsung-galaxy-a36-5g-128gb-6gb-ram-cmera-tripla-de-ate-50mp-selfie-de-12mp-ip67-super-amoled-67-nfc-recursos-ai-android-e-seguranca-snapdragon-violeta/p/MLB47113437?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=c5842e15-e5d9-462e-acb1-9af5ead35aa9&position=6&tracking_id=7a87c0d6-a432-4d85-80e6-2313e7cb42db&wid=MLB5534487596&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260719_205633_877102_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

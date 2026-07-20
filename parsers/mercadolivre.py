@@ -61,6 +61,77 @@ def _montar_url_anuncio(metadata):
     return f"{base}{url_params}{url_fragments}"
 
 
+def _normalizar_url_imagem(url):
+    texto = (url or "").strip()
+    if not texto:
+        return ""
+
+    if texto.startswith("data:"):
+        return ""
+
+    if texto.startswith("//"):
+        return f"https:{texto}"
+
+    if texto.startswith("/"):
+        return urljoin("https://www.mercadolivre.com.br", texto)
+
+    if texto.startswith("http://") or texto.startswith("https://"):
+        return texto
+
+    return ""
+
+
+def _adicionar_candidatos_imagem(container, candidatos):
+    if not container:
+        return
+
+    if isinstance(container, str):
+        candidatos.append(container)
+        return
+
+    if isinstance(container, list):
+        for item in container:
+            _adicionar_candidatos_imagem(item, candidatos)
+        return
+
+    if not isinstance(container, dict):
+        return
+
+    for chave in (
+        "url",
+        "src",
+        "secure_url",
+        "fallback",
+        "value",
+        "thumbnail",
+        "thumbnail_url",
+        "image",
+        "image_url",
+        "picture",
+        "original",
+    ):
+        if chave in container:
+            _adicionar_candidatos_imagem(container.get(chave), candidatos)
+
+
+def _extrair_url_imagem_do_item_ctx(item, card, metadata, componentes):
+    candidatos = []
+
+    for bloco in (item, card, metadata):
+        _adicionar_candidatos_imagem(bloco, candidatos)
+
+    for componente in componentes:
+        if isinstance(componente, dict):
+            _adicionar_candidatos_imagem(componente, candidatos)
+
+    for candidato in candidatos:
+        url = _normalizar_url_imagem(candidato)
+        if url:
+            return url
+
+    return ""
+
+
 def _extrair_ctx_rendering(html):
 
     soup = BeautifulSoup(html, "html.parser")
@@ -411,6 +482,7 @@ def _extrair_ofertas_do_ctx(html, desconto_minimo=30):
             continue
 
         link_anuncio = _montar_url_anuncio(metadata)
+        imagem_principal = _extrair_url_imagem_do_item_ctx(item, card, metadata, componentes)
         id_anuncio = _extrair_id_anuncio_de_texto(
             metadata.get("id") or metadata.get("user_product_id") or metadata.get("product_id") or link_anuncio
         )
@@ -426,6 +498,7 @@ def _extrair_ofertas_do_ctx(html, desconto_minimo=30):
                 "depois": _formatar_preco(preco_atual),
                 "depois_valor": preco_atual,
                 "link_anuncio": link_anuncio,
+                "imagem_principal": imagem_principal,
             }
         )
 
@@ -577,20 +650,25 @@ def extrair_dados_do_card(card):
 
         id_anuncio = ""
 
-    # Teste sem imagem: nao capturamos o src do card neste momento.
-    # try:
-    #
-    #     imagem = card.locator(
-    #         "img.poly-component__picture, img[data-testid='picture']"
-    #     ).first.get_attribute("src", timeout=1500)
-    #
-    #     imagem = (imagem or "").strip()
-    #
-    # except Exception:
-    #
-    #     imagem = ""
+    imagem = ""
+    try:
+        imagem_el = card.locator(
+            "img.poly-component__picture, img[data-testid='picture'], img"
+        ).first
+        src = imagem_el.get_attribute("src", timeout=1200) or ""
+        data_src = imagem_el.get_attribute("data-src", timeout=1200) or ""
+        srcset = imagem_el.get_attribute("srcset", timeout=1200) or ""
+        data_srcset = imagem_el.get_attribute("data-srcset", timeout=1200) or ""
 
-    # imagem = ""
+        candidato = (src or data_src).strip()
+        if not candidato:
+            srcset_texto = (srcset or data_srcset).strip()
+            if srcset_texto:
+                candidato = srcset_texto.split(",")[0].strip().split(" ")[0]
+
+        imagem = _normalizar_url_imagem(candidato)
+    except Exception:
+        imagem = ""
 
     return {
         "descricao": descricao,
@@ -600,7 +678,7 @@ def extrair_dados_do_card(card):
         "oferta_imperdivel": oferta_imperdivel,
         "id_anuncio": id_anuncio,
         "link": link_original,
-        # "imagem": imagem,
+        "imagem_principal": imagem,
     }
 
 
@@ -1190,19 +1268,146 @@ PASTA_SAIDA_ALERTA = str(Path(PASTA_SAIDAS_EXECUCOES) / "Alerta")
 PASTA_SAIDA_CAMPANHA = str(Path(PASTA_SAIDAS_EXECUCOES) / "Campanha")
 PASTA_SAIDA_ONDEMAND = str(Path(PASTA_SAIDAS_EXECUCOES) / "OnDemand")
 PASTA_METADADOS_COLETA = str(BASE_SAIDA / "metadados_coleta")
+PASTA_TEMPLATES_INSTAGRAM = str(BASE_SAIDA / "dist-interface" / "instagram_templates")
+
+# Pastas para histórico de JSONs (fixas, independente de pasta escolhida pelo usuário)
+PASTA_HISTORICO_JSON_RELAMPAGO = str(Path(PASTA_OFERTAS_RELAMPAGO) / "Historico de anuncios")
+PASTA_HISTORICO_JSON_PRODUTO = str(Path(PASTA_OFERTAS_HUB) / "Historico de anuncios")
+
 ARQUIVO_CONTROLE_EXECUCOES = str(Path(PASTA_METADADOS_COLETA) / "controle_execucoes.json")
 TOTAL_SNAPSHOTS_HUB = 10
 
 os.makedirs(PASTA_OFERTAS_RELAMPAGO, exist_ok=True)
 os.makedirs(PASTA_OFERTAS_HUB, exist_ok=True)
 os.makedirs(PASTA_RELAMPAGO_HTML, exist_ok=True)
-os.makedirs(PASTA_RELAMPAGO_HISTORICO, exist_ok=True)
+os.makedirs(PASTA_HISTORICO_JSON_RELAMPAGO, exist_ok=True)
 os.makedirs(PASTA_AFILIADOS_HTML, exist_ok=True)
-os.makedirs(PASTA_AFILIADOS_HISTORICO, exist_ok=True)
+os.makedirs(PASTA_HISTORICO_JSON_PRODUTO, exist_ok=True)
 os.makedirs(PASTA_SAIDA_ALERTA, exist_ok=True)
 os.makedirs(PASTA_SAIDA_CAMPANHA, exist_ok=True)
 os.makedirs(PASTA_SAIDA_ONDEMAND, exist_ok=True)
 os.makedirs(PASTA_METADADOS_COLETA, exist_ok=True)
+os.makedirs(PASTA_TEMPLATES_INSTAGRAM, exist_ok=True)
+
+
+def _salvar_imagens_principais_em_templates(ofertas, limite=30):
+    """Baixa imagens principais das ofertas para a pasta de templates do Instagram."""
+    if not ofertas:
+        return 0
+
+    total_salvas = 0
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        )
+    }
+
+    os.makedirs(PASTA_TEMPLATES_INSTAGRAM, exist_ok=True)
+
+    for oferta in ofertas:
+        if total_salvas >= limite:
+            break
+
+        if not isinstance(oferta, dict):
+            continue
+
+        imagem_url = _resolver_imagem_principal_oferta(oferta)
+        if not imagem_url:
+            continue
+
+        id_anuncio = str(oferta.get("id_anuncio") or "").strip()
+        if not id_anuncio:
+            id_anuncio = re.sub(r"[^a-zA-Z0-9]", "", imagem_url)[-14:] or "semid"
+
+        caminho_url = urlsplit(imagem_url).path or ""
+        ext = Path(caminho_url).suffix.lower()
+        if ext not in {".png", ".jpg", ".jpeg", ".webp"}:
+            ext = ".jpg"
+
+        destino = Path(PASTA_TEMPLATES_INSTAGRAM) / f"anuncio_{id_anuncio}{ext}"
+        if destino.exists():
+            continue
+
+        try:
+            headers_requisicao = dict(headers)
+            link_ref = _normalizar_url_resultado(
+                str((oferta or {}).get("link_anuncio") or (oferta or {}).get("link") or "").strip()
+            )
+            if link_ref:
+                headers_requisicao["Referer"] = link_ref
+
+            req = Request(imagem_url, headers=headers_requisicao)
+            with urlopen(req, timeout=15) as resposta:
+                conteudo = resposta.read()
+            if not conteudo:
+                continue
+
+            with open(destino, "wb") as arquivo_saida:
+                arquivo_saida.write(conteudo)
+
+            total_salvas += 1
+        except Exception:
+            continue
+
+    return total_salvas
+
+
+def _resolver_imagem_principal_oferta(oferta):
+    """Resolve a melhor URL de imagem para a oferta.
+
+    Ordem:
+    1) Campos já presentes no payload.
+    2) Fallback via API pública do item do Mercado Livre.
+    """
+    if not isinstance(oferta, dict):
+        return ""
+
+    candidatos_iniciais = [
+        oferta.get("imagem_principal"),
+        oferta.get("url_imagem"),
+        oferta.get("imagem"),
+    ]
+
+    for candidato in candidatos_iniciais:
+        url = _normalizar_url_imagem(str(candidato or "").strip())
+        if url:
+            return url
+
+    link_base = _normalizar_url_resultado(
+        str(oferta.get("link_anuncio") or oferta.get("link") or "").strip()
+    )
+    item_id = _extrair_item_id_ml_da_url(link_base)
+    if not item_id:
+        return ""
+
+    try:
+        detalhe = _ml_api_get_json(f"https://api.mercadolibre.com/items/{item_id}")
+    except Exception:
+        return ""
+
+    candidatos_api = []
+    for chave in ("secure_thumbnail", "thumbnail", "picture"):
+        candidatos_api.append(detalhe.get(chave))
+
+    for picture in detalhe.get("pictures") or []:
+        if not isinstance(picture, dict):
+            continue
+        candidatos_api.extend(
+            [
+                picture.get("secure_url"),
+                picture.get("url"),
+                picture.get("size"),
+            ]
+        )
+
+    for candidato in candidatos_api:
+        url = _normalizar_url_imagem(str(candidato or "").strip())
+        if url:
+            return url
+
+    return ""
 
 
 def _formatar_preco_txt(valor):
@@ -1471,6 +1676,20 @@ def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=None):
         link_anuncio = _normalizar_url_resultado(href)
         id_anuncio = _extrair_id_anuncio_de_texto(link_anuncio or descricao)
 
+        imagem_principal = ""
+        try:
+            imagem_el = card.select_one("img.poly-component__picture, img[data-testid='picture'], img")
+            if imagem_el:
+                src = (imagem_el.get("src") or "").strip()
+                data_src = (imagem_el.get("data-src") or "").strip()
+                srcset = (imagem_el.get("srcset") or "").strip()
+                candidato = src or data_src
+                if not candidato and srcset:
+                    candidato = srcset.split(",")[0].strip().split(" ")[0]
+                imagem_principal = _normalizar_url_imagem(candidato)
+        except Exception:
+            imagem_principal = ""
+
         ofertas.append({
             "id_anuncio": id_anuncio,
             "categoria": categoria,
@@ -1480,6 +1699,7 @@ def extrair_ofertas_do_html(caminho_arquivo, desconto_minimo=None):
             "depois": depois,
             "depois_valor": _converter_preco_em_float(depois),
             "link_anuncio": link_anuncio,
+            "imagem_principal": imagem_principal,
             "posicao_html": posicao_html,
         })
 
@@ -1802,6 +2022,57 @@ def _coletar_links_visiveis_por_id(page):
     return links
 
 
+def _extrair_imagem_principal_anuncio(page):
+    """Extrai URL da imagem principal da página do anúncio já aberta."""
+    try:
+        candidatos = page.evaluate(
+            """() => {
+                const saida = [];
+                const add = (v) => { if (v && typeof v === 'string') saida.push(v.trim()); };
+
+                add(document.querySelector("meta[property='og:image']")?.content || "");
+                add(document.querySelector("meta[name='twitter:image']")?.content || "");
+
+                const seletores = [
+                    "img.ui-pdp-image",
+                    "img[data-zoom]",
+                    "img[data-src]",
+                    "figure img",
+                    "picture img",
+                    "img",
+                ];
+
+                for (const sel of seletores) {
+                    const el = document.querySelector(sel);
+                    if (!el) continue;
+                    add(el.getAttribute('src') || "");
+                    add(el.getAttribute('data-src') || "");
+                    add(el.getAttribute('data-zoom') || "");
+
+                    const srcset = el.getAttribute('srcset') || el.getAttribute('data-srcset') || "";
+                    if (srcset) {
+                        const first = srcset.split(',')[0]?.trim()?.split(' ')[0] || "";
+                        add(first);
+                    }
+                }
+
+                return saida;
+            }"""
+        )
+    except Exception:
+        candidatos = []
+
+    if not isinstance(candidatos, list):
+        candidatos = []
+
+    for candidato in candidatos:
+        url = _normalizar_url_imagem(candidato)
+        if url:
+            return url
+
+    return ""
+
+
 def _abrir_anuncio_em_nova_aba(page, url_anuncio):
 
     detalhe_page = page.context.new_page()
@@ -1811,8 +2082,9 @@ def _abrir_anuncio_em_nova_aba(page, url_anuncio):
         time.sleep(random.uniform(3, 5))
 
         categoria = _extrair_categoria_do_breadcrumb(detalhe_page)
+        imagem_principal = _extrair_imagem_principal_anuncio(detalhe_page)
         link = _obter_link_via_botao_afiliados(detalhe_page, url_anuncio)
-        return link, categoria
+        return link, categoria, imagem_principal
     finally:
         detalhe_page.close()
 
@@ -1827,9 +2099,11 @@ def _enriquecer_ofertas_hub_com_links(page, url_base, categoria, ofertas, permit
         )
 
         if href_direto:
-            link_afiliado, categoria_breadcrumb = _abrir_anuncio_em_nova_aba(page, href_direto)
+            link_afiliado, categoria_breadcrumb, imagem_principal = _abrir_anuncio_em_nova_aba(page, href_direto)
             oferta["link_original"] = href_direto
             oferta["link"] = link_afiliado or href_direto
+            if imagem_principal and not oferta.get("imagem_principal"):
+                oferta["imagem_principal"] = imagem_principal
             if categoria_breadcrumb and categoria_breadcrumb != "Sem categoria":
                 oferta["categoria"] = categoria_breadcrumb
             continue
@@ -1858,9 +2132,11 @@ def _enriquecer_ofertas_hub_com_links(page, url_base, categoria, ofertas, permit
                 continue
 
             oferta = pendentes.pop(id_anuncio)
-            link_afiliado, categoria_breadcrumb = _abrir_anuncio_em_nova_aba(page, href)
+            link_afiliado, categoria_breadcrumb, imagem_principal = _abrir_anuncio_em_nova_aba(page, href)
             oferta["link_original"] = href
             oferta["link"] = link_afiliado or href
+            if imagem_principal and not oferta.get("imagem_principal"):
+                oferta["imagem_principal"] = imagem_principal
             if categoria_breadcrumb and categoria_breadcrumb != "Sem categoria":
                 oferta["categoria"] = categoria_breadcrumb
 
@@ -1876,9 +2152,11 @@ def _enriquecer_ofertas_hub_com_links(page, url_base, categoria, ofertas, permit
         if not href:
             continue
 
-        link_afiliado, categoria_breadcrumb = _abrir_anuncio_em_nova_aba(page, href)
+        link_afiliado, categoria_breadcrumb, imagem_principal = _abrir_anuncio_em_nova_aba(page, href)
         oferta["link_original"] = href
         oferta["link"] = link_afiliado or href
+        if imagem_principal and not oferta.get("imagem_principal"):
+            oferta["imagem_principal"] = imagem_principal
         if categoria_breadcrumb and categoria_breadcrumb != "Sem categoria":
             oferta["categoria"] = categoria_breadcrumb
 
@@ -2518,7 +2796,7 @@ def _enriquecer_candidatos_aprovados(page, candidatos, categoria_base=None, limi
             continue
 
         try:
-            link_afiliado, categoria_breadcrumb = _abrir_anuncio_em_nova_aba(page, href)
+            link_afiliado, categoria_breadcrumb, imagem_principal = _abrir_anuncio_em_nova_aba(page, href)
         except RuntimeError as exc:
             falhas_login_afiliados += 1
             falhas_enriquecimento += 1
@@ -2551,6 +2829,8 @@ def _enriquecer_candidatos_aprovados(page, candidatos, categoria_base=None, limi
         candidato["categoria"] = categoria_breadcrumb or candidato.get("categoria") or "Pesquisa genérica"
         candidato["link_original"] = href
         candidato["link"] = link_afiliado
+        if imagem_principal and not candidato.get("imagem_principal"):
+            candidato["imagem_principal"] = imagem_principal
         aprovados.append(candidato)
 
         if len(aprovados) >= limite_validos:
@@ -2978,8 +3258,8 @@ def obter_link_afiliado_relampago(page, oferta, url_relampago):
     # abre direto o anúncio sem percorrer novamente toda a listagem.
     if link_anuncio:
         print("Usando link direto extraído do HTML para obter link de afiliado.")
-        link, categoria = _abrir_anuncio_em_nova_aba(page, link_anuncio)
-        return link, categoria, link_anuncio
+        link, categoria, imagem_principal = _abrir_anuncio_em_nova_aba(page, link_anuncio)
+        return link, categoria, link_anuncio, imagem_principal
 
     print(f"\n--- Buscando link de afiliado para: {descricao[:70]}...")
 
@@ -3002,13 +3282,13 @@ def obter_link_afiliado_relampago(page, oferta, url_relampago):
 
     if not link_anuncio:
         print("[AVISO] Card não localizado na página de ofertas relâmpago.")
-        return None, "Sem categoria", ""
+        return None, "Sem categoria", "", ""
 
     print(f"Abrindo anúncio: {link_anuncio[:80]}...")
 
-    link, categoria = _abrir_anuncio_em_nova_aba(page, link_anuncio)
+    link, categoria, imagem_principal = _abrir_anuncio_em_nova_aba(page, link_anuncio)
 
-    return link, categoria, link_anuncio
+    return link, categoria, link_anuncio, imagem_principal
 
 
 def _coletar_htmls_relampago(
@@ -3069,13 +3349,15 @@ def _obter_total_paginas_relampago(caminho_html):
 def _enriquecer_ofertas_relampago_com_links(page, url_base_paginas, ofertas):
 
     for oferta in ofertas:
-        link_afiliado, categoria_breadcrumb, link_original = obter_link_afiliado_relampago(
+        link_afiliado, categoria_breadcrumb, link_original, imagem_principal = obter_link_afiliado_relampago(
             page,
             oferta,
             url_base_paginas,
         )
         oferta["link_original"] = link_original or oferta.get("link_anuncio") or ""
         oferta["link"] = link_afiliado or oferta["link_original"] or "Link não obtido"
+        if imagem_principal and not oferta.get("imagem_principal"):
+            oferta["imagem_principal"] = imagem_principal
         if categoria_breadcrumb and categoria_breadcrumb != "Sem categoria":
             oferta["categoria"] = categoria_breadcrumb
 
@@ -3439,3 +3721,199 @@ def salvar_saida_execucao_modalidade(ofertas, modalidade, nome_arquivo="lista_an
 
     print(f"\nSaida consolidada por modalidade atualizada em: {caminho}")
     return caminho
+
+
+def salvar_resultado_relampago_json(ofertas, pasta=None):
+    """Salva ofertas relâmpago em JSON estruturado para processamento posterior (ex: geração de posts Instagram).
+    
+    ⚠️ IMPORTANTE: O parâmetro 'pasta' é IGNORADO. JSONs SEMPRE são salvos em:
+       PASTA_HISTORICO_JSON_RELAMPAGO (definida no projeto)
+    
+    Isso garante que a GUI sempre encontre os JSONs e que o gerador de posts funcione.
+    
+    Formato:
+    {
+        "timestamp": "20260719_143052",
+        "total": 5,
+        "ofertas": [
+            {
+                "id_anuncio": "...",
+                "categoria": "...",
+                "descricao": "...",
+                "antes": "R$ 100,00",
+                "antes_valor": 100.0,
+                "desconto": "30% OFF",
+                "depois": "R$ 70,00",
+                "depois_valor": 70.0,
+                "link_anuncio": "https://..."
+            }
+        ]
+    }
+    """
+    if not ofertas:
+        return None
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    # Normalizar valores numéricos para JSON
+    ofertas_estruturadas = []
+    for oferta in ofertas:
+        imagem_principal = _resolver_imagem_principal_oferta(oferta)
+        oferta_json = {
+            "id_anuncio": str(oferta.get("id_anuncio", "")).strip(),
+            "categoria": str(oferta.get("categoria", "-")).strip(),
+            "descricao": str(oferta.get("descricao", "-")).strip(),
+            "antes": str(oferta.get("antes", "-")).strip(),
+            "antes_valor": float(oferta.get("antes_valor", 0)) if oferta.get("antes_valor") else None,
+            "desconto": str(oferta.get("desconto", "-")).strip(),
+            "depois": str(oferta.get("depois", "-")).strip(),
+            "depois_valor": float(oferta.get("depois_valor", 0)) if oferta.get("depois_valor") else None,
+            "link_anuncio": str(oferta.get("link_anuncio") or oferta.get("link", "-")).strip(),
+            "imagem_principal": imagem_principal,
+        }
+        ofertas_estruturadas.append(oferta_json)
+
+    saida_json = {
+        "timestamp": timestamp,
+        "total": len(ofertas_estruturadas),
+        "ofertas": ofertas_estruturadas,
+    }
+    
+    # SEMPRE salva no histórico padrão (ignora pasta fornecida)
+    # Isso garante que JSONs estejam sempre disponíveis para a GUI encontrar
+    pasta_alvo = PASTA_HISTORICO_JSON_RELAMPAGO
+    os.makedirs(pasta_alvo, exist_ok=True)
+    caminho_json = os.path.join(pasta_alvo, f"ofertas_{timestamp}.json")
+    
+    with open(caminho_json, "w", encoding="utf-8") as f:
+        json.dump(saida_json, f, ensure_ascii=False, indent=2)
+
+    total_templates = _salvar_imagens_principais_em_templates(ofertas_estruturadas)
+    if total_templates:
+        print(f"✅ {total_templates} imagem(ns) principal(is) salvas em templates: {PASTA_TEMPLATES_INSTAGRAM}")
+    
+    print(f"✅ JSON relâmpago salvo em: {caminho_json}")
+    return caminho_json
+
+
+def salvar_resultado_produto_json(ofertas, pasta=None):
+    """Salva ofertas de 'Buscar Produto' em JSON estruturado para processamento posterior.
+    
+    ⚠️ IMPORTANTE: O parâmetro 'pasta' é IGNORADO. JSONs SEMPRE são salvos em:
+       PASTA_HISTORICO_JSON_PRODUTO (definida no projeto)
+    
+    Isso garante que a GUI sempre encontre os JSONs e que o gerador de posts funcione.
+    
+    Formato (igual ao relâmpago):
+    {
+        "timestamp": "20260719_143052",
+        "total": 5,
+        "ofertas": [...]
+    }
+    """
+    if not ofertas:
+        return None
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    # Normalizar valores numéricos para JSON
+    ofertas_estruturadas = []
+    for oferta in ofertas:
+        imagem_principal = _resolver_imagem_principal_oferta(oferta)
+        oferta_json = {
+            "id_anuncio": str(oferta.get("id_anuncio", "")).strip(),
+            "categoria": str(oferta.get("categoria", "-")).strip(),
+            "descricao": str(oferta.get("descricao", "-")).strip(),
+            "antes": str(oferta.get("antes", "-")).strip(),
+            "antes_valor": float(oferta.get("antes_valor", 0)) if oferta.get("antes_valor") else None,
+            "desconto": str(oferta.get("desconto", "-")).strip(),
+            "depois": str(oferta.get("depois", "-")).strip(),
+            "depois_valor": float(oferta.get("depois_valor", 0)) if oferta.get("depois_valor") else None,
+            "link_anuncio": str(oferta.get("link_anuncio") or oferta.get("link", "-")).strip(),
+            "imagem_principal": imagem_principal,
+        }
+        ofertas_estruturadas.append(oferta_json)
+
+    saida_json = {
+        "timestamp": timestamp,
+        "total": len(ofertas_estruturadas),
+        "ofertas": ofertas_estruturadas,
+    }
+    
+    # SEMPRE salva no histórico padrão de produto (ignora pasta fornecida)
+    pasta_alvo = PASTA_HISTORICO_JSON_PRODUTO
+    os.makedirs(pasta_alvo, exist_ok=True)
+    caminho_json = os.path.join(pasta_alvo, f"ofertas_{timestamp}.json")
+    
+    with open(caminho_json, "w", encoding="utf-8") as f:
+        json.dump(saida_json, f, ensure_ascii=False, indent=2)
+
+    total_templates = _salvar_imagens_principais_em_templates(ofertas_estruturadas)
+    if total_templates:
+        print(f"✅ {total_templates} imagem(ns) principal(is) salvas em templates: {PASTA_TEMPLATES_INSTAGRAM}")
+    
+    print(f"✅ JSON de busca de produto salvo em: {caminho_json}")
+    return caminho_json
+
+
+
+def salvar_saida_execucao_modalidade_json(ofertas, modalidade, nome_arquivo="ofertas"):
+    """Salva saidas consolidadas por modalidade em JSON estruturado.
+    
+    Modalidades aceitas:
+      - alerta
+      - campanha
+      - ondemand
+    
+    Salva com timestamp: {nome_arquivo}_YYYYMMDD_HHMMSS.json
+    """
+    if not ofertas:
+        return None
+
+    modalidade_key = str(modalidade or "").strip().lower()
+    mapa_pastas = {
+        "alerta": PASTA_SAIDA_ALERTA,
+        "campanha": PASTA_SAIDA_CAMPANHA,
+        "ondemand": PASTA_SAIDA_ONDEMAND,
+    }
+
+    pasta = mapa_pastas.get(modalidade_key)
+    if not pasta:
+        return None
+
+    os.makedirs(pasta, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    nome_base = nome_arquivo.replace(".json", "").replace(".txt", "")
+    caminho_json = os.path.join(pasta, f"{nome_base}_{timestamp}.json")
+
+    # Normalizar valores numéricos para JSON
+    ofertas_estruturadas = []
+    for oferta in ofertas:
+        imagem_principal = _resolver_imagem_principal_oferta(oferta)
+        oferta_json = {
+            "id_anuncio": str(oferta.get("id_anuncio", "")).strip(),
+            "categoria": str(oferta.get("categoria", "-")).strip(),
+            "descricao": str(oferta.get("descricao", "-")).strip(),
+            "antes": str(oferta.get("antes", "-")).strip(),
+            "antes_valor": float(oferta.get("antes_valor", 0)) if oferta.get("antes_valor") else None,
+            "desconto": str(oferta.get("desconto", "-")).strip(),
+            "depois": str(oferta.get("depois", "-")).strip(),
+            "depois_valor": float(oferta.get("depois_valor", 0)) if oferta.get("depois_valor") else None,
+            "link_anuncio": str(oferta.get("link_anuncio") or oferta.get("link", "-")).strip(),
+            "imagem_principal": imagem_principal,
+        }
+        ofertas_estruturadas.append(oferta_json)
+
+    saida_json = {
+        "modalidade": modalidade_key,
+        "timestamp": timestamp,
+        "total": len(ofertas_estruturadas),
+        "ofertas": ofertas_estruturadas,
+    }
+
+    with open(caminho_json, "w", encoding="utf-8") as f:
+        json.dump(saida_json, f, ensure_ascii=False, indent=2)
+
+    print(f"Saida JSON {modalidade_key} salva em: {caminho_json}")
+    return caminho_json

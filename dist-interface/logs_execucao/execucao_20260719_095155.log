@@ -1,0 +1,66 @@
+=== Inicio da execucao: 2026-07-19T09:51:55 ===
+Args: --somente-relampago --url-relampago https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat --desconto-minimo 10 --limite-candidatos 5 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260719_095221_632256_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260719_095221_632256_01.txt
+34 oferta(s) com 10% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5800919092 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb7043091442 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 211 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260719_095221.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/21gFBhz
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2HUJdrm
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2FYqRnA
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1fLDAN1
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2jPtrF8
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0070_20260719_095314.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Escada Articulada 4x4 em Alumínio 16 Degraus 4,48m - Reisam
+Message SID Twilio: SMd4fb1c3f9b978478e0e9e4fe6e24d3e1
+
+Mensagem enviada para whatsapp:+5519991133269:
+Lavadora Alta Pressao Portatil Potente Recarregável 2bateria Preto 110/127/220v 60
+Message SID Twilio: SM08e9b6932963db20d30c835738edca25
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cobertor Casal Manta Cereja Habitat Poá Bolinha Soft Macia Cereja Cerejas
+Message SID Twilio: SM17538732285e5a38bf2f8f7f7d4673ef
+
+Mensagem enviada para whatsapp:+5519991133269:
+Chave De Impacto 1200n.m Brushless C/ Jogo Soquete+ Dobevi Azul 127/220v
+Message SID Twilio: SM025bf6a07b8047206e163f9852602670
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 4 Banquetas Altas Tolix Com Assento Madeira Com Encosto Liso Marrom
+Message SID Twilio: SM6814c66dffdd79e5659f84dd2ed47aba
+
+5 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-19T09:53:36 ===

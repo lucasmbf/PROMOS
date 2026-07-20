@@ -1,0 +1,51 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260719_201029",
+  "total": 4,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb26904815",
+      "categoria": "Sem categoria",
+      "descricao": "Cerveja Michelob Ultra Long Neck Contem 6 Garrafas de 330ml S/ Gluten",
+      "antes": "R$ 48,49",
+      "antes_valor": null,
+      "desconto": "30% OFF",
+      "depois": "R$ 33,90",
+      "depois_valor": 33.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/cerveja-michelob-ultra-long-neck-contem-6-garrafas-de-330ml-s-gluten/p/MLB26904815#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=7&type=product&tracking_id=6005950a-b71b-4de8-8703-b92791ffaa37&wid=MLB4415546127&sid=search"
+    },
+    {
+      "id_anuncio": "mlb22570670",
+      "categoria": "Sem categoria",
+      "descricao": "Cerveja Michelob Ultra Long Neck 330ml - Pack Com 6 Unidades",
+      "antes": "R$ 54,90",
+      "antes_valor": null,
+      "desconto": "36% OFF",
+      "depois": "R$ 34,91",
+      "depois_valor": 34.91,
+      "link_anuncio": "https://www.mercadolivre.com.br/cerveja-michelob-ultra-long-neck-330ml-pack-com-6-unidades/p/MLB22570670#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=6&type=product&tracking_id=6005950a-b71b-4de8-8703-b92791ffaa37&wid=MLB3628510158&sid=search"
+    },
+    {
+      "id_anuncio": "mlb4062044497",
+      "categoria": "Sem categoria",
+      "descricao": "Cerveja Heineken Premium Zero Alcool 330ml Long Neck 6 Unidades",
+      "antes": "R$ 69,90",
+      "antes_valor": null,
+      "desconto": "45% OFF",
+      "depois": "R$ 37,99",
+      "depois_valor": 37.99,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=bF5bmB6%2BlaiM5C88AD2O9ue96O84EiLmrmQP3HXw3CwD1T1djv0N3WoBr8UepHjm6OHvD7OLMKJpYHlUaqQvYlFr0vLimLSJdp7ZmpDtKP0Jq6mAUazUMJw4UDYTvxDSUE%2BXl6CdCLsoUyqln75T5V1M17mJrrosqE7AoOA59Ba15%2FmUXlz9lLq%2FI3m%2BWj0WTNp7bP%2BfwrtDLUgbyPMwaQQXYXIqMcEQwv2RtJ1eAoZ5q86eSZKWOBuiFcwH8NX8LziSZqKTCYhZMA%2FsYc9d18Oj4Fo3BiWLet7iQyNSoG9ukM2VvE%2FE2GofF64DY3uHAYbFd58Wwx0HvUJPNb3afepJd6ZMQyxkGrrcbbLBXrPr8%2FHVSaedj0sTobwT6qxtJtH2VHIZLYldd%2F0rdCl8iCARfAN6NhMrWpTk4lHwwqAZaIC%2FbdGLMJfRUl68FvIFzevUzytnFtBU7UUishS9iZpjcxWz6TQ7E7LpdExmGzMYEsIeGavUiE5N%2FYVMk0vXz9nQvxJQM6SKx3Y%2F6dG4XMcGCd8ET7Tg69kBnN%2B%2FllcP9522NHfKVlvvvFB2faMu9nKQcSogT5Ycmx07LMXfGAEhTM9QbYSyDSkp3X%2FiPD5LT9Ts88OjiiqvxGHikvQadPWdj1Ppg%2Bpu8G1bodpW1A6TnhIM6cOk%2FBYV8NmWi6JrHyyCd3%2FiTKKqasGVJkaGO%2FhomWg8dCnwOmBoImtTp%2BTmTX3um0dMIGp3k3oBT4hd9VCCq8H32KfsZ7mRzQ03KAhcgmbR55dg2CDQsndDidd1B20wnLC0v%2BAY1BiCX%2BYOXKKX%2B8k%2BLDhsDtq5w%2FZXkg2bxWI7LqX0ZI1AVTJLVNIGFZ909GvauOhjuSApbwI5UraqTxy42Zlj50hQaGdrfAHWRoCkDOhwAhcPokEknKq4xBg8QIM7ZI%2B8i0dixNwDwvMKEcNcMo%2BqTF9APPHvjI11koec6jErAZx26eKU4g%3D%3D&pdp_filters=item_id%3AMLB4062044497#polycard_client=search-desktop&is_advertising=true&backend_model=search-backend%3Bfallback_productos-promocionados_supple_view_buy&be_origin=backend&search_layout=grid&position=4&type=pad&tracking_id=6005950a-b71b-4de8-8703-b92791ffaa37&wid=MLB4062044497&sid=search"
+    },
+    {
+      "id_anuncio": "mlb51921978",
+      "categoria": "Sem categoria",
+      "descricao": "Cerveja Spaten Long Neck Puro Maltedourado 330ml 6 u",
+      "antes": "R$ 55,91",
+      "antes_valor": null,
+      "desconto": "30% OFF",
+      "depois": "R$ 38,99",
+      "depois_valor": 38.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/cerveja-spaten-long-neck-puro-maltedourado-330ml-6-u/p/MLB51921978#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=9&type=product&tracking_id=6005950a-b71b-4de8-8703-b92791ffaa37&wid=MLB6159817982&sid=search"
+    }
+  ]
+}

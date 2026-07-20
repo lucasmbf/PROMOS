@@ -1,0 +1,18 @@
+{
+  "timestamp": "20260719_204034",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB5446699388",
+      "categoria": "Torres de Som > Caixa de Som",
+      "descricao": "Torre de Som AIWA T1W-02 1600W 1Woofer10\" Bluetooth RGB USB FM DJ",
+      "antes": "R$ 1499",
+      "antes_valor": 1499.0,
+      "desconto": "39% OFF",
+      "depois": "R$ 901,55",
+      "depois_valor": 901.55,
+      "link_anuncio": "https://www.mercadolivre.com.br/torre-de-som-aiwa-t1w-02-1600w-1woofer10-bluetooth-rgb-usb-fm-dj/p/MLB42931183?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=ef558639-7bee-4222-9b60-9cf543ea3ec4&position=4&tracking_id=95c4afe9-86d5-43b0-8aac-a9031a578178&wid=MLB5446699388&sid=offers",
+      "imagem_principal": ""
+    }
+  ]
+}

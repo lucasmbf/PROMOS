@@ -1,0 +1,62 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260719_202402",
+  "total": 5,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb18643752",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Babysec Ultrasec Galinha Pintadinha G 60 Unid",
+      "antes": "R$ 94,20",
+      "antes_valor": null,
+      "desconto": "29% OFF",
+      "depois": "R$ 65,99",
+      "depois_valor": 65.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-babysec-ultrasec-galinha-pintadinha-g-60-unid/p/MLB18643752#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=54&type=product&tracking_id=c27ecb47-738b-476b-997f-bf16e687a66e&wid=MLB5377848886&sid=search"
+    },
+    {
+      "id_anuncio": "mlb69621080",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pants Ajuste Total Tamanho XXG 74 Unidades Pampers",
+      "antes": "R$ 149,90",
+      "antes_valor": null,
+      "desconto": "31% OFF",
+      "depois": "R$ 102,90",
+      "depois_valor": 102.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pants-ajuste-total-tamanho-xxg-74-unidades-pampers/p/MLB69621080#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=6&type=product&tracking_id=c27ecb47-738b-476b-997f-bf16e687a66e&wid=MLB6887611008&sid=search"
+    },
+    {
+      "id_anuncio": "mlb69620405",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pampers Confort Sec Tamanho G, 92 Un",
+      "antes": "R$ 145,90",
+      "antes_valor": null,
+      "desconto": "29% OFF",
+      "depois": "R$ 102,90",
+      "depois_valor": 102.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pampers-confort-sec-tamanho-g-92-un/p/MLB69620405#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=53&type=product&tracking_id=c27ecb47-738b-476b-997f-bf16e687a66e&wid=MLB6825795650&sid=search"
+    },
+    {
+      "id_anuncio": "mlb19543861",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pampers Premium Care Pants Tamanho G 68 Unidades",
+      "antes": "R$ 161,90",
+      "antes_valor": null,
+      "desconto": "24% OFF",
+      "depois": "R$ 121,76",
+      "depois_valor": 121.76,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pampers-premium-care-pants-tamanho-g-68-unidades/p/MLB19543861#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=49&type=product&tracking_id=c27ecb47-738b-476b-997f-bf16e687a66e&wid=MLB3128085562&sid=search"
+    },
+    {
+      "id_anuncio": "mlb19485099",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pampers Pants Ajuste Total Tamanho XXG, 78 Unidades",
+      "antes": "R$ 192,90",
+      "antes_valor": null,
+      "desconto": "24% OFF",
+      "depois": "R$ 144,96",
+      "depois_valor": 144.96,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pampers-pants-ajuste-total-tamanho-xxg-78-unidades/p/MLB19485099#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=44&type=product&tracking_id=c27ecb47-738b-476b-997f-bf16e687a66e&wid=MLB2825192964&sid=search"
+    }
+  ]
+}

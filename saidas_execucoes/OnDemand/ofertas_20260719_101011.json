@@ -1,0 +1,18 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260719_101011",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB4470378417",
+      "categoria": "Calçados > Tênis",
+      "descricao": "Tênis Feminino Delta 122 Olympikus Marinho/purple Lisa 37 Br",
+      "antes": "R$ 229,99",
+      "antes_valor": 229.99,
+      "desconto": "45% OFF",
+      "depois": "R$ 125,39",
+      "depois_valor": 125.39,
+      "link_anuncio": "https://www.mercadolivre.com.br/tenis-feminino-delta-122-olympikus/up/MLBU3780672051?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=f9fb9275-4fda-4f2c-8a79-a46165ce591b&position=13&tracking_id=eda4dbcc-535d-4946-bd8f-d83aedbd9880&wid=MLB4470378417&sid=offers"
+    }
+  ]
+}

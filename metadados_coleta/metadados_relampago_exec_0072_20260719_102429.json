@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 72,
+  "gerado_em": "2026-07-19T10:24:29",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 10,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB3876934505",
+      "descricao": "Hipercalórico Anabolic Mass 28500 3kg Profit Labs Cookies And Cream",
+      "categoria": "Saúde > Suplementos Alimentares",
+      "antes": "R$ 74,90",
+      "depois": "R$ 56,82",
+      "desconto": "24% OFF",
+      "link": "https://meli.la/2pmzUSx",
+      "link_original": "https://www.mercadolivre.com.br/hipercalorico-anabolic-mass-28500-3kg-profit-labs-cookies-and-cream/p/MLB23824445?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=d89cfa66-feb2-47d2-b6e0-5d2371a7f1e2&position=10&tracking_id=37b5c45a-c577-48d4-aaff-fe637126efb0&wid=MLB3876934505&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/hipercalorico-anabolic-mass-28500-3kg-profit-labs-cookies-and-cream/p/MLB23824445?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=d89cfa66-feb2-47d2-b6e0-5d2371a7f1e2&position=10&tracking_id=37b5c45a-c577-48d4-aaff-fe637126efb0&wid=MLB3876934505&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260719_102418_802822_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

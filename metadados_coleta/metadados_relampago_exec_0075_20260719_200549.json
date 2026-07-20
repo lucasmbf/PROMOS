@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 75,
+  "gerado_em": "2026-07-19T20:05:49",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 11,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB5761900430",
+      "descricao": "Fogão 5 Bocas Atlas Atenas Glass A Gás com Mesa de Vidro e Mega Chama Preto Bivolt",
+      "categoria": "Fornos e Fogões > Fogões",
+      "antes": "R$ 1859",
+      "depois": "R$ 1053",
+      "desconto": "43% OFF",
+      "link": "https://meli.la/2TH7DSN",
+      "link_original": "https://www.mercadolivre.com.br/fogo-5-bocas-atlas-atenas-glass-a-gas-com-mesa-de-vidro-e-mega-chama-preto-bivolt/p/MLB18612048?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=994fb18c-43af-4819-8687-458edccec21d&position=1&tracking_id=10a82a74-5c7e-44a9-9166-f597f2922b22&wid=MLB5761900430&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/fogo-5-bocas-atlas-atenas-glass-a-gas-com-mesa-de-vidro-e-mega-chama-preto-bivolt/p/MLB18612048?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=994fb18c-43af-4819-8687-458edccec21d&position=1&tracking_id=10a82a74-5c7e-44a9-9166-f597f2922b22&wid=MLB5761900430&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260719_200539_419533_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

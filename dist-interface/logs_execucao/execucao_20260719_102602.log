@@ -1,0 +1,59 @@
+=== Inicio da execucao: 2026-07-19T10:26:02 ===
+Args: --somente-relampago --url-relampago https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat --desconto-minimo 10 --limite-candidatos 1 --pasta-saida C:/Users/Lucas Bianco/Desktop/Projetos Dev/Promos/dist-interface/ofertas_relampago/Historico de anuncios --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260719_102626_905238_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260719_102626_905238_01.txt
+34 oferta(s) com 10% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5363757118 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5548139538 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4339361921 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5800919092 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3804397995 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb7043091442 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6842906028 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3876934505 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4470378417 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 210 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260719_102627.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2zrHovo
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0073_20260719_102637.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Desktop/Projetos Dev/Promos/dist-interface/ofertas_relampago/Historico de anuncios\lista_anuncios.txt
+JSON relâmpago salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\ofertas_20260719_102637.json
+JSON relâmpago salvo em: C:/Users/Lucas Bianco/Desktop/Projetos Dev/Promos/dist-interface/ofertas_relampago/Historico de anuncios\ofertas_20260719_102637.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260719_102637.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mini Localizador Rastreador Smart Tag Gps Com Cordão Chaveiro Cor Preto Compatível Com Android Samsung Motorola Xiaomi Chrome Technology
+Message SID Twilio: SM9579715c3aac07021a95c4eed4c9b6a4
+
+[DEBUG] Procurando JSONs nas pastas:
+  - C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\dist-interface\ofertas_relampago\Historico de anuncios: ✗
+  - C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\dist-interface\saidas_execucoes\Alerta: ✗
+  - C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\dist-interface\saidas_execucoes\Campanha: ✗
+  - C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\dist-interface\saidas_execucoes\OnDemand: ✗
+
+1 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-19T10:26:41 ===

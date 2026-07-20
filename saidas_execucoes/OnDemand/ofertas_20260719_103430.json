@@ -1,0 +1,29 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260719_103430",
+  "total": 2,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB4481702005",
+      "categoria": "Cuidados com a Pele > Cuidado Facial",
+      "descricao": "Celimax Retinal Shot Tightening Booster Korea 15ml Pele Todo Tipo De Pele Dia/noite",
+      "antes": "R$ 200",
+      "antes_valor": 200.0,
+      "desconto": "31% OFF",
+      "depois": "R$ 136,80",
+      "depois_valor": 136.8,
+      "link_anuncio": "https://www.mercadolivre.com.br/celimax-retinal-shot-tightening-booster-korea-15ml-pele/up/MLBU3800862377?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=6579b9fc-d838-45ba-9c24-e6ac73a4f5dc&position=1&tracking_id=bf2646ce-db99-4de4-9715-8a5a22704dce&wid=MLB4481702005&sid=offers"
+    },
+    {
+      "id_anuncio": "MLB6094292416",
+      "categoria": "Armazenamento de Condimentos > Porta Condimentos",
+      "descricao": "Kit 6 Potes Vidro 200ml Porta Tempero Hermético Tampa Bambu Transparente",
+      "antes": "R$ 70",
+      "antes_valor": 70.0,
+      "desconto": "44% OFF",
+      "depois": "R$ 38,70",
+      "depois_valor": 38.7,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-6-potes-vidro-200ml-porta-tempero-hermetico-tampa-bambu/up/MLBU3699755334?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=6579b9fc-d838-45ba-9c24-e6ac73a4f5dc&position=14&tracking_id=bf2646ce-db99-4de4-9715-8a5a22704dce&wid=MLB6094292416&sid=offers"
+    }
+  ]
+}

@@ -112,18 +112,18 @@
     "last_execution_at": "2026-06-23T17:28:55"
   },
   {
-    "id": "000038",
-    "name": "Fralda mamypoko",
+    "id": "000040",
+    "name": "ração royal canin",
     "active": true,
-    "start_at": "2026-06-07T00:00",
-    "end_at": "2026-06-21T23:59",
-    "interval_hours": 6,
+    "start_at": "2026-06-15T00:00",
+    "end_at": "2026-09-30T23:59",
+    "interval_hours": 8,
     "categoria": "Todas categorias",
-    "descricao": "",
+    "descricao": "ração 1",
     "urls": [
-      "https://lista.mercadolivre.com.br/fralda-mamypoko-g#D[A:fralda%20mamypoko%20g]"
+      "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D07c3c6ac-63be-41c7-9661-15b7fb6b5598%26tracking_id%3D00865ebe-665b-45f1-964a-0c02a0ba3cda"
     ],
-    "link1": "https://lista.mercadolivre.com.br/fralda-mamypoko-g#D[A:fralda%20mamypoko%20g]",
+    "link1": "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D07c3c6ac-63be-41c7-9661-15b7fb6b5598%26tracking_id%3D00865ebe-665b-45f1-964a-0c02a0ba3cda",
     "link2": "",
     "link3": "",
     "link4": "",
@@ -136,51 +136,14 @@
     ],
     "preco_minimo": null,
     "preco_maximo": null,
-    "desconto_minimo": 20,
-    "limite_candidatos": 3,
-    "last_run_at": "2026-07-16T21:02:37",
-    "configured_at": "2026-07-02T19:27:33",
-    "next_run_at": "2026-07-17T03:02:37",
-    "last_execution_status": "sucesso",
-    "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-16T21:03:29"
-  },
-  {
-    "id": "000040",
-    "name": "ração 1",
-    "active": true,
-    "start_at": "2026-06-15T00:00",
-    "end_at": "2026-09-30T23:59",
-    "interval_hours": 8,
-    "categoria": "Todas categorias",
-    "descricao": "ração 1",
-    "urls": [
-      "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D07c3c6ac-63be-41c7-9661-15b7fb6b5598%26tracking_id%3D00865ebe-665b-45f1-964a-0c02a0ba3cda",
-      "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203380_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203380%26applied_value_name%3DPedigree%26applied_value_order%3D1%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3De8762de2-15d0-48de-a1fe-9dadd238a6f8%26tracking_id%3D9bd718ab-05d5-4e12-a222-a5332bd2a787",
-      "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213835%26applied_value_name%3DPurina%26applied_value_order%3D3%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D008918ca-2aca-4fa8-9159-493ef44d5342%26tracking_id%3Db268211c-bee9-4af3-827e-8749eca2fd0a",
-      "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213847%26applied_value_name%3DPro+Plan%26applied_value_order%3D5%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3Da70da431-ba7a-47e6-986a-f72e2264e321%26tracking_id%3Dbdb68b4f-01d5-49ae-9930-a5d30b96efe9"
-    ],
-    "link1": "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203401_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203401%26applied_value_name%3DRoyal+Canin%26applied_value_order%3D0%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D07c3c6ac-63be-41c7-9661-15b7fb6b5598%26tracking_id%3D00865ebe-665b-45f1-964a-0c02a0ba3cda",
-    "link2": "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_203380_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D203380%26applied_value_name%3DPedigree%26applied_value_order%3D1%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3De8762de2-15d0-48de-a1fe-9dadd238a6f8%26tracking_id%3D9bd718ab-05d5-4e12-a222-a5332bd2a787",
-    "link3": "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213835_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213835%26applied_value_name%3DPurina%26applied_value_order%3D3%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3D008918ca-2aca-4fa8-9159-493ef44d5342%26tracking_id%3Db268211c-bee9-4af3-827e-8749eca2fd0a",
-    "link4": "https://lista.mercadolivre.com.br/animais/caes/ra%C3%A7%C3%A3o_BRAND_2213847_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26enhanced_position%3D4%26applied_value_id%3D2213847%26applied_value_name%3DPro+Plan%26applied_value_order%3D5%26intervention_type%3DFILTER_INTERVENTION%26intervention_tracking_id%3Da70da431-ba7a-47e6-986a-f72e2264e321%26tracking_id%3Dbdb68b4f-01d5-49ae-9930-a5d30b96efe9",
-    "link5": "",
-    "email": "",
-    "emails": [],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "preco_minimo": null,
-    "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-17T18:08:51",
-    "configured_at": "2026-07-13T19:43:40",
-    "next_run_at": "2026-07-18T02:08:51",
+    "last_run_at": "2026-07-19T20:06:42",
+    "configured_at": "2026-07-19T09:07:35",
+    "next_run_at": "2026-07-20T04:06:42",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-17T18:10:25"
+    "last_execution_at": "2026-07-19T20:07:36"
   },
   {
     "id": "000041",
@@ -212,13 +175,13 @@
     "preco_minimo": 0.37332033803263265,
     "preco_maximo": null,
     "desconto_minimo": 10,
-    "limite_candidatos": 5,
-    "last_run_at": "2026-07-17T18:13:51",
-    "configured_at": "2026-06-15T19:51:41",
-    "next_run_at": "2026-07-18T02:13:51",
+    "limite_candidatos": 12,
+    "last_run_at": "2026-07-19T20:07:42",
+    "configured_at": "2026-07-19T09:02:35",
+    "next_run_at": "2026-07-20T04:07:42",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-17T18:15:36"
+    "last_execution_at": "2026-07-19T20:09:27"
   },
   {
     "id": "000044",
@@ -247,46 +210,12 @@
     "preco_maximo": null,
     "desconto_minimo": 30,
     "limite_candidatos": 4,
-    "last_run_at": "2026-07-16T19:40:46",
+    "last_run_at": "2026-07-19T20:09:42",
     "configured_at": "2026-07-13T19:40:30",
-    "next_run_at": "2026-07-19T19:40:46",
-    "last_execution_status": "sucesso",
-    "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-16T19:41:53"
-  },
-  {
-    "id": "000045",
-    "name": "Jogo Switch 2",
-    "active": true,
-    "start_at": "2026-06-22T00:00",
-    "end_at": "2026-07-22T23:59",
-    "interval_hours": 6,
-    "categoria": "Todas categorias",
-    "descricao": "",
-    "urls": [
-      "https://lista.mercadolivre.com.br/games/video-games/novo/jogo-switch-2_NoIndex_True_SHIPPING*ORIGIN_10215068_VIDEO*GAME*PLATFORM_52200449#applied_filter_id%3DITEM_CONDITION%26applied_filter_name%3DCondi%C3%A7%C3%A3o%26applied_filter_order%3D4%26applied_value_id%3D2230284%26applied_value_name%3DNovo%26applied_value_order%3D1%26applied_value_results%3D38%26is_custom%3Dfalse"
-    ],
-    "link1": "https://lista.mercadolivre.com.br/games/video-games/novo/jogo-switch-2_NoIndex_True_SHIPPING*ORIGIN_10215068_VIDEO*GAME*PLATFORM_52200449#applied_filter_id%3DITEM_CONDITION%26applied_filter_name%3DCondi%C3%A7%C3%A3o%26applied_filter_order%3D4%26applied_value_id%3D2230284%26applied_value_name%3DNovo%26applied_value_order%3D1%26applied_value_results%3D38%26is_custom%3Dfalse",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "email": "",
-    "emails": [],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "preco_minimo": null,
-    "preco_maximo": null,
-    "desconto_minimo": 20,
-    "limite_candidatos": 3,
-    "last_run_at": "2026-07-17T18:19:51",
-    "configured_at": "2026-06-22T21:20:06",
-    "next_run_at": "2026-07-18T00:19:51",
-    "last_execution_status": "sucesso",
-    "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-17T18:20:39"
+    "next_run_at": "2026-07-22T20:09:42",
+    "last_execution_status": "falha",
+    "last_execution_message": "BrowserContext.close: Target page, context or browser has been closed",
+    "last_execution_at": "2026-07-19T20:10:48"
   },
   {
     "id": "000046",
@@ -315,12 +244,12 @@
     "preco_maximo": null,
     "desconto_minimo": 30,
     "limite_candidatos": 4,
-    "last_run_at": "2026-07-17T18:20:51",
+    "last_run_at": "2026-07-19T20:16:01",
     "configured_at": "2026-06-27T10:07:10",
-    "next_run_at": "2026-07-18T02:20:51",
+    "next_run_at": "2026-07-20T04:16:01",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-17T18:21:53"
+    "last_execution_at": "2026-07-19T20:16:31"
   },
   {
     "id": "000049",
@@ -349,12 +278,12 @@
     "preco_maximo": 770.0,
     "desconto_minimo": null,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-17T18:22:51",
+    "last_run_at": "2026-07-19T20:22:01",
     "configured_at": "2026-07-13T19:40:09",
-    "next_run_at": "2026-07-18T00:22:51",
+    "next_run_at": "2026-07-20T02:22:01",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-17T18:23:49"
+    "last_execution_at": "2026-07-19T20:22:59"
   },
   {
     "id": "000050",
@@ -417,12 +346,12 @@
     "preco_maximo": 80.0,
     "desconto_minimo": 30,
     "limite_candidatos": 5,
-    "last_run_at": "2026-07-17T18:00:43",
+    "last_run_at": "2026-07-19T21:04:10",
     "configured_at": "2026-07-07T19:43:10",
-    "next_run_at": "2026-07-18T06:00:43",
+    "next_run_at": "2026-07-20T09:04:10",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-17T18:02:06"
+    "last_execution_at": "2026-07-19T21:05:10"
   },
   {
     "id": "000052",
@@ -451,11 +380,144 @@
     "preco_maximo": 160.0,
     "desconto_minimo": 20,
     "limite_candidatos": 5,
-    "last_run_at": "2026-07-17T18:23:51",
+    "last_run_at": "2026-07-19T20:23:01",
     "configured_at": "2026-07-07T19:41:24",
-    "next_run_at": "2026-07-18T00:23:51",
-    "last_execution_status": "falha",
-    "last_execution_message": "Page.goto: Target page, context or browser has been closed",
-    "last_execution_at": "2026-07-17T18:24:47"
+    "next_run_at": "2026-07-20T02:23:01",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-19T20:24:23"
+  },
+  {
+    "id": "000053",
+    "name": "Tapetes e higiene - Cachorros",
+    "active": true,
+    "start_at": "2026-07-19T00:00",
+    "end_at": "2027-05-31T23:59",
+    "interval_hours": 24,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/_Container_pet-cpg-tapetes-e-higiene-query?forceContainer=true#c_container_id=MLB1328152-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=cachorro-tapetes-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=ed1706b9-8369-11f1-8f88-9f961f67e783&c_element_id=ed1706b9-8369-11f1-8f88-9f961f67e783&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ec87bf00-8369-11f1-84c2-116ecd772591&c_tracking_id=ec87bf00-8369-11f1-84c2-116ecd772591"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/_Container_pet-cpg-tapetes-e-higiene-query?forceContainer=true#c_container_id=MLB1328152-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=cachorro-tapetes-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=ed1706b9-8369-11f1-8f88-9f961f67e783&c_element_id=ed1706b9-8369-11f1-8f88-9f961f67e783&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ec87bf00-8369-11f1-84c2-116ecd772591&c_tracking_id=ec87bf00-8369-11f1-84c2-116ecd772591",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "desconto_minimo": 10,
+    "limite_candidatos": 3,
+    "last_run_at": null,
+    "configured_at": "2026-07-19T09:10:29",
+    "next_run_at": "2026-07-20T09:10:29",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-19T09:10:14"
+  },
+  {
+    "id": "000054",
+    "name": "Areia e higiene - Gatos",
+    "active": true,
+    "start_at": "2026-07-19T00:00",
+    "end_at": "2027-07-31T23:59",
+    "interval_hours": 24,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/_Container_pet-cpg-areia-e-higiene-query?forceContainer=true#c_container_id=MLB1328170-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=gato-areia-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_element_id=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_content_origin=splinter-default&c_content_type=default&c_global_position=5&deal_print_id=1eef3040-836a-11f1-a918-0dc5491cce4b&c_tracking_id=1eef3040-836a-11f1-a918-0dc5491cce4b"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/_Container_pet-cpg-areia-e-higiene-query?forceContainer=true#c_container_id=MLB1328170-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=gato-areia-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_element_id=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_content_origin=splinter-default&c_content_type=default&c_global_position=5&deal_print_id=1eef3040-836a-11f1-a918-0dc5491cce4b&c_tracking_id=1eef3040-836a-11f1-a918-0dc5491cce4b",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "desconto_minimo": 10,
+    "limite_candidatos": 3,
+    "last_run_at": "2026-07-19T09:16:17",
+    "configured_at": "2026-07-19T09:10:13",
+    "next_run_at": "2026-07-20T09:16:17",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-19T09:17:09"
+  },
+  {
+    "id": "000055",
+    "name": "Alimentos e petiscos - Cachorros",
+    "active": true,
+    "start_at": "2026-07-19T00:00",
+    "end_at": "2027-05-31T23:59",
+    "interval_hours": 24,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-caes-query_NoIndex_True?forceContainer=true#c_container_id=MLB1327645-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=cachorro-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_element_id=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=90178ab0-836a-11f1-897b-a3608c4c25d1&c_tracking_id=90178ab0-836a-11f1-897b-a3608c4c25d1"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-caes-query_NoIndex_True?forceContainer=true#c_container_id=MLB1327645-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=cachorro-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_element_id=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=90178ab0-836a-11f1-897b-a3608c4c25d1&c_tracking_id=90178ab0-836a-11f1-897b-a3608c4c25d1",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "desconto_minimo": 10,
+    "limite_candidatos": 3,
+    "last_run_at": "2026-07-19T09:13:31",
+    "configured_at": "2026-07-19T09:13:31",
+    "next_run_at": "2026-07-20T09:13:31",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-19T09:14:36"
+  },
+  {
+    "id": "000056",
+    "name": "Alimentos e petiscos - Gatos",
+    "active": true,
+    "start_at": "2026-07-19T00:00",
+    "end_at": "2027-05-31T23:59",
+    "interval_hours": 24,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-gatos-query?forceContainer=true#c_container_id=MLB1328164-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=gato-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=b2ee9bf9-836a-11f1-a26d-7b6dabbac512&c_element_id=b2ee9bf9-836a-11f1-a26d-7b6dabbac512&c_content_origin=splinter-default&c_content_type=default&c_global_position=5&deal_print_id=b2c457a0-836a-11f1-acb2-738635e0e863&c_tracking_id=b2c457a0-836a-11f1-acb2-738635e0e863"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-gatos-query?forceContainer=true#c_container_id=MLB1328164-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=gato-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=b2ee9bf9-836a-11f1-a26d-7b6dabbac512&c_element_id=b2ee9bf9-836a-11f1-a26d-7b6dabbac512&c_content_origin=splinter-default&c_content_type=default&c_global_position=5&deal_print_id=b2c457a0-836a-11f1-acb2-738635e0e863&c_tracking_id=b2c457a0-836a-11f1-acb2-738635e0e863",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "desconto_minimo": 10,
+    "limite_candidatos": 3,
+    "last_run_at": "2026-07-19T09:14:13",
+    "configured_at": "2026-07-19T09:14:13",
+    "next_run_at": "2026-07-20T09:14:13"
   }
 ]

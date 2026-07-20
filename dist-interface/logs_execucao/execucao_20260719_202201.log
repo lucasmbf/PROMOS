@@ -1,0 +1,44 @@
+=== Inicio da execucao: 2026-07-19T20:22:01 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo] --preco-minimo 500.0 --preco-maximo 770.0 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo]
+✓ Link de afiliado: https://meli.la/1yZRup9
+[LOGIN_REQUIRED_AFILIADOS] Nao foi possivel gerar link de afiliado para mlb36710725 (Sessao do Mercado Livre nao autenticada: botao de Afiliados indisponivel. Faça login e execute novamente.).
+✓ Link de afiliado: https://meli.la/25fQWE2
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo?page=2
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 2 válido(s) enriquecido(s). Total: 2/3
+
+[BLOCO_2] Carregando páginas 4 a 5 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 4: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo?page=4
+[BLOCO_2] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 2/3
+[BLOCO_2] Nenhum candidato encontrado. Parando busca neste link.
+[AVISO] 1 candidato(s) exigiram login no Afiliados para gerar link com comissao.
+[AVISO] Enriquecimento com afiliado falhou em 1 candidato(s). Anuncios sem link de afiliado valido foram ignorados.
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260719_202249.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260719_202249.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis Masculino New Balance Amaste
+Message SID Twilio: SM5fea3b776b00c8a0ba88185a476a0935
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis New Balance Fuelcell Rebel V5 Corrida Esportivo
+Message SID Twilio: SM6c387af119736aff044876813282c35c
+
+2 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-19T20:22:59 ===

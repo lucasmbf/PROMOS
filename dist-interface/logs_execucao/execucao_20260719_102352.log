@@ -1,0 +1,50 @@
+=== Inicio da execucao: 2026-07-19T10:23:52 ===
+Args: --somente-relampago --url-relampago https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat --desconto-minimo 10 --limite-candidatos 1 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260719_102418_802822_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260719_102418_802822_01.txt
+34 oferta(s) com 10% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5363757118 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5548139538 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4339361921 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5800919092 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3804397995 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb7043091442 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6842906028 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 210 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260719_102418.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2pmzUSx
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0072_20260719_102429.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+JSON relâmpago salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\ofertas_20260719_102429.json
+JSON relâmpago salvo em: C:/Users/Lucas Bianco/Downloads\ofertas_20260719_102429.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260719_102429.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Hipercalórico Anabolic Mass 28500 3kg Profit Labs Cookies And Cream
+Message SID Twilio: SM187aa0f081145a04a1eb80c54e176454
+
+1 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-19T10:24:34 ===

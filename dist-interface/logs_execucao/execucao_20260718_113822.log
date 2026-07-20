@@ -1,0 +1,174 @@
+=== Inicio da execucao: 2026-07-18T11:38:22 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 20 --limite-candidatos 30 --url-produto https://lista.mercadolivre.com.br/produtos-esportivos?sb=all_mercadolibre#D[A:produtos%20esportivos] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/produtos-esportivos?sb=all_mercadolibre#D[A:produtos%20esportivos]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/produtos-esportivos?sb=all_mercadolibre#D[A:produtos%20esportivos]
+✓ Link de afiliado: https://meli.la/26BTNP6
+✓ Link de afiliado: https://meli.la/1uz5v4S
+✓ Link de afiliado: https://meli.la/1GdNQVW
+✓ Link de afiliado: https://meli.la/2kyXsiq
+✓ Link de afiliado: https://meli.la/2Uo7Z2z
+✓ Link de afiliado: https://meli.la/1zwWXTy
+✓ Link de afiliado: https://meli.la/2jmraS5
+✓ Link de afiliado: https://meli.la/2C8hjXY
+✓ Link de afiliado: https://meli.la/2k8EKgn
+✓ Link de afiliado: https://meli.la/1sTLnuC
+✓ Link de afiliado: https://meli.la/2Dt3JWx
+✓ Link de afiliado: https://meli.la/2mvz2XR
+✓ Link de afiliado: https://meli.la/1dTwroK
+✓ Link de afiliado: https://meli.la/1cqmYuY
+✓ Link de afiliado: https://meli.la/2RYoPmM
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/produtos-esportivos?sb=all_mercadolibre&page=2
+✓ Link de afiliado: https://meli.la/1ZY958Y
+✓ Link de afiliado: https://meli.la/1uz5v4S
+✓ Link de afiliado: https://meli.la/2xPQX5E
+✓ Link de afiliado: https://meli.la/1kfs7y9
+✓ Link de afiliado: https://meli.la/1Y313jk
+✓ Link de afiliado: https://meli.la/2eyfoXS
+✓ Link de afiliado: https://meli.la/1GdNQVW
+✓ Link de afiliado: https://meli.la/2kyXsiq
+✓ Link de afiliado: https://meli.la/2VwaCKc
+✓ Link de afiliado: https://meli.la/2BCZKHy
+✓ Link de afiliado: https://meli.la/2jmraS5
+✓ Link de afiliado: https://meli.la/2C8hjXY
+✓ Link de afiliado: https://meli.la/2CNRW5Y
+✓ Link de afiliado: https://meli.la/2k8EKgn
+✓ Link de afiliado: https://meli.la/1sTLnuC
+[BLOCO_1] Resultado: 30 candidato(s) coletado(s), 30 válido(s) enriquecido(s). Total: 30/30
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Par Joelheira Compressão Meia Termica Dores Para Articulação
+Message SID Twilio: SM943986726ed1dd8c126cb0552578c86d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 4un Bandagem Elástica Flexível S/ Látex 5cm Várias Cores
+Message SID Twilio: SM502dc0a26fd910ee4abe152f1355b7cc
+
+Mensagem enviada para whatsapp:+5519991133269:
+Barra Whey Grego 40g Display com 12 unidades Brownie com Dulce de Leche Havanna Nutrata
+Message SID Twilio: SMdcf41d38c2c291602d98a876c541406a
+
+Mensagem enviada para whatsapp:+5519991133269:
+PROHIBIDO PRÉ TREINO 360g - Sabor Green Apple - A Combinação Perfeita de 8 Ingredientes que proporcionam energia do início ao fim do seu Treino
+Message SID Twilio: SM2fbe22a27c7d189be5ff98835cd850eb
+
+Mensagem enviada para whatsapp:+5519991133269:
+Pré Treino 3VS Suplementos Citrus 360g Com Creatina e Cafeína
+Message SID Twilio: SM5c02398876f14516ee53502352448b4d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ômega 3 Ultra TG 120 Cápsulas Nutrata
+Message SID Twilio: SM94717141e3ff043a4e77ae2c5fd76a88
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis Tn 1 Plus Esportivo Novo Bolha Essential Ney Mess Cr7
+Message SID Twilio: SM5855f7c2ac347e6a4840b84cd003ebd2
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tenis Masculino Esportivo Treino Academia Caminhada Repplay
+Message SID Twilio: SM477defec340f80b8c921b101da658e01
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis Infantil Masculino Passeio Casual Escolar Kit 3 Pares
+Message SID Twilio: SM720808b9c799d75be9225722b9f4c408
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 3 Pares Tênis Esportivo Masculino Academia Caminhada
+Message SID Twilio: SM74b290f4e94ad10253b10518f240179b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis Masculino Esportivo Treino Academia Olympikus Dynamic
+Message SID Twilio: SMb34f9f5b2aa669f895aab3d057271f70
+
+Mensagem enviada para whatsapp:+5519991133269:
+Raquete De Tênis Infantil Wilson Us Open 19 Verde
+Message SID Twilio: SMb4a2ebddbbbd3b1751e0a4c6b1dbfc68
+
+Mensagem enviada para whatsapp:+5519991133269:
+Raquete De Tênis Wilson Blade 98 16x19 V10 Verde L3 4 3/8
+Message SID Twilio: SM07b7af6df3302ba5c92bb95f7182572a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Raquete De Padel Wilson Defy Pro V1 370gr Cor Preta Preto
+Message SID Twilio: SMcaa19301149457e504c03ba139dbba07
+
+Mensagem enviada para whatsapp:+5519991133269:
+Raquete de tênis Blade 100 V10 Wilson Blue 2
+Message SID Twilio: SM9f4e6a5b162f22160d3edaff8afdc3bf
+
+Mensagem enviada para whatsapp:+5519991133269:
+Faixa De Atadura Elástica Compressão Bandagem Varize Kit 3 Bege
+Message SID Twilio: SM99459c2f363f670a98bbcc4c029df4d7
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 4un Bandagem Elástica Flexível S/ Látex 5cm Várias Cores
+Message SID Twilio: SM713f8c082feea3ff1bd56a81513c2bcc
+
+Mensagem enviada para whatsapp:+5519991133269:
+Purafor Quality Colágeno Tipo 2 + PEA 600mg bioativa Palmitoiletanolamida 60 Cápsulas
+Message SID Twilio: SMf4b93a32164319b511d507e5da784df3
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 2 Vitamina D3 7000UI Recover Farma 120 Cápsulas Gelatinosas Natural
+Message SID Twilio: SMd3e9b3689e3ef4311f472bbacb9a71e9
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 12 Bandagem Adesiva Flexível 5cm Esportiva Colorida
+Message SID Twilio: SMc3aa9e2aa66e182c75798404058dbdb5
+
+Mensagem enviada para whatsapp:+5519991133269:
+Suplemento em pó Masterway Suplementos 100% Puro Creatina Monohidrato de sabor natural em pote de 300g
+Message SID Twilio: SM92e5df56be9911fc4217141e4c6b8f1c
+
+Mensagem enviada para whatsapp:+5519991133269:
+Barra Whey Grego 40g Display com 12 unidades Brownie com Dulce de Leche Havanna Nutrata
+Message SID Twilio: SMf3329dcab299ae98ead8bad458722733
+
+Mensagem enviada para whatsapp:+5519991133269:
+PROHIBIDO PRÉ TREINO 360g - Sabor Green Apple - A Combinação Perfeita de 8 Ingredientes que proporcionam energia do início ao fim do seu Treino
+Message SID Twilio: SMc226044100bf93eab31fec5e967be211
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey 100% Hd Refil Black Skull 900g Wpc Wpi E Wph Sabor Baunilha
+Message SID Twilio: SMa6761b3876f1f7f9f23e129ee74b1610
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey 100% Hd Refil Black Skull - 900g (wpc, Wpi E Wph) Sabor Chocolate
+Message SID Twilio: SMa7e2908f891650aac55e021a1fdee33f
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis Tn 1 Plus Esportivo Novo Bolha Essential Ney Mess Cr7
+Message SID Twilio: SM228f9f0151a51c3b32a570bbc5e24acd
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tenis Masculino Esportivo Treino Academia Caminhada Repplay
+Message SID Twilio: SM205173f84a0607775b6836d86d976457
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 2x Testo 1000 100% Feno Grego 450mg, Boro, Vit B6, B12 Capsulas Premium Puro 120 Tabs - Force Full Labz
+Message SID Twilio: SMfa606d2debe1dbf02dd05d617ad84776
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis Infantil Masculino Passeio Casual Escolar Kit 3 Pares
+Message SID Twilio: SM42aebb2f400e83bea6cc6ad539bf16a7
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 3 Pares Tênis Esportivo Masculino Academia Caminhada
+Message SID Twilio: SM1decd7ecba2f9e3b9aa9c9f97fd0a8a8
+
+30 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-18T11:45:50 ===

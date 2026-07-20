@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 77,
+  "gerado_em": "2026-07-19T20:50:51",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 3,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB3847106439",
+      "descricao": "Detergente Ypê Pro 7 Litros",
+      "categoria": "Sem categoria",
+      "antes": "R$ 42,10",
+      "depois": "R$ 26,94",
+      "desconto": "36% OFF",
+      "link": "https://meli.la/14ehmBf",
+      "link_original": "https://www.mercadolivre.com.br/detergente-yp-pro-7-litros/p/MLB20988811?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=7c8f9f8e-3944-4a18-930d-ce540751698f&position=4&tracking_id=1de2a7fb-ac74-4cc2-8e0e-7a91072864b9&wid=MLB3847106439&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/detergente-yp-pro-7-litros/p/MLB20988811?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=7c8f9f8e-3944-4a18-930d-ce540751698f&position=4&tracking_id=1de2a7fb-ac74-4cc2-8e0e-7a91072864b9&wid=MLB3847106439&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260719_205041_115731_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

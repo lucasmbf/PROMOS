@@ -1,0 +1,73 @@
+=== Inicio da execucao: 2026-07-18T11:34:12 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 20.0 --preco-maximo 50.0 --limite-candidatos 10 --url-produto https://lista.mercadolivre.com.br/achados-de-cozinha#D[A:achados%20de%20cozinha] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/achados-de-cozinha#D[A:achados%20de%20cozinha]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/achados-de-cozinha#D[A:achados%20de%20cozinha]
+✓ Link de afiliado: https://meli.la/2zCbhrJ
+✓ Link de afiliado: https://meli.la/328k7qQ
+✓ Link de afiliado: https://meli.la/1uEdoKj
+✓ Link de afiliado: https://meli.la/2ExCs3M
+✓ Link de afiliado: https://meli.la/2sqPD6s
+✓ Link de afiliado: https://meli.la/299Co4K
+✓ Link de afiliado: https://meli.la/32FrRfw
+✓ Link de afiliado: https://meli.la/2WVtxyt
+✓ Link de afiliado: https://meli.la/1BxMv4c
+✓ Link de afiliado: https://meli.la/2caQn5G
+[BLOCO_1] Resultado: 10 candidato(s) coletado(s), 10 válido(s) enriquecido(s). Total: 10/10
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Escolha Seu Sabor De Tempero Japonês Para Arroz Furikake
+Message SID Twilio: SM3b6ea22917468742031805a45502930a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Furikake Urashima Triângulo Furikake Triangulo
+Message SID Twilio: SMccc617e3069c44ecc5bff35044b76faa
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tesoura Cozinha C/5 Lâminas P/ Cortar Alimentos Vermelha
+Message SID Twilio: SMccda10c424f490088742de54b6f76496
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fatiador Japonês Repolho Legumes Branco Jumbo Importado
+Message SID Twilio: SM8605b1ef5df1fca7dda91c6a08899315
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cozinha Potes E Porta Temperos Condimentos
+Message SID Twilio: SMd174ffb058f67670960316949fae2d47
+
+Mensagem enviada para whatsapp:+5519991133269:
+**- Peneira De Areia Pra Praia E Achados Metálicos
+Message SID Twilio: SM1cc62c6a3a7aed6ba48ea023dfd1666a
+
+Mensagem enviada para whatsapp:+5519991133269:
+**- Peneira De Areia Pra Praia E Achados Metálicos
+Message SID Twilio: SMbc52ac5d4f365fdb2100dedee6e22e7b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Cozinha Pegador Salada / Gelo / Frios / Massas/universal
+Message SID Twilio: SM4eff1415359df10ce48e5f6b41187412
+
+Mensagem enviada para whatsapp:+5519991133269:
+Acessórios Para Cozinha/ Armário Organizador Para Temperos.
+Message SID Twilio: SMa448a8a7f0266c07624ec98563d46015
+
+Mensagem enviada para whatsapp:+5519991133269:
+Triturador Alimentos + Espremedor Alho Curvo - Kit Cozinha
+Message SID Twilio: SMb162afa16a3a16b7983df0fed984343b
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-18T11:36:33 ===

@@ -1,0 +1,59 @@
+=== Inicio da execucao: 2026-07-19T10:33:47 ===
+Args: --somente-relampago --url-relampago https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat --desconto-minimo 10 --limite-candidatos 2 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260719_103412_163615_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260719_103412_163615_01.txt
+36 oferta(s) com 10% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5363757118 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5548139538 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4339361921 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5800919092 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb7043091442 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6842906028 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3804397995 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3876934505 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4470378417 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 210 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260719_103412.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1pCX9AK
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1sFcHFo
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0074_20260719_103430.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+JSON relâmpago salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\ofertas_20260719_103430.json
+JSON relâmpago salvo em: C:/Users/Lucas Bianco/Downloads\ofertas_20260719_103430.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260719_103430.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Celimax Retinal Shot Tightening Booster Korea 15ml Pele Todo Tipo De Pele Dia/noite
+Message SID Twilio: SM5747d5d8f8287f969e57bc0805972b19
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 6 Potes Vidro 200ml Porta Tempero Hermético Tampa Bambu Transparente
+Message SID Twilio: SM7a3e577db29a62adfca4e54b4f49998c
+
+2 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-19T10:34:39 ===

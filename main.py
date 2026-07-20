@@ -1,6 +1,5 @@
 from playwright.sync_api import sync_playwright
 
-from parsers.amazon import processar_produtos_amazon_por_afiliados
 from parsers.mercadolivre import (
     buscar_produto_por_descricao,
     coletar_produtos_com_desconto,
@@ -9,6 +8,9 @@ from parsers.mercadolivre import (
     processar_ofertas_relampago,
     salvar_saida_execucao_modalidade,
     salvar_resultado_relampago,
+    salvar_resultado_relampago_json,
+    salvar_resultado_produto_json,
+    salvar_saida_execucao_modalidade_json,
 )
 
 import argparse
@@ -60,8 +62,6 @@ WHATSAPP_DESTINO_FIXO = "whatsapp:+5519991133269"
 
 AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
 AUTH_MARKER_STILL_PENDING_ML = "[AUTH_STILL_PENDING_ML]"
-AUTH_MARKER_REQUIRED_AMAZON = "[AUTH_REQUIRED_AMAZON]"
-AUTH_MARKER_STILL_PENDING_AMAZON = "[AUTH_STILL_PENDING_AMAZON]"
 LOGIN_OK_SIGNAL_FILE = os.path.join(os.path.dirname(__file__), ".ml_login_ok.signal")
 MODO_INTERFACE = os.getenv("PROMOS_GUI_MODE", "0") == "1"
 
@@ -86,7 +86,7 @@ def parse_args():
 
     parser.add_argument(
         "--fonte",
-        choices=["mercadolivre", "amazon"],
+        choices=["mercadolivre"],
         default="mercadolivre",
         help="Fonte do marketplace para busca de produtos on-demand.",
     )
@@ -894,315 +894,6 @@ def sessao_ml_ativa_via_requisicao(page):
         return False
 
 
-def url_em_fluxo_autenticacao_amazon(url):
-
-    url_atual = (url or "").lower()
-
-    marcadores = [
-        "/ap/signin",
-        "/ap/oa",
-        "/ap/cvf",
-        "signin",
-        "mfa",
-        "otp",
-        "challenge",
-        "verify",
-    ]
-
-    return any(marcador in url_atual for marcador in marcadores)
-
-
-def sessao_amazon_ativa_via_cookies(page):
-
-    try:
-        cookies = page.context.cookies("https://www.amazon.com.br")
-        nomes_cookies = {str(cookie.get("name") or "").strip().lower() for cookie in cookies}
-
-        # Mantem a checagem auxiliar, mas sem concluir login apenas por cookie.
-        return any(nome in nomes_cookies for nome in ["at-main", "session-id", "session-token"])
-    except Exception:
-        return False
-
-
-def sessao_amazon_ativa_via_requisicao(page):
-
-    try:
-        resposta = page.context.request.get(
-            "https://www.amazon.com.br/gp/css/order-history",
-            timeout=5000,
-        )
-
-        url_final = (resposta.url or "").lower()
-        if url_em_fluxo_autenticacao_amazon(url_final):
-            return False
-
-        corpo = ""
-        try:
-            corpo = (resposta.text() or "").lower()
-        except Exception:
-            corpo = ""
-
-        if any(
-            marcador in corpo
-            for marcador in [
-                "faça seu login",
-                "faca seu login",
-                "faça o login",
-                "faca o login",
-                "identifique-se",
-                "ap/signin",
-            ]
-        ):
-            return False
-
-        if not sessao_amazon_ativa_via_cookies(page):
-            return False
-
-        return bool(resposta.ok)
-    except Exception:
-        return False
-
-
-def amazon_esta_em_tela_login(page):
-
-    try:
-        if url_em_fluxo_autenticacao_amazon(page.url):
-            return True
-
-        if page.locator("input[name='email'], input[name='password']").count() > 0:
-            return True
-
-        if amazon_exibe_cta_login(page):
-            return True
-    except Exception:
-        return True
-
-    return False
-
-
-def abrir_tela_login_amazon(page):
-
-    try:
-        if url_em_fluxo_autenticacao_amazon(page.url):
-            return
-
-        page.goto(
-            "https://www.amazon.com.br/ap/signin",
-            timeout=90000,
-            wait_until="domcontentloaded",
-        )
-    except Exception:
-        # Se falhar o redirecionamento, segue para o fluxo de espera sem abortar.
-        pass
-
-
-def usuario_esta_logado_amazon(page):
-
-    try:
-
-        url_atual = (page.url or "").lower()
-        if "/ap/signin" in url_atual or "signin" in url_atual:
-            return False
-
-        if page.locator("input[name='email'], input[name='password']").count() > 0:
-            return False
-
-        if page.locator("text=Faça o login, text=Faca o login, text=Faça seu Login, text=Faça seu login, text=Faca seu Login, text=Faca seu login, text=Identifique-se").count() > 0:
-            return False
-
-        if page.locator("a:has-text('Faça o login'), a:has-text('Faca o login'), a:has-text('Faça seu Login'), a:has-text('Faça seu login'), a:has-text('Faca seu Login'), a:has-text('Faca seu login'), button:has-text('Faça o login'), button:has-text('Faça seu Login'), button:has-text('Faça seu login'), button:has-text('Faca seu Login'), button:has-text('Faca seu login')").count() > 0:
-            return False
-
-        linha_conta = page.locator("#nav-link-accountList-nav-line-1").first
-        if linha_conta.count() > 0:
-            texto = (linha_conta.inner_text(timeout=1200) or "").strip().lower()
-            if any(
-                marcador in texto
-                for marcador in [
-                    "faça seu login",
-                    "faca seu login",
-                    "faça o login",
-                    "faca o login",
-                    "identifique-se",
-                    "identifique se",
-                ]
-            ):
-                return False
-
-            if "olá" in texto or "ola" in texto:
-                return True
-
-            # Algumas variações exibem apenas o nome na linha da conta após login.
-            if texto and "login" not in texto and "identifique" not in texto:
-                return True
-
-        if page.locator("a[href*='ap/signin'], a[href*='signin']").count() > 0:
-            return False
-
-    except Exception:
-
-        return False
-
-    return False
-
-
-def amazon_exibe_cta_login(page):
-
-    try:
-
-        if page.locator("text=Faça seu Login, text=Faça seu login, text=Faca seu Login, text=Faca seu login").count() > 0:
-            return True
-
-        if page.locator("a:has-text('Faça seu Login'), a:has-text('Faça seu login'), a:has-text('Faca seu Login'), a:has-text('Faca seu login'), button:has-text('Faça seu Login'), button:has-text('Faça seu login'), button:has-text('Faca seu Login'), button:has-text('Faca seu login')").count() > 0:
-            return True
-
-    except Exception:
-
-        return False
-
-    return False
-
-
-def aguardar_login_amazon(page):
-
-    url_atual = (page.url or "").lower()
-    if "amazon.com.br" not in url_atual:
-        page.goto(
-            "https://www.amazon.com.br/ap/signin",
-            timeout=90000,
-            wait_until="domcontentloaded",
-        )
-
-    if usuario_esta_logado_amazon(page):
-
-        print("\nAmazon ja esta autenticada.")
-        return
-
-    print("\nAmazon nao esta autenticada. Faça login manualmente no navegador aberto.")
-
-    # Leva o usuário para a tela de login quando ainda não estiver em fluxo de autenticação.
-    abrir_tela_login_amazon(page)
-
-    delay_login_aplicado = False
-
-    if amazon_exibe_cta_login(page):
-        print("\n[AMAZON] Texto 'Faça seu login' detectado. Aguardando 30s para autenticacao...")
-        time.sleep(30)
-        delay_login_aplicado = True
-
-        if usuario_esta_logado_amazon(page):
-            print("\nLogin Amazon confirmado. Continuando execução.")
-            return
-
-        if sessao_amazon_ativa_via_requisicao(page):
-            print("\nLogin Amazon confirmado. Continuando execução.")
-            return
-
-    if MODO_INTERFACE:
-
-        print(
-            f"{AUTH_MARKER_REQUIRED_AMAZON} Amazon nao autenticada, realize o login e clique em 'Continuar'."
-        )
-
-        timeout_segundos = 900
-        inicio_espera = time.time()
-
-        while (time.time() - inicio_espera) < timeout_segundos:
-
-            if usuario_esta_logado_amazon(page) or sessao_amazon_ativa_via_requisicao(page):
-                print("\nLogin Amazon confirmado. Continuando execução.")
-                return
-
-            if not delay_login_aplicado and amazon_exibe_cta_login(page):
-                print("\n[AMAZON] Texto 'Faça seu login' detectado. Aguardando 30s para autenticacao...")
-                time.sleep(30)
-                delay_login_aplicado = True
-                if usuario_esta_logado_amazon(page) or sessao_amazon_ativa_via_requisicao(page):
-                    print("\nLogin Amazon confirmado. Continuando execução.")
-                    return
-
-            if (not usuario_esta_logado_amazon(page)) and (not url_em_fluxo_autenticacao_amazon(page.url)):
-                abrir_tela_login_amazon(page)
-
-            # Não interfere no fluxo de autenticação/MFA enquanto ele está em andamento.
-            if url_em_fluxo_autenticacao_amazon(page.url):
-                if sessao_amazon_ativa_via_requisicao(page):
-                    print("\nLogin Amazon confirmado. Continuando execução.")
-                    return
-
-                time.sleep(2)
-                continue
-
-            if not os.path.exists(LOGIN_OK_SIGNAL_FILE):
-                time.sleep(1)
-                continue
-
-            try:
-                os.remove(LOGIN_OK_SIGNAL_FILE)
-            except Exception:
-                pass
-
-            print("\nConfirmacao recebida da interface. Validando sessao Amazon...")
-
-            if usuario_esta_logado_amazon(page) or sessao_amazon_ativa_via_requisicao(page):
-                print("\nLogin Amazon confirmado. Continuando execução.")
-                return
-
-            # Fallback: se o usuario saiu da tela de login/MFA e confirmou na interface,
-            # prossegue para a coleta para evitar travamento por falso negativo.
-            if not amazon_esta_em_tela_login(page):
-                print("\n[AMAZON] Login nao confirmado por marcador, mas tela de login foi encerrada. Prosseguindo com a coleta.")
-                return
-
-            print(
-                f"{AUTH_MARKER_STILL_PENDING_AMAZON} Login Amazon ainda nao confirmado. Continue no navegador e clique em 'Continuar' novamente."
-            )
-
-        raise RuntimeError(
-            "Sessao da Amazon nao autenticada apos aguardar 900s. "
-            "Entre na conta e execute novamente."
-        )
-
-    timeout_segundos = 300
-    inicio_espera = time.time()
-
-    while (time.time() - inicio_espera) < timeout_segundos:
-
-        if usuario_esta_logado_amazon(page):
-
-            print("\nLogin Amazon confirmado. Continuando execução.")
-            return
-
-        # Não interfere no fluxo de login/MFA enquanto ele está em andamento.
-        if url_em_fluxo_autenticacao_amazon(page.url):
-            if sessao_amazon_ativa_via_requisicao(page):
-                print("\nLogin Amazon confirmado. Continuando execução.")
-                return
-
-            time.sleep(2)
-            continue
-
-        # Valida sessão em background sem interromper a tela atual.
-        if sessao_amazon_ativa_via_requisicao(page):
-            print("\nLogin Amazon confirmado. Continuando execução.")
-            return
-
-        if not delay_login_aplicado and amazon_exibe_cta_login(page):
-            print("\n[AMAZON] Texto 'Faça seu login' detectado. Aguardando 30s para autenticacao...")
-            time.sleep(30)
-            delay_login_aplicado = True
-            if usuario_esta_logado_amazon(page) or sessao_amazon_ativa_via_requisicao(page):
-                print("\nLogin Amazon confirmado. Continuando execução.")
-                return
-
-        time.sleep(2)
-
-    raise RuntimeError(
-        "Sessao da Amazon nao autenticada apos aguardar 300s. "
-        "Entre na conta e execute novamente."
-    )
-
-
 def aguardar_login_mercado_livre(page):
 
     if usuario_esta_logado_mercado_livre(page):
@@ -1589,71 +1280,6 @@ with sync_playwright() as p:
 
     if MODO_PRODUTO_POR_HTML:
 
-        if FONTE_BUSCA == "amazon":
-
-            print("[MODO_ATIVO] PRODUTO_ONDEMAND_AMAZON")
-            print("\nModo procurar produto ativado para Amazon (central de afiliados/SiteStripe).")
-            if urls_produto_parametrizadas:
-                print(f"\n[AMAZON] URL(s) parametrizada(s) para busca: {urls_produto_parametrizadas}")
-
-            aguardar_login_amazon(page)
-
-            ofertas_hub = processar_produtos_amazon_por_afiliados(
-                page,
-                categoria=categoria_parametrizada,
-                subcategoria=None,
-                descricao=(ARGS.descricao_produto or "").strip() or None,
-                urls=urls_produto_parametrizadas,
-                preco_minimo=preco_minimo_parametrizado,
-                preco_maximo=preco_maximo_parametrizado,
-                desconto_minimo=desconto_minimo_parametrizado,
-                limite_candidatos=limite_candidatos_parametrizado,
-                historico_anuncios=historico_anuncios,
-                limite_validos=(limite_candidatos_parametrizado or 10),
-                affiliate_tag="medonlucas-20",
-            )
-
-            ofertas_hub = filtrar_anuncios_ineditos_ou_com_reducao(
-                ofertas_hub,
-                historico_precos_por_anuncio,
-            )
-
-            if ofertas_hub:
-
-                salvar_resultado_relampago(
-                    ofertas_hub,
-                    pasta=ARGS.pasta_saida or None,
-                    incluir_banner_relampago=False,
-                )
-                salvar_saida_execucao_modalidade(ofertas_hub, ARGS.modalidade_execucao or "ondemand")
-
-                enviar_produtos_por_whatsapp(ofertas_hub)
-
-                salvar_historico_anuncios_em_arquivo(
-                    HISTORICO_ANUNCIOS_ARQUIVO,
-                    ofertas_hub
-                )
-
-                for produto in ofertas_hub:
-
-                    anuncio_id = normalizar_chave_historico(
-                        produto.get("id_anuncio")
-                    )
-
-                    if anuncio_id:
-
-                        historico_anuncios.add(anuncio_id)
-
-                print(f"\n{len(ofertas_hub)} oferta(s) da Amazon processada(s) e salva(s).")
-
-            else:
-
-                print("\nNenhuma oferta elegível da Amazon foi encontrada.")
-
-            context.close()
-
-            raise SystemExit(0)
-
         print("[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA")
         print("\nModo procurar produto ativado (pesquisa pela home do Mercado Livre).")
 
@@ -1693,7 +1319,12 @@ with sync_playwright() as p:
                 pasta=ARGS.pasta_saida or None,
                 incluir_banner_relampago=False,
             )
+            salvar_resultado_produto_json(
+                ofertas_hub,
+                pasta=ARGS.pasta_saida or None,
+            )
             salvar_saida_execucao_modalidade(ofertas_hub, ARGS.modalidade_execucao or "ondemand")
+            salvar_saida_execucao_modalidade_json(ofertas_hub, ARGS.modalidade_execucao or "ondemand")
 
             enviar_produtos_por_whatsapp(ofertas_hub)
 
@@ -1755,7 +1386,11 @@ with sync_playwright() as p:
                 [produto_manual],
                 incluir_banner_relampago=False,
             )
+            salvar_resultado_produto_json(
+                [produto_manual],
+            )
             salvar_saida_execucao_modalidade([produto_manual], ARGS.modalidade_execucao or "ondemand")
+            salvar_saida_execucao_modalidade_json([produto_manual], ARGS.modalidade_execucao or "ondemand")
 
             enviar_produtos_por_whatsapp([produto_manual])
 
@@ -2046,7 +1681,9 @@ with sync_playwright() as p:
     if ofertas_relampago:
 
         salvar_resultado_relampago(ofertas_relampago, pasta=ARGS.pasta_saida or None)
+        salvar_resultado_relampago_json(ofertas_relampago, pasta=ARGS.pasta_saida or None)
         salvar_saida_execucao_modalidade(ofertas_relampago, ARGS.modalidade_execucao or "ondemand")
+        salvar_saida_execucao_modalidade_json(ofertas_relampago, ARGS.modalidade_execucao or "ondemand")
 
         enviar_produtos_por_whatsapp(
             ofertas_relampago,

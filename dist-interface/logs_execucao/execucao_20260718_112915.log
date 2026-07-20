@@ -1,0 +1,77 @@
+=== Inicio da execucao: 2026-07-18T11:29:15 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 15 --limite-candidatos 10 --url-produto https://lista.mercadolivre.com.br/achados-de-cozinha#D[A:achados%20de%20cozinha] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/achados-de-cozinha#D[A:achados%20de%20cozinha]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/achados-de-cozinha#D[A:achados%20de%20cozinha]
+✓ Link de afiliado: https://meli.la/18JuPC6
+✓ Link de afiliado: https://meli.la/1Hxku9e
+✓ Link de afiliado: https://meli.la/2Hit86M
+✓ Link de afiliado: https://meli.la/2J3gE73
+✓ Link de afiliado: https://meli.la/1m8ru5x
+✓ Link de afiliado: https://meli.la/13L1EqM
+✓ Link de afiliado: https://meli.la/346a7PD
+✓ Link de afiliado: https://meli.la/2wH7FWk
+[LOGIN_REQUIRED_AFILIADOS] Nao foi possivel gerar link de afiliado para mlb68725757 (Sessao do Mercado Livre nao autenticada: botao de Afiliados indisponivel. Faça login e execute novamente.).
+✓ Link de afiliado: https://meli.la/2E5ZC59
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/achados-de-cozinha?page=2
+[BLOCO_1] Resultado: 10 candidato(s) coletado(s), 9 válido(s) enriquecido(s). Total: 9/10
+
+[BLOCO_2] Carregando páginas 4 a 5 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 4: https://lista.mercadolivre.com.br/achados-de-cozinha?page=4
+[BLOCO_2] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 9/10
+[BLOCO_2] Nenhum candidato encontrado. Parando busca neste link.
+[AVISO] 1 candidato(s) exigiram login no Afiliados para gerar link com comissao.
+[AVISO] Enriquecimento com afiliado falhou em 1 candidato(s). Anuncios sem link de afiliado valido foram ignorados.
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tempero para Arroz Furikake Triângulo Peixe Bonito com Alga Urashima Pacote 33g
+Message SID Twilio: SM8a52222654abce3cac738d5c6e42dd80
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tempero para Arroz Furikake Triângulo Verduras Urashima Pacote 30g
+Message SID Twilio: SM784a7edb00f15073b03aca81c37b8954
+
+Mensagem enviada para whatsapp:+5519991133269:
+Furikake Urashima Triângulo Nori Sake E Peixe Salmão .´.
+Message SID Twilio: SMb20c1a71d884b4284d221fdfd3a1e1ba
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Temperos Cozinha 12 Condimentos Mix Sabores Gourmet Top
+Message SID Twilio: SM3b419b5af1f421951d14a8d244e2c559
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo 7 Peças Fogao Botijao Copa Estola Gela Liquidificador
+Message SID Twilio: SM5e9b10920c6d6b85c6cf06c348b9ad19
+
+Mensagem enviada para whatsapp:+5519991133269:
+Alho Frito Crocante Akio 500g Tempero Pronto 0 Sódio Cozinha
+Message SID Twilio: SMae660345f10d47cc646e4d8456dc2779
+
+Mensagem enviada para whatsapp:+5519991133269:
+Palito De Picolé E Sorvete Ponta Quadrada - 1000 Unidades
+Message SID Twilio: SM67a3f68d6ee2a8bb77f51248fb106ca3
+
+Mensagem enviada para whatsapp:+5519991133269:
+Lixeira Pia Cozinha 5l Embutir Granito Em Inox Não Enferruja
+Message SID Twilio: SM681be01ed81314e8fb0a1aa583446727
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo De Panelas Teflon Antiaderente 8 Peças Cereja
+Message SID Twilio: SM908dc663e69da8f83c5d9083a8c27403
+
+9 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-18T11:31:52 ===

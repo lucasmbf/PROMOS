@@ -1,0 +1,45 @@
+=== Inicio da execucao: 2026-07-19T20:09:42 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/cerveja-long-necj#D[A:cerveja%20long%20necj] --desconto-minimo 30 --limite-candidatos 4 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/cerveja-long-necj#D[A:cerveja%20long%20necj]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/cerveja-long-necj#D[A:cerveja%20long%20necj]
+✓ Link de afiliado: https://meli.la/1fuE5Ms
+✓ Link de afiliado: https://meli.la/2HXqHmp
+✓ Link de afiliado: https://meli.la/2EgpwUu
+✓ Link de afiliado: https://meli.la/2rvpWiW
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260719_201029.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260719_201029.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Michelob Ultra Long Neck Contem 6 Garrafas de 330ml S/ Gluten
+Message SID Twilio: SM07ad64fa1c36c3a92e79a96991ba3b08
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Michelob Ultra Long Neck 330ml - Pack Com 6 Unidades
+Message SID Twilio: SM3fb2da8d134db7f71c858d7fbaf1401b
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Heineken Premium Zero Alcool 330ml Long Neck 6 Unidades
+Message SID Twilio: SM625998796c1df85eef5759ee22519b9e
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Spaten Long Neck Puro Maltedourado 330ml 6 u
+Message SID Twilio: SM6d8901746acb0ca0133f34363c5c936b
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-19T20:10:48 ===

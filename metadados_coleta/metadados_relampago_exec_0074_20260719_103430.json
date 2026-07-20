@@ -1,0 +1,57 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 74,
+  "gerado_em": "2026-07-19T10:34:30",
+  "total_ofertas": 2,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 10,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 2,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB4481702005",
+      "descricao": "Celimax Retinal Shot Tightening Booster Korea 15ml Pele Todo Tipo De Pele Dia/noite",
+      "categoria": "Cuidados com a Pele > Cuidado Facial",
+      "antes": "R$ 200",
+      "depois": "R$ 136,80",
+      "desconto": "31% OFF",
+      "link": "https://meli.la/1pCX9AK",
+      "link_original": "https://www.mercadolivre.com.br/celimax-retinal-shot-tightening-booster-korea-15ml-pele/up/MLBU3800862377?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=6579b9fc-d838-45ba-9c24-e6ac73a4f5dc&position=1&tracking_id=bf2646ce-db99-4de4-9715-8a5a22704dce&wid=MLB4481702005&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/celimax-retinal-shot-tightening-booster-korea-15ml-pele/up/MLBU3800862377?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=6579b9fc-d838-45ba-9c24-e6ac73a4f5dc&position=1&tracking_id=bf2646ce-db99-4de4-9715-8a5a22704dce&wid=MLB4481702005&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260719_103412_163615_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    },
+    {
+      "ordem": 2,
+      "id_anuncio": "MLB6094292416",
+      "descricao": "Kit 6 Potes Vidro 200ml Porta Tempero Hermético Tampa Bambu Transparente",
+      "categoria": "Armazenamento de Condimentos > Porta Condimentos",
+      "antes": "R$ 70",
+      "depois": "R$ 38,70",
+      "desconto": "44% OFF",
+      "link": "https://meli.la/1sFcHFo",
+      "link_original": "https://www.mercadolivre.com.br/kit-6-potes-vidro-200ml-porta-tempero-hermetico-tampa-bambu/up/MLBU3699755334?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=6579b9fc-d838-45ba-9c24-e6ac73a4f5dc&position=14&tracking_id=bf2646ce-db99-4de4-9715-8a5a22704dce&wid=MLB6094292416&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-6-potes-vidro-200ml-porta-tempero-hermetico-tampa-bambu/up/MLBU3699755334?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=6579b9fc-d838-45ba-9c24-e6ac73a4f5dc&position=14&tracking_id=bf2646ce-db99-4de4-9715-8a5a22704dce&wid=MLB6094292416&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260719_103412_163615_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

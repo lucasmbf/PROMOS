@@ -1,0 +1,19 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260719_205051",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB3847106439",
+      "categoria": "Sem categoria",
+      "descricao": "Detergente Ypê Pro 7 Litros",
+      "antes": "R$ 42,10",
+      "antes_valor": 42.1,
+      "desconto": "36% OFF",
+      "depois": "R$ 26,94",
+      "depois_valor": 26.94,
+      "link_anuncio": "https://www.mercadolivre.com.br/detergente-yp-pro-7-litros/p/MLB20988811?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=7c8f9f8e-3944-4a18-930d-ce540751698f&position=4&tracking_id=1de2a7fb-ac74-4cc2-8e0e-7a91072864b9&wid=MLB3847106439&sid=offers",
+      "imagem_principal": ""
+    }
+  ]
+}

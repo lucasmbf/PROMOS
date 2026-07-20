@@ -1,0 +1,39 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 71,
+  "gerado_em": "2026-07-19T10:10:11",
+  "total_ofertas": 1,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 25,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 1,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB4470378417",
+      "descricao": "Tênis Feminino Delta 122 Olympikus Marinho/purple Lisa 37 Br",
+      "categoria": "Calçados > Tênis",
+      "antes": "R$ 229,99",
+      "depois": "R$ 125,39",
+      "desconto": "45% OFF",
+      "link": "https://meli.la/2qvToWC",
+      "link_original": "https://www.mercadolivre.com.br/tenis-feminino-delta-122-olympikus/up/MLBU3780672051?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=f9fb9275-4fda-4f2c-8a79-a46165ce591b&position=13&tracking_id=eda4dbcc-535d-4946-bd8f-d83aedbd9880&wid=MLB4470378417&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/tenis-feminino-delta-122-olympikus/up/MLBU3780672051?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=f9fb9275-4fda-4f2c-8a79-a46165ce591b&position=13&tracking_id=eda4dbcc-535d-4946-bd8f-d83aedbd9880&wid=MLB4470378417&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260719_101001_678617_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

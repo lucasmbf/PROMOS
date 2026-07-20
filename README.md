@@ -317,7 +317,6 @@ Na interface:
 - O quadro **Procurar produto** permite preencher descricao, fontes, categoria, faixa de preco e desconto minimo.
 - O icone `(i)` ao lado de descricao mostra detalhes da funcionalidade ao passar o mouse.
 - O quadro **Procurar ofertas relampago** permite usar modo padrao (`--relampago-padrao`) ou modo customizado (`--somente-relampago` com filtros).
-- Fontes Amazon, Shoppee e Tiktok Shop aparecem na UI, mas hoje o backend executa apenas Mercado Livre.
 
 ## Logs operacionais
 

@@ -1,0 +1,18 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260719_102429",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB3876934505",
+      "categoria": "Saúde > Suplementos Alimentares",
+      "descricao": "Hipercalórico Anabolic Mass 28500 3kg Profit Labs Cookies And Cream",
+      "antes": "R$ 74,90",
+      "antes_valor": 74.9,
+      "desconto": "24% OFF",
+      "depois": "R$ 56,82",
+      "depois_valor": 56.82,
+      "link_anuncio": "https://www.mercadolivre.com.br/hipercalorico-anabolic-mass-28500-3kg-profit-labs-cookies-and-cream/p/MLB23824445?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=d89cfa66-feb2-47d2-b6e0-5d2371a7f1e2&position=10&tracking_id=37b5c45a-c577-48d4-aaff-fe637126efb0&wid=MLB3876934505&sid=offers"
+    }
+  ]
+}
