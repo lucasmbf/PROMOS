@@ -86,6 +86,7 @@ PASTA_SAIDA_CAMPANHA = str(DIST_INTERFACE_DIR / "saidas_execucoes" / "Campanha")
 PASTA_SAIDA_ONDEMAND = str(DIST_INTERFACE_DIR / "saidas_execucoes" / "OnDemand")
 PASTA_GERADORES_SAIDA = str(DIST_INTERFACE_DIR / "instagram_posts")
 PASTA_TEMPLATES_INSTAGRAM = str(DIST_INTERFACE_DIR / "instagram_templates")
+PASTA_IMAGENS_ANUNCIOS = str(DIST_INTERFACE_DIR / "instagram_anuncios")
 PASTA_TEMPLATES_INSTAGRAM_LEGADO = str(DIST_INTERFACE_DIR / "dist-interface" / "instagram_templates")
 
 # Compatibilidade (referências antigas)
@@ -1947,7 +1948,7 @@ def create_gui(categorias):
         valores_ml = ["", *[str(c.get("name") or "") for c in categorias_raiz]]
 
         if valores_atuais != valores_ml:
-            categorias_combo.configure(values=novos_valores)
+            categorias_combo.configure(values=valores_ml)
             categoria_var.set("")
             categoria_id_var.set("")
             subcategoria_var.set("")
@@ -2159,6 +2160,7 @@ def create_gui(categorias):
 
         os.makedirs(PASTA_GERADORES_SAIDA, exist_ok=True)
         os.makedirs(PASTA_TEMPLATES_INSTAGRAM, exist_ok=True)
+        os.makedirs(PASTA_IMAGENS_ANUNCIOS, exist_ok=True)
 
         templates_migrados = _migrar_templates_instagram_legado()
         if templates_migrados > 0:
@@ -2249,6 +2251,32 @@ def create_gui(categorias):
             "anuncio_size_preview": (0, 0),
             "text_width_px_preview": 0,
         }
+
+        def _migrar_anuncios_para_pasta_dedicada():
+            origem = Path(PASTA_TEMPLATES_INSTAGRAM)
+            destino = Path(PASTA_IMAGENS_ANUNCIOS)
+            if not origem.exists() or not origem.is_dir():
+                return 0
+
+            destino.mkdir(parents=True, exist_ok=True)
+            movidos = 0
+            for arquivo in origem.iterdir():
+                if not arquivo.is_file():
+                    continue
+                if not arquivo.name.lower().startswith("anuncio_"):
+                    continue
+
+                alvo = destino / arquivo.name
+                if alvo.exists():
+                    continue
+
+                try:
+                    shutil.move(str(arquivo), str(alvo))
+                    movidos += 1
+                except Exception:
+                    continue
+
+            return movidos
 
         def _importar_templates_de_jsons(max_jsons=10, max_novas=25):
             pastas_json = [
@@ -2345,7 +2373,7 @@ def create_gui(categorias):
                     if ext not in {".png", ".jpg", ".jpeg", ".webp"}:
                         ext = ".jpg"
 
-                    destino = os.path.join(PASTA_TEMPLATES_INSTAGRAM, f"anuncio_{id_anuncio}{ext}")
+                    destino = os.path.join(PASTA_IMAGENS_ANUNCIOS, f"anuncio_{id_anuncio}{ext}")
                     if os.path.exists(destino):
                         continue
 
@@ -2561,6 +2589,22 @@ def create_gui(categorias):
                     parent=dialog_root,
                 )
 
+        def _abrir_pasta_anuncios():
+            try:
+                os.makedirs(PASTA_IMAGENS_ANUNCIOS, exist_ok=True)
+                if sys.platform.startswith("win"):
+                    os.startfile(PASTA_IMAGENS_ANUNCIOS)
+                elif sys.platform == "darwin":
+                    subprocess.Popen(["open", PASTA_IMAGENS_ANUNCIOS])
+                else:
+                    subprocess.Popen(["xdg-open", PASTA_IMAGENS_ANUNCIOS])
+            except Exception as exc:
+                messagebox.showerror(
+                    "Falha ao abrir pasta",
+                    f"Nao foi possivel abrir a pasta de anuncios.\n\n{exc}\n\nCaminho: {PASTA_IMAGENS_ANUNCIOS}",
+                    parent=dialog_root,
+                )
+
         def _upload_template():
             caminho_origem = filedialog.askopenfilename(
                 title="Selecionar template de imagem",
@@ -2621,6 +2665,29 @@ def create_gui(categorias):
         def _upload_imagem_anuncio():
             caminho_origem = filedialog.askopenfilename(
                 title="Selecionar imagem do anúncio",
+                filetypes=[
+                    ("Imagens", "*.png *.jpg *.jpeg *.webp"),
+                    ("Todos os arquivos", "*.*"),
+                ],
+                parent=dialog_root,
+            )
+            if not caminho_origem:
+                return
+
+            try:
+                imagem_anuncio = Image.open(caminho_origem).convert("RGBA")
+            except Exception as exc:
+                messagebox.showerror("Imagem inválida", f"Não foi possível abrir a imagem do anúncio.\n\n{exc}", parent=dialog_root)
+                return
+
+            preview_state["anuncio_img_original"] = imagem_anuncio
+            _render_preview(reset_texto_pos=False)
+
+        def _usar_imagem_anuncio_salva():
+            os.makedirs(PASTA_IMAGENS_ANUNCIOS, exist_ok=True)
+            caminho_origem = filedialog.askopenfilename(
+                title="Selecionar imagem de anúncio salva",
+                initialdir=PASTA_IMAGENS_ANUNCIOS,
                 filetypes=[
                     ("Imagens", "*.png *.jpg *.jpeg *.webp"),
                     ("Todos os arquivos", "*.*"),
@@ -2834,7 +2901,9 @@ def create_gui(categorias):
         ttk.Button(btns_templates_frame, text="Atualizar templates", command=_recarregar_templates).pack(side="left")
         ttk.Button(btns_templates_frame, text="Upload template", command=_upload_template).pack(side="left", padx=(8, 0))
         ttk.Button(btns_templates_frame, text="Abrir pasta", command=_abrir_pasta_templates).pack(side="left", padx=(8, 0))
+        ttk.Button(btns_templates_frame, text="Abrir pasta anúncios", command=_abrir_pasta_anuncios).pack(side="left", padx=(8, 0))
         ttk.Button(btns_anuncio_frame, text="Upload imagem do anúncio", command=_upload_imagem_anuncio).pack(side="left")
+        ttk.Button(btns_anuncio_frame, text="Usar anúncio salvo", command=_usar_imagem_anuncio_salva).pack(side="left", padx=(8, 0))
         ttk.Button(btns_anuncio_frame, text="Remover imagem", command=_remover_imagem_anuncio).pack(side="left", padx=(8, 0))
         cor_texto_btn.configure(command=_selecionar_cor_texto)
 
@@ -2855,9 +2924,15 @@ def create_gui(categorias):
         canvas.tag_bind("overlay_anuncio", "<B1-Motion>", _drag_move_anuncio)
         canvas.bind("<Configure>", lambda _event: _render_preview(reset_texto_pos=False) if preview_state["img_original"] else None)
 
+        anuncios_migrados = _migrar_anuncios_para_pasta_dedicada()
+        if anuncios_migrados > 0:
+            status_var.set(f"{anuncios_migrados} imagem(ns) de anúncio movida(s) para a pasta dedicada.")
+
         novas_templates = _importar_templates_de_jsons()
         if novas_templates > 0:
-            status_var.set(f"{novas_templates} imagem(ns) principal(is) de anúncios importada(s) para templates.")
+            status_var.set(
+                f"{novas_templates} imagem(ns) principal(is) de anúncios importada(s) para: {PASTA_IMAGENS_ANUNCIOS}"
+            )
 
         texto_post.insert("1.0", "Texto promocional aqui")
         _recarregar_templates()
@@ -4793,7 +4868,7 @@ def create_gui(categorias):
         else:
             status_var.set(f"Aguardando login no Mercado Livre...")
 
-        if _mostrar_modal_continuar_login(fonte):
+        if _mostrar_modal_continuar_login("Mercado Livre"):
             _sinalizar_confirmacao_login()
 
     def _append_resumo(texto):

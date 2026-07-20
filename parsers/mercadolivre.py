@@ -1269,6 +1269,7 @@ PASTA_SAIDA_CAMPANHA = str(Path(PASTA_SAIDAS_EXECUCOES) / "Campanha")
 PASTA_SAIDA_ONDEMAND = str(Path(PASTA_SAIDAS_EXECUCOES) / "OnDemand")
 PASTA_METADADOS_COLETA = str(BASE_SAIDA / "metadados_coleta")
 PASTA_TEMPLATES_INSTAGRAM = str(BASE_SAIDA / "dist-interface" / "instagram_templates")
+PASTA_IMAGENS_ANUNCIOS = str(BASE_SAIDA / "dist-interface" / "instagram_anuncios")
 
 # Pastas para histórico de JSONs (fixas, independente de pasta escolhida pelo usuário)
 PASTA_HISTORICO_JSON_RELAMPAGO = str(Path(PASTA_OFERTAS_RELAMPAGO) / "Historico de anuncios")
@@ -1288,10 +1289,11 @@ os.makedirs(PASTA_SAIDA_CAMPANHA, exist_ok=True)
 os.makedirs(PASTA_SAIDA_ONDEMAND, exist_ok=True)
 os.makedirs(PASTA_METADADOS_COLETA, exist_ok=True)
 os.makedirs(PASTA_TEMPLATES_INSTAGRAM, exist_ok=True)
+os.makedirs(PASTA_IMAGENS_ANUNCIOS, exist_ok=True)
 
 
 def _salvar_imagens_principais_em_templates(ofertas, limite=30):
-    """Baixa imagens principais das ofertas para a pasta de templates do Instagram."""
+    """Baixa imagens principais das ofertas para a pasta dedicada de anúncios."""
     if not ofertas:
         return 0
 
@@ -1304,7 +1306,7 @@ def _salvar_imagens_principais_em_templates(ofertas, limite=30):
         )
     }
 
-    os.makedirs(PASTA_TEMPLATES_INSTAGRAM, exist_ok=True)
+    os.makedirs(PASTA_IMAGENS_ANUNCIOS, exist_ok=True)
 
     for oferta in ofertas:
         if total_salvas >= limite:
@@ -1326,7 +1328,7 @@ def _salvar_imagens_principais_em_templates(ofertas, limite=30):
         if ext not in {".png", ".jpg", ".jpeg", ".webp"}:
             ext = ".jpg"
 
-        destino = Path(PASTA_TEMPLATES_INSTAGRAM) / f"anuncio_{id_anuncio}{ext}"
+        destino = Path(PASTA_IMAGENS_ANUNCIOS) / f"anuncio_{id_anuncio}{ext}"
         if destino.exists():
             continue
 
@@ -3790,7 +3792,7 @@ def salvar_resultado_relampago_json(ofertas, pasta=None):
 
     total_templates = _salvar_imagens_principais_em_templates(ofertas_estruturadas)
     if total_templates:
-        print(f"✅ {total_templates} imagem(ns) principal(is) salvas em templates: {PASTA_TEMPLATES_INSTAGRAM}")
+        print(f"✅ {total_templates} imagem(ns) principal(is) salvas em anuncios: {PASTA_IMAGENS_ANUNCIOS}")
     
     print(f"✅ JSON relâmpago salvo em: {caminho_json}")
     return caminho_json
@@ -3850,7 +3852,7 @@ def salvar_resultado_produto_json(ofertas, pasta=None):
 
     total_templates = _salvar_imagens_principais_em_templates(ofertas_estruturadas)
     if total_templates:
-        print(f"✅ {total_templates} imagem(ns) principal(is) salvas em templates: {PASTA_TEMPLATES_INSTAGRAM}")
+        print(f"✅ {total_templates} imagem(ns) principal(is) salvas em anuncios: {PASTA_IMAGENS_ANUNCIOS}")
     
     print(f"✅ JSON de busca de produto salvo em: {caminho_json}")
     return caminho_json

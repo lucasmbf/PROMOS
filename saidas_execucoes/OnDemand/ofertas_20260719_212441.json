@@ -1,0 +1,19 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260719_212441",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB5653774954",
+      "categoria": "Panelas e Frigideiras > Panelas a Vapor",
+      "descricao": "Panela de pressão 4,5 litros Alumínio Preta Segura Reforçada Cozimento Rápido Econômica Fechamento Interno",
+      "antes": "R$ 84",
+      "antes_valor": 84.0,
+      "desconto": "19% OFF",
+      "depois": "R$ 67,22",
+      "depois_valor": 67.22,
+      "link_anuncio": "https://www.mercadolivre.com.br/panela-de-presso-45-litros-aluminio-preta-segura-reforcada-cozimento-rapido-econmica-fechamento-interno/p/MLB54641718?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=b0b4985a-a4ed-4f28-bef7-ca2678df5260&position=9&tracking_id=2323b34c-a55a-4c52-af66-36bfa54a060b&wid=MLB5653774954&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_906682-MLA97896264619_112025-O.webp"
+    }
+  ]
+}
