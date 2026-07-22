@@ -1,0 +1,41 @@
+=== Inicio da execucao: 2026-07-20T19:22:32 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-caes-query_NoIndex_True?forceContainer=true#c_container_id=MLB1327645-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=cachorro-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_element_id=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=90178ab0-836a-11f1-897b-a3608c4c25d1&c_tracking_id=90178ab0-836a-11f1-897b-a3608c4c25d1 --desconto-minimo 10 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-caes-query_NoIndex_True?forceContainer=true#c_container_id=MLB1327645-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=cachorro-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_element_id=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=90178ab0-836a-11f1-897b-a3608c4c25d1&c_tracking_id=90178ab0-836a-11f1-897b-a3608c4c25d1
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-caes-query_NoIndex_True?forceContainer=true#c_container_id=MLB1327645-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=cachorro-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_element_id=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=90178ab0-836a-11f1-897b-a3608c4c25d1&c_tracking_id=90178ab0-836a-11f1-897b-a3608c4c25d1
+✓ Link de afiliado: https://meli.la/1bgVeTt
+✓ Link de afiliado: https://meli.la/1beaxrr
+✓ Link de afiliado: https://meli.la/22Wj5px
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260720_192309.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260720_192309.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Caixa Fechada 15 Sachês 100g Ração Úmida Pet Dog Chow Carne
+Message SID Twilio: SM81899055d99662f0d57e701138032be6
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ração Gran Plus Choice Adultos Sabor Frango E Carne 15kg
+Message SID Twilio: SM3879cd0315f98d8639d2232f480705db
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ração Cachorros Adultos Quatree Supreme Raças Pequenas 10kg
+Message SID Twilio: SM38dbbef70fcd3a0b85a3de487ad5ac60
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-20T19:23:23 ===

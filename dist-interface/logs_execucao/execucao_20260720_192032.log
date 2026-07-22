@@ -1,0 +1,41 @@
+=== Inicio da execucao: 2026-07-20T19:20:32 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/_Container_pet-cpg-tapetes-e-higiene-query?forceContainer=true#c_container_id=MLB1328152-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=cachorro-tapetes-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=ed1706b9-8369-11f1-8f88-9f961f67e783&c_element_id=ed1706b9-8369-11f1-8f88-9f961f67e783&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ec87bf00-8369-11f1-84c2-116ecd772591&c_tracking_id=ec87bf00-8369-11f1-84c2-116ecd772591 --desconto-minimo 10 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_pet-cpg-tapetes-e-higiene-query?forceContainer=true#c_container_id=MLB1328152-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=cachorro-tapetes-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=ed1706b9-8369-11f1-8f88-9f961f67e783&c_element_id=ed1706b9-8369-11f1-8f88-9f961f67e783&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ec87bf00-8369-11f1-84c2-116ecd772591&c_tracking_id=ec87bf00-8369-11f1-84c2-116ecd772591
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_pet-cpg-tapetes-e-higiene-query?forceContainer=true#c_container_id=MLB1328152-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=cachorro-tapetes-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=ed1706b9-8369-11f1-8f88-9f961f67e783&c_element_id=ed1706b9-8369-11f1-8f88-9f961f67e783&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ec87bf00-8369-11f1-84c2-116ecd772591&c_tracking_id=ec87bf00-8369-11f1-84c2-116ecd772591
+✓ Link de afiliado: https://meli.la/2cZnZZF
+✓ Link de afiliado: https://meli.la/1djP91y
+✓ Link de afiliado: https://meli.la/29cX1Ce
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260720_192111.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260720_192112.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tapete Higiênico Super Secão Para Cães 30 Unidades Petix Branco
+Message SID Twilio: SM8ecf7a7db420aaee6838a25be49e1499
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tapete Higiênico Premium Cachorro 60x60 Bamboo.dry Nekko
+Message SID Twilio: SM53408a94dea354d8120da56bc7cace3e
+
+Mensagem enviada para whatsapp:+5519991133269:
+3 Tapetes Higiênico Petix Super Premium Petix - 90 Unidades
+Message SID Twilio: SM8799ec89d8218e0a3b04a9cd06b3b75f
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-20T19:21:24 ===

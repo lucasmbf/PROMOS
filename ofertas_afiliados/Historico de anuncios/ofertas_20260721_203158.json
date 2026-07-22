@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260721_203158",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb69613562",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Areia Higiênica Granulado Para Gatos 4kg Mandioca + Minerais Super Premium Controle De Odores Alta Absorção Econômica Biodegradável Não Suja Patinhas Rende Mais Banheiro Sanitário Pet Premium Gato",
+      "antes": "R$ 39,99",
+      "antes_valor": null,
+      "desconto": "34% OFF",
+      "depois": "R$ 26,08",
+      "depois_valor": 26.08,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-higinica-granulado-para-gatos-4kg-mandioca-minerais-super-premium-controle-de-odores-alta-absorco-econmica-biodegradavel-no-suja-patinhas-rende-mais-banheiro-sanitario-pet-premium-gato/p/MLB69613562?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=13&type=product&tracking_id=fcfdbb12-8917-4d13-a008-2a461df3c425&wid=MLB4676267171&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_934958-MLA111600446101_052026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb43946639",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Areia Sanitária Gatos Milho Mandioca Kadi Graos Mistos 4kg",
+      "antes": "R$ 49,90",
+      "antes_valor": null,
+      "desconto": "32% OFF",
+      "depois": "R$ 33,56",
+      "depois_valor": 33.56,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-sanitaria-gatos-milho-mandioca-kadi-graos-mistos-4kg/p/MLB43946639?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=14&type=product&tracking_id=fcfdbb12-8917-4d13-a008-2a461df3c425&wid=MLB6594828054&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_900991-MLA92577147495_092025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb2053377375",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Kit 3 Areia Higiênica Granulado Kets Bio-d Gatos 3kg Alfa",
+      "antes": "R$ 199,98",
+      "antes_valor": null,
+      "desconto": "52% OFF",
+      "depois": "R$ 95,30",
+      "depois_valor": 95.3,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-3-areia-higinica-granulado-kets-bio-d-gatos-3kg-alfa/p/MLB2053377375?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=21&type=product&float_highlight=last_units&tracking_id=fcfdbb12-8917-4d13-a008-2a461df3c425&wid=MLB5776807492&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_727988-MLB94059949462_102025-O.webp"
+    }
+  ]
+}

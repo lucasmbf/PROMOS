@@ -1,0 +1,16 @@
+=== Inicio da execucao: 2026-07-20T22:24:35 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 30.0 --preco-maximo 60.0 --limite-candidatos 10 --url-produto https://www.amazon.com.br/b?node=207658989011&pd_rd_w=wt3WE&content-id=amzn1.sym.d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_p=d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_r=PBAVSCRYMSN3VM87BZHX&pd_rd_wg=h5OLp&pd_rd_r=a34ff04b-b748-4915-8207-74a89621e5d1&ref_=pd_hp_d_btf_n2a-visualnav-hp --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://www.amazon.com.br/b?node=207658989011&pd_rd_w=wt3WE&content-id=amzn1.sym.d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_p=d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_r=PBAVSCRYMSN3VM87BZHX&pd_rd_wg=h5OLp&pd_rd_r=a34ff04b-b748-4915-8207-74a89621e5d1&ref_=pd_hp_d_btf_n2a-visualnav-hp
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://www.amazon.com.br/b?node=207658989011&pd_rd_w=wt3WE&content-id=amzn1.sym.d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_p=d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_r=PBAVSCRYMSN3VM87BZHX&pd_rd_wg=h5OLp&pd_rd_r=a34ff04b-b748-4915-8207-74a89621e5d1&ref_=pd_hp_d_btf_n2a-visualnav-hp
+[LISTAGEM_DIRETA] Link 1 - página 2: https://www.amazon.com.br/b?node=207658989011&pd_rd_w=wt3WE&content-id=amzn1.sym.d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_p=d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_r=PBAVSCRYMSN3VM87BZHX&pd_rd_wg=h5OLp&pd_rd_r=a34ff04b-b748-4915-8207-74a89621e5d1&ref_=pd_hp_d_btf_n2a-visualnav-hp&page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://www.amazon.com.br/b?node=207658989011&pd_rd_w=wt3WE&content-id=amzn1.sym.d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_p=d06d325f-8ae6-4c77-a6b4-a439f50e72f2&pf_rd_r=PBAVSCRYMSN3VM87BZHX&pd_rd_wg=h5OLp&pd_rd_r=a34ff04b-b748-4915-8207-74a89621e5d1&ref_=pd_hp_d_btf_n2a-visualnav-hp&page=3
+
+=== Fim da execucao: 2026-07-20T22:24:48 ===

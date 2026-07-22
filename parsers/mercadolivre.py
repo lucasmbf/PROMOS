@@ -376,12 +376,16 @@ def _montar_url_pesquisa_em_categoria(url_categoria_base, descricao, pagina=1):
 
 def _converter_preco_em_float(texto_preco):
 
-    texto_limpo = (texto_preco or "").strip()
-
-    if not texto_limpo.startswith("R$"):
+    texto_limpo = normalizar_descricao(str(texto_preco or "")).replace("\xa0", " ")
+    if not texto_limpo:
         return None
 
-    numero = texto_limpo.replace("R$", "").strip().replace(".", "").replace(",", ".")
+    # Aceita formatos com e sem prefixo de moeda (ex.: "R$ 1.234,56" / "1.234,56").
+    encontrado = re.search(r"(\d{1,3}(?:\.\d{3})*(?:,\d+)?|\d+(?:,\d+)?)", texto_limpo)
+    if not encontrado:
+        return None
+
+    numero = encontrado.group(1).replace(".", "").replace(",", ".")
 
     try:
         return float(numero)
@@ -2332,7 +2336,7 @@ def _coletar_resultados_pesquisa_da_pagina(page):
 
     return page.evaluate(
         """() => {
-            const cards = Array.from(document.querySelectorAll('li.ui-search-layout__item, li.poly-card'));
+            const cards = Array.from(document.querySelectorAll('li.ui-search-layout__item, li.poly-card, div.poly-card, article.ui-search-result'));
             const resultados = [];
 
             for (const card of cards) {
@@ -2382,7 +2386,7 @@ def _coletar_resultados_pesquisa_da_pagina(page):
                 // Mantido por compatibilidade com código existente.
                 const precoTexto = precoAtualTexto;
 
-                const descontoEl = card.querySelector('.ui-search-price__discount, .andes-money-amount__discount');
+                const descontoEl = card.querySelector('.ui-search-price__discount, .andes-money-amount__discount, .poly-price__discount, .poly-price__installments');
                 const descontoTexto = descontoEl ? (descontoEl.textContent || '').trim() : '';
 
                 resultados.push({
@@ -2418,7 +2422,7 @@ def _coletar_resultados_pesquisa_do_html(html, url_base=""):
         centavos = cents_el.get_text(" ", strip=True) if cents_el else ""
         return f"R$ {reais},{centavos}" if centavos else f"R$ {reais}"
 
-    for card in soup.select("li.ui-search-layout__item, li.poly-card"):
+    for card in soup.select("li.ui-search-layout__item, li.poly-card, div.poly-card, article.ui-search-result"):
         title_el = card.select_one(
             "a.poly-component__title[href], a.ui-search-item__group__element--title[href], a[href*='/MLB-']"
         )
@@ -2443,7 +2447,9 @@ def _coletar_resultados_pesquisa_do_html(html, url_base=""):
                 centavos = cents_el.get_text(" ", strip=True) if cents_el else ""
                 preco_atual_texto = f"R$ {reais},{centavos}" if centavos else f"R$ {reais}"
 
-        desconto_el = card.select_one(".ui-search-price__discount, .andes-money-amount__discount")
+        desconto_el = card.select_one(
+            ".ui-search-price__discount, .andes-money-amount__discount, .poly-price__discount, .poly-price__installments"
+        )
         desconto_texto = desconto_el.get_text(" ", strip=True) if desconto_el else ""
 
         resultados.append(
@@ -2759,6 +2765,11 @@ def _coletar_candidatos_filtrados_de_resultados(
         if encontrado:
             desconto_int = int(encontrado.group(1))
 
+        # Fallback: em algumas páginas o badge de desconto não está em texto,
+        # então calcula pelo preço atual/anterior quando ambos existem.
+        if desconto_int is None:
+            desconto_int = _extrair_desconto_valor("", preco_anterior_valor, preco_atual_valor)
+
         if desconto_minimo is not None:
             if desconto_int is None or desconto_int < int(desconto_minimo):
                 continue
@@ -2964,8 +2975,40 @@ def processar_produtos_home_por_pesquisa(
                     page.goto(url_pagina, timeout=90000, wait_until="domcontentloaded")
                     time.sleep(random.uniform(2.5, 4.5))
 
-                    html_pagina = page.content()
-                    resultados = _coletar_resultados_pesquisa_do_html(html_pagina, url_pagina)
+                    # 1) Tenta extrair do DOM já renderizado.
+                    resultados = _coletar_resultados_pesquisa_da_pagina(page)
+
+                    # 2) Fallback para parser de HTML estático.
+                    html_pagina = ""
+                    if not resultados:
+                        html_pagina = page.content()
+                        resultados = _coletar_resultados_pesquisa_do_html(html_pagina, url_pagina)
+
+                    # 3) Fallback final: contexto JSON interno da página (mais estável no ML).
+                    if not resultados:
+                        if not html_pagina:
+                            html_pagina = page.content()
+
+                        desconto_ctx = 0 if desconto_minimo is None else int(desconto_minimo)
+                        ofertas_ctx = _extrair_ofertas_do_ctx(html_pagina, desconto_minimo=desconto_ctx)
+                        resultados = [
+                            {
+                                "descricao": oferta.get("descricao") or "",
+                                "href": oferta.get("link_anuncio") or "",
+                                "precoAtualTexto": oferta.get("depois") or "",
+                                "precoAnteriorTexto": oferta.get("antes") or "",
+                                "precoTexto": oferta.get("depois") or "",
+                                "descontoTexto": oferta.get("desconto") or "",
+                            }
+                            for oferta in ofertas_ctx
+                        ]
+
+                        if resultados:
+                            print(
+                                f"[LISTAGEM_DIRETA] Link {indice_link} - página {pagina_atual}: "
+                                f"{len(resultados)} resultado(s) via fallback JSON."
+                            )
+
                     if not resultados:
                         continue
 
@@ -3012,8 +3055,10 @@ def processar_produtos_home_por_pesquisa(
                 )
                 
                 if aprovados_novos == 0 and candidatos_novos == 0:
-                    print(f"[BLOCO_{numero_bloco}] Nenhum candidato encontrado. Parando busca neste link.")
-                    break
+                    if pagina_fim >= total_paginas_link:
+                        print(f"[BLOCO_{numero_bloco}] Nenhum candidato encontrado e limite de paginas atingido neste link.")
+                    else:
+                        print(f"[BLOCO_{numero_bloco}] Nenhum candidato neste bloco. Continuando para proximas paginas.")
 
             if len(aprovados) >= limite_validos:
                 break
@@ -3105,8 +3150,11 @@ def processar_produtos_home_por_pesquisa(
         )
         
         if candidatos_novos == 0:
-            print(f"[BLOCO_GENERICA_{numero_bloco}] Nenhum candidato novo encontrado. Parando busca genérica.")
-            executar_busca_generica = False
+            if pagina_fim >= limite_paginas:
+                print(f"[BLOCO_GENERICA_{numero_bloco}] Nenhum candidato novo e limite de paginas atingido.")
+                executar_busca_generica = False
+            else:
+                print(f"[BLOCO_GENERICA_{numero_bloco}] Nenhum candidato novo neste bloco. Continuando para proximas paginas.")
         elif pagina_fim >= limite_paginas:
             print(f"[BLOCO_GENERICA_{numero_bloco}] Limite de páginas atingido.")
             executar_busca_generica = False

@@ -1,0 +1,187 @@
+=== Inicio da execucao: 2026-07-21T20:50:21 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 20 --limite-candidatos 20 --url-produto https://www.mercadolivre.com.br/ofertas#nav-header --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://www.mercadolivre.com.br/ofertas#nav-header
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://www.mercadolivre.com.br/ofertas#nav-header
+✓ Link de afiliado: https://meli.la/1tG4Ycv
+✓ Link de afiliado: https://meli.la/1JUa9rD
+✓ Link de afiliado: https://meli.la/17kqVwU
+✓ Link de afiliado: https://meli.la/1R9vEWi
+✓ Link de afiliado: https://meli.la/1Eoo3jB
+✓ Link de afiliado: https://meli.la/1sM767s
+✓ Link de afiliado: https://meli.la/2rJ84P1
+✓ Link de afiliado: https://meli.la/2zGrn5p
+✓ Link de afiliado: https://meli.la/23fk9fV
+✓ Link de afiliado: https://meli.la/27RkAMU
+✓ Link de afiliado: https://meli.la/2tdsiBU
+✓ Link de afiliado: https://meli.la/1Zgba18
+✓ Link de afiliado: https://meli.la/2814xrk
+✓ Link de afiliado: https://meli.la/118YTV2
+✓ Link de afiliado: https://meli.la/2wyvVzB
+✓ Link de afiliado: https://meli.la/2w1zFqU
+✓ Link de afiliado: https://meli.la/1wsKipE
+✓ Link de afiliado: https://meli.la/1Fm7eXU
+✓ Link de afiliado: https://meli.la/2BQ1iFN
+[LISTAGEM_DIRETA] Link 1 - página 2: https://www.mercadolivre.com.br/ofertas?page=2
+✓ Link de afiliado: https://meli.la/1m3spAc
+[BLOCO_1] Resultado: 20 candidato(s) coletado(s), 20 válido(s) enriquecido(s). Total: 20/20
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 20 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260721_205355.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260721_205356.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_662415-MLA97812910758_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Monohidratada 250g Growth Supplements - Sem sabor em Pó
+Message SID Twilio: MM1a905e989b46de5191041264f17bde4a
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_653831-MLB110126921171_042026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Com 10 Envelopes 3o Lote 70 Cromos Copa Do Mundo Fifa 26
+Message SID Twilio: MM22e372f2e8a7a0181c5259e18ddcceef
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_876614-MLB110800889269_042026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 70 Figurinhas Do Álbum Copa Do Mundo 2026 Pronta Entrega
+Message SID Twilio: MMc28cfc6955772c5ac68d8bd43fb64d10
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_903022-MLA109894312615_032026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 12 Envelopes com 84 figurinhas - Copa do Mundo 2026
+Message SID Twilio: MM956197cef9e5b79c012db8c41524d13d
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_855866-MLA96126735431_102025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera de Segurança Aprova Dágua A8 Externa Branco Icsee
+Message SID Twilio: MM8d5641d4216b667daff623caf6add755
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_806507-MLA92874967013_092025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creme Hidratante Corporal e facial para Pele Seca a Extra Seca Sem Perfume 454g CeraVe
+Message SID Twilio: MM0a6ffb40772c80a0b4e2cbdb4cefaadd
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_942823-MLA113526261849_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 10 Potes Herméticos Vidro 640ml Starhouse Marmita Forno Micro-ondas Airfryer com 4 travas de super vedação
+Message SID Twilio: MMb9c02eb0f3a5b9c9e2a0da4248683351
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_724557-MLA113026900524_072026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 10 Potes Vidro Hermético Aristus 640ml Marmita Anti Vazamento Forno Micro-ondas Freezer Tampa 4 Travas - Cinza
+Message SID Twilio: MM1a308520953b56a9515059c9e494666b
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_769568-MLA112624845176_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ducha Loren Shower Ultra Eletrônica 127V 5500W Lorenzetti
+Message SID Twilio: MM2da1d62ff6a16a51fb350457fefde8ef
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_641541-MLA111608975062_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Parafusadeira Furadeira C/ 2 Baterias Maleta Kit Completo Led Eixo Flexível Vários Níveis Torque Simake
+Message SID Twilio: MM88d5b6de4f35b49b77f4976140843ad3
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_707426-MLU72340464209_102023-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Serra Mármore 4.3/8 1300w C/ 2discos 4100NH3ZX2 Makita
+Message SID Twilio: MM1fc75fa065f05b0bc68013bfbd5807d5
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_892568-MLA99939109103_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera Inteligente Im7 + 3mp De Resolução Branca Intelbras
+Message SID Twilio: MM9206683cee0b981a15d58bfa4aec5274
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_886577-MLA84549540358_052025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Controle Joystick Sem Fio Sony PlayStation 5 DualSense Midnight Black
+Message SID Twilio: MMab5844dc64bfb7be9d22075bfbbbd1ee
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_727987-MLA94570272613_102025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Perfume Rabanne 1 Million Eau de Toilette 200 ml masculino
+Message SID Twilio: MM566402ee46f96da85cc56543b3efa7fd
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_658042-MLA99508459328_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cadeirinha infantil para carro Litet Mass 0-36kg Preta - BB456
+Message SID Twilio: MMac5e83206341a1f255a8faea4dd06358
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_737130-MLA99503062202_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cadeirinha infantil para carro Litet Mass 0-36kg Preta e Cinza - BB458
+Message SID Twilio: MM260f84b495b8870cfc9e7027f4793f7b
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_889684-MLA99475706302_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Micro-ondas Electrolux de bancada Branco com Função Tira Odor e Manter Aquecido 34L MEO44
+Message SID Twilio: MMb8c4e94c2c34fe9332c4b34154aabeeb
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_836450-MLA100062682691_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cadeira de Carro Infantil All Stages 2.0 Isofix Preto Litet
+Message SID Twilio: MMc78e62d35a6574462ac999d7c582de9d
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_636675-MLA107807100101_022026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Smart Tv 32 Philco Roku Tv Dolby Áudio Hdr10 P32crb
+Message SID Twilio: MM3029ede076a37563d947ba73a6cb3c72
+
+[DEBUG] media_url=SIM
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_753960-MLB78002610612_082024-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Perfume Sedutor Árabe Sabah 100ml Original Feminino
+Message SID Twilio: MM84820b295b6c41999998b04b79ad961b
+
+20 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-21T20:55:24 ===

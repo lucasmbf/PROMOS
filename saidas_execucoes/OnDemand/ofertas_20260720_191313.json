@@ -1,0 +1,127 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260720_191313",
+  "total": 10,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb19466848",
+      "categoria": "Sem categoria",
+      "descricao": "Desinfetante Lysoform Líquido Original Limpeza Pesada e Eficiente 2L",
+      "antes": "R$ 24,97",
+      "antes_valor": null,
+      "desconto": "27% OFF",
+      "depois": "R$ 17,99",
+      "depois_valor": 17.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/desinfetante-lysoform-liquido-original-limpeza-pesada-e-eficiente-2l/p/MLB19466848?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=8&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB3179530709&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_995223-MLA99338537616_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb17457290",
+      "categoria": "Sem categoria",
+      "descricao": "Lenços Umedecidos Desinfetantes Lysoform Lavanda Desinfetante de Uso Geral 36 unidades",
+      "antes": "R$ 24,84",
+      "antes_valor": null,
+      "desconto": "15% OFF",
+      "depois": "R$ 20,99",
+      "depois_valor": 20.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/lencos-umedecidos-desinfetantes-lysoform-lavanda-desinfetante-de-uso-geral-36-unidades/p/MLB17457290?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=4&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB4261641744&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_646244-MLA108189420945_032026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb21091964",
+      "categoria": "Sem categoria",
+      "descricao": "Detergente Sanitário Gel Adesivo Lavanda Pato 38g Cada 2 Unidades Grátis 50% de Desconto no Segundo Refil",
+      "antes": "R$ 25,58",
+      "antes_valor": null,
+      "desconto": "17% OFF",
+      "depois": "R$ 20,99",
+      "depois_valor": 20.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/detergente-sanitario-gel-adesivo-lavanda-pato-38g-cada-2-unidades-gratis-50-de-desconto-no-segundo-refil/p/MLB21091964?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=9&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB3694300331&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_770489-MLA99338566628_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb17457246",
+      "categoria": "Sem categoria",
+      "descricao": "Lenços Umedecidos Desinfetantes Lysoform Citrus Desinfetante de Uso Geral 36 unidades",
+      "antes": "R$ 24,84",
+      "antes_valor": null,
+      "desconto": "15% OFF",
+      "depois": "R$ 20,99",
+      "depois_valor": 20.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/lencos-umedecidos-desinfetantes-lysoform-citrus-desinfetante-de-uso-geral-36-unidades/p/MLB17457246?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=10&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB4261680816&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_955648-MLA112453394569_052026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb18394832",
+      "categoria": "Sem categoria",
+      "descricao": "Desodorizador Automatic Refil Spray Lavanda & Baunilha 269ml Glade",
+      "antes": "R$ 36,76",
+      "antes_valor": null,
+      "desconto": "21% OFF",
+      "depois": "R$ 28,69",
+      "depois_valor": 28.69,
+      "link_anuncio": "https://www.mercadolivre.com.br/desodorizador-automatic-refil-spray-lavanda-baunilha-269ml-glade/p/MLB18394832?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=6&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB4281183597&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_699301-MLA97457152639_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb16929810",
+      "categoria": "Sem categoria",
+      "descricao": "Desodorizador de Vaso Sanitario Pato Caixa Acoplada Marine Leve 3 Pague 2 40g",
+      "antes": "R$ 38,70",
+      "antes_valor": null,
+      "desconto": "18% OFF",
+      "depois": "R$ 31,73",
+      "depois_valor": 31.73,
+      "link_anuncio": "https://www.mercadolivre.com.br/desodorizador-de-vaso-sanitario-pato-caixa-acoplada-marine-leve-3-pague-2-40g/p/MLB16929810?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=3&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB3532619568&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_888082-MLA106461165382_022026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb40113569",
+      "categoria": "Sem categoria",
+      "descricao": "Desinfetante 5L Lysoform Líquido Lavanda Desinfetante Casa para Limpeza Pesada",
+      "antes": "R$ 60,41",
+      "antes_valor": null,
+      "desconto": "34% OFF",
+      "depois": "R$ 39,54",
+      "depois_valor": 39.54,
+      "link_anuncio": "https://www.mercadolivre.com.br/desinfetante-5l-lysoform-liquido-lavanda-desinfetante-casa-para-limpeza-pesada/p/MLB40113569?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=2&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB3851999207&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_667238-MLA106378343436_022026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb18400222",
+      "categoria": "Sem categoria",
+      "descricao": "Repelente spray sem fragrância Exposis Extrême garrafa 100ml",
+      "antes": "R$ 65,72",
+      "antes_valor": null,
+      "desconto": "32% OFF",
+      "depois": "R$ 44,08",
+      "depois_valor": 44.08,
+      "link_anuncio": "https://www.mercadolivre.com.br/repelente-spray-sem-fragrncia-exposis-extrme-garrafa-100ml/p/MLB18400222?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=13&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB2127334538&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_906219-MLA108909308260_032026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb37897363",
+      "categoria": "Sem categoria",
+      "descricao": "Repelente Exposis Extreme Gel com Icaridina 100ml",
+      "antes": "R$ 65,72",
+      "antes_valor": null,
+      "desconto": "32% OFF",
+      "depois": "R$ 44,49",
+      "depois_valor": 44.49,
+      "link_anuncio": "https://www.mercadolivre.com.br/repelente-exposis-extreme-gel-com-icaridina-100ml/p/MLB37897363?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=11&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB5017483922&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_846571-MLA111792208312_062026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb23988294",
+      "categoria": "Sem categoria",
+      "descricao": "Desinfetante 5L Lysoform Líquido Original Desinfetante Casa para Limpeza Pesada",
+      "antes": "R$ 60,41",
+      "antes_valor": null,
+      "desconto": "19% OFF",
+      "depois": "R$ 48,68",
+      "depois_valor": 48.68,
+      "link_anuncio": "https://www.mercadolivre.com.br/desinfetante-5l-lysoform-liquido-original-desinfetante-casa-para-limpeza-pesada/p/MLB23988294?pdp_filters=deal%3AMLB1688531-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=99c37b60-5ba7-466e-bd67-33bd66713a5f&wid=MLB4161442765&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_872210-MLA111407952686_052026-O.webp"
+    }
+  ]
+}

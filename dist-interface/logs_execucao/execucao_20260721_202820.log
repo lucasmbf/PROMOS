@@ -1,0 +1,53 @@
+=== Inicio da execucao: 2026-07-21T20:28:20 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse --preco-minimo 60.0 --preco-maximo 160.0 --desconto-minimo 20 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse
+✓ Link de afiliado: https://meli.la/2NNDWmn
+✓ Link de afiliado: https://meli.la/2K4SFtq
+✓ Link de afiliado: https://meli.la/2zKHSxU
+✓ Link de afiliado: https://meli.la/2Rbe3u7
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=3
+✓ Link de afiliado: https://meli.la/2e9vDKD
+[BLOCO_1] Resultado: 5 candidato(s) coletado(s), 5 válido(s) enriquecido(s). Total: 5/5
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 5 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260721_202934.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260721_202934.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Babysec Ultra Giga M 92 Unidades
+Message SID Twilio: SMd405360d71c0475409794c775c099871
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda-Calça MamyPoko G 60 Unidades Super Absorvente e Respirável
+Message SID Twilio: SM40c2839aad459852142f9ce2ce624b80
+
+Mensagem enviada para whatsapp:+5519991133269:
+Pampers Pants Ajuste Total pacote de fralda infantil tamanho M 84 unidades
+Message SID Twilio: SM737b4c1f7f9e72846c7170c5cd62b6df
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Premium Care Pants XG, 64 Unidades
+Message SID Twilio: SMdbe1b8c38ac3e91466518e9bc98e9e56
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Premium Huggies Natural Care Tamanho M 78 Unidades Médio (m) Sem Gênero
+Message SID Twilio: SM3b129fca7a014fb2935325c2d83ce1ad
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-21T20:29:55 ===

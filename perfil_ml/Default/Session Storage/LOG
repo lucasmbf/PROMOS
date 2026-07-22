@@ -1,3 +1,6 @@
-2026/07/08-23:06:39.546 55d4 Reusing MANIFEST C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/MANIFEST-000001
-2026/07/08-23:06:39.550 55d4 Recovering log #66
-2026/07/08-23:06:39.553 55d4 Reusing old log C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/000066.log 
+2026/07/21-21:14:09.503 7f68 Reusing MANIFEST C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/MANIFEST-000001
+2026/07/21-21:14:09.504 7f68 Recovering log #69
+2026/07/21-21:14:09.506 7f68 Reusing old log C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\perfil_ml\Default\Session Storage/000069.log 
+2026/07/21-21:17:14.400 7eb4 Level-0 table #74: started
+2026/07/21-21:17:14.404 7eb4 Level-0 table #74: 21637 bytes OK
+2026/07/21-21:17:14.406 7eb4 Delete type=0 #69

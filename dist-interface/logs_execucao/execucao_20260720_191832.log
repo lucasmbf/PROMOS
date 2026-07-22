@@ -1,0 +1,51 @@
+=== Inicio da execucao: 2026-07-20T19:18:32 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse --preco-minimo 60.0 --preco-maximo 160.0 --desconto-minimo 20 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse
+✓ Link de afiliado: https://meli.la/2pEUtXV
+✓ Link de afiliado: https://meli.la/2e9vDKD
+✓ Link de afiliado: https://meli.la/1vA4q6L
+✓ Link de afiliado: https://meli.la/13KWYvA
+✓ Link de afiliado: https://meli.la/1yBpfeY
+[BLOCO_1] Resultado: 5 candidato(s) coletado(s), 5 válido(s) enriquecido(s). Total: 5/5
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 5 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260720_191944.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260720_191944.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fraldas Descartáveis Pom Pom Protek Proteção de Mãe M com Derma Protek 86 Unidades
+Message SID Twilio: SMb757ad2e3a95e634d8c45c7d20e0f9d2
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Premium Huggies Natural Care tamanho M 78 Unidades
+Message SID Twilio: SMa4ea8c7bf1955dc1367d14495d3aac6d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Pants Ajuste Total XG, 86 Unidades
+Message SID Twilio: SM42f3c1da26dacf3b1f48506484a21335
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Premium Care Pants Tamanho XG 96 Unidades
+Message SID Twilio: SM2896122e6a63b4f5f965edb499628870
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Pampers Pants Ajuste Total Tamanho G, 94 Unidades
+Message SID Twilio: SM2e0c83831b8f3652029f64befadda5f2
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-20T19:20:05 ===

@@ -1,0 +1,50 @@
+=== Inicio da execucao: 2026-07-21T20:43:59 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 10.0 --preco-maximo 30.0 --limite-candidatos 3 --url-produto https://www.mercadolivre.com.br/ofertas#nav-header --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://www.mercadolivre.com.br/ofertas#nav-header
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://www.mercadolivre.com.br/ofertas#nav-header
+[LISTAGEM_DIRETA] Link 1 - página 2: https://www.mercadolivre.com.br/ofertas?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://www.mercadolivre.com.br/ofertas?page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_1] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_2] Carregando páginas 4 a 6 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 4: https://www.mercadolivre.com.br/ofertas?page=4
+[LISTAGEM_DIRETA] Link 1 - página 5: https://www.mercadolivre.com.br/ofertas?page=5
+[LISTAGEM_DIRETA] Link 1 - página 6: https://www.mercadolivre.com.br/ofertas?page=6
+[BLOCO_2] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_2] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_3] Carregando páginas 7 a 9 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 7: https://www.mercadolivre.com.br/ofertas?page=7
+[LISTAGEM_DIRETA] Link 1 - página 8: https://www.mercadolivre.com.br/ofertas?page=8
+[LISTAGEM_DIRETA] Link 1 - página 9: https://www.mercadolivre.com.br/ofertas?page=9
+[BLOCO_3] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_3] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_4] Carregando páginas 10 a 12 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 10: https://www.mercadolivre.com.br/ofertas?page=10
+[LISTAGEM_DIRETA] Link 1 - página 11: https://www.mercadolivre.com.br/ofertas?page=11
+[LISTAGEM_DIRETA] Link 1 - página 12: https://www.mercadolivre.com.br/ofertas?page=12
+[BLOCO_4] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_4] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_5] Carregando páginas 13 a 15 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 13: https://www.mercadolivre.com.br/ofertas?page=13
+[LISTAGEM_DIRETA] Link 1 - página 14: https://www.mercadolivre.com.br/ofertas?page=14
+[LISTAGEM_DIRETA] Link 1 - página 15: https://www.mercadolivre.com.br/ofertas?page=15
+[BLOCO_5] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/3
+[BLOCO_5] Nenhum candidato encontrado e limite de paginas atingido neste link.
+
+Nenhum candidato válido encontrado nas listagens diretas informadas.
+
+Nenhuma oferta elegível foi encontrada na pesquisa da home.
+
+=== Fim da execucao: 2026-07-21T20:45:37 ===

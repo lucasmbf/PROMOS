@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260721_203058",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb2042248327",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "Tapete Hig Good Pad P/ Cães E Gatos 60x60cm Com 50 Unidades",
+      "antes": "R$ 150",
+      "antes_valor": null,
+      "desconto": "66% OFF",
+      "depois": "R$ 50,68",
+      "depois_valor": 50.68,
+      "link_anuncio": "https://www.mercadolivre.com.br/tapete-hig-good-pad-p-ces-e-gatos-60x60cm-com-50-unidades/p/MLB2042248327?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=16&type=product&tracking_id=41369ff1-137d-4bf4-894f-2ccc39ba51e8&wid=MLB4367015239&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_838753-MLB101458358235_122025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb25474716",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "Petlike tapete higiênico para cães ultra pads lavanda 80cm x 60cm com 30 unidades",
+      "antes": "R$ 65,90",
+      "antes_valor": null,
+      "desconto": "17% OFF",
+      "depois": "R$ 54,46",
+      "depois_valor": 54.46,
+      "link_anuncio": "https://www.mercadolivre.com.br/petlike-tapete-higinico-para-ces-ultra-pads-lavanda-80cm-x-60cm-com-30-unidades/p/MLB25474716?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=2&type=product&tracking_id=41369ff1-137d-4bf4-894f-2ccc39ba51e8&wid=MLB5287371518&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_686270-MLA107467712640_032026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb22267725",
+      "categoria": "Shampoo e Condicionadores > Shampoo Cloresten",
+      "descricao": "Shampoo Agener União Cloresten Antibacteriano e Antifúngico para Cães e Gatos 500 mL",
+      "antes": "R$ 199,90",
+      "antes_valor": null,
+      "desconto": "44% OFF",
+      "depois": "R$ 111,45",
+      "depois_valor": 111.45,
+      "link_anuncio": "https://www.mercadolivre.com.br/shampoo-agener-unio-cloresten-antibacteriano-e-antifungico-para-ces-e-gatos-500-ml/p/MLB22267725?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=11&type=product&tracking_id=41369ff1-137d-4bf4-894f-2ccc39ba51e8&wid=MLB4249119220&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_681508-MLA104655911989_012026-O.webp"
+    }
+  ]
+}

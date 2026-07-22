@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260720_192212",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb67631087",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Areia Higiênica para Gatos 100% Mandioca Natural Biodegradável Torrão Instantâneo Alta Absorção Controle de Odor Baixa Poeira Ecológica Descarte Fácil 4kg - Good Vision",
+      "antes": "R$ 78,89",
+      "antes_valor": null,
+      "desconto": "58% OFF",
+      "depois": "R$ 32,96",
+      "depois_valor": 32.96,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-higinica-para-gatos-100-mandioca-natural-biodegradavel-torro-instantneo-alta-absorco-controle-de-odor-baixa-poeira-ecologica-descarte-facil-4kg-good-vision/p/MLB67631087?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=12&type=product&tracking_id=a5c0bee8-41af-47a5-b30a-21a04c3064e5&wid=MLB4586848321&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_732505-MLA110430572889_042026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb44443088",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Areia Sanitária Kadi 4kg Grãos Finos Biodegradável Gatos, aquela areia que vira torroes",
+      "antes": "R$ 48,40",
+      "antes_valor": null,
+      "desconto": "27% OFF",
+      "depois": "R$ 35,11",
+      "depois_valor": 35.11,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-sanitaria-kadi-4kg-gros-finos-biodegradavel-gatos-aquela-areia-que-vira-torroes/p/MLB44443088?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=2&type=product&tracking_id=a5c0bee8-41af-47a5-b30a-21a04c3064e5&wid=MLB6143571806&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_635936-MLA100959058996_122025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb65201554",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Areia Higiênica Biodegradável 4kg EcoMia 100% Natural Sustentável Para Gatos Sem Levantar Poeira Zero Odor Grãos Finos Torrões Firmes Feita de Mandioca",
+      "antes": "R$ 78,98",
+      "antes_valor": null,
+      "desconto": "54% OFF",
+      "depois": "R$ 35,98",
+      "depois_valor": 35.98,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-higinica-biodegradavel-4kg-ecomia-100-natural-sustentavel-para-gatos-sem-levantar-poeira-zero-odor-gros-finos-torroes-firmes-feita-de-mandioca/p/MLB65201554?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=10&type=product&tracking_id=a5c0bee8-41af-47a5-b30a-21a04c3064e5&wid=MLB6230890616&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_977071-MLA111609549443_052026-O.webp"
+    }
+  ]
+}

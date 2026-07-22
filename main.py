@@ -49,7 +49,7 @@ PRECO_MAXIMO_RELAMPAGO_PADRAO = 400
 
 DESCONTO_MINIMO_RELAMPAGO_PADRAO = 30
 
-LIMITE_PAGINAS_PESQUISA_PADRAO = 5
+LIMITE_PAGINAS_PESQUISA_PADRAO = 15
 
 CATEGORIA_PADRAO = "Acessórios para Veículos"
 
@@ -69,6 +69,12 @@ DEBUG_BREAKPOINTS = os.getenv("ENABLE_DEBUG_BREAKPOINTS", "0") == "1"
 DEBUG_BREAKPOINT_TARGET = os.getenv("DEBUG_BREAKPOINT_TARGET", "").strip()
 
 load_dotenv()
+
+TWILIO_STATUS_CHECK_TENTATIVAS = 1
+TWILIO_STATUS_CHECK_INTERVALO_SEGUNDOS = 1
+TWILIO_FORCAR_TEXTO_SOMENTE = os.getenv("TWILIO_FORCAR_TEXTO_SOMENTE", "0") == "1"
+TWILIO_ENVIAR_MIDIA_WEBP = os.getenv("TWILIO_ENVIAR_MIDIA_WEBP", "0") == "1"
+TWILIO_PAUSA_ENTRE_ENVIOS_SEGUNDOS = (0.2, 0.6)
 
 
 
@@ -146,7 +152,7 @@ def parse_args():
         "--limite-paginas-pesquisa",
         type=int,
         default=LIMITE_PAGINAS_PESQUISA_PADRAO,
-        help="Quantidade de páginas da pesquisa genérica para analisar na busca manual.",
+        help="Quantidade maxima de paginas a analisar na busca de produtos (links diretos e pesquisa generica).",
     )
 
     parser.add_argument(
@@ -1023,6 +1029,47 @@ def registrar_produto_ignorado(produto, motivo, detalhe=""):
         )
 
 
+def _aguardar_status_final_twilio(client, message_sid, tentativas=4, intervalo_segundos=2):
+
+    status_final = ""
+    erro_codigo = None
+    erro_mensagem = ""
+
+    for _ in range(max(1, int(tentativas))):
+
+        try:
+            mensagem = client.messages(message_sid).fetch()
+        except Exception:
+            break
+
+        status_final = str(getattr(mensagem, "status", "") or "").strip().lower()
+        erro_codigo = getattr(mensagem, "error_code", None)
+        erro_mensagem = str(getattr(mensagem, "error_message", "") or "").strip()
+
+        if status_final in {"delivered", "sent", "read", "failed", "undelivered", "canceled"}:
+            break
+
+        time.sleep(max(1, int(intervalo_segundos)))
+
+    return status_final, erro_codigo, erro_mensagem
+
+
+def _twilio_pode_enviar_midia(imagem_url):
+
+    url = str(imagem_url or "").strip()
+    if not (url.startswith("http://") or url.startswith("https://")):
+        return False, "url_invalida"
+
+    if TWILIO_FORCAR_TEXTO_SOMENTE:
+        return False, "modo_texto_somente"
+
+    caminho = url.split("?", 1)[0].lower()
+    if caminho.endswith(".webp") and not TWILIO_ENVIAR_MIDIA_WEBP:
+        return False, "webp_desativado"
+
+    return True, "ok"
+
+
 def enviar_produtos_por_whatsapp(produtos, incluir_banner_relampago=False):
 
     if not produtos:
@@ -1036,7 +1083,7 @@ def enviar_produtos_por_whatsapp(produtos, incluir_banner_relampago=False):
     account_sid = ler_variavel_ambiente("TWILIO_ACCOUNT_SID")
     auth_token = ler_variavel_ambiente("TWILIO_AUTH_TOKEN")
     whatsapp_from = ler_variavel_ambiente("TWILIO_WHATSAPP_FROM")
-    whatsapp_to = WHATSAPP_DESTINO_FIXO
+    whatsapp_to = ler_variavel_ambiente("TWILIO_WHATSAPP_TO") or WHATSAPP_DESTINO_FIXO
 
     variaveis_obrigatorias = {
         "TWILIO_ACCOUNT_SID": account_sid,
@@ -1070,33 +1117,45 @@ def enviar_produtos_por_whatsapp(produtos, incluir_banner_relampago=False):
         f"\n[DEBUG] Twilio Account SID: {account_sid[:4]}...{account_sid[-4:]}"
     )
 
+    total_falhas = 0
+    total_ok = 0
+
     for produto in produtos:
 
         mensagem = montar_mensagem_produto(
             produto,
             incluir_banner_relampago=incluir_banner_relampago,
         )
-        # Teste sem imagem: o envio fica somente no texto da mensagem.
-        # imagem = (produto.get("imagem") or "").strip()
+        imagem = str(
+            produto.get("imagem_principal")
+            or produto.get("url_imagem")
+            or produto.get("imagem")
+            or produto.get("secure_thumbnail")
+            or produto.get("thumbnail")
+            or ""
+        ).strip()
         parametros_envio = {
             "from_": whatsapp_from,
             "to": whatsapp_to,
             "body": mensagem,
         }
 
-        # Comentado para testar se a mídia estava afetando o envio no Twilio.
-        # if imagem.startswith("http://") or imagem.startswith("https://"):
-        #
-        #     # O Twilio usa media_url para enviar a imagem junto com a mensagem.
-        #     parametros_envio["media_url"] = [imagem]
+        pode_enviar_midia, motivo_midia = _twilio_pode_enviar_midia(imagem)
+        if pode_enviar_midia:
 
-        # print(
-        #     f"\n[DEBUG] media_url={'SIM' if 'media_url' in parametros_envio else 'NAO'}"
-        # )
+            # O Twilio usa media_url para enviar a imagem junto com a mensagem.
+            parametros_envio["media_url"] = [imagem]
 
-        # print(
-        #     f"[DEBUG] imagem={imagem if imagem else 'SEM IMAGEM'}"
-        # )
+        print(
+            f"\n[DEBUG] media_url={'SIM' if 'media_url' in parametros_envio else 'NAO'}"
+        )
+
+        if "media_url" not in parametros_envio:
+            print(f"[DEBUG] motivo_sem_midia={motivo_midia}")
+
+        print(
+            f"[DEBUG] imagem={imagem if imagem else 'SEM IMAGEM'}"
+        )
 
         debug_pausa("Antes de enviar para a API do Twilio")
 
@@ -1122,9 +1181,65 @@ def enviar_produtos_por_whatsapp(produtos, incluir_banner_relampago=False):
             f"Message SID Twilio: {resposta.sid}"
         )
 
-        time.sleep(
-            random.uniform(3, 5)
+        status_final, erro_codigo, erro_mensagem = _aguardar_status_final_twilio(
+            client,
+            resposta.sid,
+            tentativas=TWILIO_STATUS_CHECK_TENTATIVAS,
+            intervalo_segundos=TWILIO_STATUS_CHECK_INTERVALO_SEGUNDOS,
         )
+
+        if status_final:
+            print(f"[DEBUG] status_final_twilio={status_final}")
+
+        if status_final in {"failed", "undelivered", "canceled"}:
+            total_falhas += 1
+            print(
+                "[ERRO] Twilio nao entregou a mensagem "
+                f"(sid={resposta.sid}, status={status_final}, code={erro_codigo}, msg={erro_mensagem or 'sem detalhe'})."
+            )
+
+            if "media_url" in parametros_envio:
+                print("[DEBUG] Tentando reenvio sem imagem (fallback).")
+                try:
+                    resposta_fallback = client.messages.create(
+                        from_=whatsapp_from,
+                        to=whatsapp_to,
+                        body=mensagem,
+                    )
+                    status_fb, erro_codigo_fb, erro_mensagem_fb = _aguardar_status_final_twilio(
+                        client,
+                        resposta_fallback.sid,
+                        tentativas=TWILIO_STATUS_CHECK_TENTATIVAS,
+                        intervalo_segundos=TWILIO_STATUS_CHECK_INTERVALO_SEGUNDOS,
+                    )
+
+                    if status_fb:
+                        print(f"[DEBUG] status_final_twilio_fallback={status_fb}")
+
+                    if status_fb in {"failed", "undelivered", "canceled"}:
+                        print(
+                            "[ERRO] Fallback sem imagem tambem falhou "
+                            f"(sid={resposta_fallback.sid}, status={status_fb}, code={erro_codigo_fb}, msg={erro_mensagem_fb or 'sem detalhe'})."
+                        )
+                    else:
+                        total_ok += 1
+                        print(f"[OK] Fallback sem imagem enviado com sid={resposta_fallback.sid}.")
+                except TwilioRestException as exc_fb:
+                    print(
+                        "[ERRO] Excecao no fallback sem imagem: "
+                        f"code={getattr(exc_fb, 'code', '-')}, status={getattr(exc_fb, 'status', '-')}, "
+                        f"msg={str(getattr(exc_fb, 'msg', exc_fb) or exc_fb).strip()}"
+                    )
+        else:
+            total_ok += 1
+
+        time.sleep(
+            random.uniform(*TWILIO_PAUSA_ENTRE_ENVIOS_SEGUNDOS)
+        )
+
+    print(
+        f"\n[RESUMO_TWILIO] entregues_ou_processadas={total_ok} falhas={total_falhas} total={len(produtos)}"
+    )
 
 
 def coletar_links_com_desconto(page, url, desconto_minimo, limite):

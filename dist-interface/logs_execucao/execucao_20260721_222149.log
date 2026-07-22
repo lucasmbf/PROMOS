@@ -1,0 +1,156 @@
+=== Inicio da execucao: 2026-07-21T22:21:49 ===
+Args: --somente-relampago --url-relampago https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat --desconto-minimo 10 --limite-candidatos 10 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260721_222215_582114_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260721_222215_582114_01.txt
+42 oferta(s) com 10% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb2171368181 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3525364839 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6549158890 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb2171387384 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5829872154 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5800919092 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4783917119 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5522151066 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4132938793 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 214 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260721_222215.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1GXwfEq
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2N9x2WL
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2gJyrtn
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1rzGyAc
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/22foiTa
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2hyZ9cu
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2zCgDEZ
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2bKVASN
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/13u8Ft7
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2mt8E13
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0081_20260721_222353.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 10 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON relâmpago salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\ofertas_20260721_222353.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260721_222354.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_874975-MLA103430021763_012026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bicicleta Spinning Com Roda De Inércia De 13kg Wct Fitness Cor Preto
+Message SID Twilio: SM7c58f4f7aeb4298bb35aeaf12bc20d89
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_778430-MLA99478653530_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tablet HUAWEI MatePad SE 11 Wifi 6+128GB Tela HUAWEI FullView de 11" para Conforto Visual, Superbateria de 7700 mAh 225W Câmera Traseira 8 MP, Câmera Frontal 5 MP Cinza Nebula
+Message SID Twilio: SMa41ee2b7f2d6523dcacd9702cb348005
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_837339-MLB112581322185_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Camisetas Calvin Klein | Masculina Preta/azul Marinho Preta/azul Marinho L/g
+Message SID Twilio: SM2e37390358fe442587d0032fbb4c5c96
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_614829-MLA110791527994_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fritadeira Elétrica Air Fryer WAP Cozinha Barbecue com Painel Digital e 12 Funções Preto e cinza
+Message SID Twilio: SM2a0e65dc10bb36c7b69ae46768397645
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_734480-MLA101351282313_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Feminino Slide Chinelo Mizuno Enerzy 555-marinho Liso 41.42 Br
+Message SID Twilio: SM2cc5762d8e50ff3daff505853ad76d24
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_973553-MLA106776428822_022026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Notebook Gamer Dell Alienware C7 16gb Rtx 4050 W11 - A35
+Message SID Twilio: SMcdd699c0ec6d3fbab4af458cbef5fb7a
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_855365-MLB95050151929_102025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Gloss Fran By Franciny Ehlke Liphoney Mel Liphoney-mel
+Message SID Twilio: SM0c0222ea373f7e38b242e74a8c62b424
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_974912-MLA95636791894_102025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bicicleta Ergométrica Vertical Dobrável Exercicio Para Perna Cor Preto
+Message SID Twilio: SM4fafdbedb8f4b78d1124ca773bc4cb0e
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_626700-MLA99662959648_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Monitor Portátil 15.6''com Usb C Dupla/hdmi Fhd 1080p 60hz
+Message SID Twilio: SM7b875c9852fac16e4aa8369c766369bd
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_907307-MLA96712828445_102025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Parafusadeira Furadeira Sem Fio Bateria 12v P/ Madeira Metal Tb-12e The Black Tools Com Jogo De Soquetes 40 Peças
+Message SID Twilio: SM90e794abcc9e5d2148e9d1a6e3b4f475
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=10 falhas=0 total=10
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-21T22:24:13 ===

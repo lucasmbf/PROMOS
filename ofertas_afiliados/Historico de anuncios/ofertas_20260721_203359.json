@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260721_203359",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb1328164",
+      "categoria": "Bebedouros > Bebedouro Pet",
+      "descricao": "Bebedouro Pet Pelos Longos Evita Molhar Cães Gatos Com Boia",
+      "antes": "R$ 35",
+      "antes_valor": null,
+      "desconto": "18% OFF",
+      "depois": "R$ 28,70",
+      "depois_valor": 28.7,
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-3343311355-bebedouro-pet-pelos-longos-evita-molhar-ces-gatos-com-boia-_JM?searchVariation=177953311160&pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&searchVariation=177953311160&float_highlight=last_units&be_origin=backend&search_layout=grid&position=3&type=item&tracking_id=f87ce954-2c5d-43a2-8f4e-720753f100e8&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_975191-MLB93655800875_092025-O-bebedouro-pet-pelos-longos-evita-molhar-ces-gatos-com-boia.webp"
+    },
+    {
+      "id_anuncio": "mlb26654484",
+      "categoria": "Alimento, Petisco e Suplemento > Rações",
+      "descricao": "Alimento Golden Special Gatos Castrados Sabor frango e Carne 10.1 kg",
+      "antes": "R$ 249,90",
+      "antes_valor": null,
+      "desconto": "50% OFF",
+      "depois": "R$ 122,92",
+      "depois_valor": 122.92,
+      "link_anuncio": "https://www.mercadolivre.com.br/alimento-golden-special-gatos-castrados-sabor-frango-e-carne-101-kg/p/MLB26654484?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=9&type=product&tracking_id=f87ce954-2c5d-43a2-8f4e-720753f100e8&wid=MLB6773318510&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_901974-MLA99934727927_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb22361583",
+      "categoria": "Ração para Cães > Racao",
+      "descricao": "Ração Quatree Supreme Gatos Castrados Frango 10.1kg",
+      "antes": "R$ 599,99",
+      "antes_valor": null,
+      "desconto": "72% OFF",
+      "depois": "R$ 167,90",
+      "depois_valor": 167.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/raco-quatree-supreme-gatos-castrados-frango-101kg/p/MLB22361583?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=f87ce954-2c5d-43a2-8f4e-720753f100e8&wid=MLB5996606138&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_729927-MLA108260586639_032026-O.webp"
+    }
+  ]
+}

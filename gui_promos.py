@@ -96,10 +96,12 @@ LOGIN_OK_SIGNAL_FILE = BASE_DIR / ".ml_login_ok.signal"
 AUTH_MARKER_REQUIRED_ML = "[AUTH_REQUIRED_ML]"
 AUTH_MARKER_STILL_PENDING_ML = "[AUTH_STILL_PENDING_ML]"
 SCHEDULER_TICK_MS = 60000
+LOG_CLEANUP_INTERVAL_DAYS = 5
 ALERTS_IMPORT_INTERVAL_MINUTES = 10
 ALERT_INTERVAL_HOURS_FIXED = 3
 ALERT_ACTIVE_DAYS_DEFAULT = 30
 ALERT_EXECUTION_DAYS_AFTER_FIRST_TRIGGER = 7
+LOG_CLEANUP_STATE_FILE = BASE_DIR / "limpeza_logs_estado.json"
 TWILIO_TRIAL_FORCE_ACTIVE_CONFIGS = True
 TWILIO_TRIAL_DESTINO_PADRAO = "19991133269"
 HTTP_HEADERS = {
@@ -1513,6 +1515,49 @@ def save_hub_schedules_config(config_path, schedules):
         json.dump(schedules, file, indent=2, ensure_ascii=False)
 
 
+def _load_log_cleanup_state(state_path):
+    try:
+        with open(state_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+        return data if isinstance(data, dict) else {}
+    except FileNotFoundError:
+        return {}
+    except Exception:
+        return {}
+
+
+def _save_log_cleanup_state(state_path, state):
+    try:
+        with open(state_path, "w", encoding="utf-8") as file:
+            json.dump(state, file, indent=2, ensure_ascii=False)
+    except Exception:
+        pass
+
+
+def _cleanup_execution_logs(logs_dir, retention_days):
+    base_dir = Path(logs_dir)
+    if not base_dir.exists() or not base_dir.is_dir():
+        return {"removed": 0, "errors": 0}
+
+    limite = datetime.now() - timedelta(days=max(1, int(retention_days or 1)))
+    removidos = 0
+    erros = 0
+
+    for arquivo in base_dir.rglob("*.log"):
+        try:
+            if not arquivo.is_file():
+                continue
+
+            modificado_em = datetime.fromtimestamp(arquivo.stat().st_mtime)
+            if modificado_em < limite:
+                arquivo.unlink()
+                removidos += 1
+        except Exception:
+            erros += 1
+
+    return {"removed": removidos, "errors": erros}
+
+
 def _parse_iso_datetime(value):
     if not value:
         return None
@@ -2200,6 +2245,36 @@ def create_gui(categorias):
         fonte_scale.pack(fill="x", pady=(6, 10))
         fonte_scale.set(56)
 
+        fonte_familias_disponiveis = ["Segoe UI", "Arial", "Calibri", "Cambria", "Verdana", "Tahoma"]
+        fonte_familia_var = tk.StringVar(value="Segoe UI")
+        fonte_negrito_var = tk.BooleanVar(value=True)
+        fonte_italico_var = tk.BooleanVar(value=False)
+
+        ttk.Label(left_panel, text="Estilo da fonte:").pack(anchor="w", pady=(0, 0))
+        fonte_familia_combo = ttk.Combobox(
+            left_panel,
+            textvariable=fonte_familia_var,
+            values=fonte_familias_disponiveis,
+            state="readonly",
+            width=24,
+        )
+        fonte_familia_combo.pack(fill="x", pady=(6, 6))
+
+        estilo_fonte_frame = ttk.Frame(left_panel)
+        estilo_fonte_frame.pack(fill="x", pady=(0, 10))
+        ttk.Checkbutton(
+            estilo_fonte_frame,
+            text="Negrito",
+            variable=fonte_negrito_var,
+            command=lambda: _on_font_style_change(),
+        ).pack(side="left")
+        ttk.Checkbutton(
+            estilo_fonte_frame,
+            text="Itálico",
+            variable=fonte_italico_var,
+            command=lambda: _on_font_style_change(),
+        ).pack(side="left", padx=(8, 0))
+
         largura_texto_var = tk.IntVar(value=80)
         ttk.Label(left_panel, text="Largura da caixa de texto (% da imagem):").pack(anchor="w", pady=(2, 0))
         largura_scale = ttk.Scale(left_panel, from_=30, to=95, orient="horizontal")
@@ -2215,7 +2290,7 @@ def create_gui(categorias):
         btns_anuncio_frame = ttk.Frame(left_panel)
         btns_anuncio_frame.pack(fill="x", pady=(0, 10))
 
-        cor_texto_var = tk.StringVar(value="#ffffff")
+        cor_texto_var = tk.StringVar(value="#FFFFFF")
         cor_texto_btn = ttk.Button(left_panel, text="Cor da fonte: #FFFFFF")
         cor_texto_btn.pack(fill="x", pady=(0, 10))
 
@@ -2251,6 +2326,66 @@ def create_gui(categorias):
             "anuncio_size_preview": (0, 0),
             "text_width_px_preview": 0,
         }
+
+        def _desenhar_decorador_item(item_id, cor, tag_base):
+            if not item_id:
+                return
+
+            bbox = canvas.bbox(item_id)
+            if not bbox:
+                return
+
+            x1, y1, x2, y2 = bbox
+            margem = 6
+            x1 -= margem
+            y1 -= margem
+            x2 += margem
+            y2 += margem
+
+            decor_tag = f"{tag_base}_decor"
+            canvas.create_rectangle(
+                x1,
+                y1,
+                x2,
+                y2,
+                outline=cor,
+                width=2,
+                dash=(4, 3),
+                tags=(tag_base, decor_tag, f"{tag_base}_outline"),
+            )
+
+            raio = 5
+            for hx, hy in ((x1, y1), (x2, y1), (x1, y2), (x2, y2)):
+                canvas.create_oval(
+                    hx - raio,
+                    hy - raio,
+                    hx + raio,
+                    hy + raio,
+                    fill=cor,
+                    outline="#ffffff",
+                    width=1,
+                    tags=(tag_base, decor_tag, f"{tag_base}_handle"),
+                )
+
+        def _atualizar_decoradores_overlay():
+            canvas.delete("overlay_text_decor")
+            canvas.delete("overlay_anuncio_decor")
+            _desenhar_decorador_item(preview_state.get("canvas_text_id"), "#2f6fed", "overlay_text")
+            _desenhar_decorador_item(preview_state.get("canvas_anuncio_id"), "#e08a00", "overlay_anuncio")
+
+        def _ajustar_tamanho_texto(direcao):
+            novo_valor = max(24, min(120, int(tamanho_fonte_var.get()) + direcao * 2))
+            tamanho_fonte_var.set(novo_valor)
+            fonte_scale.set(novo_valor)
+            if preview_state["img_original"] is not None:
+                _render_preview(reset_texto_pos=False)
+
+        def _ajustar_tamanho_anuncio(direcao):
+            novo_valor = max(10, min(95, int(tamanho_anuncio_var.get()) + direcao * 2))
+            tamanho_anuncio_var.set(novo_valor)
+            anuncio_scale.set(novo_valor)
+            if preview_state["img_original"] is not None:
+                _render_preview(reset_texto_pos=False)
 
         def _migrar_anuncios_para_pasta_dedicada():
             origem = Path(PASTA_TEMPLATES_INSTAGRAM)
@@ -2404,15 +2539,67 @@ def create_gui(categorias):
             encontrados = sorted({str(p.resolve()) for p in encontrados}, key=lambda p: os.path.basename(p).lower())
             return encontrados
 
-        def _fonte_para_overlay(tamanho):
+        def _fonte_para_overlay(tamanho, familia, negrito=False, italico=False):
             tamanho = max(12, int(tamanho))
-            fontes = [
-                "C:/Windows/Fonts/seguiemj.ttf",
-                "C:/Windows/Fonts/segoeuib.ttf",
+            familia_key = (familia or "").strip().lower()
+
+            mapa_fontes = {
+                "segoe ui": {
+                    "regular": ["C:/Windows/Fonts/segoeui.ttf"],
+                    "bold": ["C:/Windows/Fonts/segoeuib.ttf"],
+                    "italic": ["C:/Windows/Fonts/segoeuii.ttf"],
+                    "bold_italic": ["C:/Windows/Fonts/segoeuiz.ttf"],
+                },
+                "arial": {
+                    "regular": ["C:/Windows/Fonts/arial.ttf"],
+                    "bold": ["C:/Windows/Fonts/arialbd.ttf"],
+                    "italic": ["C:/Windows/Fonts/ariali.ttf"],
+                    "bold_italic": ["C:/Windows/Fonts/arialbi.ttf"],
+                },
+                "calibri": {
+                    "regular": ["C:/Windows/Fonts/calibri.ttf"],
+                    "bold": ["C:/Windows/Fonts/calibrib.ttf"],
+                    "italic": ["C:/Windows/Fonts/calibrii.ttf"],
+                    "bold_italic": ["C:/Windows/Fonts/calibriz.ttf"],
+                },
+                "cambria": {
+                    "regular": ["C:/Windows/Fonts/cambria.ttc", "C:/Windows/Fonts/cambria.ttf"],
+                    "bold": ["C:/Windows/Fonts/cambriab.ttf"],
+                    "italic": ["C:/Windows/Fonts/cambriai.ttf"],
+                    "bold_italic": ["C:/Windows/Fonts/cambriaz.ttf"],
+                },
+                "verdana": {
+                    "regular": ["C:/Windows/Fonts/verdana.ttf"],
+                    "bold": ["C:/Windows/Fonts/verdanab.ttf"],
+                    "italic": ["C:/Windows/Fonts/verdanai.ttf"],
+                    "bold_italic": ["C:/Windows/Fonts/verdanaz.ttf"],
+                },
+                "tahoma": {
+                    "regular": ["C:/Windows/Fonts/tahoma.ttf"],
+                    "bold": ["C:/Windows/Fonts/tahomabd.ttf"],
+                    "italic": [],
+                    "bold_italic": [],
+                },
+            }
+
+            estilo_chave = "regular"
+            if negrito and italico:
+                estilo_chave = "bold_italic"
+            elif negrito:
+                estilo_chave = "bold"
+            elif italico:
+                estilo_chave = "italic"
+
+            familia_escolhida = mapa_fontes.get(familia_key, mapa_fontes["segoe ui"])
+            fontes = []
+            fontes.extend(familia_escolhida.get(estilo_chave, []))
+            if estilo_chave != "regular":
+                fontes.extend(familia_escolhida.get("regular", []))
+            fontes.extend([
                 "C:/Windows/Fonts/segoeui.ttf",
-                "C:/Windows/Fonts/arialbd.ttf",
                 "C:/Windows/Fonts/arial.ttf",
-            ]
+            ])
+
             for caminho_fonte in fontes:
                 if os.path.exists(caminho_fonte):
                     try:
@@ -2420,6 +2607,16 @@ def create_gui(categorias):
                     except Exception:
                         continue
             return ImageFont.load_default()
+
+        def _fonte_preview_tk(tamanho):
+            estilo = []
+            if fonte_negrito_var.get():
+                estilo.append("bold")
+            if fonte_italico_var.get():
+                estilo.append("italic")
+
+            estilo_txt = " ".join(estilo) if estilo else "normal"
+            return (fonte_familia_var.get(), max(10, int(tamanho)), estilo_txt)
 
         def _atualizar_posicao_label():
             if not preview_state["canvas_text_id"]:
@@ -2450,6 +2647,20 @@ def create_gui(categorias):
             preview = img.resize((preview_w, preview_h), Image.Resampling.LANCZOS)
             preview_tk = ImageTk.PhotoImage(preview)
 
+            # Preserva posições atuais antes de limpar o canvas para evitar
+            # perder referências de item IDs durante redraw.
+            text_coords_antigas = None
+            if preview_state.get("canvas_text_id"):
+                coords = canvas.coords(preview_state["canvas_text_id"])
+                if len(coords) >= 2:
+                    text_coords_antigas = (coords[0], coords[1])
+
+            anuncio_coords_antigas = None
+            if preview_state.get("canvas_anuncio_id"):
+                coords = canvas.coords(preview_state["canvas_anuncio_id"])
+                if len(coords) >= 2:
+                    anuncio_coords_antigas = (coords[0], coords[1])
+
             canvas.delete("all")
             cx = area_w // 2 + 4
             cy = area_h // 2 + 4
@@ -2473,10 +2684,10 @@ def create_gui(categorias):
                 )
                 anuncio_preview_tk = ImageTk.PhotoImage(anuncio_preview)
 
-                if reset_texto_pos or preview_state.get("canvas_anuncio_id") is None:
+                if reset_texto_pos or anuncio_coords_antigas is None:
                     anuncio_x, anuncio_y = cx, cy
                 else:
-                    anuncio_x, anuncio_y = canvas.coords(preview_state["canvas_anuncio_id"])
+                    anuncio_x, anuncio_y = anuncio_coords_antigas
 
                 limite_x_min = cx - preview_w / 2 + largura_alvo_preview / 2
                 limite_x_max = cx + preview_w / 2 - largura_alvo_preview / 2
@@ -2498,11 +2709,10 @@ def create_gui(categorias):
 
             texto = (texto_post.get("1.0", "end").strip() or "Seu texto aqui")
 
-            if reset_texto_pos or preview_state["canvas_text_id"] is None:
+            if reset_texto_pos or text_coords_antigas is None:
                 text_x, text_y = cx, cy
             else:
-                old_x, old_y = canvas.coords(preview_state["canvas_text_id"])
-                text_x, text_y = old_x, old_y
+                text_x, text_y = text_coords_antigas
 
             text_x = min(cx + preview_w // 2, max(cx - preview_w // 2, text_x))
             text_y = min(cy + preview_h // 2, max(cy - preview_h // 2, text_y))
@@ -2512,7 +2722,7 @@ def create_gui(categorias):
                 text_y,
                 text=texto,
                 fill=cor_texto_var.get(),
-                font=("Segoe UI", max(10, int(tamanho_fonte_var.get() * escala)), "bold"),
+                font=_fonte_preview_tk(tamanho_fonte_var.get() * escala),
                 justify="center",
                 anchor="center",
                 width=max(80, int(preview_w * (max(30, min(95, largura_texto_var.get())) / 100.0))),
@@ -2528,6 +2738,9 @@ def create_gui(categorias):
             preview_state["anuncio_size_preview"] = anuncio_preview_size
             preview_state["canvas_text_id"] = text_id
             preview_state["text_width_px_preview"] = max(80, int(preview_w * (max(30, min(95, largura_texto_var.get())) / 100.0)))
+
+            _atualizar_decoradores_overlay()
+
             _atualizar_posicao_label()
 
         def _carregar_template(caminho):
@@ -2541,6 +2754,7 @@ def create_gui(categorias):
 
             preview_state["template_selecionado"] = caminho
             preview_state["img_original"] = imagem
+            template_var.set(os.path.basename(caminho))
             info_var.set(f"Template: {os.path.basename(caminho)} ({imagem.size[0]}x{imagem.size[1]})")
             _render_preview(reset_texto_pos=True)
 
@@ -2563,10 +2777,11 @@ def create_gui(categorias):
                 _atualizar_posicao_label()
                 return
 
+            caminho_desejado = selecionar_caminho or preview_state.get("template_selecionado")
             indice = 0
-            if selecionar_caminho:
+            if caminho_desejado:
                 for i, caminho in enumerate(templates):
-                    if os.path.normcase(caminho) == os.path.normcase(selecionar_caminho):
+                    if os.path.normcase(caminho) == os.path.normcase(caminho_desejado):
                         indice = i
                         break
 
@@ -2646,6 +2861,11 @@ def create_gui(categorias):
 
         def _on_font_scale(_event=None):
             tamanho_fonte_var.set(int(float(fonte_scale.get())))
+            if preview_state["img_original"] is None:
+                return
+            _render_preview(reset_texto_pos=False)
+
+        def _on_font_style_change(_event=None):
             if preview_state["img_original"] is None:
                 return
             _render_preview(reset_texto_pos=False)
@@ -2748,6 +2968,7 @@ def create_gui(categorias):
             novo_y = event.y + preview_state["drag_dy"]
             novo_x, novo_y = _limitar_texto_na_imagem(novo_x, novo_y)
             canvas.coords(preview_state["canvas_text_id"], novo_x, novo_y)
+            _atualizar_decoradores_overlay()
             _atualizar_posicao_label()
 
         def _limitar_anuncio_na_imagem(x, y):
@@ -2776,6 +2997,45 @@ def create_gui(categorias):
             novo_y = event.y + preview_state["anuncio_drag_dy"]
             novo_x, novo_y = _limitar_anuncio_na_imagem(novo_x, novo_y)
             canvas.coords(preview_state["canvas_anuncio_id"], novo_x, novo_y)
+            _atualizar_decoradores_overlay()
+
+        def _resizing_target_from_event(event):
+            itens = canvas.find_withtag("current")
+            if not itens:
+                return None
+
+            tags = canvas.gettags(itens[0])
+            if any(tag.startswith("overlay_text") for tag in tags):
+                return "texto"
+            if any(tag.startswith("overlay_anuncio") for tag in tags):
+                return "anuncio"
+            return None
+
+        def _on_canvas_wheel(event):
+            alvo = _resizing_target_from_event(event)
+            if alvo is None:
+                return
+
+            if getattr(event, "delta", 0):
+                direcao = 1 if event.delta > 0 else -1
+            else:
+                direcao = 1 if getattr(event, "num", 0) == 4 else -1
+
+            if alvo == "texto":
+                _ajustar_tamanho_texto(direcao)
+            elif alvo == "anuncio":
+                _ajustar_tamanho_anuncio(direcao)
+
+        def _cor_hex_para_rgb(cor_hex):
+            cor = str(cor_hex or "").strip().lstrip("#")
+            if len(cor) == 3:
+                cor = "".join(ch * 2 for ch in cor)
+            if len(cor) != 6:
+                return (0, 0, 0)
+            try:
+                return (int(cor[0:2], 16), int(cor[2:4], 16), int(cor[4:6], 16))
+            except ValueError:
+                return (0, 0, 0)
 
         def _salvar_post_customizado():
             texto = texto_post.get("1.0", "end").strip()
@@ -2836,21 +3096,34 @@ def create_gui(categorias):
                 x_img = min(imagem_saida.size[0], max(0, x_img))
                 y_img = min(imagem_saida.size[1], max(0, y_img))
 
-                fonte = _fonte_para_overlay(tamanho_fonte_var.get())
+                fonte = _fonte_para_overlay(
+                    tamanho_fonte_var.get(),
+                    fonte_familia_var.get(),
+                    negrito=fonte_negrito_var.get(),
+                    italico=fonte_italico_var.get(),
+                )
                 largura_fracao = max(30, min(95, largura_texto_var.get())) / 100.0
                 largura_texto_px = max(120, int(imagem_saida.size[0] * largura_fracao))
                 texto_quebrado = _quebrar_texto_por_largura(draw, texto, fonte, largura_texto_px)
-                draw.multiline_text(
-                    (x_img, y_img),
-                    texto_quebrado,
-                    fill=cor_texto_var.get(),
-                    font=fonte,
-                    anchor="mm",
-                    align="center",
-                    spacing=8,
-                    stroke_width=3,
-                    stroke_fill=(0, 0, 0),
-                )
+                cor_texto = cor_texto_var.get()
+                rgb_texto = _cor_hex_para_rgb(cor_texto)
+                luminancia = (0.2126 * rgb_texto[0] + 0.7152 * rgb_texto[1] + 0.0722 * rgb_texto[2]) / 255.0
+
+                args_texto = {
+                    "xy": (x_img, y_img),
+                    "text": texto_quebrado,
+                    "fill": cor_texto,
+                    "font": fonte,
+                    "anchor": "mm",
+                    "align": "center",
+                    "spacing": 8,
+                }
+
+                if luminancia >= 0.35:
+                    args_texto["stroke_width"] = 3
+                    args_texto["stroke_fill"] = (0, 0, 0)
+
+                draw.multiline_text(**args_texto)
 
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 nome_arquivo = f"post_instagram_custom_{timestamp}.png"
@@ -2914,6 +3187,7 @@ def create_gui(categorias):
         texto_post.bind("<KeyRelease>", _on_text_change)
         fonte_scale.bind("<ButtonRelease-1>", _on_font_scale)
         fonte_scale.bind("<B1-Motion>", _on_font_scale)
+        fonte_familia_combo.bind("<<ComboboxSelected>>", _on_font_style_change)
         largura_scale.bind("<ButtonRelease-1>", _on_largura_scale)
         largura_scale.bind("<B1-Motion>", _on_largura_scale)
         anuncio_scale.bind("<ButtonRelease-1>", _on_anuncio_scale)
@@ -2922,6 +3196,9 @@ def create_gui(categorias):
         canvas.tag_bind("overlay_text", "<B1-Motion>", _drag_move)
         canvas.tag_bind("overlay_anuncio", "<ButtonPress-1>", _drag_start_anuncio)
         canvas.tag_bind("overlay_anuncio", "<B1-Motion>", _drag_move_anuncio)
+        canvas.bind("<MouseWheel>", _on_canvas_wheel)
+        canvas.bind("<Button-4>", _on_canvas_wheel)
+        canvas.bind("<Button-5>", _on_canvas_wheel)
         canvas.bind("<Configure>", lambda _event: _render_preview(reset_texto_pos=False) if preview_state["img_original"] else None)
 
         anuncios_migrados = _migrar_anuncios_para_pasta_dedicada()
@@ -3025,6 +3302,8 @@ def create_gui(categorias):
     worker_log = {"path": None}
     alert_log = {"path": None}
     sheet_sync_log = {"path": None}
+    log_cleanup_state = _load_log_cleanup_state(LOG_CLEANUP_STATE_FILE)
+    log_cleanup_runtime = {"running": False}
     worker_messages = queue.Queue()
     alerts_lock = threading.Lock()
 
@@ -5418,9 +5697,41 @@ def create_gui(categorias):
         if enfileirados:
             _run_next_alert_from_queue()
 
+    def _run_log_cleanup_if_due():
+        if log_cleanup_runtime["running"]:
+            return
+
+        now = datetime.now()
+        last_cleanup = _parse_iso_datetime(log_cleanup_state.get("last_cleanup_at"))
+
+        if last_cleanup is not None and (now - last_cleanup) < timedelta(days=LOG_CLEANUP_INTERVAL_DAYS):
+            return
+
+        log_cleanup_runtime["running"] = True
+
+        def _worker_cleanup_logs():
+            resultado = {"removed": 0, "errors": 0}
+            executado_em = datetime.now()
+            try:
+                resultado = _cleanup_execution_logs(LOGS_DIR, LOG_CLEANUP_INTERVAL_DAYS)
+                log_cleanup_state["last_cleanup_at"] = executado_em.isoformat(timespec="seconds")
+                _save_log_cleanup_state(LOG_CLEANUP_STATE_FILE, log_cleanup_state)
+            finally:
+                def _finalizar_limpeza():
+                    log_cleanup_runtime["running"] = False
+                    _append_resumo(
+                        f"[{datetime.now().strftime('%H:%M:%S')}] Limpeza automática de logs concluída: "
+                        f"{resultado['removed']} removido(s), {resultado['errors']} erro(s).\n"
+                    )
+
+                root.after(0, _finalizar_limpeza)
+
+        threading.Thread(target=_worker_cleanup_logs, daemon=True).start()
+
     def scheduler_loop():
         if datetime.now() >= sheets_sync_state["next_run_at"]:
             _import_alerts_from_sheet_once()
+        _run_log_cleanup_if_due()
         run_scheduler_tick()
         run_hub_scheduler_tick()
         _refresh_hub_schedules_grid()

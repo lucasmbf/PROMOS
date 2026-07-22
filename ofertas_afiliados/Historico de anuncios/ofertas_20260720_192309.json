@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260720_192309",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb20953497",
+      "categoria": "Ração para Cães > Racao",
+      "descricao": "Caixa Fechada 15 Sachês 100g Ração Úmida Pet Dog Chow Carne",
+      "antes": "R$ 78,90",
+      "antes_valor": null,
+      "desconto": "49% OFF",
+      "depois": "R$ 39,90",
+      "depois_valor": 39.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/caixa-fechada-15-sachs-100g-raco-umida-pet-dog-chow-carne/p/MLB20953497?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=10&type=product&tracking_id=61547d15-6d86-4ea6-ba0e-1bf0d0b6cbff&wid=MLB6162274744&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_778188-MLA99932453197_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb66460432",
+      "categoria": "Alimento, Petisco e Suplemento > Ração para Cães",
+      "descricao": "Ração Gran Plus Choice Adultos Sabor Frango E Carne 15kg",
+      "antes": "R$ 218,46",
+      "antes_valor": null,
+      "desconto": "42% OFF",
+      "depois": "R$ 125,12",
+      "depois_valor": 125.12,
+      "link_anuncio": "https://www.mercadolivre.com.br/raco-gran-plus-choice-adultos-sabor-frango-e-carne-15kg/p/MLB66460432?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=9&type=product&tracking_id=61547d15-6d86-4ea6-ba0e-1bf0d0b6cbff&wid=MLB6475851694&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_905034-MLA107826056416_032026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb21173691",
+      "categoria": "Ração para Cães > Racao",
+      "descricao": "Ração Cachorros Adultos Quatree Supreme Raças Pequenas 10kg",
+      "antes": "R$ 299",
+      "antes_valor": null,
+      "desconto": "47% OFF",
+      "depois": "R$ 157,11",
+      "depois_valor": 157.11,
+      "link_anuncio": "https://www.mercadolivre.com.br/raco-cachorros-adultos-quatree-supreme-racas-pequenas-10kg/p/MLB21173691?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=2&type=product&tracking_id=61547d15-6d86-4ea6-ba0e-1bf0d0b6cbff&wid=MLB4105038481&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_954952-MLA112052411495_052026-O.webp"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+=== Inicio da execucao: 2026-07-20T19:08:08 ===
+Args: --somente-relampago --url-relampago https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat --desconto-minimo 30 --limite-candidatos 15 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260720_190834_343826_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260720_190834_343826_01.txt
+34 oferta(s) com 30% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb4812130742 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5534487596 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3817089255 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4314606824 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5748326240 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb6465256686 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5800919092 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4718918529 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb4839435023 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5761715520 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb5522151066 marcado como anuncio_inedito=false no histórico.
+[DESCARTADO - HISTORICO] Anúncio mlb3754624021 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 219 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260720_190834.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2isTAL2
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2dmFdPt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/193VCB3
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2u3UdMj
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2Uio374
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2gxSwm6
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1dxY9ss
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1wug8fz
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2Nh9v3T
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2Bj1D4x
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0080_20260720_191014.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 10 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON relâmpago salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\ofertas_20260720_191014.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260720_191014.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cafeteira Espresso Luna Preta - TRES 3 Corações
+Message SID Twilio: SM3b100fcffa947825bda9f3fce3b53cbf
+
+Mensagem enviada para whatsapp:+5519991133269:
+Copo P/ Água Reforçado 180ml Transp Descartável Ps 2500 Uni
+Message SID Twilio: SMf1f5f75a28cfd0d0c416851e2d9f4faa
+
+Mensagem enviada para whatsapp:+5519991133269:
+Dreame L40 Robô Aspirador E Passa Pano, 13000 Pa, Bivolt Branco
+Message SID Twilio: SMec6509c6731f14033a368e1e1ac1d09d
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cafeteira Espresso Luna Vermelha - TRES 3 Corações
+Message SID Twilio: SM786818145608ec97792b804049e89cb4
+
+Mensagem enviada para whatsapp:+5519991133269:
+Escova Modeladora Ar Quente Com Íons Negativos Gokoco Gd037 Preto 127/220v
+Message SID Twilio: SM8d65192f3743221beedd226b4856354c
+
+Mensagem enviada para whatsapp:+5519991133269:
+Parafusadeira E Furadeira Impacto The Black Tools Tb-21pw 3/8 Cor Amarelo Frequência 50/60 Hz
+Message SID Twilio: SM30394179802583441dce6824871af93a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera Residencial Infravermelho Ip Bullet Hilook By Hikvision Ipc-b121h-c(2.8mm)
+Message SID Twilio: SM017a0cabd1c0e09729a6efb164f7d7a6
+
+Mensagem enviada para whatsapp:+5519991133269:
+Caixa Amplificada Mondial CM-650-N 650W Bluetooth MIC Guitar
+Message SID Twilio: SMd4e1a6005896ec57d7979400342c5a41
+
+Mensagem enviada para whatsapp:+5519991133269:
+Carregador Carro Elétrico Portátil 7kw 32a Tipo 2 110/220v
+Message SID Twilio: SM4990eb11e0f4f8b0d1ccecfa1b0ac618
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Parafusadeira Furadeira De Impacto Hp333dwyx3 Makita Bateria 12V 1,5 Ah E carregador
+Message SID Twilio: SMbf6f0692fa2489e548def644396c1d5e
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-20T19:10:59 ===

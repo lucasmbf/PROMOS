@@ -1,0 +1,66 @@
+{
+  "timestamp": "20260720_191944",
+  "total": 5,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb17336024",
+      "categoria": "Sem categoria",
+      "descricao": "Fraldas Descartáveis Pom Pom Protek Proteção de Mãe M com Derma Protek 86 Unidades",
+      "antes": "R$ 95,09",
+      "antes_valor": null,
+      "desconto": "26% OFF",
+      "depois": "R$ 69,45",
+      "depois_valor": 69.45,
+      "link_anuncio": "https://www.mercadolivre.com.br/fraldas-descartaveis-pom-pom-protek-proteco-de-me-m-com-derma-protek-86-unidades/p/MLB17336024#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=48&type=product&tracking_id=dcc1889e-19d8-4bca-9ee8-f1b2663b794f&wid=MLB6983890410&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_760840-MLA111194848972_052026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb51031847",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Premium Huggies Natural Care tamanho M 78 Unidades",
+      "antes": "R$ 114,34",
+      "antes_valor": null,
+      "desconto": "21% OFF",
+      "depois": "R$ 89,99",
+      "depois_valor": 89.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-premium-huggies-natural-care-tamanho-m-78-unidades/p/MLB51031847#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=21&type=product&tracking_id=dcc1889e-19d8-4bca-9ee8-f1b2663b794f&wid=MLB5423991940&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_894429-MLA99934926577_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb19485104",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pampers Pants Ajuste Total XG, 86 Unidades",
+      "antes": "R$ 192,90",
+      "antes_valor": null,
+      "desconto": "26% OFF",
+      "depois": "R$ 141,31",
+      "depois_valor": 141.31,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pampers-pants-ajuste-total-xg-86-unidades/p/MLB19485104#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=40&type=product&tracking_id=dcc1889e-19d8-4bca-9ee8-f1b2663b794f&wid=MLB2825212088&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_630309-MLA99935938327_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb19153447",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pampers Premium Care Pants Tamanho XG 96 Unidades",
+      "antes": "R$ 216,90",
+      "antes_valor": null,
+      "desconto": "33% OFF",
+      "depois": "R$ 144,70",
+      "depois_valor": 144.7,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pampers-premium-care-pants-tamanho-xg-96-unidades/p/MLB19153447#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=38&type=product&tracking_id=dcc1889e-19d8-4bca-9ee8-f1b2663b794f&wid=MLB5659998540&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_873726-MLA90831105624_082025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb19485095",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pampers Pants Ajuste Total Tamanho G, 94 Unidades",
+      "antes": "R$ 192,90",
+      "antes_valor": null,
+      "desconto": "24% OFF",
+      "depois": "R$ 144,90",
+      "depois_valor": 144.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pampers-pants-ajuste-total-tamanho-g-94-unidades/p/MLB19485095#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=39&type=product&tracking_id=dcc1889e-19d8-4bca-9ee8-f1b2663b794f&wid=MLB2825229643&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_686056-MLA99924163121_112025-O.webp"
+    }
+  ]
+}

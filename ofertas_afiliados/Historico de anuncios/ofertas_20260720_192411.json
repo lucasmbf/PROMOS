@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260720_192411",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb20215280",
+      "categoria": "Suplementos e Vitaminas > Probiotico Pet",
+      "descricao": "Probiótico Cães E Gatos 14g - Vetnil",
+      "antes": "R$ 58,34",
+      "antes_valor": null,
+      "desconto": "22% OFF",
+      "depois": "R$ 45,11",
+      "depois_valor": 45.11,
+      "link_anuncio": "https://www.mercadolivre.com.br/probiotico-ces-e-gatos-14g-vetnil/p/MLB20215280?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=3&type=product&tracking_id=91f74a76-6165-4fc6-a92f-f1a4c73c3cdc&wid=MLB4484624252&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_887372-MLA99416636808_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb25120687",
+      "categoria": "Rações > Racao",
+      "descricao": "Ração Gran Plus Choice Gatos Adulto Frango E Carne 10,1kg,",
+      "antes": "R$ 252,31",
+      "antes_valor": null,
+      "desconto": "61% OFF",
+      "depois": "R$ 95,92",
+      "depois_valor": 95.92,
+      "link_anuncio": "https://www.mercadolivre.com.br/raco-gran-plus-choice-gatos-adulto-frango-e-carne-101kg/p/MLB25120687?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=91f74a76-6165-4fc6-a92f-f1a4c73c3cdc&wid=MLB3845843533&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_825633-MLA99442605978_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb25336595",
+      "categoria": "Alimento, Petisco e Suplemento > Rações",
+      "descricao": "Ração Gatos Adultos Quatree Gourmet Mix De Carnes 10,1kg",
+      "antes": "R$ 221,49",
+      "antes_valor": null,
+      "desconto": "52% OFF",
+      "depois": "R$ 104,49",
+      "depois_valor": 104.49,
+      "link_anuncio": "https://www.mercadolivre.com.br/raco-gatos-adultos-quatree-gourmet-mix-de-carnes-101kg/p/MLB25336595?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=4&type=product&tracking_id=91f74a76-6165-4fc6-a92f-f1a4c73c3cdc&wid=MLB4780677066&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_670042-MLA99832738785_112025-O.webp"
+    }
+  ]
+}

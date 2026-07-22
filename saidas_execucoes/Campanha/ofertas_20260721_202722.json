@@ -1,0 +1,31 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260721_202722",
+  "total": 2,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb18392608",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Descartável Baby M Pacote 50 Unidades Turma da Mônica",
+      "antes": "R$ 50,05",
+      "antes_valor": null,
+      "desconto": "30% OFF",
+      "depois": "R$ 34,90",
+      "depois_valor": 34.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-descartavel-baby-m-pacote-50-unidades-turma-da-mnica/p/MLB18392608#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=55&type=product&tracking_id=f67a982a-65d8-4b54-94af-9ca51c7d1d1b&wid=MLB3338901706&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_738296-MLA110297780960_052026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb4518302770",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Qu4trosec xxg 36u turma Da Mônica Baby Extra Extra Grande (xxg)",
+      "antes": "R$ 67,90",
+      "antes_valor": null,
+      "desconto": "41% OFF",
+      "depois": "R$ 40",
+      "depois_valor": 40.0,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=jxZ0n0mt3HusVeHpEcM8FoEqdaA5DdL%2Fc%2FK%2BjDYTNY0Wpl2R4gSrp4tHYipQbqUwqM3ehNhov1o3mUzmsJAXbPmsAwluv7wTgdj6KbtujETwnN8hoOUu9hXUbT4haFsN8Ie2VXSuXs%2FU978yTjlJzJ9NZ5ZZ9ESwwouzUF9NPRxYil%2BfSy04xXmNsvFshC3dmTwCw%2BkM7d788w61XhgKwhNY%2FaddW2gfNq0BMmkFVziuC5iWdC18%2FK%2BN7Fhjg5goHxxj8vUqnIJo1gN%2FdylRdIh76Z266LDwQGxBxXcD9%2BWFyAG9lYH%2FGm2JKpvEHZzlQLX%2BnrOJd52gznJMbfJjq%2Bct6JH4rgZC4BHa61QxlcTP23w0mMoF%2F%2FEpzmuXlRM2runn%2FNxpW8az0ipE9ZbRR6%2Ff%2BZ5Gszw%2BDmDk0MIQGgHhtsAWfzj8ZFc4LvMhnWIpFLeRR3ZTkGCtxWbX5c4BCg3NfSJUwXITj7mOV%2B%2BaanND8SYtwlltEMDuLBTAqpVFK4MobVwjg%2B8rPLIVqJYhjbfDYPjbb6l%2BnkzC0B6A0xbOouZKGGk7c%2FL4ArAjvxngpw3AykpEPQjeWN%2BejHXRhFckK4NfGYx7crMxyhobjGQ5nUqWsSeXVveTJHsmENY%2Fgdz9CKdViKuIYACIgL7Z9CiF7EAVVvCjHwUfAGaOPwNk3DG9axgfs9cLPZKhGGZOyeJHbydieVf8QLzr%2Fyb7ulEcoD%2F4vJV9uphVazRhZ5sQnycedy%2FrkfoVnDidCfrO%2BbkfR62IE9%2BzusSDt0dLJ8%2BWsryu1oZuefU6Myr%2BYaXQXfNZymBzgwsPrg1Axy0QzM3E%2F7UCMVRQPW09lEgmM%2Fg8mt5xP0cEgNpYQcvXJ2Z3B%2FErJkzKL1OL6%2BKNujeV81a9aaKTzMVhHUycizzKLA%3D%3D&pdp_filters=item_id%3AMLB4518302770#polycard_client=search-desktop&is_advertising=true&backend_model=search-backend&be_origin=backend&search_layout=grid&position=27&type=pad&tracking_id=f67a982a-65d8-4b54-94af-9ca51c7d1d1b&wid=MLB4518302770&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_803954-MLA110115369722_042026-O.webp"
+    }
+  ]
+}

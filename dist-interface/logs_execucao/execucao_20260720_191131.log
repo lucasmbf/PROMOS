@@ -1,0 +1,76 @@
+=== Inicio da execucao: 2026-07-20T19:11:31 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 15 --limite-candidatos 10 --url-produto https://lista.mercadolivre.com.br/_Container_13900968?coupon_campaign_id=13900968 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_13900968?coupon_campaign_id=13900968
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_13900968?coupon_campaign_id=13900968
+✓ Link de afiliado: https://meli.la/1zu13MM
+✓ Link de afiliado: https://meli.la/247u367
+✓ Link de afiliado: https://meli.la/1hFFfiB
+✓ Link de afiliado: https://meli.la/1aSe35V
+✓ Link de afiliado: https://meli.la/1fqKgzK
+✓ Link de afiliado: https://meli.la/18E3N6b
+✓ Link de afiliado: https://meli.la/2xH1hBv
+✓ Link de afiliado: https://meli.la/19xAc1L
+✓ Link de afiliado: https://meli.la/1UrTgop
+✓ Link de afiliado: https://meli.la/2SWiFSh
+[BLOCO_1] Resultado: 10 candidato(s) coletado(s), 10 válido(s) enriquecido(s). Total: 10/10
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 10 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260720_191313.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260720_191313.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+Mensagem enviada para whatsapp:+5519991133269:
+Desinfetante Lysoform Líquido Original Limpeza Pesada e Eficiente 2L
+Message SID Twilio: SM1fd1fa30ef33e8841545424506c6ede8
+
+Mensagem enviada para whatsapp:+5519991133269:
+Lenços Umedecidos Desinfetantes Lysoform Lavanda Desinfetante de Uso Geral 36 unidades
+Message SID Twilio: SMa8e896865844b61e7beffb822811bf04
+
+Mensagem enviada para whatsapp:+5519991133269:
+Detergente Sanitário Gel Adesivo Lavanda Pato 38g Cada 2 Unidades Grátis 50% de Desconto no Segundo Refil
+Message SID Twilio: SM4801754fc5bcb3f5c2fde7496e1caac9
+
+Mensagem enviada para whatsapp:+5519991133269:
+Lenços Umedecidos Desinfetantes Lysoform Citrus Desinfetante de Uso Geral 36 unidades
+Message SID Twilio: SMa9967f8d9e8d186716f3570f7d1f2650
+
+Mensagem enviada para whatsapp:+5519991133269:
+Desodorizador Automatic Refil Spray Lavanda & Baunilha 269ml Glade
+Message SID Twilio: SMbbcf7ef2ac42215a551c2eb30b619721
+
+Mensagem enviada para whatsapp:+5519991133269:
+Desodorizador de Vaso Sanitario Pato Caixa Acoplada Marine Leve 3 Pague 2 40g
+Message SID Twilio: SM08678d079b9c30448aa85bb1bad88736
+
+Mensagem enviada para whatsapp:+5519991133269:
+Desinfetante 5L Lysoform Líquido Lavanda Desinfetante Casa para Limpeza Pesada
+Message SID Twilio: SM091f02d7a82c00be5df244cc047d3a12
+
+Mensagem enviada para whatsapp:+5519991133269:
+Repelente spray sem fragrância Exposis Extrême garrafa 100ml
+Message SID Twilio: SMfd3325b016c19db8aea800d7d93d2591
+
+Mensagem enviada para whatsapp:+5519991133269:
+Repelente Exposis Extreme Gel com Icaridina 100ml
+Message SID Twilio: SM072674255fcb482c50dfc393582eb9e3
+
+Mensagem enviada para whatsapp:+5519991133269:
+Desinfetante 5L Lysoform Líquido Original Desinfetante Casa para Limpeza Pesada
+Message SID Twilio: SMe2b9955b5653868219e4070be5179ee3
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-20T19:13:58 ===
