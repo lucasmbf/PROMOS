@@ -1,0 +1,19 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260722_194206",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb18715378",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pom Pom Protek G com 42 Unidades Para 12 Horas de Proteção",
+      "antes": "R$ 50,30",
+      "antes_valor": null,
+      "desconto": "30% OFF",
+      "depois": "R$ 35,04",
+      "depois_valor": 35.04,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pom-pom-protek-g-com-42-unidades-para-12-horas-de-proteco/p/MLB18715378#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=53&type=product&tracking_id=e7fc1ae2-1efa-48a6-bfb7-a0f462eee18f&wid=MLB3338977458&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_726573-MLA99451965756_112025-O.webp"
+    }
+  ]
+}

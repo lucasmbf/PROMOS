@@ -24,6 +24,7 @@
 - [x] Integração com generators e generators_helper
 
 ## Melhorias Futuras
+- Adicionar geração automática de vídeo vertical (1080x1920, 8 a 15 segundos) no fluxo "Gerar Posts Instagram", reaproveitando os JSONs já serializados (com opção de exportar imagem + vídeo no mesmo processo).
 - Normalizar a forma de busca, os marcadores HTML mudam muito de um para o outro. Passar condições da tela (Deve conter texto especifico, Nao pode conter texto especifico)
 - Aceitar link em todas as configurações. O Link tem prioridade de busca.
 

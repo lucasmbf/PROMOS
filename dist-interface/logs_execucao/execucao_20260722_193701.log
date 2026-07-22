@@ -1,0 +1,68 @@
+=== Inicio da execucao: 2026-07-22T19:37:01 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/saude/suplementos-alimentares/growth-supplements/suplementos_NoIndex_True#origin=brand_carousel&position=0&id=5738279&applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D1%26applied_value_id%3D5738279%26applied_value_name%3DGrowth+Supplements%26applied_value_order%3D1%26applied_value_results%3D144%26is_custom%3Dfalse%26view_more_flag%3Dtrue --url-produto https://lista.mercadolivre.com.br/saude/suplementos-alimentares/dux/suplementos_NoIndex_True#origin=brand_carousel&position=222&id=11037802&applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D1%26applied_value_id%3D11037802%26applied_value_name%3DDux%26applied_value_order%3D223%26applied_value_results%3D4%26is_custom%3Dfalse%26view_more_flag%3Dtrue --descricao-produto Creatina --desconto-minimo 30 --limite-candidatos 4 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/saude/suplementos-alimentares/growth-supplements/suplementos_NoIndex_True#origin=brand_carousel&position=0&id=5738279&applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D1%26applied_value_id%3D5738279%26applied_value_name%3DGrowth+Supplements%26applied_value_order%3D1%26applied_value_results%3D144%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/saude/suplementos-alimentares/growth-supplements/suplementos_NoIndex_True#origin=brand_carousel&position=0&id=5738279&applied_filter_id%3DBRAND%26applied_filter_name%3DMarca%26applied_filter_order%3D1%26applied_value_id%3D5738279%26applied_value_name%3DGrowth+Supplements%26applied_value_order%3D1%26applied_value_results%3D144%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+✓ Link de afiliado: https://meli.la/1tG4Ycv
+✓ Link de afiliado: https://meli.la/1tG4Ycv
+✓ Link de afiliado: https://meli.la/1cJhSrg
+✓ Link de afiliado: https://meli.la/1keMNSG
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260722_193810.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260722_193811.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_662415-MLA97812910758_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Monohidratada 250g Growth Supplements - Sem sabor em Pó
+Message SID Twilio: SMf2f11a2a4449ba882d80ee9f41570195
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_662415-MLA97812910758_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Monohidratada 250g Growth Supplements - Sem Sabor Em Pó
+Message SID Twilio: SM92f44a3f089f6e31495de40fb59c3a87
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_983185-MLA112115896554_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Creatina Creapure® 120 Comprimidos Growth Supplements Neutro
+Message SID Twilio: SM55d78ecb73a8ed661225446c4a64512b
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_972392-MLA99991325919_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Suplemento Creatina Creapure 120 Comprimidos Growth Supplements
+Message SID Twilio: SM7fe4fb165ac577a85bf9e748258bb823
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=4 falhas=0 total=4
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-22T19:38:19 ===
