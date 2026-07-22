@@ -1,0 +1,68 @@
+=== Inicio da execucao: 2026-07-22T20:19:57 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 100.0 --preco-maximo 200.0 --limite-candidatos 4 --url-produto https://lista.mercadolivre.com.br/organizador-para-arm%C3%A1rio-sob-a-pia?sb=all_mercadolibre#D[A:Organizador%20para%20arm%C3%A1rio%20sob%20a%20pia] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/organizador-para-arm%C3%A1rio-sob-a-pia?sb=all_mercadolibre#D[A:Organizador%20para%20arm%C3%A1rio%20sob%20a%20pia]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/organizador-para-arm%C3%A1rio-sob-a-pia?sb=all_mercadolibre#D[A:Organizador%20para%20arm%C3%A1rio%20sob%20a%20pia]
+✓ Link de afiliado: https://meli.la/2XYceH4
+✓ Link de afiliado: https://meli.la/2ptCh7Z
+✓ Link de afiliado: https://meli.la/2pP3QPY
+✓ Link de afiliado: https://meli.la/1qVyLm2
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 4 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260722_202043.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260722_202044.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_969283-MLB112945002570_072026-O-organizador-extensivel-para-armario-sob-pia-2-niveis.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Organizador Extensível Para Armário Sob Pia 2 Níveis
+Message SID Twilio: SMd85f5467af10b7d07a6ffc6058928ed2
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_682818-MLB112447326302_062026-O-organizador-embaixo-da-pia-ajustavel-2-niveis-cozinha.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Organizador Embaixo Da Pia Ajustável 2 Níveis Cozinha
+Message SID Twilio: SM75363cf0e65b84c71d77ad2167d807cc
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_623890-MLB112628573177_062026-O-organizador-sob-pia-cozinha-extensivel-aco-carbono-premium.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Organizador Sob Pia Cozinha Extensível Aço Carbono Premium
+Message SID Twilio: SM1293e3556cba52ec198f21123a19cd6b
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_844493-MLB113658822028_072026-O-armario-organizador-4-andares-48cm-porta-magnetica-e-rodas.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Armário Organizador! 4 Andares 48cm Porta Magnética E Rodas
+Message SID Twilio: SM50dd5de034fd6b23d0ed9beda46e1f41
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=4 falhas=0 total=4
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-22T20:20:52 ===

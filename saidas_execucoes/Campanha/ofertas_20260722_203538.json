@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260722_203538",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb10481547",
+      "categoria": "Alimento, Petisco e Suplemento > Ração para Cães",
+      "descricao": "Ração Special Dog Premium Cão Adulto Todos os Tamanhos Sabor Carne de 15 kg",
+      "antes": "R$ 144,92",
+      "antes_valor": null,
+      "desconto": "37% OFF",
+      "depois": "R$ 90,11",
+      "depois_valor": 90.11,
+      "link_anuncio": "https://www.mercadolivre.com.br/raco-special-dog-premium-co-adulto-todos-os-tamanhos-sabor-carne-de-15-kg/p/MLB10481547?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=15&type=product&tracking_id=93143bf4-d93b-4ba0-aefd-15dde7962c37&wid=MLB3158030360&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_864071-MLA111186605366_052026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb18720059",
+      "categoria": "Ração para Cães > Racao",
+      "descricao": "Fórmula Natural Fresh Meat Sensitive Adulto 2,5 Kg",
+      "antes": "R$ 139,90",
+      "antes_valor": null,
+      "desconto": "19% OFF",
+      "depois": "R$ 112,90",
+      "depois_valor": 112.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/formula-natural-fresh-meat-sensitive-adulto-25-kg/p/MLB18720059?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=14&type=product&tracking_id=93143bf4-d93b-4ba0-aefd-15dde7962c37&wid=MLB4968084614&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_961151-MLA80450703202_112024-O.webp"
+    },
+    {
+      "id_anuncio": "mlb32431376",
+      "categoria": "Ração para Cães > Racao",
+      "descricao": "Ração Seca Cães Filhotes Gran Plus Frango e Carne 10,1 Kg",
+      "antes": "R$ 184,57",
+      "antes_valor": null,
+      "desconto": "23% OFF",
+      "depois": "R$ 141,97",
+      "depois_valor": 141.97,
+      "link_anuncio": "https://www.mercadolivre.com.br/raco-seca-ces-filhotes-gran-plus-frango-e-carne-101-kg/p/MLB32431376?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=16&type=product&tracking_id=93143bf4-d93b-4ba0-aefd-15dde7962c37&wid=MLB3845842889&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_669837-MLA99441337076_112025-O.webp"
+    }
+  ]
+}

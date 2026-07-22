@@ -1,0 +1,68 @@
+=== Inicio da execucao: 2026-07-22T20:10:02 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/cerveja-long-necj#D[A:cerveja%20long%20necj] --desconto-minimo 30 --limite-candidatos 4 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/cerveja-long-necj#D[A:cerveja%20long%20necj]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/cerveja-long-necj#D[A:cerveja%20long%20necj]
+✓ Link de afiliado: https://meli.la/2ErK9Ze
+✓ Link de afiliado: https://meli.la/1gbhNq6
+✓ Link de afiliado: https://meli.la/1HfwKxT
+✓ Link de afiliado: https://meli.la/1LTZVrf
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 4 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260722_201053.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260722_201053.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_667885-MLA99831976447_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Salvator Long Neck 330ml Paulaner
+Message SID Twilio: SMce7c402615e4a718f1b0c0cb00a976ff
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_696501-MLA110242616590_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Zero Budweiser Long Neck 330ml 6 Pack
+Message SID Twilio: SM2540cfa4822e57e14013aa55fc6174a0
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_867872-MLA107172104492_022026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 6 cerveja Long Neck Pabst Blue Ribbon 355mL
+Message SID Twilio: SMe912a397b86830ca879ed80dcf65b690
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_663538-MLB104986334083_012026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cerveja Cusqueña Trigo Long Neck 330ml Pack Com 6 Unidades
+Message SID Twilio: SMe67aabe2fb2a91ef5c46f4ad8fbe0c52
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=4 falhas=0 total=4
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-22T20:11:01 ===

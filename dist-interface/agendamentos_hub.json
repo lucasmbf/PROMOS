@@ -210,12 +210,12 @@
     "preco_maximo": null,
     "desconto_minimo": 30,
     "limite_candidatos": 4,
-    "last_run_at": "2026-07-19T20:09:42",
+    "last_run_at": "2026-07-22T20:10:02",
     "configured_at": "2026-07-13T19:40:30",
-    "next_run_at": "2026-07-22T20:09:42",
-    "last_execution_status": "falha",
-    "last_execution_message": "BrowserContext.close: Target page, context or browser has been closed",
-    "last_execution_at": "2026-07-19T20:10:48"
+    "next_run_at": "2026-07-25T20:10:02",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-22T20:11:01"
   },
   {
     "id": "000046",
@@ -415,12 +415,12 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-21T20:30:20",
+    "last_run_at": "2026-07-22T20:32:02",
     "configured_at": "2026-07-19T09:10:29",
-    "next_run_at": "2026-07-22T20:30:20",
+    "next_run_at": "2026-07-23T20:32:02",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-21T20:31:11"
+    "last_execution_at": "2026-07-22T20:32:45"
   },
   {
     "id": "000054",
@@ -449,12 +449,12 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-21T20:31:20",
+    "last_run_at": "2026-07-22T20:33:02",
     "configured_at": "2026-07-19T09:10:13",
-    "next_run_at": "2026-07-22T20:31:20",
+    "next_run_at": "2026-07-23T20:33:02",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-21T20:32:12"
+    "last_execution_at": "2026-07-22T20:34:12"
   },
   {
     "id": "000055",
@@ -483,12 +483,12 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-21T20:32:21",
+    "last_run_at": "2026-07-22T20:35:02",
     "configured_at": "2026-07-19T09:13:31",
-    "next_run_at": "2026-07-22T20:32:21",
+    "next_run_at": "2026-07-23T20:35:02",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-21T20:33:14"
+    "last_execution_at": "2026-07-22T20:35:43"
   },
   {
     "id": "000056",
@@ -517,11 +517,11 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-21T20:33:21",
+    "last_run_at": "2026-07-22T20:36:02",
     "configured_at": "2026-07-19T09:14:13",
-    "next_run_at": "2026-07-22T20:33:21",
+    "next_run_at": "2026-07-23T20:36:02",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-21T20:34:13"
+    "last_execution_at": "2026-07-22T20:36:46"
   }
 ]

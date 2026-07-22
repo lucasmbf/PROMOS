@@ -1,0 +1,38 @@
+=== Inicio da execucao: 2026-07-22T20:14:22 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 300.0 --preco-maximo 380.0 --limite-candidatos 1 --url-produto https://lista.mercadolivre.com.br/amazon-echo-dot-5%C2%AA-gera%C3%A7%C3%A3o_OrderId_PRICE_PriceRange_350BRL-0BRL_ITEM*CONDITION_2230284_NoIndex_True_SHIPPING*ORIGIN_10215068?sb=all_mercadolibre#applied_filter_id%3Dprice%26applied_filter_name%3DPre%C3%A7o%26applied_filter_order%3D13%26applied_value_id%3D350-*%26applied_value_name%3DBRL350-BRL*%26applied_value_order%3D4%26applied_value_results%3DUNKNOWN_RESULTS%26is_custom%3Dtrue --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/amazon-echo-dot-5%C2%AA-gera%C3%A7%C3%A3o_OrderId_PRICE_PriceRange_350BRL-0BRL_ITEM*CONDITION_2230284_NoIndex_True_SHIPPING*ORIGIN_10215068?sb=all_mercadolibre#applied_filter_id%3Dprice%26applied_filter_name%3DPre%C3%A7o%26applied_filter_order%3D13%26applied_value_id%3D350-*%26applied_value_name%3DBRL350-BRL*%26applied_value_order%3D4%26applied_value_results%3DUNKNOWN_RESULTS%26is_custom%3Dtrue
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/amazon-echo-dot-5%C2%AA-gera%C3%A7%C3%A3o_OrderId_PRICE_PriceRange_350BRL-0BRL_ITEM*CONDITION_2230284_NoIndex_True_SHIPPING*ORIGIN_10215068?sb=all_mercadolibre#applied_filter_id%3Dprice%26applied_filter_name%3DPre%C3%A7o%26applied_filter_order%3D13%26applied_value_id%3D350-*%26applied_value_name%3DBRL350-BRL*%26applied_value_order%3D4%26applied_value_results%3DUNKNOWN_RESULTS%26is_custom%3Dtrue
+✓ Link de afiliado: https://meli.la/2iHi1fA
+[BLOCO_1] Resultado: 1 candidato(s) coletado(s), 1 válido(s) enriquecido(s). Total: 1/1
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 1 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260722_201440.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260722_201440.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_945290-MLA96113246477_102025-O-amazon-echo-dot-5a-geracao-kids--dragao-alexa.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Amazon Echo Dot 5a Geração Kids - Dragão, Alexa
+Message SID Twilio: SM4669a08f4eb822a3a3fa309855c25672
+[DEBUG] status_final_twilio=queued
+
+[RESUMO_TWILIO] entregues_ou_processadas=1 falhas=0 total=1
+
+1 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-22T20:14:42 ===

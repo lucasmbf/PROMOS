@@ -1,0 +1,58 @@
+=== Inicio da execucao: 2026-07-22T20:35:02 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-caes-query_NoIndex_True?forceContainer=true#c_container_id=MLB1327645-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=cachorro-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_element_id=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=90178ab0-836a-11f1-897b-a3608c4c25d1&c_tracking_id=90178ab0-836a-11f1-897b-a3608c4c25d1 --desconto-minimo 10 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-caes-query_NoIndex_True?forceContainer=true#c_container_id=MLB1327645-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=cachorro-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_element_id=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=90178ab0-836a-11f1-897b-a3608c4c25d1&c_tracking_id=90178ab0-836a-11f1-897b-a3608c4c25d1
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_pet-cpg-alimentos-e-petiscos-caes-query_NoIndex_True?forceContainer=true#c_container_id=MLB1327645-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=1&c_campaign=cachorro-alimentos-petiscos&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_element_id=90b7c25a-836a-11f1-a4f5-1955dc94a789&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=90178ab0-836a-11f1-897b-a3608c4c25d1&c_tracking_id=90178ab0-836a-11f1-897b-a3608c4c25d1
+✓ Link de afiliado: https://meli.la/17rksr9
+✓ Link de afiliado: https://meli.la/2RBxWDA
+✓ Link de afiliado: https://meli.la/26VeiAE
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 1 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260722_203537.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260722_203538.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_864071-MLA111186605366_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ração Special Dog Premium Cão Adulto Todos os Tamanhos Sabor Carne de 15 kg
+Message SID Twilio: SMf81533b83ed1a538831025b713b8aeee
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_961151-MLA80450703202_112024-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fórmula Natural Fresh Meat Sensitive Adulto 2,5 Kg
+Message SID Twilio: SMa130ac1dda6215efaf52fc9cd0d1b0ca
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_669837-MLA99441337076_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Ração Seca Cães Filhotes Gran Plus Frango e Carne 10,1 Kg
+Message SID Twilio: SM8edb28f0328bb62ffa61d983c9b64119
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=3 falhas=0 total=3
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-22T20:35:43 ===

@@ -1,0 +1,30 @@
+{
+  "timestamp": "20260722_203409",
+  "total": 2,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb37144068",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Areia Higiênica Mandioca Gato Biodegradável Bionature 2kg Anti Odor",
+      "antes": "R$ 49,90",
+      "antes_valor": null,
+      "desconto": "53% OFF",
+      "depois": "R$ 23,16",
+      "depois_valor": 23.16,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-higinica-mandioca-gato-biodegradavel-bionature-2kg-anti-odor/p/MLB37144068?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=14&type=product&tracking_id=099f882f-991b-47d0-9697-37e1a990cc5a&wid=MLB4724513453&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_608168-MLA100088114821_122025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb66210143",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Areia para Gatos Higiênica Mandioca Granulado Natural Biodegradável Sanitária Grãos Médios 4kg - Esconde Aí",
+      "antes": "R$ 58,90",
+      "antes_valor": null,
+      "desconto": "37% OFF",
+      "depois": "R$ 37",
+      "depois_valor": 37.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-para-gatos-higinica-mandioca-granulado-natural-biodegradavel-sanitaria-gros-medios-4kg-esconde-ai/p/MLB66210143?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=19&type=product&tracking_id=099f882f-991b-47d0-9697-37e1a990cc5a&wid=MLB6474712232&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_662919-MLA114220502203_072026-O.webp"
+    }
+  ]
+}

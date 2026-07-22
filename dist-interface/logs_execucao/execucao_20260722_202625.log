@@ -1,0 +1,59 @@
+=== Inicio da execucao: 2026-07-22T20:26:25 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 50 --limite-candidatos 3 --url-produto https://lista.mercadolivre.com.br/sacos-a-v%C3%A1cuo-para-roupas#D[A:Sacos%20a%20v%C3%A1cuo%20para%20roupas] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/sacos-a-v%C3%A1cuo-para-roupas#D[A:Sacos%20a%20v%C3%A1cuo%20para%20roupas]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/sacos-a-v%C3%A1cuo-para-roupas#D[A:Sacos%20a%20v%C3%A1cuo%20para%20roupas]
+✓ Link de afiliado: https://meli.la/1DNCPUW
+✓ Link de afiliado: https://meli.la/26iHgtw
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/sacos-a-v%C3%A1cuo-para-roupas?page=2
+✓ Link de afiliado: https://meli.la/294hXvP
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260722_202707.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260722_202708.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_831275-MLA112473023156_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Sacos A Vácuo Kit 10 Unidades Viagem Mala Avião Embalagem Com Bomba Reutilizável Viagem Organização (2x - 70x110) (3x - 60x80) (5x - 50x60) Roupa Casaco Organizadores Edredom Pequeno Médio E Grande
+Message SID Twilio: SM65c132088869925b5dd266b236045f2c
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_676256-MLA113373178079_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 12 Sacos A Vacuo Organizador Roupas Edredom Com Bomba Eletrica Para Mala Viagem E Guarda Roupa
+Message SID Twilio: SM906bc99f0dfea9b056d06b5284bd7863
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_849637-MLB99853563936_122025-O-saco-vacuo-viagem-pequeno-hermetico-mochila-reutilizavel.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Saco Vacuo Viagem Pequeno Hermético Mochila Reutilizável
+Message SID Twilio: SMd97b5c55d2841a15ba3a4c8c4974ab3a
+[DEBUG] status_final_twilio=queued
+
+[RESUMO_TWILIO] entregues_ou_processadas=3 falhas=0 total=3
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-22T20:27:14 ===

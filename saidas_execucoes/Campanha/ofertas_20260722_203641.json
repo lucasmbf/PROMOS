@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260722_203641",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb1328164",
+      "categoria": "Alimento, Petisco e Suplemento > Prêmios",
+      "descricao": "Mister Grama - Grama Para Gatos - 4 Unidades",
+      "antes": "R$ 59,90",
+      "antes_valor": null,
+      "desconto": "30% OFF",
+      "depois": "R$ 41,93",
+      "depois_valor": 41.93,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=dMTDAEXaRJAzQfrtVJQNPznCTswi9fSFQU%2BAM8SfWQ19p4iQvZ%2BkM7nPwShuiEcdJP6jBRTGpNB9UaIvM8wvCghIrsHUeyb9%2B3d8xJwPb6iuFwTKoSp1Wv60Lf2LBNZ43mAjl9mLkHuLO15GH%2BgHItch6iOk%2Ba4EUWnDKG8S2A4NlSct%2B6gXTB9cjvS5x0SdkyNHnRYkGbvUQF%2Bkl0ckz4e%2F58UZ%2B8jeFakyYr1AH6MC6Nw9nFiZHx1hcBj2wrkfyOPKQstFY9xrhItGpMpSdoA%2BAEOsms31nDJGGZgiwrxY0qd70%2B7v6JizFGL%2BP0IbkhRKpELpD9xx7viClNM8MPAwrvi1UGaEPM9mc7giiumyCNx4hyzKujy3M1YaPFO6uVPus8fqOKF1ZyqYzCsEnitz1DX0Q9A8aVjRGF5C40IjyrJmqnkyhTk7lDH%2BvFaA8VA1%2F8kV1RjPnZTE%2FsHmZCo8g%2F8YEzaaC0M5KqJHwQtIAdkqDb1O8NXAF3YgTFANaEsDUxy7xi4d20dDw2sy1wZfkRS1Fx9tnQWreKt9FfvYTPeSsLpVYnnV0lmmbQTpOEn1vvHAqZf2sEFY0lPIimeVL%2B5pJwY1KDLBK8It%2BY6WNuPIVE3uvinUDMqoa5fj%2FqX7eTD9weeYclBgwSjMvPkL0UkwrXuWDMAucr06EfA9YIxDBGo9XelnTRIlS3EiLcLpB4RTR7odbdojUai%2BijCbQXbjo8MXJDc%2BT8ynyXMf5ogTxWPmq8Rss%2BDCuB87Mr159yaY7hrQh2bSNiFiqjKWUnpknBdUk0nMKDCvak58vmWI2RPiCzptecsCGEcZphm%2Fd4q8A9nfwZtQTPWBSBGqsEjcpj3s%2B9PPRjwMuGBF%2Bz%2BV020Ic%2Btu%2Ff7xm2z5%2F2bo2RcQ3kq2WfFfCHXeNQwmaLLqJLqU23zMMYh9gR7JmoPsKjB%2BmTDpyezeh%2Be046PkJ%2FV0z0jQ%2FnMaUxvAnigvfjzcl0MSGOIxkWINb6bj2ldW2CKHa79hZkEbFGgZzSbOFqsPxZo%3D&pdp_filters=deal%3AMLB1328164-1%7Citem_id%3AMLB4861585915#polycard_client=search-desktop&is_advertising=true&searchVariation=MLBU4235368727&backend_model=search-backend&be_origin=backend&search_layout=grid&position=6&type=pad&tracking_id=1efb585a-3a43-4c9d-9d99-7f134f9838ff&wid=MLB4861585915&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_933604-MLB114256265167_072026-O-mister-grama--grama-para-gatos--4-unidades.webp"
+    },
+    {
+      "id_anuncio": "mlb48437952",
+      "categoria": "Alimento, Petisco e Suplemento > Prêmios",
+      "descricao": "Petisco Para Gatos Gatex Chuchups Sabores Mistos Pote 24 Un",
+      "antes": "R$ 78,99",
+      "antes_valor": null,
+      "desconto": "14% OFF",
+      "depois": "R$ 67,75",
+      "depois_valor": 67.75,
+      "link_anuncio": "https://www.mercadolivre.com.br/petisco-para-gatos-gatex-chuchups-sabores-mistos-pote-24-un/p/MLB48437952?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=2&type=product&tracking_id=1efb585a-3a43-4c9d-9d99-7f134f9838ff&wid=MLB6297078560&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_803085-MLA99929272187_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb22361583",
+      "categoria": "Ração para Cães > Racao",
+      "descricao": "Ração Quatree Supreme Gatos Castrados Frango 10.1kg",
+      "antes": "R$ 599,99",
+      "antes_valor": null,
+      "desconto": "68% OFF",
+      "depois": "R$ 189,90",
+      "depois_valor": 189.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/raco-quatree-supreme-gatos-castrados-frango-101kg/p/MLB22361583?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=1efb585a-3a43-4c9d-9d99-7f134f9838ff&wid=MLB5996606138&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_729927-MLA108260586639_032026-O.webp"
+    }
+  ]
+}

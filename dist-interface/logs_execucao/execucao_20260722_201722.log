@@ -1,0 +1,19 @@
+=== Inicio da execucao: 2026-07-22T20:17:22 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 30 --limite-candidatos 3 --url-produto https://lista.mercadolivre.com.br/lumin%C3%A1ria-de-parede-magn%C3%A9tica-recarreg%C3%A1vel?sb=all_mercadolibre#D[A:Lumin%C3%A1ria%20de%20parede%20magn%C3%A9tica%20recarreg%C3%A1vel] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/lumin%C3%A1ria-de-parede-magn%C3%A9tica-recarreg%C3%A1vel?sb=all_mercadolibre#D[A:Lumin%C3%A1ria%20de%20parede%20magn%C3%A9tica%20recarreg%C3%A1vel]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/lumin%C3%A1ria-de-parede-magn%C3%A9tica-recarreg%C3%A1vel?sb=all_mercadolibre#D[A:Lumin%C3%A1ria%20de%20parede%20magn%C3%A9tica%20recarreg%C3%A1vel]
+✓ Link de afiliado: https://meli.la/2ZS9kKS
+✓ Link de afiliado: https://meli.la/1PKhuUB
+[ERRO] Falha ao clicar no botão Afiliados/Compartilhar: Locator.count: Target page, context or browser has been closed
+[LOGIN_REQUIRED_AFILIADOS] Link de afiliado nao gerado para mlbu3311024455. Anuncio ignorado. Faca login no Afiliados e execute novamente.
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/lumin%C3%A1ria-de-parede-magn%C3%A9tica-recarreg%C3%A1vel?sb=all_mercadolibre&page=2
+
+=== Fim da execucao: 2026-07-22T20:17:53 ===

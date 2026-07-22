@@ -1,7 +1,7 @@
 """
 Gerador de Posts Instagram a partir de JSONs de Ofertas.
 
-Cria imagens otimizadas para Instagram (Feed e Stories) com:
+Cria imagens e videos otimizados para Instagram (Feed, Stories e Reels) com:
 - Informações de preço (antes/depois)
 - Percentual de desconto destacado
 - Categoria e descrição do produto
@@ -11,10 +11,14 @@ Cria imagens otimizadas para Instagram (Feed e Stories) com:
 Formatos suportados:
   - Feed: 1080x1350 px
   - Story: 1080x1920 px
+    - Video: 1080x1920 px (8 a 15 segundos)
 """
 
 import os
 import json
+import shutil
+import subprocess
+import tempfile
 import textwrap
 from pathlib import Path
 from datetime import datetime
@@ -29,6 +33,9 @@ except ImportError:
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 PASTA_GERADORES_SAIDA = str(BASE_DIR / "dist-interface" / "instagram_posts")
+FPS_VIDEO_PADRAO = 25
+ZOOM_MAXIMO_PADRAO = 1.12
+INCREMENTO_ZOOM_PADRAO = 0.0015
 
 
 def _garantir_pasta_saida(pasta=None):
@@ -231,78 +238,7 @@ def gerar_post_story(
     
     pasta_saida = _garantir_pasta_saida(pasta_saida)
     
-    # Criar imagem com gradiente (simulado com cores)
-    img = Image.new('RGB', tamanho, cor_fundo)
-    draw = ImageDraw.Draw(img)
-    
-    # Definir fontes
-    fonte_categoria = _escolher_fonte_sistema(32)
-    fonte_titulo = _escolher_fonte_sistema(48, negrito=True)
-    fonte_desconto = _escolher_fonte_sistema(72, negrito=True)
-    fonte_preco = _escolher_fonte_sistema(52, negrito=True)
-    fonte_cta = _escolher_fonte_sistema(28)
-    
-    largura, altura = tamanho
-    margem = 50
-    cor_texto = (255, 255, 255)
-    cor_desconto_bg = (255, 68, 68)
-    
-    y_atual = margem * 2
-    
-    # 1. Categoria (topo pequeno)
-    categoria = oferta.get('categoria', '-').upper()
-    draw.text((margem, y_atual), "🏷️ " + categoria, font=fonte_categoria, fill=(200, 200, 200))
-    y_atual += 80
-    
-    # 2. Título descritivo
-    descricao = oferta.get('descricao', '-')
-    linhas = textwrap.wrap(descricao, width=20)
-    for linha in linhas[:2]:
-        draw.text((margem, y_atual), linha, font=fonte_titulo, fill=cor_texto)
-        y_atual += 70
-    
-    y_atual += 40
-    
-    # 3. Grande destaque do desconto
-    desconto = oferta.get('desconto', '-')
-    # Fundo redondo para desconto (simulado com retângulo)
-    bbox_desc = draw.textbbox((largura // 2 - 100, y_atual), desconto, font=fonte_desconto)
-    draw.rectangle(
-        [(bbox_desc[0] - 20, bbox_desc[1] - 20),
-         (bbox_desc[2] + 20, bbox_desc[3] + 20)],
-        fill=cor_desconto_bg
-    )
-    draw.text(
-        (largura // 2 - (bbox_desc[2] - bbox_desc[0]) // 2 - 10, y_atual),
-        desconto,
-        font=fonte_desconto,
-        fill=cor_texto
-    )
-    y_atual += 140
-    
-    # 4. Preços
-    preco_antes = oferta.get('antes', '-')
-    preco_depois = oferta.get('depois', '-')
-    
-    texto_antes = f"De: {preco_antes}"
-    draw.text((margem, y_atual), texto_antes, font=fonte_preco, fill=(180, 180, 180))
-    y_atual += 70
-    
-    texto_depois = f"Por: {preco_depois}"
-    draw.text((margem, y_atual), texto_depois, font=fonte_preco, fill=(100, 255, 100))
-    y_atual += 100
-    
-    # 5. CTA (Call-To-Action)
-    link = oferta.get('link_anuncio', '-')
-    cta_text = "👉 TAP PARA VER OFERTA"
-    bbox_cta = draw.textbbox((margem, y_atual), cta_text, font=fonte_cta)
-    # Fundo para CTA
-    draw.rectangle(
-        [(bbox_cta[0] - 15, bbox_cta[1] - 15),
-         (bbox_cta[2] + 15, bbox_cta[3] + 15)],
-        fill=(255, 150, 0)
-    )
-    draw.text((margem, y_atual), cta_text, font=fonte_cta, fill=(255, 255, 255))
+    img = _criar_imagem_story(oferta, tamanho=tamanho, cor_fundo=cor_fundo)
     
     # Salvar imagem
     id_oferta = oferta.get('id_anuncio', 'desconhecido')
@@ -316,10 +252,159 @@ def gerar_post_story(
     return caminho_saida
 
 
+def _criar_imagem_story(
+    oferta: Dict,
+    tamanho: Tuple[int, int] = (1080, 1920),
+    cor_fundo: Tuple[int, int, int] = (15, 23, 42),
+) -> "Image.Image":
+    """Cria a imagem base de story para reutilizacao no PNG e no video."""
+    img = Image.new('RGB', tamanho, cor_fundo)
+    draw = ImageDraw.Draw(img)
+
+    fonte_categoria = _escolher_fonte_sistema(32)
+    fonte_titulo = _escolher_fonte_sistema(48, negrito=True)
+    fonte_desconto = _escolher_fonte_sistema(72, negrito=True)
+    fonte_preco = _escolher_fonte_sistema(52, negrito=True)
+    fonte_cta = _escolher_fonte_sistema(28)
+
+    largura, _ = tamanho
+    margem = 50
+    cor_texto = (255, 255, 255)
+    cor_desconto_bg = (255, 68, 68)
+    y_atual = margem * 2
+
+    categoria = oferta.get('categoria', '-').upper()
+    draw.text((margem, y_atual), "🏷️ " + categoria, font=fonte_categoria, fill=(200, 200, 200))
+    y_atual += 80
+
+    descricao = oferta.get('descricao', '-')
+    linhas = textwrap.wrap(descricao, width=20)
+    for linha in linhas[:2]:
+        draw.text((margem, y_atual), linha, font=fonte_titulo, fill=cor_texto)
+        y_atual += 70
+
+    y_atual += 40
+
+    desconto = oferta.get('desconto', '-')
+    bbox_desc = draw.textbbox((largura // 2 - 100, y_atual), desconto, font=fonte_desconto)
+    draw.rectangle(
+        [(bbox_desc[0] - 20, bbox_desc[1] - 20),
+         (bbox_desc[2] + 20, bbox_desc[3] + 20)],
+        fill=cor_desconto_bg
+    )
+    draw.text(
+        (largura // 2 - (bbox_desc[2] - bbox_desc[0]) // 2 - 10, y_atual),
+        desconto,
+        font=fonte_desconto,
+        fill=cor_texto
+    )
+    y_atual += 140
+
+    preco_antes = oferta.get('antes', '-')
+    preco_depois = oferta.get('depois', '-')
+    draw.text((margem, y_atual), f"De: {preco_antes}", font=fonte_preco, fill=(180, 180, 180))
+    y_atual += 70
+    draw.text((margem, y_atual), f"Por: {preco_depois}", font=fonte_preco, fill=(100, 255, 100))
+    y_atual += 100
+
+    cta_text = "👉 TAP PARA VER OFERTA"
+    bbox_cta = draw.textbbox((margem, y_atual), cta_text, font=fonte_cta)
+    draw.rectangle(
+        [(bbox_cta[0] - 15, bbox_cta[1] - 15),
+         (bbox_cta[2] + 15, bbox_cta[3] + 15)],
+        fill=(255, 150, 0)
+    )
+    draw.text((margem, y_atual), cta_text, font=fonte_cta, fill=(255, 255, 255))
+
+    return img
+
+
+def gerar_video_story(
+    oferta: Dict,
+    tamanho: Tuple[int, int] = (1080, 1920),
+    pasta_saida: Optional[str] = None,
+    cor_fundo: Tuple[int, int, int] = (15, 23, 42),
+    duracao_segundos: int = 10,
+) -> Optional[str]:
+    """Gera um video MP4 vertical para Reels/Shorts a partir da arte do story."""
+    if not PILLOW_AVAILABLE:
+        print("❌ Pillow não instalado. Execute: pip install Pillow")
+        return None
+
+    ffmpeg_bin = shutil.which("ffmpeg")
+    if not ffmpeg_bin:
+        print("❌ FFmpeg não encontrado no PATH. Instale o FFmpeg para gerar vídeos.")
+        return None
+
+    pasta_saida = _garantir_pasta_saida(pasta_saida)
+    duracao_segundos = max(8, min(15, int(duracao_segundos)))
+    total_frames = FPS_VIDEO_PADRAO * duracao_segundos
+
+    id_oferta = oferta.get('id_anuncio', 'desconhecido')
+    timestamp_arquivo = datetime.now().strftime("%Y%m%d_%H%M%S")
+    nome_video = f"reel_{id_oferta}_{timestamp_arquivo}.mp4"
+    caminho_video = os.path.join(pasta_saida, nome_video)
+
+    caminho_frame = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="wb",
+            suffix=".png",
+            delete=False,
+            dir=pasta_saida,
+        ) as arquivo_tmp:
+            caminho_frame = arquivo_tmp.name
+
+        img = _criar_imagem_story(oferta, tamanho=tamanho, cor_fundo=cor_fundo)
+        img.save(caminho_frame, "PNG")
+
+        filtro_video = (
+            f"scale={tamanho[0]}:{tamanho[1]},"
+            f"zoompan=z='min(zoom+{INCREMENTO_ZOOM_PADRAO},{ZOOM_MAXIMO_PADRAO})':"
+            f"d={total_frames}:s={tamanho[0]}x{tamanho[1]}:fps={FPS_VIDEO_PADRAO}"
+        )
+
+        comando = [
+            ffmpeg_bin,
+            "-y",
+            "-loop", "1",
+            "-i", caminho_frame,
+            "-t", str(duracao_segundos),
+            "-vf", filtro_video,
+            "-r", str(FPS_VIDEO_PADRAO),
+            "-c:v", "libx264",
+            "-pix_fmt", "yuv420p",
+            "-movflags", "+faststart",
+            caminho_video,
+        ]
+
+        processo = subprocess.run(
+            comando,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        if processo.returncode != 0:
+            erro_ffmpeg = (processo.stderr or processo.stdout or "erro desconhecido").strip()
+            print(f"❌ Falha ao gerar vídeo com FFmpeg: {erro_ffmpeg[:800]}")
+            return None
+
+        print(f"✅ Vídeo Story gerado: {caminho_video}")
+        return caminho_video
+    finally:
+        if caminho_frame and os.path.exists(caminho_frame):
+            try:
+                os.remove(caminho_frame)
+            except OSError:
+                pass
+
+
 def gerar_posts_em_lote(
     caminho_json: str,
     formatos: List[str] = ["feed", "story"],
     pasta_saida: Optional[str] = None,
+    duracao_video_segundos: int = 10,
 ) -> Dict[str, List[str]]:
     """Gera posts para todas as ofertas em um JSON.
     
@@ -333,7 +418,7 @@ def gerar_posts_em_lote(
         pasta_saida: Pasta de saída (padrão: dist-interface/instagram_posts)
     
     Returns:
-        Dicionário com chaves 'feed' e 'story' contendo listas de caminhos gerados
+        Dicionário com chaves 'feed', 'story' e 'video' contendo listas de caminhos gerados
     """
     pasta_saida = _garantir_pasta_saida(pasta_saida)
     
@@ -344,15 +429,16 @@ def gerar_posts_em_lote(
     
     if not ofertas:
         print("⚠️ Nenhuma oferta encontrada no JSON")
-        return {'feed': [], 'story': []}
+        return {'feed': [], 'story': [], 'video': []}
     
     print(f"\n📸 Gerando {len(ofertas)} posts Instagram...")
     print(f"   Formatos: {', '.join(formatos).upper()}")
     print(f"   Saída: {pasta_saida}\n")
     
-    resultado = {'feed': [], 'story': []}
+    resultado = {'feed': [], 'story': [], 'video': []}
     captions_feed = []
     captions_story = []
+    captions_video = []
     
     for idx, oferta in enumerate(ofertas, 1):
         descricao_curta = oferta.get('descricao', 'Sem descrição')[:40]
@@ -372,14 +458,25 @@ def gerar_posts_em_lote(
                 resultado['story'].append(caminho_story)
                 # Guardar caption para este story
                 captions_story.append(_gerar_caption_story(oferta, idx))
+
+        if 'video' in formatos:
+            caminho_video = gerar_video_story(
+                oferta,
+                pasta_saida=pasta_saida,
+                duracao_segundos=duracao_video_segundos,
+            )
+            if caminho_video:
+                resultado['video'].append(caminho_video)
+                captions_video.append(_gerar_caption_video(oferta, idx))
     
     # Salvar arquivo com captions e links
-    _salvar_captions(captions_feed, captions_story, pasta_saida, timestamp)
+    _salvar_captions(captions_feed, captions_story, captions_video, pasta_saida, timestamp)
     
     print(f"\n✅ Processo concluído!")
     print(f"   Posts Feed gerados: {len(resultado['feed'])}")
     print(f"   Posts Story gerados: {len(resultado['story'])}")
-    print(f"   Total de imagens: {len(resultado['feed']) + len(resultado['story'])}")
+    print(f"   Videos Reels gerados: {len(resultado['video'])}")
+    print(f"   Total de arquivos: {len(resultado['feed']) + len(resultado['story']) + len(resultado['video'])}")
     print(f"\n📝 Arquivo de captions criado: {pasta_saida}/captions_{timestamp}.txt")
     print("   ↳ Copie os links de lá para postar no Instagram!")
     
@@ -427,8 +524,32 @@ Link (copie): {link}
     return caption.strip()
 
 
-def _salvar_captions(captions_feed: List[str], captions_story: List[str], 
-                     pasta_saida: str, timestamp: str) -> str:
+def _gerar_caption_video(oferta: Dict, numero: int) -> str:
+    """Gera caption para video curto de oferta."""
+    descricao = oferta.get('descricao', 'Produto em promoção')
+    desconto = oferta.get('desconto', '')
+    depois = oferta.get('depois', '')
+    link = oferta.get('link_anuncio', '')
+
+    caption = f"""
+▶️ REEL #{numero}
+
+{descricao}
+
+{desconto} | {depois}
+
+Confira no link: {link}
+"""
+    return caption.strip()
+
+
+def _salvar_captions(
+    captions_feed: List[str],
+    captions_story: List[str],
+    captions_video: List[str],
+    pasta_saida: str,
+    timestamp: str,
+) -> str:
     """Salva todos os captions e links em arquivo texto para copiar."""
     
     arquivo_captions = os.path.join(pasta_saida, f"captions_{timestamp}.txt")
@@ -470,6 +591,19 @@ INSTRUÇÕES:
 {caption}
 
 """
+
+    conteudo += f"""
+================================================================================
+▶️ REELS/SHORTS ({len(captions_video)} vídeos)
+================================================================================
+
+"""
+
+    for idx, caption in enumerate(captions_video, 1):
+        conteudo += f"""--- VIDEO #{idx} ---
+{caption}
+
+"""
     
     conteudo += f"""
 ================================================================================
@@ -499,7 +633,7 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print(__doc__)
         print("\nUso:")
-        print("  python generators/instagram_post_generator.py <arquivo.json> [feed|story|ambos]")
+        print("  python generators/instagram_post_generator.py <arquivo.json> [feed|story|video|ambos]")
         print("\nExemplo:")
         print("  python generators/instagram_post_generator.py dist-interface/ofertas_relampago/Historico\\ de\\ anuncios/ofertas_20260719_143052.json ambos")
         sys.exit(1)
@@ -513,9 +647,22 @@ if __name__ == "__main__":
             formatos = ['feed']
         elif arg_formato == 'story':
             formatos = ['story']
+        elif arg_formato == 'video':
+            formatos = ['video']
+
+    duracao_video = 10
+    if len(sys.argv) > 3:
+        try:
+            duracao_video = int(sys.argv[3])
+        except ValueError:
+            print("⚠️ Duração de vídeo inválida. Usando padrão de 10 segundos.")
     
     if not os.path.exists(caminho_json):
         print(f"❌ Arquivo não encontrado: {caminho_json}")
         sys.exit(1)
     
-    gerar_posts_em_lote(caminho_json, formatos=formatos)
+    gerar_posts_em_lote(
+        caminho_json,
+        formatos=formatos,
+        duracao_video_segundos=duracao_video,
+    )

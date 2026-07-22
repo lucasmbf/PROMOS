@@ -1,0 +1,38 @@
+=== Inicio da execucao: 2026-07-22T20:11:06 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 30 --limite-candidatos 1 --url-produto https://lista.mercadolivre.com.br/amazon-echo-dot-5%C2%AA-gera%C3%A7%C3%A3o?sb=all_mercadolibre#D[A:Amazon%20Echo%20Dot%205%C2%AA%20Gera%C3%A7%C3%A3o] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/amazon-echo-dot-5%C2%AA-gera%C3%A7%C3%A3o?sb=all_mercadolibre#D[A:Amazon%20Echo%20Dot%205%C2%AA%20Gera%C3%A7%C3%A3o]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/amazon-echo-dot-5%C2%AA-gera%C3%A7%C3%A3o?sb=all_mercadolibre#D[A:Amazon%20Echo%20Dot%205%C2%AA%20Gera%C3%A7%C3%A3o]
+✓ Link de afiliado: https://meli.la/1BKYNkr
+[BLOCO_1] Resultado: 1 candidato(s) coletado(s), 1 válido(s) enriquecido(s). Total: 1/1
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 1 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260722_201124.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260722_201124.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_739112-MLB97929379798_112025-O-amazon-echo-dot-5th-alexa-top-assistente-virtual-para-casas.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Amazon Echo Dot 5th Alexa Top Assistente Virtual Para Casas
+Message SID Twilio: SMed17cb624b5e9988e1ca43a54f97abc3
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=1 falhas=0 total=1
+
+1 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-22T20:11:26 ===

@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260722_203239",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb60204100",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "Tapete Higiênico 80x60 30un Pata Limpa Descartável Cachorro Pet Cão Fralda Manta Absorvente",
+      "antes": "R$ 99,90",
+      "antes_valor": null,
+      "desconto": "45% OFF",
+      "depois": "R$ 54,22",
+      "depois_valor": 54.22,
+      "link_anuncio": "https://www.mercadolivre.com.br/tapete-higinico-80x60-30un-pata-limpa-descartavel-cachorro-pet-co-fralda-manta-absorvente/p/MLB60204100?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=14&type=product&tracking_id=7a90e3cf-99f0-4046-9061-8460bfc1bf30&wid=MLB4256242315&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_841319-MLA99961598527_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlbu1164390599",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "Tapete Higiênico Pet Like Ultra Pad Lavanda 30 Unidades",
+      "antes": "R$ 77,53",
+      "antes_valor": null,
+      "desconto": "17% OFF",
+      "depois": "R$ 63,92",
+      "depois_valor": 63.92,
+      "link_anuncio": "https://www.mercadolivre.com.br/tapete-higienico-pet-like-ultra-pad-lavanda-30-unidades/up/MLBU1164390599?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=17&type=product&tracking_id=7a90e3cf-99f0-4046-9061-8460bfc1bf30&wid=MLB4553398896&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_874368-MLB77436653506_072024-O-tapete-higienico-pet-like-ultra-pad-lavanda-30-unidades.webp"
+    },
+    {
+      "id_anuncio": "mlb29016590",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "Tapete Higiênico 50 Unidades 80x60 biosec descartável para cachorro pet cão absorvente manta fralda",
+      "antes": "R$ 129,90",
+      "antes_valor": null,
+      "desconto": "45% OFF",
+      "depois": "R$ 70,78",
+      "depois_valor": 70.78,
+      "link_anuncio": "https://www.mercadolivre.com.br/tapete-higinico-50-unidades-80x60-biosec-descartavel-para-cachorro-pet-co-absorvente-manta-fralda/p/MLB29016590?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=10&type=product&tracking_id=7a90e3cf-99f0-4046-9061-8460bfc1bf30&wid=MLB3789432983&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_856182-MLA110628780523_042026-O.webp"
+    }
+  ]
+}

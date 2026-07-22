@@ -1,0 +1,43 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260722_202708",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb73079267",
+      "categoria": "Organização para Casa > Saco a Vácuo",
+      "descricao": "Sacos A Vácuo Kit 10 Unidades Viagem Mala Avião Embalagem Com Bomba Reutilizável Viagem Organização (2x - 70x110) (3x - 60x80) (5x - 50x60) Roupa Casaco Organizadores Edredom Pequeno Médio E Grande",
+      "antes": "R$ 119,99",
+      "antes_valor": null,
+      "desconto": "60% OFF",
+      "depois": "R$ 47,90",
+      "depois_valor": 47.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/sacos-a-vacuo-kit-10-unidades-viagem-mala-avio-embalagem-com-bomba-reutilizavel-viagem-organizaco-2x-70x110-3x-60x80-5x-50x60-roupa-casaco-organizadores-edredom-pequeno-medio-e-grande/p/MLB73079267#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=7&type=product&tracking_id=7bb2b95d-b712-443b-9ea4-af2447534907&wid=MLB4762585305&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_831275-MLA112473023156_062026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb73906298",
+      "categoria": "Organização para Casa > Saco a Vácuo",
+      "descricao": "Kit 12 Sacos A Vacuo Organizador Roupas Edredom Com Bomba Eletrica Para Mala Viagem E Guarda Roupa",
+      "antes": "R$ 485,58",
+      "antes_valor": null,
+      "desconto": "71% OFF",
+      "depois": "R$ 137,79",
+      "depois_valor": 137.79,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-12-sacos-a-vacuo-organizador-roupas-edredom-com-bomba-eletrica-para-mala-viagem-e-guarda-roupa/p/MLB73906298#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=6&type=product&tracking_id=7bb2b95d-b712-443b-9ea4-af2447534907&wid=MLB6981280736&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_676256-MLA113373178079_062026-O.webp"
+    },
+    {
+      "id_anuncio": "mlbu3447112924",
+      "categoria": "Organização para Casa > Saco a Vácuo",
+      "descricao": "Saco Vacuo Viagem Pequeno Hermético Mochila Reutilizável",
+      "antes": "R$ 419",
+      "antes_valor": null,
+      "desconto": "57% OFF",
+      "depois": "R$ 177",
+      "depois_valor": 177.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/saco-vacuo-viagem-pequeno-hermetico-mochila-reutilizavel/up/MLBU3447112924#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=35&type=product&tracking_id=96c18edf-e949-44f5-a679-72c65c6eb529&wid=MLB5740094494&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_849637-MLB99853563936_122025-O-saco-vacuo-viagem-pequeno-hermetico-mochila-reutilizavel.webp"
+    }
+  ]
+}

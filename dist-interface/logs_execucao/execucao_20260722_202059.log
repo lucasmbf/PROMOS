@@ -1,0 +1,67 @@
+=== Inicio da execucao: 2026-07-22T20:20:59 ===
+Args: --produto-por-html --fonte mercadolivre --limite-candidatos 50 --url-produto https://lista.mercadolivre.com.br/sacos-a-v%C3%A1cuo-para-roupas#D[A:Sacos%20a%20v%C3%A1cuo%20para%20roupas] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/sacos-a-v%C3%A1cuo-para-roupas#D[A:Sacos%20a%20v%C3%A1cuo%20para%20roupas]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/sacos-a-v%C3%A1cuo-para-roupas#D[A:Sacos%20a%20v%C3%A1cuo%20para%20roupas]
+✓ Link de afiliado: https://meli.la/1KgG6Qs
+✓ Link de afiliado: https://meli.la/1oY9Kbi
+✓ Link de afiliado: https://meli.la/2Reb8ow
+✓ Link de afiliado: https://meli.la/1kJty8H
+✓ Link de afiliado: https://meli.la/245h9ip
+✓ Link de afiliado: https://meli.la/2wwZPaF
+✓ Link de afiliado: https://meli.la/2bmfrDc
+✓ Link de afiliado: https://meli.la/1XhLFvb
+✓ Link de afiliado: https://meli.la/1ztyFFq
+✓ Link de afiliado: https://meli.la/2jpHRLm
+✓ Link de afiliado: https://meli.la/1HHZMHg
+✓ Link de afiliado: https://meli.la/2QC4TcN
+✓ Link de afiliado: https://meli.la/1f4adsb
+✓ Link de afiliado: https://meli.la/1f4adsb
+✓ Link de afiliado: https://meli.la/1T2Zoz7
+✓ Link de afiliado: https://meli.la/1u64vWZ
+✓ Link de afiliado: https://meli.la/2cQAgrE
+✓ Link de afiliado: https://meli.la/1sMsoCs
+✓ Link de afiliado: https://meli.la/1sd7hqo
+✓ Link de afiliado: https://meli.la/21yUyd4
+✓ Link de afiliado: https://meli.la/2hbGsv3
+✓ Link de afiliado: https://meli.la/2FzND3R
+✓ Link de afiliado: https://meli.la/2Q6at6d
+✓ Link de afiliado: https://meli.la/1KSpB9y
+✓ Link de afiliado: https://meli.la/1V1rJ3E
+✓ Link de afiliado: https://meli.la/2U8HBdL
+✓ Link de afiliado: https://meli.la/1L1jsX3
+[AVISO] Não foi possível extrair o link encurtado do modal de afiliado.
+[ERRO] Falha ao clicar no botão Afiliados/Compartilhar: Keyboard.press: Target page, context or browser has been closed
+[LOGIN_REQUIRED_AFILIADOS] Link de afiliado nao gerado para mlbu785466703. Anuncio ignorado. Faca login no Afiliados e execute novamente.
+[AVISO] Falha ao enriquecer anúncio mlb73079267: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlbu3896448223: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb6666421198: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb75437086: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb4684880259: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb4826560299: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb41085838: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb4590872413: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlbu3882535531: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb4405349501: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb4684877597: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb2058489909: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb3823318087: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb6170784412: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb6170628330: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlbu3973161526: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb73059359: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb5543986402: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb68228970: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb72911447: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb73906298: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb70516174: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/sacos-a-v%C3%A1cuo-para-roupas?page=2
+
+=== Fim da execucao: 2026-07-22T20:25:51 ===

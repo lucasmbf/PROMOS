@@ -7,11 +7,13 @@ Inclui:
 from .instagram_post_generator import (
     gerar_post_feed,
     gerar_post_story,
+    gerar_video_story,
     gerar_posts_em_lote,
 )
 
 __all__ = [
     'gerar_post_feed',
     'gerar_post_story',
+    'gerar_video_story',
     'gerar_posts_em_lote',
 ]

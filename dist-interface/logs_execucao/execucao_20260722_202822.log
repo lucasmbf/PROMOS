@@ -1,0 +1,40 @@
+=== Inicio da execucao: 2026-07-22T20:28:22 ===
+Args: --produto-por-html --fonte mercadolivre --descricao-produto Armário Organizador Dobrável Branco, 3 Camadas 38 Cm --preco-minimo 100.0 --preco-maximo 1000.0 --limite-candidatos 3 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[BLOCO_GENERICA_1] Carregando páginas 1 a 3
+[BLOCO_GENERICA_1] Página 1: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm
+[BLOCO_GENERICA_1] Página 2: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_51
+[BLOCO_GENERICA_1] Página 3: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_101
+[BLOCO_GENERICA_1] Resultado: 1 candidato(s) coletado(s). Total: 1
+
+[BLOCO_GENERICA_2] Carregando páginas 4 a 6
+[BLOCO_GENERICA_2] Página 4: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_151
+[BLOCO_GENERICA_2] Página 5: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_201
+[BLOCO_GENERICA_2] Página 6: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_251
+[BLOCO_GENERICA_2] Resultado: 0 candidato(s) coletado(s). Total: 1
+[BLOCO_GENERICA_2] Nenhum candidato novo neste bloco. Continuando para proximas paginas.
+
+[BLOCO_GENERICA_3] Carregando páginas 7 a 9
+[BLOCO_GENERICA_3] Página 7: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_301
+[BLOCO_GENERICA_3] Página 8: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_351
+[BLOCO_GENERICA_3] Página 9: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_401
+[BLOCO_GENERICA_3] Resultado: 0 candidato(s) coletado(s). Total: 1
+[BLOCO_GENERICA_3] Nenhum candidato novo neste bloco. Continuando para proximas paginas.
+
+[BLOCO_GENERICA_4] Carregando páginas 10 a 12
+[BLOCO_GENERICA_4] Página 10: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_451
+[BLOCO_GENERICA_4] Página 11: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_501
+[BLOCO_GENERICA_4] Página 12: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_551
+[BLOCO_GENERICA_4] Resultado: 0 candidato(s) coletado(s). Total: 1
+[BLOCO_GENERICA_4] Nenhum candidato novo neste bloco. Continuando para proximas paginas.
+
+[BLOCO_GENERICA_5] Carregando páginas 13 a 15
+[BLOCO_GENERICA_5] Página 13: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_601
+[BLOCO_GENERICA_5] Página 14: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_651
+[BLOCO_GENERICA_5] Página 15: https://lista.mercadolivre.com.br/Arm%C3%A1rio-Organizador-Dobr%C3%A1vel-Branco%2C-3-Camadas-38-Cm_Desde_701
+
+=== Fim da execucao: 2026-07-22T20:29:53 ===

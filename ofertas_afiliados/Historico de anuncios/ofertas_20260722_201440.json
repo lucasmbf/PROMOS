@@ -1,0 +1,18 @@
+{
+  "timestamp": "20260722_201440",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu3983562328",
+      "categoria": "Áudio > Assistentes Pessoais",
+      "descricao": "Amazon Echo Dot 5a Geração Kids - Dragão, Alexa",
+      "antes": "Sem preço anterior",
+      "antes_valor": null,
+      "desconto": "6% OFF",
+      "depois": "R$ 361,16",
+      "depois_valor": 361.16,
+      "link_anuncio": "https://www.mercadolivre.com.br/amazon-echo-dot-5a-geracao-kids--dragao-alexa/up/MLBU3983562328?pdp_filters=SHIPPING_ORIGIN%3A10215068%7Cprice%3A350-*#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=1&type=product&tracking_id=d787559b-41ce-4136-8c10-0bc777ba3d3a&wid=MLB6796392754&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_945290-MLA96113246477_102025-O-amazon-echo-dot-5a-geracao-kids--dragao-alexa.webp"
+    }
+  ]
+}

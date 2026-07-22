@@ -11,6 +11,7 @@ import shutil
 import smtplib
 import subprocess
 import sys
+import tempfile
 import threading
 import unicodedata
 import webbrowser
@@ -2294,6 +2295,28 @@ def create_gui(categorias):
         cor_texto_btn = ttk.Button(left_panel, text="Cor da fonte: #FFFFFF")
         cor_texto_btn.pack(fill="x", pady=(0, 10))
 
+        formato_saida_var = tk.StringVar(value="story")
+        ttk.Label(left_panel, text="Formato de saída:").pack(anchor="w", pady=(0, 0))
+        formato_saida_combo = ttk.Combobox(
+            left_panel,
+            textvariable=formato_saida_var,
+            values=["feed", "story", "video", "ambos"],
+            state="readonly",
+            width=18,
+        )
+        formato_saida_combo.pack(fill="x", pady=(6, 6))
+
+        duracao_video_var = tk.IntVar(value=10)
+        ttk.Label(left_panel, text="Duração do vídeo (8 a 15s):").pack(anchor="w", pady=(0, 0))
+        duracao_video_spin = ttk.Spinbox(
+            left_panel,
+            from_=8,
+            to=15,
+            textvariable=duracao_video_var,
+            width=8,
+        )
+        duracao_video_spin.pack(anchor="w", pady=(6, 10))
+
         posicao_var = tk.StringVar(value="Posição: -")
         ttk.Label(left_panel, textvariable=posicao_var, style="Hint.TLabel").pack(anchor="w", pady=(0, 10))
 
@@ -3037,6 +3060,44 @@ def create_gui(categorias):
             except ValueError:
                 return (0, 0, 0)
 
+        def _gerar_video_por_ffmpeg(caminho_imagem, caminho_video, duracao_segundos):
+            ffmpeg_bin = shutil.which("ffmpeg")
+            if not ffmpeg_bin:
+                return False, "FFmpeg não encontrado no PATH."
+
+            fps = 25
+            duracao_segundos = max(8, min(15, int(duracao_segundos)))
+            total_frames = fps * duracao_segundos
+            filtro_video = (
+                "scale=1080:1920,"
+                f"zoompan=z='min(zoom+0.0015,1.12)':d={total_frames}:s=1080x1920:fps={fps}"
+            )
+
+            comando = [
+                ffmpeg_bin,
+                "-y",
+                "-loop", "1",
+                "-i", caminho_imagem,
+                "-t", str(duracao_segundos),
+                "-vf", filtro_video,
+                "-r", str(fps),
+                "-c:v", "libx264",
+                "-pix_fmt", "yuv420p",
+                "-movflags", "+faststart",
+                caminho_video,
+            ]
+
+            try:
+                processo = subprocess.run(comando, capture_output=True, text=True, check=False)
+            except Exception as exc:
+                return False, str(exc)
+
+            if processo.returncode != 0:
+                erro = (processo.stderr or processo.stdout or "erro desconhecido").strip()
+                return False, erro
+
+            return True, "ok"
+
         def _salvar_post_customizado():
             texto = texto_post.get("1.0", "end").strip()
             if not texto:
@@ -3051,6 +3112,15 @@ def create_gui(categorias):
             if not preview_state["canvas_text_id"]:
                 messagebox.showwarning("Preview indisponível", "Não foi possível determinar a posição do texto.", parent=dialog_root)
                 return
+
+            formato_saida = str(formato_saida_var.get() or "story").strip().lower()
+            if formato_saida not in {"feed", "story", "video", "ambos"}:
+                formato_saida = "story"
+
+            try:
+                duracao_video = max(8, min(15, int(duracao_video_var.get())))
+            except Exception:
+                duracao_video = 10
 
             try:
                 imagem_saida = preview_state["img_original"].copy().convert("RGBA")
@@ -3126,15 +3196,69 @@ def create_gui(categorias):
                 draw.multiline_text(**args_texto)
 
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                nome_arquivo = f"post_instagram_custom_{timestamp}.png"
-                caminho_saida = os.path.join(PASTA_GERADORES_SAIDA, nome_arquivo)
-                imagem_saida.convert("RGB").save(caminho_saida, "PNG")
+                base_nome = f"post_instagram_custom_{timestamp}"
+                arquivos_gerados = []
+                caminho_tmp_video = None
 
-                status_var.set(f"Post Instagram criado: {nome_arquivo}")
+                if formato_saida in {"feed", "story", "ambos"}:
+                    nome_png = f"{formato_saida if formato_saida in {'feed', 'story'} else 'story'}_{base_nome}.png"
+                    caminho_png = os.path.join(PASTA_GERADORES_SAIDA, nome_png)
+                    imagem_saida.convert("RGB").save(caminho_png, "PNG")
+                    arquivos_gerados.append(nome_png)
+
+                if formato_saida in {"video", "ambos"}:
+                    if formato_saida == "video":
+                        with tempfile.NamedTemporaryFile(
+                            mode="wb",
+                            suffix=".png",
+                            delete=False,
+                            dir=PASTA_GERADORES_SAIDA,
+                        ) as arquivo_tmp:
+                            caminho_tmp_video = arquivo_tmp.name
+                        imagem_saida.convert("RGB").save(caminho_tmp_video, "PNG")
+                        caminho_fonte_video = caminho_tmp_video
+                    else:
+                        caminho_fonte_video = os.path.join(PASTA_GERADORES_SAIDA, f"story_{base_nome}.png")
+
+                    nome_video = f"reel_{base_nome}.mp4"
+                    caminho_video = os.path.join(PASTA_GERADORES_SAIDA, nome_video)
+                    ok_video, detalhe_video = _gerar_video_por_ffmpeg(
+                        caminho_fonte_video,
+                        caminho_video,
+                        duracao_video,
+                    )
+                    if not ok_video:
+                        if caminho_tmp_video and os.path.exists(caminho_tmp_video):
+                            try:
+                                os.remove(caminho_tmp_video)
+                            except Exception:
+                                pass
+                        messagebox.showerror(
+                            "Erro ao gerar vídeo",
+                            "Não foi possível gerar o vídeo.\n\n"
+                            f"Detalhe: {detalhe_video}\n\n"
+                            "Dica: instale o FFmpeg e adicione ao PATH.",
+                            parent=dialog_root,
+                        )
+                        status_var.set("Erro ao criar vídeo do post Instagram.")
+                        return
+
+                    if caminho_tmp_video and os.path.exists(caminho_tmp_video):
+                        try:
+                            os.remove(caminho_tmp_video)
+                        except Exception:
+                            pass
+
+                    arquivos_gerados.append(nome_video)
+
+                status_var.set(f"Saída Instagram criada ({formato_saida}).")
+                lista_arquivos = "\n".join(f"- {arquivo}" for arquivo in arquivos_gerados)
                 msg = (
-                    "Post criado com sucesso.\n\n"
-                    f"Arquivo: {nome_arquivo}\n"
+                    "Saída criada com sucesso.\n\n"
+                    f"Formato: {formato_saida}\n"
                     f"Template: {os.path.basename(caminho_template)}\n\n"
+                    "Arquivos gerados:\n"
+                    f"{lista_arquivos}\n\n"
                     "Deseja abrir a pasta de saída?"
                 )
                 if messagebox.askyesno("Sucesso", msg, parent=dialog_root):
@@ -3180,7 +3304,7 @@ def create_gui(categorias):
         ttk.Button(btns_anuncio_frame, text="Remover imagem", command=_remover_imagem_anuncio).pack(side="left", padx=(8, 0))
         cor_texto_btn.configure(command=_selecionar_cor_texto)
 
-        ttk.Button(btns_actions_frame, text="Salvar post", style="Action.TButton", command=_salvar_post_customizado).pack(side="left")
+        ttk.Button(btns_actions_frame, text="Gerar saída", style="Action.TButton", command=_salvar_post_customizado).pack(side="left")
         ttk.Button(btns_actions_frame, text="Fechar", command=dialog_root.destroy).pack(side="left", padx=(8, 0))
 
         template_combo.bind("<<ComboboxSelected>>", _on_template_change)

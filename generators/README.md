@@ -1,11 +1,12 @@
 # 📸 Gerador de Posts Instagram
 
-Módulo para gerar imagens otimizadas para Instagram (Feed e Stories) a partir dos JSONs de ofertas gerados pelo sistema.
+Módulo para gerar imagens e vídeos otimizados para Instagram a partir dos JSONs de ofertas gerados pelo sistema.
 
 ## 🎯 Recursos
 
 - ✅ Gera posts para **Feed Instagram** (1080x1350 px)
 - ✅ Gera posts para **Stories Instagram** (1080x1920 px)
+- ✅ Gera vídeos verticais **Reels/Shorts** (1080x1920, 8 a 15s)
 - ✅ Processa lotes de ofertas
 - ✅ Personalização de cores e layouts
 - ✅ Informações destacadas: preço anterior, novo preço, desconto
@@ -27,6 +28,14 @@ poetry add Pillow
 conda install pillow
 ```
 
+### Pré-requisito para vídeo: FFmpeg
+
+```bash
+ffmpeg -version
+```
+
+Se o comando acima falhar, instale o FFmpeg e adicione ao PATH do sistema.
+
 ## 🚀 Uso
 
 ### 1. Via Terminal (CLI)
@@ -40,6 +49,12 @@ python generators/instagram_post_generator.py dist-interface/ofertas_relampago/H
 
 # Apenas Stories
 python generators/instagram_post_generator.py dist-interface/ofertas_relampago/Historico\ de\ anuncios/ofertas_20260719_143052.json story
+
+# Apenas vídeo (10s padrão)
+python generators/instagram_post_generator.py dist-interface/ofertas_relampago/Historico\ de\ anuncios/ofertas_20260719_143052.json video
+
+# Vídeo com duração customizada (8 a 15s)
+python generators/instagram_post_generator.py dist-interface/ofertas_relampago/Historico\ de\ anuncios/ofertas_20260719_143052.json video 12
 ```
 
 ### 2. Via Helper (mais simples)
@@ -47,6 +62,9 @@ python generators/instagram_post_generator.py dist-interface/ofertas_relampago/H
 ```bash
 # Gera posts do JSON mais recente em uma pasta
 python generators_helper.py dist-interface/ofertas_relampago/Historico\ de\ anuncios ambos
+
+# Gera apenas vídeos com duração de 12 segundos
+python generators_helper.py dist-interface/ofertas_relampago/Historico\ de\ anuncios video 12
 ```
 
 ### 3. Em Código Python
@@ -57,17 +75,20 @@ from generators import gerar_posts_em_lote
 # Gerar posts de um JSON
 resultado = gerar_posts_em_lote(
     caminho_json="dist-interface/ofertas_relampago/Historico de anuncios/ofertas_20260719_143052.json",
-    formatos=["feed", "story"],  # ou ["feed"] ou ["story"]
+  formatos=["feed", "story", "video"],  # combinacoes: feed/story/video
+  duracao_video_segundos=10,  # opcional: entre 8 e 15
     pasta_saida="dist-interface/instagram_posts"  # opcional
 )
 
 # resultado = {
 #     'feed': ['/path/to/feed_123_20260719.png', ...],
-#     'story': ['/path/to/story_123_20260719.png', ...]
+#     'story': ['/path/to/story_123_20260719.png', ...],
+#     'video': ['/path/to/reel_123_20260719.mp4', ...]
 # }
 
 print(f"Feed: {len(resultado['feed'])} imagens")
 print(f"Story: {len(resultado['story'])} imagens")
+print(f"Video: {len(resultado['video'])} arquivos")
 ```
 
 ## 📁 Saída
@@ -77,6 +98,7 @@ Os posts são salvos em: `dist-interface/instagram_posts/`
 Estrutura de nomes:
 - Feed: `feed_{id_anuncio}_{timestamp}.png`
 - Story: `story_{id_anuncio}_{timestamp}.png`
+- Video: `reel_{id_anuncio}_{timestamp}.mp4`
 
 ## 🎨 Personalização
 
@@ -99,6 +121,7 @@ gerar_post_feed(
 |---------|-----------|-----|
 | Feed | 1080x1350 px | Posts no feed principal |
 | Story | 1080x1920 px | Stories efêmeras |
+| Video | 1080x1920 px | Reels/Shorts com zoom leve |
 
 ## 📝 Estrutura do JSON de Entrada
 

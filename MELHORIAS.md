@@ -12,19 +12,19 @@
 - [x] Módulo `generators/instagram_post_generator.py`
 - [x] Gera posts Feed (1080x1350)
 - [x] Gera posts Stories (1080x1920)
+- [x] Gera vídeos Reels/Shorts (1080x1920, 8 a 15 segundos, via FFmpeg)
 - [x] Interface CLI
 - [x] Helper para lote (`generators_helper.py`)
 - [x] Documentação em `generators/README.md`
 
 ## Fase 3: Integração GUI ✅ CONCLUÍDA
 - [x] Botão "📸 GERAR POSTS INSTAGRAM" na interface
-- [x] Dialog para selecionar formato (feed/story/ambos)
+- [x] Dialog para selecionar formato (feed/story/video/ambos)
 - [x] Procura automaticamente o JSON mais recente
 - [x] Abre pasta de saída automaticamente
 - [x] Integração com generators e generators_helper
 
 ## Melhorias Futuras
-- Adicionar geração automática de vídeo vertical (1080x1920, 8 a 15 segundos) no fluxo "Gerar Posts Instagram", reaproveitando os JSONs já serializados (com opção de exportar imagem + vídeo no mesmo processo).
 - Normalizar a forma de busca, os marcadores HTML mudam muito de um para o outro. Passar condições da tela (Deve conter texto especifico, Nao pode conter texto especifico)
 - Aceitar link em todas as configurações. O Link tem prioridade de busca.
 

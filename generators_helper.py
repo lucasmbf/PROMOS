@@ -19,13 +19,15 @@ def gerar_posts_instagram_para_json_recente(
     pasta_json: str,
     formatos: List[str] = ["feed", "story"],
     pasta_saida: Optional[str] = None,
+    duracao_video_segundos: int = 10,
 ) -> bool:
     """Procura o JSON mais recente em uma pasta e gera posts Instagram.
     
     Args:
         pasta_json: Pasta onde estão os JSONs gerados (ex: dist-interface/ofertas_relampago/Historico de anuncios)
-        formatos: Formatos a gerar ['feed', 'story'] ou ambos
+        formatos: Formatos a gerar ['feed', 'story', 'video'] ou combinacoes
         pasta_saida: Pasta de saída (padrão: dist-interface/instagram_posts)
+        duracao_video_segundos: Duracao do video em segundos (entre 8 e 15)
     
     Returns:
         True se sucesso, False se falha ou sem JSONs encontrados
@@ -57,6 +59,7 @@ def gerar_posts_instagram_para_json_recente(
             json_mais_recente,
             formatos=formatos,
             pasta_saida=pasta_saida,
+            duracao_video_segundos=duracao_video_segundos,
         )
         return True
     except Exception as e:
@@ -86,11 +89,12 @@ if __name__ == "__main__":
     import sys
     
     if len(sys.argv) < 2:
-        print("Uso: python generators_helper.py <pasta_json> [feed|story|ambos]")
+        print("Uso: python generators_helper.py <pasta_json> [feed|story|video|ambos] [duracao_video_segundos]")
         sys.exit(1)
     
     pasta = sys.argv[1]
     formatos = ['feed', 'story']
+    duracao_video = 10
     
     if len(sys.argv) > 2:
         arg = sys.argv[2].lower()
@@ -98,6 +102,18 @@ if __name__ == "__main__":
             formatos = ['feed']
         elif arg == 'story':
             formatos = ['story']
+        elif arg == 'video':
+            formatos = ['video']
+
+    if len(sys.argv) > 3:
+        try:
+            duracao_video = int(sys.argv[3])
+        except ValueError:
+            print("⚠️ Duração inválida, usando 10 segundos.")
     
-    sucesso = gerar_posts_instagram_para_json_recente(pasta, formatos=formatos)
+    sucesso = gerar_posts_instagram_para_json_recente(
+        pasta,
+        formatos=formatos,
+        duracao_video_segundos=duracao_video,
+    )
     sys.exit(0 if sucesso else 1)
