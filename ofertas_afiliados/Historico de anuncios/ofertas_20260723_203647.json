@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260723_203647",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb26654484",
+      "categoria": "Alimento, Petisco e Suplemento > Rações",
+      "descricao": "Alimento Golden Special Gatos Castrados Sabor frango e Carne 10.1 kg",
+      "antes": "R$ 277,90",
+      "antes_valor": null,
+      "desconto": "55% OFF",
+      "depois": "R$ 122,92",
+      "depois_valor": 122.92,
+      "link_anuncio": "https://www.mercadolivre.com.br/alimento-golden-special-gatos-castrados-sabor-frango-e-carne-101-kg/p/MLB26654484?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=4&type=product&tracking_id=4dbcbd97-9aa0-4b56-99f6-4125f8514548&wid=MLB5578076610&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_901974-MLA99934727927_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb10229210",
+      "categoria": "Rações > Racao",
+      "descricao": "Ração Whiskas para gatos adultos castrados sabor carne 10.1kg",
+      "antes": "R$ 269,90",
+      "antes_valor": null,
+      "desconto": "51% OFF",
+      "depois": "R$ 132",
+      "depois_valor": 132.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-whiskas-para-gatos-adultos-castrados-sabor-carne-101kg/p/MLB10229210?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=10&type=product&tracking_id=4dbcbd97-9aa0-4b56-99f6-4125f8514548&wid=MLB3242459541&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_720890-MLA112069364360_062026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb29089153",
+      "categoria": "Rações > Racao",
+      "descricao": "Ração Golden Special Gatos Adultos Frango E Carne 10,1 Kg",
+      "antes": "R$ 261,22",
+      "antes_valor": null,
+      "desconto": "49% OFF",
+      "depois": "R$ 132,99",
+      "depois_valor": 132.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-golden-special-gatos-adultos-frango-e-carne-101-kg/p/MLB29089153?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=11&type=product&tracking_id=4dbcbd97-9aa0-4b56-99f6-4125f8514548&wid=MLB4022136737&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_941669-MLA99931956469_112025-O.webp"
+    }
+  ]
+}

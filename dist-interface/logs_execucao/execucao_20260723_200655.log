@@ -1,0 +1,18 @@
+=== Inicio da execucao: 2026-07-23T20:06:55 ===
+Args: --produto-por-html --fonte mercadolivre --descricao-produto https://lista.mercadolivre.com.br/abajur-lua-3d-led?sb=all_mercadolibre#D[A:Abajur%20Lua%203D%20LED] --preco-minimo 20.0 --preco-maximo 300.0 --limite-candidatos 4 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[BLOCO_GENERICA_1] Carregando páginas 1 a 3
+[BLOCO_GENERICA_1] Página 1: https://lista.mercadolivre.com.br/https%3A%2F%2Flista.mercadolivre.com.br%2Fabajur-lua-3d-led%3Fsb%3Dall_mercadolibre%23D%5BA%3AAbajur%2520Lua%25203D%2520LED%5D
+[BLOCO_GENERICA_1] Página 2: https://lista.mercadolivre.com.br/https%3A%2F%2Flista.mercadolivre.com.br%2Fabajur-lua-3d-led%3Fsb%3Dall_mercadolibre%23D%5BA%3AAbajur%2520Lua%25203D%2520LED%5D_Desde_51
+[BLOCO_GENERICA_1] Página 3: https://lista.mercadolivre.com.br/https%3A%2F%2Flista.mercadolivre.com.br%2Fabajur-lua-3d-led%3Fsb%3Dall_mercadolibre%23D%5BA%3AAbajur%2520Lua%25203D%2520LED%5D_Desde_101
+[BLOCO_GENERICA_1] Resultado: 0 candidato(s) coletado(s). Total: 0
+[BLOCO_GENERICA_1] Nenhum candidato novo neste bloco. Continuando para proximas paginas.
+
+[BLOCO_GENERICA_2] Carregando páginas 4 a 6
+[BLOCO_GENERICA_2] Página 4: https://lista.mercadolivre.com.br/https%3A%2F%2Flista.mercadolivre.com.br%2Fabajur-lua-3d-led%3Fsb%3Dall_mercadolibre%23D%5BA%3AAbajur%2520Lua%25203D%2520LED%5D_Desde_151
+
+=== Fim da execucao: 2026-07-23T20:07:19 ===

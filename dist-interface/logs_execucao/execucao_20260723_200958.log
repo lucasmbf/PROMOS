@@ -1,0 +1,88 @@
+=== Inicio da execucao: 2026-07-23T20:09:58 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 20.0 --preco-maximo 300.0 --limite-candidatos 6 --url-produto https://lista.mercadolivre.com.br/organizador-girat%C3%B3rio-para-geladeira#D[A:Organizador%20girat%C3%B3rio%20para%20geladeira] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/organizador-girat%C3%B3rio-para-geladeira#D[A:Organizador%20girat%C3%B3rio%20para%20geladeira]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/organizador-girat%C3%B3rio-para-geladeira#D[A:Organizador%20girat%C3%B3rio%20para%20geladeira]
+✓ Link de afiliado: https://meli.la/32w7rQz
+✓ Link de afiliado: https://meli.la/2jT4Su3
+✓ Link de afiliado: https://meli.la/2sWq3Zz
+✓ Link de afiliado: https://meli.la/1dNBNQD
+✓ Link de afiliado: https://meli.la/2H3Bpuc
+✓ Link de afiliado: https://meli.la/1GjbqpK
+[BLOCO_1] Resultado: 6 candidato(s) coletado(s), 6 válido(s) enriquecido(s). Total: 6/6
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 5 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260723_201106.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260723_201106.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_859744-MLB112581394935_062026-O-organizador-geladeira-maquiagem-giratorio-armario-multiuso.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Organizador Geladeira Maquiagem Giratório Armário Multiuso
+Message SID Twilio: SMa13cbf40ed3a5377bbe32b3ba1be3920
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_690471-MLB88935492624_082025-O-organizador-geladeira-maquiagem-giratorio-armario-multiuso-p.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Organizador Geladeira Maquiagem Giratório Armário Multiuso P
+Message SID Twilio: SMd5c30c66ffe4a3f78b43c5ca18a8a92c
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_980291-MLB82898579940_032025-O-organizador-geladeira-maquiagem-giratorio-armario-multiuso.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Organizador Geladeira Maquiagem Giratório Armário Multiuso
+Message SID Twilio: SMc6a75fac392dd79a846693db533001a6
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_741084-MLA113973583335_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+2 Organizador Giratório Acrílico Transparente 360° Baitashop Transparente
+Message SID Twilio: SMc6a7b618abbfaa3de4cac851f010acd4
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_861023-MLA112360631250_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Organizador Giratório Bambu Cozinha Multiuso Temperos Fruteira Ou Maquiagens
+Message SID Twilio: SMc9c565ba43ae196f6dc1aa8911befad8
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_837013-MLA107048108334_022026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Organizador Giratório Redondo Alto Multiuso Keep Bambu Ou
+Message SID Twilio: SMcca829c45beb811a196ad96f95901a75
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=6 falhas=0 total=6
+
+6 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-23T20:11:17 ===

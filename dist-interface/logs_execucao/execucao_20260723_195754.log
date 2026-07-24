@@ -1,0 +1,58 @@
+=== Inicio da execucao: 2026-07-23T19:57:54 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 30 --limite-candidatos 3 --url-produto https://lista.mercadolivre.com.br/tomada-inteligente-wi-fi-positivo-casa-inteligente?sb=all_mercadolibre#D[A:Tomada%20inteligente%20Wi-Fi%20Positivo%20Casa%20Inteligente] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/tomada-inteligente-wi-fi-positivo-casa-inteligente?sb=all_mercadolibre#D[A:Tomada%20inteligente%20Wi-Fi%20Positivo%20Casa%20Inteligente]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/tomada-inteligente-wi-fi-positivo-casa-inteligente?sb=all_mercadolibre#D[A:Tomada%20inteligente%20Wi-Fi%20Positivo%20Casa%20Inteligente]
+✓ Link de afiliado: https://meli.la/21wv1pY
+✓ Link de afiliado: https://meli.la/2bjADBW
+✓ Link de afiliado: https://meli.la/1Bs5SKG
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260723_195833.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260723_195834.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_829204-MLA111083065463_042026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tomada Inteligente Wi-fi Kateluo 16a Com Monitor De Consumo Para Alexa E Google Home Branco
+Message SID Twilio: SM39b3951e1b9c1485b2c6a4c48df8986c
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_703588-MLA114453366637_072026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Smart Plug Wi-Fi 10A/1000W Positivo Casa Inteligente - Ligue ou Desligue seus Eletrodomésticos Através do Celular - Compatível com Alexa
+Message SID Twilio: SM554aac17f04772472e1aae39ad5b08f4
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_980775-MLB50098192525_052022-O-smart-plug-cfh-wifi-positivo-casa-inteligente-10a.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Smart Plug Cfh Wi-fi Positivo Casa Inteligente 10a
+Message SID Twilio: SM2b329a6101a3ab400edcc022a0586001
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=3 falhas=0 total=3
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-23T19:58:39 ===

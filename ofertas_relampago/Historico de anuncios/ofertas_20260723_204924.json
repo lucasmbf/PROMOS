@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260723_204924",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB4812130742",
+      "categoria": "Saúde > Suplementos Alimentares",
+      "descricao": "Creatina Monohidratada Pura 1kg Dark Lab Unidade Sem sabor",
+      "antes": "R$ 159,90",
+      "antes_valor": 159.9,
+      "desconto": "56% OFF",
+      "depois": "R$ 69,90",
+      "depois_valor": 69.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/creatina-monohidratada-pura-1kg-dark-lab-unidade-sem-sabor/p/MLB25929487?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=eb40df2c-f99c-4d5a-8dc9-026c0a343d36&position=1&tracking_id=ec5e264a-7641-41a2-90df-88a825ea8ef2&wid=MLB4812130742&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_848860-MLA99964507641_112025-O.webp"
+    },
+    {
+      "id_anuncio": "MLB6432920174",
+      "categoria": "Roupa Intima > Cuecas",
+      "descricao": "Kit 4 Cuecas Boxer Sem Costura Algodão Zorba Preto Liso Gg",
+      "antes": "R$ 138,83",
+      "antes_valor": 138.83,
+      "desconto": "51% OFF",
+      "depois": "R$ 67,90",
+      "depois_valor": 67.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-4-cuecas-boxer-sem-costura-algodao-zorba/up/MLBU3451446810?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=eb40df2c-f99c-4d5a-8dc9-026c0a343d36&position=36&tracking_id=ec5e264a-7641-41a2-90df-88a825ea8ef2&wid=MLB6432920174&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_876518-MLA92681561000_092025-O-kit-4-cuecas-boxer-sem-costura-algodao-zorba.webp"
+    },
+    {
+      "id_anuncio": "MLB4054668217",
+      "categoria": "Armazenamento e Organização > Lixeiras",
+      "descricao": "Kit 12 Lixeiras Branca 20 Litros Com Pedal Tampa Hospitalar Branco",
+      "antes": "R$ 772,15",
+      "antes_valor": 772.15,
+      "desconto": "52% OFF",
+      "depois": "R$ 365,57",
+      "depois_valor": 365.57,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-12-lixeiras-branca-20-litros-com-pedal-tampa-hospitalar/up/MLBU3161554709?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=eb40df2c-f99c-4d5a-8dc9-026c0a343d36&position=39&tracking_id=ec5e264a-7641-41a2-90df-88a825ea8ef2&wid=MLB4054668217&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_900276-MLB84124021368_052025-O-kit-12-lixeiras-branca-20-litros-com-pedal-tampa-hospitalar.webp"
+    }
+  ]
+}

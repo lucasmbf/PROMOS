@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260723_203545",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu1719510040",
+      "categoria": "Alimento, Petisco e Suplemento > Ração para Cães",
+      "descricao": "Fórmula Natural Fresh Meat Adulto Frango Porte Peq. 2,5 Kg",
+      "antes": "R$ 142",
+      "antes_valor": null,
+      "desconto": "12% OFF",
+      "depois": "R$ 124,96",
+      "depois_valor": 124.96,
+      "link_anuncio": "https://www.mercadolivre.com.br/formula-natural-fresh-meat-adulto-frango-porte-peq-25-kg/up/MLBU1719510040?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=19&type=product&tracking_id=5a6bb0da-e662-47d0-8108-b05368335666&wid=MLB2030640381&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_800631-MLB113498460550_072026-O-formula-natural-fresh-meat-adulto-frango-porte-peq-25-kg.webp"
+    },
+    {
+      "id_anuncio": "mlbu1235619734",
+      "categoria": "Alimento, Petisco e Suplemento > Ração para Cães",
+      "descricao": "Ração Hill's Science Diet Pequeno/mini Cão Filhote 2,04kg",
+      "antes": "R$ 164,90",
+      "antes_valor": null,
+      "desconto": "10% OFF",
+      "depois": "R$ 148,41",
+      "depois_valor": 148.41,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-hills-science-diet-pequenomini-cao-filhote-204kg/up/MLBU1235619734?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=23&type=product&tracking_id=5a6bb0da-e662-47d0-8108-b05368335666&wid=MLB3852871753&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_624183-MLB79322452447_092024-O-racao-hills-science-diet-pequenomini-cao-filhote-204kg.webp"
+    },
+    {
+      "id_anuncio": "mlb16094377",
+      "categoria": "Alimento, Petisco e Suplemento > Ração para Cães",
+      "descricao": "Alimento Royal Canin Veterinary Diet Canine Satiety Support para cão adulto de raza todos os tamanhos sabor mix de 10 kg",
+      "antes": "R$ 586,99",
+      "antes_valor": null,
+      "desconto": "27% OFF",
+      "depois": "R$ 424,99",
+      "depois_valor": 424.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/alimento-royal-canin-veterinary-diet-canine-satiety-support-para-cao-adulto-de-raza-todos-os-tamanhos-sabor-mix-de-10-kg/p/MLB16094377?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=22&type=product&tracking_id=5a6bb0da-e662-47d0-8108-b05368335666&wid=MLB4408760353&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_751641-MLA99441540652_112025-O.webp"
+    }
+  ]
+}

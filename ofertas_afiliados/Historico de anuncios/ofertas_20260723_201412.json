@@ -1,0 +1,18 @@
+{
+  "timestamp": "20260723_201412",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb17336050",
+      "categoria": "Sem categoria",
+      "descricao": "Huggies Fralda Pants Roupinha Proteção Acolchoada G - 30 Un",
+      "antes": "R$ 136,25",
+      "antes_valor": null,
+      "desconto": "67% OFF",
+      "depois": "R$ 44,58",
+      "depois_valor": 44.58,
+      "link_anuncio": "https://www.mercadolivre.com.br/huggies-fralda-pants-roupinha-protecao-acolchoada-g-30-un/p/MLB17336050#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=49&type=product&tracking_id=8313dbc7-eeb7-4bc1-8460-1d7ff08db14e&wid=MLB3891185313&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_628761-MLA90365168344_082025-O.webp"
+    }
+  ]
+}

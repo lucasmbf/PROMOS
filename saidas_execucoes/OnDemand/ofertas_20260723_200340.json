@@ -1,0 +1,19 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260723_200340",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb40122753",
+      "categoria": "Fones de Ouvido > Baseus",
+      "descricao": "Fone De Ouvido Baseus Sem Fio Bowie E20 Bluetooth 5.3 Cor Preto",
+      "antes": "R$ 239,90",
+      "antes_valor": null,
+      "desconto": "39% OFF",
+      "depois": "R$ 145",
+      "depois_valor": 145.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/fone-de-ouvido-baseus-sem-fio-bowie-e20-bluetooth-53-cor-preto/p/MLB40122753#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=15&type=product&tracking_id=e7e4c89e-d1c7-4a86-8b88-b3471e69f79b&wid=MLB3929157063&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_941829-MLA99499447768_112025-O.webp"
+    }
+  ]
+}

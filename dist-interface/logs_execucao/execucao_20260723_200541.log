@@ -1,0 +1,45 @@
+=== Inicio da execucao: 2026-07-23T20:05:41 ===
+Args: --produto-por-html --fonte mercadolivre --descricao-produto edifier g200 hecate --preco-minimo 130.0 --preco-maximo 150.0 --limite-candidatos 2 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[BLOCO_GENERICA_1] Carregando páginas 1 a 3
+[BLOCO_GENERICA_1] Página 1: https://lista.mercadolivre.com.br/edifier-g200-hecate
+[BLOCO_GENERICA_1] Resultado: 2 candidato(s) coletado(s). Total: 2
+✓ Link de afiliado: https://meli.la/2SLA1es
+✓ Link de afiliado: https://meli.la/2dRoRXw
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 2 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260723_200609.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260723_200609.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_876521-MLB92392641445_092025-O-caixa-de-som-portatil-magnetica-edifier-g200-hecate--preta.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Caixa De Som Portátil Magnética Edifier G200 Hecate - Preta
+Message SID Twilio: SM5893dac09be197530ecf08a38990dc40
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_864589-MLB96423760803_102025-O-caixa-de-som-portatil-magnetica-edifier-g200-hecate--preta.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Caixa De Som Portátil Magnética Edifier G200 Hecate - Preta
+Message SID Twilio: SMafa4c2ad46ea2dff1a5413279d4b943f
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=2 falhas=0 total=2
+
+2 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-23T20:06:13 ===

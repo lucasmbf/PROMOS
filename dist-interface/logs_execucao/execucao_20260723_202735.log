@@ -1,0 +1,14 @@
+=== Inicio da execucao: 2026-07-23T20:27:35 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 20.0 --preco-maximo 300.0 --limite-candidatos 2 --url-produto https://lista.mercadolivre.com.br/mini-motosserra-el%C3%A9trica-a-bateria#D[A:Mini%20motosserra%20el%C3%A9trica%20a%20bateria] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/mini-motosserra-el%C3%A9trica-a-bateria#D[A:Mini%20motosserra%20el%C3%A9trica%20a%20bateria]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/mini-motosserra-el%C3%A9trica-a-bateria#D[A:Mini%20motosserra%20el%C3%A9trica%20a%20bateria]
+
+=== Fim da execucao: 2026-07-23T20:27:42 ===

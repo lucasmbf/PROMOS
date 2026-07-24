@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260723_203245",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb2043705695",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "Tapete Higiênico Sanitário Cães 30un 90x60 Econopad Branco Branco",
+      "antes": "R$ 78,90",
+      "antes_valor": null,
+      "desconto": "13% OFF",
+      "depois": "R$ 67,89",
+      "depois_valor": 67.89,
+      "link_anuncio": "https://www.mercadolivre.com.br/tapete-higienico-sanitario-caes-30un-90x60-econopad-branco-branco/p/MLB2043705695?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=28&type=product&tracking_id=b65cd6f3-67a0-4d7a-8fcd-4e9a320f9a9f&wid=MLB4315746627&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_986566-MLB106758196059_022026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb65485626",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "Tapete Higiênico 80x60 50un Pet Cachorro Cães Pads Prime",
+      "antes": "R$ 100",
+      "antes_valor": null,
+      "desconto": "21% OFF",
+      "depois": "R$ 78,99",
+      "depois_valor": 78.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/tapete-higinico-80x60-50un-pet-cachorro-ces-pads-prime/p/MLB65485626?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=26&type=product&tracking_id=b65cd6f3-67a0-4d7a-8fcd-4e9a320f9a9f&wid=MLB6670991376&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_983293-MLA108629031665_032026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb26264031",
+      "categoria": "Higiene e Limpeza > Creme Dental",
+      "descricao": "Kit Saúde Oral Virbac Pasta Cet Com Necessaire E Escova sabor frango",
+      "antes": "R$ 155,68",
+      "antes_valor": null,
+      "desconto": "22% OFF",
+      "depois": "R$ 120,99",
+      "depois_valor": 120.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-saude-oral-virbac-pasta-cet-com-necessaire-e-escova-sabor-frango/p/MLB26264031?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=19&type=product&tracking_id=b65cd6f3-67a0-4d7a-8fcd-4e9a320f9a9f&wid=MLB3813056739&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_639632-MLA99392106388_112025-O.webp"
+    }
+  ]
+}

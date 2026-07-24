@@ -1,0 +1,48 @@
+=== Inicio da execucao: 2026-07-23T20:20:06 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 20.0 --preco-maximo 300.0 --limite-candidatos 2 --url-produto https://lista.mercadolivre.com.br/carteira-magn%C3%A9tica-magsafe?sb=all_mercadolibre#D[A:Carteira%20magn%C3%A9tica%20MagSafe] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/carteira-magn%C3%A9tica-magsafe?sb=all_mercadolibre#D[A:Carteira%20magn%C3%A9tica%20MagSafe]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/carteira-magn%C3%A9tica-magsafe?sb=all_mercadolibre#D[A:Carteira%20magn%C3%A9tica%20MagSafe]
+✓ Link de afiliado: https://meli.la/1rGr9HN
+✓ Link de afiliado: https://meli.la/1RBsNsB
+[BLOCO_1] Resultado: 2 candidato(s) coletado(s), 2 válido(s) enriquecido(s). Total: 2/2
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 2 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260723_202032.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260723_202033.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_684776-MLB77654973087_072024-O-porta-cartao-magnetico-magsafe-carteira-para-iphone-1717pro.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Porta Cartão Magnético Magsafe Carteira Para Iphone 17/17pro
+Message SID Twilio: SMd1629a40370e317f8c7c26538a11cfdd
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_607114-MLA99496912562_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Carteira Customic Magsafe Allure Stand Com Suporte Universal Cor Brown Liso
+Message SID Twilio: SMbca8f412c4b2e346c3d0bb6776592874
+[DEBUG] status_final_twilio=queued
+
+[RESUMO_TWILIO] entregues_ou_processadas=2 falhas=0 total=2
+
+2 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-23T20:20:36 ===

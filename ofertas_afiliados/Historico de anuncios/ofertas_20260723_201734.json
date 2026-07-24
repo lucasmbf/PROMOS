@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260723_201734",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb18392698",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pampers Confort Sec Tamanho G, 60 Unidades",
+      "antes": "R$ 123,90",
+      "antes_valor": null,
+      "desconto": "23% OFF",
+      "depois": "R$ 94,66",
+      "depois_valor": 94.66,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pampers-confort-sec-tamanho-g-60-unidades/p/MLB18392698#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=48&type=product&tracking_id=bf1c48ff-d7e7-4849-b140-ca7ad088e024&wid=MLB4652213216&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_986152-MLA99447820978_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb69620627",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pampers Confort Sec Tamanho M, 108 Un",
+      "antes": "R$ 145,90",
+      "antes_valor": null,
+      "desconto": "28% OFF",
+      "depois": "R$ 104,90",
+      "depois_valor": 104.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-pampers-confort-sec-tamanho-m-108-un/p/MLB69620627#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=54&type=product&tracking_id=bf1c48ff-d7e7-4849-b140-ca7ad088e024&wid=MLB6819547198&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_988581-MLA110683983180_052026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb4652213216",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Pampers Confort Sec Tamanho G, 60 Unidades Sem Gênero",
+      "antes": "R$ 123,90",
+      "antes_valor": null,
+      "desconto": "23% OFF",
+      "depois": "R$ 94,66",
+      "depois_valor": 94.66,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=%2F23%2BgmjGQAvNmCzXLJ%2BiJuEN2JyQj0NdOt4xaj15EMk8qen2Gdv9ESZDwMy062b2I2E9%2FiIOZhO6N8QgooozeghNIQmLPrmPVhcWn%2F90TIDdd3gIWNhw4WYSiXp6q24FeoR%2FcKZsezyWQuvnWoRxZ8KKPlH7KlfLW%2BbuvGHA3Vy0FjIqmVTWXHgiPZK4G6TXqq33nKphnDab3Lqj9pXY9viTWNyYEKFqFDnwe1K7x2hEKgzfAqT4xfhiMsfHMJWVp45HahzY3opJuhGUvmdL5oNRM3GllpGuz4%2BXMA4gcPeF9EdFcxVJZV2VHsz%2B3sjzZfsJd5wgcHhLYuEgICER1%2BqUPGAC%2Bzpp%2FKsxeyjRRXxM00LVsrrcIkKeYkimOHl0FEJbk6fWxYPIW3a1BZuwcBMzWXD9yzQbqIRn%2FKkif8iZjF33H5MoTJMZK6f9wxjAASteI43fIHqtDTPlD11k2MSVK8ETXHwiGyMa1U2Veh8ALeo7iewruvrQWVMGwyCBs7jnwuR6p2b1Ug3wi%2FnQeq0nekT4RwDVnaMU19%2Fe%2BJN49okItwwLvTBXjx4w6PCL8f%2B2rF0MGmfRyAEiC2RWA%2BM1X36pejdSeRb%2Bi17u6f3tr%2F1qejIwH%2FazjzukcMflUsdUOKAu%2FpAKYDVplosoT%2Fn7a17W0CenfoP6u7cN%2FTIG%2FVPK2MoaXX%2FwYPZa%2Fz4pf17%2Ff3b6lNLqAzoy4oiL2TuYVRuthme4cu90TXpsJzHXRHlqa2Izd%2FzExd183KcyUOpOAl4fMwFFVCXjMGQ20pfbC8QdC4blb%2FXwM9Kjegk3RTutRYOsldxWHzkEftNwrsB1nDKsryyuyNCZiuY%2BWSm71zAffCjWf3FtMMGocBJq2r37vWZu8yAcTwr8MiquvvPXbQtrUr3gWg7K&pdp_filters=item_id%3AMLB4652213216#polycard_client=search-desktop&is_advertising=true&backend_model=search-backend&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=27&type=pad&tracking_id=bd82b562-139c-4b7c-8aea-8def24ae9ffc&wid=MLB4652213216&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_986152-MLA99447820978_112025-O.webp"
+    }
+  ]
+}

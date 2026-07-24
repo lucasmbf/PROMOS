@@ -2337,6 +2337,7 @@ def create_gui(categorias):
             "img_preview_tk": None,
             "anuncio_img_original": None,
             "anuncio_img_preview_tk": None,
+            "anuncio_id": "",
             "preview_scale": 1.0,
             "preview_offset": (0, 0),
             "canvas_img_id": None,
@@ -2524,7 +2525,13 @@ def create_gui(categorias):
 
                     id_anuncio = str(oferta.get("id_anuncio") or "").strip()
                     if not id_anuncio:
-                        id_anuncio = hashlib.md5(imagem_url.encode("utf-8")).hexdigest()[:12]
+                        link_anuncio = str(oferta.get("link_anuncio") or oferta.get("link") or "").strip()
+                        match_id = re.search(r"\b(MLB\d{6,})\b", link_anuncio.upper())
+                        if match_id:
+                            id_anuncio = match_id.group(1)
+                    id_anuncio = re.sub(r"[^a-zA-Z0-9]", "", id_anuncio).upper()
+                    if not id_anuncio:
+                        continue
 
                     caminho_url = urlparse(imagem_url).path or ""
                     ext = Path(caminho_url).suffix.lower()
@@ -2552,6 +2559,427 @@ def create_gui(categorias):
                         continue
 
             return novas
+
+        def _normalizar_id_anuncio(valor):
+            return re.sub(r"[^a-zA-Z0-9]", "", str(valor or "").strip()).upper()
+
+        def _extrair_id_ml_de_texto(valor):
+            texto = str(valor or "").upper()
+            if not texto:
+                return ""
+
+            match_mlbu = re.search(r"\b(MLBU\d{6,})\b", texto)
+            if match_mlbu:
+                return _normalizar_id_anuncio(match_mlbu.group(1))
+
+            match_mlb = re.search(r"\b(MLB\d{6,})\b", texto)
+            if match_mlb:
+                return _normalizar_id_anuncio(match_mlb.group(1))
+
+            return ""
+
+        def _ids_equivalentes_anuncio(id_anuncio):
+            id_limpo = _normalizar_id_anuncio(id_anuncio)
+            if not id_limpo:
+                return []
+
+            candidatos = [id_limpo]
+
+            if id_limpo.startswith("MLB") and id_limpo[3:].isdigit():
+                candidatos.append(id_limpo[3:])
+            elif id_limpo.isdigit():
+                candidatos.append(f"MLB{id_limpo}")
+
+            if id_limpo.startswith("MLBU") and id_limpo[4:].isdigit():
+                sufixo = id_limpo[4:]
+                candidatos.append(sufixo)
+                candidatos.append(f"MLB{sufixo}")
+
+            vistos = set()
+            unicos = []
+            for candidato in candidatos:
+                if candidato in vistos:
+                    continue
+                vistos.add(candidato)
+                unicos.append(candidato)
+            return unicos
+
+        def _resolver_id_oferta(oferta):
+            if not isinstance(oferta, dict):
+                return ""
+
+            id_vindo_campo = _extrair_id_ml_de_texto(oferta.get("id_anuncio"))
+            if id_vindo_campo:
+                return id_vindo_campo
+
+            link_anuncio = str(oferta.get("link_anuncio") or oferta.get("link") or "").strip()
+            id_vindo_link = _extrair_id_ml_de_texto(link_anuncio)
+            if id_vindo_link:
+                return id_vindo_link
+
+            id_anuncio = _normalizar_id_anuncio(oferta.get("id_anuncio"))
+            if id_anuncio:
+                return id_anuncio
+
+            return ""
+
+        def _resolver_url_imagem_oferta(oferta):
+            if not isinstance(oferta, dict):
+                return ""
+
+            imagem_url = str(
+                oferta.get("imagem_principal")
+                or oferta.get("url_imagem")
+                or oferta.get("imagem")
+                or ""
+            ).strip()
+
+            if imagem_url.startswith(("http://", "https://")):
+                return imagem_url
+
+            link_anuncio = str(oferta.get("link_anuncio") or oferta.get("link") or "").strip()
+            item_id_match = re.search(r"\b(MLB\d{6,})\b", link_anuncio.upper())
+            if not item_id_match:
+                return ""
+
+            item_id = item_id_match.group(1)
+            headers = {"User-Agent": HTTP_HEADERS.get("User-Agent", "Mozilla/5.0")}
+            try:
+                resposta_item = requests.get(
+                    f"https://api.mercadolibre.com/items/{item_id}",
+                    headers=headers,
+                    timeout=12,
+                )
+                if resposta_item.status_code != 200:
+                    return ""
+
+                payload_item = resposta_item.json() if resposta_item.content else {}
+                candidatos = [
+                    payload_item.get("secure_thumbnail"),
+                    payload_item.get("thumbnail"),
+                ]
+                for pic in payload_item.get("pictures") or []:
+                    if isinstance(pic, dict):
+                        candidatos.extend([pic.get("secure_url"), pic.get("url")])
+
+                for candidato in candidatos:
+                    candidato_str = str(candidato or "").strip()
+                    if candidato_str.startswith(("http://", "https://")):
+                        return candidato_str
+            except Exception:
+                return ""
+
+            return ""
+
+        def _obter_caminho_imagem_anuncio_por_id(id_anuncio):
+            id_limpo = _normalizar_id_anuncio(id_anuncio)
+            if not id_limpo:
+                return ""
+
+            pasta = Path(PASTA_IMAGENS_ANUNCIOS)
+            if not pasta.exists():
+                return ""
+
+            for id_candidato in _ids_equivalentes_anuncio(id_limpo):
+                for ext in (".png", ".jpg", ".jpeg", ".webp"):
+                    candidato = pasta / f"anuncio_{id_candidato}{ext}"
+                    if candidato.exists():
+                        return str(candidato)
+
+            for id_candidato in _ids_equivalentes_anuncio(id_limpo):
+                candidatos = sorted(pasta.glob(f"anuncio_{id_candidato}.*"))
+                if candidatos:
+                    return str(candidatos[0])
+            return ""
+
+        def _baixar_imagem_anuncio_por_id(id_anuncio, imagem_url):
+            id_limpo = _normalizar_id_anuncio(id_anuncio)
+            if not id_limpo or not str(imagem_url or "").startswith(("http://", "https://")):
+                return ""
+
+            caminho_url = urlparse(imagem_url).path or ""
+            ext = Path(caminho_url).suffix.lower()
+            if ext not in {".png", ".jpg", ".jpeg", ".webp"}:
+                ext = ".jpg"
+
+            destino = Path(PASTA_IMAGENS_ANUNCIOS) / f"anuncio_{id_limpo}{ext}"
+            if destino.exists():
+                return str(destino)
+
+            headers = {"User-Agent": HTTP_HEADERS.get("User-Agent", "Mozilla/5.0")}
+            try:
+                resposta = requests.get(imagem_url, headers=headers, timeout=12)
+                if resposta.status_code != 200 or not resposta.content:
+                    return ""
+
+                with open(destino, "wb") as saida:
+                    saida.write(resposta.content)
+                return str(destino)
+            except Exception:
+                return ""
+
+        def _montar_texto_anuncio(oferta, id_anuncio):
+            descricao = str(oferta.get("descricao") or "").strip()
+            preco_antes = str(oferta.get("antes") or "").strip()
+            preco_depois = str(oferta.get("depois") or "").strip()
+            desconto = str(oferta.get("desconto") or "").strip()
+
+            bloco_descricao = []
+            if descricao:
+                bloco_descricao.append(descricao)
+
+            bloco_precos = []
+            if preco_antes:
+                bloco_precos.append(f"De: {preco_antes}")
+            if preco_depois:
+                bloco_precos.append(f"Por: {preco_depois}")
+            if desconto:
+                bloco_precos.append(desconto)
+
+            # Estrutura padrão para facilitar composição visual:
+            # descrição (topo) -> espaço para imagem (meio) -> preços/desconto (base).
+            if bloco_descricao and bloco_precos:
+                return "\n".join(bloco_descricao) + "\n\n\n\n" + "\n".join(bloco_precos)
+            if bloco_descricao:
+                return "\n".join(bloco_descricao)
+            return "\n".join(bloco_precos)
+
+        def _carregar_oferta_por_id_arquivo(caminho_arquivo, id_anuncio):
+            try:
+                with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
+                    dados = json.load(arquivo)
+            except Exception:
+                return None
+
+            ofertas = dados.get("ofertas") if isinstance(dados, dict) else []
+            if not isinstance(ofertas, list):
+                return None
+
+            id_busca = _normalizar_id_anuncio(id_anuncio)
+            for oferta in ofertas:
+                if not isinstance(oferta, dict):
+                    continue
+                if _resolver_id_oferta(oferta) == id_busca:
+                    return oferta
+            return None
+
+        def _carregar_ofertas_do_arquivo(caminho_arquivo):
+            try:
+                with open(caminho_arquivo, "r", encoding="utf-8") as arquivo:
+                    dados = json.load(arquivo)
+            except Exception:
+                return []
+
+            ofertas = dados.get("ofertas") if isinstance(dados, dict) else []
+            if not isinstance(ofertas, list):
+                return []
+            return [oferta for oferta in ofertas if isinstance(oferta, dict)]
+
+        def _listar_jsons_historico_ofertas():
+            base_parent = BASE_DIR.parent
+            dist_parent = DIST_INTERFACE_DIR.parent
+            pastas_json = [
+                PASTA_HISTORICO_JSON_RELAMPAGO,
+                PASTA_HISTORICO_JSON_PRODUTO,
+                str(BASE_DIR / "ofertas_relampago" / "Historico de anuncios"),
+                str(BASE_DIR / "ofertas_afiliados" / "Historico de anuncios"),
+                str(DIST_INTERFACE_DIR / "ofertas_relampago" / "Historico de anuncios"),
+                str(DIST_INTERFACE_DIR / "ofertas_afiliados" / "Historico de anuncios"),
+                str(base_parent / "ofertas_relampago" / "Historico de anuncios"),
+                str(base_parent / "ofertas_afiliados" / "Historico de anuncios"),
+                str(dist_parent / "ofertas_relampago" / "Historico de anuncios"),
+                str(dist_parent / "ofertas_afiliados" / "Historico de anuncios"),
+            ]
+
+            caminhos = []
+            for pasta in dict.fromkeys(pastas_json):
+                if not os.path.exists(pasta):
+                    continue
+                for nome in os.listdir(pasta):
+                    if nome.startswith("ofertas_") and nome.endswith(".json"):
+                        caminhos.append(os.path.join(pasta, nome))
+
+            caminhos = sorted(set(caminhos), key=lambda p: os.path.getmtime(p), reverse=True)
+            return caminhos
+
+        def _coletar_candidatos_historico_com_imagem(max_jsons=250):
+            candidatos = []
+            ids_vistos = set()
+            caminhos_json = _listar_jsons_historico_ofertas()[:max_jsons]
+
+            for caminho_json in caminhos_json:
+                ofertas = _carregar_ofertas_do_arquivo(caminho_json)
+                if not ofertas:
+                    continue
+
+                for oferta in ofertas:
+                    id_anuncio = _resolver_id_oferta(oferta)
+                    if not id_anuncio or id_anuncio in ids_vistos:
+                        continue
+
+                    caminho_local = _obter_caminho_imagem_anuncio_por_id(id_anuncio)
+                    if not caminho_local:
+                        continue
+
+                    ids_vistos.add(id_anuncio)
+                    candidatos.append(
+                        {
+                            "id": id_anuncio,
+                            "oferta": oferta,
+                            "descricao": _descricao_oferta_resumida(oferta, id_anuncio),
+                            "arquivo_origem": caminho_json,
+                        }
+                    )
+
+            return candidatos
+
+        def _descricao_oferta_resumida(oferta, id_anuncio):
+            descricao = str(oferta.get("descricao") or "Sem descricao").strip()
+            if len(descricao) > 90:
+                descricao = descricao[:87] + "..."
+
+            depois = str(oferta.get("depois") or "").strip()
+            desconto = str(oferta.get("desconto") or "").strip()
+
+            extras = []
+            if depois:
+                extras.append(depois)
+            if desconto:
+                extras.append(desconto)
+
+            sufixo = f" | {' | '.join(extras)}" if extras else ""
+            return f"{descricao}{sufixo} [{id_anuncio}]"
+
+        def _selecionar_oferta_com_imagem(parent_dialog):
+            candidatos = _coletar_candidatos_historico_com_imagem()
+
+            if not candidatos:
+                messagebox.showwarning(
+                    "Sem anúncios com imagem",
+                    "Nenhum anúncio do histórico com imagem vinculada ao ID foi encontrado.",
+                    parent=parent_dialog,
+                )
+                return None
+
+            seletor = tk.Toplevel(parent_dialog)
+            seletor.title("Selecionar anúncio")
+            seletor.geometry("860x430")
+            seletor.minsize(760, 360)
+            seletor.transient(parent_dialog)
+            seletor.grab_set()
+
+            frame = ttk.Frame(seletor, padding=10)
+            frame.pack(fill="both", expand=True)
+
+            ttk.Label(
+                frame,
+                text="Selecione o anúncio do histórico para carregar no editor (somente itens com imagem por ID):",
+            ).pack(anchor="w")
+
+            busca_var = tk.StringVar(value="")
+            ttk.Entry(frame, textvariable=busca_var).pack(fill="x", pady=(6, 8))
+
+            lista_frame = ttk.Frame(frame)
+            lista_frame.pack(fill="both", expand=True)
+
+            lista = tk.Listbox(lista_frame, activestyle="dotbox", exportselection=False)
+            lista.pack(side="left", fill="both", expand=True)
+
+            lista_scroll = ttk.Scrollbar(lista_frame, orient="vertical", command=lista.yview)
+            lista_scroll.pack(side="right", fill="y")
+            lista.configure(yscrollcommand=lista_scroll.set)
+
+            botoes = ttk.Frame(frame)
+            botoes.pack(fill="x", pady=(10, 0))
+
+            selecao = {"item": None}
+            itens_visiveis = []
+
+            def _preencher_lista(_event=None):
+                termo = str(busca_var.get() or "").strip().casefold()
+                lista.delete(0, "end")
+                itens_visiveis.clear()
+
+                for candidato in candidatos:
+                    texto = candidato["descricao"]
+                    if termo and termo not in texto.casefold():
+                        continue
+                    itens_visiveis.append(candidato)
+                    lista.insert("end", texto)
+
+                if itens_visiveis:
+                    lista.selection_clear(0, "end")
+                    lista.selection_set(0)
+                    lista.activate(0)
+
+            def _confirmar(_event=None):
+                indices = lista.curselection()
+                if not indices:
+                    messagebox.showwarning("Seleção obrigatória", "Selecione um anúncio na lista.", parent=seletor)
+                    return
+
+                idx = indices[0]
+                if idx < 0 or idx >= len(itens_visiveis):
+                    return
+
+                selecao["item"] = itens_visiveis[idx]
+                seletor.destroy()
+
+            def _cancelar():
+                seletor.destroy()
+
+            ttk.Button(botoes, text="Selecionar", style="Action.TButton", command=_confirmar).pack(side="left")
+            ttk.Button(botoes, text="Cancelar", command=_cancelar).pack(side="left", padx=(8, 0))
+
+            busca_var.trace_add("write", lambda *_: _preencher_lista())
+            lista.bind("<Double-Button-1>", _confirmar)
+            lista.bind("<Return>", _confirmar)
+
+            _preencher_lista()
+            seletor.wait_window()
+            return selecao["item"]
+
+        def _gerar_anuncio_do_arquivo():
+            item_selecionado = _selecionar_oferta_com_imagem(dialog_root)
+            if not item_selecionado:
+                return
+
+            id_anuncio = item_selecionado["id"]
+            oferta = item_selecionado["oferta"]
+
+            texto_gerado = _montar_texto_anuncio(oferta, id_anuncio)
+            texto_post.delete("1.0", "end")
+            texto_post.insert("1.0", texto_gerado)
+            preview_state["anuncio_id"] = id_anuncio
+
+            caminho_imagem = _obter_caminho_imagem_anuncio_por_id(id_anuncio)
+            if not caminho_imagem:
+                imagem_url = _resolver_url_imagem_oferta(oferta)
+                caminho_imagem = _baixar_imagem_anuncio_por_id(id_anuncio, imagem_url)
+
+            imagem_carregada = False
+            if caminho_imagem:
+                try:
+                    imagem_anuncio = Image.open(caminho_imagem).convert("RGBA")
+                    preview_state["anuncio_img_original"] = imagem_anuncio
+                    imagem_carregada = True
+                except Exception:
+                    preview_state["anuncio_img_original"] = None
+            else:
+                preview_state["anuncio_img_original"] = None
+
+            if preview_state["img_original"] is not None:
+                _render_preview(reset_texto_pos=True)
+
+            if imagem_carregada:
+                status_var.set(f"Anúncio {id_anuncio} carregado do arquivo para o editor de post.")
+            else:
+                status_var.set(f"Anúncio {id_anuncio} carregado sem imagem (não encontrada pelo ID).")
+                messagebox.showwarning(
+                    "Imagem não encontrada",
+                    "As informações do anúncio foram carregadas, mas a imagem não foi localizada automaticamente.",
+                    parent=dialog_root,
+                )
 
         def _listar_templates_instagram():
             extensoes = ("*.png", "*.jpg", "*.jpeg", "*.webp")
@@ -2730,7 +3158,7 @@ def create_gui(categorias):
                 preview_state["anuncio_img_preview_tk"] = anuncio_preview_tk
                 anuncio_preview_size = (largura_alvo_preview, altura_alvo_preview)
 
-            texto = (texto_post.get("1.0", "end").strip() or "Seu texto aqui")
+            texto = texto_post.get("1.0", "end").strip()
 
             if reset_texto_pos or text_coords_antigas is None:
                 text_x, text_y = cx, cy
@@ -2924,6 +3352,9 @@ def create_gui(categorias):
                 return
 
             preview_state["anuncio_img_original"] = imagem_anuncio
+            nome_arquivo = Path(caminho_origem).name
+            match_id = re.search(r"anuncio_([a-zA-Z0-9]+)", nome_arquivo, flags=re.IGNORECASE)
+            preview_state["anuncio_id"] = _normalizar_id_anuncio(match_id.group(1)) if match_id else ""
             _render_preview(reset_texto_pos=False)
 
         def _usar_imagem_anuncio_salva():
@@ -2947,6 +3378,9 @@ def create_gui(categorias):
                 return
 
             preview_state["anuncio_img_original"] = imagem_anuncio
+            nome_arquivo = Path(caminho_origem).name
+            match_id = re.search(r"anuncio_([a-zA-Z0-9]+)", nome_arquivo, flags=re.IGNORECASE)
+            preview_state["anuncio_id"] = _normalizar_id_anuncio(match_id.group(1)) if match_id else ""
             _render_preview(reset_texto_pos=False)
 
         def _remover_imagem_anuncio():
@@ -2954,6 +3388,7 @@ def create_gui(categorias):
             preview_state["anuncio_img_preview_tk"] = None
             preview_state["canvas_anuncio_id"] = None
             preview_state["anuncio_size_preview"] = (0, 0)
+            preview_state["anuncio_id"] = ""
             if preview_state["img_original"] is not None:
                 _render_preview(reset_texto_pos=False)
 
@@ -3196,7 +3631,8 @@ def create_gui(categorias):
                 draw.multiline_text(**args_texto)
 
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                base_nome = f"post_instagram_custom_{timestamp}"
+                id_saida = _normalizar_id_anuncio(preview_state.get("anuncio_id") or "")
+                base_nome = f"post_instagram_{id_saida}_{timestamp}" if id_saida else f"post_instagram_custom_{timestamp}"
                 arquivos_gerados = []
                 caminho_tmp_video = None
 
@@ -3299,6 +3735,7 @@ def create_gui(categorias):
         ttk.Button(btns_templates_frame, text="Upload template", command=_upload_template).pack(side="left", padx=(8, 0))
         ttk.Button(btns_templates_frame, text="Abrir pasta", command=_abrir_pasta_templates).pack(side="left", padx=(8, 0))
         ttk.Button(btns_templates_frame, text="Abrir pasta anúncios", command=_abrir_pasta_anuncios).pack(side="left", padx=(8, 0))
+        ttk.Button(btns_templates_frame, text="Gerar anúncio do arquivo", command=_gerar_anuncio_do_arquivo).pack(side="left", padx=(8, 0))
         ttk.Button(btns_anuncio_frame, text="Upload imagem do anúncio", command=_upload_imagem_anuncio).pack(side="left")
         ttk.Button(btns_anuncio_frame, text="Usar anúncio salvo", command=_usar_imagem_anuncio_salva).pack(side="left", padx=(8, 0))
         ttk.Button(btns_anuncio_frame, text="Remover imagem", command=_remover_imagem_anuncio).pack(side="left", padx=(8, 0))
@@ -3335,7 +3772,6 @@ def create_gui(categorias):
                 f"{novas_templates} imagem(ns) principal(is) de anúncios importada(s) para: {PASTA_IMAGENS_ANUNCIOS}"
             )
 
-        texto_post.insert("1.0", "Texto promocional aqui")
         _recarregar_templates()
 
     schedules_frame = ttk.LabelFrame(main_frame, text="PROGRAMACOES", style="Card.TLabelframe", padding=8)

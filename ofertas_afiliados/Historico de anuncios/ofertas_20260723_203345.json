@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260723_203345",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb57722636",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Areia Higiênica Para Gatos Feita de Mandioca e Milho Biodegradável Alta Absorção Baixo Odor 4kg - GoodVision",
+      "antes": "R$ 99",
+      "antes_valor": null,
+      "desconto": "56% OFF",
+      "depois": "R$ 42,58",
+      "depois_valor": 42.58,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-higinica-para-gatos-feita-de-mandioca-e-milho-biodegradavel-alta-absorco-baixo-odor-4kg-goodvision/p/MLB57722636?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=27&type=product&tracking_id=49df608f-2c61-4d06-a0db-c9f713d1c21c&wid=MLB6202488894&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_648412-MLA96050128644_102025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb63880878",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "P3T Kit 4 Areia Higiênica Sílica Micro Cristais Para Gatos 6,4kg",
+      "antes": "R$ 122,90",
+      "antes_valor": null,
+      "desconto": "32% OFF",
+      "depois": "R$ 83,02",
+      "depois_valor": 83.02,
+      "link_anuncio": "https://www.mercadolivre.com.br/p3t-kit-4-areia-higinica-silica-micro-cristais-para-gatos-64kg/p/MLB63880878?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=36&type=product&tracking_id=49df608f-2c61-4d06-a0db-c9f713d1c21c&wid=MLB4403057013&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_831531-MLA103221215660_012026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb29505832",
+      "categoria": "Artigos Sanitários > Banheiros",
+      "descricao": "MIAOW Caixa Areia Inteligente Autolimpante para Gatos",
+      "antes": "Sem preço anterior",
+      "antes_valor": null,
+      "desconto": "12% OFF",
+      "depois": "R$ 2000",
+      "depois_valor": 2000.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/miaow-caixa-areia-inteligente-autolimpante-para-gatos/p/MLB29505832?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&float_highlight=last_units&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=33&type=product&tracking_id=49df608f-2c61-4d06-a0db-c9f713d1c21c&wid=MLB6984932334&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_723019-MLA111359575738_052026-O.webp"
+    }
+  ]
+}

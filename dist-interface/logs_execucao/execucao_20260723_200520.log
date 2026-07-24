@@ -1,0 +1,13 @@
+=== Inicio da execucao: 2026-07-23T20:05:20 ===
+Args: --produto-por-html --fonte mercadolivre --descricao-produto edifier g200 hecate --preco-minimo 158.0 --preco-maximo 160.0 --limite-candidatos 2 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[BLOCO_GENERICA_1] Carregando páginas 1 a 3
+[BLOCO_GENERICA_1] Página 1: https://lista.mercadolivre.com.br/edifier-g200-hecate
+[BLOCO_GENERICA_1] Página 2: https://lista.mercadolivre.com.br/edifier-g200-hecate_Desde_51
+[BLOCO_GENERICA_1] Página 3: https://lista.mercadolivre.com.br/edifier-g200-hecate_Desde_101
+
+=== Fim da execucao: 2026-07-23T20:05:38 ===

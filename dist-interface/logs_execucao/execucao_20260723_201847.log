@@ -1,0 +1,68 @@
+=== Inicio da execucao: 2026-07-23T20:18:47 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 20.0 --preco-maximo 300.0 --limite-candidatos 4 --url-produto https://lista.mercadolivre.com.br/caixa-organizadora-dobr%C3%A1vel-com-tampa?sb=all_mercadolibre#D[A:Caixa%20organizadora%20dobr%C3%A1vel%20com%20tampa] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/caixa-organizadora-dobr%C3%A1vel-com-tampa?sb=all_mercadolibre#D[A:Caixa%20organizadora%20dobr%C3%A1vel%20com%20tampa]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/caixa-organizadora-dobr%C3%A1vel-com-tampa?sb=all_mercadolibre#D[A:Caixa%20organizadora%20dobr%C3%A1vel%20com%20tampa]
+✓ Link de afiliado: https://meli.la/2Aq5tqe
+✓ Link de afiliado: https://meli.la/2ZDGnho
+✓ Link de afiliado: https://meli.la/2QFbivU
+✓ Link de afiliado: https://meli.la/33Jr2ud
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 4 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260723_201937.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260723_201938.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_703332-MLA99415749992_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Caixa Organizadora Dobrável Plástica 32l Preta Injeplastec Empilhável Preto
+Message SID Twilio: SMffda8b2ed74b428f7d22da110c5ac7e6
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_991391-MLA104655238887_012026-O-2-caixas-dobravel-organizadora-desmontavel-45l-empilhavel.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+2 Caixas Dobrável Organizadora Desmontável 45l Empilhável
+Message SID Twilio: SM4192af4eee073fd2b6d10b2d6ad15192
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_847058-MLB114341652079_072026-O-caixa-organizadora-dobravel-com-rodas-multiuso-588l-grande.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Caixa Organizadora Dobrável Com Rodas Multiuso 58,8l Grande
+Message SID Twilio: SM92b47cd9c41f6f96c8c2a7537ee78b85
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_957766-MLB104902128353_012026-O-kit-caixa-organizadora-ziper-g-linho-dobravel-algodao-2pcs.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Caixa Organizadora Zíper G Linho Dobrável Algodão 2pcs
+Message SID Twilio: SMe97be5712775851ad8ed2aa949a9c78f
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=4 falhas=0 total=4
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-23T20:19:45 ===

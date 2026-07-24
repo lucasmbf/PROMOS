@@ -1325,7 +1325,14 @@ def _salvar_imagens_principais_em_templates(ofertas, limite=30):
 
         id_anuncio = str(oferta.get("id_anuncio") or "").strip()
         if not id_anuncio:
-            id_anuncio = re.sub(r"[^a-zA-Z0-9]", "", imagem_url)[-14:] or "semid"
+            link_anuncio = str(oferta.get("link_anuncio") or oferta.get("link") or "").strip()
+            match_id = re.search(r"\b(MLB\d{6,})\b", link_anuncio.upper())
+            if match_id:
+                id_anuncio = match_id.group(1)
+
+        id_anuncio = re.sub(r"[^a-zA-Z0-9]", "", id_anuncio).upper()
+        if not id_anuncio:
+            continue
 
         caminho_url = urlsplit(imagem_url).path or ""
         ext = Path(caminho_url).suffix.lower()

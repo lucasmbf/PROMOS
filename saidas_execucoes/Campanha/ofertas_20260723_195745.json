@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260723_195745",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb4748940249",
+      "categoria": "Calçados > Tênis",
+      "descricao": "Tênis New Balance 574v2 Preto Caminhada Conforto Durável",
+      "antes": "R$ 599,99",
+      "antes_valor": null,
+      "desconto": "14% OFF",
+      "depois": "R$ 510,99",
+      "depois_valor": 510.99,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=jSypkcPivGRe%2BSTJUgabQYMVOAbw8%2FIH5KoPJY30%2F49j3WTcusWtlfYQ4RcIejT81J30wnakc29sivLfB4djpwEpGWQZdd4fcLvMNQa1UCBTkRTIezecU%2B3WmrEL5lHgnlLbx1XoVj%2FgmozzPs7ECjZ6ap5qswEOMb8J3XCmn8fclEQFaAPSjChv9hzULfvHcHvi2Cpsr2ooa0D4Umhn2XO1Z%2BBLbFXnO5hqZwuoeOd1KWsLZm40Qi%2BI%2BGWEGSDAQMfYf%2F8x0HDmpk0AQH4W300H6XZ3y7MXylYl7q0HNhpIq9mzYCtD29rM0okTV6dG2%2Fu8qd5C9RnS9huJGOQxCHfElINIGD4MPBJydylKcGF%2FJyOo5Bhm8kCgXnFhTMxtRtZnYPpvsL553XcB6AhHr1fQRkaGi6kYbaugL%2FNtWdOZ7IVEWhGG2sFDGUNF%2B2Z63J%2BBSzqfQe0xYTvRWgadNUyCPoCRxCtntWEkRkL4RopyKubY0l3NZGZdRbr8yVkthx0GgTL%2FYSm9ykHf4PPss%2BUY34U0%2BxcdgSr818P%2FsUBaVCnkIY8z3fg3AEN4hRcNxTTXZcauXnzdj%2BCcGLxa%2BgjJSAkcSHGw2XUiB405lHnGEiSbDlhjHbMCZF6hcdKuJUgKaheXLMg4OGo2l8USdIHbFqQR4hxfSYQAYLxUvr1CrqtHvV269sdLKeam2rwL9M3Weu%2Fgkk4IK6UXPGGOoY5pfQ9JwFSr40%2FUEZxONww%2BTv6ZNpJFzdBRsMS%2Fiq46Tr5zkyvpDsxPJzWAZl2ALaj%2Fen2hQaZx6DifxhICBcO0sTxt9OhxpR5C8ezkCnHEFLuuEkpOS%2BlOLTtLUqX0xQy%2BQC0v6YFy8KlXlHXFFFAuM7lb%2FECrVL8tXkrx%2F0RGd42VFhpvEN6JUz3hSRD%2Ba4BKrSJb06mVtG9VMnEeHgz7S%2FDm%2Fe2X5tXGMEoaX%2FmzIiMnvAQXlS6xoZRiU%2FlKyqPTeRpA1WsZMTMg465%2B9Ck0J99LhHNubtkcH0IiMxjOSg%3D%3D&pdp_filters=item_id%3AMLB4748940249#polycard_client=search-desktop&is_advertising=true&searchVariation=MLBU4054197533&backend_model=search-backend&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=26&type=pad&tracking_id=31b3fe15-7ceb-4f17-ae1f-f94613845580&wid=MLB4748940249&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_845638-MLB111824873330_062026-O-tenis-new-balance-574v2-preto-caminhada-conforto-duravel.webp"
+    },
+    {
+      "id_anuncio": "https://produto.mercadolivre.com.br/mlb-5613191154-tnis-new-balance-fuelcell-rebel-v5-masculino-performance-_jm?searchvariation=191542677929#polycard_client=search-desktop&searchvariation=191542677929&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=29&type=item&tracking_id=31b3fe15-7ceb-4f17-ae1f-f94613845580&sid=search",
+      "categoria": "Tênis > Tenis New Balance",
+      "descricao": "Tênis New Balance Fuelcell Rebel V5 Masculino Performance",
+      "antes": "R$ 1099",
+      "antes_valor": null,
+      "desconto": "36% OFF",
+      "depois": "R$ 699,90",
+      "depois_valor": 699.9,
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-5613191154-tnis-new-balance-fuelcell-rebel-v5-masculino-performance-_JM?searchVariation=191542677929#polycard_client=search-desktop&searchVariation=191542677929&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=29&type=item&tracking_id=31b3fe15-7ceb-4f17-ae1f-f94613845580&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_979494-MLB109843055100_042026-O-tnis-new-balance-fuelcell-rebel-v5-masculino-performance.webp"
+    },
+    {
+      "id_anuncio": "https://produto.mercadolivre.com.br/mlb-4752474553-tnis-new-balance-fuelcell-rebel-v5-corrida-esportivo-_jm?searchvariation=204736428683#polycard_client=search-desktop&searchvariation=204736428683&float_highlight=price_dropped&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=22&type=item&tracking_id=31b3fe15-7ceb-4f17-ae1f-f94613845580&sid=search",
+      "categoria": "Calçados > Tênis",
+      "descricao": "Tênis New Balance Fuelcell Rebel V5 Corrida Esportivo",
+      "antes": "R$ 999,99",
+      "antes_valor": null,
+      "desconto": "27% OFF",
+      "depois": "R$ 727,49",
+      "depois_valor": 727.49,
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-4752474553-tnis-new-balance-fuelcell-rebel-v5-corrida-esportivo-_JM?searchVariation=204736428683#polycard_client=search-desktop&searchVariation=204736428683&float_highlight=price_dropped&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=22&type=item&tracking_id=31b3fe15-7ceb-4f17-ae1f-f94613845580&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_815409-MLB114003025057_072026-O-tnis-new-balance-fuelcell-rebel-v5-corrida-esportivo.webp"
+    }
+  ]
+}

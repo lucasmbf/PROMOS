@@ -1,0 +1,58 @@
+=== Inicio da execucao: 2026-07-23T20:08:50 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 20.0 --preco-maximo 300.0 --limite-candidatos 3 --url-produto https://lista.mercadolivre.com.br/lumin%C3%A1ria-screenbar-para-monitor#D[A:Lumin%C3%A1ria%20ScreenBar%20para%20monitor] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/lumin%C3%A1ria-screenbar-para-monitor#D[A:Lumin%C3%A1ria%20ScreenBar%20para%20monitor]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/lumin%C3%A1ria-screenbar-para-monitor#D[A:Lumin%C3%A1ria%20ScreenBar%20para%20monitor]
+✓ Link de afiliado: https://meli.la/2d9QNsu
+✓ Link de afiliado: https://meli.la/18hdg7x
+✓ Link de afiliado: https://meli.la/1rHsKdf
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260723_200927.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260723_200927.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_779721-MLB103696102856_012026-O-luminaria-barra-led-luz-monitor-mesa-notebook-computador-usb.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Luminária Barra Led Luz Monitor Mesa Notebook Computador Usb
+Message SID Twilio: SMfb359edd4ab7bd232e1101b2ad9bda89
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_959840-MLB109251920955_032026-O-luminaria-barra-led-monitor-rgb-touch-gamer-regulavel.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Luminária Barra Led Monitor Rgb Touch Gamer Regulável
+Message SID Twilio: SM4dc7a618961bdb2e7827b57fc6fab5a9
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_797700-MLA114686009389_072026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Barra De Led Monitor Luz Usb Luminaria Para Monitor De Computador Pc Mesa Notebook Light Bar Preto Dimmable Quarto Gamer Escritorio Home Office Iluminacao Indireta Sem Fio Controle Touch 5v
+Message SID Twilio: SM914824f4f0ed91b07fddb73e0914ab98
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=3 falhas=0 total=3
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-23T20:09:33 ===

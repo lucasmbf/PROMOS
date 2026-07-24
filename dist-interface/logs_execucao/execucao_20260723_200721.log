@@ -1,0 +1,68 @@
+=== Inicio da execucao: 2026-07-23T20:07:21 ===
+Args: --produto-por-html --fonte mercadolivre --preco-minimo 20.0 --preco-maximo 300.0 --limite-candidatos 4 --url-produto https://lista.mercadolivre.com.br/abajur-lua-3d-led?sb=all_mercadolibre#D[A:Abajur%20Lua%203D%20LED] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/abajur-lua-3d-led?sb=all_mercadolibre#D[A:Abajur%20Lua%203D%20LED]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/abajur-lua-3d-led?sb=all_mercadolibre#D[A:Abajur%20Lua%203D%20LED]
+✓ Link de afiliado: https://meli.la/1p7PPcF
+✓ Link de afiliado: https://meli.la/2wRrQp6
+✓ Link de afiliado: https://meli.la/28PzXrN
+✓ Link de afiliado: https://meli.la/28umiso
+[BLOCO_1] Resultado: 4 candidato(s) coletado(s), 4 válido(s) enriquecido(s). Total: 4/4
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 4 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260723_200806.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260723_200806.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_741048-MLB110985443396_052026-O-luminaria-bola-de-cristal-3d-led-luz-quente-abajur-de-mesa.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Luminária Bola De Cristal 3d Led Luz Quente Abajur De Mesa
+Message SID Twilio: SMa385c65870b344d34ef1affde01b8c9e
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_893087-MLA90933893878_082025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Luminaria Led Abajur Lua Cheia 3d Decoração Luz Noturna 12cm Cúpula Branco Estrutura Luz Amarela 5v
+Message SID Twilio: SM032e4f32f23ae30de5e285b0915823e4
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_625104-MLB113946312801_062026-O-luminaria-de-mesa-lua-cheia-personalizada-com-foto.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Luminária De Mesa Lua Cheia Personalizada Com Foto
+Message SID Twilio: SMe00a0c079fd2c5401f3a90e0a4e17a1d
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_922275-MLB89611839043_082025-O-luminaria-lua-cheia-com-foto-e-mensagem-personalizada-18cm.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Luminária Lua Cheia Com Foto E Mensagem Personalizada 18cm
+Message SID Twilio: SM3fab90612fd91adf7e7ae3a2711f1a94
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=4 falhas=0 total=4
+
+4 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-23T20:08:16 ===

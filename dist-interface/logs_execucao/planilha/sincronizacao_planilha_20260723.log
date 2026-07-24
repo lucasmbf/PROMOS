@@ -1,0 +1,91 @@
+=== Inicio do log de sincronizacao de planilha: 2026-07-23T19:43:06 ===
+[2026-07-23 19:43:06] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 19:43:06] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 19:43:07] Atualizando token OAuth da planilha.
+[2026-07-23 19:43:09] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 19:43:09] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 19:43:09] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 19:43:09] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 19:43:09] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 19:43:09] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 19:54:06] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 19:54:06] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 19:54:08] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 19:54:08] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 19:54:08] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 19:54:08] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 19:54:08] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 19:54:08] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 20:05:07] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 20:05:07] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 20:05:08] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 20:05:08] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:05:08] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:05:08] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:05:08] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:05:08] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 20:16:07] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 20:16:07] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 20:16:08] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 20:16:08] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:16:08] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:16:08] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:16:08] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:16:08] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 20:27:07] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 20:27:07] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 20:27:08] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 20:27:08] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:27:08] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:27:08] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:27:08] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:27:08] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 20:38:07] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 20:38:07] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 20:38:08] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 20:38:08] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:38:08] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:38:08] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:38:08] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:38:08] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 20:49:16] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 20:49:16] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 20:49:16] Atualizando token OAuth da planilha.
+[2026-07-23 20:49:18] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 20:49:18] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:49:18] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:49:18] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:49:18] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:49:18] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 20:56:12] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 20:56:12] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 20:56:14] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 20:56:14] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:56:14] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 20:56:14] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:56:14] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 20:56:14] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 21:13:03] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 21:13:03] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 21:13:04] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 21:13:04] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 21:13:04] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 21:13:04] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 21:13:04] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 21:13:04] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 21:18:21] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 21:18:21] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 21:18:22] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 21:18:22] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 21:18:22] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 21:18:22] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 21:18:22] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 21:18:22] Finalizacao da sincronizacao. falhou=False importados=0.
+[2026-07-23 21:29:21] Inicio da rotina de sincronizacao da planilha.
+[2026-07-23 21:29:21] Worker iniciado. worksheet='RespostasForm' auth_mode='oauth_user' spreadsheet_id='11MaCntcOh4-TGSyQRWS3nPuttNiRsvWq0O8mBxNH5qg'.
+[2026-07-23 21:29:22] Leitura da planilha concluida. Linhas recebidas: 26.
+[2026-07-23 21:29:22] Linha 2 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 21:29:22] Linha 3 invalida: Informe ao menos um link entre as colunas F/I/K/M/O..
+[2026-07-23 21:29:22] Linha 2: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 21:29:22] Linha 3: erro de validacao (Informe ao menos um link entre as colunas F/I/K/M/O.).
+[2026-07-23 21:29:22] Finalizacao da sincronizacao. falhou=False importados=0.

@@ -1,0 +1,31 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260723_202651",
+  "total": 2,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb75338112",
+      "categoria": "Motosserra > Motosserras Eletricas",
+      "descricao": "Motosserra Eletrica A Bateria 48v Litio 4 Polegadas Com Case 2 Baterias Mini Serra Portatil Para Podar Arvores E Cortar Lenha",
+      "antes": "R$ 208",
+      "antes_valor": null,
+      "desconto": "18% OFF",
+      "depois": "R$ 168,88",
+      "depois_valor": 168.88,
+      "link_anuncio": "https://www.mercadolivre.com.br/motosserra-eletrica-a-bateria-48v-litio-4-polegadas-com-case-2-baterias-mini-serra-portatil-para-podar-arvores-e-cortar-lenha/p/MLB75338112#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=5&type=product&tracking_id=8f3bf6be-daa2-4961-9e58-9252c33c993a&wid=MLB4878756125&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_769259-MLA114429775401_072026-O.webp"
+    },
+    {
+      "id_anuncio": "mlbu3251771080",
+      "categoria": "Motosserra > Motosserras Eletricas",
+      "descricao": "Mini Motosserra A Bateria 6 Pol Portatil Potente Brushless",
+      "antes": "R$ 497,81",
+      "antes_valor": null,
+      "desconto": "60% OFF",
+      "depois": "R$ 198,36",
+      "depois_valor": 198.36,
+      "link_anuncio": "https://www.mercadolivre.com.br/mini-motosserra-a-bateria-6-pol-portatil-potente-brushless/up/MLBU3251771080#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=6&type=product&tracking_id=8f3bf6be-daa2-4961-9e58-9252c33c993a&wid=MLB5387269334&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_896410-MLB91931032156_092025-O-mini-motosserra-a-bateria-6-pol-portatil-potente-brushless.webp"
+    }
+  ]
+}

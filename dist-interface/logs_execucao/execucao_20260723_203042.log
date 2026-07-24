@@ -1,0 +1,58 @@
+=== Inicio da execucao: 2026-07-23T20:30:42 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 50 --limite-candidatos 3 --url-produto https://lista.mercadolivre.com.br/seladora-a-v%C3%A1cuo-port%C3%A1til-para-alimentos#D[A:Seladora%20a%20v%C3%A1cuo%20port%C3%A1til%20para%20alimentos] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/seladora-a-v%C3%A1cuo-port%C3%A1til-para-alimentos#D[A:Seladora%20a%20v%C3%A1cuo%20port%C3%A1til%20para%20alimentos]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/seladora-a-v%C3%A1cuo-port%C3%A1til-para-alimentos#D[A:Seladora%20a%20v%C3%A1cuo%20port%C3%A1til%20para%20alimentos]
+✓ Link de afiliado: https://meli.la/1WAUqrM
+✓ Link de afiliado: https://meli.la/2KyqhuU
+✓ Link de afiliado: https://meli.la/13FyFzZ
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260723_203119.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260723_203120.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_858708-MLA108246604438_032026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Seladora A Vácuo Para Alimentos Portátil Domestica Com 10 Sacos Digital 20cm Desligamento Automático Potencia 90w Bivolt Cor Preta - Good Vision
+Message SID Twilio: SM058f39977f99c83a5232bb9d7bbc965b
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_939592-MLB113273896538_072026-O-seladora-a-vacuo-6-em-1-com-cortador-e-10-sacos-220v.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Seladora A Vácuo 6 Em 1 Com Cortador E 10 Sacos 220v
+Message SID Twilio: SM262167211b7c19cc6dbdbad757b2862b
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_696323-MLA113088395223_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Seladora A Vacuo Maquina Embalar A Vacuo Selador Embalagem De Plastico Vacuum Celadora Alimentos Domestica Pratica Cozinha Carnes Legumes Para Comida Facil Preservacao Frescor Diario Uso Casa
+Message SID Twilio: SM82954cbe6d25609ec7acb020a7fdd7bb
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=3 falhas=0 total=3
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-23T20:31:26 ===

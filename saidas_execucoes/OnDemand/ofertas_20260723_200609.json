@@ -1,0 +1,31 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260723_200609",
+  "total": 2,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu3115037564",
+      "categoria": "Home Theaters > Caixa de Som",
+      "descricao": "Caixa De Som Portátil Magnética Edifier G200 Hecate - Preta",
+      "antes": "R$ 168,06",
+      "antes_valor": null,
+      "desconto": "17% OFF",
+      "depois": "R$ 137,81",
+      "depois_valor": 137.81,
+      "link_anuncio": "https://www.mercadolivre.com.br/caixa-de-som-portatil-magnetica-edifier-g200-hecate--preta/up/MLBU3115037564#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=2&type=product&tracking_id=754c4cfd-8f8a-4130-9a17-2ffeaa883ddc&wid=MLB4026060253&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_876521-MLB92392641445_092025-O-caixa-de-som-portatil-magnetica-edifier-g200-hecate--preta.webp"
+    },
+    {
+      "id_anuncio": "mlbu3522923860",
+      "categoria": "Acessórios > Caixas Bluetooth",
+      "descricao": "Caixa De Som Portátil Magnética Edifier G200 Hecate - Preta",
+      "antes": "R$ 149,90",
+      "antes_valor": null,
+      "desconto": "5% OFF",
+      "depois": "R$ 140,91",
+      "depois_valor": 140.91,
+      "link_anuncio": "https://www.mercadolivre.com.br/caixa-de-som-portatil-magnetica-edifier-g200-hecate--preta/up/MLBU3522923860#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=4&type=product&tracking_id=754c4cfd-8f8a-4130-9a17-2ffeaa883ddc&wid=MLB4276029987&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_864589-MLB96423760803_102025-O-caixa-de-som-portatil-magnetica-edifier-g200-hecate--preta.webp"
+    }
+  ]
+}

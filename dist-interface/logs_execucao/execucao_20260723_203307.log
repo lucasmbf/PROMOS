@@ -1,0 +1,58 @@
+=== Inicio da execucao: 2026-07-23T20:33:07 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/_Container_pet-cpg-areia-e-higiene-query?forceContainer=true#c_container_id=MLB1328170-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=gato-areia-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_element_id=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_content_origin=splinter-default&c_content_type=default&c_global_position=5&deal_print_id=1eef3040-836a-11f1-a918-0dc5491cce4b&c_tracking_id=1eef3040-836a-11f1-a918-0dc5491cce4b --desconto-minimo 10 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_pet-cpg-areia-e-higiene-query?forceContainer=true#c_container_id=MLB1328170-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=gato-areia-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_element_id=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_content_origin=splinter-default&c_content_type=default&c_global_position=5&deal_print_id=1eef3040-836a-11f1-a918-0dc5491cce4b&c_tracking_id=1eef3040-836a-11f1-a918-0dc5491cce4b
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_pet-cpg-areia-e-higiene-query?forceContainer=true#c_container_id=MLB1328170-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=gato-areia-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_element_id=1f172aa4-836a-11f1-af20-f3e7841ca6f0&c_content_origin=splinter-default&c_content_type=default&c_global_position=5&deal_print_id=1eef3040-836a-11f1-a918-0dc5491cce4b&c_tracking_id=1eef3040-836a-11f1-a918-0dc5491cce4b
+✓ Link de afiliado: https://meli.la/2xv36j8
+✓ Link de afiliado: https://meli.la/2DGudWJ
+✓ Link de afiliado: https://meli.la/1aC9BeN
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260723_203345.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260723_203345.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_648412-MLA96050128644_102025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Areia Higiênica Para Gatos Feita de Mandioca e Milho Biodegradável Alta Absorção Baixo Odor 4kg - GoodVision
+Message SID Twilio: SM4b7caa82e577e4899749903dd231ae38
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_831531-MLA103221215660_012026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+P3T Kit 4 Areia Higiênica Sílica Micro Cristais Para Gatos 6,4kg
+Message SID Twilio: SM8f3477ca732dd84eef1bc19d63ed1e49
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_723019-MLA111359575738_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+MIAOW Caixa Areia Inteligente Autolimpante para Gatos
+Message SID Twilio: SMf98e1e97f0386cfa602941d4071dc9b8
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=3 falhas=0 total=3
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-23T20:33:51 ===
