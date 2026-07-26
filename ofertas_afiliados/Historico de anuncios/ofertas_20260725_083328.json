@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260725_083328",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb58582424",
+      "categoria": "Suplementos e Shakers > Suplementos",
+      "descricao": "TESTO ESSENCIAL - Fórmula Exclusiva com Feno Grego + Boro + Arginina + ZMA + Vitamina B6 - Precursor da Testosterona - 60 cápsulas",
+      "antes": "R$ 91,77",
+      "antes_valor": null,
+      "desconto": "40% OFF",
+      "depois": "R$ 54,77",
+      "depois_valor": 54.77,
+      "link_anuncio": "https://www.mercadolivre.com.br/testo-essencial-formula-exclusiva-com-feno-grego-boro-arginina-zma-vitamina-b6-precursor-da-testosterona-60-capsulas/p/MLB58582424?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=4264762e-f887-41b3-84bf-1b2d259d3f41&position=5&tracking_id=c9a6181e-7ba4-446b-83b7-1cd59e9accbe&wid=MLB5761677016&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_949131-MLA114764498645_072026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb19381117",
+      "categoria": "Saúde > Suplementos Alimentares",
+      "descricao": "Whey Isolate Protein Fuse 900g Dark Lab Sabor Chocolate",
+      "antes": "R$ 129,90",
+      "antes_valor": null,
+      "desconto": "39% OFF",
+      "depois": "R$ 78,90",
+      "depois_valor": 78.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/whey-isolate-protein-fuse-900g-dark-lab-sabor-chocolate/p/MLB19381117?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=4264762e-f887-41b3-84bf-1b2d259d3f41&position=7&tracking_id=c9a6181e-7ba4-446b-83b7-1cd59e9accbe&wid=MLB3754663331&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_859161-MLA99962428017_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb57468779",
+      "categoria": "Infladores > Compressores de Ar",
+      "descricao": "Bomba Elétrica Portátil Digital Para Encher Pneu De Carro Moto Bicicleta Inflador Automotivo Cor Preto",
+      "antes": "R$ 199,99",
+      "antes_valor": null,
+      "desconto": "96% OFF",
+      "depois": "R$ 92,14",
+      "depois_valor": 92.14,
+      "link_anuncio": "https://www.mercadolivre.com.br/bomba-eletrica-portatil-digital-para-encher-pneu-de-carro-moto-bicicleta-inflador-automotivo-cor-preto/p/MLB57468779?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=4264762e-f887-41b3-84bf-1b2d259d3f41&position=2&tracking_id=c9a6181e-7ba4-446b-83b7-1cd59e9accbe&wid=MLB6823283528&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_919649-MLA112122698633_052026-O.webp"
+    }
+  ]
+}

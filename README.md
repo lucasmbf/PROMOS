@@ -318,6 +318,29 @@ Na interface:
 - O icone `(i)` ao lado de descricao mostra detalhes da funcionalidade ao passar o mouse.
 - O quadro **Procurar ofertas relampago** permite usar modo padrao (`--relampago-padrao`) ou modo customizado (`--somente-relampago` com filtros).
 
+## Envio de imagem no Twilio via Google Drive
+
+Quando habilitado, o envio WhatsApp tenta publicar a imagem local do anuncio em uma pasta do Google Drive e usa a URL publica dessa imagem no `media_url` do Twilio.
+
+Variaveis de ambiente:
+
+- `TWILIO_USAR_GOOGLE_DRIVE_IMAGENS=1` habilita upload de imagem para Drive antes do envio.
+- `GOOGLE_DRIVE_IMAGENS_FOLDER_ID=<ID_DA_PASTA_NO_DRIVE>` pasta de destino onde as imagens serao enviadas.
+- `GOOGLE_DRIVE_SERVICE_ACCOUNT_FILE=credentials/google-service-account.json` caminho do JSON da service account.
+
+Observacoes:
+
+- A pasta do Drive deve permitir compartilhamento por link (o script cria permissao `anyone:reader` por arquivo).
+- As imagens locais sao buscadas em `dist-interface/instagram_anuncios` pelo padrao `anuncio_<ID>.<ext>`.
+- O sistema mantem cache local em `integracao_drive_imagens_cache.json` para reutilizar URLs publicas ja publicadas.
+- Se o upload falhar, o fluxo continua com fallback para a URL original da oferta (quando existir) ou texto sem midia.
+
+Dependencias (se ainda nao estiverem instaladas no ambiente):
+
+```powershell
+.\venv\Scripts\python.exe -m pip install google-api-python-client google-auth
+```
+
 ## Logs operacionais
 
 Para facilitar diagnóstico das rotinas de alerta e integração com planilha, a interface grava logs em `dist-interface/logs_execucao`:

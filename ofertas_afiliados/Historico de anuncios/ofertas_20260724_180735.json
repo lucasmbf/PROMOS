@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260724_180735",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu3948374500",
+      "categoria": "Organizadores para Cozinha > Organizadores de Armários",
+      "descricao": "Kit 3 Organizadores Geladeira Alimentos Vegetais Com Tampas Branco",
+      "antes": "R$ 49",
+      "antes_valor": null,
+      "desconto": "28% OFF",
+      "depois": "R$ 35,08",
+      "depois_valor": 35.08,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-3-organizadores-geladeira-alimentos-vegetais-com-tampas/up/MLBU3948374500?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=6c845051-9303-4848-b8bb-2f3f79a2479a&position=3&tracking_id=026fa6a9-a366-4c77-a6ab-e9d5508e3c0a&wid=MLB4655027611&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_812717-MLB111231916555_052026-O-kit-3-organizadores-geladeira-alimentos-vegetais-com-tampas.webp"
+    },
+    {
+      "id_anuncio": "mlb67989415",
+      "categoria": "Conectividade e Redes > Roteadores",
+      "descricao": "Tp-link Ex3000 Roteador Wifi6 Ax3000 Gigabit Banda Dupla",
+      "antes": "R$ 299",
+      "antes_valor": null,
+      "desconto": "227% OFF",
+      "depois": "R$ 206,30",
+      "depois_valor": 206.3,
+      "link_anuncio": "https://www.mercadolivre.com.br/tp-link-ex3000-roteador-wifi6-ax3000-gigabit-banda-dupla/p/MLB67989415?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=6c845051-9303-4848-b8bb-2f3f79a2479a&position=8&tracking_id=026fa6a9-a366-4c77-a6ab-e9d5508e3c0a&wid=MLB4718918529&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_755357-MLA109556445022_042026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb28203040",
+      "categoria": "Para a Cozinha > Cafeteiras",
+      "descricao": "Cafeteira Espresso Luna Preta - TRES 3 Corações",
+      "antes": "R$ 720",
+      "antes_valor": null,
+      "desconto": "397% OFF",
+      "depois": "R$ 357,30",
+      "depois_valor": 357.3,
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-espresso-luna-preta-tres-3-coracoes/p/MLB28203040?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=6c845051-9303-4848-b8bb-2f3f79a2479a&position=4&tracking_id=026fa6a9-a366-4c77-a6ab-e9d5508e3c0a&wid=MLB4218384814&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_963738-MLA113242754444_072026-O.webp"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260726_104934",
+  "total": 10,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu4314406909",
+      "categoria": "Cuidados com o Cabelo > Tratamentos com o Cabelo",
+      "descricao": "Oil Reflections Wella Light 30ml",
+      "antes": "R$ 78,90",
+      "antes_valor": null,
+      "desconto": "14% OFF",
+      "depois": "R$ 67,22",
+      "depois_valor": 67.22,
+      "link_anuncio": "https://www.mercadolivre.com.br/oil-reflections-wella-light-30ml/up/MLBU4314406909?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=5&type=product&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB7177074958&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_947556-MLB113358603880_072026-O-oil-reflections-wella-light-30ml.webp"
+    },
+    {
+      "id_anuncio": "mlbu3443763255",
+      "categoria": "Sem categoria",
+      "descricao": "Óleo Capilar Wella Professionals Oil Reflections Light 30ml",
+      "antes": "R$ 155",
+      "antes_valor": null,
+      "desconto": "52% OFF",
+      "depois": "R$ 73,10",
+      "depois_valor": 73.1,
+      "link_anuncio": "https://www.mercadolivre.com.br/oleo-capilar-wella-professionals-oil-reflections-light-30ml/up/MLBU3443763255?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=1&type=product&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB5744229762&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_678333-MLB93722209543_092025-O-oleo-capilar-wella-professionals-oil-reflections-light-30ml.webp"
+    },
+    {
+      "id_anuncio": "mlbu3187078484",
+      "categoria": "Sem categoria",
+      "descricao": "Óleo Capilar Wella Professionals Oil Reflections 30ml",
+      "antes": "R$ 155",
+      "antes_valor": null,
+      "desconto": "52% OFF",
+      "depois": "R$ 73,10",
+      "depois_valor": 73.1,
+      "link_anuncio": "https://www.mercadolivre.com.br/oleo-capilar-wella-professionals-oil-reflections-30ml/up/MLBU3187078484?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=2&type=product&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB4067312035&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_947414-MLB92181651092_092025-O-oleo-capilar-wella-professionals-oil-reflections-30ml.webp"
+    },
+    {
+      "id_anuncio": "mlbu3348280348",
+      "categoria": "Sem categoria",
+      "descricao": "Shampoo Wella Professionals Oil Reflections 250ml Nutrição",
+      "antes": "R$ 185",
+      "antes_valor": null,
+      "desconto": "47% OFF",
+      "depois": "R$ 96,90",
+      "depois_valor": 96.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/shampoo-wella-professionals-oil-reflections-250ml-nutricao/up/MLBU3348280348?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=9&type=product&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB4150616975&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_666951-MLB92599485769_092025-O-shampoo-wella-professionals-oil-reflections-250ml-nutricao.webp"
+    },
+    {
+      "id_anuncio": "mlbu2106293984",
+      "categoria": "Cuidados com o Cabelo > Tratamentos com o Cabelo",
+      "descricao": "Óleo Finalizador Oil Reflections 100ml - Wella",
+      "antes": "R$ 235,15",
+      "antes_valor": null,
+      "desconto": "40% OFF",
+      "depois": "R$ 139,52",
+      "depois_valor": 139.52,
+      "link_anuncio": "https://www.mercadolivre.com.br/oleo-finalizador-oil-reflections-100ml--wella/up/MLBU2106293984?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=8&type=product&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB2046393436&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_706878-MLB47775744941_102021-O-oleo-finalizador-oil-reflections-100ml--wella.webp"
+    },
+    {
+      "id_anuncio": "mlbu3443789499",
+      "categoria": "Sem categoria",
+      "descricao": "Óleo Capilar Wella Professionals Oil Reflections Light 100ml",
+      "antes": "R$ 319",
+      "antes_valor": null,
+      "desconto": "55% OFF",
+      "depois": "R$ 142,40",
+      "depois_valor": 142.4,
+      "link_anuncio": "https://www.mercadolivre.com.br/oleo-capilar-wella-professionals-oil-reflections-light-100ml/up/MLBU3443789499?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=6&type=product&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB5744282848&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_721277-MLB93469799069_092025-O-oleo-capilar-wella-professionals-oil-reflections-light-100ml.webp"
+    },
+    {
+      "id_anuncio": "mlb1951832694",
+      "categoria": "Tratamentos com o Cabelo > Wella",
+      "descricao": "Kit Wella Professionals Invigo Enrich Sh 250ml + Másc 150ml",
+      "antes": "R$ 221",
+      "antes_valor": null,
+      "desconto": "15% OFF",
+      "depois": "R$ 185,80",
+      "depois_valor": 185.8,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=k5B5xJNBP8dVkVXVNAvDyZMQFepvozvLTi%2F98D8iYSWnWAbR9zDvOg%2FveanxCABP5SHCIRHXHnUpD9CNpozGMFDYTkiMaUGpFgGEyYFSMmLdqWMmjC%2BIypgO9xId1%2F14Wkr0SoME%2BgjUbJoX6gPX4Bk%2FmCPwc12VEvKvszhPgaOt2Bhcl3uYYiIqZ7McqBdPTw6ENTIyagH%2B9vnlvWCQTOFd9Pg4r1GLKy%2BI5N%2B0x1NX3phDpq9SaZfJNngtLHr3BZieK8APuaJ9YoVtjZPMXhOt%2BqfUH6WKO%2BuWuiBgOKnWe%2BX1xtcfn6WN0%2FJw9T5Vuky3gLtShW36Bv47H6zHWJfViOz0o3H85cZ9XEkpN9lPcrApRGwm6gnfonOHwwju2WcSUDq%2BYwVLqowaKX4mvrTy8dys9sed5%2Bwsc8xKMfF6%2BE9R5kXYD7AREC1MRPTdcSWU6LpcGyMTNiXnNu00Z5M19%2B9PPYQbdCTPi%2B4oWTen7bHYB5oSJPx20W7VDKSyfiuziaMtIn6ZzuZDNvMBnOrx4TKZVn019loPU8MC%2BvT4JBleffE9HmNV36ionUeoHrvmn2zsrbh7qSpwIPx9WVZzdj8dx9oteLTq7PdafKTvAhaB4Dw7vjtgHZZVgy%2BfdRQh9VfC26g%2BS3IiFrXRTc8McUk1a7xwWeG873bTsvnOnPGBLSJ%2F7q4xwMn0lTbxhOqDSgXU2K4cRIoK5X0I8ED2F09Q7vFm7h3%2F6Gud7CZLFwwylT5Ogn7K1yFuImfSJQIX%2BTjMWqjnQdA8T6%2F7cB9BNxYIaH827Yc%2BvIuvajNWrhwEDwVJ%2FuMSvuhfsx%2FkNbPDGvgaTyUXkoghr01wbM2oq924Vb5NLY5eAbSyqcElv%2BT7BUxJd5L9JsSLzzbkxaaOsca3YAhWc15SSm3rNiVInstVs7K1Nn7VDuLLWUt22QjNBuz0G93fsZnwzOwOW%2BQ3vV0D8QUrujt%2F9ffLT3n5ejFxwponX%2BaszFYKavT210bwImkqz52XSCM7YXyLa7ae1ikDPzRVgAUAnqqyuQ%3D%3D&pdp_filters=discount%3A10-100%7Citem_id%3AMLB1951832694#polycard_client=search-desktop&is_advertising=true&searchVariation=MLBU1718588934&backend_model=search-backend&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=4&type=pad&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB1951832694&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_832818-MLB112019539040_062026-O-kit-wella-professionals-invigo-enrich--sh-250ml--masc-150ml.webp"
+    },
+    {
+      "id_anuncio": "mlbu1118074290",
+      "categoria": "Cuidados com o Cabelo > Tratamentos com o Cabelo",
+      "descricao": "Óleo Reparador Oil Reflection 100ml Wella",
+      "antes": "R$ 341,99",
+      "antes_valor": null,
+      "desconto": "44% OFF",
+      "depois": "R$ 189,12",
+      "depois_valor": 189.12,
+      "link_anuncio": "https://www.mercadolivre.com.br/oleo-reparador-oil-reflection-100ml-wella/up/MLBU1118074290?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=7&type=product&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB2852745035&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_991013-MLB52160185363_102022-O-oleo-reparador-oil-reflection-100ml-wella.webp"
+    },
+    {
+      "id_anuncio": "mlbu4115153277",
+      "categoria": "Cuidados com o Cabelo > Shampoos e Condicionadores",
+      "descricao": "Wella Professionals Oil Reflections Shampoo 1l",
+      "antes": "R$ 288,85",
+      "antes_valor": null,
+      "desconto": "24% OFF",
+      "depois": "R$ 219,52",
+      "depois_valor": 219.52,
+      "link_anuncio": "https://www.mercadolivre.com.br/wella-professionals-oil-reflections-shampoo-1l/up/MLBU4115153277?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=10&type=product&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB6989337424&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_615521-MLA99924628179_112025-O-wella-professionals-oil-reflections-shampoo-1l.webp"
+    },
+    {
+      "id_anuncio": "mlbu3717319786",
+      "categoria": "Cuidados com o Cabelo > Shampoos e Condicionadores",
+      "descricao": "Wella Professionals Invigo Enrich Shampoo 1000ml",
+      "antes": "R$ 309,90",
+      "antes_valor": null,
+      "desconto": "27% OFF",
+      "depois": "R$ 225,90",
+      "depois_valor": 225.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/wella-professionals-invigo-enrich-shampoo-1000ml/up/MLBU3717319786?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=11&type=product&tracking_id=a48d5744-3580-4293-99cf-6f6b1f115ae5&wid=MLB6143605828&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_916785-MLB113776519332_072026-O-wella-professionals-invigo-enrich-shampoo-1000ml.webp"
+    }
+  ]
+}

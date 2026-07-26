@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260726_105035",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb4582642499",
+      "categoria": "Lábios > Batons",
+      "descricao": "Batom Lustreglass Mac Sheer-shine - Hug Me",
+      "antes": "R$ 149",
+      "antes_valor": null,
+      "desconto": "20% OFF",
+      "depois": "R$ 119,20",
+      "depois_valor": 119.2,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=oq%2B7fRzzd84wQonURdO61FXdm91Q%2B3ylKDfS89l8zFfdqyEXgE%2B7h4Gab9fnFKeeVbs5DALpCE63LGcsM8GO0ivLUXWjivRfk9BlDVUy3H8cjN4NW2olCN2jbKUJJX%2FknkqMRHOFpW%2FVud6MzF8FPNODNR1utB9N7M8MNC2icFgn%2BYVqo8jgYQY85RBqdLV6t3SJGGkThCsrGsJeFsJsM8JH%2FyUq7syIkPTRoUiSqVj6%2FTZ3KlRmNfoLEM7GLWfFkEb1PiA0xvaMp7t9tx4fwB1obiTYYaTNfHJUafl7R6sVkXXON7nDeqfpiOZ7dr1l6iRwDRHJvV%2FwV5GsWtqnTYIwdslWXvb3%2FqLHCm%2FPcwZJv1eHUf5ozCENHger8ZZJ1apKE6Ec1VPZQ2b9QeH926ZfisIkapJVN1kHb2NDe7PKed1FAu%2FQ8I7SIRlIPiQo3pxNIuzhJdHXA5Yr4ewSpZBIuc2b%2BaQdRqV6Gkk9E9ESr15Dgq7hEUN1W%2FonYSIXUnF3DTfyCR5HxVuGD8Z5it5FbvZYv%2BhcxzYlHkzYF6HaKqiE6bTGfOT%2FvGtqaqfrx%2BpW%2FjvnzcNWQZiEY734AcTw9yxSyaoNnxsVq2SrnNEo3RIJu6KNuOFgKquoejM3sCj2kOSL9BDb1fJ38nkEk7IZXJV21M6AWUcOTco%2Bd5Ov6xw2WbyjmWTiVjIul9xBPQ0GPImGTuZcAlUqA9eXk1GmosDUZEkkjx1dxFepCvupeIfni61cm%2FW92x40cF3GtX4nc69pTx9c%2FkQriB8W89%2Fx%2Bh3XHeG595yA79Ox%2FzdJkuXzEF9e4rNPaossTupGR6QM2t%2BK5rIZhr4nPeyB%2ByUxCa5jbv%2Fh10%2BPrNUsDS1BqZvO2hYXitI%3D&pdp_filters=item_id%3AMLB4582642499#polycard_client=search-desktop&is_advertising=true&backend_model=search-backend&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=13&type=pad&tracking_id=aa5fc825-8444-49c5-a41a-b06d28ce8d3c&wid=MLB4582642499&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_852390-MLU73809992889_012024-O.webp"
+    },
+    {
+      "id_anuncio": "mlbu3520195001",
+      "categoria": "Rosto > Bases Faciais",
+      "descricao": "Mini Base Líquida Mac Soft Matte Studio Fix Fps15 - 15ml",
+      "antes": "R$ 159",
+      "antes_valor": null,
+      "desconto": "20% OFF",
+      "depois": "R$ 127,20",
+      "depois_valor": 127.2,
+      "link_anuncio": "https://www.mercadolivre.com.br/mini-base-liquida-mac-soft-matte-studio-fix-fps15--15ml/up/MLBU3520195001#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=5&type=product&tracking_id=aa5fc825-8444-49c5-a41a-b06d28ce8d3c&wid=MLB4278871347&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_735614-MLB96183904472_102025-O-mini-base-liquida-mac-soft-matte-studio-fix-fps15--15ml.webp"
+    },
+    {
+      "id_anuncio": "mlbu3369085975",
+      "categoria": "Rosto > Bases Faciais",
+      "descricao": "Base Líquida Mac Soft Matte Studio Fix Fps15",
+      "antes": "R$ 299",
+      "antes_valor": null,
+      "desconto": "20% OFF",
+      "depois": "R$ 239,20",
+      "depois_valor": 239.2,
+      "link_anuncio": "https://www.mercadolivre.com.br/base-liquida-mac-soft-matte-studio-fix-fps15/up/MLBU3369085975#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=6&type=product&tracking_id=aa5fc825-8444-49c5-a41a-b06d28ce8d3c&wid=MLB5606023724&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_735614-MLB96183904472_102025-O-base-liquida-mac-soft-matte-studio-fix-fps15.webp"
+    }
+  ]
+}

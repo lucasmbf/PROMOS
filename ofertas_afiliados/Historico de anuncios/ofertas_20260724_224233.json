@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260724_224233",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb65352564",
+      "categoria": "Sistemas de Monitoramento > Câmeras de Segurança",
+      "descricao": "Mercusys MC210 Câmera Segurança Wifi 2K 3MP 360° por TP-Link",
+      "antes": "R$ 159",
+      "antes_valor": null,
+      "desconto": "129% OFF",
+      "depois": "R$ 118,91",
+      "depois_valor": 118.91,
+      "link_anuncio": "https://www.mercadolivre.com.br/mercusys-mc210-camera-seguranca-wifi-2k-3mp-360-por-tp-link/p/MLB65352564?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=3a28b807-3060-4ad2-a15e-4ef3a7aa4c93&position=6&tracking_id=275031fe-ab1c-4144-af9c-0f11ef60b1f7&wid=MLB6275688670&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_949687-MLA107423093255_022026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb58503383",
+      "categoria": "Kits de Ferramentas > Kit de Chaves",
+      "descricao": "Jogo De Ferramentas Soquetes Encaixe 1/4 E 1/2 Pol. Catraca Reversível Aço Crv 94 Peças Com Maleta Tkf94 The Black Tools",
+      "antes": "R$ 454,39",
+      "antes_valor": null,
+      "desconto": "218% OFF",
+      "depois": "R$ 207,10",
+      "depois_valor": 207.1,
+      "link_anuncio": "https://www.mercadolivre.com.br/jogo-de-ferramentas-soquetes-encaixe-14-e-12-pol-catraca-reversivel-aco-crv-94-pecas-com-maleta-tkf94-the-black-tools/p/MLB58503383?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=3a28b807-3060-4ad2-a15e-4ef3a7aa4c93&position=11&tracking_id=275031fe-ab1c-4144-af9c-0f11ef60b1f7&wid=MLB5829872154&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_671666-MLA99870769883_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb43201814",
+      "categoria": "Cafeteiras > Cafeteira Nespresso",
+      "descricao": "Cafeteira Nespresso Pixie Redesign Titânio",
+      "antes": "R$ 1099",
+      "antes_valor": null,
+      "desconto": "549% OFF",
+      "depois": "R$ 494,10",
+      "depois_valor": 494.1,
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-nespresso-pixie-redesign-titanio/p/MLB43201814?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=3a28b807-3060-4ad2-a15e-4ef3a7aa4c93&position=10&tracking_id=275031fe-ab1c-4144-af9c-0f11ef60b1f7&wid=MLB5992133710&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_902378-MLA99964650499_112025-O.webp"
+    }
+  ]
+}

@@ -34,7 +34,8 @@
     "next_run_at": "2026-06-24T03:19:36",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-23T17:21:40"
+    "last_execution_at": "2026-06-23T17:21:40",
+    "mensagem_complementar": ""
   },
   {
     "id": "000035",
@@ -71,7 +72,8 @@
     "next_run_at": "2026-06-24T05:22:36",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-23T17:25:17"
+    "last_execution_at": "2026-06-23T17:25:17",
+    "mensagem_complementar": ""
   },
   {
     "id": "000036",
@@ -109,7 +111,8 @@
     "next_run_at": "2026-06-24T05:25:36",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-06-23T17:28:55"
+    "last_execution_at": "2026-06-23T17:28:55",
+    "mensagem_complementar": ""
   },
   {
     "id": "000040",
@@ -138,12 +141,13 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-23T19:43:06",
+    "last_run_at": "2026-07-26T09:54:28",
     "configured_at": "2026-07-19T09:07:35",
-    "next_run_at": "2026-07-24T03:43:06",
+    "next_run_at": "2026-07-26T17:54:28",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T19:45:12"
+    "last_execution_at": "2026-07-26T09:56:36",
+    "mensagem_complementar": ""
   },
   {
     "id": "000041",
@@ -176,12 +180,13 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 12,
-    "last_run_at": "2026-07-23T19:46:06",
+    "last_run_at": "2026-07-26T09:57:29",
     "configured_at": "2026-07-19T09:02:35",
-    "next_run_at": "2026-07-24T03:46:06",
+    "next_run_at": "2026-07-26T17:57:29",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T19:54:51"
+    "last_execution_at": "2026-07-26T10:06:02",
+    "mensagem_complementar": ""
   },
   {
     "id": "000044",
@@ -210,12 +215,13 @@
     "preco_maximo": null,
     "desconto_minimo": 30,
     "limite_candidatos": 4,
-    "last_run_at": "2026-07-22T20:10:02",
+    "last_run_at": "2026-07-26T10:06:29",
     "configured_at": "2026-07-13T19:40:30",
-    "next_run_at": "2026-07-25T20:10:02",
+    "next_run_at": "2026-07-29T10:06:29",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-22T20:11:01"
+    "last_execution_at": "2026-07-26T10:07:25",
+    "mensagem_complementar": ""
   },
   {
     "id": "000046",
@@ -245,12 +251,13 @@
     "preco_maximo": null,
     "desconto_minimo": 30,
     "limite_candidatos": 4,
-    "last_run_at": "2026-07-23T19:55:06",
+    "last_run_at": "2026-07-24T11:06:01",
     "configured_at": "2026-07-21T20:24:33",
-    "next_run_at": "2026-07-24T03:55:06",
+    "next_run_at": "2026-07-24T19:06:01",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T19:56:09"
+    "last_execution_at": "2026-07-24T11:08:45",
+    "mensagem_complementar": ""
   },
   {
     "id": "000049",
@@ -279,12 +286,13 @@
     "preco_maximo": 770.0,
     "desconto_minimo": null,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-23T19:57:06",
+    "last_run_at": "2026-07-26T10:07:29",
     "configured_at": "2026-07-13T19:40:09",
-    "next_run_at": "2026-07-24T01:57:06",
+    "next_run_at": "2026-07-26T16:07:29",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T19:57:51"
+    "last_execution_at": "2026-07-26T10:08:30",
+    "mensagem_complementar": ""
   },
   {
     "id": "000050",
@@ -318,7 +326,8 @@
     "next_run_at": "2026-08-02T19:59:07",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T20:01:11"
+    "last_execution_at": "2026-07-23T20:01:11",
+    "mensagem_complementar": ""
   },
   {
     "id": "000051",
@@ -347,12 +356,13 @@
     "preco_maximo": 80.0,
     "desconto_minimo": 30,
     "limite_candidatos": 5,
-    "last_run_at": "2026-07-23T20:12:07",
+    "last_run_at": "2026-07-26T10:09:29",
     "configured_at": "2026-07-07T19:43:10",
-    "next_run_at": "2026-07-24T08:12:07",
+    "next_run_at": "2026-07-26T22:09:29",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T20:14:14"
+    "last_execution_at": "2026-07-26T10:11:19",
+    "mensagem_complementar": ""
   },
   {
     "id": "000052",
@@ -381,12 +391,13 @@
     "preco_maximo": 160.0,
     "desconto_minimo": 20,
     "limite_candidatos": 5,
-    "last_run_at": "2026-07-23T20:15:07",
+    "last_run_at": "2026-07-26T10:11:29",
     "configured_at": "2026-07-07T19:41:24",
-    "next_run_at": "2026-07-24T02:15:07",
+    "next_run_at": "2026-07-26T16:11:29",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T20:17:41"
+    "last_execution_at": "2026-07-26T10:13:19",
+    "mensagem_complementar": ""
   },
   {
     "id": "000053",
@@ -415,12 +426,13 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-23T20:32:07",
+    "last_run_at": "2026-07-26T10:13:29",
     "configured_at": "2026-07-19T09:10:29",
-    "next_run_at": "2026-07-24T20:32:07",
+    "next_run_at": "2026-07-27T10:13:29",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T20:32:51"
+    "last_execution_at": "2026-07-26T10:14:12",
+    "mensagem_complementar": ""
   },
   {
     "id": "000054",
@@ -449,12 +461,13 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-23T20:33:07",
+    "last_run_at": "2026-07-26T10:14:29",
     "configured_at": "2026-07-19T09:10:13",
-    "next_run_at": "2026-07-24T20:33:07",
+    "next_run_at": "2026-07-27T10:14:29",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T20:33:51"
+    "last_execution_at": "2026-07-26T10:15:14",
+    "mensagem_complementar": ""
   },
   {
     "id": "000055",
@@ -483,12 +496,13 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-23T20:35:07",
+    "last_run_at": "2026-07-26T10:15:29",
     "configured_at": "2026-07-19T09:13:31",
-    "next_run_at": "2026-07-24T20:35:07",
+    "next_run_at": "2026-07-27T10:15:29",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T20:35:51"
+    "last_execution_at": "2026-07-26T10:16:13",
+    "mensagem_complementar": ""
   },
   {
     "id": "000056",
@@ -517,11 +531,187 @@
     "preco_maximo": null,
     "desconto_minimo": 10,
     "limite_candidatos": 3,
-    "last_run_at": "2026-07-23T20:36:07",
+    "last_run_at": "2026-07-26T10:16:29",
     "configured_at": "2026-07-19T09:14:13",
-    "next_run_at": "2026-07-24T20:36:07",
+    "next_run_at": "2026-07-27T10:16:29",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-23T20:36:53"
+    "last_execution_at": "2026-07-26T10:17:12",
+    "mensagem_complementar": ""
+  },
+  {
+    "id": "000057",
+    "name": "Relampago",
+    "active": true,
+    "start_at": "2026-07-24T00:00",
+    "end_at": "2026-11-30T23:59",
+    "interval_hours": 3,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/ofertas?container_id=MLB779362-1&promotion_type=lightning#filter_applied=promotion_type&filter_position=2&is_recommended_domain=false&origin=scut"
+    ],
+    "link1": "https://www.mercadolivre.com.br/ofertas?container_id=MLB779362-1&promotion_type=lightning#filter_applied=promotion_type&filter_position=2&is_recommended_domain=false&origin=scut",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "desconto_minimo": 10,
+    "limite_candidatos": 3,
+    "last_run_at": "2026-07-26T10:17:29",
+    "configured_at": "2026-07-24T18:06:59",
+    "next_run_at": "2026-07-26T13:17:29",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-26T10:18:10",
+    "mensagem_complementar": ""
+  },
+  {
+    "id": "000058",
+    "name": "Preços imbativeis",
+    "active": true,
+    "start_at": "2026-07-25T00:00",
+    "end_at": "2027-02-28T23:59",
+    "interval_hours": 3,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579#filter_applied=container_id&filter_position=3&is_recommended_domain=false&origin=scut"
+    ],
+    "link1": "https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579#filter_applied=container_id&filter_position=3&is_recommended_domain=false&origin=scut",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "desconto_minimo": 30,
+    "limite_candidatos": 10,
+    "last_run_at": "2026-07-26T10:18:29",
+    "configured_at": "2026-07-25T11:24:24",
+    "next_run_at": "2026-07-26T13:18:29",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-26T10:20:40",
+    "mensagem_complementar": ""
+  },
+  {
+    "id": "000059",
+    "name": "wella",
+    "active": true,
+    "start_at": "2026-07-26T00:00",
+    "end_at": "2026-09-30T23:59",
+    "interval_hours": 8,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "desconto_minimo": null,
+    "limite_candidatos": 3,
+    "last_run_at": null,
+    "configured_at": "2026-07-26T10:49:06",
+    "next_run_at": "2026-07-26T18:49:06",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-26T10:49:53",
+    "mensagem_complementar": ""
+  },
+  {
+    "id": "000060",
+    "name": "loreal",
+    "active": true,
+    "start_at": "2026-07-26T00:00",
+    "end_at": "2026-10-31T23:59",
+    "interval_hours": 1,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "desconto_minimo": null,
+    "limite_candidatos": 3,
+    "last_run_at": "2026-07-26T10:52:04",
+    "configured_at": "2026-07-26T10:48:57",
+    "next_run_at": "2026-07-26T11:52:04",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-26T10:52:44",
+    "mensagem_complementar": ""
+  },
+  {
+    "id": "000061",
+    "name": "Mac",
+    "active": true,
+    "start_at": "2026-07-26T00:00",
+    "end_at": "2026-10-31T23:59",
+    "interval_hours": 1,
+    "categoria": "Todas categorias",
+    "descricao": "",
+    "urls": [
+      "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue"
+    ],
+    "link1": "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue",
+    "link2": "",
+    "link3": "",
+    "link4": "",
+    "link5": "",
+    "email": "",
+    "emails": [],
+    "telefone": "19991133269",
+    "phones": [
+      "19991133269"
+    ],
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "desconto_minimo": 12,
+    "limite_candidatos": 3,
+    "last_run_at": "2026-07-26T10:49:56",
+    "configured_at": "2026-07-26T10:49:56",
+    "next_run_at": "2026-07-26T11:49:56",
+    "last_execution_status": "sucesso",
+    "last_execution_message": "Execucao concluida sem falhas.",
+    "last_execution_at": "2026-07-26T10:50:41",
+    "mensagem_complementar": ""
   }
 ]

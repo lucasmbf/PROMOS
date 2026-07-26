@@ -1,0 +1,71 @@
+=== Inicio da execucao: 2026-07-24T14:11:12 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo] --preco-minimo 500.0 --preco-maximo 770.0 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo#D[A:T%C3%AAnis%20Masculino%20New%20Balance%20Fuelcell%20Rebel%20V5%20Exclusivo]
+[LOGIN_REQUIRED_AFILIADOS] Nao foi possivel gerar link de afiliado para mlb36710725 (Sessao do Mercado Livre nao autenticada: botao de Afiliados indisponivel. Faça login e execute novamente.).
+✓ Link de afiliado: https://meli.la/25fQWE2
+✓ Link de afiliado: https://meli.la/1mZu7P1
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo?page=2
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 2 válido(s) enriquecido(s). Total: 2/3
+
+[BLOCO_2] Carregando páginas 4 a 6 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 4: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo?page=4
+[BLOCO_2] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 2/3
+[BLOCO_2] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_3] Carregando páginas 7 a 9 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 7: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo?page=7
+[BLOCO_3] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 2/3
+[BLOCO_3] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_4] Carregando páginas 10 a 12 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 10: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo?page=10
+[BLOCO_4] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 2/3
+[BLOCO_4] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_5] Carregando páginas 13 a 15 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 13: https://lista.mercadolivre.com.br/t%C3%AAnis-masculino-new-balance-fuelcell-rebel-v5-exclusivo?page=13
+[BLOCO_5] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 2/3
+[BLOCO_5] Nenhum candidato encontrado e limite de paginas atingido neste link.
+[AVISO] 1 candidato(s) exigiram login no Afiliados para gerar link com comissao.
+[AVISO] Enriquecimento com afiliado falhou em 1 candidato(s). Anuncios sem link de afiliado valido foram ignorados.
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260724_141223.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260724_141224.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_815409-MLB114003025057_072026-O-tnis-new-balance-fuelcell-rebel-v5-corrida-esportivo.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis New Balance Fuelcell Rebel V5 Corrida Esportivo
+Message SID Twilio: SMfbd59c8d8f12642a765540b11d872c99
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_882017-MLB112625432922_062026-O-tnis-de-corrida-new-balance-fuelcell-rebel-v5-masculino.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tênis De Corrida New Balance Fuelcell Rebel V5 Masculino
+Message SID Twilio: SMc7e2ee7986092726f299da99e2bada67
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=2 falhas=0 total=2
+
+2 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-24T14:12:31 ===

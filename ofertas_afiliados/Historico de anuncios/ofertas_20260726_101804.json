@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260726_101804",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb75215049",
+      "categoria": "Louça > Taças e Copos",
+      "descricao": "Jogo 6 Copos Vidro Canelado 423ml Moderno Elegante Premium Vinho Água Suco Drinks Gin Whisky Jogo Copos Taça Copo Conjunto Design Luxo Texturizado Cozinha Restaurante Decoração Hold On",
+      "antes": "R$ 78,90",
+      "antes_valor": null,
+      "desconto": "59% OFF",
+      "depois": "R$ 32",
+      "depois_valor": 32.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/jogo-6-copos-vidro-canelado-423ml-moderno-elegante-premium-vinho-agua-suco-drinks-gin-whisky-jogo-copos-taca-copo-conjunto-design-luxo-texturizado-cozinha-restaurante-decoracao-hold-on/p/MLB75215049?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=5baa8314-56e6-4ae1-8711-b49cdc1a09c8&position=4&tracking_id=541da0f3-a095-463b-9075-a9b3fe019f05&wid=MLB7109980382&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_929362-MLA114286562051_072026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb74984894",
+      "categoria": "Beleza e Cuidado Pessoal > Perfumes",
+      "descricao": "Body Splash Arabe C/4un 200ml Perfume Feminino de Luxo Alta Concentração",
+      "antes": "R$ 126,65",
+      "antes_valor": null,
+      "desconto": "65% OFF",
+      "depois": "R$ 63",
+      "depois_valor": 63.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/body-splash-arabe-c4un-200ml-perfume-feminino-de-luxo-alta-concentracao/p/MLB74984894?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=5baa8314-56e6-4ae1-8711-b49cdc1a09c8&position=1&tracking_id=541da0f3-a095-463b-9075-a9b3fe019f05&wid=MLB4540296511&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_823531-MLA112994250220_072026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb22805343",
+      "categoria": "Escadas > Escada Articulada",
+      "descricao": "Escada Articulada 4x4 em Alumínio 16 Degraus 4,48m - Reisam",
+      "antes": "R$ 569,99",
+      "antes_valor": null,
+      "desconto": "519% OFF",
+      "depois": "R$ 493,99",
+      "depois_valor": 493.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/escada-articulada-4x4-em-aluminio-16-degraus-448m-reisam/p/MLB22805343?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=5baa8314-56e6-4ae1-8711-b49cdc1a09c8&position=2&tracking_id=541da0f3-a095-463b-9075-a9b3fe019f05&wid=MLB5363757118&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_715916-MLA99521624378_122025-O.webp"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260724_233220",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB6182095484",
+      "categoria": "Agasalhos > Casacos e Jaquetas",
+      "descricao": "Jaqueta Puffer De Frio Intenso Blusa Impermeável Inverno Preto G Liso Ondulado",
+      "antes": "R$ 112,90",
+      "antes_valor": 112.9,
+      "desconto": "40% OFF",
+      "depois": "R$ 67,74",
+      "depois_valor": 67.74,
+      "link_anuncio": "https://www.mercadolivre.com.br/jaqueta-puffer-de-frio-intenso-blusa-impermeavel-inverno/up/MLBU803419936?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=bff1304f-c7db-422e-9da1-927e3ffc3317&position=11&tracking_id=9df15c2d-d0a3-43d7-a5b6-ec047059eada&wid=MLB6182095484&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_721376-MLB107123297889_022026-O-jaqueta-puffer-de-frio-intenso-blusa-impermeavel-inverno.webp"
+    },
+    {
+      "id_anuncio": "MLB4222485072",
+      "categoria": "Para a Cozinha > Cafeteiras",
+      "descricao": "Cafeteira Espresso Luna Vermelha - TRES 3 Corações",
+      "antes": "R$ 720",
+      "antes_valor": 720.0,
+      "desconto": "50% OFF",
+      "depois": "R$ 357,30",
+      "depois_valor": 357.3,
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-espresso-luna-vermelha-tres-3-coracoes/p/MLB28203060?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=bff1304f-c7db-422e-9da1-927e3ffc3317&position=19&tracking_id=9df15c2d-d0a3-43d7-a5b6-ec047059eada&wid=MLB4222485072&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_666154-MLA114485560319_072026-O.webp"
+    },
+    {
+      "id_anuncio": "MLB5318608904",
+      "categoria": "Conjuntos de Box e Colchão > Cama",
+      "descricao": "Cama Box Baú Casal Colchão Gazin Molas Flora Bege 138x188x63cm",
+      "antes": "R$ 1554,45",
+      "antes_valor": 1554.45,
+      "desconto": "35% OFF",
+      "depois": "R$ 999",
+      "depois_valor": 999.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/cama-box-bau-casal-colchao-gazin-molas-flora-bege-138x188x63cm/p/MLB26886277?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=bff1304f-c7db-422e-9da1-927e3ffc3317&position=22&tracking_id=9df15c2d-d0a3-43d7-a5b6-ec047059eada&wid=MLB5318608904&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_679611-MLA98381525248_112025-O.webp"
+    }
+  ]
+}

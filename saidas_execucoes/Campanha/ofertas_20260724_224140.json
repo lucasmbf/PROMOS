@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260724_224140",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb2092241978",
+      "categoria": "Alimento, Petisco e Suplemento > Prêmios",
+      "descricao": "Petisco Dreamies Para Gatos Pacote Com 15 Sache Misto 600g Carne, Frango, Salmão E Queijo",
+      "antes": "R$ 119,99",
+      "antes_valor": null,
+      "desconto": "25% OFF",
+      "depois": "R$ 89,99",
+      "depois_valor": 89.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/petisco-dreamies-para-gatos-pacote-com-15-sache-misto-600g-carne-frango-salmao-e-queijo/p/MLB2092241978?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=2&type=product&tracking_id=4c8231df-5aba-46eb-9fca-ee4676d38f16&wid=MLB5478902864&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_843873-MLB112124442901_052026-O.webp"
+    },
+    {
+      "id_anuncio": "mlbu3385454060",
+      "categoria": "Alimento, Petisco e Suplemento > Rações",
+      "descricao": "Petisco Gatos Wanpy Truly Creamy Sabores Variados Com 50un",
+      "antes": "R$ 199,99",
+      "antes_valor": null,
+      "desconto": "40% OFF",
+      "depois": "R$ 118,94",
+      "depois_valor": 118.94,
+      "link_anuncio": "https://www.mercadolivre.com.br/petisco-gatos-wanpy-truly-creamy-sabores-variados-com-50un/up/MLBU3385454060?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=12&type=product&tracking_id=4c8231df-5aba-46eb-9fca-ee4676d38f16&wid=MLB6556151214&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_980114-MLB87641842090_072025-O-petisco-gatos-wanpy-truly-creamy-sabores-variados-com-50un.webp"
+    },
+    {
+      "id_anuncio": "mlb28128999",
+      "categoria": "Rações > Racao",
+      "descricao": "Ração Quatree Life Para Gatos Castrados Salmão E Arroz 10,1 kg",
+      "antes": "R$ 299",
+      "antes_valor": null,
+      "desconto": "48% OFF",
+      "depois": "R$ 153,76",
+      "depois_valor": 153.76,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-quatree-life-para-gatos-castrados-salmao-e-arroz-101-kg/p/MLB28128999?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=9&type=product&tracking_id=4c8231df-5aba-46eb-9fca-ee4676d38f16&wid=MLB4783146010&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_988931-MLA99932626459_112025-O.webp"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260726_101707",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb24441133",
+      "categoria": "Rações > Racao",
+      "descricao": "Ração Úmida Gatos Castrados Salmão Frango Gran Plus 18 Sachês 85g",
+      "antes": "R$ 78,97",
+      "antes_valor": null,
+      "desconto": "36% OFF",
+      "depois": "R$ 49,90",
+      "depois_valor": 49.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-umida-gatos-castrados-salmao-frango-gran-plus-18-saches-85g/p/MLB24441133?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=14&type=product&tracking_id=2461a9b7-7598-4978-8273-af3b92cfec57&wid=MLB5064826052&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_714444-MLA99338565436_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb24441143",
+      "categoria": "Rações > Racao",
+      "descricao": "Ração Para Gatos Adulto Castrado Sabor Salmão 7,5kg Biofresh",
+      "antes": "R$ 276",
+      "antes_valor": null,
+      "desconto": "18% OFF",
+      "depois": "R$ 226,32",
+      "depois_valor": 226.32,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-para-gatos-adulto-castrado-sabor-salmao-75kg-biofresh/p/MLB24441143?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=9&type=product&tracking_id=2461a9b7-7598-4978-8273-af3b92cfec57&wid=MLB6544559302&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_881833-MLA100080001117_122025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb10962721",
+      "categoria": "Alimento, Petisco e Suplemento > Rações",
+      "descricao": "Alimento Pro Plan OptiTract Urinary para gato adulto de raza todas as raças sabor frango y arroz de 7.5 kg",
+      "antes": "R$ 489,86",
+      "antes_valor": null,
+      "desconto": "45% OFF",
+      "depois": "R$ 266,65",
+      "depois_valor": 266.65,
+      "link_anuncio": "https://www.mercadolivre.com.br/alimento-pro-plan-optitract-urinary-para-gato-adulto-de-raza-todas-as-racas-sabor-frango-y-arroz-de-75-kg/p/MLB10962721?pdp_filters=deal%3AMLB1328164-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=12&type=product&tracking_id=2461a9b7-7598-4978-8273-af3b92cfec57&wid=MLB2781516405&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_985277-MLA110799131030_052026-O.webp"
+    }
+  ]
+}

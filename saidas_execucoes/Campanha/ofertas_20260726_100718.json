@@ -1,0 +1,55 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260726_100718",
+  "total": 4,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb24206839",
+      "categoria": "Sem categoria",
+      "descricao": "Cerveja Tijuca Pilsen Long Neck 355ml",
+      "antes": "R$ 11,39",
+      "antes_valor": null,
+      "desconto": "30% OFF",
+      "depois": "R$ 7,97",
+      "depois_valor": 7.97,
+      "link_anuncio": "https://www.mercadolivre.com.br/cerveja-tijuca-pilsen-long-neck-355ml/p/MLB24206839#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=21&type=product&tracking_id=81e6b624-d027-49c0-8a0e-cd1a8e855fa3&wid=MLB4411667840&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_614165-MLU74143241873_012024-O.webp"
+    },
+    {
+      "id_anuncio": "mlb59246379",
+      "categoria": "Sem categoria",
+      "descricao": "Cerveja Artesanal Ashby Session IPA Nirvana Long Neck 355ml",
+      "antes": "R$ 17,64",
+      "antes_valor": null,
+      "desconto": "32% OFF",
+      "depois": "R$ 11,99",
+      "depois_valor": 11.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/cerveja-artesanal-ashby-session-ipa-nirvana-long-neck-355ml/p/MLB59246379#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=23&type=product&tracking_id=81e6b624-d027-49c0-8a0e-cd1a8e855fa3&wid=MLB6010937518&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_961370-MLA94045452644_102025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb4463059878",
+      "categoria": "Sem categoria",
+      "descricao": "Cerveja Salvator Long Neck 330ml Paulaner",
+      "antes": "R$ 29,90",
+      "antes_valor": null,
+      "desconto": "45% OFF",
+      "depois": "R$ 16,31",
+      "depois_valor": 16.31,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=lq2S%2BMEuBwfngvGfZNalPy%2Be%2FKd4Wd6KH1I3mTA23vww01HtyEPEDqObzbzXyacz53%2B5VTKS1%2Bv238eBFgJUIaP3WYMUWxnf23W4OFwyVHegRt%2BLrBELkHHoUPS6j%2BRgB3W4fcQrnd5WBgM0fBKVj9MF3DXHosR79kKN79fTYn9KQxKkUUNkaOMBr5rTwhX5bv7gaWQomeq7fwf4UFebA0VEFn11HqEIAjaedPL1uYdymjRHFhvACtvq7odoWmMFxMyNQyRQRY1mHmfP8LJ1YEYwhS%2FUf7ZLNCAouDfvicxm3%2FmGBgBEBXPW3uAHV4%2FOwIpo3YcCWlHoViwgn64LYdmFMU9DJEy7GboggrvxhcAexTD175uwxatAjcqs1E5wOd3PsqZ45Nmc%2FjzIm7%2BeP9oH1OtB7L3iTzBWoWqUE4HRYj%2FW9vSuB%2BlWXwg8zK4GcZqkd3nWXPDy%2FhJC5XLyDLR8ElL%2FtL5OmsMTsIgQoAVcP5V1DoOgMqSv7HKkPtLF9LcFB%2BmM%2Bv0sQArd4LIDK1dAimN8uBErbrAy%2BLR16k1yu0Zu%2BsBAgG9GaXGRE8S9afnOe%2BWq5wBGTt%2FF3zrQsQl%2Bs7535Ht3znbpS14L%2F%2Fn92GJghJitfjGqzqoy6%2BoRRAHOhur9%2B8fD%2Fiuo4UzkmC8Ch7sgIMjjzWT2yLT%2FXIoVdAGg%2B7Zd3MqgG%2BxLjVMrNzGo4nJf9thitQdyziDLgBNs4anxWloxR1gY5NSNyOV%2FSJzsexOmIy71vHULciE3zxpwjON8bZkKQsHO%2F2LhQ%2FBahUxf3LXvT2ys%2FhTU0hd09hqlEMXjPVaRWUNtjK6JeHK6l8ZPQ2zoWq1io8zvpNMTVXSVszJzpK9Ukgt2b7bFE%2B24lPoCy9eY&pdp_filters=item_id%3AMLB4463059878#polycard_client=search-desktop&is_advertising=true&backend_model=search-backend&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=15&type=pad&tracking_id=81e6b624-d027-49c0-8a0e-cd1a8e855fa3&wid=MLB4463059878&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_667885-MLA99831976447_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb3793643912",
+      "categoria": "Sem categoria",
+      "descricao": "Cerveja Budweiser Garrafa 330ml - Pack Com 6 Unidades",
+      "antes": "R$ 49,90",
+      "antes_valor": null,
+      "desconto": "37% OFF",
+      "depois": "R$ 30,99",
+      "depois_valor": 30.99,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=gjLjvgt5f9h7hpSKFNcQGQJhhNFbB1pBPXX5VVNKPC6WKmR754NznzwLZifaSxgx61tzXXcdNBVVbsGpKAsjImXD6Hcjtgwb5Q4JFbx5SsWjQNl9PMfw31khpk67NjC7KKLwOCerp%2BHgimbCCXHYtvU1HCY%2FbWMb4tLtywriVot%2FCTOhLo1RiTgNAnk836lT22mPZ0xrOfW8Z32fsOzkzc9cjqYy%2BBmTnp9kOnsTmkyT7kIvZNdrGoslfxiir0PUKTXstnk1mljaoOkpVHBArtIIscv9TJ1FH4tePJRg4e5KczW3yP7n6cOkE3HYM7oL0J5gFyTjRNFzc5%2F8IEXgWOsA9LLrDtdBizD6dl4pkNC6m4qBx8sds4GI1Zb1qyMGaVzrqRYCNIkP18u06zdn5qZX9EH8nD9oHwBHbm2k7pbgPDdGoMWc2PA5QGypaNmqP0zIb759Xm2Kr5T0o3V1DY%2BvYQCT1YQAc%2BTNyzsRMsEkFRtvGkj7PWvPVqLVEbiaqdbL%2FXAcUD1LyNoWNep3k5wNrbt3p30lahRHl5G28%2FznrarF%2FXj5qo7vDZAUjOQT7HESYhYjy7Ns7yoj0DrElwNmDAgRmMfI4nK%2FpFImECHB6gbSxEx2gu16GtMoax1GB05zNtEUWgyusHqZRooqgFi83PwR3us1r5glwCr6P3RuXx94DB%2BC0AENaKEWg98TN9n5JjnI9W1%2FyiIuTKClDd48WCxZ6HxhkvUBSmSYlbxY5P5DssJgbFpIVAmbliSYRZa1XtqmRw5%2Bn6UslkSuUR4yUZ%2FLV%2Bl%2BfeorxT6hM%2FfYXtaOJm7aczspd%2B8w6uANdZUrJtNfZqVae7XOCOyDRjOBuVTCX1wYmc1zwsz2xaOdNrqBu1EMOJXUSVr4OQji5d%2BKPe4y1JOvxloZe1Atvfw67nF1bKWieAW203WJ3OtGsuKX0YdMdpgU%2FSVoGES7EOvJd7o6XWoFy8m8RIcw99QNOjIU5LAtSJeE8NC%2Fvlem4rF21bsnzYgYj6wdXPegxPsElsAQ%2FSXmSwjg0AOyeeILC0YQryMEkQ%3D%3D&pdp_filters=item_id%3AMLB3793643912#polycard_client=search-desktop&is_advertising=true&searchVariation=MLB24206840&backend_model=search-backend%3Bfallback_productos-promocionados_supple_view_buy&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=14&type=pad&tracking_id=81e6b624-d027-49c0-8a0e-cd1a8e855fa3&wid=MLB3793643912&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_834001-MLA99918814913_112025-O.webp"
+    }
+  ]
+}

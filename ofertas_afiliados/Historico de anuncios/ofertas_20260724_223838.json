@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260724_223838",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu3653467248",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "50 Tapete Grande Absorvente Fralda Pet Descartável 60x45 Cão",
+      "antes": "R$ 78,90",
+      "antes_valor": null,
+      "desconto": "41% OFF",
+      "depois": "R$ 45,90",
+      "depois_valor": 45.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/50-tapete-grande-absorvente-fralda-pet-descartavel-60x45-cao/up/MLBU3653467248?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=27&type=product&tracking_id=c2de7d56-9cd6-4e5b-a663-bfb2f6f61cc5&wid=MLB5998146812&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_933761-MLB113684787370_072026-O-50-tapete-grande-absorvente-fralda-pet-descartavel-60x45-cao.webp"
+    },
+    {
+      "id_anuncio": "mlbu3238943939",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "Tapete Higiênico Pet Chalesco Para Cães 90x60cm Com 50 Un.",
+      "antes": "R$ 139,99",
+      "antes_valor": null,
+      "desconto": "18% OFF",
+      "depois": "R$ 114,79",
+      "depois_valor": 114.79,
+      "link_anuncio": "https://www.mercadolivre.com.br/tapete-higienico-pet-chalesco-para-caes-90x60cm-com-50-un/up/MLBU3238943939?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=29&type=product&tracking_id=c2de7d56-9cd6-4e5b-a663-bfb2f6f61cc5&wid=MLB5440619866&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_902473-MLB97650771154_112025-O-tapete-higienico-pet-chalesco-para-caes-90x60cm-com-50-un.webp"
+    },
+    {
+      "id_anuncio": "mlbu1445759743",
+      "categoria": "Tapete Higienico > Tapete Higienico Super Secao",
+      "descricao": "Tapete Higiênico 80x60cm Super Secão 30un Petix 240 Unidades",
+      "antes": "Sem preço anterior",
+      "antes_valor": null,
+      "desconto": "12% OFF",
+      "depois": "R$ 799,90",
+      "depois_valor": 799.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/tapete-higienico-80x60cm-super-secao-30un-petix-240-unidades/up/MLBU1445759743?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=2&type=product&tracking_id=c2de7d56-9cd6-4e5b-a663-bfb2f6f61cc5&wid=MLB3504382643&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_943892-MLB72673760846_112023-O-tapete-higienico-80x60cm-super-secao-30un-petix-240-unidades.webp"
+    }
+  ]
+}

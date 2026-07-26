@@ -1,0 +1,128 @@
+=== Inicio da execucao: 2026-07-26T10:18:29 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579#filter_applied=container_id&filter_position=3&is_recommended_domain=false&origin=scut --desconto-minimo 30 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579#filter_applied=container_id&filter_position=3&is_recommended_domain=false&origin=scut
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579#filter_applied=container_id&filter_position=3&is_recommended_domain=false&origin=scut
+✓ Link de afiliado: https://meli.la/2EreMNf
+✓ Link de afiliado: https://meli.la/15ewBwV
+✓ Link de afiliado: https://meli.la/2rPkGj4
+✓ Link de afiliado: https://meli.la/1eu5TnU
+✓ Link de afiliado: https://meli.la/2x4qLVG
+✓ Link de afiliado: https://meli.la/2UTaYBY
+✓ Link de afiliado: https://meli.la/2VztJ7C
+✓ Link de afiliado: https://meli.la/1QRaTPK
+✓ Link de afiliado: https://meli.la/1z8bXaM
+✓ Link de afiliado: https://meli.la/2QjsS6E
+[BLOCO_1] Resultado: 10 candidato(s) coletado(s), 10 válido(s) enriquecido(s). Total: 10/10
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 10 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260726_102021.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260726_102022.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_922899-MLA110407871316_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Loção Facial Hidratante para Pele Oleosa Oil Control CeraVe 52g
+Message SID Twilio: SMb9b3c3edeb014f99ad55c5ab8f0ae196
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_932009-MLA111725033726_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey Protein 1kg Whey Pro Max Titanium Sabor Chocolate BCAA e Aminoácidos
+Message SID Twilio: SM2f82629a22f844a1fe270f2d02edc947
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_789928-MLA99885017637_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Baba Eletrônica Baby Monitor Vb603 Visão Noturna Dual Audio Cor Branco Estary Shop
+Message SID Twilio: SM12b662c43465d6cb6009dcdda597ce38
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_673500-MLA100031515535_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera De Video Segurança Intelbras Im5+ Wi-fi Full Hd Full Color Cor Branca
+Message SID Twilio: SM665385dd4bd21cae45664ef3889c3f4c
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_967014-MLA99501171286_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera Inteligente Full HD iM5 SC com MicroSD 32GB Branca Intelbras
+Message SID Twilio: SMb35ea5d6731e3cc80a7ba9724241c1ef
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_651752-MLA95643261450_102025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cadeira de Escritório Giratória HomeNow Columbus Presidente Preta com Tela Mesh
+Message SID Twilio: SMfd435dd32e1cfbf270022099db6cce6e
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_762773-MLA99426331270_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Panela De Pressão Elétrica 6 L Mastersteam Inox Midea Cor Cinza
+Message SID Twilio: SM65e0b65dcf3ce420dd1993cf1769d8eb
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_930967-MLA99476922672_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+TP-Link Deco X10(2-pack) Roteador Mesh Wifi6 AX1500 Cobre até 360m²
+Message SID Twilio: SMed10cca448477cb1697c5b7df2265ab7
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_663253-MLA99938296077_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+TP-Link Deco X10(3-pack) Roteador Mesh Wifi6 AX1500 Cobre até 520m²
+Message SID Twilio: SM684b42d6dc7706fd94b915fd432a17ed
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_832460-MLA99419181908_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+TP-Link Deco X50(2-pack) Roteador Mesh Wifi6 AX3000 Cobre até 420m²
+Message SID Twilio: SM0db45322ad14455d6dea245726fd4a32
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=10 falhas=0 total=10
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-26T10:20:40 ===

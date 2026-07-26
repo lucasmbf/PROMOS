@@ -1,0 +1,30 @@
+{
+  "timestamp": "20260724_182505",
+  "total": 2,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB5992133710",
+      "categoria": "Cafeteiras > Cafeteira Nespresso",
+      "descricao": "Cafeteira Nespresso Pixie Redesign Titânio",
+      "antes": "R$ 1099,90",
+      "antes_valor": 1099.9,
+      "desconto": "55% OFF",
+      "depois": "R$ 494,10",
+      "depois_valor": 494.1,
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-nespresso-pixie-redesign-titanio/p/MLB43201814?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=8d604128-b953-46bd-b4b5-f9caeb00558c&position=8&tracking_id=7f438606-0953-458c-a677-9f297413b0d9&wid=MLB5992133710&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_902378-MLA99964650499_112025-O.webp"
+    },
+    {
+      "id_anuncio": "MLB4218519898",
+      "categoria": "Para a Cozinha > Cafeteiras",
+      "descricao": "Cafeteira Espresso Luna Preta - TRES 3 Corações",
+      "antes": "R$ 720",
+      "antes_valor": 720.0,
+      "desconto": "50% OFF",
+      "depois": "R$ 357,30",
+      "depois_valor": 357.3,
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-espresso-luna-preta-tres-3-coracoes/p/MLB28203110?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=8d604128-b953-46bd-b4b5-f9caeb00558c&position=13&tracking_id=7f438606-0953-458c-a677-9f297413b0d9&wid=MLB4218519898&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_627401-MLA113243108612_072026-O.webp"
+    }
+  ]
+}

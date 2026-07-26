@@ -1,0 +1,58 @@
+=== Inicio da execucao: 2026-07-26T10:49:56 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue --desconto-minimo 12 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+✓ Link de afiliado: https://meli.la/345oswL
+✓ Link de afiliado: https://meli.la/1qYcxkT
+✓ Link de afiliado: https://meli.la/2qVhBqb
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260726_105035.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260726_105035.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_852390-MLU73809992889_012024-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Batom Lustreglass Mac Sheer-shine - Hug Me
+Message SID Twilio: SM28fb54b1a78a493d54109faad6509891
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_735614-MLB96183904472_102025-O-mini-base-liquida-mac-soft-matte-studio-fix-fps15--15ml.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mini Base Líquida Mac Soft Matte Studio Fix Fps15 - 15ml
+Message SID Twilio: SM33d30307dc3e377743b0754e59f5b0c4
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_735614-MLB96183904472_102025-O-base-liquida-mac-soft-matte-studio-fix-fps15.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Base Líquida Mac Soft Matte Studio Fix Fps15
+Message SID Twilio: SMf6348c315e143e84609507dadf2f2c83
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=3 falhas=0 total=3
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-26T10:50:41 ===

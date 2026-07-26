@@ -1,0 +1,58 @@
+=== Inicio da execucao: 2026-07-26T10:17:29 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://www.mercadolivre.com.br/ofertas?container_id=MLB779362-1&promotion_type=lightning#filter_applied=promotion_type&filter_position=2&is_recommended_domain=false&origin=scut --desconto-minimo 10 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://www.mercadolivre.com.br/ofertas?container_id=MLB779362-1&promotion_type=lightning#filter_applied=promotion_type&filter_position=2&is_recommended_domain=false&origin=scut
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://www.mercadolivre.com.br/ofertas?container_id=MLB779362-1&promotion_type=lightning#filter_applied=promotion_type&filter_position=2&is_recommended_domain=false&origin=scut
+✓ Link de afiliado: https://meli.la/11Xmh5u
+✓ Link de afiliado: https://meli.la/1Z3Mefv
+✓ Link de afiliado: https://meli.la/21gFBhz
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260726_101804.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260726_101804.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_929362-MLA114286562051_072026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo 6 Copos Vidro Canelado 423ml Moderno Elegante Premium Vinho Água Suco Drinks Gin Whisky Jogo Copos Taça Copo Conjunto Design Luxo Texturizado Cozinha Restaurante Decoração Hold On
+Message SID Twilio: SMec0b7ced4183726ccf3bc949a104b849
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_823531-MLA112994250220_072026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Body Splash Arabe C/4un 200ml Perfume Feminino de Luxo Alta Concentração
+Message SID Twilio: SM2e1a43921cae38c62fa05a76d0ccaab3
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_715916-MLA99521624378_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Escada Articulada 4x4 em Alumínio 16 Degraus 4,48m - Reisam
+Message SID Twilio: SMe4bd028374b311fa15627cedd6d96339
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=3 falhas=0 total=3
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-26T10:18:10 ===

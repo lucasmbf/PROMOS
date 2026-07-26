@@ -1,0 +1,58 @@
+=== Inicio da execucao: 2026-07-26T10:13:29 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/_Container_pet-cpg-tapetes-e-higiene-query?forceContainer=true#c_container_id=MLB1328152-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=cachorro-tapetes-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=ed1706b9-8369-11f1-8f88-9f961f67e783&c_element_id=ed1706b9-8369-11f1-8f88-9f961f67e783&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ec87bf00-8369-11f1-84c2-116ecd772591&c_tracking_id=ec87bf00-8369-11f1-84c2-116ecd772591 --desconto-minimo 10 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/_Container_pet-cpg-tapetes-e-higiene-query?forceContainer=true#c_container_id=MLB1328152-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=cachorro-tapetes-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=ed1706b9-8369-11f1-8f88-9f961f67e783&c_element_id=ed1706b9-8369-11f1-8f88-9f961f67e783&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ec87bf00-8369-11f1-84c2-116ecd772591&c_tracking_id=ec87bf00-8369-11f1-84c2-116ecd772591
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/_Container_pet-cpg-tapetes-e-higiene-query?forceContainer=true#c_container_id=MLB1328152-1&c_id=%2Fsplinter%2Fspecial-withoutlabel&c_element_order=2&c_campaign=cachorro-tapetes-higiene&c_label=%2Fsplinter%2Fspecial-withoutlabel&c_uid=ed1706b9-8369-11f1-8f88-9f961f67e783&c_element_id=ed1706b9-8369-11f1-8f88-9f961f67e783&c_content_origin=splinter-default&c_content_type=default&c_global_position=4&deal_print_id=ec87bf00-8369-11f1-84c2-116ecd772591&c_tracking_id=ec87bf00-8369-11f1-84c2-116ecd772591
+✓ Link de afiliado: https://meli.la/1hJhtYT
+✓ Link de afiliado: https://meli.la/1i2dQK7
+✓ Link de afiliado: https://meli.la/1VP6Kbc
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total: 3/3
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 3 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260726_101406.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260726_101406.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_770499-MLB101891401511_122025-O-tapete-higienico-para-caes-ultrapads-lavanda-80x60cm-30-und.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tapete Higienico Para Cães Ultrapads Lavanda 80x60cm 30 Und
+Message SID Twilio: SM26077589dc9be71234ea8913dd9d3855
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_711873-MLA99453149328_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Balm Reestruturante Pet - Cúrcuma Reative - Animal Balance
+Message SID Twilio: SMabdb22a834f4d8504e194729fb134dfb
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_933598-MLA99497330030_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Shampoo Antifúngico Agener União Cloresten Cães Gatos 500ml
+Message SID Twilio: SMdcbcae689349ba7d62b68e515aa1c511
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=3 falhas=0 total=3
+
+3 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-26T10:14:12 ===

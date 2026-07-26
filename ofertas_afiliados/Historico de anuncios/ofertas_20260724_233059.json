@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260724_233059",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu803419936",
+      "categoria": "Agasalhos > Casacos e Jaquetas",
+      "descricao": "Jaqueta Puffer De Frio Intenso Blusa Impermeável Inverno Preto G Liso Ondulado",
+      "antes": "R$ 112,90",
+      "antes_valor": null,
+      "desconto": "40% OFF",
+      "depois": "R$ 67,74",
+      "depois_valor": 67.74,
+      "link_anuncio": "https://www.mercadolivre.com.br/jaqueta-puffer-de-frio-intenso-blusa-impermeavel-inverno/up/MLBU803419936?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=14b0dd0d-5f2b-47e2-bdbf-50847e958bce&position=13&tracking_id=b0f39727-dbc8-42ec-9d28-2f12cf899741&wid=MLB6182095484&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_721376-MLB107123297889_022026-O-jaqueta-puffer-de-frio-intenso-blusa-impermeavel-inverno.webp"
+    },
+    {
+      "id_anuncio": "mlb28530314",
+      "categoria": "Furadeiras > De Mão",
+      "descricao": "Chave De Impacto A Bateria 21V 1/2\" Pol 2400 Rpm Bivolt Com Acessórios E Maleta The Black Tools",
+      "antes": "R$ 513,39",
+      "antes_valor": null,
+      "desconto": "287% OFF",
+      "depois": "R$ 273,50",
+      "depois_valor": 273.5,
+      "link_anuncio": "https://www.mercadolivre.com.br/chave-de-impacto-a-bateria-21v-12-pol-2400-rpm-bivolt-com-acessorios-e-maleta-the-black-tools/p/MLB28530314?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=14b0dd0d-5f2b-47e2-bdbf-50847e958bce&position=14&tracking_id=b0f39727-dbc8-42ec-9d28-2f12cf899741&wid=MLB3525364839&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_718011-MLA97331673683_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb28203113",
+      "categoria": "Para a Cozinha > Cafeteiras",
+      "descricao": "Cafeteira Espresso Luna Vermelha - TRES 3 Corações",
+      "antes": "R$ 720",
+      "antes_valor": null,
+      "desconto": "397% OFF",
+      "depois": "R$ 357,30",
+      "depois_valor": 357.3,
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-espresso-luna-vermelha-tres-3-coracoes/p/MLB28203113?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=14b0dd0d-5f2b-47e2-bdbf-50847e958bce&position=12&tracking_id=b0f39727-dbc8-42ec-9d28-2f12cf899741&wid=MLB3515902055&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_885616-MLA114482937091_072026-O.webp"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 85,
+  "gerado_em": "2026-07-24T18:25:05",
+  "total_ofertas": 2,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 20,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 2,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB5992133710",
+      "descricao": "Cafeteira Nespresso Pixie Redesign Titânio",
+      "categoria": "Cafeteiras > Cafeteira Nespresso",
+      "antes": "R$ 1099,90",
+      "depois": "R$ 494,10",
+      "desconto": "55% OFF",
+      "link": "https://meli.la/1WsQTVy",
+      "link_original": "https://www.mercadolivre.com.br/cafeteira-nespresso-pixie-redesign-titanio/p/MLB43201814?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=8d604128-b953-46bd-b4b5-f9caeb00558c&position=8&tracking_id=7f438606-0953-458c-a677-9f297413b0d9&wid=MLB5992133710&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-nespresso-pixie-redesign-titanio/p/MLB43201814?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=8d604128-b953-46bd-b4b5-f9caeb00558c&position=8&tracking_id=7f438606-0953-458c-a677-9f297413b0d9&wid=MLB5992133710&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260724_182445_747942_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    },
+    {
+      "ordem": 2,
+      "id_anuncio": "MLB4218519898",
+      "descricao": "Cafeteira Espresso Luna Preta - TRES 3 Corações",
+      "categoria": "Para a Cozinha > Cafeteiras",
+      "antes": "R$ 720",
+      "depois": "R$ 357,30",
+      "desconto": "50% OFF",
+      "link": "https://meli.la/1uVtH6j",
+      "link_original": "https://www.mercadolivre.com.br/cafeteira-espresso-luna-preta-tres-3-coracoes/p/MLB28203110?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=8d604128-b953-46bd-b4b5-f9caeb00558c&position=13&tracking_id=7f438606-0953-458c-a677-9f297413b0d9&wid=MLB4218519898&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-espresso-luna-preta-tres-3-coracoes/p/MLB28203110?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=8d604128-b953-46bd-b4b5-f9caeb00558c&position=13&tracking_id=7f438606-0953-458c-a677-9f297413b0d9&wid=MLB4218519898&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260724_182445_747942_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

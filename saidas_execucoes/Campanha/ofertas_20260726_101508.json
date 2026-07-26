@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260726_101508",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu3926018062",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Areia Sanitária Kadi 4kg Grãos Finos Biodegradável Gatos, aquela areia que vira torroes Kadi Mandioca",
+      "antes": "R$ 39,90",
+      "antes_valor": null,
+      "desconto": "25% OFF",
+      "depois": "R$ 29,78",
+      "depois_valor": 29.78,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-sanitaria-kadi-4kg-graos-finos-biodegradavel-gatos--aquela-areia-que-vira-torroes-kadi-mandioca/up/MLBU3926018062?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=26&type=product&tracking_id=c3986a55-2a61-4caf-9bc8-4d68a25a91b8&wid=MLB6664740850&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_635936-MLA100959058996_122025-O-areia-sanitaria-kadi-4kg-graos-finos-biodegradavel-gatos--aquela-areia-que-vira-torroes-kadi-mandioca.webp"
+    },
+    {
+      "id_anuncio": "mlb52102288",
+      "categoria": "Banheiros > Caixa de Areia",
+      "descricao": "Caixa De Areia banheiro Sandbox Premium Para Gatos Fechada Grande Luxo Cinza",
+      "antes": "R$ 149",
+      "antes_valor": null,
+      "desconto": "18% OFF",
+      "depois": "R$ 122,18",
+      "depois_valor": 122.18,
+      "link_anuncio": "https://www.mercadolivre.com.br/caixa-de-areia-banheiro-sandbox-premium-para-gatos-fechada-grande-luxo-cinza/p/MLB52102288?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=34&type=product&tracking_id=c3986a55-2a61-4caf-9bc8-4d68a25a91b8&wid=MLB4539260265&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_806766-MLA99933494173_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb75616071",
+      "categoria": "Artigos Sanitários > Banheiros",
+      "descricao": "Banheiro Gato Fechado Caixa De Areia Fechada Grande Aço Inox",
+      "antes": "R$ 362",
+      "antes_valor": null,
+      "desconto": "45% OFF",
+      "depois": "R$ 199,10",
+      "depois_valor": 199.1,
+      "link_anuncio": "https://www.mercadolivre.com.br/banheiro-gato-fechado-caixa-de-areia-fechada-grande-aco-inox/p/MLB75616071?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=14&type=product&tracking_id=c3986a55-2a61-4caf-9bc8-4d68a25a91b8&wid=MLB7213736876&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_860277-MLA114839896539_072026-O.webp"
+    }
+  ]
+}

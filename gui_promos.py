@@ -4251,6 +4251,7 @@ def create_gui(categorias):
                 "phones": phones,
                 "telefone": (phones[0] if phones else ""),
                 "urls": urls,
+                "mensagem_complementar": str(schedule.get("mensagem_complementar") or "").strip(),
                 "active": bool(schedule.get("active", True)),
             }
 
@@ -4932,7 +4933,17 @@ def create_gui(categorias):
     selecionar_todas_var.trace_add("write", lambda *_: _toggle_select_all_programacoes())
     filtro_programacoes_var.trace_add("write", lambda *_: _refresh_hub_schedules_grid())
 
-    def _build_hub_args_from_values(categoria, descricao, preco_min, preco_max, desconto_min, limite_candidatos=None, urls=None, fonte="mercadolivre"):
+    def _build_hub_args_from_values(
+        categoria,
+        descricao,
+        preco_min,
+        preco_max,
+        desconto_min,
+        limite_candidatos=None,
+        urls=None,
+        fonte="mercadolivre",
+        mensagem_complementar=None,
+    ):
         args = ["--produto-por-html"]
         args.extend(["--fonte", (fonte or "mercadolivre")])
 
@@ -4944,6 +4955,10 @@ def create_gui(categorias):
 
         if descricao:
             args.extend(["--descricao-produto", descricao])
+
+        mensagem_extra = str(mensagem_complementar or "").strip()
+        if mensagem_extra:
+            args.extend(["--mensagem-complementar", mensagem_extra])
 
         if preco_min is not None:
             args.extend(["--preco-minimo", str(preco_min)])
@@ -4969,6 +4984,7 @@ def create_gui(categorias):
             schedule.get("limite_candidatos"),
             _urls_from_config(schedule),
             "mercadolivre",
+            (schedule.get("mensagem_complementar") or "").strip(),
         )
 
     def open_hub_schedule_modal(schedule=None):
@@ -5025,6 +5041,9 @@ def create_gui(categorias):
         ciclo_var = tk.StringVar(value=str(int(schedule.get("interval_hours", 1))) if schedule else "1")
         categoria_ag_var = tk.StringVar(value=(schedule.get("categoria") if schedule else "Todas categorias"))
         descricao_ag_var = tk.StringVar(value=(schedule.get("descricao", "") if schedule else ""))
+        mensagem_complementar_var = tk.StringVar(
+            value=((schedule.get("mensagem_complementar") or "") if schedule else "")
+        )
         preco_min_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("preco_minimo") is None else str(schedule.get("preco_minimo"))))
         preco_max_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("preco_maximo") is None else str(schedule.get("preco_maximo"))))
         desconto_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("desconto_minimo") is None else str(schedule.get("desconto_minimo"))))
@@ -5089,41 +5108,44 @@ def create_gui(categorias):
         ttk.Label(frame, text="Descricao (opcional):", style="Field.TLabel").grid(row=6, column=0, sticky="w", pady=(12, 0))
         ttk.Entry(frame, textvariable=descricao_ag_var).grid(row=6, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
+        ttk.Label(frame, text="Mensagem complementar (opcional):", style="Field.TLabel").grid(row=7, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=mensagem_complementar_var).grid(row=7, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+
         for idx, link_var in enumerate(link_vars, start=1):
-            ttk.Label(frame, text=f"Link {idx} (opcional):", style="Field.TLabel").grid(row=6 + idx, column=0, sticky="w", pady=(12, 0))
-            ttk.Entry(frame, textvariable=link_var).grid(row=6 + idx, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+            ttk.Label(frame, text=f"Link {idx} (opcional):", style="Field.TLabel").grid(row=7 + idx, column=0, sticky="w", pady=(12, 0))
+            ttk.Entry(frame, textvariable=link_var).grid(row=7 + idx, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Preco minimo (opcional):", style="Field.TLabel").grid(row=12, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=preco_min_ag_var).grid(row=12, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Preco minimo (opcional):", style="Field.TLabel").grid(row=13, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=preco_min_ag_var).grid(row=13, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Preco maximo (opcional):", style="Field.TLabel").grid(row=13, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=preco_max_ag_var).grid(row=13, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Preco maximo (opcional):", style="Field.TLabel").grid(row=14, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=preco_max_ag_var).grid(row=14, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Desconto minimo (%) opcional:", style="Field.TLabel").grid(row=14, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=desconto_ag_var).grid(row=14, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Desconto minimo (%) opcional:", style="Field.TLabel").grid(row=15, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=desconto_ag_var).grid(row=15, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Qtd. candidatos validos:", style="Field.TLabel").grid(row=15, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=limite_candidatos_ag_var, validate="key", validatecommand=vcmd_inteiro).grid(row=15, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Qtd. candidatos validos:", style="Field.TLabel").grid(row=16, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=limite_candidatos_ag_var, validate="key", validatecommand=vcmd_inteiro).grid(row=16, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
         ttk.Label(frame, text="Se informado, o link tem prioridade de busca.", style="Hint.TLabel").grid(
-            row=16,
+            row=17,
             column=0,
             columnspan=2,
             sticky="w",
             pady=(12, 0),
         )
 
-        ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=17, column=0, columnspan=2, sticky="w", pady=(12, 0))
-        ttk.Checkbutton(frame, text="Executar a primeira vez assim que salvar", variable=executar_ao_salvar_var).grid(row=18, column=0, columnspan=2, sticky="w", pady=(8, 0))
+        ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=18, column=0, columnspan=2, sticky="w", pady=(12, 0))
+        ttk.Checkbutton(frame, text="Executar a primeira vez assim que salvar", variable=executar_ao_salvar_var).grid(row=19, column=0, columnspan=2, sticky="w", pady=(8, 0))
 
-        ttk.Label(frame, text="E-mail:", style="Field.TLabel").grid(row=19, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=email_ag_var).grid(row=19, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="E-mail:", style="Field.TLabel").grid(row=20, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=email_ag_var).grid(row=20, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Telefone:", style="Field.TLabel").grid(row=20, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=telefone_ag_var).grid(row=20, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Telefone:", style="Field.TLabel").grid(row=21, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=telefone_ag_var).grid(row=21, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
         botoes = ttk.Frame(frame, style="Main.TFrame")
-        botoes.grid(row=21, column=0, columnspan=2, sticky="w", pady=(18, 0))
+        botoes.grid(row=22, column=0, columnspan=2, sticky="w", pady=(18, 0))
 
         def salvar_rotina():
             nome = (nome_var.get() or "").strip()
@@ -5158,6 +5180,7 @@ def create_gui(categorias):
 
             categoria_valor = (categoria_ag_var.get() or "Todas categorias").strip() or "Todas categorias"
             descricao_valor = (descricao_ag_var.get() or "").strip()
+            mensagem_complementar = (mensagem_complementar_var.get() or "").strip()
             urls = [str(var.get()).strip() for var in link_vars if str(var.get()).strip()]
             invalidas = [url for url in urls if not url.startswith("http://") and not url.startswith("https://")]
             if invalidas:
@@ -5193,6 +5216,7 @@ def create_gui(categorias):
                     "interval_hours": int(ciclo_horas),
                     "categoria": categoria_valor,
                     "descricao": descricao_valor,
+                    "mensagem_complementar": mensagem_complementar,
                     "urls": urls,
                     **link_map,
                     "email": email_unico,
@@ -5218,6 +5242,7 @@ def create_gui(categorias):
                 schedule["interval_hours"] = int(ciclo_horas)
                 schedule["categoria"] = categoria_valor
                 schedule["descricao"] = descricao_valor
+                schedule["mensagem_complementar"] = mensagem_complementar
                 schedule["urls"] = urls
                 schedule.update(link_map)
                 schedule["email"] = email_unico

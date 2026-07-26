@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260725_113351",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb47611958",
+      "categoria": "Aspiradores > Aspirador Portatil",
+      "descricao": "Mini Aspirador De Pó Portátil Recarregável Soprador Usb Automotivo 3em1 Sem Fio Premium Vácuo Limpeza Carro Multifuncional Casa Chrome Technology",
+      "antes": "R$ 59,99",
+      "antes_valor": null,
+      "desconto": "40% OFF",
+      "depois": "R$ 35,88",
+      "depois_valor": 35.88,
+      "link_anuncio": "https://www.mercadolivre.com.br/mini-aspirador-de-po-portatil-recarregavel-soprador-usb-automotivo-3em1-sem-fio-premium-vacuo-limpeza-carro-multifuncional-casa-chrome-technology/p/MLB47611958?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=d0d58ff3-a58d-45ae-bf1d-8b7f756faad1&position=10&tracking_id=1516fcfb-b884-4f09-8eca-576da6c0af56&wid=MLB6433211634&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_770790-MLA113643123358_072026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb75079501",
+      "categoria": "Furadeiras > De Mão",
+      "descricao": "Parafusadeira Furadeira Sem Fio A Bateria 12V 3/8 Pol. 10mm Gradiente Profissional Com Maleta Brocas e Bits",
+      "antes": "R$ 169,90",
+      "antes_valor": null,
+      "desconto": "99% OFF",
+      "depois": "R$ 94,90",
+      "depois_valor": 94.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/parafusadeira-furadeira-sem-fio-a-bateria-12v-38-pol-10mm-gradiente-profissional-com-maleta-brocas-e-bits/p/MLB75079501?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=d0d58ff3-a58d-45ae-bf1d-8b7f756faad1&position=3&tracking_id=1516fcfb-b884-4f09-8eca-576da6c0af56&wid=MLB4860614733&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_693732-MLA114247552873_072026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb23614749",
+      "categoria": "Sem categoria",
+      "descricao": "Cápsulas De Café Original Nespresso Seleção Especial - 50 Cápsulas",
+      "antes": "R$ 200",
+      "antes_valor": null,
+      "desconto": "112% OFF",
+      "depois": "R$ 102,86",
+      "depois_valor": 102.86,
+      "link_anuncio": "https://www.mercadolivre.com.br/capsulas-de-cafe-original-nespresso-selecao-especial-50-capsulas/p/MLB23614749?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=d0d58ff3-a58d-45ae-bf1d-8b7f756faad1&position=9&tracking_id=1516fcfb-b884-4f09-8eca-576da6c0af56&wid=MLB5369064918&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_686358-MLA99845440663_112025-O.webp"
+    }
+  ]
+}

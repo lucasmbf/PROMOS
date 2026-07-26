@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260724_224041",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb22621959",
+      "categoria": "Alimento, Petisco e Suplemento > Ração para Cães",
+      "descricao": "Ração Seca Golden Light Frango e Arroz para Cães Pequenos 10,1kg",
+      "antes": "R$ 199,94",
+      "antes_valor": null,
+      "desconto": "28% OFF",
+      "depois": "R$ 143,90",
+      "depois_valor": 143.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-seca-golden-light-frango-e-arroz-para-caes-pequenos-101kg/p/MLB22621959?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=25&type=product&tracking_id=de9bd854-66a0-467c-a028-5e94dd728123&wid=MLB4445740106&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_728943-MLA99925315473_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb18922727",
+      "categoria": "Ração para Cães > Racao",
+      "descricao": "Alimento Premier Super Premium Nutrição Clínica Hipoalergénico Filhote e Adulto cão de raza pequena sabor mandioca de 10.1 kg",
+      "antes": "R$ 431,48",
+      "antes_valor": null,
+      "desconto": "33% OFF",
+      "depois": "R$ 286",
+      "depois_valor": 286.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/alimento-premier-super-premium-nutricao-clinica-hipoalergenico-filhote-e-adulto-cao-de-raza-pequena-sabor-mandioca-de-101-kg/p/MLB18922727?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=15&type=product&tracking_id=de9bd854-66a0-467c-a028-5e94dd728123&wid=MLB4105144747&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_823697-MLA99919841419_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb16067792",
+      "categoria": "Alimento, Petisco e Suplemento > Ração para Cães",
+      "descricao": "Ração Seca Premier Cão Adulto Médio/Grande Hipoalergênica Cordeiro 10.1 kg",
+      "antes": "R$ 420,95",
+      "antes_valor": null,
+      "desconto": "28% OFF",
+      "depois": "R$ 302,98",
+      "depois_valor": 302.98,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-seca-premier-cao-adulto-mediogrande-hipoalergenica-cordeiro-101-kg/p/MLB16067792?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=22&type=product&tracking_id=de9bd854-66a0-467c-a028-5e94dd728123&wid=MLB5546748740&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_680358-MLA97103235016_112025-O.webp"
+    }
+  ]
+}

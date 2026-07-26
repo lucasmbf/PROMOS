@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260726_101607",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb48954850",
+      "categoria": "Ração para Cães > Racao",
+      "descricao": "Ração Whey Protein Grannature Xtreme Alta Performance 30% Proteína para Cães Adultos raças Médio E Grande Porte Alimento Seco Sabor Frango Super Premium Com Bcaa Sem Corantes Saúde Articular 15kg",
+      "antes": "R$ 197,91",
+      "antes_valor": null,
+      "desconto": "19% OFF",
+      "depois": "R$ 158,33",
+      "depois_valor": 158.33,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-whey-protein-grannature-xtreme-alta-performance-30-proteina-para-caes-adultos-racas-medio-e-grande-porte-alimento-seco-sabor-frango-super-premium-com-bcaa-sem-corantes-saude-articular-15kg/p/MLB48954850?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=14&type=product&tracking_id=aa3a3650-53b7-42ad-a3db-c2be61ccfb74&wid=MLB6218909696&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_685306-MLA115039549271_072026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb26769453",
+      "categoria": "Alimento, Petisco e Suplemento > Ração para Cães",
+      "descricao": "Ração Seca Quatree Life Adulto Médio/Grande Frango Arroz 15kg",
+      "antes": "R$ 306,15",
+      "antes_valor": null,
+      "desconto": "46% OFF",
+      "depois": "R$ 163,98",
+      "depois_valor": 163.98,
+      "link_anuncio": "https://www.mercadolivre.com.br/racao-seca-quatree-life-adulto-mediogrande-frango-arroz-15kg/p/MLB26769453?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=15&type=product&tracking_id=aa3a3650-53b7-42ad-a3db-c2be61ccfb74&wid=MLB6005631108&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_795545-MLA99819061147_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb39328279",
+      "categoria": "Alimento, Petisco e Suplemento > Ração para Cães",
+      "descricao": "Royal Canin Gastrointestinal Low Fat Cães Pequeno 7,5kg",
+      "antes": "R$ 411",
+      "antes_valor": null,
+      "desconto": "12% OFF",
+      "depois": "R$ 358,51",
+      "depois_valor": 358.51,
+      "link_anuncio": "https://www.mercadolivre.com.br/royal-canin-gastrointestinal-low-fat-caes-pequeno-75kg/p/MLB39328279?pdp_filters=deal%3AMLB1327645-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=9&type=product&tracking_id=aa3a3650-53b7-42ad-a3db-c2be61ccfb74&wid=MLB5973015476&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_793953-MLA99441268972_112025-O.webp"
+    }
+  ]
+}

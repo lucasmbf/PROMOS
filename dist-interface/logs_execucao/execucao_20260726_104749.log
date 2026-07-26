@@ -1,0 +1,128 @@
+=== Inicio da execucao: 2026-07-26T10:47:49 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse
+✓ Link de afiliado: https://meli.la/1SgoPLN
+✓ Link de afiliado: https://meli.la/2Y7roTK
+✓ Link de afiliado: https://meli.la/2zsuyTY
+✓ Link de afiliado: https://meli.la/2mJakxm
+✓ Link de afiliado: https://meli.la/33AvS1u
+✓ Link de afiliado: https://meli.la/2DkqwP3
+✓ Link de afiliado: https://meli.la/2eVB5nr
+✓ Link de afiliado: https://meli.la/2fNEdeU
+✓ Link de afiliado: https://meli.la/2gi4UPn
+✓ Link de afiliado: https://meli.la/1f3Wo1r
+[BLOCO_1] Resultado: 10 candidato(s) coletado(s), 10 válido(s) enriquecido(s). Total: 10/10
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 10 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260726_104934.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260726_104934.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_947556-MLB113358603880_072026-O-oil-reflections-wella-light-30ml.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Oil Reflections Wella Light 30ml
+Message SID Twilio: SM910d1e7751b711f3080078207ac8d1b5
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_678333-MLB93722209543_092025-O-oleo-capilar-wella-professionals-oil-reflections-light-30ml.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Óleo Capilar Wella Professionals Oil Reflections Light 30ml
+Message SID Twilio: SM78e481100f87679b044a088a85a6ef7e
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_947414-MLB92181651092_092025-O-oleo-capilar-wella-professionals-oil-reflections-30ml.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Óleo Capilar Wella Professionals Oil Reflections 30ml
+Message SID Twilio: SM147decffc69250272a857ecc9e12d346
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_666951-MLB92599485769_092025-O-shampoo-wella-professionals-oil-reflections-250ml-nutricao.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Shampoo Wella Professionals Oil Reflections 250ml Nutrição
+Message SID Twilio: SMa93d29429535c5136ab30d8152242c39
+[DEBUG] status_final_twilio=queued
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_706878-MLB47775744941_102021-O-oleo-finalizador-oil-reflections-100ml--wella.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Óleo Finalizador Oil Reflections 100ml - Wella
+Message SID Twilio: SM7bc7dcd99749b2ff68fd35f760b7d4ab
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_721277-MLB93469799069_092025-O-oleo-capilar-wella-professionals-oil-reflections-light-100ml.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Óleo Capilar Wella Professionals Oil Reflections Light 100ml
+Message SID Twilio: SMc110b2da15ac573e04f71a8d0f37d880
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_832818-MLB112019539040_062026-O-kit-wella-professionals-invigo-enrich--sh-250ml--masc-150ml.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Wella Professionals Invigo Enrich Sh 250ml + Másc 150ml
+Message SID Twilio: SMd94597d33183a23032effd05d4d95048
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_991013-MLB52160185363_102022-O-oleo-reparador-oil-reflection-100ml-wella.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Óleo Reparador Oil Reflection 100ml Wella
+Message SID Twilio: SMa9957c2fc5dd25c91b700622b988832b
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_615521-MLA99924628179_112025-O-wella-professionals-oil-reflections-shampoo-1l.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Wella Professionals Oil Reflections Shampoo 1l
+Message SID Twilio: SMf8247fcba483beb7337e7c4af0592f55
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_916785-MLB113776519332_072026-O-wella-professionals-invigo-enrich-shampoo-1000ml.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Wella Professionals Invigo Enrich Shampoo 1000ml
+Message SID Twilio: SMfc35ae26170e17ff41c4f7fa0e966860
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=10 falhas=0 total=10
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-26T10:49:53 ===

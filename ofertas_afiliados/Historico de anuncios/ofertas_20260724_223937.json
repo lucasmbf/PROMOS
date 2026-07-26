@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260724_223937",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb24125040",
+      "categoria": "Areias Higiênicas > Areia Silica",
+      "descricao": "Areia sanitária micro cristais de sílica fina para gatos Chalesco 1.8kg",
+      "antes": "R$ 35,79",
+      "antes_valor": null,
+      "desconto": "12% OFF",
+      "depois": "R$ 31,24",
+      "depois_valor": 31.24,
+      "link_anuncio": "https://www.mercadolivre.com.br/areia-sanitaria-micro-cristais-de-silica-fina-para-gatos-chalesco-18kg/p/MLB24125040?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=37&type=product&tracking_id=be3ea586-a933-434d-9b18-2e5177501737&wid=MLB5751321440&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_614484-MLA99501168862_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlbu4050062151",
+      "categoria": "Artigos Sanitários > Areias Higiênicas",
+      "descricao": "Kit Areia Para Gatos Milho E Mandioca 12kg Esconde Ai",
+      "antes": "R$ 157,28",
+      "antes_valor": null,
+      "desconto": "20% OFF",
+      "depois": "R$ 125,80",
+      "depois_valor": 125.8,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-areia-para-gatos-milho-e-mandioca-12kg-esconde-ai/up/MLBU4050062151?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=24&type=product&tracking_id=be3ea586-a933-434d-9b18-2e5177501737&wid=MLB4744685409&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_778022-MLB111768196654_062026-O-kit-areia-para-gatos-milho-e-mandioca-12kg-esconde-ai.webp"
+    },
+    {
+      "id_anuncio": "mlb52052184",
+      "categoria": "Artigos Sanitários > Banheiros",
+      "descricao": "Banheiro Gato Premium Fechado Anti Odor Com Pá Coçador Luxo Caixa De Areia Gatos Fechada Bandeja Sanitária",
+      "antes": "R$ 285,69",
+      "antes_valor": null,
+      "desconto": "29% OFF",
+      "depois": "R$ 199,99",
+      "depois_valor": 199.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/banheiro-gato-premium-fechado-anti-odor-com-pa-cocador-luxo-caixa-de-areia-gatos-fechada-bandeja-sanitaria/p/MLB52052184?pdp_filters=deal%3AMLB1328170-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=36&type=product&tracking_id=be3ea586-a933-434d-9b18-2e5177501737&wid=MLB4127624029&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_675353-MLA87284766713_072025-O.webp"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+=== Inicio da execucao: 2026-07-25T11:56:33 ===
+Args: --produto-por-html --fonte mercadolivre --desconto-minimo 20 --limite-candidatos 5 --url-produto https://lista.mercadolivre.com.br/trave-de-porta-infantil#D[A:trave%20de%20porta%20infantil] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/trave-de-porta-infantil#D[A:trave%20de%20porta%20infantil]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/trave-de-porta-infantil#D[A:trave%20de%20porta%20infantil]
+✓ Link de afiliado: https://meli.la/2x4rYAt
+✓ Link de afiliado: https://meli.la/2R5155c
+✓ Link de afiliado: https://meli.la/1fG3zQX
+✓ Link de afiliado: https://meli.la/31KWZiD
+✓ Link de afiliado: https://meli.la/2UYyJc6
+[BLOCO_1] Resultado: 5 candidato(s) coletado(s), 5 válido(s) enriquecido(s). Total: 5/5
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 5 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260725_115731.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260725_115731.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_607551-MLB113437130105_062026-O-kit-2-travas-porta-geladeira-gavetas-seguranca-infantil.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 2 Travas Porta Geladeira Gavetas Segurança Infantil
+Message SID Twilio: SMf48eaa5b91b9205d79c3feab82357170
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_810770-MLB113743887710_072026-O-kit2-travas-seguranca-infantil-geladeira-gaveta-armario-bebe.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit2 Travas Segurança Infantil Geladeira Gaveta Armário Bebê
+Message SID Twilio: SMc5d039db3fb627feaa07acdefb251a31
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_884091-MLA113627494232_072026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 4 Travas De Geladeira E Gavetas Com Adesivo De Alta Fixação Maior Segurança Infantil Proteção De Bebês Mantem Porta Danificada Fechada
+Message SID Twilio: SM74b0a85f5d027e87e550dcea81d9523c
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_648860-MLA111993607015_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 3 Travas De Geladeira E Gavetas Para Segurança Infantil Não Abre A Porta Adesivo Ultra Resistente Fácil De Instalar Mantem A Porta Fechada Branco
+Message SID Twilio: SM46c09bf63ade2eeb37a859896e5d9a71
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_729132-MLB107061172190_022026-O-kit-12-protetores-de-porta-infantil-bebes-cuidado-trava-dedo.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 12 Protetores De Porta Infantil Bebês Cuidado Trava Dedo
+Message SID Twilio: SMfe3bd70db77f39f907fd2291f74f7d5c
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=5 falhas=0 total=5
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-25T11:57:41 ===

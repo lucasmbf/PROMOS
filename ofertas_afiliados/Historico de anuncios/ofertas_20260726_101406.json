@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260726_101406",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu3752084015",
+      "categoria": "Adestramento > Tapete Higienico",
+      "descricao": "Tapete Higienico Para Cães Ultrapads Lavanda 80x60cm 30 Und",
+      "antes": "R$ 69,90",
+      "antes_valor": null,
+      "desconto": "15% OFF",
+      "depois": "R$ 58,74",
+      "depois_valor": 58.74,
+      "link_anuncio": "https://www.mercadolivre.com.br/tapete-higienico-para-caes-ultrapads-lavanda-80x60cm-30-und/up/MLBU3752084015?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=36&type=product&tracking_id=3f38efce-5b0c-4b9e-87fc-b05eb63644f2&wid=MLB6201047136&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_770499-MLB101891401511_122025-O-tapete-higienico-para-caes-ultrapads-lavanda-80x60cm-30-und.webp"
+    },
+    {
+      "id_anuncio": "mlb53050292",
+      "categoria": "Artigos para os Pêlos > Shampoo e Condicionadores",
+      "descricao": "Balm Reestruturante Pet - Cúrcuma Reative - Animal Balance",
+      "antes": "R$ 159,90",
+      "antes_valor": null,
+      "desconto": "12% OFF",
+      "depois": "R$ 139,90",
+      "depois_valor": 139.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/balm-reestruturante-pet-curcuma-reative-animal-balance/p/MLB53050292?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=21&type=product&tracking_id=3f38efce-5b0c-4b9e-87fc-b05eb63644f2&wid=MLB6740776112&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_711873-MLA99453149328_112025-O.webp"
+    },
+    {
+      "id_anuncio": "mlb24011117",
+      "categoria": "Shampoo e Condicionadores > Shampoo Cloresten",
+      "descricao": "Shampoo Antifúngico Agener União Cloresten Cães Gatos 500ml",
+      "antes": "R$ 388,12",
+      "antes_valor": null,
+      "desconto": "15% OFF",
+      "depois": "R$ 329,90",
+      "depois_valor": 329.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/shampoo-antifungico-agener-uniao-cloresten-caes-gatos-500ml/p/MLB24011117?pdp_filters=deal%3AMLB1328152-1#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=39&type=product&tracking_id=3f38efce-5b0c-4b9e-87fc-b05eb63644f2&wid=MLB4959727212&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_933598-MLA99497330030_112025-O.webp"
+    }
+  ]
+}

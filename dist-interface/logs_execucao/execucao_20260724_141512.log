@@ -1,0 +1,77 @@
+=== Inicio da execucao: 2026-07-24T14:15:12 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse --preco-minimo 60.0 --preco-maximo 160.0 --desconto-minimo 20 --limite-candidatos 5 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True#applied_filter_id%3DUNITS_PER_PACKAGE%26applied_filter_name%3DUnidades+por+embalagem%26applied_filter_order%3D7%26applied_value_id%3D%5B60-*%29%26applied_value_name%3D60+unidades+ou+mais%26applied_value_order%3D3%26applied_value_results%3D2514%26is_custom%3Dfalse
+✓ Link de afiliado: https://meli.la/1CdF1oQ
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=3
+[BLOCO_1] Resultado: 1 candidato(s) coletado(s), 1 válido(s) enriquecido(s). Total: 1/5
+
+[BLOCO_2] Carregando páginas 4 a 6 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 4: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=4
+✓ Link de afiliado: https://meli.la/16JKaZh
+[LISTAGEM_DIRETA] Link 1 - página 5: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=5
+[LISTAGEM_DIRETA] Link 1 - página 6: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=6
+[BLOCO_2] Resultado: 1 candidato(s) coletado(s), 1 válido(s) enriquecido(s). Total: 2/5
+
+[BLOCO_3] Carregando páginas 7 a 9 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 7: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=7
+[LISTAGEM_DIRETA] Link 1 - página 8: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=8
+[LISTAGEM_DIRETA] Link 1 - página 9: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=9
+[BLOCO_3] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 2/5
+[BLOCO_3] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_4] Carregando páginas 10 a 12 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 10: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=10
+[LISTAGEM_DIRETA] Link 1 - página 11: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=11
+[LISTAGEM_DIRETA] Link 1 - página 12: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=12
+[BLOCO_4] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 2/5
+[BLOCO_4] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_5] Carregando páginas 13 a 15 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 13: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=13
+[LISTAGEM_DIRETA] Link 1 - página 14: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=14
+[LISTAGEM_DIRETA] Link 1 - página 15: https://lista.mercadolivre.com.br/bebes/higiene-cuidados-bebe/fraldas/descartaveis/mais-de-60-unidades/fralda_NoIndex_True?page=15
+[BLOCO_5] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 2/5
+[BLOCO_5] Nenhum candidato encontrado e limite de paginas atingido neste link.
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 2 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260724_141722.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260724_141723.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_939152-MLA99933491581_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Huggies Fralda Descartável Máxima Proteção Xxg - 112 Un Extra Extra Grande (xxg) Sem Gênero
+Message SID Twilio: SM8e00422b8a37230169659707986a002f
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_805126-MLA99367400494_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fralda Carrefour My Baby Soft Protect - 80 Unidades Xxg Gênero Sem gênero Tamanho Extra extra grande (XXG)
+Message SID Twilio: SMf73169469609a55961feb138063cda92
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=2 falhas=0 total=2
+
+2 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-24T14:17:27 ===

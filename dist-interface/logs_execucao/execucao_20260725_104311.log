@@ -1,0 +1,148 @@
+=== Inicio da execucao: 2026-07-25T10:43:11 ===
+Args: --somente-relampago --url-relampago https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat --desconto-minimo 15 --limite-candidatos 10 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] FLUXO_HUB_AFILIADOS_LEGADO
+
+Mercado Livre ja esta autenticado.
+
+Modo somente ofertas relâmpago ativado. Fluxo do hub/Twilio foi ignorado.
+Limpeza de HTML relâmpago: 2 arquivo(s) antigo(s) removido(s).
+
+Navegando para ofertas relâmpago:
+https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat
+HTML salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260725_104337_939416_01.txt
+Modo sem parametros detectado: usando apenas o primeiro HTML de ofertas relampago.
+
+Analisando HTML de: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_20260725_104337_939416_01.txt
+35 oferta(s) com 15% ou mais de desconto extraída(s) do JSON.
+[DESCARTADO - HISTORICO] Anúncio mlb5761677016 marcado como anuncio_inedito=false no histórico.
+Paginação parametrizada limitada a 25 página(s) (detecção original: 229 página(s)).
+HTML consolidado salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\html\html_relampago_consolidado_20260725_104338.txt
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2ZDSeap
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1xM5rAw
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/16F4gNi
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1T6B3oZ
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2sVB3jp
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1kiKhwX
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2NxWKxi
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/1SActh7
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/2XBmdJo
+Usando link direto extraído do HTML para obter link de afiliado.
+✓ Link de afiliado: https://meli.la/28CfdzD
+Metadados salvos em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\metadados_coleta\metadados_relampago_exec_0088_20260725_104519.json
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 10 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON relâmpago salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\ofertas_20260725_104519.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260725_104520.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_919649-MLA112122698633_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Bomba Elétrica Portátil Digital Para Encher Pneu De Carro Moto Bicicleta Inflador Automotivo Cor Preto
+Message SID Twilio: SM5c1c4769263a699c0c4e73d6b579ace0
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_693732-MLA114247552873_072026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Parafusadeira Furadeira Sem Fio A Bateria 12V 3/8 Pol. 10mm Gradiente Profissional Com Maleta Brocas e Bits
+Message SID Twilio: SM0eb17156e59485e6cb598184ad8bb8e6
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_686358-MLA99845440663_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Cápsulas De Café Original Nespresso Seleção Especial - 50 Cápsulas
+Message SID Twilio: SMd8e76639416b00fc6f874ef589eef5d0
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_770790-MLA113643123358_072026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mini Aspirador De Pó Portátil Recarregável Soprador Usb Automotivo 3em1 Sem Fio Premium Vácuo Limpeza Carro Multifuncional Casa Chrome Technology
+Message SID Twilio: SM21914c6984083dc6d884ed0da099d78c
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_881368-MLA99701327430_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Jogo De Toalhas Buddemeyer Bella Extra Soft Banho 4 Peças Azul Claro/azul Marinho
+Message SID Twilio: SMed00f3411f1cff5459b19ab402ba24ab
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_953421-MLB91032869287_082025-O-kit-10-potes-500ml-bpa-free-freezer-microondas-reutilizavel.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 10 Potes 500ml Bpa Free Freezer Microondas Reutilizável Transparente
+Message SID Twilio: SM7a7f9e0663a4c890b1388d72044ca7e5
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_703862-MLB112746986438_062026-O-conjunto-panelas-ceramica-antiaderente-inducao-gas-8-pecas.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Conjunto Panelas Cerâmica Antiaderente Indução Gas 8 Peças Bege
+Message SID Twilio: SM55d27a38e857b76672726a25ade86c7f
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_859161-MLA99962428017_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Whey Isolate Protein Fuse 900g Dark Lab Sabor Chocolate
+Message SID Twilio: SM616e84fb5b6598529ca2f11a743b947f
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_840067-MLA97214107041_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Omega Plus 120 Cápsulas Ômega 3 Dark Lab
+Message SID Twilio: SMefca2a0eaa3929486274e6579a215151
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_678301-MLA111792108128_062026-O-mini-gt-1143-porsche-911-gt3-r-77-rexy-skeleton-imsa-petit.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mini Gt #1143 Porsche 911 Gt3 R 77 Rexy Skeleton Imsa Petit Preto
+Message SID Twilio: SM3ca0b37da65a6164ff0a904489ca3ca2
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=10 falhas=0 total=10
+
+10 oferta(s) relâmpago processada(s) e salvas.
+
+Envio pelo WhatsApp finalizado com sucesso!
+
+=== Fim da execucao: 2026-07-25T10:45:41 ===

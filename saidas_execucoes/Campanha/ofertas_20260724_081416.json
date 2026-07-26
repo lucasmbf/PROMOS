@@ -1,0 +1,31 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260724_081416",
+  "total": 2,
+  "ofertas": [
+    {
+      "id_anuncio": "mlb40164959",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Infantil Pampers Supersec Mega 11 A 15 Kg Xg 32 Unids Tamanho Extra grande (XG)",
+      "antes": "R$ 57,90",
+      "antes_valor": null,
+      "desconto": "45% OFF",
+      "depois": "R$ 31,56",
+      "depois_valor": 31.56,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-infantil-pampers-supersec-mega-11-a-15-kg-xg-32-unids-tamanho-extra-grande-xg/p/MLB40164959#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=56&type=product&tracking_id=550df8ee-c701-4d1b-bb7e-7f580164d199&wid=MLB6703018752&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_907604-MLA111167318619_052026-O.webp"
+    },
+    {
+      "id_anuncio": "mlb64878765",
+      "categoria": "Sem categoria",
+      "descricao": "Fralda Infantil Tradicional Carrefour My Baby Hiper Xg 58 Un",
+      "antes": "R$ 81,02",
+      "antes_valor": null,
+      "desconto": "33% OFF",
+      "depois": "R$ 53,90",
+      "depois_valor": 53.9,
+      "link_anuncio": "https://www.mercadolivre.com.br/fralda-infantil-tradicional-carrefour-my-baby-hiper-xg-58-un/p/MLB64878765#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=57&type=product&tracking_id=550df8ee-c701-4d1b-bb7e-7f580164d199&wid=MLB6194538384&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_801648-MLA105647619239_012026-O.webp"
+    }
+  ]
+}

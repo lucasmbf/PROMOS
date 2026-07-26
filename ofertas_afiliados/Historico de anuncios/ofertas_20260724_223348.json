@@ -1,0 +1,42 @@
+{
+  "timestamp": "20260724_223348",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "https://produto.mercadolivre.com.br/mlb-4752474553-tnis-new-balance-fuelcell-rebel-v5-corrida-esportivo-_jm?searchvariation=204736428683#polycard_client=search-desktop&searchvariation=204736428683&float_highlight=price_dropped&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=12&type=item&tracking_id=79b831f8-6f91-471f-847d-3e0e806507c5&sid=search",
+      "categoria": "Calçados > Tênis",
+      "descricao": "Tênis New Balance Fuelcell Rebel V5 Corrida Esportivo",
+      "antes": "R$ 999,99",
+      "antes_valor": null,
+      "desconto": "27% OFF",
+      "depois": "R$ 727,49",
+      "depois_valor": 727.49,
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-4752474553-tnis-new-balance-fuelcell-rebel-v5-corrida-esportivo-_JM?searchVariation=204736428683#polycard_client=search-desktop&searchVariation=204736428683&float_highlight=price_dropped&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=12&type=item&tracking_id=79b831f8-6f91-471f-847d-3e0e806507c5&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_815409-MLB114003025057_072026-O-tnis-new-balance-fuelcell-rebel-v5-corrida-esportivo.webp"
+    },
+    {
+      "id_anuncio": "https://produto.mercadolivre.com.br/mlb-5755227986-tnis-new-balance-fuelcell-rebel-v5-masculino-_jm?searchvariation=193675713449#polycard_client=search-desktop&searchvariation=193675713449&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=9&type=item&tracking_id=79b831f8-6f91-471f-847d-3e0e806507c5&sid=search",
+      "categoria": "Calçados > Tênis",
+      "descricao": "Tênis New Balance Fuelcell Rebel V5 Masculino",
+      "antes": "R$ 1099",
+      "antes_valor": null,
+      "desconto": "30% OFF",
+      "depois": "R$ 769,37",
+      "depois_valor": 769.37,
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-5755227986-tnis-new-balance-fuelcell-rebel-v5-masculino-_JM?searchVariation=193675713449#polycard_client=search-desktop&searchVariation=193675713449&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=9&type=item&tracking_id=79b831f8-6f91-471f-847d-3e0e806507c5&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_639568-MLB93822910671_092025-O-tnis-new-balance-fuelcell-rebel-v5-masculino.webp"
+    },
+    {
+      "id_anuncio": "https://produto.mercadolivre.com.br/mlb-4826297130-tnis-de-corrida-new-balance-fuelcell-rebel-v5-masculino-_jm?searchvariation=187044938776#polycard_client=search-desktop&searchvariation=187044938776&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=20&type=item&tracking_id=79b831f8-6f91-471f-847d-3e0e806507c5&sid=search",
+      "categoria": "Tênis > Tenis New Balance",
+      "descricao": "Tênis De Corrida New Balance Fuelcell Rebel V5 Masculino",
+      "antes": "R$ 1099",
+      "antes_valor": null,
+      "desconto": "30% OFF",
+      "depois": "R$ 769,90",
+      "depois_valor": 769.9,
+      "link_anuncio": "https://produto.mercadolivre.com.br/MLB-4826297130-tnis-de-corrida-new-balance-fuelcell-rebel-v5-masculino-_JM?searchVariation=187044938776#polycard_client=search-desktop&searchVariation=187044938776&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=20&type=item&tracking_id=79b831f8-6f91-471f-847d-3e0e806507c5&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_882017-MLB112625432922_062026-O-tnis-de-corrida-new-balance-fuelcell-rebel-v5-masculino.webp"
+    }
+  ]
+}

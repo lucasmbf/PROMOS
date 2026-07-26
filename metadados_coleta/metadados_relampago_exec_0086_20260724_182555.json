@@ -1,0 +1,57 @@
+{
+  "fluxo": "relampago",
+  "id_execucao": 86,
+  "gerado_em": "2026-07-24T18:25:55",
+  "total_ofertas": 2,
+  "contexto_execucao": {
+    "status": "ok",
+    "pasta_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html",
+    "pasta_historico": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\Historico de anuncios",
+    "descricao": "",
+    "desconto_minimo": 20,
+    "preco_minimo": null,
+    "preco_maximo": null,
+    "limite_candidatos": 2,
+    "limite_validos": 10,
+    "modo_sem_parametros": false,
+    "url_base_paginas": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat"
+  },
+  "ofertas": [
+    {
+      "ordem": 1,
+      "id_anuncio": "MLB5991823096",
+      "descricao": "Cafeteira Nespresso CitiZ Branca",
+      "categoria": "Cafeteiras > Cafeteira Nespresso",
+      "antes": "R$ 1239,90",
+      "depois": "R$ 449,10",
+      "desconto": "63% OFF",
+      "link": "https://meli.la/1nWNE1X",
+      "link_original": "https://www.mercadolivre.com.br/cafeteira-nespresso-citiz-branca/p/MLB47202016?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=23012c46-79fb-485c-8875-f5082487b0ae&position=19&tracking_id=5fcfbc04-435d-4a8d-b57b-e6327a923388&wid=MLB5991823096&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-nespresso-citiz-branca/p/MLB47202016?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=23012c46-79fb-485c-8875-f5082487b0ae&position=19&tracking_id=5fcfbc04-435d-4a8d-b57b-e6327a923388&wid=MLB5991823096&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260724_182536_142241_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    },
+    {
+      "ordem": 2,
+      "id_anuncio": "MLB5085301054",
+      "descricao": "Caixa De Som Partybox Aiwa Pb-06 Bluetooth 20h Rgb Usb Tws",
+      "categoria": "Caixas Bluetooth > Caixa de Som",
+      "antes": "R$ 1749",
+      "depois": "R$ 1006",
+      "desconto": "42% OFF",
+      "link": "https://meli.la/24DqLxT",
+      "link_original": "https://www.mercadolivre.com.br/caixa-de-som-partybox-aiwa-pb-06-bluetooth-20h-rgb-usb-tws/p/MLB40288174?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=23012c46-79fb-485c-8875-f5082487b0ae&position=21&tracking_id=5fcfbc04-435d-4a8d-b57b-e6327a923388&wid=MLB5085301054&sid=offers",
+      "link_anuncio": "https://www.mercadolivre.com.br/caixa-de-som-partybox-aiwa-pb-06-bluetooth-20h-rgb-usb-tws/p/MLB40288174?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=23012c46-79fb-485c-8875-f5082487b0ae&position=21&tracking_id=5fcfbc04-435d-4a8d-b57b-e6327a923388&wid=MLB5085301054&sid=offers",
+      "pagina_origem_url": "https://www.mercadolivre.com.br/ofertas?promotion_type=lightning#filter_applied=promotion_type&filter_position=3&origin=qcat",
+      "pagina_origem_numero": 1,
+      "arquivo_origem_html": "C:\\Users\\Lucas Bianco\\Desktop\\Projetos Dev\\Promos\\ofertas_relampago\\html\\html_relampago_20260724_182536_142241_01.txt",
+      "snapshot_origem_indice": null,
+      "scrolls_estimados": null,
+      "posicao_html": null
+    }
+  ]
+}

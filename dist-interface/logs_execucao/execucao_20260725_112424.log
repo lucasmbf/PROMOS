@@ -1,0 +1,128 @@
+=== Inicio da execucao: 2026-07-25T11:24:24 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579#filter_applied=container_id&filter_position=3&is_recommended_domain=false&origin=scut --desconto-minimo 30 --limite-candidatos 10 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579#filter_applied=container_id&filter_position=3&is_recommended_domain=false&origin=scut
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://www.mercadolivre.com.br/ofertas?container_id=MLB1298579-1&deal_ids=MLB1298579#filter_applied=container_id&filter_position=3&is_recommended_domain=false&origin=scut
+✓ Link de afiliado: https://meli.la/1bzf71g
+✓ Link de afiliado: https://meli.la/2NRrcVv
+✓ Link de afiliado: https://meli.la/1d1bTik
+✓ Link de afiliado: https://meli.la/1rWpMF8
+✓ Link de afiliado: https://meli.la/2JtoF8W
+✓ Link de afiliado: https://meli.la/2G2cq2b
+✓ Link de afiliado: https://meli.la/1W92ofD
+✓ Link de afiliado: https://meli.la/1AkzyT8
+✓ Link de afiliado: https://meli.la/1EDuq5i
+✓ Link de afiliado: https://meli.la/2ECXUDs
+[BLOCO_1] Resultado: 10 candidato(s) coletado(s), 10 válido(s) enriquecido(s). Total: 10/10
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 10 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260725_112611.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260725_112612.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_792646-MLA100029915779_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Faqueiro Tramontina Búzios Em Aço Inox Com Detalhe 24 Peças
+Message SID Twilio: SMa9a290f789514673e9aa0e8dd61f50c0
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_650980-MLA109739421496_042026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Vittak Kit 50 Cabides Veludo De Roupa Antideslizante Slim Adulto Cor Preto
+Message SID Twilio: SMb5061f618a4916ad8f5c46c87b5b408d
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_841667-MLA110746696146_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Loção Hidratante Corporal Sem Perfume, com Ceramidas Essenciais e Ácido Hialurônico, Textura Fluida CeraVe 473ml
+Message SID Twilio: SM3a7355e815dd7baa956029fd5eeac7bb
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_846459-MLA111077726294_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Shampoo Antiqueda Estimulante com Aminexil, Dercos Energy+ Vichy, 400g
+Message SID Twilio: SMd8efce14e017c591e2507f5e5a2d6c72
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_697458-MLA92882793775_092025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Carregador Adaptador Usb-c De 20w para iPhone Apple Branco A2465 - Distribuidor Autorizado
+Message SID Twilio: SMd6cefbc028b13fd7d7a734f459928aae
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_913608-MLA99464199898_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera Inteligente Intelbras Ime 360 3mp Visão 360 Wi-fi Cor Branco
+Message SID Twilio: SMb1afd147d5bd1ece9688d3a1447d94ae
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_764625-MLA112051292545_052026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Fechadura Digital De Sobrepor Fd 1000 D Preta Intelbras
+Message SID Twilio: SM3291198ed08ead8fbcf22cef337f322d
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_990761-MLA99963806517_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera Inteligente Visão 360° IM4 C Intelbras
+Message SID Twilio: SMb73b4920bc291022469ddd91fc80d0b8
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_633293-MLA99905167639_112025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Câmera De Vídeo Wi-Fi Intelbras IM3 C MicroSD 32GB Branco
+Message SID Twilio: SMc232bd986c0862887b14e78506d4bd80
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_787358-MLA100187065347_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Micro-ondas Electrolux 20l Branco MTO30
+Message SID Twilio: SM886753d70901959a27b806c3ee547114
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=10 falhas=0 total=10
+
+10 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-25T11:26:30 ===

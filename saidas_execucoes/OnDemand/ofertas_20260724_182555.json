@@ -1,0 +1,31 @@
+{
+  "modalidade": "ondemand",
+  "timestamp": "20260724_182555",
+  "total": 2,
+  "ofertas": [
+    {
+      "id_anuncio": "MLB5991823096",
+      "categoria": "Cafeteiras > Cafeteira Nespresso",
+      "descricao": "Cafeteira Nespresso CitiZ Branca",
+      "antes": "R$ 1239,90",
+      "antes_valor": 1239.9,
+      "desconto": "63% OFF",
+      "depois": "R$ 449,10",
+      "depois_valor": 449.1,
+      "link_anuncio": "https://www.mercadolivre.com.br/cafeteira-nespresso-citiz-branca/p/MLB47202016?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=23012c46-79fb-485c-8875-f5082487b0ae&position=19&tracking_id=5fcfbc04-435d-4a8d-b57b-e6327a923388&wid=MLB5991823096&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_653484-MLA108910024360_032026-O.webp"
+    },
+    {
+      "id_anuncio": "MLB5085301054",
+      "categoria": "Caixas Bluetooth > Caixa de Som",
+      "descricao": "Caixa De Som Partybox Aiwa Pb-06 Bluetooth 20h Rgb Usb Tws",
+      "antes": "R$ 1749",
+      "antes_valor": 1749.0,
+      "desconto": "42% OFF",
+      "depois": "R$ 1006",
+      "depois_valor": 1006.0,
+      "link_anuncio": "https://www.mercadolivre.com.br/caixa-de-som-partybox-aiwa-pb-06-bluetooth-20h-rgb-usb-tws/p/MLB40288174?pdp_filters=deal%3AMLB779362-1#polycard_client=offers&deal_print_id=23012c46-79fb-485c-8875-f5082487b0ae&position=21&tracking_id=5fcfbc04-435d-4a8d-b57b-e6327a923388&wid=MLB5085301054&sid=offers",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_890159-MLA99508458050_112025-O.webp"
+    }
+  ]
+}

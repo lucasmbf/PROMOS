@@ -15,13 +15,17 @@ from parsers.mercadolivre import (
 
 import argparse
 import ast
+import json
+import mimetypes
 import os
 import pdb
 import random
+import re
 import sys
 import time
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+from pathlib import Path
 from twilio.base.exceptions import TwilioRestException
 from twilio.rest import Client
 
@@ -75,6 +79,16 @@ TWILIO_STATUS_CHECK_INTERVALO_SEGUNDOS = 1
 TWILIO_FORCAR_TEXTO_SOMENTE = os.getenv("TWILIO_FORCAR_TEXTO_SOMENTE", "0") == "1"
 TWILIO_ENVIAR_MIDIA_WEBP = os.getenv("TWILIO_ENVIAR_MIDIA_WEBP", "0") == "1"
 TWILIO_PAUSA_ENTRE_ENVIOS_SEGUNDOS = (0.2, 0.6)
+TWILIO_USAR_GOOGLE_DRIVE_IMAGENS = os.getenv("TWILIO_USAR_GOOGLE_DRIVE_IMAGENS", "0") == "1"
+GOOGLE_DRIVE_IMAGENS_FOLDER_ID = os.getenv("GOOGLE_DRIVE_IMAGENS_FOLDER_ID", "").strip()
+GOOGLE_DRIVE_SERVICE_ACCOUNT_FILE = os.getenv(
+    "GOOGLE_DRIVE_SERVICE_ACCOUNT_FILE",
+    "credentials/google-service-account.json",
+).strip()
+
+BASE_DIR = Path(__file__).resolve().parent
+PASTA_IMAGENS_ANUNCIOS = BASE_DIR / "dist-interface" / "instagram_anuncios"
+ARQUIVO_CACHE_DRIVE_IMAGENS = BASE_DIR / "integracao_drive_imagens_cache.json"
 
 
 
@@ -217,6 +231,11 @@ def parse_args():
         default=None,
         help="Origem da execucao para gravacao consolidada por modalidade.",
     )
+    parser.add_argument(
+        "--mensagem-complementar",
+        default=None,
+        help="Texto complementar enviado em negrito antes do texto padrao do anuncio.",
+    )
 
     return parser.parse_args()
 
@@ -242,6 +261,7 @@ PRIORIZAR_MENOR_PRECO = ARGS.menor_preco or MODO_BUSCA_DESCRICAO
 LIMITE_PAGINAS_PESQUISA = max(1, ARGS.limite_paginas_pesquisa)
 FONTE_BUSCA = (ARGS.fonte or "mercadolivre").strip().lower()
 URL_RELAMPAGO_ALVO = (ARGS.url_relampago or "").strip() or URL_OFERTAS_RELAMPAGO
+MENSAGEM_COMPLEMENTAR = (ARGS.mensagem_complementar or "").strip()
 
 if ARGS.categoria:
     CATEGORIA_PADRAO = ARGS.categoria.strip()
@@ -281,6 +301,289 @@ def ler_variavel_ambiente(nome):
 
     # Remove espacos e aspas comuns em .env para evitar erro de autenticacao.
     return valor.strip().strip('"').strip("'")
+
+
+def _normalizar_id_anuncio(valor):
+
+    return "".join(
+        caractere for caractere in str(valor or "").strip().upper() if caractere.isalnum()
+    )
+
+
+def _extrair_id_anuncio_produto(produto):
+
+    if not isinstance(produto, dict):
+        return ""
+
+    id_campo = _normalizar_id_anuncio(produto.get("id_anuncio"))
+    if id_campo:
+        return id_campo
+
+    texto_link = str(produto.get("link_anuncio") or produto.get("link") or "").strip().upper()
+    match = re.search(r"\b(MLBU?\d{6,})\b", texto_link)
+    if match:
+        return _normalizar_id_anuncio(match.group(1))
+
+    return ""
+
+
+def _ids_equivalentes_anuncio(id_anuncio):
+
+    id_limpo = _normalizar_id_anuncio(id_anuncio)
+    if not id_limpo:
+        return []
+
+    candidatos = [id_limpo]
+
+    if id_limpo.startswith("MLB") and id_limpo[3:].isdigit():
+        candidatos.append(id_limpo[3:])
+    elif id_limpo.isdigit():
+        candidatos.append(f"MLB{id_limpo}")
+
+    if id_limpo.startswith("MLBU") and id_limpo[4:].isdigit():
+        sufixo = id_limpo[4:]
+        candidatos.append(sufixo)
+        candidatos.append(f"MLB{sufixo}")
+
+    vistos = set()
+    unicos = []
+    for candidato in candidatos:
+        if candidato in vistos:
+            continue
+        vistos.add(candidato)
+        unicos.append(candidato)
+
+    return unicos
+
+
+def _resolver_caminho_imagem_local_por_id(id_anuncio):
+
+    if not id_anuncio:
+        return ""
+
+    if not PASTA_IMAGENS_ANUNCIOS.exists():
+        return ""
+
+    for id_candidato in _ids_equivalentes_anuncio(id_anuncio):
+        for ext in (".png", ".jpg", ".jpeg", ".webp"):
+            candidato = PASTA_IMAGENS_ANUNCIOS / f"anuncio_{id_candidato}{ext}"
+            if candidato.exists():
+                return str(candidato)
+
+    for id_candidato in _ids_equivalentes_anuncio(id_anuncio):
+        candidatos = sorted(PASTA_IMAGENS_ANUNCIOS.glob(f"anuncio_{id_candidato}.*"))
+        if candidatos:
+            return str(candidatos[0])
+
+    return ""
+
+
+def _carregar_cache_drive_imagens():
+
+    vazio = {"por_arquivo": {}, "por_id": {}}
+
+    if not ARQUIVO_CACHE_DRIVE_IMAGENS.exists():
+        return vazio
+
+    try:
+        with open(ARQUIVO_CACHE_DRIVE_IMAGENS, "r", encoding="utf-8") as arquivo:
+            conteudo = json.load(arquivo)
+    except Exception:
+        return vazio
+
+    if not isinstance(conteudo, dict):
+        return vazio
+
+    por_arquivo = conteudo.get("por_arquivo")
+    por_id = conteudo.get("por_id")
+
+    if not isinstance(por_arquivo, dict):
+        por_arquivo = {}
+    if not isinstance(por_id, dict):
+        por_id = {}
+
+    return {
+        "por_arquivo": {
+            str(chave): str(valor)
+            for chave, valor in por_arquivo.items()
+            if str(valor).startswith(("http://", "https://"))
+        },
+        "por_id": {
+            str(chave): str(valor)
+            for chave, valor in por_id.items()
+            if str(valor).startswith(("http://", "https://"))
+        },
+    }
+
+
+def _salvar_cache_drive_imagens(cache):
+
+    payload = {
+        "por_arquivo": cache.get("por_arquivo", {}),
+        "por_id": cache.get("por_id", {}),
+    }
+
+    with open(ARQUIVO_CACHE_DRIVE_IMAGENS, "w", encoding="utf-8") as arquivo:
+        json.dump(payload, arquivo, ensure_ascii=False, indent=2)
+
+
+def _resolver_caminho_credencial_drive():
+
+    caminho = Path(GOOGLE_DRIVE_SERVICE_ACCOUNT_FILE)
+    if not caminho.is_absolute():
+        caminho = BASE_DIR / caminho
+
+    return caminho.resolve()
+
+
+def _carregar_cliente_google_drive():
+
+    from google.oauth2.service_account import Credentials
+    from googleapiclient.discovery import build
+
+    caminho_credencial = _resolver_caminho_credencial_drive()
+    if not caminho_credencial.exists():
+        raise FileNotFoundError(
+            f"Arquivo de service account nao encontrado: {caminho_credencial}"
+        )
+
+    scopes = ["https://www.googleapis.com/auth/drive.file"]
+    credenciais = Credentials.from_service_account_file(str(caminho_credencial), scopes=scopes)
+
+    return build("drive", "v3", credentials=credenciais, cache_discovery=False)
+
+
+def _inicializar_contexto_drive_imagens():
+
+    contexto = {
+        "habilitado": False,
+        "cliente": None,
+        "folder_id": "",
+        "cache": {"por_arquivo": {}, "por_id": {}},
+        "cache_alterado": False,
+    }
+
+    if not TWILIO_USAR_GOOGLE_DRIVE_IMAGENS:
+        return contexto
+
+    if not GOOGLE_DRIVE_IMAGENS_FOLDER_ID:
+        print("[WARN] Upload de imagens no Drive desativado: GOOGLE_DRIVE_IMAGENS_FOLDER_ID nao configurado.")
+        return contexto
+
+    try:
+        cliente = _carregar_cliente_google_drive()
+        contexto["cliente"] = cliente
+        contexto["folder_id"] = GOOGLE_DRIVE_IMAGENS_FOLDER_ID
+        contexto["cache"] = _carregar_cache_drive_imagens()
+        contexto["habilitado"] = True
+        print("[DEBUG] Upload de imagens no Google Drive ativado para envio Twilio.")
+        return contexto
+    except Exception as exc:
+        print(f"[WARN] Falha ao iniciar Google Drive para imagens: {exc}")
+        return contexto
+
+
+def _finalizar_contexto_drive_imagens(contexto):
+
+    if not contexto or not contexto.get("habilitado"):
+        return
+
+    if not contexto.get("cache_alterado"):
+        return
+
+    try:
+        _salvar_cache_drive_imagens(contexto.get("cache") or {})
+    except Exception as exc:
+        print(f"[WARN] Nao foi possivel salvar cache de imagens do Drive: {exc}")
+
+
+def _publicar_imagem_local_no_drive(contexto, id_anuncio, caminho_local):
+
+    if not contexto or not contexto.get("habilitado"):
+        return ""
+
+    caminho_resolvido = str(Path(caminho_local).resolve())
+    cache = contexto.get("cache") or {"por_arquivo": {}, "por_id": {}}
+
+    url_em_cache = str(cache.get("por_arquivo", {}).get(caminho_resolvido) or "").strip()
+    if url_em_cache.startswith(("http://", "https://")):
+        return url_em_cache
+
+    from googleapiclient.http import MediaFileUpload
+
+    mime_type = mimetypes.guess_type(caminho_resolvido)[0] or "application/octet-stream"
+    nome_arquivo = Path(caminho_resolvido).name
+
+    corpo = {
+        "name": nome_arquivo,
+        "parents": [contexto["folder_id"]],
+    }
+
+    arquivo_midia = MediaFileUpload(caminho_resolvido, mimetype=mime_type, resumable=False)
+    resposta = contexto["cliente"].files().create(
+        body=corpo,
+        media_body=arquivo_midia,
+        fields="id",
+        supportsAllDrives=True,
+    ).execute()
+
+    file_id = str(resposta.get("id") or "").strip()
+    if not file_id:
+        return ""
+
+    contexto["cliente"].permissions().create(
+        fileId=file_id,
+        body={"type": "anyone", "role": "reader"},
+        sendNotificationEmail=False,
+        supportsAllDrives=True,
+    ).execute()
+
+    url_publica = f"https://drive.google.com/uc?export=view&id={file_id}"
+
+    cache.setdefault("por_arquivo", {})[caminho_resolvido] = url_publica
+    if id_anuncio:
+        cache.setdefault("por_id", {})[id_anuncio] = url_publica
+    contexto["cache_alterado"] = True
+
+    return url_publica
+
+
+def _resolver_imagem_para_twilio(produto, contexto_drive):
+
+    imagem_remota = str(
+        produto.get("imagem_principal")
+        or produto.get("url_imagem")
+        or produto.get("imagem")
+        or produto.get("secure_thumbnail")
+        or produto.get("thumbnail")
+        or ""
+    ).strip()
+
+    if not contexto_drive or not contexto_drive.get("habilitado"):
+        return imagem_remota
+
+    id_anuncio = _extrair_id_anuncio_produto(produto)
+    if not id_anuncio:
+        return imagem_remota
+
+    cache = contexto_drive.get("cache") or {}
+    url_por_id = str((cache.get("por_id") or {}).get(id_anuncio) or "").strip()
+    if url_por_id.startswith(("http://", "https://")):
+        return url_por_id
+
+    caminho_local = _resolver_caminho_imagem_local_por_id(id_anuncio)
+    if not caminho_local:
+        return imagem_remota
+
+    try:
+        url_publica = _publicar_imagem_local_no_drive(contexto_drive, id_anuncio, caminho_local)
+        if url_publica:
+            print(f"[DEBUG] imagem_publicada_drive id={id_anuncio} arquivo={Path(caminho_local).name}")
+            return url_publica
+    except Exception as exc:
+        print(f"[WARN] Falha ao publicar imagem no Drive para id={id_anuncio}: {exc}")
+
+    return imagem_remota
 
 
 def converter_preco(texto_preco):
@@ -992,6 +1295,14 @@ def montar_mensagem_produto(produto, incluir_banner_relampago=False):
 
     linhas = []
 
+    if MENSAGEM_COMPLEMENTAR:
+        for linha in MENSAGEM_COMPLEMENTAR.splitlines():
+            linha_limpa = linha.strip()
+            if linha_limpa:
+                linhas.append(f"*{linha_limpa}*")
+        if linhas:
+            linhas.append("")
+
     if incluir_banner_relampago:
         linhas.append("*⚡⚡ OFERTA RELAMPAGO ⚡⚡*")
         linhas.append("")
@@ -1120,122 +1431,120 @@ def enviar_produtos_por_whatsapp(produtos, incluir_banner_relampago=False):
     total_falhas = 0
     total_ok = 0
 
-    for produto in produtos:
+    contexto_drive = _inicializar_contexto_drive_imagens()
 
-        mensagem = montar_mensagem_produto(
-            produto,
-            incluir_banner_relampago=incluir_banner_relampago,
-        )
-        imagem = str(
-            produto.get("imagem_principal")
-            or produto.get("url_imagem")
-            or produto.get("imagem")
-            or produto.get("secure_thumbnail")
-            or produto.get("thumbnail")
-            or ""
-        ).strip()
-        parametros_envio = {
-            "from_": whatsapp_from,
-            "to": whatsapp_to,
-            "body": mensagem,
-        }
+    try:
+        for produto in produtos:
 
-        pode_enviar_midia, motivo_midia = _twilio_pode_enviar_midia(imagem)
-        if pode_enviar_midia:
+            mensagem = montar_mensagem_produto(
+                produto,
+                incluir_banner_relampago=incluir_banner_relampago,
+            )
+            imagem = _resolver_imagem_para_twilio(produto, contexto_drive)
+            parametros_envio = {
+                "from_": whatsapp_from,
+                "to": whatsapp_to,
+                "body": mensagem,
+            }
 
-            # O Twilio usa media_url para enviar a imagem junto com a mensagem.
-            parametros_envio["media_url"] = [imagem]
+            pode_enviar_midia, motivo_midia = _twilio_pode_enviar_midia(imagem)
+            if pode_enviar_midia:
 
-        print(
-            f"\n[DEBUG] media_url={'SIM' if 'media_url' in parametros_envio else 'NAO'}"
-        )
+                # O Twilio usa media_url para enviar a imagem junto com a mensagem.
+                parametros_envio["media_url"] = [imagem]
 
-        if "media_url" not in parametros_envio:
-            print(f"[DEBUG] motivo_sem_midia={motivo_midia}")
-
-        print(
-            f"[DEBUG] imagem={imagem if imagem else 'SEM IMAGEM'}"
-        )
-
-        debug_pausa("Antes de enviar para a API do Twilio")
-
-        try:
-
-            resposta = client.messages.create(**parametros_envio)
-
-        except TwilioRestException as exc:
-
-            if exc.code == 20003:
-
-                raise RuntimeError(
-                    "Falha de autenticacao Twilio (20003). Verifique se SID e Auth Token pertencem a mesma conta e se o token nao foi revogado."
-                ) from exc
-
-            raise
-
-        print(
-            f"\nMensagem enviada para {whatsapp_to}:\n{produto['descricao']}"
-        )
-
-        print(
-            f"Message SID Twilio: {resposta.sid}"
-        )
-
-        status_final, erro_codigo, erro_mensagem = _aguardar_status_final_twilio(
-            client,
-            resposta.sid,
-            tentativas=TWILIO_STATUS_CHECK_TENTATIVAS,
-            intervalo_segundos=TWILIO_STATUS_CHECK_INTERVALO_SEGUNDOS,
-        )
-
-        if status_final:
-            print(f"[DEBUG] status_final_twilio={status_final}")
-
-        if status_final in {"failed", "undelivered", "canceled"}:
-            total_falhas += 1
             print(
-                "[ERRO] Twilio nao entregou a mensagem "
-                f"(sid={resposta.sid}, status={status_final}, code={erro_codigo}, msg={erro_mensagem or 'sem detalhe'})."
+                f"\n[DEBUG] media_url={'SIM' if 'media_url' in parametros_envio else 'NAO'}"
             )
 
-            if "media_url" in parametros_envio:
-                print("[DEBUG] Tentando reenvio sem imagem (fallback).")
-                try:
-                    resposta_fallback = client.messages.create(
-                        from_=whatsapp_from,
-                        to=whatsapp_to,
-                        body=mensagem,
-                    )
-                    status_fb, erro_codigo_fb, erro_mensagem_fb = _aguardar_status_final_twilio(
-                        client,
-                        resposta_fallback.sid,
-                        tentativas=TWILIO_STATUS_CHECK_TENTATIVAS,
-                        intervalo_segundos=TWILIO_STATUS_CHECK_INTERVALO_SEGUNDOS,
-                    )
+            if "media_url" not in parametros_envio:
+                print(f"[DEBUG] motivo_sem_midia={motivo_midia}")
 
-                    if status_fb:
-                        print(f"[DEBUG] status_final_twilio_fallback={status_fb}")
+            print(
+                f"[DEBUG] imagem={imagem if imagem else 'SEM IMAGEM'}"
+            )
 
-                    if status_fb in {"failed", "undelivered", "canceled"}:
-                        print(
-                            "[ERRO] Fallback sem imagem tambem falhou "
-                            f"(sid={resposta_fallback.sid}, status={status_fb}, code={erro_codigo_fb}, msg={erro_mensagem_fb or 'sem detalhe'})."
+            debug_pausa("Antes de enviar para a API do Twilio")
+
+            try:
+
+                resposta = client.messages.create(**parametros_envio)
+
+            except TwilioRestException as exc:
+
+                if exc.code == 20003:
+
+                    raise RuntimeError(
+                        "Falha de autenticacao Twilio (20003). Verifique se SID e Auth Token pertencem a mesma conta e se o token nao foi revogado."
+                    ) from exc
+
+                raise
+
+            print(
+                f"\nMensagem enviada para {whatsapp_to}:\n{produto['descricao']}"
+            )
+
+            print(
+                f"Message SID Twilio: {resposta.sid}"
+            )
+
+            status_final, erro_codigo, erro_mensagem = _aguardar_status_final_twilio(
+                client,
+                resposta.sid,
+                tentativas=TWILIO_STATUS_CHECK_TENTATIVAS,
+                intervalo_segundos=TWILIO_STATUS_CHECK_INTERVALO_SEGUNDOS,
+            )
+
+            if status_final:
+                print(f"[DEBUG] status_final_twilio={status_final}")
+
+            if status_final in {"failed", "undelivered", "canceled"}:
+                total_falhas += 1
+                print(
+                    "[ERRO] Twilio nao entregou a mensagem "
+                    f"(sid={resposta.sid}, status={status_final}, code={erro_codigo}, msg={erro_mensagem or 'sem detalhe'})."
+                )
+
+                if "media_url" in parametros_envio:
+                    print("[DEBUG] Tentando reenvio sem imagem (fallback).")
+                    try:
+                        resposta_fallback = client.messages.create(
+                            from_=whatsapp_from,
+                            to=whatsapp_to,
+                            body=mensagem,
                         )
-                    else:
-                        total_ok += 1
-                        print(f"[OK] Fallback sem imagem enviado com sid={resposta_fallback.sid}.")
-                except TwilioRestException as exc_fb:
-                    print(
-                        "[ERRO] Excecao no fallback sem imagem: "
-                        f"code={getattr(exc_fb, 'code', '-')}, status={getattr(exc_fb, 'status', '-')}, "
-                        f"msg={str(getattr(exc_fb, 'msg', exc_fb) or exc_fb).strip()}"
-                    )
-        else:
-            total_ok += 1
+                        status_fb, erro_codigo_fb, erro_mensagem_fb = _aguardar_status_final_twilio(
+                            client,
+                            resposta_fallback.sid,
+                            tentativas=TWILIO_STATUS_CHECK_TENTATIVAS,
+                            intervalo_segundos=TWILIO_STATUS_CHECK_INTERVALO_SEGUNDOS,
+                        )
 
-        time.sleep(
-            random.uniform(*TWILIO_PAUSA_ENTRE_ENVIOS_SEGUNDOS)
-        )
+                        if status_fb:
+                            print(f"[DEBUG] status_final_twilio_fallback={status_fb}")
+
+                        if status_fb in {"failed", "undelivered", "canceled"}:
+                            print(
+                                "[ERRO] Fallback sem imagem tambem falhou "
+                                f"(sid={resposta_fallback.sid}, status={status_fb}, code={erro_codigo_fb}, msg={erro_mensagem_fb or 'sem detalhe'})."
+                            )
+                        else:
+                            total_ok += 1
+                            print(f"[OK] Fallback sem imagem enviado com sid={resposta_fallback.sid}.")
+                    except TwilioRestException as exc_fb:
+                        print(
+                            "[ERRO] Excecao no fallback sem imagem: "
+                            f"code={getattr(exc_fb, 'code', '-')}, status={getattr(exc_fb, 'status', '-')}, "
+                            f"msg={str(getattr(exc_fb, 'msg', exc_fb) or exc_fb).strip()}"
+                        )
+            else:
+                total_ok += 1
+
+            time.sleep(
+                random.uniform(*TWILIO_PAUSA_ENTRE_ENVIOS_SEGUNDOS)
+            )
+    finally:
+        _finalizar_contexto_drive_imagens(contexto_drive)
 
     print(
         f"\n[RESUMO_TWILIO] entregues_ou_processadas={total_ok} falhas={total_falhas} total={len(produtos)}"

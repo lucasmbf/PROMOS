@@ -1,0 +1,78 @@
+=== Inicio da execucao: 2026-07-25T11:57:55 ===
+Args: --produto-por-html --fonte mercadolivre --limite-candidatos 5 --url-produto https://lista.mercadolivre.com.br/trave-de-porta-infantil#D[A:trave%20de%20porta%20infantil] --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/trave-de-porta-infantil#D[A:trave%20de%20porta%20infantil]
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/trave-de-porta-infantil#D[A:trave%20de%20porta%20infantil]
+✓ Link de afiliado: https://meli.la/1QhwpCA
+✓ Link de afiliado: https://meli.la/2Uwpg7W
+✓ Link de afiliado: https://meli.la/2hNZKX8
+✓ Link de afiliado: https://meli.la/1JqKckz
+✓ Link de afiliado: https://meli.la/2sacGnE
+[BLOCO_1] Resultado: 5 candidato(s) coletado(s), 5 válido(s) enriquecido(s). Total: 5/5
+
+Histórico relâmpago atualizado em: C:/Users/Lucas Bianco/Downloads\lista_anuncios.txt
+✅ 5 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260725_115850.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\lista_anuncios.txt
+Saida JSON ondemand salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\OnDemand\ofertas_20260725_115850.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_830870-MLA100070899867_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Trava Segurança Infantil Adesiva Geladeira Gaveta Armário Cinza
+Message SID Twilio: SM405eb39461dba58d639ab23e57656ce4
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_697140-MLA100084886835_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+2 Und Trava Inteligente Porta De Correr Box Proteção Criança Branco
+Message SID Twilio: SM8199a33a1b5c84cb991cd1dc9a3cb13d
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_708308-MLB112406211427_052026-O-kit-2-travas-seguranca-tipo-gancho-portas-geladeira-armarios.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit 2 Travas Segurança Tipo Gancho Portas Geladeira Armários
+Message SID Twilio: SM66c47b3ba9cce6007a74090bb7491392
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_904883-MLA100082885297_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Trava Gaveta Geladeira Porta Fecho Infantil 3M Seguranca Criança 10 Unid
+Message SID Twilio: SMea244acb844e587d3e82e05e6b4a8a2d
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_826777-MLA99638691548_122025-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Trava De Segurança Infantil Gaveta Armário Porta Preto 10 Unid
+Message SID Twilio: SMe6edb2283d6baca23f5701527603b60e
+[DEBUG] status_final_twilio=queued
+
+[RESUMO_TWILIO] entregues_ou_processadas=5 falhas=0 total=5
+
+5 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-25T11:59:00 ===
