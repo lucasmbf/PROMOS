@@ -1,0 +1,23 @@
+=== Inicio da execucao: 2026-07-26T11:49:19 ===
+Args: --produto-por-html --fonte mercadolivre --descricao-produto Cortador De Biscoito Cookie Pasta Feliz Dia Dos Pais --preco-minimo 24.0 --preco-maximo 26.0 --limite-candidatos 1 --url-produto https://www.mercadolivre.com.br/cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais/up/MLBU4170067158#polycard_client=recommendations_home_fourth-best-navigation-trend-recommendations&reco_backend=machinalis-homes-univb&reco_client=home_fourth-best-navigation-trend-recommendations&reco_item_pos=5&reco_backend_type=function&reco_id=ca77f9f0-3d77-4fb0-a36c-7abc440531e2&wid=MLB7040371854&sid=recos&c_id=/home/fourth-best-navigation-trend-recommendations/element&c_uid=a5947799-6185-47f2-8b5d-9f23e3cd2053 --pasta-saida C:/Users/Lucas Bianco/Downloads --modalidade-execucao ondemand
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://www.mercadolivre.com.br/cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais/up/MLBU4170067158#polycard_client=recommendations_home_fourth-best-navigation-trend-recommendations&reco_backend=machinalis-homes-univb&reco_client=home_fourth-best-navigation-trend-recommendations&reco_item_pos=5&reco_backend_type=function&reco_id=ca77f9f0-3d77-4fb0-a36c-7abc440531e2&wid=MLB7040371854&sid=recos&c_id=/home/fourth-best-navigation-trend-recommendations/element&c_uid=a5947799-6185-47f2-8b5d-9f23e3cd2053
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://www.mercadolivre.com.br/cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais/up/MLBU4170067158#polycard_client=recommendations_home_fourth-best-navigation-trend-recommendations&reco_backend=machinalis-homes-univb&reco_client=home_fourth-best-navigation-trend-recommendations&reco_item_pos=5&reco_backend_type=function&reco_id=ca77f9f0-3d77-4fb0-a36c-7abc440531e2&wid=MLB7040371854&sid=recos&c_id=/home/fourth-best-navigation-trend-recommendations/element&c_uid=a5947799-6185-47f2-8b5d-9f23e3cd2053
+[LISTAGEM_DIRETA] Link 1 - página 2: https://www.mercadolivre.com.br/cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais/up/MLBU4170067158?page=2
+[LISTAGEM_DIRETA] Link 1 - página 3: https://www.mercadolivre.com.br/cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais/up/MLBU4170067158?page=3
+[BLOCO_1] Resultado: 0 candidato(s) coletado(s), 0 válido(s) enriquecido(s). Total: 0/1
+[BLOCO_1] Nenhum candidato neste bloco. Continuando para proximas paginas.
+
+[BLOCO_2] Carregando páginas 4 a 6 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 4: https://www.mercadolivre.com.br/cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais/up/MLBU4170067158?page=4
+[LISTAGEM_DIRETA] Link 1 - página 5: https://www.mercadolivre.com.br/cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais/up/MLBU4170067158?page=5
+[LISTAGEM_DIRETA] Link 1 - página 6: https://www.mercadolivre.com.br/cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais/up/MLBU4170067158?page=6
+
+=== Fim da execucao: 2026-07-26T11:49:48 ===

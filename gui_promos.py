@@ -4166,6 +4166,27 @@ def create_gui(categorias):
                 links.append(link)
         return links
 
+    def _limites_candidatos_por_link_from_config(config):
+        limites = []
+        limite_legado = config.get("limite_candidatos") if isinstance(config, dict) else None
+
+        for idx in range(1, 6):
+            valor = None
+            if isinstance(config, dict):
+                valor = config.get(f"limite_candidatos_link{idx}")
+
+            if valor in (None, "") and idx == 1:
+                valor = limite_legado
+
+            try:
+                valor_int = int(valor) if valor not in (None, "") else None
+            except Exception:
+                valor_int = None
+
+            limites.append(valor_int if valor_int and valor_int > 0 else None)
+
+        return limites
+
     def _urls_from_alert(alert):
         return _urls_from_config(alert)
 
@@ -4257,6 +4278,21 @@ def create_gui(categorias):
 
             for idx in range(1, 6):
                 novo_schedule[f"link{idx}"] = urls[idx - 1] if idx - 1 < len(urls) else ""
+                limite_link = schedule.get(f"limite_candidatos_link{idx}")
+                if limite_link in (None, "") and idx == 1:
+                    limite_link = schedule.get("limite_candidatos")
+                try:
+                    limite_link = int(limite_link) if limite_link not in (None, "") else None
+                except Exception:
+                    limite_link = None
+                novo_schedule[f"limite_candidatos_link{idx}"] = limite_link if limite_link and limite_link > 0 else None
+
+            limites_validos = [
+                valor
+                for valor in _limites_candidatos_por_link_from_config(novo_schedule)
+                if valor is not None and valor > 0
+            ]
+            novo_schedule["limite_candidatos"] = sum(limites_validos) if limites_validos else schedule.get("limite_candidatos")
 
             if novo_schedule != schedule:
                 schedule.clear()
@@ -4943,12 +4979,19 @@ def create_gui(categorias):
         urls=None,
         fonte="mercadolivre",
         mensagem_complementar=None,
+        limites_candidatos_por_url=None,
     ):
         args = ["--produto-por-html"]
         args.extend(["--fonte", (fonte or "mercadolivre")])
 
         for url in [str(item).strip() for item in (urls or []) if str(item).strip()][:5]:
             args.extend(["--url-produto", url])
+
+        limites_por_url = list(limites_candidatos_por_url or [])[:5]
+        for limite_url in limites_por_url:
+            if limite_url is None:
+                continue
+            args.extend(["--limite-candidatos-url", str(limite_url)])
 
         if categoria and categoria != "Todas categorias":
             args.extend(["--categoria", categoria])
@@ -4985,6 +5028,11 @@ def create_gui(categorias):
             _urls_from_config(schedule),
             "mercadolivre",
             (schedule.get("mensagem_complementar") or "").strip(),
+            [
+                limite
+                for idx, limite in enumerate(_limites_candidatos_por_link_from_config(schedule), start=1)
+                if str(schedule.get(f"link{idx}", "")).strip()
+            ],
         )
 
     def open_hub_schedule_modal(schedule=None):
@@ -5047,9 +5095,7 @@ def create_gui(categorias):
         preco_min_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("preco_minimo") is None else str(schedule.get("preco_minimo"))))
         preco_max_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("preco_maximo") is None else str(schedule.get("preco_maximo"))))
         desconto_ag_var = tk.StringVar(value=("" if not schedule or schedule.get("desconto_minimo") is None else str(schedule.get("desconto_minimo"))))
-        limite_candidatos_ag_var = tk.StringVar(value=(
-            str(schedule.get("limite_candidatos") if schedule and schedule.get("limite_candidatos") is not None else 10)
-        ))
+        limites_links_existentes = _limites_candidatos_por_link_from_config(schedule or {})
         ativo_var = tk.BooleanVar(value=(bool(schedule.get("active", True)) if schedule else True))
         executar_ao_salvar_var = tk.BooleanVar(value=False)
         email_ag_var = tk.StringVar(
@@ -5070,6 +5116,10 @@ def create_gui(categorias):
         while len(urls_campanha) < 5:
             urls_campanha.append("")
         link_vars = [tk.StringVar(value=urls_campanha[idx]) for idx in range(5)]
+        limite_link_vars = [
+            tk.StringVar(value=("" if limites_links_existentes[idx] is None else str(limites_links_existentes[idx])))
+            for idx in range(5)
+        ]
 
         inicio_lock = {"value": False}
         fim_lock = {"value": False}
@@ -5111,9 +5161,19 @@ def create_gui(categorias):
         ttk.Label(frame, text="Mensagem complementar (opcional):", style="Field.TLabel").grid(row=7, column=0, sticky="w", pady=(12, 0))
         ttk.Entry(frame, textvariable=mensagem_complementar_var).grid(row=7, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        for idx, link_var in enumerate(link_vars, start=1):
+        for idx, (link_var, limite_var) in enumerate(zip(link_vars, limite_link_vars), start=1):
             ttk.Label(frame, text=f"Link {idx} (opcional):", style="Field.TLabel").grid(row=7 + idx, column=0, sticky="w", pady=(12, 0))
-            ttk.Entry(frame, textvariable=link_var).grid(row=7 + idx, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+            linha_link = ttk.Frame(frame, style="Main.TFrame")
+            linha_link.grid(row=7 + idx, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+            ttk.Entry(linha_link, textvariable=link_var).pack(side="left", fill="x", expand=True)
+            ttk.Label(linha_link, text=f"Candidatos link {idx}:", style="Field.TLabel").pack(side="left", padx=(8, 6))
+            ttk.Entry(
+                linha_link,
+                textvariable=limite_var,
+                width=8,
+                validate="key",
+                validatecommand=vcmd_inteiro,
+            ).pack(side="left")
 
         ttk.Label(frame, text="Preco minimo (opcional):", style="Field.TLabel").grid(row=13, column=0, sticky="w", pady=(12, 0))
         ttk.Entry(frame, textvariable=preco_min_ag_var).grid(row=13, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
@@ -5124,28 +5184,25 @@ def create_gui(categorias):
         ttk.Label(frame, text="Desconto minimo (%) opcional:", style="Field.TLabel").grid(row=15, column=0, sticky="w", pady=(12, 0))
         ttk.Entry(frame, textvariable=desconto_ag_var).grid(row=15, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Qtd. candidatos validos:", style="Field.TLabel").grid(row=16, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=limite_candidatos_ag_var, validate="key", validatecommand=vcmd_inteiro).grid(row=16, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
-
         ttk.Label(frame, text="Se informado, o link tem prioridade de busca.", style="Hint.TLabel").grid(
-            row=17,
+            row=16,
             column=0,
             columnspan=2,
             sticky="w",
             pady=(12, 0),
         )
 
-        ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=18, column=0, columnspan=2, sticky="w", pady=(12, 0))
-        ttk.Checkbutton(frame, text="Executar a primeira vez assim que salvar", variable=executar_ao_salvar_var).grid(row=19, column=0, columnspan=2, sticky="w", pady=(8, 0))
+        ttk.Checkbutton(frame, text="Rotina ativa", variable=ativo_var).grid(row=17, column=0, columnspan=2, sticky="w", pady=(12, 0))
+        ttk.Checkbutton(frame, text="Executar a primeira vez assim que salvar", variable=executar_ao_salvar_var).grid(row=18, column=0, columnspan=2, sticky="w", pady=(8, 0))
 
-        ttk.Label(frame, text="E-mail:", style="Field.TLabel").grid(row=20, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=email_ag_var).grid(row=20, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="E-mail:", style="Field.TLabel").grid(row=19, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=email_ag_var).grid(row=19, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
-        ttk.Label(frame, text="Telefone:", style="Field.TLabel").grid(row=21, column=0, sticky="w", pady=(12, 0))
-        ttk.Entry(frame, textvariable=telefone_ag_var).grid(row=21, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
+        ttk.Label(frame, text="Telefone:", style="Field.TLabel").grid(row=20, column=0, sticky="w", pady=(12, 0))
+        ttk.Entry(frame, textvariable=telefone_ag_var).grid(row=20, column=1, sticky="ew", padx=(8, 0), pady=(12, 0))
 
         botoes = ttk.Frame(frame, style="Main.TFrame")
-        botoes.grid(row=22, column=0, columnspan=2, sticky="w", pady=(18, 0))
+        botoes.grid(row=21, column=0, columnspan=2, sticky="w", pady=(18, 0))
 
         def salvar_rotina():
             nome = (nome_var.get() or "").strip()
@@ -5163,15 +5220,8 @@ def create_gui(categorias):
                 preco_min = parse_float(preco_min_ag_var.get(), "Preco minimo")
                 preco_max = parse_float(preco_max_ag_var.get(), "Preco maximo")
                 desconto_min = parse_int(desconto_ag_var.get(), "Desconto minimo")
-                limite_candidatos = parse_int(limite_candidatos_ag_var.get(), "Qtd. candidatos validos")
             except ValueError as exc:
                 messagebox.showerror("Validacao", str(exc), parent=modal)
-                return
-
-            if limite_candidatos is None:
-                limite_candidatos = 10
-            if limite_candidatos < 1:
-                messagebox.showerror("Validacao", "Qtd. candidatos validos deve ser no minimo 1.", parent=modal)
                 return
 
             if fim_dt and fim_dt.date() < inicio_dt.date():
@@ -5182,10 +5232,37 @@ def create_gui(categorias):
             descricao_valor = (descricao_ag_var.get() or "").strip()
             mensagem_complementar = (mensagem_complementar_var.get() or "").strip()
             urls = [str(var.get()).strip() for var in link_vars if str(var.get()).strip()]
+            limites_por_link = []
+            for idx, (link_var, limite_var) in enumerate(zip(link_vars, limite_link_vars), start=1):
+                link_valor = str(link_var.get()).strip()
+                limite_texto = str(limite_var.get()).strip()
+
+                if not link_valor:
+                    limites_por_link.append(None)
+                    continue
+
+                try:
+                    limite_link = parse_int(limite_texto, f"Candidatos link {idx}")
+                except ValueError as exc:
+                    messagebox.showerror("Validacao", str(exc), parent=modal)
+                    return
+
+                if limite_link is None or limite_link < 1:
+                    messagebox.showerror(
+                        "Validacao",
+                        f"Informe um valor minimo de 1 para 'Candidatos link {idx}'.",
+                        parent=modal,
+                    )
+                    return
+
+                limites_por_link.append(int(limite_link))
+
             invalidas = [url for url in urls if not url.startswith("http://") and not url.startswith("https://")]
             if invalidas:
                 messagebox.showerror("Validacao", "Todos os links devem comecar com http:// ou https://.", parent=modal)
                 return
+
+            limite_candidatos_total = sum(valor for valor in limites_por_link if valor is not None)
 
             email_unico, emails = _single_destino(email_ag_var.get())
             telefone_unico, telefones = _single_destino(telefone_ag_var.get())
@@ -5226,11 +5303,13 @@ def create_gui(categorias):
                     "preco_minimo": preco_min,
                     "preco_maximo": preco_max,
                     "desconto_minimo": desconto_min,
-                    "limite_candidatos": int(limite_candidatos),
+                    "limite_candidatos": int(limite_candidatos_total) if limite_candidatos_total else None,
                     "last_run_at": None,
                     "configured_at": agora.isoformat(timespec="seconds"),
                     "next_run_at": (agora + timedelta(hours=int(ciclo_horas))).isoformat(timespec="seconds"),
                 }
+                for idx, limite_link in enumerate(limites_por_link, start=1):
+                    novo[f"limite_candidatos_link{idx}"] = limite_link
                 hub_schedules.append(novo)
                 status_var.set(f"Rotina '{nome}' criada.")
                 schedule_ref = novo
@@ -5252,7 +5331,9 @@ def create_gui(categorias):
                 schedule["preco_minimo"] = preco_min
                 schedule["preco_maximo"] = preco_max
                 schedule["desconto_minimo"] = desconto_min
-                schedule["limite_candidatos"] = int(limite_candidatos)
+                schedule["limite_candidatos"] = int(limite_candidatos_total) if limite_candidatos_total else None
+                for idx, limite_link in enumerate(limites_por_link, start=1):
+                    schedule[f"limite_candidatos_link{idx}"] = limite_link
                 schedule["configured_at"] = agora.isoformat(timespec="seconds")
                 schedule["last_run_at"] = None
                 schedule["next_run_at"] = (agora + timedelta(hours=int(ciclo_horas))).isoformat(timespec="seconds")

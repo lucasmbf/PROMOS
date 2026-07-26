@@ -184,6 +184,14 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--limite-candidatos-url",
+        action="append",
+        type=int,
+        default=None,
+        help="Quantidade maxima de candidatos validos para cada URL informada em --url-produto.",
+    )
+
+    parser.add_argument(
         "--desconto-minimo",
         type=int,
         default=DESCONTO_MINIMO,
@@ -250,6 +258,7 @@ ARG_PRECO_MAXIMO_INFORMADO = "--preco-maximo" in RAW_ARGS
 ARG_PRECO_MINIMO_INFORMADO = "--preco-minimo" in RAW_ARGS
 ARG_DESCONTO_MINIMO_INFORMADO = "--desconto-minimo" in RAW_ARGS
 ARG_LIMITE_CANDIDATOS_INFORMADO = "--limite-candidatos" in RAW_ARGS
+ARG_LIMITE_CANDIDATOS_URL_INFORMADO = "--limite-candidatos-url" in RAW_ARGS
 ARG_DESCRICAO_PRODUTO_INFORMADA = "--descricao-produto" in RAW_ARGS
 ARG_URL_PRODUTO_INFORMADA = "--url-produto" in RAW_ARGS
 
@@ -1674,6 +1683,15 @@ preco_minimo_parametrizado = PRECO_MINIMO if ARG_PRECO_MINIMO_INFORMADO else Non
 preco_maximo_parametrizado = PRECO_MAXIMO if ARG_PRECO_MAXIMO_INFORMADO else None
 desconto_minimo_parametrizado = DESCONTO_MINIMO if ARG_DESCONTO_MINIMO_INFORMADO else None
 limite_candidatos_parametrizado = LIMITE_CANDIDATOS if ARG_LIMITE_CANDIDATOS_INFORMADO else None
+limites_candidatos_url_parametrizados = None
+if ARG_LIMITE_CANDIDATOS_URL_INFORMADO:
+    limites_candidatos_url_parametrizados = [
+        max(1, int(valor))
+        for valor in (ARGS.limite_candidatos_url or [])
+        if valor is not None
+    ]
+    if not limites_candidatos_url_parametrizados:
+        limites_candidatos_url_parametrizados = None
 
 
 _FROZEN = getattr(sys, "frozen", False)
@@ -1726,6 +1744,7 @@ with sync_playwright() as p:
             preco_maximo=preco_maximo_parametrizado,
             desconto_minimo=desconto_minimo_parametrizado,
             limite_candidatos=limite_candidatos_parametrizado,
+            limites_candidatos_urls=limites_candidatos_url_parametrizados,
             historico_anuncios=historico_anuncios,
             limite_validos=(limite_candidatos_parametrizado or 10),
             limite_paginas=LIMITE_PAGINAS_PESQUISA,

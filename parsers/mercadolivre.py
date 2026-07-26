@@ -2870,6 +2870,7 @@ def processar_produtos_home_por_pesquisa(
     preco_maximo=None,
     desconto_minimo=None,
     limite_candidatos=None,
+    limites_candidatos_urls=None,
     historico_anuncios=None,
     limite_validos=10,
     limite_paginas=5,
@@ -2938,6 +2939,7 @@ def processar_produtos_home_por_pesquisa(
     limite_paginas = max(1, int(limite_paginas or 1))
     limite_validos = max(1, int(limite_validos or 1))
     limite_candidatos_int = None if limite_candidatos is None else max(1, int(limite_candidatos))
+    limites_candidatos_urls = list(limites_candidatos_urls or [])
 
     historico_ids = set(
         _normalizar_chave_historico(item) for item in (historico_anuncios or set()) if item
@@ -2952,28 +2954,56 @@ def processar_produtos_home_por_pesquisa(
         aprovados = []
         falhas_enriquecimento = 0
         falhas_login_afiliados = 0
+        limites_por_link_normalizados = []
+
+        for idx_link, _url in enumerate(urls_prioritarias):
+            try:
+                limite_url = limites_candidatos_urls[idx_link]
+            except Exception:
+                limite_url = None
+
+            try:
+                limite_url = int(limite_url) if limite_url is not None else None
+            except Exception:
+                limite_url = None
+
+            limites_por_link_normalizados.append(limite_url if limite_url and limite_url > 0 else None)
+
+        limite_validos_total = sum(
+            limite for limite in limites_por_link_normalizados if limite is not None
+        ) or limite_validos
 
         for indice_link, url_base in enumerate(urls_prioritarias, start=1):
-            if len(aprovados) >= limite_validos:
+            if len(aprovados) >= limite_validos_total:
                 break
+
+            limite_link = limites_por_link_normalizados[indice_link - 1]
+            aprovados_link = 0
+            candidatos_link = 0
 
             print(f"\n[LINK_BASE_{indice_link}] Processando listagem direta: {url_base}")
             print(f"[LINK_BASE_{indice_link}] Carregando em blocos de {TAMANHO_BLOCO_PAGINAS} páginas até encontrar candidatos válidos")
 
             numero_bloco = 0
             
-            while len(aprovados) < limite_validos and numero_bloco * TAMANHO_BLOCO_PAGINAS < total_paginas_link:
+            while len(aprovados) < limite_validos_total and numero_bloco * TAMANHO_BLOCO_PAGINAS < total_paginas_link:
+                if limite_link is not None and aprovados_link >= limite_link:
+                    break
+
                 numero_bloco += 1
                 pagina_inicio = (numero_bloco - 1) * TAMANHO_BLOCO_PAGINAS + 1
                 pagina_fim = min(numero_bloco * TAMANHO_BLOCO_PAGINAS, total_paginas_link)
                 
                 aprovados_antes_bloco = len(aprovados)
-                candidatos_antes_bloco = len(candidatos)
+                candidatos_antes_bloco = candidatos_link
                 
                 print(f"\n[BLOCO_{numero_bloco}] Carregando páginas {pagina_inicio} a {pagina_fim} do Link {indice_link}")
                 
                 for pagina_atual in range(pagina_inicio, pagina_fim + 1):
-                    if len(aprovados) >= limite_validos:
+                    if len(aprovados) >= limite_validos_total:
+                        break
+
+                    if limite_link is not None and aprovados_link >= limite_link:
                         break
 
                     url_pagina = url_base if pagina_atual == 1 else _montar_url_paginada(url_base, pagina_atual)
@@ -3020,8 +3050,12 @@ def processar_produtos_home_por_pesquisa(
                         continue
 
                     limite_restante = None
-                    if limite_candidatos_int is not None:
+                    if limite_link is not None:
+                        limite_restante = max(0, limite_link - candidatos_link)
+                    elif limite_candidatos_int is not None:
                         limite_restante = max(0, limite_candidatos_int - len(candidatos))
+
+                    if limite_restante is not None:
                         if limite_restante == 0:
                             break
 
@@ -3043,22 +3077,29 @@ def processar_produtos_home_por_pesquisa(
                         continue
 
                     candidatos.extend(candidatos_pagina)
+                    candidatos_link += len(candidatos_pagina)
+
+                    limite_validos_restante = max(1, limite_validos_total - len(aprovados))
+                    if limite_link is not None:
+                        limite_validos_restante = max(1, min(limite_validos_restante, limite_link - aprovados_link))
+
                     aprovados_pagina, falhas_pagina, falhas_login_pagina = _enriquecer_candidatos_aprovados(
                         page,
                         candidatos_pagina,
                         categoria_base=categoria_base,
-                        limite_validos=max(1, limite_validos - len(aprovados)),
+                        limite_validos=limite_validos_restante,
                     )
                     aprovados.extend(aprovados_pagina)
+                    aprovados_link += len(aprovados_pagina)
                     falhas_enriquecimento += falhas_pagina
                     falhas_login_afiliados += falhas_login_pagina
 
-                candidatos_novos = len(candidatos) - candidatos_antes_bloco
+                candidatos_novos = candidatos_link - candidatos_antes_bloco
                 aprovados_novos = len(aprovados) - aprovados_antes_bloco
                 
                 print(
                     f"[BLOCO_{numero_bloco}] Resultado: {candidatos_novos} candidato(s) coletado(s), "
-                    f"{aprovados_novos} válido(s) enriquecido(s). Total: {len(aprovados)}/{limite_validos}"
+                    f"{aprovados_novos} válido(s) enriquecido(s). Total geral: {len(aprovados)}/{limite_validos_total}"
                 )
                 
                 if aprovados_novos == 0 and candidatos_novos == 0:

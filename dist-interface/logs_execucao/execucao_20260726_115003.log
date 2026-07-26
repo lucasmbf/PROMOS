@@ -1,0 +1,19 @@
+=== Inicio da execucao: 2026-07-26T11:50:03 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue --desconto-minimo 12 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+[ERRO] Falha ao clicar no botão Afiliados/Compartilhar: Locator.count: Target page, context or browser has been closed
+[LOGIN_REQUIRED_AFILIADOS] Link de afiliado nao gerado para mlb5665671308. Anuncio ignorado. Faca login no Afiliados e execute novamente.
+[AVISO] Falha ao enriquecer anúncio mlb6818067288: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[AVISO] Falha ao enriquecer anúncio mlb4281089706: BrowserContext.new_page: Target page, context or browser has been closed. Anuncio ignorado por nao ter link de afiliado valido.
+[LISTAGEM_DIRETA] Link 1 - página 2: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre&page=2
+
+=== Fim da execucao: 2026-07-26T11:50:18 ===

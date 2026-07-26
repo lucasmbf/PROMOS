@@ -1,0 +1,14 @@
+=== Inicio da execucao: 2026-07-26T12:10:15 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse --limite-candidatos-url 3 --limite-candidatos 3 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse
+
+=== Fim da execucao: 2026-07-26T12:10:18 ===

@@ -35,7 +35,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-06-23T17:21:40",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 10,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000035",
@@ -73,7 +78,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-06-23T17:25:17",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 10,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000036",
@@ -112,7 +122,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-06-23T17:28:55",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 10,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000040",
@@ -147,7 +162,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T09:56:36",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 3,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000041",
@@ -186,7 +206,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:06:02",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 12,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000044",
@@ -221,7 +246,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:07:25",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 4,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000046",
@@ -257,7 +287,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-24T11:08:45",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 4,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000049",
@@ -292,7 +327,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:08:30",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 3,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000050",
@@ -327,7 +367,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-23T20:01:11",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 3,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000051",
@@ -362,7 +407,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:11:19",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 5,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000052",
@@ -397,7 +447,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:13:19",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 5,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000053",
@@ -432,7 +487,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:14:12",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 3,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000054",
@@ -467,7 +527,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:15:14",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 3,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000055",
@@ -502,7 +567,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:16:13",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 3,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000056",
@@ -537,7 +607,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:17:12",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 3,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000057",
@@ -572,7 +647,12 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:18:10",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 3,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000058",
@@ -607,11 +687,16 @@
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
     "last_execution_at": "2026-07-26T10:20:40",
-    "mensagem_complementar": ""
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 10,
+    "limite_candidatos_link2": null,
+    "limite_candidatos_link3": null,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   },
   {
     "id": "000059",
-    "name": "wella",
+    "name": "Beleza",
     "active": true,
     "start_at": "2026-07-26T00:00",
     "end_at": "2026-09-30T23:59",
@@ -619,81 +704,13 @@
     "categoria": "Todas categorias",
     "descricao": "",
     "urls": [
-      "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse"
-    ],
-    "link1": "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "email": "",
-    "emails": [],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "preco_minimo": null,
-    "preco_maximo": null,
-    "desconto_minimo": null,
-    "limite_candidatos": 3,
-    "last_run_at": null,
-    "configured_at": "2026-07-26T10:49:06",
-    "next_run_at": "2026-07-26T18:49:06",
-    "last_execution_status": "sucesso",
-    "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-26T10:49:53",
-    "mensagem_complementar": ""
-  },
-  {
-    "id": "000060",
-    "name": "loreal",
-    "active": true,
-    "start_at": "2026-07-26T00:00",
-    "end_at": "2026-10-31T23:59",
-    "interval_hours": 1,
-    "categoria": "Todas categorias",
-    "descricao": "",
-    "urls": [
-      "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse"
-    ],
-    "link1": "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse",
-    "link2": "",
-    "link3": "",
-    "link4": "",
-    "link5": "",
-    "email": "",
-    "emails": [],
-    "telefone": "19991133269",
-    "phones": [
-      "19991133269"
-    ],
-    "preco_minimo": null,
-    "preco_maximo": null,
-    "desconto_minimo": null,
-    "limite_candidatos": 3,
-    "last_run_at": "2026-07-26T10:52:04",
-    "configured_at": "2026-07-26T10:48:57",
-    "next_run_at": "2026-07-26T11:52:04",
-    "last_execution_status": "sucesso",
-    "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-26T10:52:44",
-    "mensagem_complementar": ""
-  },
-  {
-    "id": "000061",
-    "name": "Mac",
-    "active": true,
-    "start_at": "2026-07-26T00:00",
-    "end_at": "2026-10-31T23:59",
-    "interval_hours": 1,
-    "categoria": "Todas categorias",
-    "descricao": "",
-    "urls": [
+      "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse",
+      "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse",
       "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue"
     ],
-    "link1": "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue",
-    "link2": "",
-    "link3": "",
+    "link1": "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse",
+    "link2": "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse",
+    "link3": "https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue",
     "link4": "",
     "link5": "",
     "email": "",
@@ -704,14 +721,19 @@
     ],
     "preco_minimo": null,
     "preco_maximo": null,
-    "desconto_minimo": 12,
-    "limite_candidatos": 3,
-    "last_run_at": "2026-07-26T10:49:56",
-    "configured_at": "2026-07-26T10:49:56",
-    "next_run_at": "2026-07-26T11:49:56",
+    "desconto_minimo": null,
+    "limite_candidatos": 9,
+    "last_run_at": "2026-07-26T12:10:32",
+    "configured_at": "2026-07-26T12:10:32",
+    "next_run_at": "2026-07-26T20:10:32",
     "last_execution_status": "sucesso",
     "last_execution_message": "Execucao concluida sem falhas.",
-    "last_execution_at": "2026-07-26T10:50:41",
-    "mensagem_complementar": ""
+    "last_execution_at": "2026-07-26T12:12:40",
+    "mensagem_complementar": "",
+    "limite_candidatos_link1": 3,
+    "limite_candidatos_link2": 3,
+    "limite_candidatos_link3": 3,
+    "limite_candidatos_link4": null,
+    "limite_candidatos_link5": null
   }
 ]

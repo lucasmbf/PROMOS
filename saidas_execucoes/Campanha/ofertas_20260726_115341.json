@@ -1,0 +1,43 @@
+{
+  "modalidade": "campanha",
+  "timestamp": "20260726_115341",
+  "total": 3,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu601112761",
+      "categoria": "Tratamentos com o Cabelo > Shampoo",
+      "descricao": "Kit Pro Longer Shampoo 300g E Máscara 250g - Loréal",
+      "antes": "R$ 521,14",
+      "antes_valor": null,
+      "desconto": "52% OFF",
+      "depois": "R$ 248,29",
+      "depois_valor": 248.29,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-pro-longer-shampoo-300g-e-mascara-250g--loreal/up/MLBU601112761?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=6&type=product&tracking_id=6f1439d3-5ead-4092-88a3-4ee5df46fdd6&wid=MLB2820150183&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_865442-MLB108430683967_032026-O-kit-pro-longer-shampoo-300g-e-mascara-250g--loreal.webp"
+    },
+    {
+      "id_anuncio": "mlb4923372053",
+      "categoria": "Cuidados com o Cabelo > Shampoos e Condicionadores",
+      "descricao": "Kit Loréal Absolut Repair Shampoo 300g E Máscara 250g",
+      "antes": "R$ 664,50",
+      "antes_valor": null,
+      "desconto": "55% OFF",
+      "depois": "R$ 296,99",
+      "depois_valor": 296.99,
+      "link_anuncio": "https://click1.mercadolivre.com.br/mclics/clicks/external/MLB/count?a=AvsbUFC03EUo4HOEZdz%2BhNlJbpQKPpMzrow%2BY7HcHyPxm%2B%2Bc5bIQgKEwRG3VGXYY%2BV3jWUylhTomAcTL11j4QKaA00R3HeTDw8TGsOHduCmkbq3k4CwsK7wTXk0DVSajRlosGU%2BhGNSz5U0nOFOMM7FbPJCCkD5%2Bt5DwUyvS9KK43ZXSdfi7x8rxug253ZuIB0luajYuPrtMVdFJg4%2F2AfRQK4jNj%2Bb3%2BSvXSiwonUH9%2FzEVUVsMyRVYJpsRwq1lKE3UymlgOOWD9gsIvOl0Y1MNpmIxa5Dyoom%2F0tVxRpYCe13GFbsnTvuJ1G%2BHOGRDgUL%2BB7MwmLMZDpwHHmbaQcXKAxF%2F9%2BDXC5YCCIfUtEvThhvyQupFXhDZY07LdPyGDeYIUtQJnMpiwScMfsjFYT%2BYxbQgfbR8jfKQ4ZyLbpArDaxFhXfs5sY2BP1pyDBZ74p%2Bw3UgenQ3wFwJbf2e4O9utkq79R%2Fx2RwvfmG40dwggTJ071hDJHwoCFViN6Ct5MUvaq%2Fz6bUsQHNjszOrNWyPPuVHHDWSgj%2FLzcnM5NkkHfMkJp7i4fflhPPuEfGQ9rtLg%2FZgFMNWiKRzeto8aTHpHbrCadGt13cHLFCXhgspnRZvN%2FPPRi%2FPIrjEm8AA5Wh9Wuh%2BG1QVcg9%2B%2F8sxy%2Ft8HnwvhuvxCCi4mRFd0EoJCIIUvZ%2Fg0IKVauhanRzykg39G%2FIWor2pe%2FAqCjH2dk7V%2FUeVOHMjNCGZzyjnZ24RH7mEndSKSvK077VipjbjReNIvH9abU97T%2FwEMoKbJcFbyVMr35Vrg31RpQJzaBwYtkXorojUi0kOiZaNCLGeV9WSxDYU8icJB1PAD6lwzAOtcbtsRsH744KlmWO%2FmFmb24ZTtN%2B0Sv22oJVtiV%2BUHlfkXQ7WPJqUbNBj4m9W1TEIxsTDmSjRuXcBalX9lx%2BDtOsh9QrUMdFbAOpTBZR3R%2FRuhPEPnZwMDC4AHJm3LkGMNhhYW8U2EfS9V491I2p3Jl%2BtQIa746UHTuOg5JeGh0v%2FKMm8jsW57nyRkFehKA%3D%3D&pdp_filters=discount%3A10-100%7Citem_id%3AMLB4923372053#polycard_client=search-desktop&is_advertising=true&searchVariation=MLBU4390466164&backend_model=search-backend&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=4&type=pad&tracking_id=6f1439d3-5ead-4092-88a3-4ee5df46fdd6&wid=MLB4923372053&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_627658-MLB113623824916_072026-O-kit-loreal--absolut-repair-shampoo-300g-e-mascara-250g.webp"
+    },
+    {
+      "id_anuncio": "mlbu4045883575",
+      "categoria": "Cuidados com o Cabelo > Tratamentos com o Cabelo",
+      "descricao": "Kit Trio Loreal Absolut Molecular Shampoo + Máscara + Sérum",
+      "antes": "R$ 744,33",
+      "antes_valor": null,
+      "desconto": "8% OFF",
+      "depois": "R$ 684,78",
+      "depois_valor": 684.78,
+      "link_anuncio": "https://www.mercadolivre.com.br/kit-trio-loreal-absolut-molecular-shampoo--mascara--serum/up/MLBU4045883575?pdp_filters=discount%3A10-100#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=5&type=product&tracking_id=6f1439d3-5ead-4092-88a3-4ee5df46fdd6&wid=MLB6908192690&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_866585-MLB111722367410_062026-O-kit-trio-loreal-absolut-molecular-shampoo--mascara--serum.webp"
+    }
+  ]
+}

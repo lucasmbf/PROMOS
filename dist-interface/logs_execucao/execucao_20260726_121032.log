@@ -1,0 +1,133 @@
+=== Inicio da execucao: 2026-07-26T12:10:32 ===
+Args: --produto-por-html --fonte mercadolivre --url-produto https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse --url-produto https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse --url-produto https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue --limite-candidatos-url 3 --limite-candidatos-url 3 --limite-candidatos-url 3 --limite-candidatos 9 --modalidade-execucao campanha
+
+[MODO_ATIVO] PRODUTO_ONDEMAND_HOME_PESQUISA
+
+Modo procurar produto ativado (pesquisa pela home do Mercado Livre).
+
+[LINK_BASE_1] Processando listagem direta: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse
+[LINK_BASE_1] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 1
+[LISTAGEM_DIRETA] Link 1 - página 1: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/cuidados-cabelo/wella_Discount_10-100_NoIndex_True#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D9%26applied_value_results%3D3466%26is_custom%3Dfalse
+✓ Link de afiliado: https://meli.la/2ecNegd
+✓ Link de afiliado: https://meli.la/1iqKgXD
+✓ Link de afiliado: https://meli.la/1hEogVh
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total geral: 3/9
+
+[LINK_BASE_2] Processando listagem direta: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse
+[LINK_BASE_2] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 2
+[LISTAGEM_DIRETA] Link 2 - página 1: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/loreal_Discount_10-100_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Ddiscount%26applied_filter_name%3DDescontos%26applied_filter_order%3D14%26applied_value_id%3D10-100%26applied_value_name%3DMais+de+10%25+OFF%26applied_value_order%3D2%26applied_value_results%3D1613%26is_custom%3Dfalse
+✓ Link de afiliado: https://meli.la/1672GHA
+✓ Link de afiliado: https://meli.la/1yXce2T
+✓ Link de afiliado: https://meli.la/1TnRX2i
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total geral: 6/9
+
+[LINK_BASE_3] Processando listagem direta: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+[LINK_BASE_3] Carregando em blocos de 3 páginas até encontrar candidatos válidos
+
+[BLOCO_1] Carregando páginas 1 a 3 do Link 3
+[LISTAGEM_DIRETA] Link 3 - página 1: https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/mac_NoIndex_True?sb=all_mercadolibre#applied_filter_id%3Dcategory%26applied_filter_name%3DCategorias%26applied_filter_order%3D4%26applied_value_id%3DMLB1246%26applied_value_name%3DBeleza+e+Cuidado+Pessoal%26applied_value_order%3D8%26applied_value_results%3D16%26is_custom%3Dfalse%26view_more_flag%3Dtrue
+✓ Link de afiliado: https://meli.la/1nm1zeb
+✓ Link de afiliado: https://meli.la/1dSgFbq
+✓ Link de afiliado: https://meli.la/13sXdN2
+[BLOCO_1] Resultado: 3 candidato(s) coletado(s), 3 válido(s) enriquecido(s). Total geral: 9/9
+
+Histórico relâmpago atualizado em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_relampago\Historico de anuncios\lista_anuncios.txt
+✅ 9 imagem(ns) principal(is) salvas em anuncios: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\dist-interface\instagram_anuncios
+✅ JSON de busca de produto salvo em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\ofertas_afiliados\Historico de anuncios\ofertas_20260726_121222.json
+
+Saida consolidada por modalidade atualizada em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\lista_anuncios.txt
+Saida JSON campanha salva em: C:\Users\Lucas Bianco\Desktop\Projetos Dev\Promos\saidas_execucoes\Campanha\ofertas_20260726_121222.json
+
+[DEBUG] Twilio Account SID: ACc0...e80a
+[WARN] Falha ao iniciar Google Drive para imagens: Arquivo de service account nao encontrado: C:\Users\Lucas Bianco\AppData\Local\Temp\_MEI405082\credentials\google-service-account.json
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_926529-MLB93059981780_092025-O-wella-professionals-oil-reflections--mascara-capilar-150ml.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Wella Professionals Oil Reflections - Máscara Capilar 150ml
+Message SID Twilio: SM57e3d8bd7af1ba1a918224c2166131d3
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_850115-MLA99419186602_112025-O-wella-mascara-oil-reflections-500ml-nutricao-profissional.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Wella Máscara Oil Reflections 500ml Nutrição Profissional
+Message SID Twilio: SM0c94981b6880f8b271088ffe22b2f7fa
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_664920-MLB107255114924_032026-O-kit-wella-professionals-oil-reflections-tratamento.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Wella Professionals Oil Reflections Tratamento
+Message SID Twilio: SM02e1fa799e68cf5f39db395e4f916ddc
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_770983-MLB71112886140_082023-O-shampoo-loreal-absolut-repair-300ml-reparo--reconstrucao.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Shampoo Loreal Absolut Repair 300ml Reparo & Reconstrução
+Message SID Twilio: SM2d69508737744bbb849b7a1ed3232e03
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_690455-MLB80170455063_102024-O-absolut-repair-molecular-mascara-profissional--250g.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Absolut Repair Molecular Máscara Profissional - 250g
+Message SID Twilio: SMf150504cc7e1e062b01cd6cc0ee483a6
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_606609-MLB114902007131_072026-O-kit-absolut-repair-molecular-shampoo-300ml-e-mascara-250ml.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Kit Absolut Repair Molecular Shampoo 300ml E Máscara 250ml
+Message SID Twilio: SM2057b61a8235b28309ec1d3ed3ad1645
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_791898-MLU75141524063_032024-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Mac Cosmetics - Batom Matte Macximal - Twig Twist Acabamento Matte Sedoso
+Message SID Twilio: SM27f07eb3e9afd323c7f28b03d5119a70
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_680338-MLA113515535853_062026-O.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Tinta Labial Mac Lustreglass Stainglass Sneaky Pink Rosa Sorrateiro
+Message SID Twilio: SM4a8b3b7393232b2de8abd63371473229
+[DEBUG] status_final_twilio=sending
+
+[DEBUG] media_url=NAO
+[DEBUG] motivo_sem_midia=webp_desativado
+[DEBUG] imagem=https://http2.mlstatic.com/D_NQ_NP_897978-MLB94273908672_102025-O-delineador-mac-colour-excess.webp
+
+Mensagem enviada para whatsapp:+5519991133269:
+Delineador Mac Colour Excess
+Message SID Twilio: SM351f31ab7baae5fb9935b601e95cc5cd
+[DEBUG] status_final_twilio=sending
+
+[RESUMO_TWILIO] entregues_ou_processadas=9 falhas=0 total=9
+
+9 oferta(s) processada(s) e salva(s).
+
+=== Fim da execucao: 2026-07-26T12:12:40 ===

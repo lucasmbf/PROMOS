@@ -1,0 +1,18 @@
+{
+  "timestamp": "20260726_115036",
+  "total": 1,
+  "ofertas": [
+    {
+      "id_anuncio": "mlbu4170067158",
+      "categoria": "Utensílios para Confeitaria > Cortadores de Biscoito",
+      "descricao": "Cortador De Biscoito Cookie Pasta Feliz Dia Dos Pais",
+      "antes": "Sem preço anterior",
+      "antes_valor": null,
+      "desconto": "Sem desconto",
+      "depois": "R$ 25,99",
+      "depois_valor": 25.99,
+      "link_anuncio": "https://www.mercadolivre.com.br/cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais/up/MLBU4170067158#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=5&type=product&tracking_id=7fb5af92-b80f-4fe9-ab36-24982f34b971&wid=MLB7040371854&sid=search",
+      "imagem_principal": "https://http2.mlstatic.com/D_NQ_NP_971053-MLB113778486435_062026-O-cortador-de-biscoito-cookie-pasta-feliz-dia-dos-pais.webp"
+    }
+  ]
+}
